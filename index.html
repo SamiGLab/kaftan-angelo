@@ -6,6 +6,9 @@
 <title>Bőrkabát Budapest | Kaftan Angelo bőr üzlet</title>
 <meta name="description" content="Bőrkabát Budapest belvárosában: férfi és női valódi bőrkabátok, bőrdzsekik, irha- és szőrmekabátok a Kaftan Angelo bőr üzletben, Kossuth Lajos u. 18.">
 <meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://samiglab.github.io/kaftan-angelo/">
+<meta name="author" content="Kaftan Angelo">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Local SEO terms are placed naturally in titles, headings and visible copy; no keyword-stuffing/meta-keywords block. -->
 <meta name="theme-color" content="#1b120c">
 <meta name="format-detection" content="telephone=yes">
@@ -16,9 +19,16 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="hu_HU">
 <meta property="og:site_name" content="Kaftan Angelo">
+<meta property="og:url" content="https://samiglab.github.io/kaftan-angelo/">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="tr_TR">
+<meta property="og:locale:alternate" content="ar_SA">
 <meta property="og:title" content="Bőrkabát Budapest | Kaftan Angelo bőr üzlet">
 <meta property="og:description" content="Férfi és női valódi bőrkabátok, bőrdzsekik, irha- és szőrmekabátok Budapest belvárosában, Kossuth Lajos u. 18.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bőrkabát Budapest | Kaftan Angelo bőr üzlet">
+<meta name="twitter:description" content="Férfi és női valódi bőrkabátok, bőrdzsekik, irha- és szőrmekabátok Budapest belvárosában, Kossuth Lajos u. 18.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -26,6 +36,8 @@
 {
   "@context": "https://schema.org",
   "@type": "ClothingStore",
+  "@id": "https://samiglab.github.io/kaftan-angelo/#store",
+  "url": "https://samiglab.github.io/kaftan-angelo/",
   "name": "Kaftan Angelo",
   "description": "Leather shop in central Budapest offering genuine men’s and women’s leather jackets, leather coats, shearling coats, fur clothing and selected leather accessories.",
   "telephone": "+36 1 266 7274",
@@ -62,6 +74,8 @@
     }
   ],
   "priceRange": "€€",
+  "hasMap": "https://www.google.com/maps/search/?api=1&query=Kaftan+Angelo+Kossuth+Lajos+u.+18+Budapest+1053",
+  "knowsLanguage": ["hu", "en", "de", "tr", "ar"],
   "sameAs": [
     "https://www.google.com/maps/search/?api=1&query=Kaftan+Angelo+Kossuth+Lajos+u.+18+Budapest+1053"
   ]
@@ -635,7 +649,33 @@
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "@id":"https://samiglab.github.io/kaftan-angelo/#website",
+      "url":"https://samiglab.github.io/kaftan-angelo/",
+      "name":"Kaftan Angelo",
+      "inLanguage":["hu","en","de","tr","ar"]
+    },
+    {
+      "@type":"WebPage",
+      "@id":"https://samiglab.github.io/kaftan-angelo/#webpage",
+      "url":"https://samiglab.github.io/kaftan-angelo/",
+      "name":"Bőrkabát Budapest | Kaftan Angelo bőr üzlet",
+      "isPartOf":{"@id":"https://samiglab.github.io/kaftan-angelo/#website"},
+      "about":{"@id":"https://samiglab.github.io/kaftan-angelo/#store"},
+      "inLanguage":"hu"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
   "@type":"FAQPage",
+  "@id":"https://samiglab.github.io/kaftan-angelo/#faq",
+  "isPartOf":{"@id":"https://samiglab.github.io/kaftan-angelo/#webpage"},
   "mainEntity":[
     {"@type":"Question","name":"Can I try products on before buying?","acceptedAnswer":{"@type":"Answer","text":"Yes. Available jackets and other clothing can be tried on in person at the Kaftan Angelo store in Budapest."}},
     {"@type":"Question","name":"Can I order online?","acceptedAnswer":{"@type":"Answer","text":"Yes. Online ordering is available. Contact Kaftan Angelo for current products and ordering options."}},
@@ -966,6 +1006,8 @@
       var ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content',seoMeta[lang].title);
       var ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content',seoMeta[lang].desc);
       var ogl=document.querySelector('meta[property="og:locale"]'); if(ogl) ogl.setAttribute('content',seoMeta[lang].locale);
+      var twt=document.querySelector('meta[name="twitter:title"]'); if(twt) twt.setAttribute('content',seoMeta[lang].title);
+      var twd=document.querySelector('meta[name="twitter:description"]'); if(twd) twd.setAttribute('content',seoMeta[lang].desc);
     }
     document.querySelectorAll('.lang-option').forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-lang') === lang);
