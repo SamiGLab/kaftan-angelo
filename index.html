@@ -452,9 +452,7 @@
     display:block;
     width:100%;
     aspect-ratio:1/1;
-    object-fit:contain;
-    padding:clamp(10px,1.4vw,18px);
-    background:#e8e5df;
+    object-fit:cover;
     cursor:zoom-in;
     transition:transform .35s ease;
   }
@@ -595,27 +593,8 @@
     }
     .hero::after{background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,0) 390px);}
     .hero .wrap{align-self:flex-start;}
-    .hero-copy{max-width:none;}
+    .hero-copy{max-width:none !important;}
     .hero-dots{top:360px;bottom:auto;}
-    .product-gallery{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:10px;
-      margin:0 0 28px;
-      padding:0;
-      overflow:visible;
-      scroll-snap-type:none;
-    }
-    .product-card{width:auto;min-width:0;height:auto;align-self:start;}
-    .product-card img{
-      width:100%;
-      height:auto !important;
-      max-height:none;
-      aspect-ratio:1/1;
-      object-fit:contain;
-      padding:8px;
-    }
-    .product-card figcaption{min-height:46px;padding:7px 8px;font-size:.7rem;line-height:1.25;}
   }
 
   /* ---------- production polish ---------- */
@@ -686,7 +665,7 @@
       gap:10px !important;
       width:100% !important;
       margin:0 0 32px !important;
-      padding:0 0 82px !important;
+      padding:0 0 24px !important;
       overflow:visible !important;
     }
     #kollekciok .product-card{
@@ -719,6 +698,21 @@
       -webkit-box-orient:vertical;
       -webkit-line-clamp:2;
     }
+    #kollekciok .tag-grid{
+      display:grid !important;
+      grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      gap:10px !important;
+    }
+    #kollekciok .tag-card{
+      min-height:180px;
+      padding:15px 12px 13px;
+    }
+    #kollekciok .tag-hole{display:none;}
+    #kollekciok .tag-ref{margin-bottom:7px;font-size:.62rem;}
+    #kollekciok .tag-icon{width:30px;height:30px;margin-bottom:8px;}
+    #kollekciok .tag-card h3{margin-bottom:7px;font-size:.88rem;line-height:1.25;}
+    #kollekciok .tag-card p{font-size:.7rem;line-height:1.35;}
+    #kollekciok .tag-card .stitch-edge{margin-top:10px;}
   }
   @media (max-width:380px){
     #kollekciok .product-card{height:190px !important;}
@@ -1158,15 +1152,15 @@
     '<path d="M15 9 Q12 12 13 18 L13 39 H35 L35 18 Q36 12 33 9 L28 13 L24 10 L20 13 Z"/><path d="M18 20 q2 -2 4 0 q2 -2 4 0 q2 -2 4 0" stroke-width="1.1"/>',
     '<path d="M14 10 Q10 13 12 20 L11 38 H37 L36 20 Q38 13 34 10" /><path d="M15 16 q3 -3 5 0 q3 -3 5 0 q3 -3 5 0 q3 -3 5 0" stroke-width="1.1"/><path d="M15 24 q3 -3 5 0 q3 -3 5 0 q3 -3 5 0 q3 -3 5 0" stroke-width="1.1"/>',
     '<rect x="9" y="21" width="30" height="7" rx="1.5"/><circle cx="24" cy="24.5" r="3"/><path d="M14 32 h8 v9 h-8 z"/><path d="M14 34 h8" stroke-width="1"/>',
-    '<path d="M12 24 Q24 12 36 24 Q30 20 24 20 Q18 20 12 24 Z"/><path d="M14 30 Q24 26 34 30 Q24 40 14 30 Z"/>'
+    '<path d="M11 34 L34 11 L39 16 L16 39 Z"/><path d="M31 14 l3 3 M27 18 l3 3 M23 22 l3 3"/>'
   ];
   var collections = [
-    {ref:'01', hu:'Férfi bőrkabátok', en:"Men's Leather Jackets", de:'Herren-Lederjacken', tr:'Erkek Deri Ceketler', ar:'سترات جلدية رجالية', huDesc:'Valódi bőrkabátok és bőrdzsekik különböző fazonokban, színekben és méretekben — személyesen felpróbálhatók üzletünkben.', enDesc:"Genuine leather jackets in a selection of fits, colours and sizes — try them on in person at our store.", deDesc:'Echte Lederjacken in verschiedenen Schnitten, Farben und Größen — direkt in unserem Geschäft anprobierbar.', trDesc:'Farklı kalıp, renk ve bedenlerde gerçek deri ceketler — mağazamızda deneyebilirsiniz.', arDesc:'سترات من الجلد الطبيعي بقصات وألوان ومقاسات مختلفة — يمكن تجربتها داخل متجرنا.'},
-    {ref:'02', hu:'Női bőrkabátok', en:"Women's Leather Jackets", de:'Damen-Lederjacken', tr:'Kadın Deri Ceketler', ar:'سترات جلدية نسائية', huDesc:'Klasszikus és modern fazonú női bőrkabátok — az aktuálisan elérhető modellek üzletünkben tekinthetők meg.', enDesc:'Leather jackets in classic and contemporary styles — visit our store to see what is currently available.', deDesc:'Damen-Lederjacken in klassischen und modernen Schnitten — besuchen Sie unser Geschäft für die aktuelle Auswahl.', trDesc:'Klasik ve modern kadın deri ceket modelleri — güncel seçenekleri mağazamızda görebilirsiniz.', arDesc:'سترات جلدية نسائية بتصاميم كلاسيكية وعصرية — زوروا متجرنا للاطلاع على التشكيلة الحالية.'},
-    {ref:'03', hu:'Irhakabátok', en:'Shearling Jackets & Coats', de:'Lammfelljacken & -mäntel', tr:'Shearling Ceket & Montlar', ar:'سترات ومعاطف جلد الخروف', huDesc:'Irhakabátok és irhadzsekik különböző hosszúságokban és fazonokban. Az aktuális választék szezonálisan változhat.', enDesc:'Shearling jackets and coats in a selection of lengths and styles. Availability may vary by season.', deDesc:'Lammfelljacken und -mäntel in verschiedenen Längen und Schnitten. Die Auswahl kann saisonal variieren.', trDesc:'Farklı uzunluk ve modellerde shearling ceket ve montlar. Güncel seçenekler sezona göre değişebilir.', arDesc:'سترات ومعاطف من جلد الخروف بأطوال وتصاميم مختلفة. قد تختلف التشكيلة حسب الموسم.'},
-    {ref:'04', hu:'Szőrmekabátok', en:'Fur Jackets & Coats', de:'Pelzjacken & -mäntel', tr:'Kürk Ceket & Montlar', ar:'سترات ومعاطف فراء', huDesc:'Szőrmekabátok, szőrmedzsekik és szezonális modellek — az aktuális kínálat budapesti üzletünkben tekinthető meg.', enDesc:'Fur jackets, coats and seasonal styles — see the current selection in our central Budapest store.', deDesc:'Pelzjacken, Mäntel und saisonale Modelle — die aktuelle Auswahl finden Sie in unserem Geschäft im Zentrum von Budapest.', trDesc:'Kürk ceketler, montlar ve sezonluk modeller — güncel koleksiyonu Budapeşte merkezindeki mağazamızda görebilirsiniz.', arDesc:'سترات ومعاطف فراء وتصاميم موسمية — شاهدوا التشكيلة الحالية في متجرنا بوسط بودابست.'},
-    {ref:'05', hu:'Bőr kiegészítők', en:'Leather Accessories', de:'Lederaccessoires', tr:'Deri Aksesuarlar', ar:'إكسسوارات جلدية', huDesc:'Bőrövek, pénztárcák és válogatott kiegészítők. Az aktuális színek és modellek üzletünkben tekinthetők meg.', enDesc:'Leather belts, wallets and selected accessories. Visit our store to see current colours and styles.', deDesc:'Ledergürtel, Geldbörsen und ausgewählte Accessoires. Besuchen Sie unser Geschäft für aktuelle Farben und Modelle.', trDesc:'Deri kemerler, cüzdanlar ve seçilmiş aksesuarlar. Güncel renk ve modelleri mağazamızda görebilirsiniz.', arDesc:'أحزمة ومحافظ جلدية وإكسسوارات مختارة. زوروا متجرنا لرؤية الألوان والتصاميم المتوفرة.'},
-    {ref:'06', hu:'Sapkák és sálak', en:'Hats & Scarves', de:'Mützen & Schals', tr:'Şapkalar & Atkılar', ar:'قبعات وأوشحة', huDesc:'Sapkák, sálak és szezonális divatkiegészítők. Az aktuális választék üzletünkben tekinthető meg.', enDesc:'Hats, scarves and seasonal fashion accessories. Visit our store to explore the current selection.', deDesc:'Mützen, Schals und saisonale Modeaccessoires. Besuchen Sie unser Geschäft für die aktuelle Auswahl.', trDesc:'Şapkalar, atkılar ve sezonluk moda aksesuarları. Güncel seçenekleri görmek için mağazamızı ziyaret edin.', arDesc:'قبعات وأوشحة وإكسسوارات موسمية. زوروا متجرنا للاطلاع على التشكيلة الحالية.'}
+    {ref:'01', hu:'Női bőrkabátok', en:"Women's Leather Jackets", de:'Damen-Lederjacken', tr:'Kadın Deri Ceketler', ar:'سترات جلدية نسائية', huDesc:'Klasszikus és modern valódi bőrkabátok, üzletünkben felpróbálhatók.', enDesc:'Classic and modern genuine leather jackets to try on in store.', deDesc:'Klassische und moderne Echtlederjacken zum Anprobieren.', trDesc:'Mağazada deneyebileceğiniz klasik ve modern gerçek deri ceketler.', arDesc:'سترات جلد طبيعي كلاسيكية وعصرية للتجربة في المتجر.'},
+    {ref:'02', hu:'Férfi bőrkabátok', en:"Men's Leather Jackets", de:'Herren-Lederjacken', tr:'Erkek Deri Ceketler', ar:'سترات جلدية رجالية', huDesc:'Valódi bőrdzsekik és bőrkabátok többféle fazonban és méretben.', enDesc:'Genuine leather jackets in a range of fits and sizes.', deDesc:'Echte Lederjacken in verschiedenen Schnitten und Größen.', trDesc:'Farklı kalıp ve bedenlerde gerçek deri ceketler.', arDesc:'سترات جلد طبيعي بقصات ومقاسات مختلفة.'},
+    {ref:'03', hu:'Irhakabátok', en:'Shearling Jackets', de:'Lammfelljacken', tr:'Shearling Ceketler', ar:'سترات جلد الخروف', huDesc:'Meleg női és férfi irhadzsekik, irhakabátok szezonális választékban.', enDesc:'Warm shearling jackets and coats for women and men.', deDesc:'Warme Lammfelljacken und -mäntel für Damen und Herren.', trDesc:'Kadın ve erkek sıcak shearling ceket ve montlar.', arDesc:'سترات ومعاطف دافئة من جلد الخروف للنساء والرجال.'},
+    {ref:'04', hu:'Szőrmekabátok', en:'Fur Jackets & Coats', de:'Pelzjacken & -mäntel', tr:'Kürk Ceket & Montlar', ar:'سترات ومعاطف فراء', huDesc:'Női szőrmekabátok, szőrmedzsekik és rókamellények.', enDesc:'Women’s fur jackets, coats and fox fur vests.', deDesc:'Pelzjacken, Pelzmäntel und Fuchspelzwesten für Damen.', trDesc:'Kadın kürk ceketleri, montları ve tilki kürkü yelekler.', arDesc:'سترات ومعاطف فراء نسائية وسترات من فرو الثعلب.'},
+    {ref:'05', hu:'Bőr kiegészítők', en:'Leather Accessories', de:'Lederaccessoires', tr:'Deri Aksesuarlar', ar:'إكسسوارات جلدية', huDesc:'Bőrövek, bőr pénztárcák és válogatott kiegészítők.', enDesc:'Leather belts, wallets and selected accessories.', deDesc:'Ledergürtel, Geldbörsen und ausgewählte Accessoires.', trDesc:'Deri kemerler, cüzdanlar ve seçilmiş aksesuarlar.', arDesc:'أحزمة ومحافظ جلدية وإكسسوارات مختارة.'},
+    {ref:'06', hu:'Egyedi bőrkabát rendelés', en:'Custom Leather Jackets', de:'Leder-Sonderanfertigungen', tr:'Özel Deri Ceket', ar:'سترات جلد حسب الطلب', huDesc:'Egyedi fazon, szín és méret személyes egyeztetés alapján.', enDesc:'Custom style, colour and sizing discussed in person.', deDesc:'Individueller Schnitt, Farbe und Größe nach Beratung.', trDesc:'Model, renk ve beden mağazada birlikte belirlenir.', arDesc:'تصميم ولون ومقاس مخصص بعد الاستشارة في المتجر.'}
   ];
   function buildTagGrid(){
     var el = document.getElementById('tag-grid');
