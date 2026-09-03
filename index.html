@@ -13,8 +13,8 @@
 <meta name="format-detection" content="telephone=yes">
 <meta name="geo.region" content="HU-BU">
 <meta name="geo.placename" content="Budapest">
-<meta name="geo.position" content="47.494049;19.055854">
-<meta name="ICBM" content="47.494049, 19.055854">
+<meta name="geo.position" content="47.4940457;19.0584288">
+<meta name="ICBM" content="47.4940457, 19.0584288">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="hu_HU">
 <meta property="og:site_name" content="Kaftan Angelo">
@@ -70,8 +70,8 @@
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 47.494049,
-        "longitude": 19.055854
+        "latitude": 47.4940457,
+        "longitude": 19.0584288
       },
       "areaServed": {"@type":"City","name":"Budapest"},
       "hasMap": "https://www.google.com/maps/place/Kaftan+Angelo/@47.4944346,19.0600201,17.25z/data=!4m6!3m5!1s0x4741dc43988120f9:0x928c92ecc4745e63!8m2!3d47.4940457!4d19.0584288!16s%2Fg%2F11bwy_15vk",
@@ -137,6 +137,7 @@
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
+  #main-content,#rolunk,#kollekciok,#egyedi,#latogatas{scroll-margin-top:88px;}
   body{
     background:var(--bg);
     color:var(--cream);
@@ -996,22 +997,22 @@
   </div>
 </footer>
 
-<div class="mobile-actions" aria-label="Quick navigation">
+<div class="mobile-actions" aria-label="One-page navigation">
   <a class="active" data-index="0" href="#main-content" aria-current="page">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9h13v-9M9.5 19v-5h5v5"/></svg>
     <span><span class="lang-hu">Főoldal</span><span class="lang-en">Home</span><span class="lang-de">Start</span><span class="lang-tr">Ana Sayfa</span><span class="lang-ar">الرئيسية</span></span>
   </a>
-  <a data-index="1" href="#kollekciok">
+  <a data-index="1" href="#rolunk">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h10.5A3.5 3.5 0 0 1 19 8v11.5H8.5A3.5 3.5 0 0 1 5 16Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H19"/></svg>
+    <span><span class="lang-hu">Történet</span><span class="lang-en">Story</span><span class="lang-de">Geschichte</span><span class="lang-tr">Hikâye</span><span class="lang-ar">قصتنا</span></span>
+  </a>
+  <a data-index="2" href="#kollekciok">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5 5 7.5 6.5 11 9 9.8V20h6V9.8l2.5 1.2L19 7.5 16 5l-2 2h-4Z"/></svg>
     <span><span class="lang-hu">Kollekciók</span><span class="lang-en">Collections</span><span class="lang-de">Auswahl</span><span class="lang-tr">Ürünler</span><span class="lang-ar">المجموعات</span></span>
   </a>
-  <a data-index="2" href="https://maps.app.goo.gl/keuQRmecRpFn5Vjr5" target="_blank" rel="noopener">
+  <a data-index="3" href="#latogatas">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-    <span><span class="lang-hu">Útvonal</span><span class="lang-en">Directions</span><span class="lang-de">Route</span><span class="lang-tr">Yol Tarifi</span><span class="lang-ar">الاتجاهات</span></span>
-  </a>
-  <a data-index="3" href="tel:+3612667274">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 3.5 10 7.8 7.9 10c1.4 3 3.7 5.3 6.7 6.7l2.2-2.1 4.2 2.8c-.4 2.2-2.3 3.8-4.6 3.6C9.3 20.3 3.7 14.7 3 7.6 2.8 5.3 4.4 3.4 6.6 3Z"/></svg>
-    <span><span class="lang-hu">Hívás</span><span class="lang-en">Call</span><span class="lang-de">Anrufen</span><span class="lang-tr">Ara</span><span class="lang-ar">اتصال</span></span>
+    <span><span class="lang-hu">Üzlet</span><span class="lang-en">Visit</span><span class="lang-de">Besuch</span><span class="lang-tr">Mağaza</span><span class="lang-ar">المتجر</span></span>
   </a>
   <a data-index="4" href="https://www.instagram.com/kaftanangelo.budapest/" target="_blank" rel="noopener" aria-label="Instagram: kaftanangelo.budapest">
     <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg>
@@ -1057,16 +1058,27 @@
     });
   }
   mobileNavItems.forEach(function(item){item.addEventListener('click',function(){activateMobileNav(item);});});
-  if('IntersectionObserver' in window && mobileNav){
-    var collectionsLink=mobileNavItems[1];
-    var homeLink=mobileNavItems[0];
-    var collectionsSection=document.getElementById('kollekciok');
-    if(collectionsSection){
-      new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){activateMobileNav(entry.isIntersecting ? collectionsLink : homeLink);});
-      },{rootMargin:'-30% 0px -55% 0px',threshold:0}).observe(collectionsSection);
-    }
+  var mobileSectionLinks=mobileNavItems.filter(function(item){return item.hash && document.querySelector(item.hash);});
+  var mobileScrollQueued=false;
+  function syncMobileNavToScroll(){
+    mobileScrollQueued=false;
+    if(!mobileNav || window.innerWidth>860 || !mobileSectionLinks.length) return;
+    var marker=window.scrollY+Math.min(window.innerHeight*.38,280);
+    var current=mobileSectionLinks[0];
+    mobileSectionLinks.forEach(function(item){
+      var section=document.querySelector(item.hash);
+      if(section && section.offsetTop<=marker) current=item;
+    });
+    activateMobileNav(current);
   }
+  window.addEventListener('scroll',function(){
+    if(!mobileScrollQueued){
+      mobileScrollQueued=true;
+      window.requestAnimationFrame(syncMobileNavToScroll);
+    }
+  },{passive:true});
+  window.addEventListener('resize',syncMobileNavToScroll);
+  syncMobileNavToScroll();
 
   // ---- language switcher ----
   var langMeta = {
