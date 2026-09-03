@@ -6,6 +6,7 @@
 <title>Bőrkabát Budapest | Kaftan Angelo bőr üzlet</title>
 <meta name="description" content="Bőrkabát Budapest belvárosában: férfi és női valódi bőrkabátok, bőrdzsekik, irha- és szőrmekabátok a Kaftan Angelo bőr üzletben, Kossuth Lajos u. 18.">
 <meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://samiglab.github.io/kaftan-angelo/">
 <!-- Local SEO terms are placed naturally in titles, headings and visible copy; no keyword-stuffing/meta-keywords block. -->
 <meta name="theme-color" content="#1b120c">
 <meta name="format-detection" content="telephone=yes">
@@ -16,37 +17,84 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="hu_HU">
 <meta property="og:site_name" content="Kaftan Angelo">
+<meta property="og:url" content="https://samiglab.github.io/kaftan-angelo/">
 <meta property="og:title" content="Bőrkabát Budapest | Kaftan Angelo bőr üzlet">
 <meta property="og:description" content="Férfi és női valódi bőrkabátok, bőrdzsekik, irha- és szőrmekabátok Budapest belvárosában, Kossuth Lajos u. 18.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bőrkabát Budapest | Kaftan Angelo bőr üzlet">
+<meta name="twitter:description" content="Valódi bőrkabátok, irha- és szőrmemodellek Budapest belvárosában, a Kossuth Lajos u. 18. alatt.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ClothingStore",
-  "name": "Kaftan Angelo",
-  "description": "Leather shop in central Budapest offering genuine men’s and women’s leather jackets, leather coats, shearling coats, fur clothing and selected leather accessories.",
-  "telephone": "+36 1 266 7274",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Kossuth Lajos u. 18",
-    "postalCode": "1053",
-    "addressLocality": "Budapest",
-    "addressCountry": "HU"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 47.494049,
-    "longitude": 19.055854
-  },
-  "openingHoursSpecification": [
-    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"19:00"},
-    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"17:00"}
-  ],
-  "priceRange": "€€",
-  "currenciesAccepted": "HUF, EUR"
+  "@graph": [
+    {
+      "@type": "ClothingStore",
+      "@id": "https://samiglab.github.io/kaftan-angelo/#store",
+      "url": "https://samiglab.github.io/kaftan-angelo/",
+      "name": "Kaftan Angelo",
+      "description": "Leather shop in central Budapest offering genuine men's and women's leather jackets, leather coats, shearling and fur clothing, leather accessories and custom-made leather jackets.",
+      "foundingDate": "2005",
+      "founder": {"@type":"Person","name":"Angelo"},
+      "telephone": "+36 1 266 7274",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Kossuth Lajos u. 18",
+        "postalCode": "1053",
+        "addressLocality": "Budapest",
+        "addressCountry": "HU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 47.494049,
+        "longitude": 19.055854
+      },
+      "areaServed": {"@type":"City","name":"Budapest"},
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=Kaftan+Angelo+Kossuth+Lajos+u.+18+Budapest+1053",
+      "openingHoursSpecification": [
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"19:00"},
+        {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"17:00"}
+      ],
+      "priceRange": "€€",
+      "currenciesAccepted": "HUF, EUR",
+      "knowsLanguage": ["hu","en","de","tr","ar"],
+      "sameAs": ["https://www.instagram.com/kaftanangelo.budapest/"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Kaftan Angelo leather and outerwear collections",
+        "itemListElement": [
+          {"@type":"Offer","itemOffered":{"@type":"Product","name":"Men's genuine leather jackets"}},
+          {"@type":"Offer","itemOffered":{"@type":"Product","name":"Women's genuine leather jackets"}},
+          {"@type":"Offer","itemOffered":{"@type":"Product","name":"Shearling jackets and coats"}},
+          {"@type":"Offer","itemOffered":{"@type":"Product","name":"Fur jackets and coats"}},
+          {"@type":"Offer","itemOffered":{"@type":"Product","name":"Leather accessories"}}
+        ]
+      },
+      "makesOffer": {
+        "@type": "Offer",
+        "itemOffered": {"@type":"Service","name":"Custom-made leather jacket order","areaServed":"Budapest"}
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://samiglab.github.io/kaftan-angelo/#website",
+      "url": "https://samiglab.github.io/kaftan-angelo/",
+      "name": "Kaftan Angelo",
+      "inLanguage": ["hu","en","de","tr","ar"],
+      "publisher": {"@id":"https://samiglab.github.io/kaftan-angelo/#store"}
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://samiglab.github.io/kaftan-angelo/#webpage",
+      "url": "https://samiglab.github.io/kaftan-angelo/",
+      "name": "Bőrkabát Budapest | Kaftan Angelo bőr üzlet",
+      "isPartOf": {"@id":"https://samiglab.github.io/kaftan-angelo/#website"},
+      "about": {"@id":"https://samiglab.github.io/kaftan-angelo/#store"},
+      "inLanguage": "hu"
+    }
+  ]
 }
 </script>
 <style>
