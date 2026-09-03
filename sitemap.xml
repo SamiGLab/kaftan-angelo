@@ -1,9 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://samiglab.github.io/kaftan-angelo/</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/kaftan-angelo-leather-jackets-budapest.webp</image:loc>
+      <image:title>Valódi bőrkabátok Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/kaftan-angelo-womens-leather-jackets-budapest.webp</image:loc>
+      <image:title>Női valódi bőrkabátok Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/kaftan-angelo-mens-leather-jackets-budapest.webp</image:loc>
+      <image:title>Férfi valódi bőrkabátok Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/kaftan-angelo-shearling-fur-budapest.webp</image:loc>
+      <image:title>Irha- és szőrmekabátok Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/noi-sarga-borkabat-budapest.webp</image:loc>
+      <image:title>Női valódi bőrkabát Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/noi-feher-szormemelleny-budapest.webp</image:loc>
+      <image:title>Női szőrmemellény Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/ferfi-sotetbarna-irhadzseki-budapest.webp</image:loc>
+      <image:title>Férfi irhadzseki Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/ferfi-vilagosbarna-irhakabat-budapest.webp</image:loc>
+      <image:title>Világosbarna férfi irhakabát Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/ferfi-barna-irhakabat-budapest.webp</image:loc>
+      <image:title>Barna férfi irhakabát Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/fekete-borov-budapest.webp</image:loc>
+      <image:title>Fekete valódi bőröv Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/barna-bor-penztarca-budapest.webp</image:loc>
+      <image:title>Barna bőr pénztárca Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/noi-szegecses-bordzseki-budapest.webp</image:loc>
+      <image:title>Szegecses női bőrdzseki Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/ferfi-motoros-bordzseki-budapest.webp</image:loc>
+      <image:title>Férfi motoros bőrdzseki Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/ferfi-klasszikus-bordzseki-budapest.webp</image:loc>
+      <image:title>Klasszikus férfi bőrdzseki Budapesten – Kaftan Angelo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://samiglab.github.io/kaftan-angelo/ferfi-mintas-bordzseki-budapest.webp</image:loc>
+      <image:title>Mintás férfi bőrdzseki Budapesten – Kaftan Angelo</image:title>
+    </image:image>
   </url>
 </urlset>
