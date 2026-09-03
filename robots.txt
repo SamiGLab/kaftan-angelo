@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://samiglab.github.io/kaftan-angelo/sitemap.xml
