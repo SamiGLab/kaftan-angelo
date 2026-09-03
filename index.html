@@ -678,6 +678,53 @@
     @media (prefers-reduced-motion:reduce){.mobile-actions::before,.mobile-actions a,.mobile-actions svg{transition:none;}}
   }
 
+  /* Final mobile product layout: intentionally last so earlier rules cannot override it. */
+  @media (max-width:760px){
+    #kollekciok .product-gallery{
+      display:grid !important;
+      grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+      gap:10px !important;
+      width:100% !important;
+      margin:0 0 32px !important;
+      padding:0 0 82px !important;
+      overflow:visible !important;
+    }
+    #kollekciok .product-card{
+      display:block !important;
+      width:100% !important;
+      min-width:0 !important;
+      height:202px !important;
+      margin:0 !important;
+      align-self:start !important;
+    }
+    #kollekciok .product-card img{
+      display:block !important;
+      width:100% !important;
+      height:156px !important;
+      max-height:156px !important;
+      aspect-ratio:auto !important;
+      object-fit:contain !important;
+      object-position:center !important;
+      padding:6px !important;
+      margin:0 !important;
+    }
+    #kollekciok .product-card figcaption{
+      display:-webkit-box !important;
+      height:46px !important;
+      min-height:46px !important;
+      padding:7px 8px !important;
+      overflow:hidden !important;
+      font-size:.7rem !important;
+      line-height:1.25 !important;
+      -webkit-box-orient:vertical;
+      -webkit-line-clamp:2;
+    }
+  }
+  @media (max-width:380px){
+    #kollekciok .product-card{height:190px !important;}
+    #kollekciok .product-card img{height:144px !important;max-height:144px !important;}
+  }
+
 </style>
 </head>
 <body class="lang-hu">
