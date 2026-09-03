@@ -21,13 +21,13 @@
 <meta property="og:url" content="https://samiglab.github.io/kaftan-angelo/">
 <meta property="og:title" content="Bőrkabát Budapest | Kaftan Angelo bőr üzlet">
 <meta property="og:description" content="Férfi és női valódi bőrkabátok, bőrdzsekik, irha- és szőrmekabátok Budapest belvárosában, Kossuth Lajos u. 18.">
-<meta property="og:image" content="https://samiglab.github.io/kaftan-angelo/kaftan-angelo-leather-jackets-budapest.webp">
+<meta property="og:image" content="https://samiglab.github.io/kaftan-angelo/kaftan-angelo-hero-leather-collection.webp">
 <meta property="og:image:alt" content="Valódi bőrkabátok a Kaftan Angelo budapesti bőr üzlet kínálatából">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bőrkabát Budapest | Kaftan Angelo bőr üzlet">
 <meta name="twitter:description" content="Valódi bőrkabátok, irha- és szőrmemodellek Budapest belvárosában, a Kossuth Lajos u. 18. alatt.">
-<meta name="twitter:image" content="https://samiglab.github.io/kaftan-angelo/kaftan-angelo-leather-jackets-budapest.webp">
-<link rel="preload" as="image" href="kaftan-angelo-leather-jackets-budapest.webp" type="image/webp" fetchpriority="high">
+<meta name="twitter:image" content="https://samiglab.github.io/kaftan-angelo/kaftan-angelo-hero-leather-collection.webp">
+<link rel="preload" as="image" href="kaftan-angelo-hero-leather-collection.webp" type="image/webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -42,10 +42,10 @@
       "name": "Kaftan Angelo",
       "description": "Leather shop in central Budapest offering genuine men's and women's leather jackets, leather coats, shearling and fur clothing, leather accessories and custom-made leather jackets.",
       "image": [
-        "https://samiglab.github.io/kaftan-angelo/kaftan-angelo-leather-jackets-budapest.webp",
-        "https://samiglab.github.io/kaftan-angelo/kaftan-angelo-womens-leather-jackets-budapest.webp",
-        "https://samiglab.github.io/kaftan-angelo/kaftan-angelo-mens-leather-jackets-budapest.webp",
-        "https://samiglab.github.io/kaftan-angelo/kaftan-angelo-shearling-fur-budapest.webp",
+        "https://samiglab.github.io/kaftan-angelo/kaftan-angelo-hero-leather-collection.webp",
+        "https://samiglab.github.io/kaftan-angelo/womens-leather-jacket-budapest.webp",
+        "https://samiglab.github.io/kaftan-angelo/womens-shearling-jacket-budapest.webp",
+        "https://samiglab.github.io/kaftan-angelo/womens-fur-coat-budapest.webp",
         "https://samiglab.github.io/kaftan-angelo/noi-sarga-borkabat-budapest.webp",
         "https://samiglab.github.io/kaftan-angelo/noi-feher-szormemelleny-budapest.webp",
         "https://samiglab.github.io/kaftan-angelo/ferfi-sotetbarna-irhadzseki-budapest.webp",
@@ -262,6 +262,10 @@
     opacity:0;transform:scale(1.015);transition:opacity 1.15s ease,transform 6.5s ease;
   }
   .hero-media.active{opacity:1;transform:scale(1);}
+  .hero-media:nth-child(1){object-position:68% center;}
+  .hero-media:nth-child(2){object-position:63% center;}
+  .hero-media:nth-child(3){object-position:62% center;}
+  .hero-media:nth-child(4){object-position:55% center;}
   .hero-dots{position:absolute;left:50%;bottom:24px;z-index:3;display:flex;gap:9px;transform:translateX(-50%);}
   .hero-dot{width:9px;height:9px;border-radius:50%;padding:0;border:1px solid rgba(255,255,255,.72);background:rgba(255,255,255,.28);cursor:pointer;transition:.25s ease;}
   .hero-dot.active{background:#fff;transform:scale(1.18);}
@@ -448,7 +452,10 @@
     display:block;
     width:100%;
     aspect-ratio:1/1;
-    object-fit:cover;
+    object-fit:contain;
+    padding:clamp(10px,1.4vw,18px);
+    background:#e8e5df;
+    cursor:zoom-in;
     transition:transform .35s ease;
   }
   .product-card:hover img{transform:scale(1.025);}
@@ -576,27 +583,39 @@
   }
   @media (max-width: 540px){
     .tag-grid{grid-template-columns:1fr;}
-    .hero{padding:90px 0 60px; min-height:620px; background-position:62% center;}
+    .hero{padding:430px 0 62px;min-height:800px;align-items:flex-start;background:#160e0a;}
     .nav-phone{display:none;}
-    .hero-media:nth-child(1){object-position:39% center;}
-    .hero-media:nth-child(2){object-position:50% center;}
-    .hero-media:nth-child(3){object-position:56% center;}
-    .hero-media:nth-child(4){object-position:50% center;}
-    .hero-dots{bottom:15px;}
-    .product-gallery{
-      display:flex;
-      gap:12px;
-      margin-left:-20px;
-      margin-right:-20px;
-      padding:0 20px 12px;
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      scrollbar-width:thin;
-      scrollbar-color:var(--brass) transparent;
+    .hero-slides{height:390px;bottom:auto;}
+    .hero-media:nth-child(1){object-position:72% center;}
+    .hero-media:nth-child(2){object-position:61% center;}
+    .hero-media:nth-child(3){object-position:57% center;}
+    .hero-media:nth-child(4){object-position:51% center;}
+    .hero::before{
+      background:linear-gradient(180deg,rgba(18,11,7,.03) 0,rgba(18,11,7,.08) 330px,#160e0a 390px,#160e0a 100%);
     }
-    .product-card{flex:0 0 76vw;scroll-snap-align:center;}
-    .product-card img{aspect-ratio:1/1;object-fit:contain;}
-    .product-card figcaption{min-height:0;}
+    .hero::after{background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,0) 390px);}
+    .hero .wrap{align-self:flex-start;}
+    .hero-copy{max-width:none;}
+    .hero-dots{top:360px;bottom:auto;}
+    .product-gallery{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+      margin:0 0 28px;
+      padding:0;
+      overflow:visible;
+      scroll-snap-type:none;
+    }
+    .product-card{width:auto;min-width:0;height:auto;align-self:start;}
+    .product-card img{
+      width:100%;
+      height:auto !important;
+      max-height:none;
+      aspect-ratio:1/1;
+      object-fit:contain;
+      padding:8px;
+    }
+    .product-card figcaption{min-height:46px;padding:7px 8px;font-size:.7rem;line-height:1.25;}
   }
 
   /* ---------- production polish ---------- */
@@ -696,10 +715,10 @@
 <main id="main-content">
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-slides">
-    <img class="hero-media active" src="kaftan-angelo-leather-jackets-budapest.webp" width="1535" height="1024" alt="Valódi bőrkabátok a Kaftan Angelo budapesti bőr üzlet kínálatából" fetchpriority="high" decoding="async">
-    <img class="hero-media" src="kaftan-angelo-womens-leather-jackets-budapest.webp" width="1717" height="916" alt="Női valódi bőrkabátok a Kaftan Angelo budapesti üzletében" loading="lazy" decoding="async">
-    <img class="hero-media" src="kaftan-angelo-mens-leather-jackets-budapest.webp" width="1536" height="1024" alt="Férfi valódi bőrkabátok Budapest belvárosában" loading="lazy" decoding="async">
-    <img class="hero-media" src="kaftan-angelo-shearling-fur-budapest.webp" width="1536" height="1024" alt="Irha- és szőrmekabátok a Kaftan Angelo budapesti kínálatában" loading="lazy" decoding="async">
+    <img class="hero-media active" src="kaftan-angelo-hero-leather-collection.webp" width="1535" height="1024" alt="Valódi bőrkabát kollekció a Kaftan Angelo budapesti üzletében" fetchpriority="high" decoding="async">
+    <img class="hero-media" src="womens-leather-jacket-budapest.webp" width="1600" height="854" alt="Női valódi bőrkabát a Kaftan Angelo budapesti bőr üzlet előtt" loading="lazy" decoding="async">
+    <img class="hero-media" src="womens-shearling-jacket-budapest.webp" width="1536" height="1024" alt="Női irhakabát Budapest belvárosában a Kaftan Angelo kínálatából" loading="lazy" decoding="async">
+    <img class="hero-media" src="womens-fur-coat-budapest.webp" width="1536" height="1024" alt="Női szőrmekabát a Kaftan Angelo budapesti üzletének kínálatából" loading="lazy" decoding="async">
   </div>
   <div class="wrap">
     <div class="hero-copy">
@@ -805,8 +824,8 @@
         <figcaption><span class="lang-hu">Női valódi bőrkabát</span><span class="lang-en">Women's genuine leather jacket</span><span class="lang-de">Damen-Lederjacke</span><span class="lang-tr">Kadın gerçek deri ceket</span><span class="lang-ar">سترة جلد طبيعي نسائية</span></figcaption>
       </figure>
       <figure class="product-card">
-        <img src="noi-feher-szormemelleny-budapest.webp" width="900" height="900" loading="lazy" decoding="async" alt="Fehér női szőrmemellény a Kaftan Angelo budapesti üzletéből">
-        <figcaption><span class="lang-hu">Női szőrmemellény</span><span class="lang-en">Women's fur vest</span><span class="lang-de">Damen-Pelzweste</span><span class="lang-tr">Kadın kürk yelek</span><span class="lang-ar">سترة فراء نسائية</span></figcaption>
+        <img src="noi-feher-szormemelleny-budapest.webp" width="900" height="900" loading="lazy" decoding="async" alt="Fehér női rókamellény a Kaftan Angelo budapesti üzletéből">
+        <figcaption><span class="lang-hu">Női rókamellény</span><span class="lang-en">Women's fox fur vest</span><span class="lang-de">Damen-Fuchspelzweste</span><span class="lang-tr">Kadın tilki kürkü yelek</span><span class="lang-ar">سترة نسائية من فرو الثعلب</span></figcaption>
       </figure>
       <figure class="product-card">
         <img src="ferfi-sotetbarna-irhadzseki-budapest.webp" width="900" height="900" loading="lazy" decoding="async" alt="Sötétbarna férfi irhadzseki Budapest belvárosában">
@@ -1116,6 +1135,23 @@
     el.innerHTML = html;
   }
   buildTagGrid();
+
+  // ---- open product photography at full size ----
+  Array.prototype.forEach.call(document.querySelectorAll('.product-card img'), function(img){
+    img.setAttribute('role','button');
+    img.setAttribute('tabindex','0');
+    img.setAttribute('aria-label',(img.getAttribute('alt') || 'Product image') + ' — nagyítás');
+    function openProductImage(){
+      window.open(img.currentSrc || img.src,'_blank','noopener,noreferrer');
+    }
+    img.addEventListener('click',openProductImage);
+    img.addEventListener('keydown',function(event){
+      if(event.key === 'Enter' || event.key === ' '){
+        event.preventDefault();
+        openProductImage();
+      }
+    });
+  });
 
   // ---- opening hours ----
   var hours = [
