@@ -740,17 +740,13 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.9);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
 }
 .lightbox.active {
-  opacity: 1;
-  pointer-events: auto;
+  display: flex;
 }
 .lightbox-content {
   max-width: 90%;
