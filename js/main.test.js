@@ -47,16 +47,21 @@ describe('openProductImage functionality', () => {
         openSpy.mockClear();
     });
 
-    it('should open image when clicked', () => {
+    it('should open image in lightbox when clicked instead of new window', () => {
         expect(img).not.toBeNull();
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        expect(lightbox.classList.contains('active')).toBe(false);
 
         img.click();
 
-        expect(openSpy).toHaveBeenCalledTimes(1);
-        expect(openSpy).toHaveBeenCalledWith(
-            img.currentSrc || img.src,
-            '_blank',
-            'noopener,noreferrer'
-        );
+        // The image shouldn't open in a new window anymore
+        expect(openSpy).not.toHaveBeenCalled();
+
+        // It should open in the lightbox
+        expect(lightbox.classList.contains('active')).toBe(true);
+        expect(lightboxImg.src).toContain('noi-sarga-borkabat-budapest.webp'); // Ensure it loads the correct image
     });
 });
