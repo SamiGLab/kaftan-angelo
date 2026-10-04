@@ -328,6 +328,27 @@ const escapeHTML = (str) => {
 
   // ---- FAQ Accordion ----
   const faqItems = document.querySelectorAll('.faq-item');
+
+  // ---- Scroll Reveal Animation ----
+  const revealElements = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.1
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    // Fallback if IntersectionObserver is not supported
+    revealElements.forEach(el => el.classList.add('active'));
+  }
   faqItems.forEach((item) => {
     const question = item.querySelector('.faq-question');
     question.addEventListener('click', () => {
