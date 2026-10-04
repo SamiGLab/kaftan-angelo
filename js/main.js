@@ -126,6 +126,7 @@
   ];
   function buildTicker(){
     var el = document.getElementById('ticker');
+    if (!el) return;
     var html = '';
     for (var rep = 0; rep < 2; rep++){
       tickerItems.forEach(function(it){
@@ -237,3 +238,10 @@
       item.classList.toggle('active');
     });
   });
+
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+      buildTicker: buildTicker,
+      tickerItems: tickerItems
+    };
+  }
