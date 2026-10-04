@@ -221,3 +221,19 @@
   yearElements.forEach(function(el) {
     el.textContent = currentYear;
   });
+
+  // ---- FAQ Accordion ----
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function(item) {
+    var question = item.querySelector('.faq-question');
+    question.addEventListener('click', function() {
+      // Close others
+      faqItems.forEach(function(other) {
+        if (other !== item) {
+          other.classList.remove('active');
+        }
+      });
+      // Toggle current
+      item.classList.toggle('active');
+    });
+  });

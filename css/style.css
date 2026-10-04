@@ -573,3 +573,127 @@
     #kollekciok .product-card{height:190px !important;}
     #kollekciok .product-card img{height:144px !important;max-height:144px !important;}
   }
+
+
+  /* ---------- FAQ ---------- */
+  .faq-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+    padding: 24px 0;
+  }
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--cream);
+    user-select: none;
+  }
+  .faq-question:hover {
+    color: var(--brass-bright);
+  }
+  .faq-icon {
+    font-size: 1.2rem;
+    color: var(--brass);
+    transition: transform 0.3s ease;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, margin-top 0.3s ease;
+    color: var(--cream-dim);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .faq-item.active .faq-answer {
+    max-height: 300px;
+    margin-top: 16px;
+  }
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  /* ---------- Google Review CTA ---------- */
+  .review-cta {
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 32px 0;
+    text-align: center;
+  }
+  .review-cta h3 {
+    font-size: 1.4rem;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .review-cta p {
+    color: var(--cream-dim);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+  }
+  .btn-review {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: #4285F4;
+    color: #fff;
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: none;
+    transition: background 0.2s;
+  }
+  .btn-review:hover {
+    background: #3367D6;
+  }
+  .btn-review svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+/* ---------- Announcement Bar ---------- */
+.announcement-bar {
+  background: var(--brass-bright);
+  color: var(--bg);
+  text-align: center;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- B2B Section ---------- */
+.b2b-section {
+  background: linear-gradient(135deg, rgba(36,26,18,0.95), rgba(27,18,12,0.98));
+  border-bottom: 1px solid var(--line);
+  padding: 64px 0;
+}
+
+/* ---------- SEO Section ---------- */
+.seo-section {
+  padding: 64px 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+.seo-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.seo-content h2 {
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
+  margin-bottom: 24px;
+  color: var(--cream);
+}
+.seo-content p {
+  color: var(--cream-dim);
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
