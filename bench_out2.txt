@@ -1,0 +1,6 @@
+Old (forEach + +=): 1388ms
+New (map + join): 7145ms
+Old (forEach + +=): 1322ms
+New (map + join): 8668ms
+Old (forEach + +=): 1328ms
+New (map + join): 6824ms
