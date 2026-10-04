@@ -191,19 +191,100 @@ const escapeHTML = (str) => {
   }
   buildTagGrid();
 
-  // ---- open product photography at full size ----
-  Array.prototype.forEach.call(document.querySelectorAll('.product-card img'), (img) => {
+  // ---- Filtering ----
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const productCards = document.querySelectorAll('.product-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      productCards.forEach(card => {
+        const categories = card.getAttribute('data-category');
+        if (filter === 'all' || (categories && categories.split(' ').includes(filter))) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+      // reset lightbox list when filtering
+      updateLightboxImages();
+    });
+  });
+
+  // ---- Lightbox ----
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+  let currentImages = [];
+  let currentIndex = 0;
+
+  const updateLightboxImages = () => {
+    currentImages = Array.from(document.querySelectorAll('.product-card:not(.hidden) img'));
+  };
+
+  const openLightbox = (index) => {
+    if(currentImages.length === 0) return;
+    currentIndex = index;
+    lightboxImg.src = currentImages[currentIndex].currentSrc || currentImages[currentIndex].src;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // prevent scrolling
+  };
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  const showNext = () => {
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    openLightbox(currentIndex);
+  };
+
+  const showPrev = () => {
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    openLightbox(currentIndex);
+  };
+
+  if(lightbox) {
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxNext.addEventListener('click', showNext);
+    lightboxPrev.addEventListener('click', showPrev);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-content')) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
+    });
+  }
+
+  // Setup initial images and event listeners
+  updateLightboxImages();
+  document.querySelectorAll('.product-card img').forEach((img) => {
     img.setAttribute('role','button');
     img.setAttribute('tabindex','0');
     img.setAttribute('aria-label',(img.getAttribute('alt') || 'Product image') + ' — nagyítás');
-    const openProductImage = () => {
-      window.open(img.currentSrc || img.src,'_blank','noopener,noreferrer');
-    }
-    img.addEventListener('click',openProductImage);
+
+    const clickHandler = () => {
+      updateLightboxImages();
+      const idx = currentImages.indexOf(img);
+      if(idx > -1) openLightbox(idx);
+    };
+
+    img.addEventListener('click', clickHandler);
     img.addEventListener('keydown',(event) => {
       if(event.key === 'Enter' || event.key === ' '){
         event.preventDefault();
-        openProductImage();
+        clickHandler();
       }
     });
   });
@@ -260,3 +341,16 @@ const escapeHTML = (str) => {
       item.classList.toggle('active');
     });
   });
+
+  // ---- B2B Form Handler ----
+  window.handleB2BSubmit = (e) => {
+    e.preventDefault();
+    const name = document.getElementById('b2b-name').value;
+    const company = document.getElementById('b2b-company').value;
+    const message = document.getElementById('b2b-message').value;
+
+    const subject = encodeURIComponent(`B2B Partnership Inquiry - ${company}`);
+    const body = encodeURIComponent(`Name: ${name}\nCompany: ${company}\n\nMessage:\n${message}`);
+
+    window.location.href = `mailto:alfinafashionkft@gmail.com?subject=${subject}&body=${body}`;
+  };
