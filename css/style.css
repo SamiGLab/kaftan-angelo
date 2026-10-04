@@ -327,17 +327,15 @@
     margin-top:20px;
   }
   .product-gallery{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:20px;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    justify-items: center;
+    gap:24px;
     margin-bottom:48px;
   }
-  .product-card {
-    flex: 0 1 300px; /* shrink to fit, don't grow, base 300px */
-    max-width: 100%;
-  }
   .product-card{
+    width: 100%;
+    max-width: 280px;
     min-width:0;
     overflow:hidden;
     background:#e8e5df;
@@ -554,6 +552,7 @@
     #kollekciok .product-card{
       display:block !important;
       width:100% !important;
+      max-width:none !important;
       min-width:0 !important;
       height:202px !important;
       margin:0 !important;
@@ -838,9 +837,9 @@
 .b2b-form textarea {
   width: 100%;
   padding: 14px 16px;
-  border: 1px solid rgba(239,228,210,0.15);
+  border: 1px solid rgba(220,178,124,0.4);
   border-radius: 6px;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.4);
   color: var(--cream);
   font-family: 'Work Sans', sans-serif;
   transition: all 0.3s ease;
