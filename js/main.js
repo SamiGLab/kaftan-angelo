@@ -169,18 +169,20 @@ const escapeHTML = (str) => {
     '<path d="M11 34 L34 11 L39 16 L16 39 Z"/><path d="M31 14 l3 3 M27 18 l3 3 M23 22 l3 3"/>'
   ];
   const collections = [
-    {ref:'01', hu:'Női bőrkabátok', en:"Women's Leather Jackets", de:'Damen-Lederjacken', tr:'Kadın Deri Ceketler', ar:'سترات جلدية نسائية', huDesc:'Klasszikus és modern valódi bőrkabátok, üzletünkben felpróbálhatók.', enDesc:'Classic and modern genuine leather jackets to try on in store.', deDesc:'Klassische und moderne Echtlederjacken zum Anprobieren.', trDesc:'Mağazada deneyebileceğiniz klasik ve modern gerçek deri ceketler.', arDesc:'سترات جلد طبيعي كلاسيكية وعصرية للتجربة في المتجر.'},
-    {ref:'02', hu:'Férfi bőrkabátok', en:"Men's Leather Jackets", de:'Herren-Lederjacken', tr:'Erkek Deri Ceketler', ar:'سترات جلدية رجالية', huDesc:'Valódi bőrdzsekik és bőrkabátok többféle fazonban és méretben.', enDesc:'Genuine leather jackets in a range of fits and sizes.', deDesc:'Echte Lederjacken in verschiedenen Schnitten und Größen.', trDesc:'Farklı kalıp ve bedenlerde gerçek deri ceketler.', arDesc:'سترات جلد طبيعي بقصات ومقاسات مختلفة.'},
-    {ref:'03', hu:'Irhakabátok', en:'Shearling Jackets', de:'Lammfelljacken', tr:'Shearling Ceketler', ar:'سترات جلد الخروف', huDesc:'Meleg női és férfi irhadzsekik, irhakabátok szezonális választékban.', enDesc:'Warm shearling jackets and coats for women and men.', deDesc:'Warme Lammfelljacken und -mäntel für Damen und Herren.', trDesc:'Kadın ve erkek sıcak shearling ceket ve montlar.', arDesc:'سترات ومعاطف دافئة من جلد الخروف للنساء والرجال.'},
-    {ref:'04', hu:'Szőrmekabátok', en:'Fur Jackets & Coats', de:'Pelzjacken & -mäntel', tr:'Kürk Ceket & Montlar', ar:'سترات ومعاطف فراء', huDesc:'Női szőrmekabátok, szőrmedzsekik és rókamellények.', enDesc:'Women’s fur jackets, coats and fox fur vests.', deDesc:'Pelzjacken, Pelzmäntel und Fuchspelzwesten für Damen.', trDesc:'Kadın kürk ceketleri, montları ve tilki kürkü yelekler.', arDesc:'سترات ومعاطف فراء نسائية وسترات من فرو الثعلب.'},
-    {ref:'05', hu:'Bőr kiegészítők', en:'Leather Accessories', de:'Lederaccessoires', tr:'Deri Aksesuarlar', ar:'إكسسوارات جلدية', huDesc:'Bőrövek, bőr pénztárcák és válogatott kiegészítők.', enDesc:'Leather belts, wallets and selected accessories.', deDesc:'Ledergürtel, Geldbörsen und ausgewählte Accessoires.', trDesc:'Deri kemerler, cüzdanlar ve seçilmiş aksesuarlar.', arDesc:'أحزمة ومحافظ جلدية وإكسسوارات مختارة.'},
-    {ref:'06', hu:'Egyedi bőrkabát rendelés', en:'Custom Leather Jackets', de:'Leder-Sonderanfertigungen', tr:'Özel Deri Ceket', ar:'سترات جلد حسب الطلب', huDesc:'Egyedi fazon, szín és méret személyes egyeztetés alapján.', enDesc:'Custom style, colour and sizing discussed in person.', deDesc:'Individueller Schnitt, Farbe und Größe nach Beratung.', trDesc:'Model, renk ve beden mağazada birlikte belirlenir.', arDesc:'تصميم ولون ومقاس مخصص بعد الاستشارة في المتجر.'}
+    {ref:'01', img: 'womens-leather-jacket-budapest.webp', hu:'Női bőrkabátok', en:"Women's Leather Jackets", de:'Damen-Lederjacken', tr:'Kadın Deri Ceketler', ar:'سترات جلدية نسائية', huDesc:'Klasszikus és modern valódi bőrkabátok, üzletünkben felpróbálhatók.', enDesc:'Classic and modern genuine leather jackets to try on in store.', deDesc:'Klassische und moderne Echtlederjacken zum Anprobieren.', trDesc:'Mağazada deneyebileceğiniz klasik ve modern gerçek deri ceketler.', arDesc:'سترات جلد طبيعي كلاسيكية وعصرية للتجربة في المتجر.'},
+    {ref:'02', img: 'kaftan-angelo-mens-leather-jackets-budapest.webp', hu:'Férfi bőrkabátok', en:"Men's Leather Jackets", de:'Herren-Lederjacken', tr:'Erkek Deri Ceketler', ar:'سترات جلدية رجالية', huDesc:'Valódi bőrdzsekik és bőrkabátok többféle fazonban és méretben.', enDesc:'Genuine leather jackets in a range of fits and sizes.', deDesc:'Echte Lederjacken in verschiedenen Schnitten und Größen.', trDesc:'Farklı kalıp ve bedenlerde gerçek deri ceketler.', arDesc:'سترات جلد طبيعي بقصات ومقاسات مختلفة.'},
+    {ref:'03', img: 'womens-shearling-jacket-budapest.webp', hu:'Irhakabátok', en:'Shearling Jackets', de:'Lammfelljacken', tr:'Shearling Ceketler', ar:'سترات جلد الخروف', huDesc:'Meleg női és férfi irhadzsekik, irhakabátok szezonális választékban.', enDesc:'Warm shearling jackets and coats for women and men.', deDesc:'Warme Lammfelljacken und -mäntel für Damen und Herren.', trDesc:'Kadın ve erkek sıcak shearling ceket ve montlar.', arDesc:'سترات ومعاطف دافئة من جلد الخروف للنساء والرجال.'},
+    {ref:'04', img: 'womens-fur-coat-budapest.webp', hu:'Szőrmekabátok', en:'Fur Jackets & Coats', de:'Pelzjacken & -mäntel', tr:'Kürk Ceket & Montlar', ar:'سترات ومعاطف فراء', huDesc:'Női szőrmekabátok, szőrmedzsekik és rókamellények.', enDesc:'Women’s fur jackets, coats and fox fur vests.', deDesc:'Pelzjacken, Pelzmäntel und Fuchspelzwesten für Damen.', trDesc:'Kadın kürk ceketleri, montları ve tilki kürkü yelekler.', arDesc:'سترات ومعاطف فراء نسائية وسترات من فرو الثعلب.'},
+    {ref:'05', img: 'fekete-borov-budapest.webp', hu:'Bőr kiegészítők', en:'Leather Accessories', de:'Lederaccessoires', tr:'Deri Aksesuarlar', ar:'إكسسوارات جلدية', huDesc:'Bőrövek, bőr pénztárcák és válogatott kiegészítők.', enDesc:'Leather belts, wallets and selected accessories.', deDesc:'Ledergürtel, Geldbörsen und ausgewählte Accessoires.', trDesc:'Deri kemerler, cüzdanlar ve seçilmiş aksesuarlar.', arDesc:'أحزمة ومحافظ جلدية وإكسسوارات مختارة.'},
+    {ref:'06', img: 'kaftan-angelo-leather-jackets-budapest.webp', hu:'Egyedi bőrkabát rendelés', en:'Custom Leather Jackets', de:'Leder-Sonderanfertigungen', tr:'Özel Deri Ceket', ar:'سترات جلد حسب الطلب', huDesc:'Egyedi fazon, szín és méret személyes egyeztetés alapján.', enDesc:'Custom style, colour and sizing discussed in person.', deDesc:'Individueller Schnitt, Farbe und Größe nach Beratung.', trDesc:'Model, renk ve beden mağazada birlikte belirlenir.', arDesc:'تصميم ولون ومقاس مخصص بعد الاستشارة في المتجر.'}
   ];
   const buildTagGrid = () => {
     const el = document.getElementById('tag-grid');
     let html = '';
     collections.forEach((c, i) => {
-      html += '<div class="tag-card"><div class="tag-hole"></div>' +
+      // Fallback image handling
+      const imgSrc = c.img ? c.img : 'kaftan-angelo-hero-leather-collection.webp';
+      html += '<div class="tag-card" style="background-image: linear-gradient(rgba(36,25,17,0.85), rgba(36,25,17,0.95)), url(' + imgSrc + ');"><div class="tag-hole"></div>' +
         '<span class="tag-ref mono">Ref. ' + c.ref + '</span>' +
         '<svg class="tag-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">' + icons[i] + '</svg>' +
         '<h3><span class="lang-hu">' + c.hu + '</span><span class="lang-en">' + c.en + '</span><span class="lang-de">' + c.de + '</span><span class="lang-tr">' + c.tr + '</span><span class="lang-ar">' + c.ar + '</span></h3>' +
@@ -328,6 +330,27 @@ const escapeHTML = (str) => {
 
   // ---- FAQ Accordion ----
   const faqItems = document.querySelectorAll('.faq-item');
+
+  // ---- Scroll Reveal Animation ----
+  const revealElements = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -50px 0px',
+      threshold: 0.1
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    // Fallback if IntersectionObserver is not supported
+    revealElements.forEach(el => el.classList.add('active'));
+  }
   faqItems.forEach((item) => {
     const question = item.querySelector('.faq-question');
     question.addEventListener('click', () => {
@@ -354,3 +377,15 @@ const escapeHTML = (str) => {
 
     window.location.href = `mailto:alfinafashionkft@gmail.com?subject=${subject}&body=${body}`;
   };
+
+  // Handle form input placeholders manually since standard placeholders don't support multi-lang spans
+  const formInputs = document.querySelectorAll('.b2b-form input, .b2b-form textarea');
+  formInputs.forEach(input => {
+    input.addEventListener('input', () => {
+      if(input.value.trim().length > 0) {
+        input.parentElement.classList.add('has-value');
+      } else {
+        input.parentElement.classList.remove('has-value');
+      }
+    });
+  });
