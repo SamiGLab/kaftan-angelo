@@ -1,8 +1,8 @@
   // ---- four-image hero slider ----
-  var heroSlides=Array.prototype.slice.call(document.querySelectorAll('.hero-media'));
-  var heroDots=Array.prototype.slice.call(document.querySelectorAll('.hero-dot'));
-  var heroIndex=0;
-  var heroTimer;
+  const heroSlides=Array.prototype.slice.call(document.querySelectorAll('.hero-media'));
+  const heroDots=Array.prototype.slice.call(document.querySelectorAll('.hero-dot'));
+  let heroIndex=0;
+  let heroTimer;
   function showHeroSlide(index){
     if(!heroSlides.length) return;
     heroIndex=(index+heroSlides.length)%heroSlides.length;
@@ -23,27 +23,27 @@
   startHeroSlider();
 
   // ---- animated mobile navigation ----
-  var mobileNav=document.querySelector('.mobile-actions');
-  var mobileNavItems=mobileNav ? Array.prototype.slice.call(mobileNav.querySelectorAll('a')) : [];
+  const mobileNav=document.querySelector('.mobile-actions');
+  let mobileNavItems=mobileNav ? Array.prototype.slice.call(mobileNav.querySelectorAll('a')) : [];
   function activateMobileNav(item){
     if(!mobileNav || !item) return;
     mobileNav.style.setProperty('--active-index',item.getAttribute('data-index'));
     mobileNavItems.forEach(function(link){
-      var active=link===item;
+      let active=link===item;
       link.classList.toggle('active',active);
       if(active) link.setAttribute('aria-current','page'); else link.removeAttribute('aria-current');
     });
   }
   mobileNavItems.forEach(function(item){item.addEventListener('click',function(){activateMobileNav(item);});});
-  var mobileSectionLinks=mobileNavItems.filter(function(item){return item.hash && document.querySelector(item.hash);});
-  var mobileScrollQueued=false;
+  const mobileSectionLinks=mobileNavItems.filter(function(item){return item.hash && document.querySelector(item.hash);});
+  let mobileScrollQueued=false;
   function syncMobileNavToScroll(){
     mobileScrollQueued=false;
     if(!mobileNav || window.innerWidth>860 || !mobileSectionLinks.length) return;
-    var marker=window.scrollY+Math.min(window.innerHeight*.38,280);
-    var current=mobileSectionLinks[0];
+    let marker=window.scrollY+Math.min(window.innerHeight*.38,280);
+    let current=mobileSectionLinks[0];
     mobileSectionLinks.forEach(function(item){
-      var section=document.querySelector(item.hash);
+      let section=document.querySelector(item.hash);
       if(section && section.offsetTop<=marker) current=item;
     });
     activateMobileNav(current);
@@ -58,11 +58,11 @@
   syncMobileNavToScroll();
 
   // ---- language switcher ----
-  var langMeta = {
+  const langMeta= {
     hu:{flag:'🇭🇺',code:'HU',dir:'ltr'}, en:{flag:'🇬🇧',code:'EN',dir:'ltr'},
     de:{flag:'🇩🇪',code:'DE',dir:'ltr'}, tr:{flag:'🇹🇷',code:'TR',dir:'ltr'}, ar:{flag:'🇸🇦',code:'AR',dir:'rtl'}
   };
-  var seoMeta = {
+  const seoMeta= {
     hu:{title:'Bőrkabát Budapest | Kaftan Angelo bőr üzlet',desc:'Bőrkabát Budapest belvárosában: férfi és női valódi bőrkabátok, bőrdzsekik, irha- és szőrmekabátok a Kaftan Angelo bőr üzletben, Kossuth Lajos u. 18.',locale:'hu_HU'},
     en:{title:'Leather Jackets Budapest | Kaftan Angelo Leather Store',desc:'Leather jackets in Budapest for men and women, plus leather coats, shearling and fur styles. Visit Kaftan Angelo leather store in central Budapest, Kossuth Lajos u. 18.',locale:'en_GB'},
     de:{title:'Lederjacken Budapest | Kaftan Angelo Ledergeschäft',desc:'Lederjacken in Budapest für Damen und Herren sowie Ledermäntel, Lammfell- und Pelzmodelle. Besuchen Sie Kaftan Angelo im Zentrum von Budapest.',locale:'de_DE'},
@@ -77,34 +77,34 @@
     document.documentElement.setAttribute('dir', langMeta[lang].dir);
     if(seoMeta[lang]){
       document.title=seoMeta[lang].title;
-      var md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content',seoMeta[lang].desc);
-      var ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content',seoMeta[lang].title);
-      var ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content',seoMeta[lang].desc);
-      var ogl=document.querySelector('meta[property="og:locale"]'); if(ogl) ogl.setAttribute('content',seoMeta[lang].locale);
-      var twt=document.querySelector('meta[name="twitter:title"]'); if(twt) twt.setAttribute('content',seoMeta[lang].title);
-      var twd=document.querySelector('meta[name="twitter:description"]'); if(twd) twd.setAttribute('content',seoMeta[lang].desc);
+      let md=document.querySelector('meta[name="description"]'); if(md) md.setAttribute('content',seoMeta[lang].desc);
+      let ogt=document.querySelector('meta[property="og:title"]'); if(ogt) ogt.setAttribute('content',seoMeta[lang].title);
+      let ogd=document.querySelector('meta[property="og:description"]'); if(ogd) ogd.setAttribute('content',seoMeta[lang].desc);
+      let ogl=document.querySelector('meta[property="og:locale"]'); if(ogl) ogl.setAttribute('content',seoMeta[lang].locale);
+      let twt=document.querySelector('meta[name="twitter:title"]'); if(twt) twt.setAttribute('content',seoMeta[lang].title);
+      let twd=document.querySelector('meta[name="twitter:description"]'); if(twd) twd.setAttribute('content',seoMeta[lang].desc);
     }
     document.querySelectorAll('.lang-option').forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
-    var current=document.getElementById('lang-current');
+    let current=document.getElementById('lang-current');
     if(current){
       current.querySelector('.flag').textContent=langMeta[lang].flag;
       current.querySelector('.code').textContent=langMeta[lang].code;
     }
     try{localStorage.setItem('kaftan-lang',lang);}catch(e){}
     try{
-      var u=new URL(window.location.href); u.searchParams.set('lang',lang);
+      let u=new URL(window.location.href); u.searchParams.set('lang',lang);
       window.history.replaceState({},'',u.pathname+u.search+u.hash);
     }catch(e){}
     document.getElementById('lang-menu').classList.remove('open');
     current && current.setAttribute('aria-expanded','false');
   }
-  var langMenu=document.getElementById('lang-menu');
-  var langCurrent=document.getElementById('lang-current');
+  const langMenu=document.getElementById('lang-menu');
+  const langCurrent=document.getElementById('lang-current');
   langCurrent.addEventListener('click',function(e){
     e.stopPropagation();
-    var isOpen=langMenu.classList.toggle('open');
+    let isOpen=langMenu.classList.toggle('open');
     langCurrent.setAttribute('aria-expanded',String(isOpen));
   });
   document.querySelectorAll('.lang-option').forEach(function(btn){
@@ -115,7 +115,7 @@
   });
 
   // ---- ticker content ----
-  var tickerItems = [
+  const tickerItems= [
     {hu:'Férfi bőrkabát', en:"Men's Leather Jackets", de:'Herren-Lederjacken', tr:'Erkek Deri Ceketler', ar:'سترات جلدية رجالية'},
     {hu:'Női bőrkabát', en:"Women's Leather Jackets", de:'Damen-Lederjacken', tr:'Kadın Deri Ceketler', ar:'سترات جلدية نسائية'},
     {hu:'Irhakabát', en:'Shearling Jackets', de:'Lammfelljacken', tr:'Shearling Ceketler', ar:'سترات جلد خروف'},
@@ -125,9 +125,9 @@
     {hu:'Egyedi rendelés', en:'Custom Orders', de:'Sonderanfertigungen', tr:'Özel Sipariş', ar:'طلبات خاصة'}
   ];
   function buildTicker(){
-    var el = document.getElementById('ticker');
-    var html = '';
-    for (var rep = 0; rep < 2; rep++){
+    let el = document.getElementById('ticker');
+    let html = '';
+    for (let rep = 0; rep < 2; rep++){
       tickerItems.forEach(function(it){
         html += '<span class="item"><span class="lang-hu">' + it.hu + '</span><span class="lang-en">' + it.en + '</span><span class="lang-de">' + it.de + '</span><span class="lang-tr">' + it.tr + '</span><span class="lang-ar">' + it.ar + '</span></span><span>·</span>';
       });
@@ -137,7 +137,7 @@
   buildTicker();
 
   // ---- collection cards ----
-  var icons = [
+  const icons= [
     '<path d="M16 8 L11 13 L11 40 H37 L37 13 L32 8 L27 12 H21 Z"/><path d="M21 12 L18 24 L24 21 L30 24 L27 12"/>',
     '<path d="M17 8 L12 14 L12 40 H36 L36 14 L31 8 L26 13 L24 11 L22 13 Z"/><path d="M22 13 L19 27 L24 24 L29 27 L26 13"/>',
     '<path d="M15 9 Q12 12 13 18 L13 39 H35 L35 18 Q36 12 33 9 L28 13 L24 10 L20 13 Z"/><path d="M18 20 q2 -2 4 0 q2 -2 4 0 q2 -2 4 0" stroke-width="1.1"/>',
@@ -145,7 +145,7 @@
     '<rect x="9" y="21" width="30" height="7" rx="1.5"/><circle cx="24" cy="24.5" r="3"/><path d="M14 32 h8 v9 h-8 z"/><path d="M14 34 h8" stroke-width="1"/>',
     '<path d="M11 34 L34 11 L39 16 L16 39 Z"/><path d="M31 14 l3 3 M27 18 l3 3 M23 22 l3 3"/>'
   ];
-  var collections = [
+  const collections= [
     {ref:'01', hu:'Női bőrkabátok', en:"Women's Leather Jackets", de:'Damen-Lederjacken', tr:'Kadın Deri Ceketler', ar:'سترات جلدية نسائية', huDesc:'Klasszikus és modern valódi bőrkabátok, üzletünkben felpróbálhatók.', enDesc:'Classic and modern genuine leather jackets to try on in store.', deDesc:'Klassische und moderne Echtlederjacken zum Anprobieren.', trDesc:'Mağazada deneyebileceğiniz klasik ve modern gerçek deri ceketler.', arDesc:'سترات جلد طبيعي كلاسيكية وعصرية للتجربة في المتجر.'},
     {ref:'02', hu:'Férfi bőrkabátok', en:"Men's Leather Jackets", de:'Herren-Lederjacken', tr:'Erkek Deri Ceketler', ar:'سترات جلدية رجالية', huDesc:'Valódi bőrdzsekik és bőrkabátok többféle fazonban és méretben.', enDesc:'Genuine leather jackets in a range of fits and sizes.', deDesc:'Echte Lederjacken in verschiedenen Schnitten und Größen.', trDesc:'Farklı kalıp ve bedenlerde gerçek deri ceketler.', arDesc:'سترات جلد طبيعي بقصات ومقاسات مختلفة.'},
     {ref:'03', hu:'Irhakabátok', en:'Shearling Jackets', de:'Lammfelljacken', tr:'Shearling Ceketler', ar:'سترات جلد الخروف', huDesc:'Meleg női és férfi irhadzsekik, irhakabátok szezonális választékban.', enDesc:'Warm shearling jackets and coats for women and men.', deDesc:'Warme Lammfelljacken und -mäntel für Damen und Herren.', trDesc:'Kadın ve erkek sıcak shearling ceket ve montlar.', arDesc:'سترات ومعاطف دافئة من جلد الخروف للنساء والرجال.'},
@@ -154,8 +154,8 @@
     {ref:'06', hu:'Egyedi bőrkabát rendelés', en:'Custom Leather Jackets', de:'Leder-Sonderanfertigungen', tr:'Özel Deri Ceket', ar:'سترات جلد حسب الطلب', huDesc:'Egyedi fazon, szín és méret személyes egyeztetés alapján.', enDesc:'Custom style, colour and sizing discussed in person.', deDesc:'Individueller Schnitt, Farbe und Größe nach Beratung.', trDesc:'Model, renk ve beden mağazada birlikte belirlenir.', arDesc:'تصميم ولون ومقاس مخصص بعد الاستشارة في المتجر.'}
   ];
   function buildTagGrid(){
-    var el = document.getElementById('tag-grid');
-    var html = '';
+    let el = document.getElementById('tag-grid');
+    let html = '';
     collections.forEach(function(c, i){
       html += '<div class="tag-card"><div class="tag-hole"></div>' +
         '<span class="tag-ref mono">Ref. ' + c.ref + '</span>' +
@@ -186,7 +186,7 @@
   });
 
   // ---- opening hours ----
-  var hours = [
+  let hours = [
     {hu:'Hétfő', en:'Monday', de:'Montag', tr:'Pazartesi', ar:'الاثنين', time:'10:00–19:00'},
     {hu:'Kedd', en:'Tuesday', de:'Dienstag', tr:'Salı', ar:'الثلاثاء', time:'10:00–19:00'},
     {hu:'Szerda', en:'Wednesday', de:'Mittwoch', tr:'Çarşamba', ar:'الأربعاء', time:'10:00–19:00'},
@@ -196,10 +196,10 @@
     {hu:'Vasárnap', en:'Sunday', de:'Sonntag', tr:'Pazar', ar:'الأحد', time:null}
   ];
   function buildReceipt(){
-    var el = document.getElementById('receipt');
-    var html = '';
+    let el = document.getElementById('receipt');
+    let html = '';
     hours.forEach(function(d){
-      var timeHtml = d.time
+      let timeHtml = d.time
         ? '<b>' + d.time + '</b>'
         : '<b><span class="lang-hu">Zárva</span><span class="lang-en">Closed</span><span class="lang-de">Geschlossen</span><span class="lang-tr">Kapalı</span><span class="lang-ar">مغلق</span></b>';
       html += '<div class="receipt-row"><span><span class="lang-hu">' + d.hu + '</span><span class="lang-en">' + d.en + '</span><span class="lang-de">' + d.de + '</span><span class="lang-tr">' + d.tr + '</span><span class="lang-ar">' + d.ar + '</span></span>' + timeHtml + '</div>';
@@ -208,24 +208,24 @@
   }
   buildReceipt();
 
-  var savedLang='hu';
+  let savedLang='hu';
   try{
-    var queryLang=new URLSearchParams(window.location.search).get('lang');
+    let queryLang=new URLSearchParams(window.location.search).get('lang');
     savedLang=(queryLang && langMeta[queryLang]) ? queryLang : (localStorage.getItem('kaftan-lang')||'hu');
   }catch(e){}
   setLang(savedLang);
 
   // ---- footer current year ----
-  var yearElements = document.querySelectorAll('.current-year');
-  var currentYear = new Date().getFullYear();
+  const yearElements= document.querySelectorAll('.current-year');
+  let currentYear = new Date().getFullYear();
   yearElements.forEach(function(el) {
     el.textContent = currentYear;
   });
 
   // ---- FAQ Accordion ----
-  var faqItems = document.querySelectorAll('.faq-item');
+  const faqItems= document.querySelectorAll('.faq-item');
   faqItems.forEach(function(item) {
-    var question = item.querySelector('.faq-question');
+    let question = item.querySelector('.faq-question');
     question.addEventListener('click', function() {
       // Close others
       faqItems.forEach(function(other) {
