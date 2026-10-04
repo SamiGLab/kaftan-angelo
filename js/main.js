@@ -49,7 +49,16 @@ function escapeHTML(str) {
     });
   }
   mobileNavItems.forEach(function(item){item.addEventListener('click',function(){activateMobileNav(item);});});
-  var mobileSectionLinks=mobileNavItems.filter(function(item){return item.hash && document.querySelector(item.hash);});
+  var mobileSectionLinks=mobileNavItems.filter(function(item){
+    if (item.hash) {
+      var section = document.querySelector(item.hash);
+      if (section) {
+        item._targetSection = section;
+        return true;
+      }
+    }
+    return false;
+  });
   var mobileScrollQueued=false;
   function syncMobileNavToScroll(){
     mobileScrollQueued=false;
@@ -57,7 +66,7 @@ function escapeHTML(str) {
     var marker=window.scrollY+Math.min(window.innerHeight*.38,280);
     var current=mobileSectionLinks[0];
     mobileSectionLinks.forEach(function(item){
-      var section=document.querySelector(item.hash);
+      var section=item._targetSection;
       if(section && section.offsetTop<=marker) current=item;
     });
     activateMobileNav(current);
