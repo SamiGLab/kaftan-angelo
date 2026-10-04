@@ -140,13 +140,13 @@ function escapeHTML(str) {
   ];
   function buildTicker(){
     var el = document.getElementById('ticker');
-    var html = '';
+    var htmlParts = [];
     for (var rep = 0; rep < 2; rep++){
       tickerItems.forEach(function(it){
-        html += '<span class="item"><span class="lang-hu">' + it.hu + '</span><span class="lang-en">' + it.en + '</span><span class="lang-de">' + it.de + '</span><span class="lang-tr">' + it.tr + '</span><span class="lang-ar">' + it.ar + '</span></span><span>·</span>';
+        htmlParts.push('<span class="item"><span class="lang-hu">' + it.hu + '</span><span class="lang-en">' + it.en + '</span><span class="lang-de">' + it.de + '</span><span class="lang-tr">' + it.tr + '</span><span class="lang-ar">' + it.ar + '</span></span><span>·</span>');
       });
     }
-    el.innerHTML = html;
+    el.innerHTML = htmlParts.join('');
   }
   buildTicker();
 
