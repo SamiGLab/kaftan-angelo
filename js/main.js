@@ -1,3 +1,17 @@
+function escapeHTML(str) {
+  if (typeof str !== 'string') return str;
+  return str.replace(/[&<>'"]/g, function(tag) {
+    const charsToReplace = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    };
+    return charsToReplace[tag] || tag;
+  });
+}
+
   // ---- four-image hero slider ----
   var heroSlides=Array.prototype.slice.call(document.querySelectorAll('.hero-media'));
   var heroDots=Array.prototype.slice.call(document.querySelectorAll('.hero-dot'));
