@@ -155,16 +155,14 @@
   ];
   function buildTagGrid(){
     var el = document.getElementById('tag-grid');
-    var html = '';
-    collections.forEach(function(c, i){
-      html += '<div class="tag-card"><div class="tag-hole"></div>' +
+    el.innerHTML = collections.map(function(c, i){
+      return '<div class="tag-card"><div class="tag-hole"></div>' +
         '<span class="tag-ref mono">Ref. ' + c.ref + '</span>' +
         '<svg class="tag-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4">' + icons[i] + '</svg>' +
         '<h3><span class="lang-hu">' + c.hu + '</span><span class="lang-en">' + c.en + '</span><span class="lang-de">' + c.de + '</span><span class="lang-tr">' + c.tr + '</span><span class="lang-ar">' + c.ar + '</span></h3>' +
         '<p><span class="lang-hu">' + c.huDesc + '</span><span class="lang-en">' + c.enDesc + '</span><span class="lang-de">' + c.deDesc + '</span><span class="lang-tr">' + c.trDesc + '</span><span class="lang-ar">' + c.arDesc + '</span></p>' +
         '<div class="stitch stitch-edge"></div></div>';
-    });
-    el.innerHTML = html;
+    }).join('');
   }
   buildTagGrid();
 
