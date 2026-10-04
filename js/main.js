@@ -197,14 +197,40 @@
   ];
   function buildReceipt(){
     var el = document.getElementById('receipt');
-    var html = '';
+    el.textContent = '';
     hours.forEach(function(d){
-      var timeHtml = d.time
-        ? '<b>' + d.time + '</b>'
-        : '<b><span class="lang-hu">Zárva</span><span class="lang-en">Closed</span><span class="lang-de">Geschlossen</span><span class="lang-tr">Kapalı</span><span class="lang-ar">مغلق</span></b>';
-      html += '<div class="receipt-row"><span><span class="lang-hu">' + d.hu + '</span><span class="lang-en">' + d.en + '</span><span class="lang-de">' + d.de + '</span><span class="lang-tr">' + d.tr + '</span><span class="lang-ar">' + d.ar + '</span></span>' + timeHtml + '</div>';
+      var row = document.createElement('div');
+      row.className = 'receipt-row';
+      var spanContainer = document.createElement('span');
+      var langs = ['hu', 'en', 'de', 'tr', 'ar'];
+      langs.forEach(function(lang) {
+        var langSpan = document.createElement('span');
+        langSpan.className = 'lang-' + lang;
+        langSpan.textContent = d[lang];
+        spanContainer.appendChild(langSpan);
+      });
+      row.appendChild(spanContainer);
+      var timeB = document.createElement('b');
+      if (d.time) {
+        timeB.textContent = d.time;
+      } else {
+        var closedTexts = {
+          hu: 'Zárva',
+          en: 'Closed',
+          de: 'Geschlossen',
+          tr: 'Kapalı',
+          ar: 'مغلق'
+        };
+        langs.forEach(function(lang) {
+          var langSpan = document.createElement('span');
+          langSpan.className = 'lang-' + lang;
+          langSpan.textContent = closedTexts[lang];
+          timeB.appendChild(langSpan);
+        });
+      }
+      row.appendChild(timeB);
+      el.appendChild(row);
     });
-    el.innerHTML = html;
   }
   buildReceipt();
 
