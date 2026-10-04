@@ -142,9 +142,10 @@
   .hero-media:nth-child(2){object-position:63% center;}
   .hero-media:nth-child(3){object-position:62% center;}
   .hero-media:nth-child(4){object-position:55% center;}
-  .hero-dots{position:absolute;left:50%;bottom:24px;z-index:3;display:flex;gap:9px;transform:translateX(-50%);}
-  .hero-dot{width:9px;height:9px;border-radius:50%;padding:0;border:1px solid rgba(255,255,255,.72);background:rgba(255,255,255,.28);cursor:pointer;transition:.25s ease;}
-  .hero-dot.active{background:#fff;transform:scale(1.18);}
+  .hero-dots{position:absolute;left:50%;bottom:24px;z-index:3;display:flex;gap:12px;transform:translateX(-50%);}
+  .hero-dot{width:44px;height:44px;padding:0;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+  .hero-dot::after {content:""; display:block; width:9px; height:9px; border-radius:50%; border:1px solid rgba(255,255,255,.72); background:rgba(255,255,255,.28); transition:.25s ease;}
+  .hero-dot.active::after{background:#fff;transform:scale(1.18);}
   .hero::before{
     content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
     background:
@@ -641,16 +642,17 @@
     align-items: center;
     gap: 8px;
     padding: 12px 24px;
-    background: #4285F4;
-    color: #fff;
+    background: #ffffff;
+    color: #1b120c;
     border-radius: var(--radius);
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.9rem;
     text-transform: none;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.2s;
   }
   .btn-review:hover {
-    background: #3367D6;
+    background: #f1f3f4;
+    transform: translateY(-2px);
   }
   .btn-review svg {
     width: 20px;
