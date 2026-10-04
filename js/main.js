@@ -28,21 +28,21 @@
   function activateMobileNav(item){
     if(!mobileNav || !item) return;
     mobileNav.style.setProperty('--active-index',item.getAttribute('data-index'));
-    mobileNavItems.forEach(function(link){
+    mobileNavItems.forEach(link => {
       var active=link===item;
       link.classList.toggle('active',active);
       if(active) link.setAttribute('aria-current','page'); else link.removeAttribute('aria-current');
     });
   }
-  mobileNavItems.forEach(function(item){item.addEventListener('click',function(){activateMobileNav(item);});});
-  var mobileSectionLinks=mobileNavItems.filter(function(item){return item.hash && document.querySelector(item.hash);});
+  mobileNavItems.forEach(item => {item.addEventListener('click', () => {activateMobileNav(item);});});
+  var mobileSectionLinks=mobileNavItems.filter(item => {return item.hash && document.querySelector(item.hash);});
   var mobileScrollQueued=false;
   function syncMobileNavToScroll(){
     mobileScrollQueued=false;
     if(!mobileNav || window.innerWidth>860 || !mobileSectionLinks.length) return;
     var marker=window.scrollY+Math.min(window.innerHeight*.38,280);
     var current=mobileSectionLinks[0];
-    mobileSectionLinks.forEach(function(item){
+    mobileSectionLinks.forEach(item => {
       var section=document.querySelector(item.hash);
       if(section && section.offsetTop<=marker) current=item;
     });
