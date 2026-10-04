@@ -126,13 +126,29 @@
   ];
   function buildTicker(){
     var el = document.getElementById('ticker');
-    var html = '';
+    el.textContent = ''; // Clear existing content securely
+    var fragment = document.createDocumentFragment();
     for (var rep = 0; rep < 2; rep++){
       tickerItems.forEach(function(it){
-        html += '<span class="item"><span class="lang-hu">' + it.hu + '</span><span class="lang-en">' + it.en + '</span><span class="lang-de">' + it.de + '</span><span class="lang-tr">' + it.tr + '</span><span class="lang-ar">' + it.ar + '</span></span><span>·</span>';
+        var itemSpan = document.createElement('span');
+        itemSpan.className = 'item';
+
+        var langs = ['hu', 'en', 'de', 'tr', 'ar'];
+        langs.forEach(function(lang){
+          var langSpan = document.createElement('span');
+          langSpan.className = 'lang-' + lang;
+          langSpan.textContent = it[lang];
+          itemSpan.appendChild(langSpan);
+        });
+
+        fragment.appendChild(itemSpan);
+
+        var dotSpan = document.createElement('span');
+        dotSpan.textContent = '·';
+        fragment.appendChild(dotSpan);
       });
     }
-    el.innerHTML = html;
+    el.appendChild(fragment);
   }
   buildTicker();
 
