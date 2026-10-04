@@ -237,3 +237,4 @@
       item.classList.toggle('active');
     });
   });
+if (typeof module !== 'undefined' && module.exports) { module.exports = { setLang }; }
