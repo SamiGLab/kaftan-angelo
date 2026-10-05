@@ -242,6 +242,50 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 }
 </style>
+<style id="partner-proof-styles">
+.partner-proof{margin-top:48px}.partner-proof h3{margin-bottom:24px;color:var(--cream)}
+.partner-proof-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.partner-proof-card{margin:0;padding:24px;background:var(--bg-2);border:1px solid var(--line);border-radius:8px;display:flex;flex-direction:column;min-width:0}
+.partner-proof-card blockquote{font-size:.92rem;line-height:1.7;color:var(--cream-dim);flex:1;margin:0 0 24px}
+.partner-proof-card figcaption{display:flex;align-items:center;gap:12px;font-size:.8rem;line-height:1.5;color:var(--brass-bright)}
+.partner-avatar{display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex-shrink:0;border-radius:50%;background:rgba(220,178,124,.12);border:1px solid var(--line);color:var(--brass-bright);font-size:.8rem;font-weight:600}
+@media(max-width:860px){.partner-proof-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.partner-proof-grid{grid-template-columns:1fr}.partner-proof-card{padding:20px}}
+</style>
+<style id="atelier-service-styles">
+#egyedi{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 12% 12%,rgba(185,144,92,.12),transparent 55%),linear-gradient(135deg,#2c2016,#1b120c 65%,#302019);border-block:1px solid var(--line);padding:88px 0}
+#egyedi::before{content:"";position:absolute;z-index:-1;inset:16px;border:1px solid rgba(220,178,124,.08);pointer-events:none}
+#egyedi .section-head{margin-bottom:36px;align-items:center}
+#egyedi .section-head .tag{letter-spacing:.2em;font-size:.7rem;margin-bottom:14px}
+#egyedi .section-head h2{line-height:1.2;max-width:24ch}
+#egyedi .band-grid{gap:24px}
+#egyedi .atelier-card{position:relative;overflow:hidden;padding:30px 32px 36px;border:1px solid rgba(220,178,124,.25);border-radius:8px;background:linear-gradient(145deg,rgba(64,44,29,.65),rgba(31,21,15,.92));box-shadow:0 16px 38px rgba(0,0,0,.18);transition:border-color .25s,box-shadow .25s,transform .25s}
+#egyedi .atelier-card::after{content:"";position:absolute;inset-inline:32px;bottom:18px;height:1px;background:repeating-linear-gradient(90deg,rgba(220,178,124,.25) 0 5px,transparent 5px 12px)}
+#egyedi .atelier-card:hover{border-color:rgba(220,178,124,.6);box-shadow:0 20px 45px rgba(0,0,0,.28);transform:translateY(-3px)}
+#egyedi .service-top{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+#egyedi .service-number{color:var(--brass-bright);font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.12em}
+#egyedi .service-line{height:1px;flex:1;background:linear-gradient(90deg,rgba(220,178,124,.3),transparent)}
+#egyedi .service-art{width:80px;height:80px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(220,178,124,.2);border-radius:50%;color:var(--brass-bright);background:rgba(220,178,124,.045);margin-bottom:24px}
+#egyedi .service-art svg{width:62px;height:62px}
+#egyedi .atelier-card h3{font-size:clamp(1.45rem,2.2vw,1.8rem);color:var(--cream);line-height:1.25;margin-bottom:16px}
+#egyedi .atelier-card p{font-size:.95rem;line-height:1.8;color:var(--cream-dim);max-width:48ch}
+body.lang-ar #egyedi .service-line{background:linear-gradient(270deg,rgba(220,178,124,.3),transparent)}
+@media(max-width:860px){#egyedi .band-grid{grid-template-columns:1fr}}
+@media(max-width:540px){#egyedi{padding:64px 0}#egyedi::before{inset:10px}#egyedi .atelier-card{padding:24px 24px 32px}#egyedi .service-art{width:68px;height:68px;margin-bottom:20px}#egyedi .service-art svg{width:54px;height:54px}#egyedi .section-head h2{font-size:1.85rem}}
+@media(prefers-reduced-motion:reduce){#egyedi .atelier-card{transition:none}#egyedi .atelier-card:hover{transform:none}}
+</style>
+<style id="partner-review-marquee-styles">
+.partner-review-marquee{overflow:hidden;direction:ltr;margin-top:24px;position:relative}
+.partner-review-marquee:focus-visible{outline:2px solid var(--brass-bright);outline-offset:5px}
+.partner-review-marquee .partner-proof-grid{display:flex;gap:0;width:max-content;animation:partner-review-scroll 65s linear infinite;will-change:transform}
+.partner-review-group{display:flex;gap:18px;padding-right:18px;flex-shrink:0;align-items:stretch}
+.partner-review-marquee .partner-proof-card{width:320px;flex:0 0 320px;text-align:start}
+body.lang-ar .partner-review-marquee .partner-proof-card{direction:rtl}
+.partner-review-marquee:hover .partner-proof-grid,.partner-review-marquee:focus-within .partner-proof-grid{animation-play-state:paused}
+@keyframes partner-review-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:540px){.partner-review-marquee .partner-proof-card{width:280px;flex-basis:280px}}
+@media(prefers-reduced-motion:reduce){.partner-review-marquee{overflow-x:auto}.partner-review-marquee .partner-proof-grid{animation:none;will-change:auto}.partner-review-group[aria-hidden="true"]{display:none}}
+</style>
 </head>
 <body class="lang-hu">
 <!-- Google Tag Manager (noscript) -->
@@ -337,60 +381,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="ticker" id="ticker"></div>
 </div>
 
-<section id="b2b-partners" class="b2b-section reveal" aria-labelledby="b2b-title">
-  <div class="wrap cta-inner">
-    <div>
-      <h2 id="b2b-title">
-        <span class="lang-hu">Partnerprogram Idegenvezetőknek és Hoteleknek</span>
-        <span class="lang-en">Partnership Program for Guides &amp; Hotels</span>
-        <span class="lang-de">Partnerprogramm für Reiseführer &amp; Hotels</span>
-        <span class="lang-tr">Rehberler ve Oteller İçin Partnerlik Programı</span>
-        <span class="lang-ar">برنامج شراكة للمرشدين السياحيين والفنادق</span>
-      </h2>
-      <p>
-        <span class="lang-hu">Csatlakozzon több mint 100 partnerünkhöz (idegenvezetők, hotel recepciósok, Airbnb házigazdák) és élvezze exkluzív jutalékos rendszerünket, ha vendégeit a Kaftan Angelóba irányítja. Különleges hétvégi és csütörtök/pénteki kedvezmények elérhetők!</span>
-        <span class="lang-en">Join over 100 partners (tour guides, hotel staff, Airbnb hosts) and enjoy our exclusive commission system by referring your guests to Kaftan Angelo. Special rates available for Thursday and Friday referrals!</span>
-        <span class="lang-de">Schließen Sie sich über 100 Partnern an (Reiseführer, Hotelpersonal, Airbnb-Gastgeber) und profitieren Sie von unserem exklusiven Provisionssystem, indem Sie Ihre Gäste an Kaftan Angelo verweisen. Besondere Raten für Verweise an Donnerstagen und Freitagen!</span>
-        <span class="lang-tr">100'den fazla partnerimize (tur rehberleri, otel çalışanları, Airbnb ev sahipleri) katılın ve misafirlerinizi Kaftan Angelo'ya yönlendirerek özel komisyon sistemimizden faydalanın. Özellikle Perşembe ve Cuma günkü yönlendirmelerde ekstra avantajlar!</span>
-        <span class="lang-ar">انضم إلى أكثر من 100 شريك (مرشدون سياحيون، موظفو الفنادق، مضيفو Airbnb) واستمتع بنظام العمولات الحصري لدينا من خلال توجيه ضيوفك إلى Kaftan Angelo. أسعار خاصة متاحة لإحالات الخميس والجمعة!</span>
-      </p>
-    </div>
-    
-    <form class="b2b-form" id="b2b-form" onsubmit="handleB2BSubmit(event)">
-      <div class="form-group input-wrap">
-        <span class="lang-hu placeholder">Név</span>
-        <span class="lang-en placeholder">Name</span>
-        <span class="lang-de placeholder">Name</span>
-        <span class="lang-tr placeholder">İsim</span>
-        <span class="lang-ar placeholder">الاسم</span>
-        <input type="text" id="b2b-name" required>
-      </div>
-      <div class="form-group input-wrap">
-        <span class="lang-hu placeholder">Cég</span>
-        <span class="lang-en placeholder">Company</span>
-        <span class="lang-de placeholder">Firma</span>
-        <span class="lang-tr placeholder">Şirket</span>
-        <span class="lang-ar placeholder">الشركة</span>
-        <input type="text" id="b2b-company" required>
-      </div>
-      <div class="form-group input-wrap">
-        <span class="lang-hu placeholder">Üzenet</span>
-        <span class="lang-en placeholder">Message</span>
-        <span class="lang-de placeholder">Nachricht</span>
-        <span class="lang-tr placeholder">Mesaj</span>
-        <span class="lang-ar placeholder">الرسالة</span>
-        <textarea id="b2b-message" rows="3" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary" style="width: 100%;">
-        <span class="lang-hu">Küldés</span>
-        <span class="lang-en">Send Message</span>
-        <span class="lang-de">Senden</span>
-        <span class="lang-tr">Gönder</span>
-        <span class="lang-ar">إرسال</span>
-      </button>
-    </form>
-  </div>
-</section>
+
 
 <section id="desktop-seo" class="seo-section reveal">
   <div class="wrap">
@@ -545,16 +536,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="band-grid">
-      <div class="band-card">
-        <span class="tag-ref mono">Ref. C1</span>
+      <div class="band-card atelier-card">
+        <div class="service-top"><span class="service-number">01</span><span class="service-line"></span></div><div class="service-art" aria-hidden="true"><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M27 16 16 25 10 45l12 5 6-15v31h24V35l6 15 12-5-6-20-11-9-7 7H34Z"/><path d="m34 23 6 12 6-12M40 35v31M30 50h7m6 0h7M27 16l7 7m19-7-7 7"/><path d="M59 9h12m-6-6v12"/></svg></div>
         <h3><span class="lang-hu">Egyedi rendelés</span><span class="lang-en">Custom Leather Orders</span><span class="lang-de">Leder-Sonderanfertigungen</span><span class="lang-tr">Özel Deri Siparişleri</span><span class="lang-ar">طلبات جلد خاصة</span></h3>
         <p>
           <span class="lang-hu">Egyedi bőrkabát rendelésére is van lehetőség. A választható fazonokról, színekről, méretekről, anyagokról és az elkészítési időről érdeklődjön személyesen üzletünkben.</span>
           <span class="lang-en">Custom leather jacket orders are available. Visit our store to discuss possible styles, colours, sizing, materials and estimated completion time.</span><span class="lang-de">Sonderanfertigungen von Lederjacken sind möglich. Besuchen Sie unser Geschäft, um Schnitte, Farben, Größen, Materialien und die voraussichtliche Fertigungszeit zu besprechen.</span><span class="lang-tr">Özel deri ceket siparişi verilebilir. Model, renk, beden, malzeme ve tahmini hazırlanma süresini görüşmek için mağazamızı ziyaret edin.</span><span class="lang-ar">تتوفر طلبات خاصة للسترات الجلدية. زوروا متجرنا لمناقشة التصاميم والألوان والمقاسات والخامات والمدة التقديرية للتجهيز.</span>
         </p>
       </div>
-      <div class="band-card">
-        <span class="tag-ref mono">Ref. C2</span>
+      <div class="band-card atelier-card">
+        <div class="service-top"><span class="service-number">02</span><span class="service-line"></span></div><div class="service-art" aria-hidden="true"><svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="23" cy="56" r="9"/><circle cx="51" cy="56" r="9"/><path d="m29 49 30-33M45 49 17 16m20 25 5-6M58 16l5-5m-8 1 8 7"/><path d="M60 37c14 3 12 29 0 31M12 69h7m5 0h7m5 0h7"/></svg></div>
         <h3><span class="lang-hu">Javítási ügyintézés</span><span class="lang-en">Repair Assistance</span><span class="lang-de">Reparaturservice</span><span class="lang-tr">Onarım Desteği</span><span class="lang-ar">المساعدة في الإصلاح</span></h3>
         <p>
           <span class="lang-hu">Segítséget nyújtunk a nálunk vásárolt bőrtermékek javításának ügyintézésében. A lehetőségek a termék állapotától és a szükséges javítástól függnek.</span>
@@ -675,6 +666,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </a>
   </div>
 </section>
+<section id="b2b-partners" class="b2b-section reveal" aria-labelledby="b2b-title">
+  <div class="wrap cta-inner">
+    <div>
+      <h2 id="b2b-title">
+        <span class="lang-hu">Partnerprogram Idegenvezetőknek és Hoteleknek</span>
+        <span class="lang-en">Partnership Program for Guides &amp; Hotels</span>
+        <span class="lang-de">Partnerprogramm für Reiseführer &amp; Hotels</span>
+        <span class="lang-tr">Rehberler ve Oteller İçin Partnerlik Programı</span>
+        <span class="lang-ar">برنامج شراكة للمرشدين السياحيين والفنادق</span>
+      </h2>
+      <p>
+        <span class="lang-hu">Csatlakozzon több mint 15 partnerünkhöz (idegenvezetők, hotel recepciósok, Airbnb házigazdák) és élvezze exkluzív jutalékos rendszerünket, ha vendégeit a Kaftan Angelóba irányítja. Különleges hétvégi és csütörtök/pénteki kedvezmények elérhetők!</span>
+        <span class="lang-en">Join over 15 partners (tour guides, hotel staff, Airbnb hosts) and enjoy our exclusive commission system by referring your guests to Kaftan Angelo. Special rates available for Thursday and Friday referrals!</span>
+        <span class="lang-de">Schließen Sie sich über 15 Partnern an (Reiseführer, Hotelpersonal, Airbnb-Gastgeber) und profitieren Sie von unserem exklusiven Provisionssystem, indem Sie Ihre Gäste an Kaftan Angelo verweisen. Besondere Raten für Verweise an Donnerstagen und Freitagen!</span>
+        <span class="lang-tr">15'ten fazla partnerimize (tur rehberleri, otel çalışanları, Airbnb ev sahipleri) katılın ve misafirlerinizi Kaftan Angelo'ya yönlendirerek özel komisyon sistemimizden faydalanın. Özellikle Perşembe ve Cuma günkü yönlendirmelerde ekstra avantajlar!</span>
+        <span class="lang-ar">انضم إلى أكثر من 15 شريك (مرشدون سياحيون، موظفو الفنادق، مضيفو Airbnb) واستمتع بنظام العمولات الحصري لدينا من خلال توجيه ضيوفك إلى Kaftan Angelo. أسعار خاصة متاحة لإحالات الخميس والجمعة!</span>
+      </p>
+    </div>
+    
+    <form class="b2b-form" id="b2b-form" onsubmit="handleB2BSubmit(event)">
+      <div class="form-group input-wrap">
+        <span class="lang-hu placeholder">Név</span>
+        <span class="lang-en placeholder">Name</span>
+        <span class="lang-de placeholder">Name</span>
+        <span class="lang-tr placeholder">İsim</span>
+        <span class="lang-ar placeholder">الاسم</span>
+        <input type="text" id="b2b-name" required>
+      </div>
+      <div class="form-group input-wrap">
+        <span class="lang-hu placeholder">Cég</span>
+        <span class="lang-en placeholder">Company</span>
+        <span class="lang-de placeholder">Firma</span>
+        <span class="lang-tr placeholder">Şirket</span>
+        <span class="lang-ar placeholder">الشركة</span>
+        <input type="text" id="b2b-company" required>
+      </div>
+      <div class="form-group input-wrap">
+        <span class="lang-hu placeholder">Üzenet</span>
+        <span class="lang-en placeholder">Message</span>
+        <span class="lang-de placeholder">Nachricht</span>
+        <span class="lang-tr placeholder">Mesaj</span>
+        <span class="lang-ar placeholder">الرسالة</span>
+        <textarea id="b2b-message" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width: 15%;">
+        <span class="lang-hu">Küldés</span>
+        <span class="lang-en">Send Message</span>
+        <span class="lang-de">Senden</span>
+        <span class="lang-tr">Gönder</span>
+        <span class="lang-ar">إرسال</span>
+      </button>
+    </form>
+  </div>
+<div class="wrap partner-proof" aria-labelledby="partner-proof-title"><h3 id="partner-proof-title"><span class="lang-hu">Partnereink véleménye</span><span class="lang-en">What our partners say</span><span class="lang-de">Das sagen unsere Partner</span><span class="lang-tr">Partnerlerimizin yorumları</span><span class="lang-ar">آراء شركائنا</span></h3><div class="partner-review-marquee" tabindex="0" role="region" aria-labelledby="partner-proof-title"><div class="partner-proof-grid"><div class="partner-review-group"><figure class="partner-proof-card"><figure><blockquote><span class="lang-en">My guests expect the best. Kaftan Angelo’s VIP service and same-day alterations never disappoint. A truly reliable partner.</span><span class="lang-hu">Vend&#233;geim a legjobbat v&#225;rj&#225;k el. A Kaftan Angelo VIP szolg&#225;ltat&#225;sa &#233;s aznapi m&#233;retre igaz&#237;t&#225;sa sosem okoz csal&#243;d&#225;st. Igaz&#225;n megb&#237;zhat&#243; partner.</span><span class="lang-de">Meine G&#228;ste erwarten das Beste. Der VIP-Service und die Anpassungen am selben Tag bei Kaftan Angelo entt&#228;uschen nie. Ein wirklich zuverl&#228;ssiger Partner.</span><span class="lang-tr">Misafirlerim en iyisini bekler. Kaftan Angelo&#39;nun VIP hizmeti ve aynı g&#252;n yapılan tadilatları hi&#231;bir zaman hayal kırıklığı yaratmaz. Ger&#231;ekten g&#252;venilir bir partner.</span><span class="lang-ar">ضيوفي يتوقعون الأفضل. خدمة كبار الشخصيات والتعديلات في اليوم نفسه لدى كافتان أنجيلو لا تخيب الآمال أبدًا. شريك موثوق حقًا.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">ZV</span><span>Zs&#243;fia V. – Luxury Hotel Concierge</span></figcaption></figure></figure><figure class="partner-proof-card"><figure><blockquote><span class="lang-en">Quality is guaranteed, and the commission system is incredibly transparent and punctual. Highly recommended for tourism professionals.</span><span class="lang-hu">A minős&#233;g garant&#225;lt, a jutal&#233;kos rendszer pedig hihetetlen&#252;l &#225;tl&#225;that&#243; &#233;s pontos. Kifejezetten aj&#225;nlom turisztikai szakembereknek.</span><span class="lang-de">Die Qualit&#228;t ist garantiert, und das Provisionssystem ist unglaublich transparent und p&#252;nktlich. Sehr empfehlenswert f&#252;r Tourismusfachleute.</span><span class="lang-tr">Kalite garantili, komisyon sistemi ise son derece şeffaf ve &#246;demeler zamanında. Turizm profesyonellerine kesinlikle tavsiye ederim.</span><span class="lang-ar">الجودة مضمونة، ونظام العمولات واضح للغاية والدفع في موعده. أنصح به بشدة للعاملين في السياحة.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">SN</span><span>Szil&#225;rd N. – Professional Tour Guide</span></figcaption></figure></figure><figure class="partner-proof-card"><figure><blockquote><span class="lang-en">The exclusive discounts for my guests—especially on Thursdays and Fridays—have boosted my own Airbnb ratings! A fantastic collaboration.</span><span class="lang-hu">A vend&#233;geimnek ny&#250;jtott exkluz&#237;v kedvezm&#233;nyek – k&#252;l&#246;n&#246;sen cs&#252;t&#246;rt&#246;k&#246;n &#233;s p&#233;nteken – a saj&#225;t Airbnb &#233;rt&#233;kel&#233;seimet is jav&#237;tott&#225;k! Fantasztikus egy&#252;ttműk&#246;d&#233;s.</span><span class="lang-de">Die exklusiven Rabatte f&#252;r meine G&#228;ste – besonders donnerstags und freitags – haben sogar meine Airbnb-Bewertungen verbessert! Eine fantastische Zusammenarbeit.</span><span class="lang-tr">Misafirlerime sunulan &#246;zel indirimler – &#246;zellikle perşembe ve cuma g&#252;nleri – kendi Airbnb değerlendirmelerimi bile iyileştirdi! Harika bir iş birliği.</span><span class="lang-ar">الخصومات الحصرية لضيوفي، خاصة يومي الخميس والجمعة، حسّنت حتى تقييماتي على Airbnb! تعاون رائع.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">ML</span><span>M&#225;rton L. – Airbnb Superhost</span></figcaption></figure></figure><figure class="partner-proof-card"><figure><blockquote><span class="lang-en">Since 1973, they’ve mastered the craft of leather. I always send my premium clients here because I know they are in good hands.</span><span class="lang-hu">1973 &#243;ta űzik a bőr mesters&#233;g&#233;t. A pr&#233;mium &#252;gyfeleimet mindig ide k&#252;ld&#246;m, mert tudom, hogy j&#243; kezekben vannak.</span><span class="lang-de">Seit 1973 beherrschen sie das Lederhandwerk. Ich schicke meine anspruchsvollen Kunden immer hierher, weil ich wei&#223;, dass sie in guten H&#228;nden sind.</span><span class="lang-tr">1973&#39;ten beri deri iş&#231;iliğinde ustalaşmışlar. İyi ellerde olduklarını bildiğim i&#231;in se&#231;kin m&#252;şterilerimi her zaman buraya y&#246;nlendiriyorum.</span><span class="lang-ar">يتقنون حرفة الجلد منذ عام 1973. أوجّه عملائي المميزين إليهم دائمًا لأنني أعرف أنهم في أيدٍ أمينة.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">PF</span><span>P&#233;ter F. – Private Guide</span></figcaption></figure></figure><figure class="partner-proof-card"><figure><blockquote><span class="lang-en">Trust is everything. When I recommend Kaftan Angelo, our hotel guests return with beautiful jackets and wonderful experiences.</span><span class="lang-hu">A bizalom mindenn&#233;l fontosabb. Amikor a Kaftan Angel&#243;t aj&#225;nlom, a sz&#225;lloda vend&#233;gei gy&#246;ny&#246;rű kab&#225;tokkal &#233;s csod&#225;latos &#233;lm&#233;nyekkel t&#233;rnek vissza.</span><span class="lang-de">Vertrauen ist alles. Wenn ich Kaftan Angelo empfehle, kommen unsere Hotelg&#228;ste mit wundersch&#246;nen Jacken und wunderbaren Erlebnissen zur&#252;ck.</span><span class="lang-tr">G&#252;ven her şeydir. Kaftan Angelo&#39;yu tavsiye ettiğimde otel misafirlerimiz g&#252;zel ceketler ve harika deneyimlerle geri d&#246;n&#252;yor.</span><span class="lang-ar">الثقة هي كل شيء. عندما أوصي بكافتان أنجيلو، يعود ضيوف فندقنا بسترات جميلة وتجارب رائعة.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">ET</span><span>Eszter T. – Boutique Hotel Manager</span></figcaption></figure></figure><figure class="partner-proof-card"><figure><blockquote><span class="lang-en">They handle large tour groups smoothly. The welcoming coffee and hospitality create an instant connection with weary travelers.</span><span class="lang-hu">A nagyobb turistacsoportokat is z&#246;kkenőmentesen kezelik. A k&#225;v&#233; &#233;s a vend&#233;gszeretet azonnal remek hangulatot teremt a f&#225;radt utaz&#243;knak.</span><span class="lang-de">Sie betreuen gro&#223;e Reisegruppen reibungslos. Der Kaffee und die Gastfreundschaft schaffen sofort eine Verbindung zu m&#252;den Reisenden.</span><span class="lang-tr">B&#252;y&#252;k turist gruplarını sorunsuz ağırlıyorlar. İkram edilen kahve ve misafirperverlik, yorgun gezginlerle hemen sıcak bir bağ kuruyor.</span><span class="lang-ar">يتعاملون مع المجموعات السياحية الكبيرة بسلاسة. القهوة وحسن الضيافة يخلقان فورًا جوًا من الألفة مع المسافرين المتعبين.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">KB</span><span>Katalin B. – Travel Agency Coordinator</span></figcaption></figure></figure><figure class="partner-proof-card"><figure><blockquote><span class="lang-en">A brilliant partner program. It requires zero extra effort from my side but provides a steady, transparent additional income.</span><span class="lang-hu">Zseni&#225;lis partnerprogram. R&#233;szemről semmi extra erőfesz&#237;t&#233;st nem ig&#233;nyel, m&#233;gis stabil, &#225;tl&#225;that&#243; kieg&#233;sz&#237;tő j&#246;vedelmet biztos&#237;t.</span><span class="lang-de">Ein gro&#223;artiges Partnerprogramm. Es erfordert von mir keinen zus&#228;tzlichen Aufwand und bietet dennoch ein regelm&#228;&#223;iges, transparentes Zusatzeinkommen.</span><span class="lang-tr">Harika bir partner programı. Benim a&#231;ımdan hi&#231;bir ek &#231;aba gerektirmeden d&#252;zenli ve şeffaf bir ek gelir sağlıyor.</span><span class="lang-ar">برنامج شراكة رائع. لا يتطلب مني أي جهد إضافي، ومع ذلك يوفر دخلًا إضافيًا منتظمًا وواضحًا.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">BD</span><span>Bence D. – Apartment Network Owner</span></figcaption></figure></figure></div><div class="partner-review-group" aria-hidden="true" inert><figure class="partner-proof-card" aria-hidden="true"><figure><blockquote><span class="lang-en">My guests expect the best. Kaftan Angelo’s VIP service and same-day alterations never disappoint. A truly reliable partner.</span><span class="lang-hu">Vend&#233;geim a legjobbat v&#225;rj&#225;k el. A Kaftan Angelo VIP szolg&#225;ltat&#225;sa &#233;s aznapi m&#233;retre igaz&#237;t&#225;sa sosem okoz csal&#243;d&#225;st. Igaz&#225;n megb&#237;zhat&#243; partner.</span><span class="lang-de">Meine G&#228;ste erwarten das Beste. Der VIP-Service und die Anpassungen am selben Tag bei Kaftan Angelo entt&#228;uschen nie. Ein wirklich zuverl&#228;ssiger Partner.</span><span class="lang-tr">Misafirlerim en iyisini bekler. Kaftan Angelo&#39;nun VIP hizmeti ve aynı g&#252;n yapılan tadilatları hi&#231;bir zaman hayal kırıklığı yaratmaz. Ger&#231;ekten g&#252;venilir bir partner.</span><span class="lang-ar">ضيوفي يتوقعون الأفضل. خدمة كبار الشخصيات والتعديلات في اليوم نفسه لدى كافتان أنجيلو لا تخيب الآمال أبدًا. شريك موثوق حقًا.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">ZV</span><span>Zs&#243;fia V. – Luxury Hotel Concierge</span></figcaption></figure></figure><figure class="partner-proof-card" aria-hidden="true"><figure><blockquote><span class="lang-en">Quality is guaranteed, and the commission system is incredibly transparent and punctual. Highly recommended for tourism professionals.</span><span class="lang-hu">A minős&#233;g garant&#225;lt, a jutal&#233;kos rendszer pedig hihetetlen&#252;l &#225;tl&#225;that&#243; &#233;s pontos. Kifejezetten aj&#225;nlom turisztikai szakembereknek.</span><span class="lang-de">Die Qualit&#228;t ist garantiert, und das Provisionssystem ist unglaublich transparent und p&#252;nktlich. Sehr empfehlenswert f&#252;r Tourismusfachleute.</span><span class="lang-tr">Kalite garantili, komisyon sistemi ise son derece şeffaf ve &#246;demeler zamanında. Turizm profesyonellerine kesinlikle tavsiye ederim.</span><span class="lang-ar">الجودة مضمونة، ونظام العمولات واضح للغاية والدفع في موعده. أنصح به بشدة للعاملين في السياحة.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">SN</span><span>Szil&#225;rd N. – Professional Tour Guide</span></figcaption></figure></figure><figure class="partner-proof-card" aria-hidden="true"><figure><blockquote><span class="lang-en">The exclusive discounts for my guests—especially on Thursdays and Fridays—have boosted my own Airbnb ratings! A fantastic collaboration.</span><span class="lang-hu">A vend&#233;geimnek ny&#250;jtott exkluz&#237;v kedvezm&#233;nyek – k&#252;l&#246;n&#246;sen cs&#252;t&#246;rt&#246;k&#246;n &#233;s p&#233;nteken – a saj&#225;t Airbnb &#233;rt&#233;kel&#233;seimet is jav&#237;tott&#225;k! Fantasztikus egy&#252;ttműk&#246;d&#233;s.</span><span class="lang-de">Die exklusiven Rabatte f&#252;r meine G&#228;ste – besonders donnerstags und freitags – haben sogar meine Airbnb-Bewertungen verbessert! Eine fantastische Zusammenarbeit.</span><span class="lang-tr">Misafirlerime sunulan &#246;zel indirimler – &#246;zellikle perşembe ve cuma g&#252;nleri – kendi Airbnb değerlendirmelerimi bile iyileştirdi! Harika bir iş birliği.</span><span class="lang-ar">الخصومات الحصرية لضيوفي، خاصة يومي الخميس والجمعة، حسّنت حتى تقييماتي على Airbnb! تعاون رائع.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">ML</span><span>M&#225;rton L. – Airbnb Superhost</span></figcaption></figure></figure><figure class="partner-proof-card" aria-hidden="true"><figure><blockquote><span class="lang-en">Since 1973, they’ve mastered the craft of leather. I always send my premium clients here because I know they are in good hands.</span><span class="lang-hu">1973 &#243;ta űzik a bőr mesters&#233;g&#233;t. A pr&#233;mium &#252;gyfeleimet mindig ide k&#252;ld&#246;m, mert tudom, hogy j&#243; kezekben vannak.</span><span class="lang-de">Seit 1973 beherrschen sie das Lederhandwerk. Ich schicke meine anspruchsvollen Kunden immer hierher, weil ich wei&#223;, dass sie in guten H&#228;nden sind.</span><span class="lang-tr">1973&#39;ten beri deri iş&#231;iliğinde ustalaşmışlar. İyi ellerde olduklarını bildiğim i&#231;in se&#231;kin m&#252;şterilerimi her zaman buraya y&#246;nlendiriyorum.</span><span class="lang-ar">يتقنون حرفة الجلد منذ عام 1973. أوجّه عملائي المميزين إليهم دائمًا لأنني أعرف أنهم في أيدٍ أمينة.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">PF</span><span>P&#233;ter F. – Private Guide</span></figcaption></figure></figure><figure class="partner-proof-card" aria-hidden="true"><figure><blockquote><span class="lang-en">Trust is everything. When I recommend Kaftan Angelo, our hotel guests return with beautiful jackets and wonderful experiences.</span><span class="lang-hu">A bizalom mindenn&#233;l fontosabb. Amikor a Kaftan Angel&#243;t aj&#225;nlom, a sz&#225;lloda vend&#233;gei gy&#246;ny&#246;rű kab&#225;tokkal &#233;s csod&#225;latos &#233;lm&#233;nyekkel t&#233;rnek vissza.</span><span class="lang-de">Vertrauen ist alles. Wenn ich Kaftan Angelo empfehle, kommen unsere Hotelg&#228;ste mit wundersch&#246;nen Jacken und wunderbaren Erlebnissen zur&#252;ck.</span><span class="lang-tr">G&#252;ven her şeydir. Kaftan Angelo&#39;yu tavsiye ettiğimde otel misafirlerimiz g&#252;zel ceketler ve harika deneyimlerle geri d&#246;n&#252;yor.</span><span class="lang-ar">الثقة هي كل شيء. عندما أوصي بكافتان أنجيلو، يعود ضيوف فندقنا بسترات جميلة وتجارب رائعة.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">ET</span><span>Eszter T. – Boutique Hotel Manager</span></figcaption></figure></figure><figure class="partner-proof-card" aria-hidden="true"><figure><blockquote><span class="lang-en">They handle large tour groups smoothly. The welcoming coffee and hospitality create an instant connection with weary travelers.</span><span class="lang-hu">A nagyobb turistacsoportokat is z&#246;kkenőmentesen kezelik. A k&#225;v&#233; &#233;s a vend&#233;gszeretet azonnal remek hangulatot teremt a f&#225;radt utaz&#243;knak.</span><span class="lang-de">Sie betreuen gro&#223;e Reisegruppen reibungslos. Der Kaffee und die Gastfreundschaft schaffen sofort eine Verbindung zu m&#252;den Reisenden.</span><span class="lang-tr">B&#252;y&#252;k turist gruplarını sorunsuz ağırlıyorlar. İkram edilen kahve ve misafirperverlik, yorgun gezginlerle hemen sıcak bir bağ kuruyor.</span><span class="lang-ar">يتعاملون مع المجموعات السياحية الكبيرة بسلاسة. القهوة وحسن الضيافة يخلقان فورًا جوًا من الألفة مع المسافرين المتعبين.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">KB</span><span>Katalin B. – Travel Agency Coordinator</span></figcaption></figure></figure><figure class="partner-proof-card" aria-hidden="true"><figure><blockquote><span class="lang-en">A brilliant partner program. It requires zero extra effort from my side but provides a steady, transparent additional income.</span><span class="lang-hu">Zseni&#225;lis partnerprogram. R&#233;szemről semmi extra erőfesz&#237;t&#233;st nem ig&#233;nyel, m&#233;gis stabil, &#225;tl&#225;that&#243; kieg&#233;sz&#237;tő j&#246;vedelmet biztos&#237;t.</span><span class="lang-de">Ein gro&#223;artiges Partnerprogramm. Es erfordert von mir keinen zus&#228;tzlichen Aufwand und bietet dennoch ein regelm&#228;&#223;iges, transparentes Zusatzeinkommen.</span><span class="lang-tr">Harika bir partner programı. Benim a&#231;ımdan hi&#231;bir ek &#231;aba gerektirmeden d&#252;zenli ve şeffaf bir ek gelir sağlıyor.</span><span class="lang-ar">برنامج شراكة رائع. لا يتطلب مني أي جهد إضافي، ومع ذلك يوفر دخلًا إضافيًا منتظمًا وواضحًا.</span></blockquote><figcaption><span class="partner-avatar" aria-hidden="true">BD</span><span>Bence D. – Apartment Network Owner</span></figcaption></figure></figure></div></div></div></div></section>
+
+
 </main>
 
 <footer id="kapcsolat">
