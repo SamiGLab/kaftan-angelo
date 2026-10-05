@@ -125,6 +125,7 @@ const escapeHTML = (str) => {
   }
   const langMenu=document.getElementById('lang-menu');
   const langCurrent=document.getElementById('lang-current');
+  langCurrent.setAttribute('aria-controls','lang-options');
   langCurrent.addEventListener('click',(e) => {
     e.stopPropagation();
     const isOpen=langMenu.classList.toggle('open');
@@ -135,6 +136,13 @@ const escapeHTML = (str) => {
   });
   document.addEventListener('click',() => {
     langMenu.classList.remove('open'); langCurrent.setAttribute('aria-expanded','false');
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && langMenu.classList.contains('open')) {
+      langMenu.classList.remove('open');
+      langCurrent.setAttribute('aria-expanded', 'false');
+      langCurrent.focus();
+    }
   });
 
   // ---- ticker content ----
