@@ -4,15 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build:css": "cleancss -o css/style.min.css css/style.css"
   },
   "devDependencies": {
+    "clean-css-cli": "^5.6.3",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "jsdom": "^22.1.0"
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "setupFiles": ["<rootDir>/jest-setup.js"]
+    "setupFiles": [
+      "<rootDir>/jest-setup.js"
+    ]
   }
 }
