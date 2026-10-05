@@ -323,7 +323,7 @@ footer{padding:34px 0;border-top:1px solid var(--line)}.footer-row{display:flex;
  #kollekciok .collection-visit .journey-actions{justify-content:flex-start}
 }
 </style>
-</head>
+<style id="clickable-category-styles">#tag-grid .category-link{display:block;cursor:pointer;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s;padding-inline-end:48px}#tag-grid .category-link:hover,#tag-grid .category-link:focus-visible{border-color:var(--brass-bright);box-shadow:0 12px 28px rgba(0,0,0,.28);transform:translateY(-3px)}#tag-grid .category-arrow{position:absolute;inset-inline-end:20px;top:22px;color:var(--brass-bright);font-size:1.3rem}#product-gallery{scroll-margin-top:150px}#product-gallery:focus{outline:none}@media(prefers-reduced-motion:reduce){#tag-grid .category-link{transition:none}#tag-grid .category-link:hover{transform:none}}</style></head>
 <body class="lang-hu">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5D5T9W6Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -610,5 +610,17 @@ footer{padding:34px 0;border-top:1px solid var(--line)}.footer-row{display:flex;
   let initial='hu';try{const q=new URLSearchParams(location.search).get('lang');initial=q&&langMeta[q]?q:(localStorage.getItem('kaftan-lang')||'hu');}catch(e){}setLang(initial);
 })();
 </script>
-</body>
+<script id="clickable-categories">(()=>{
+const gallery=document.querySelector('#kollekciok .product-gallery');gallery.id='product-gallery';
+const controls=document.querySelector('#kollekciok .filter-controls');
+const furButton=document.createElement('button');furButton.type='button';furButton.className='filter-btn';furButton.dataset.filter='fur';furButton.innerHTML='<span class="lang-hu">Szőrme</span><span class="lang-en">Fur</span><span class="lang-de">Pelz</span><span class="lang-tr">Kürk</span><span class="lang-ar">فراء</span>';controls.insertBefore(furButton,controls.querySelector('[data-filter="accessories"]'));
+const furCard=[...gallery.querySelectorAll('.product-card')].find(c=>c.querySelector('img').src.includes('noi-feher-szormemelleny'));if(furCard)furCard.dataset.category+=' fur';
+const buttons=[...controls.querySelectorAll('button')];
+furButton.addEventListener('click',()=>{buttons.forEach(b=>b.classList.toggle('active',b===furButton));gallery.querySelectorAll('.product-card').forEach(c=>c.classList.toggle('hidden',!c.dataset.category.split(' ').includes('fur')));buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.classList.contains('active'))));});
+buttons.forEach(b=>{b.setAttribute('aria-pressed',String(b.classList.contains('active')));b.addEventListener('click',()=>buttons.forEach(x=>x.setAttribute('aria-pressed',String(x.classList.contains('active')))));});
+const targets=['women','men','shearling','fur','accessories','custom'];
+document.querySelectorAll('#tag-grid .tag-card').forEach((card,i)=>{const link=document.createElement('a');for(const attr of card.attributes)link.setAttribute(attr.name,attr.value);link.innerHTML=card.innerHTML;link.classList.add('category-link');link.href=targets[i]==='custom'?'#egyedi':'#product-gallery';
+const arrow=document.createElement('span');arrow.className='category-arrow';arrow.setAttribute('aria-hidden','true');arrow.textContent='↗';link.append(arrow);card.replaceWith(link);
+link.addEventListener('click',event=>{event.preventDefault();const isCustom=targets[i]==='custom';if(!isCustom)buttons.find(b=>b.dataset.filter===targets[i])?.click();const destination=isCustom?document.getElementById('egyedi'):gallery;destination.setAttribute('tabindex','-1');destination.focus({preventScroll:true});destination.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});});});
+})();</script></body>
 </html>
