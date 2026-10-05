@@ -12,32 +12,29 @@ describe('openProductImage functionality', () => {
         const htmlPath = path.resolve(__dirname, '../index.html');
         const html = fs.readFileSync(htmlPath, 'utf8');
 
-        const dom = new JSDOM(html, { runScripts: "dangerously" });
+        const dom = new JSDOM(html, {
+            runScripts: "dangerously",
+            beforeParse(window) {
+                window.matchMedia = window.matchMedia || function() {
+                    return {
+                        matches: false,
+                        addListener: function() {},
+                        removeListener: function() {}
+                    };
+                };
+                window.setInterval = jest.fn();
+            }
+        });
         window = dom.window;
         document = window.document;
 
-        // Mock window.matchMedia to prevent errors from slider scripts
-        window.matchMedia = window.matchMedia || function() {
-            return {
-                matches: false,
-                addListener: function() {},
-                removeListener: function() {}
-            };
-        };
-
-        // Stop setInterval from running indefinitely to allow the test to complete
         const originalSetInterval = window.setInterval;
-        window.setInterval = jest.fn();
+
 
         // Spy on window.open
         openSpy = jest.spyOn(window, 'open').mockImplementation(() => {});
 
-        // Load the main.js script
-        const scriptPath = path.resolve(__dirname, 'main.js');
-        const scriptContent = fs.readFileSync(scriptPath, 'utf8');
-        const scriptEl = document.createElement('script');
-        scriptEl.textContent = scriptContent;
-        document.body.appendChild(scriptEl);
+
 
         // Get the first product card image that has the event listeners attached
         img = document.querySelector('.product-card img');
