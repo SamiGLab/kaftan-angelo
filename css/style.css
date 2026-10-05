@@ -326,11 +326,12 @@
   .tag-card .stitch-edge{
     margin-top:20px;
   }
+  /* Koleksiyon galeri ızgarasını (grid) düzenler */
   .product-gallery{
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Yan yana ürünlerin genişliğini ayarlar */
     justify-items: center;
-    gap:24px;
+    gap:20px; /* Ürünler arasına boşluk bırakır */
     margin-bottom:48px;
   }
   .product-card{
@@ -342,11 +343,13 @@
     border:1px solid var(--line);
     border-radius:var(--radius);
   }
+  /* Ürün resimlerinin boyutunu sınırlandırır ve standartlaştırır */
   .product-card img{
     display:block;
-    width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
+    width:100% !important; /* Bulunduğu kutunun dışına taşmasını engeller */
+    height:380px !important; /* Tüm resimlerin BOYUNU eşit ve makul bir seviyeye (380px) çeker. Çok uzun görünmesini engeller. */
+    object-fit:cover !important; /* Resmin en-boy oranı bozulmadan, ezilmeden kutuya oturmasını sağlar */
+    border-radius: 4px; /* Tasarımı yumuşatmak için hafif köşe ovalliği (isteğe bağlı) */
     cursor:zoom-in;
     transition:transform .35s ease;
   }
