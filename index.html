@@ -323,7 +323,7 @@ footer{padding:34px 0;border-top:1px solid var(--line)}.footer-row{display:flex;
  #kollekciok .collection-visit .journey-actions{justify-content:flex-start}
 }
 </style>
-<style id="clickable-category-styles">#tag-grid .category-link{display:block;cursor:pointer;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s;padding-inline-end:48px}#tag-grid .category-link:hover,#tag-grid .category-link:focus-visible{border-color:var(--brass-bright);box-shadow:0 12px 28px rgba(0,0,0,.28);transform:translateY(-3px)}#tag-grid .category-arrow{position:absolute;inset-inline-end:20px;top:22px;color:var(--brass-bright);font-size:1.3rem}#product-gallery{scroll-margin-top:150px}#product-gallery:focus{outline:none}@media(prefers-reduced-motion:reduce){#tag-grid .category-link{transition:none}#tag-grid .category-link:hover{transform:none}}</style></head>
+<style id="clickable-category-styles">#tag-grid .category-link{display:block;cursor:pointer;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s,transform .2s;padding-inline-end:48px}#tag-grid .category-link:hover,#tag-grid .category-link:focus-visible{border-color:var(--brass-bright);box-shadow:0 12px 28px rgba(0,0,0,.28);transform:translateY(-3px)}#tag-grid .category-arrow{position:absolute;inset-inline-end:20px;top:22px;color:var(--brass-bright);font-size:1.3rem}#product-gallery{scroll-margin-top:150px}#product-gallery:focus{outline:none}@media(prefers-reduced-motion:reduce){#tag-grid .category-link{transition:none}#tag-grid .category-link:hover{transform:none}}</style><style id="catalog-pagination-styles">#kollekciok .product-card.catalog-page-hidden{display:none!important}.catalog-pagination{display:flex;flex-direction:column;align-items:center;gap:12px;margin:-12px 0 36px}.catalog-product-count{color:var(--cream-dim);font-size:.85rem}.catalog-show-more{cursor:pointer;min-height:44px;background:var(--bg-2)}.catalog-show-more[hidden]{display:none!important}.catalog-filter-count{display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;min-width:20px;margin-inline-start:7px;opacity:.8}.filter-btn{white-space:nowrap}</style></head>
 <body class="lang-hu">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5D5T9W6Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -562,7 +562,7 @@ footer{padding:34px 0;border-top:1px solid var(--line)}.footer-row{display:flex;
   /* Lightbox */
   const box=document.getElementById('lightbox'), boxImg=document.getElementById('lightbox-img'), closeBtn=document.getElementById('lightbox-close'), prevBtn=document.getElementById('lightbox-prev'), nextBtn=document.getElementById('lightbox-next');
   let visibleImages=[], currentIndex=0, returnFocus=null;
-  function updateLightboxImages(){visibleImages=[...document.querySelectorAll('.product-card:not(.hidden) img')];}
+  function updateLightboxImages(){visibleImages=[...document.querySelectorAll('.product-card:not(.hidden):not(.catalog-page-hidden) img')];}
   function openLightbox(index){updateLightboxImages();if(!visibleImages.length)return;currentIndex=(index+visibleImages.length)%visibleImages.length;returnFocus=document.activeElement;boxImg.src=visibleImages[currentIndex].currentSrc||visibleImages[currentIndex].src;boxImg.alt=visibleImages[currentIndex].alt;box.classList.add('active');document.body.style.overflow='hidden';closeBtn.focus();}
   function closeLightbox(){box.classList.remove('active');document.body.style.overflow='';if(returnFocus&&returnFocus.focus)returnFocus.focus();returnFocus=null;}
   function moveLightbox(delta){currentIndex=(currentIndex+delta+visibleImages.length)%visibleImages.length;boxImg.src=visibleImages[currentIndex].currentSrc||visibleImages[currentIndex].src;boxImg.alt=visibleImages[currentIndex].alt;}
@@ -622,5 +622,31 @@ const targets=['women','men','shearling','fur','accessories','custom'];
 document.querySelectorAll('#tag-grid .tag-card').forEach((card,i)=>{const link=document.createElement('a');for(const attr of card.attributes)link.setAttribute(attr.name,attr.value);link.innerHTML=card.innerHTML;link.classList.add('category-link');link.href=targets[i]==='custom'?'#egyedi':'#product-gallery';
 const arrow=document.createElement('span');arrow.className='category-arrow';arrow.setAttribute('aria-hidden','true');arrow.textContent='↗';link.append(arrow);card.replaceWith(link);
 link.addEventListener('click',event=>{event.preventDefault();const isCustom=targets[i]==='custom';if(!isCustom)buttons.find(b=>b.dataset.filter===targets[i])?.click();const destination=isCustom?document.getElementById('egyedi'):gallery;destination.setAttribute('tabindex','-1');destination.focus({preventScroll:true});destination.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});});});
+})();</script><script id="catalog-pagination">(()=>{
+const pageSize=12;let limit=pageSize;
+const gallery=document.querySelector('#kollekciok .product-gallery');
+const controls=document.querySelector('#kollekciok .filter-controls');
+const languages=['hu','en','de','tr','ar'];
+const more=['További termékek','Show more products','Weitere Produkte anzeigen','Daha fazla göster','عرض المزيد من المنتجات'];
+const status=['{shown} / {total} termék','{shown} of {total} products','{shown} von {total} Produkten','{total} üründen {shown} tanesi gösteriliyor','عرض {shown} من {total} منتجًا'];
+const footer=document.createElement('div');footer.className='catalog-pagination';
+const count=document.createElement('p');count.className='catalog-product-count';count.setAttribute('role','status');count.setAttribute('aria-live','polite');
+const button=document.createElement('button');button.type='button';button.className='btn btn-ghost catalog-show-more';button.setAttribute('aria-controls',gallery.id||'product-gallery');
+footer.append(count,button);gallery.after(footer);
+function render(){
+const filter=controls.querySelector('.filter-btn.active')?.dataset.filter||'all';
+const cards=[...gallery.querySelectorAll('.product-card')];
+const matching=cards.filter(c=>filter==='all'||(c.dataset.category||'').split(' ').includes(filter));
+cards.forEach(c=>{const index=matching.indexOf(c);c.classList.toggle('hidden',index<0);c.classList.toggle('catalog-page-hidden',index>=limit);});
+const lang=Math.max(0,languages.indexOf(document.documentElement.lang));
+const shown=Math.min(limit,matching.length);count.textContent=status[lang].replace('{shown}',shown).replace('{total}',matching.length);
+button.textContent=more[lang];button.hidden=shown>=matching.length;
+controls.querySelectorAll('.filter-btn').forEach(b=>{const total=cards.filter(c=>b.dataset.filter==='all'||(c.dataset.category||'').split(' ').includes(b.dataset.filter)).length;let badge=b.querySelector('.catalog-filter-count');if(!badge){badge=document.createElement('span');badge.className='catalog-filter-count';b.append(badge)}badge.textContent=total;});
+}
+controls.addEventListener('click',event=>{if(event.target.closest('.filter-btn')){limit=pageSize;render()}});
+button.addEventListener('click',()=>{const before=[...gallery.querySelectorAll('.product-card:not(.hidden):not(.catalog-page-hidden)')].length;limit+=pageSize;render();const next=[...gallery.querySelectorAll('.product-card:not(.hidden):not(.catalog-page-hidden)')][before];const image=next?.querySelector('img');image?.focus({preventScroll:true});});
+new MutationObserver(()=>render()).observe(gallery,{childList:true});
+new MutationObserver(()=>render()).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+render();
 })();</script></body>
 </html>
