@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import MessageShare from './MessageShare.astro';
 const { mod, slug, lang } = Astro.props;
 const { Content, frontmatter: f } = mod;
 const hu = lang === 'hu';
@@ -32,6 +33,7 @@ const page = {
       <p>{hu ? 'Nézze meg a modelleket, majd küldje el WhatsAppon a kiválasztott darab képét és a keresett méretet. Látogatás előtt érdeklődjön az elérhetőségről; az illeszkedést személyes próbával ellenőrizheti.' : 'Explore the models, then send the photo of the piece you like and your preferred size on WhatsApp. Ask about availability before visiting; an in-store fitting helps you check the fit.'}</p>
       <p><a href={collection}>{collectionLabel}</a> · <a href={whatsapp}>{hu ? 'Érdeklődés WhatsAppon' : 'Ask on WhatsApp'}</a></p>
     </aside>
+    <MessageShare title={f.title} url={canonical} lang={lang} />
   </article></section>
   <section class="store-cta"><div class="wrap"><div><h2>{hu ? 'Próbálja fel a kollekciót Budapesten' : 'Try the collection in Budapest'}</h2><p>Kossuth Lajos u. 18, Budapest 1053</p><p>{hu ? 'Bőr, irha, szőrme és kiegészítők · Budapesten 2004 óta' : 'Leather, shearling, fur & accessories · In Budapest since 2004'}</p></div><a class="btn btn-primary" href={hu ? '/uzlet/' : '/en/visit/'}>{hu ? 'Útvonal és nyitvatartás' : 'Directions & opening hours'}</a></div></section>
 </BaseLayout>

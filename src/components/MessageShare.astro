@@ -1,0 +1,14 @@
+---
+const { title, url, lang } = Astro.props;
+const hu = lang === 'hu';
+const text = encodeURIComponent(`${title}\n${url}`);
+---
+<aside class="guide-toc message-share" aria-label={hu ? 'Útmutató küldése üzenetben' : 'Send this guide in a message'} data-pagefind-ignore>
+  <h2>{hu ? 'Küldje el valakinek, akinek hasznos lehet' : 'Send to someone who might find it useful'}</h2>
+  <p>{hu ? 'Válasszon üzenetküldő alkalmazást, majd címzettet. Az útmutató címe és linkje a küldés előtt szerkeszthető.' : 'Choose a messaging app, then a recipient. You can edit the guide title and link before sending.'}</p>
+  <div class="actions">
+    <a class="btn btn-ghost" href={`https://wa.me/?text=${text}`} aria-label={hu ? 'Küldés WhatsAppon' : 'Send via WhatsApp'}>WhatsApp</a>
+    <a class="btn btn-ghost" href={`viber://forward?text=${text}`} aria-label={hu ? 'Küldés Viberen' : 'Send via Viber'}>Viber</a>
+  </div>
+  <p class="guide-meta">{hu ? 'A Viber megnyitásához telepített alkalmazás szükséges. Az üzenet elküldését Ön erősíti meg.' : 'Viber requires the app to be installed. You confirm sending the message yourself.'}</p>
+</aside>
