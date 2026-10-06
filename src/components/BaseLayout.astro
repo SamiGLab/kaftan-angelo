@@ -3,13 +3,8 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import '@fontsource-variable/fraunces';
 
-import '@fontsource-variable/work-sans';
-
-import '@fontsource/ibm-plex-mono/latin-400.css';
-import '@fontsource/ibm-plex-mono/latin-500.css';
 import headingFont from '@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2?url';
-import bodyFont from '@fontsource-variable/work-sans/files/work-sans-latin-wght-normal.woff2?url';
-import labelFont from '@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2?url';
+import headingExtendedFont from '@fontsource-variable/fraunces/files/fraunces-latin-ext-wght-normal.woff2?url';
 import { BASE, businessSchema, websiteSchema } from '../data/site';
 const { page } = Astro.props;
 const lang = page.lang ?? 'hu';
@@ -53,8 +48,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <meta name="twitter:image" content={socialImage} />
   <meta name="theme-color" content="#1b120c" />
   <link rel="preload" as="font" type="font/woff2" href={headingFont} crossorigin="anonymous" />
-  <link rel="preload" as="font" type="font/woff2" href={bodyFont} crossorigin="anonymous" />
-  <link rel="preload" as="font" type="font/woff2" href={labelFont} crossorigin="anonymous" />
+  {lang === 'hu' && <link rel="preload" as="font" type="font/woff2" href={headingExtendedFont} crossorigin="anonymous" />}
   <link rel="preload" as="image" href={mobileHero} media="(max-width: 620px)" fetchpriority="high" />
   <link rel="preload" as="image" href={heroImage} media="(min-width: 621px)" fetchpriority="high" />
   <link rel="stylesheet" href="/assets/css/pages.css" />
