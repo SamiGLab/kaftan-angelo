@@ -1470,16 +1470,6 @@ main:focus {
   font-size: 1.2rem;
 }
 
-.review-controls {
-  justify-content: flex-end;
-  margin-bottom: 14px;
-  display: flex;
-}
-
-.partner-review-track[data-paused] {
-  animation-play-state: paused;
-}
-
 .testimonial {
   margin: 0;
 }

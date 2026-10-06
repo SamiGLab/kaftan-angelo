@@ -50,14 +50,6 @@ dialog?.addEventListener('click', event => {
   if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
 });
 
-const pauseButton = document.querySelector('[data-review-pause]');
-pauseButton?.addEventListener('click', () => {
-  const paused = pauseButton.getAttribute('aria-pressed') !== 'true';
-  pauseButton.setAttribute('aria-pressed', String(paused));
-  pauseButton.textContent = paused ? (hu ? 'Folytatás' : 'Resume reviews') : (hu ? 'Szünet' : 'Pause reviews');
-  document.querySelector('.partner-review-track').toggleAttribute('data-paused', paused);
-});
-
 const partnerForm = document.querySelector('[data-partner-form]');
 function partnershipMessage() {
   const data = new FormData(partnerForm);
