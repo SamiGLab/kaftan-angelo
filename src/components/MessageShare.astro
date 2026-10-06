@@ -2,13 +2,53 @@
 const { title, url, lang } = Astro.props;
 const hu = lang === 'hu';
 const text = encodeURIComponent(`${title}\n${url}`);
+const encodedUrl = encodeURIComponent(url);
 ---
 <aside class="guide-toc message-share" aria-label={hu ? 'Útmutató küldése üzenetben' : 'Send this guide in a message'} data-pagefind-ignore>
   <h2>{hu ? 'Küldje el valakinek, akinek hasznos lehet' : 'Send to someone who might find it useful'}</h2>
   <p>{hu ? 'Válasszon üzenetküldő alkalmazást, majd címzettet. Az útmutató címe és linkje a küldés előtt szerkeszthető.' : 'Choose a messaging app, then a recipient. You can edit the guide title and link before sending.'}</p>
+  <details class="message-share-options">
+  <summary>{hu ? 'Küldés üzenetben' : 'Share in a message'}</summary>
   <div class="actions">
     <a class="btn btn-ghost" href={`https://wa.me/?text=${text}`} aria-label={hu ? 'Küldés WhatsAppon' : 'Send via WhatsApp'}>WhatsApp</a>
     <a class="btn btn-ghost" href={`viber://forward?text=${text}`} aria-label={hu ? 'Küldés Viberen' : 'Send via Viber'}>Viber</a>
+    <a class="btn btn-ghost" href={`https://t.me/share/url?url=${encodedUrl}&text=${encodeURIComponent(title)}`}>Telegram</a>
+    <a class="btn btn-ghost" href={`https://line.me/R/share?text=${text}`}>LINE</a>
+    <a class="btn btn-ghost" data-message-sms data-message-body={text} href={`sms:?body=${text}`}>SMS / iMessage</a>
+    <a class="btn btn-ghost" href={`mailto:?subject=${encodeURIComponent(title)}&body=${text}`}>{hu ? 'E-mail' : 'Email'}</a>
   </div>
-  <p class="guide-meta">{hu ? 'A Viber megnyitásához telepített alkalmazás szükséges. Az üzenet elküldését Ön erősíti meg.' : 'Viber requires the app to be installed. You confirm sending the message yourself.'}</p>
+  <p>{hu ? 'Signal, Messenger, Discord, Teams, WeChat vagy más alkalmazás:' : 'Signal, Messenger, Discord, Teams, WeChat or another app:'}</p>
+  <button class="btn btn-ghost" type="button" data-copy-message data-message={`${title}\n${url}`} data-success={hu ? 'Kimásolva. Illessze be a kiválasztott beszélgetésbe.' : 'Copied. Paste into your chosen conversation.'} data-failure={hu ? 'Jelölje ki és másolja ki az alábbi szöveget.' : 'Select and copy the text below.'}>{hu ? 'Üzenet másolása más alkalmazáshoz' : 'Copy message for another app'}</button>
+  <p role="status" data-copy-status></p>
+  <textarea data-copy-fallback hidden readonly aria-label={hu ? 'Másolható üzenet' : 'Message to copy'} rows="3">{`${title}\n${url}`}</textarea>
+  <p class="guide-meta">{hu ? 'Az alkalmazás elérhetősége az eszközétől függ. Válasszon személyes beszélgetést; a küldést Ön erősíti meg.' : 'App availability depends on your device. Choose a personal conversation; you confirm sending yourself.'}</p>
+  </details>
 </aside>
+<style>
+  summary { cursor: pointer; font-weight: 600; padding: .8rem 0; }
+  .actions { flex-wrap: wrap; margin: 1rem 0; }
+  textarea { width: 100%; color: inherit; background: transparent; padding: .75rem; }
+</style>
+<script>
+  document.querySelectorAll('[data-copy-message]').forEach(button => {
+    button.addEventListener('click', async () => {
+      const box = button.closest('.message-share');
+      const status = box.querySelector('[data-copy-status]');
+      try {
+        await navigator.clipboard.writeText(button.getAttribute('data-message'));
+        status.textContent = button.getAttribute('data-success');
+      } catch {
+        const field = box.querySelector('textarea');
+        field.hidden = false;
+        field.focus();
+        field.select();
+        status.textContent = button.getAttribute('data-failure');
+      }
+    });
+  });
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+    document.querySelectorAll('[data-message-sms]').forEach(link => {
+      link.setAttribute('href', `sms:&body=${link.getAttribute('data-message-body')}`);
+    });
+  }
+</script>
