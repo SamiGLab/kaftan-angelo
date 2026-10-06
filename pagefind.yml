@@ -1,0 +1,2 @@
+# Index content routes only; leave Google's verification file unchanged.
+glob: "**/index.html"
