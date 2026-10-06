@@ -1,6 +1,8 @@
 module.exports = {
   defaults: {
     standard: 'WCAG2AA',
+    // Hosted Ubuntu runners restrict Chrome's user-namespace sandbox.
+    chromeLaunchConfig: process.env.CI ? { args: ['--no-sandbox', '--disable-setuid-sandbox'] } : {},
     timeout: 30000,
     wait: 300,
     includeWarnings: false,

@@ -1,7 +1,7 @@
 module.exports = {
   ci: {
     collect: {
-      startServerCommand: 'python3 -m http.server 4173 --directory dist',
+      startServerCommand: 'python3 -u -m http.server 4173 --directory dist',
       startServerReadyPattern: 'Serving HTTP',
       url: [
         'http://127.0.0.1:4173/',
@@ -11,7 +11,8 @@ module.exports = {
         'http://127.0.0.1:4173/utmutatok/',
         'http://127.0.0.1:4173/en/'
       ],
-      numberOfRuns: 2
+      numberOfRuns: 2,
+      settings: { chromeFlags: process.env.CI ? '--no-sandbox' : '' }
     },
     assert: {
       assertions: {
