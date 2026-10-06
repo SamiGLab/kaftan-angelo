@@ -5,7 +5,7 @@ export const businessSchema = {
   '@id': `${BASE}/#store`,
   url: `${BASE}/`,
   name: 'Kaftan Angelo',
-  description: "Leather shop in central Budapest offering genuine men's and women's leather jackets, leather coats, shearling and fur clothing, leather accessories and custom-made leather jackets.",
+  description: "Clothing store in central Budapest offering genuine men's and women's leather jackets, leather coats, shearling and fur clothing, leather accessories and custom-made leather jackets.",
   image: [
     `${BASE}/kaftan-angelo-hero-leather-collection.webp`,
     `${BASE}/womens-leather-jacket-budapest.webp`,
