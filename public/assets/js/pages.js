@@ -21,21 +21,23 @@ menu?.addEventListener('click', event => { if (event.target.closest('a')) closeM
 // Native dialogs trap focus, handle Escape, and restore focus to the trigger.
 const dialog = document.querySelector('[data-product-dialog]');
 const imageButtons = [...document.querySelectorAll('[data-product-image]')];
+const visibleImageButtons = () => imageButtons.filter(button => !button.closest('.product-card').hidden);
 let selectedImage = 0;
 function showImage(index) {
-  selectedImage = (index + imageButtons.length) % imageButtons.length;
-  const trigger = imageButtons[selectedImage];
+  const visible = visibleImageButtons();
+  selectedImage = (index + visible.length) % visible.length;
+  const trigger = visible[selectedImage];
   const card = trigger.closest('.product-card');
   const title = card.querySelector('h3').textContent;
   const image = dialog.querySelector('[data-preview-image]');
   image.src = trigger.dataset.productImage;
   image.alt = title;
   dialog.querySelector('[data-preview-title]').textContent = title;
-  dialog.querySelector('[data-preview-count]').textContent = `${selectedImage + 1} / ${imageButtons.length}`;
+  dialog.querySelector('[data-preview-count]').textContent = `${selectedImage + 1} / ${visible.length}`;
   dialog.querySelector('[data-preview-inquiry]').href = card.querySelector('a[href*="wa.me"]').href;
   if (!dialog.open) dialog.showModal();
 }
-imageButtons.forEach((button, index) => button.addEventListener('click', () => showImage(index)));
+imageButtons.forEach(button => button.addEventListener('click', () => showImage(visibleImageButtons().indexOf(button))));
 dialog?.querySelector('[data-preview-close]').addEventListener('click', () => dialog.close());
 dialog?.querySelector('[data-preview-prev]').addEventListener('click', () => showImage(selectedImage - 1));
 dialog?.querySelector('[data-preview-next]').addEventListener('click', () => showImage(selectedImage + 1));
