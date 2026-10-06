@@ -1,0 +1,65 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import '@fontsource-variable/fraunces';
+
+import '@fontsource-variable/work-sans';
+
+import '@fontsource/ibm-plex-mono/latin-400.css';
+import '@fontsource/ibm-plex-mono/latin-500.css';
+import { BASE, businessSchema, websiteSchema } from '../data/site';
+const { page } = Astro.props;
+const lang = page.lang ?? 'hu';
+const heroImage = page.mainHtml?.match(/--hero:url\('([^']+)'\)/)?.[1] ?? new URL(page.ogImage).pathname;
+const mobileHero = heroImage.replace('-800.avif', '-480.avif');
+const socialImage = page.ogImage.replace(/\/assets\/images\/(.+)-(480|800|1200)\.avif$/, '/$1.webp');
+const huUrl = lang === 'hu' ? page.canonical : BASE + page.counterpart;
+const enUrl = lang === 'en' ? page.canonical : BASE + page.counterpart;
+const breadcrumbs = page.breadcrumbs ?? [];
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbs.map((item:any, i:number) => ({ '@type':'ListItem', position:i+1, name:item.name, item: BASE + item.url })),
+};
+const pageSchema = { ...page.pageSchema, url: page.canonical, isPartOf: { '@id': `${BASE}/#website` }, about: { '@id': `${BASE}/#store` } };
+const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websiteSchema, pageSchema, breadcrumbSchema] };
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5D5T9W6Q');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{page.title}</title>
+  <meta name="description" content={page.description} />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href={page.canonical} />
+  <link rel="alternate" hreflang="hu" href={huUrl} />
+  <link rel="alternate" hreflang="en" href={enUrl} />
+  <link rel="alternate" hreflang="x-default" href={huUrl} />
+  <meta property="og:type" content={page.pageSchema?.['@type'] === 'Article' ? 'article' : 'website'} />
+  <meta property="og:site_name" content="Kaftan Angelo" />
+  <meta property="og:url" content={page.canonical} />
+  <meta property="og:title" content={page.title} />
+  <meta property="og:description" content={page.description} />
+  <meta property="og:image" content={socialImage} />
+  <meta property="og:locale" content={lang === 'hu' ? 'hu_HU' : 'en_GB'} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={page.title} />
+  <meta name="twitter:description" content={page.description} />
+  <meta name="twitter:image" content={socialImage} />
+  <meta name="theme-color" content="#1b120c" />
+  <link rel="preload" as="image" href={mobileHero} media="(max-width: 620px)" fetchpriority="high" />
+  <link rel="preload" as="image" href={heroImage} media="(min-width: 621px)" fetchpriority="high" />
+  <link rel="stylesheet" href="/assets/css/pages.css" />
+  <script type="application/ld+json" set:html={JSON.stringify(graph)}></script>
+  <slot name="head" />
+</head>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5D5T9W6Q" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+  <Header lang={lang} counterpart={page.counterpart} />
+  <main data-pagefind-body><slot /></main>
+  <Footer lang={lang} />
+  <script is:inline defer src="/assets/js/pages.js"></script>
+  <slot name="scripts" />
+</body>
+</html>

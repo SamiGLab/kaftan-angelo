@@ -1,0 +1,45 @@
+name: Site quality
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install dependencies
+        run: npm ci
+      - name: Install accessibility browser
+        run: npx puppeteer browsers install chrome
+      - name: Build static site
+        run: npm run build
+      - name: Static link and SEO audit
+        run: npm run audit:dist
+      - name: Validate HTML
+        run: npm run check:html
+      - name: Check local links with Lychee
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --root-dir "$(pwd)/dist" --no-progress './dist/**/*.html'
+          fail: true
+      - name: Start local server
+        run: |
+          python3 -m http.server 4173 --directory dist >/tmp/kaftan-http.log 2>&1 &
+          echo $! > /tmp/kaftan-http.pid
+          sleep 2
+      - name: Accessibility audit
+        run: npx pa11y-ci --config .pa11yci.cjs --sitemap http://127.0.0.1:4173/sitemap.xml --sitemap-find "https://kaftanangelo.com" --sitemap-replace "http://127.0.0.1:4173" --threshold 0
+      - name: Stop local server
+        if: always()
+        run: |
+          if [ -f /tmp/kaftan-http.pid ]; then kill $(cat /tmp/kaftan-http.pid) || true; fi
+      - name: Lighthouse performance budget
+        run: npx lhci autorun --config=lighthouserc.cjs

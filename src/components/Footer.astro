@@ -1,0 +1,18 @@
+---
+const { lang = 'hu' } = Astro.props;
+const links = lang === 'hu'
+ ? [['Kollekciók','/kollekciok/'],['Egyedi rendelés','/egyedi-rendeles/'],['Rólunk','/rolunk/'],['Üzlet','/uzlet/'],['GYIK','/gyik/'],['Partnerprogram','/partnerprogram/'],['Útmutatók','/utmutatok/']]
+ : [['Collections','/en/collections/'],['Custom Orders','/en/custom-orders/'],['About','/en/about/'],['Visit','/en/visit/'],['FAQ','/en/faq/'],['Partners','/en/partners/'],['Guides','/en/guides/']];
+---
+<footer class="footer">
+  <div class="wrap footer-row">
+    <div class="brand">Kaftan <span>Angelo</span></div>
+    <div class="footer-links">
+      {links.map(([label,href]) => <a href={href}>{label}</a>)}
+      <a href="https://wa.me/36203593216">WhatsApp</a>
+      <a href="tel:+3612667274">+36&nbsp;1&nbsp;266&nbsp;7274</a>
+      <a href="https://www.instagram.com/kaftanangelo.budapest/">Instagram</a>
+    </div>
+    <div>© <span class="current-year"></span> Kaftan Angelo</div>
+  </div>
+</footer>

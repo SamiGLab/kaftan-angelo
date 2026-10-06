@@ -1,0 +1,926 @@
+{
+  "/": {
+    "path": "/",
+    "lang": "hu",
+    "title": "Bőrkabát Budapest | Kaftan Angelo bőr üzlet",
+    "description": "Valódi női és férfi bőrkabátok, irha- és szőrmemodellek Budapest belvárosában. Kaftan Angelo, Kossuth Lajos u. 18.",
+    "canonical": "https://kaftanangelo.com/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "counterpart": "/en/",
+    "mainHtml": "\n<section class=\"home-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\">\n<div class=\"wrap home-hero-inner\">\n<span class=\"tag mono\">Kaftan Angelo · Budapest</span>\n<h1>Valódi bőrkabátok Budapest belvárosában.</h1>\n<p>Férfi és női valódi bőrkabátok, irha- és szőrmemodellek, személyes próba és egyedi rendelési lehetőség a Kossuth Lajos utca 18. alatt.</p>\n<div class=\"actions\"><a class=\"btn btn-primary\" href=\"/kollekciok/\">Kollekciók megtekintése</a><a class=\"btn btn-ghost\" href=\"/uzlet/\">Üzlet és nyitvatartás</a></div>\n<div class=\"proofs\"><span class=\"pill\">Budapest V. kerület</span><span class=\"pill\">Egyedi rendelés</span><span class=\"pill\">Javítási ügyintézés</span></div>\n</div>\n</section>\n<section><div class=\"wrap\">\n<div class=\"section-head\"><div><span class=\"tag mono\">Kollekciók</span><h2>Válasszon kategóriát</h2></div><p>Az ana sayfa artık katalog değildir; her koleksiyon kendi sayfasında ayrıntılı olarak yer alır.</p></div>\n<div class=\"category-grid\">\n<a class=\"category-card\" href=\"/noi-borkabatok/\" style=\"--card-img:url('/assets/images/kaftan-angelo-womens-leather-jackets-budapest-480.avif')\"><span>01</span><h3>Női bőrkabátok</h3><p>Valódi bőrkabátok és bőrdzsekik nőknek.</p></a>\n<a class=\"category-card\" href=\"/ferfi-borkabatok/\" style=\"--card-img:url('/assets/images/kaftan-angelo-mens-leather-jackets-budapest-480.avif')\"><span>02</span><h3>Férfi bőrkabátok</h3><p>Klasszikus, motoros és modern bőrdzsekik.</p></a>\n<a class=\"category-card\" href=\"/irhakabatok/\" style=\"--card-img:url('/assets/images/womens-shearling-jacket-budapest-480.avif')\"><span>03</span><h3>Irhakabátok</h3><p>Meleg női és férfi irha modellek.</p></a>\n<a class=\"category-card\" href=\"/szormekabatok/\" style=\"--card-img:url('/assets/images/womens-fur-coat-budapest-480.avif')\"><span>04</span><h3>Szőrmekabátok</h3><p>Szőrme kabátok, dzsekik és mellények.</p></a>\n</div>\n<div class=\"center-action\"><a class=\"btn btn-ghost\" href=\"/kollekciok/\">Összes kollekció</a></div>\n</div></section>\n<section class=\"split-section\"><div class=\"wrap split-grid\">\n<div><span class=\"tag mono\">Egyedi rendelés &amp; javítás</span><h2>Ha a megfelelő darab nincs a kínálatban.</h2><p>Egyedi bőrkabát rendelésére is van lehetőség. A fazonról, színről, méretről, anyagról és az elkészítési időről személyesen egyeztetünk.</p><a class=\"text-link\" href=\"/egyedi-rendeles/\">Egyedi rendelés részletei →</a></div>\n<div class=\"feature-image\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-leather-jackets-budapest-480.avif 480w, /assets/images/kaftan-angelo-leather-jackets-budapest-800.avif 800w, /assets/images/kaftan-angelo-leather-jackets-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-leather-jackets-budapest-480.webp 480w, /assets/images/kaftan-angelo-leather-jackets-budapest-800.webp 800w, /assets/images/kaftan-angelo-leather-jackets-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Kaftan Angelo bőrkabátok Budapest\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/kaftan-angelo-leather-jackets-budapest.webp\" width=\"1535\"></picture></div>\n</div></section>\n<section><div class=\"wrap\">\n<div class=\"section-head\"><div><span class=\"tag mono\">Útmutatók</span><h2>Hasznos tudnivalók bőrkabát vásárlás előtt és után</h2></div><a class=\"text-link\" href=\"/utmutatok/\">Összes útmutató →</a></div>\n<div class=\"guide-list\">\n<article class=\"guide-card\"><h3>Bőrkabát ápolása</h3><p>Mit érdemes tenni, és mit kell kerülni a valódi bőr mindennapi ápolásánál?</p><a href=\"/utmutatok/borkabat-apolas/\">Olvasás</a></article>\n<article class=\"guide-card\"><h3>Hogyan ismerhető fel a valódi bőr?</h3><p>Tapintás, felület és részletek: mire figyeljen vásárláskor?</p><a href=\"/utmutatok/valodi-bor-felismerese/\">Olvasás</a></article>\n<article class=\"guide-card\"><h3>Bőrkabát méret útmutató</h3><p>Váll, ujjhossz és illeszkedés: miért fontos a személyes próba?</p><a href=\"/utmutatok/borkabat-meret-utmutato/\">Olvasás</a></article>\n</div>\n</div></section>\n<section class=\"partner-teaser\"><div class=\"wrap split-grid\">\n<div><span class=\"tag mono\">Partnerprogram</span><h2>Turisztikai partnereket várunk Budapesten.</h2><p>Hotelek, concierge-ek, idegenvezetők, apartman-üzemeltetők és utazási szakemberek számára külön partnerprogram működik.</p><div class=\"proofs\"><span class=\"pill\">Több mint 15 partner</span></div><a class=\"btn btn-ghost\" href=\"/partnerprogram/\">Partnerprogram részletei</a></div>\n<div class=\"mini-panel\"><strong>Külön B2B oldal</strong><p>A partnerfeltételek, kapcsolatfelvétel, folyamat és partner-visszajelzések már nem az ana sayfada, hanem ayrı partner sayfasında találhatók.</p></div>\n</div></section>\n<section class=\"store-cta\"><div class=\"wrap\">\n<div><span class=\"tag mono\">Üzlet</span><h2>Próbálja fel személyesen Budapest belvárosában.</h2><p>Kossuth Lajos u. 18 · Astoria — Ferenciek tere</p></div>\n<div class=\"actions\"><a class=\"btn btn-primary\" href=\"/uzlet/\">Nyitvatartás és elérhetőség</a><a class=\"btn btn-ghost\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Útvonalterv</a></div>\n</div></section>\n",
+    "pageSchema": {
+      "@type": "WebPage",
+      "name": "Bőrkabát Budapest",
+      "url": "https://kaftanangelo.com/",
+      "inLanguage": "hu",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      }
+    ]
+  },
+  "/ferfi-borkabatok/": {
+    "path": "/ferfi-borkabatok/",
+    "lang": "hu",
+    "title": "Férfi bőrkabátok Budapest | Kaftan Angelo",
+    "description": "Férfi valódi bőrkabátok és bőrdzsekik Budapesten többféle fazonban.",
+    "canonical": "https://kaftanangelo.com/ferfi-borkabatok/",
+    "ogImage": "https://kaftanangelo.com/ferfi-klasszikus-bordzseki-budapest.webp",
+    "counterpart": "/en/mens-leather-jackets/",
+    "mainHtml": "<section class=\"page-hero\" style=\"--hero:url('/assets/images/ferfi-klasszikus-bordzseki-budapest-480.avif')\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / <a href=\"/kollekciok/\">Kollekciók</a> / Férfi bőrkabátok Budapest</div><span class=\"tag mono\">Kaftan Angelo · Budapest</span><h1>Férfi bőrkabátok Budapest</h1><p>Férfi valódi bőrkabátok és bőrdzsekik Budapesten többféle fazonban.</p><div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Próbálja fel üzletünkben</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Válogatás</span><h2>Néhány modell a kollekcióból</h2></div><p>A weboldalon bemutatott modellek ízelítőt adnak az üzlet választékából.</p></div><div class=\"product-grid\"><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Men’s biker leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-motoros-bordzseki-budapest.webp\" width=\"675\"></picture><div class=\"product-card-body\"><h3>Férfi motoros bőrdzseki</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Classic men’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-klasszikus-bordzseki-budapest.webp\" width=\"675\"></picture><div class=\"product-card-body\"><h3>Klasszikus férfi bőrdzseki</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.avif 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.webp 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Patterned men’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-mintas-bordzseki-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Mintás férfi bőrdzseki</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-mens-leather-jackets-budapest-480.avif 480w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-800.avif 800w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-mens-leather-jackets-budapest-480.webp 480w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-800.webp 800w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Men’s leather jacket collection\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/kaftan-angelo-mens-leather-jackets-budapest.webp\" width=\"1536\"></picture><div class=\"product-card-body\"><h3>Férfi bőrkabát válogatás</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.avif 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.webp 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Dark brown men’s shearling jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-sotetbarna-irhadzseki-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Sötétbarna férfi irhadzseki</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Light brown men’s shearling coat\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-vilagosbarna-irhakabat-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Világosbarna férfi irhakabát</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article></div></div></section><section><div class=\"wrap content\"><h2>Mire figyeljen választáskor?</h2><p>A bőrkabát illeszkedése, a bőr tapintása, a váll és az ujjhossz együtt határozza meg, hogy egy modell valóban jól áll-e. Ezért javasoljuk a személyes próbát.</p><div class=\"callout\"><strong>Kapcsolódó oldalak: </strong><a href=\"/utmutatok/borkabat-meret-utmutato/\">Méret útmutató</a> · <a href=\"/utmutatok/borkabat-apolas/\">Bőrkabát ápolása</a> · <a href=\"/egyedi-rendeles/\">Egyedi rendelés</a></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Próbálja fel Budapesten</h2><p>Kossuth Lajos u. 18 · Astoria — Ferenciek tere</p></div><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Útvonalterv</a></div></section>",
+    "pageSchema": {
+      "@type": "CollectionPage",
+      "name": "Férfi bőrkabátok Budapest",
+      "url": "https://kaftanangelo.com/ferfi-borkabatok/",
+      "inLanguage": "hu",
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      },
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      },
+      {
+        "name": "Kollekciók",
+        "url": "/kollekciok/"
+      },
+      {
+        "name": "Férfi bőrkabátok Budapest",
+        "url": "/ferfi-borkabatok/"
+      }
+    ]
+  },
+  "/rolunk/": {
+    "path": "/rolunk/",
+    "lang": "hu",
+    "title": "Rólunk | Kaftan Angelo Budapest",
+    "description": "A Kaftan Angelo története: bőrműves tapasztalat Isztambulból, budapesti üzlet 2004 óta.",
+    "canonical": "https://kaftanangelo.com/rolunk/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "counterpart": "/en/about/",
+    "mainHtml": "\n<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\"><div class=\"wrap\">\n<div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / Rólunk</div><span class=\"tag mono\">Történetünk</span>\n<h1>Isztambultól Budapest szívéig</h1><p>Kaftan Angelo egy bőr- és szőrmeruházati üzlet Budapest belvárosában, az Astoria és a Ferenciek tere között.</p>\n</div></section>\n<section><div class=\"wrap timeline\">\n<article><span class=\"timeline-year\">1973 · ISTANBUL</span><h2>A történet a bőr mesterségével kezdődött.</h2><p>Angelo 1973-ban, Isztambulban kezdett bőrrel dolgozni.</p></article>\n<article><span class=\"timeline-year\">2004 · BUDAPEST</span><h2>A tapasztalat új otthonra talált.</h2><p>2004-ben Angelo Budapestre hozta több évtizedes tapasztalatát, és megnyitotta belvárosi üzletét.</p></article>\n<article><span class=\"timeline-year\">MA · KOSSUTH LAJOS U. 18</span><h2>A megfelelő darab megtalálása személyes maradt.</h2><p>Női és férfi valódi bőrkabátokat, bőrdzsekiket, irha- és szőrmemodelleket, valamint bőr kiegészítőket kínálunk. Ha a megfelelő darab nincs a kínálatban, egyedi igény alapján bőrdzseki is rendelhető.</p></article>\n</div></section>\n<section class=\"store-cta\"><div class=\"wrap\"><div><h2>Ismerje meg személyesen a kollekciót</h2><p>Kossuth Lajos u. 18 · Budapest</p></div><a class=\"btn btn-primary\" href=\"/kollekciok/\">Kollekciók</a></div></section>\n",
+    "pageSchema": {
+      "@type": "WebPage",
+      "name": "Rólunk",
+      "url": "https://kaftanangelo.com/rolunk/",
+      "inLanguage": "hu",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      },
+      {
+        "name": "Rólunk",
+        "url": "/rolunk/"
+      }
+    ]
+  },
+  "/borkabat-budapest/": {
+    "path": "/borkabat-budapest/",
+    "lang": "hu",
+    "title": "Bőrkabát Budapest | Kaftan Angelo",
+    "description": "Valódi bőrkabát Budapest belvárosában: női és férfi bőrkabátok, irha, szőrme és személyes próba a Kossuth Lajos u. 18. alatt.",
+    "canonical": "https://kaftanangelo.com/borkabat-budapest/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "counterpart": "/en/leather-jackets-budapest/",
+    "mainHtml": "<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\"><div class=\"wrap\"><span class=\"tag mono\">Kaftan Angelo · Budapest</span><h1>Bőrkabát Budapest</h1><p>Valódi bőrkabát Budapest belvárosában: női és férfi bőrkabátok, irha, szőrme és személyes próba a Kossuth Lajos u. 18. alatt.</p><div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Útvonalterv</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Kollekciók</span><h2>Válasszon kategóriát</h2></div></div><div class=\"grid\"><article class=\"card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-leather-jacket-budapest-480.avif 480w, /assets/images/womens-leather-jacket-budapest-800.avif 800w, /assets/images/womens-leather-jacket-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-leather-jacket-budapest-480.webp 480w, /assets/images/womens-leather-jacket-budapest-800.webp 800w, /assets/images/womens-leather-jacket-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Női bőrkabátok\" decoding=\"async\" height=\"854\" loading=\"lazy\" src=\"/womens-leather-jacket-budapest.webp\" width=\"1600\"></picture><div class=\"card-body\"><h3>Női bőrkabátok</h3><a class=\"text-link\" href=\"/noi-borkabatok/\">Megnézem</a></div></article><article class=\"card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-mens-leather-jackets-budapest-480.avif 480w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-800.avif 800w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-mens-leather-jackets-budapest-480.webp 480w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-800.webp 800w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Férfi bőrkabátok\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/kaftan-angelo-mens-leather-jackets-budapest.webp\" width=\"1536\"></picture><div class=\"card-body\"><h3>Férfi bőrkabátok</h3><a class=\"text-link\" href=\"/ferfi-borkabatok/\">Megnézem</a></div></article><article class=\"card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-shearling-jacket-budapest-480.avif 480w, /assets/images/womens-shearling-jacket-budapest-800.avif 800w, /assets/images/womens-shearling-jacket-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-shearling-jacket-budapest-480.webp 480w, /assets/images/womens-shearling-jacket-budapest-800.webp 800w, /assets/images/womens-shearling-jacket-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Irhakabátok\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/womens-shearling-jacket-budapest.webp\" width=\"1536\"></picture><div class=\"card-body\"><h3>Irhakabátok</h3><a class=\"text-link\" href=\"/irhakabatok/\">Megnézem</a></div></article><article class=\"card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-fur-coat-budapest-480.avif 480w, /assets/images/womens-fur-coat-budapest-800.avif 800w, /assets/images/womens-fur-coat-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-fur-coat-budapest-480.webp 480w, /assets/images/womens-fur-coat-budapest-800.webp 800w, /assets/images/womens-fur-coat-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Szőrme\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/womens-fur-coat-budapest.webp\" width=\"1536\"></picture><div class=\"card-body\"><h3>Szőrme</h3><a class=\"text-link\" href=\"/szormekabatok/\">Megnézem</a></div></article></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Személyes próba a belvárosban</h2><p>Kossuth Lajos u. 18 · 1053 Budapest</p></div><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Útvonalterv</a></div></section>",
+    "pageSchema": {
+      "@type": "WebPage",
+      "name": "Bőrkabát Budapest | Kaftan Angelo",
+      "url": "https://kaftanangelo.com/borkabat-budapest/",
+      "inLanguage": "hu",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      },
+      {
+        "name": "Bőrkabát Budapest",
+        "url": "/borkabat-budapest/"
+      }
+    ]
+  },
+  "/partnerprogram/": {
+    "path": "/partnerprogram/",
+    "lang": "hu",
+    "title": "Partnerprogram | Kaftan Angelo Budapest",
+    "description": "Partnerprogram hoteleknek, concierge-eknek, idegenvezetőknek és budapesti turisztikai partnereknek.",
+    "canonical": "https://kaftanangelo.com/partnerprogram/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "counterpart": "/en/partners/",
+    "mainHtml": "<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / Partnerprogram</div><span class=\"tag mono\">Kaftan Angelo · Budapest</span><h1>Partnerprogram budapesti turisztikai szakembereknek</h1><p>Ajánljon vendégeinek személyes bőrvásárlási élményt Budapest szívében. Hoteleket, concierge-eket, idegenvezetőket, apartmanüzemeltetőket és utazási irodákat várunk partnerhálózatunkba.</p><div class=\"proofs\"><span class=\"pill\">Több mint 15 partner</span><span class=\"pill\">Kossuth Lajos u. 18</span><span class=\"pill\">Személyes üzleti egyeztetés</span></div><div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://wa.me/36203593216?text=Üdvözlöm! A Kaftan Angelo partnerprogramjáról szeretnék érdeklődni.\">Beszéljük meg WhatsAppon</a></div></div></section><section><div class=\"wrap partner-layout\"><div><div class=\"section-head\"><div><span class=\"tag mono\">Kinek szól?</span><h2>Egyszerűen ajánlható élmény a vendégeinek</h2></div></div><div class=\"grid\"><article class=\"card\"><div class=\"card-body\"><h3>Hotel &amp; concierge</h3><p>Prémium vendégek számára személyes, központi budapesti vásárlási lehetőség.</p></div></article><article class=\"card\"><div class=\"card-body\"><h3>Idegenvezetők</h3><p>Olyan helyi ajánlás, amely beilleszthető a vendég budapesti programjába.</p></div></article><article class=\"card\"><div class=\"card-body\"><h3>Apartman &amp; utazási iroda</h3><p>A partnernek nincs készlet- vagy rendeléskezelési feladata; a vásárlás az üzletben történik.</p></div></article></div></div><aside class=\"contact-card\"><h2>Beszéljük meg az együttműködést</h2><form data-partner-form=\"\"><label>Név<input name=\"name\" required type=\"text\"></label><label>Cég / szálláshely<input name=\"company\" required type=\"text\"></label><label>E-mail<input name=\"email\" required type=\"email\"></label><label>Telefon<input name=\"phone\" type=\"text\"></label><label>Partner típusa<select name=\"type\"><option>Hotel / concierge</option><option>Idegenvezető</option><option>Airbnb / apartman</option><option>Utazási iroda</option><option>Egyéb</option></select></label><label>Üzenet<textarea name=\"message\" required></textarea></label><button class=\"btn btn-primary\" type=\"submit\">E-mail előkészítése</button></form></aside></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Folyamat</span><h2>Együttműködés három lépésben</h2></div></div><div class=\"steps\"><div class=\"step\"><b>01</b><h3>Ismerjük meg egymást</h3><p>Írja meg, melyik hotelhez, szálláshelyhez vagy szolgáltatáshoz tartozik.</p></div><div class=\"step\"><b>02</b><h3>Egyeztessük a részleteket</h3><p>A vendégek irányítása előtt közösen rögzítjük az együttműködés menetét és feltételeit.</p></div><div class=\"step\"><b>03</b><h3>Irányítsa hozzánk vendégeit</h3><p>A vendégek a Kossuth Lajos utca 18. alatt személyesen próbálhatják fel a modelleket.</p></div></div></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Partner-visszajelzések</span><h2>Partnereink véleménye</h2></div><p>A jelenlegi partnerhálózat visszajelzései.</p></div><div class=\"partner-review-marquee\" tabindex=\"0\"><div class=\"partner-review-track\"><div class=\"partner-review-group\"><figure class=\"testimonial\"><blockquote>Vendégeim a legjobbat várják el. A Kaftan Angelo VIP szolgáltatása sosem okoz csalódást. Igazán megbízható partner.</blockquote><figcaption><span class=\"avatar\">ZV</span><span>Zsófia V. – Luxury Hotel Concierge</span></figcaption></figure><figure class=\"testimonial\"><blockquote>A minőség garantált, a jutalékos rendszer pedig hihetetlenül átlátható és pontos. Kifejezetten ajánlom turisztikai szakembereknek.</blockquote><figcaption><span class=\"avatar\">SN</span><span>Szilárd N. – Professional Tour Guide</span></figcaption></figure><figure class=\"testimonial\"><blockquote>A vendégeimnek nyújtott exkluzív kedvezmények – különösen csütörtökön és pénteken – a saját Airbnb értékeléseimet is javították! Fantasztikus együttműködés.</blockquote><figcaption><span class=\"avatar\">ML</span><span>Márton L. – Airbnb Superhost</span></figcaption></figure><figure class=\"testimonial\"><blockquote>1973 óta űzik a bőr mesterségét. A prémium ügyfeleimet mindig ide küldöm, mert tudom, hogy jó kezekben vannak.</blockquote><figcaption><span class=\"avatar\">PF</span><span>Péter F. – Private Guide</span></figcaption></figure><figure class=\"testimonial\"><blockquote>A bizalom mindennél fontosabb. Amikor a Kaftan Angelót ajánlom, a szálloda vendégei gyönyörű kabátokkal és csodálatos élményekkel térnek vissza.</blockquote><figcaption><span class=\"avatar\">ET</span><span>Eszter T. – Boutique Hotel Manager</span></figcaption></figure><figure class=\"testimonial\"><blockquote>A nagyobb turistacsoportokat is zökkenőmentesen kezelik. A kávé és a vendégszeretet azonnal remek hangulatot teremt a fáradt utazóknak.</blockquote><figcaption><span class=\"avatar\">KB</span><span>Katalin B. – Travel Agency Coordinator</span></figcaption></figure><figure class=\"testimonial\"><blockquote>Zseniális partnerprogram. Részemről semmi extra erőfeszítést nem igényel, mégis stabil, átlátható kiegészítő jövedelmet biztosít.</blockquote><figcaption><span class=\"avatar\">BD</span><span>Bence D. – Apartment Network Owner</span></figcaption></figure></div><div aria-hidden=\"true\" class=\"partner-review-group\"><figure class=\"testimonial\"><blockquote>Vendégeim a legjobbat várják el. A Kaftan Angelo VIP szolgáltatása sosem okoz csalódást. Igazán megbízható partner.</blockquote><figcaption><span class=\"avatar\">ZV</span><span>Zsófia V. – Luxury Hotel Concierge</span></figcaption></figure><figure class=\"testimonial\"><blockquote>A minőség garantált, a jutalékos rendszer pedig hihetetlenül átlátható és pontos. Kifejezetten ajánlom turisztikai szakembereknek.</blockquote><figcaption><span class=\"avatar\">SN</span><span>Szilárd N. – Professional Tour Guide</span></figcaption></figure><figure class=\"testimonial\"><blockquote>A vendégeimnek nyújtott exkluzív kedvezmények – különösen csütörtökön és pénteken – a saját Airbnb értékeléseimet is javították! Fantasztikus együttműködés.</blockquote><figcaption><span class=\"avatar\">ML</span><span>Márton L. – Airbnb Superhost</span></figcaption></figure><figure class=\"testimonial\"><blockquote>1973 óta űzik a bőr mesterségét. A prémium ügyfeleimet mindig ide küldöm, mert tudom, hogy jó kezekben vannak.</blockquote><figcaption><span class=\"avatar\">PF</span><span>Péter F. – Private Guide</span></figcaption></figure><figure class=\"testimonial\"><blockquote>A bizalom mindennél fontosabb. Amikor a Kaftan Angelót ajánlom, a szálloda vendégei gyönyörű kabátokkal és csodálatos élményekkel térnek vissza.</blockquote><figcaption><span class=\"avatar\">ET</span><span>Eszter T. – Boutique Hotel Manager</span></figcaption></figure><figure class=\"testimonial\"><blockquote>A nagyobb turistacsoportokat is zökkenőmentesen kezelik. A kávé és a vendégszeretet azonnal remek hangulatot teremt a fáradt utazóknak.</blockquote><figcaption><span class=\"avatar\">KB</span><span>Katalin B. – Travel Agency Coordinator</span></figcaption></figure><figure class=\"testimonial\"><blockquote>Zseniális partnerprogram. Részemről semmi extra erőfeszítést nem igényel, mégis stabil, átlátható kiegészítő jövedelmet biztosít.</blockquote><figcaption><span class=\"avatar\">BD</span><span>Bence D. – Apartment Network Owner</span></figcaption></figure></div></div></div></div></section>",
+    "pageSchema": {
+      "@type": "WebPage",
+      "name": "Partnerprogram | Kaftan Angelo Budapest",
+      "url": "https://kaftanangelo.com/partnerprogram/",
+      "inLanguage": "hu",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      },
+      {
+        "name": "Partnerprogram",
+        "url": "/partnerprogram/"
+      }
+    ]
+  },
+  "/noi-borkabatok/": {
+    "path": "/noi-borkabatok/",
+    "lang": "hu",
+    "title": "Női bőrkabátok Budapest | Kaftan Angelo",
+    "description": "Női valódi bőrkabátok és bőrdzsekik Budapesten. Próbálja fel a Kaftan Angelo üzletben.",
+    "canonical": "https://kaftanangelo.com/noi-borkabatok/",
+    "ogImage": "https://kaftanangelo.com/noi-sarga-borkabat-budapest.webp",
+    "counterpart": "/en/womens-leather-jackets/",
+    "mainHtml": "<section class=\"page-hero\" style=\"--hero:url('/assets/images/noi-sarga-borkabat-budapest-800.avif');--hero-mobile:url('/assets/images/noi-sarga-borkabat-budapest-480.avif')\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / <a href=\"/kollekciok/\">Kollekciók</a> / Női bőrkabátok Budapest</div><span class=\"tag mono\">Kaftan Angelo · Budapest</span><h1>Női bőrkabátok Budapest</h1><p>Női valódi bőrkabátok és bőrdzsekik Budapesten. Próbálja fel a Kaftan Angelo üzletben.</p><div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Próbálja fel üzletünkben</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Válogatás</span><h2>Néhány modell a kollekcióból</h2></div><p>A weboldalon bemutatott modellek ízelítőt adnak az üzlet választékából.</p></div><div class=\"product-grid\"><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.avif 480w, /assets/images/noi-sarga-borkabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.webp 480w, /assets/images/noi-sarga-borkabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Yellow women’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-sarga-borkabat-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Sárga női bőrkabát</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.avif 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.webp 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Studded women’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-szegecses-bordzseki-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Szegecses női bőrdzseki</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-leather-jacket-budapest-480.avif 480w, /assets/images/womens-leather-jacket-budapest-800.avif 800w, /assets/images/womens-leather-jacket-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-leather-jacket-budapest-480.webp 480w, /assets/images/womens-leather-jacket-budapest-800.webp 800w, /assets/images/womens-leather-jacket-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Women’s genuine leather jacket\" decoding=\"async\" height=\"854\" loading=\"lazy\" src=\"/womens-leather-jacket-budapest.webp\" width=\"1600\"></picture><div class=\"product-card-body\"><h3>Női valódi bőrkabát</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-womens-leather-jackets-budapest-480.avif 480w, /assets/images/kaftan-angelo-womens-leather-jackets-budapest-800.avif 800w, /assets/images/kaftan-angelo-womens-leather-jackets-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-womens-leather-jackets-budapest-480.webp 480w, /assets/images/kaftan-angelo-womens-leather-jackets-budapest-800.webp 800w, /assets/images/kaftan-angelo-womens-leather-jackets-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Women’s leather jacket collection\" decoding=\"async\" height=\"916\" loading=\"lazy\" src=\"/kaftan-angelo-womens-leather-jackets-budapest.webp\" width=\"1717\"></picture><div class=\"product-card-body\"><h3>Női bőrkabát válogatás</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article></div></div></section><section><div class=\"wrap content\"><h2>Mire figyeljen választáskor?</h2><p>A bőrkabát illeszkedése, a bőr tapintása, a váll és az ujjhossz együtt határozza meg, hogy egy modell valóban jól áll-e. Ezért javasoljuk a személyes próbát.</p><div class=\"callout\"><strong>Kapcsolódó oldalak: </strong><a href=\"/utmutatok/borkabat-meret-utmutato/\">Méret útmutató</a> · <a href=\"/utmutatok/borkabat-apolas/\">Bőrkabát ápolása</a> · <a href=\"/egyedi-rendeles/\">Egyedi rendelés</a></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Próbálja fel Budapesten</h2><p>Kossuth Lajos u. 18 · Astoria — Ferenciek tere</p></div><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Útvonalterv</a></div></section>",
+    "pageSchema": {
+      "@type": "CollectionPage",
+      "name": "Női bőrkabátok Budapest",
+      "url": "https://kaftanangelo.com/noi-borkabatok/",
+      "inLanguage": "hu",
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      },
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      },
+      {
+        "name": "Kollekciók",
+        "url": "/kollekciok/"
+      },
+      {
+        "name": "Női bőrkabátok Budapest",
+        "url": "/noi-borkabatok/"
+      }
+    ]
+  },
+  "/irhakabatok/": {
+    "path": "/irhakabatok/",
+    "lang": "hu",
+    "title": "Irhakabátok Budapest | Kaftan Angelo",
+    "description": "Női és férfi irhakabátok, irhadzsekik a Kaftan Angelo budapesti üzletében.",
+    "canonical": "https://kaftanangelo.com/irhakabatok/",
+    "ogImage": "https://kaftanangelo.com/womens-shearling-jacket-budapest.webp",
+    "counterpart": "/en/shearling-jackets/",
+    "mainHtml": "<section class=\"page-hero\" style=\"--hero:url('/assets/images/womens-shearling-jacket-budapest-800.avif');--hero-mobile:url('/assets/images/womens-shearling-jacket-budapest-480.avif')\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / <a href=\"/kollekciok/\">Kollekciók</a> / Irhakabátok Budapest</div><span class=\"tag mono\">Kaftan Angelo · Budapest</span><h1>Irhakabátok Budapest</h1><p>Női és férfi irhakabátok, irhadzsekik a Kaftan Angelo budapesti üzletében.</p><div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Próbálja fel üzletünkben</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Válogatás</span><h2>Néhány modell a kollekcióból</h2></div><p>A weboldalon bemutatott modellek ízelítőt adnak az üzlet választékából.</p></div><div class=\"product-grid\"><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-shearling-jacket-budapest-480.avif 480w, /assets/images/womens-shearling-jacket-budapest-800.avif 800w, /assets/images/womens-shearling-jacket-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-shearling-jacket-budapest-480.webp 480w, /assets/images/womens-shearling-jacket-budapest-800.webp 800w, /assets/images/womens-shearling-jacket-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Women’s shearling jacket\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/womens-shearling-jacket-budapest.webp\" width=\"1536\"></picture><div class=\"product-card-body\"><h3>Női irhakabát</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.avif 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.webp 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Dark brown men’s shearling jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-sotetbarna-irhadzseki-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Sötétbarna férfi irhadzseki</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Light brown men’s shearling coat\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-vilagosbarna-irhakabat-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Világosbarna férfi irhakabát</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Brown men’s shearling coat\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-barna-irhakabat-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Barna férfi irhakabát</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-shearling-fur-budapest-480.avif 480w, /assets/images/kaftan-angelo-shearling-fur-budapest-800.avif 800w, /assets/images/kaftan-angelo-shearling-fur-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-shearling-fur-budapest-480.webp 480w, /assets/images/kaftan-angelo-shearling-fur-budapest-800.webp 800w, /assets/images/kaftan-angelo-shearling-fur-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Shearling and fur collection\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/kaftan-angelo-shearling-fur-budapest.webp\" width=\"1536\"></picture><div class=\"product-card-body\"><h3>Irha és szőrme válogatás</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article></div></div></section><section><div class=\"wrap content\"><h2>Mire figyeljen választáskor?</h2><p>A bőrkabát illeszkedése, a bőr tapintása, a váll és az ujjhossz együtt határozza meg, hogy egy modell valóban jól áll-e. Ezért javasoljuk a személyes próbát.</p><div class=\"callout\"><strong>Kapcsolódó oldalak: </strong><a href=\"/utmutatok/borkabat-meret-utmutato/\">Méret útmutató</a> · <a href=\"/utmutatok/borkabat-apolas/\">Bőrkabát ápolása</a> · <a href=\"/egyedi-rendeles/\">Egyedi rendelés</a></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Próbálja fel Budapesten</h2><p>Kossuth Lajos u. 18 · Astoria — Ferenciek tere</p></div><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Útvonalterv</a></div></section>",
+    "pageSchema": {
+      "@type": "CollectionPage",
+      "name": "Irhakabátok Budapest",
+      "url": "https://kaftanangelo.com/irhakabatok/",
+      "inLanguage": "hu",
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      },
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      },
+      {
+        "name": "Kollekciók",
+        "url": "/kollekciok/"
+      },
+      {
+        "name": "Irhakabátok Budapest",
+        "url": "/irhakabatok/"
+      }
+    ]
+  },
+  "/szormekabatok/": {
+    "path": "/szormekabatok/",
+    "lang": "hu",
+    "title": "Szőrmekabátok Budapest | Kaftan Angelo",
+    "description": "Női szőrmekabátok, szőrmedzsekik és mellények Budapest belvárosában.",
+    "canonical": "https://kaftanangelo.com/szormekabatok/",
+    "ogImage": "https://kaftanangelo.com/womens-fur-coat-budapest.webp",
+    "counterpart": "/en/fur-coats/",
+    "mainHtml": "<section class=\"page-hero\" style=\"--hero:url('/assets/images/womens-fur-coat-budapest-800.avif');--hero-mobile:url('/assets/images/womens-fur-coat-budapest-480.avif')\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / <a href=\"/kollekciok/\">Kollekciók</a> / Szőrmekabátok Budapest</div><span class=\"tag mono\">Kaftan Angelo · Budapest</span><h1>Szőrmekabátok Budapest</h1><p>Női szőrmekabátok, szőrmedzsekik és mellények Budapest belvárosában.</p><div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Próbálja fel üzletünkben</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Válogatás</span><h2>Néhány modell a kollekcióból</h2></div><p>A weboldalon bemutatott modellek ízelítőt adnak az üzlet választékából.</p></div><div class=\"product-grid\"><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-fur-coat-budapest-480.avif 480w, /assets/images/womens-fur-coat-budapest-800.avif 800w, /assets/images/womens-fur-coat-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-fur-coat-budapest-480.webp 480w, /assets/images/womens-fur-coat-budapest-800.webp 800w, /assets/images/womens-fur-coat-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Women’s fur coat\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/womens-fur-coat-budapest.webp\" width=\"1536\"></picture><div class=\"product-card-body\"><h3>Női szőrmekabát</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.avif 480w, /assets/images/noi-feher-szormemelleny-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.webp 480w, /assets/images/noi-feher-szormemelleny-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"White women’s fur vest\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-feher-szormemelleny-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Női fehér szőrmemellény</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-shearling-fur-budapest-480.avif 480w, /assets/images/kaftan-angelo-shearling-fur-budapest-800.avif 800w, /assets/images/kaftan-angelo-shearling-fur-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-shearling-fur-budapest-480.webp 480w, /assets/images/kaftan-angelo-shearling-fur-budapest-800.webp 800w, /assets/images/kaftan-angelo-shearling-fur-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Fur collection\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/kaftan-angelo-shearling-fur-budapest.webp\" width=\"1536\"></picture><div class=\"product-card-body\"><h3>Szőrme válogatás</h3><p>Az aktuális üzleti készlet szezonálisan változhat.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Érdeklődjön WhatsAppon</a></div></article></div></div></section><section><div class=\"wrap content\"><h2>Mire figyeljen választáskor?</h2><p>A bőrkabát illeszkedése, a bőr tapintása, a váll és az ujjhossz együtt határozza meg, hogy egy modell valóban jól áll-e. Ezért javasoljuk a személyes próbát.</p><div class=\"callout\"><strong>Kapcsolódó oldalak: </strong><a href=\"/utmutatok/borkabat-meret-utmutato/\">Méret útmutató</a> · <a href=\"/utmutatok/borkabat-apolas/\">Bőrkabát ápolása</a> · <a href=\"/egyedi-rendeles/\">Egyedi rendelés</a></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Próbálja fel Budapesten</h2><p>Kossuth Lajos u. 18 · Astoria — Ferenciek tere</p></div><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Útvonalterv</a></div></section>",
+    "pageSchema": {
+      "@type": "CollectionPage",
+      "name": "Szőrmekabátok Budapest",
+      "url": "https://kaftanangelo.com/szormekabatok/",
+      "inLanguage": "hu",
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      },
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      },
+      {
+        "name": "Kollekciók",
+        "url": "/kollekciok/"
+      },
+      {
+        "name": "Szőrmekabátok Budapest",
+        "url": "/szormekabatok/"
+      }
+    ]
+  },
+  "/gyik/": {
+    "path": "/gyik/",
+    "lang": "hu",
+    "title": "Gyakran Ismételt Kérdések | Kaftan Angelo",
+    "description": "Gyakori kérdések a Kaftan Angelo budapesti üzletéről, egyedi bőrkabát rendelésről és fizetési módokról.",
+    "canonical": "https://kaftanangelo.com/gyik/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "counterpart": "/en/faq/",
+    "mainHtml": "\n<section class=\"page-hero\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / Gyakran Ismételt Kérdések</div><span class=\"tag mono\">GYIK</span><h1>Gyakran Ismételt Kérdések</h1><p>A legfontosabb kérdések üzletünkről, egyedi rendelésről és fizetésről.</p></div></section>\n<section><div class=\"wrap faq-list\"><article><h2>Vállalnak egyedi méretre szabott bőrkabát készítést?</h2><p>Igen. Egyedi bőrkabát rendelésére van lehetőség; a fazont, színt, méretet, anyagot és az elkészítés részleteit személyesen egyeztetjük.</p></article><article><h2>Hol található a Kaftan Angelo üzlet?</h2><p>1053 Budapest, Kossuth Lajos utca 18., az Astoria és a Ferenciek tere között.</p></article><article><h2>Milyen fizetési módokat fogadnak el?</h2><p>Az üzletben készpénzes és bankkártyás fizetés is elérhető; HUF és EUR is elfogadott.</p></article><article><h2>Fel lehet próbálni a kabátokat vásárlás előtt?</h2><p>Igen. A weboldal a választékból ad ízelítőt; a modellek személyesen próbálhatók fel budapesti üzletünkben.</p></article><article><h2>Van javítási lehetőség?</h2><p>A nálunk vásárolt bőrtermékek javításának ügyintézésében segítséget nyújtunk. A lehetőség a termék állapotától és a szükséges javítástól függ.</p></article><article><h2>Milyen termékeket tartanak?</h2><p>Női és férfi valódi bőrkabátokat, bőrdzsekiket, irha- és szőrmemodelleket, valamint bőr kiegészítőket.</p></article><article><h2>Hogyan kérdezhetek rá egy konkrét modellre?</h2><p>Írhat WhatsAppon a +36 20 359 3216 számon, vagy hívhatja az üzletet a +36 1 266 7274 telefonszámon.</p></article><article><h2>Mikor van nyitva az üzlet?</h2><p>Hétfőtől péntekig 10:00–19:00, szombaton 10:00–17:00. Vasárnap zárva.</p></article></div></section>\n",
+    "pageSchema": {
+      "@type": "FAQPage",
+      "name": "Gyakran Ismételt Kérdések",
+      "url": "https://kaftanangelo.com/gyik/",
+      "inLanguage": "hu",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Vállalnak egyedi méretre szabott bőrkabát készítést?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Igen. Egyedi bőrkabát rendelésére van lehetőség; a fazont, színt, méretet, anyagot és az elkészítés részleteit személyesen egyeztetjük."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hol található a Kaftan Angelo üzlet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1053 Budapest, Kossuth Lajos utca 18., az Astoria és a Ferenciek tere között."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Milyen fizetési módokat fogadnak el?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Az üzletben készpénzes és bankkártyás fizetés is elérhető; HUF és EUR is elfogadott."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Fel lehet próbálni a kabátokat vásárlás előtt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Igen. A weboldal a választékból ad ízelítőt; a modellek személyesen próbálhatók fel budapesti üzletünkben."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Van javítási lehetőség?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A nálunk vásárolt bőrtermékek javításának ügyintézésében segítséget nyújtunk. A lehetőség a termék állapotától és a szükséges javítástól függ."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Milyen termékeket tartanak?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Női és férfi valódi bőrkabátokat, bőrdzsekiket, irha- és szőrmemodelleket, valamint bőr kiegészítőket."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Hogyan kérdezhetek rá egy konkrét modellre?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Írhat WhatsAppon a +36 20 359 3216 számon, vagy hívhatja az üzletet a +36 1 266 7274 telefonszámon."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mikor van nyitva az üzlet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hétfőtől péntekig 10:00–19:00, szombaton 10:00–17:00. Vasárnap zárva."
+          }
+        }
+      ]
+    },
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      },
+      {
+        "name": "Gyakran Ismételt Kérdések",
+        "url": "/gyik/"
+      }
+    ]
+  },
+  "/kollekciok/": {
+    "path": "/kollekciok/",
+    "lang": "hu",
+    "title": "Bőrkabát kollekciók Budapest | Kaftan Angelo",
+    "description": "Női és férfi bőrkabátok, irhakabátok, szőrmekabátok és bőr kiegészítők Budapest belvárosában.",
+    "canonical": "https://kaftanangelo.com/kollekciok/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-shearling-fur-budapest.webp",
+    "counterpart": "/en/collections/",
+    "mainHtml": "\n<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-shearling-fur-budapest-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-shearling-fur-budapest-480.avif')\"><div class=\"wrap\">\n<div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / Bőrkabát kollekciók Budapest</div><span class=\"tag mono\">Kaftan Angelo · Budapest</span>\n<h1>Kollekciók</h1><p>Fedezze fel a fő termékkategóriákat. Az online bemutató ízelítőt ad; a tényleges üzleti készlet szezonálisan változhat.</p>\n</div></section>\n<section><div class=\"wrap\"><div class=\"category-grid\">\n<a class=\"category-card\" href=\"/noi-borkabatok/\" style=\"--card-img:url('/assets/images/kaftan-angelo-womens-leather-jackets-budapest-480.avif')\"><span>01</span><h3>Női bőrkabátok</h3><p>Valódi bőrkabátok és bőrdzsekik.</p></a>\n<a class=\"category-card\" href=\"/ferfi-borkabatok/\" style=\"--card-img:url('/assets/images/kaftan-angelo-mens-leather-jackets-budapest-480.avif')\"><span>02</span><h3>Férfi bőrkabátok</h3><p>Férfi valódi bőrdzsekik több fazonban.</p></a>\n<a class=\"category-card\" href=\"/irhakabatok/\" style=\"--card-img:url('/assets/images/womens-shearling-jacket-budapest-480.avif')\"><span>03</span><h3>Irhakabátok</h3><p>Női és férfi meleg irhamodellek.</p></a>\n<a class=\"category-card\" href=\"/szormekabatok/\" style=\"--card-img:url('/assets/images/womens-fur-coat-budapest-480.avif')\"><span>04</span><h3>Szőrmekabátok</h3><p>Szőrme kabátok, dzsekik és mellények.</p></a>\n</div></div></section>\n<section class=\"split-section\"><div class=\"wrap split-grid\"><div><span class=\"tag mono\">Kiegészítők</span><h2>Bőr kiegészítők az üzletben</h2><p>Bőrövek, pénztárcák és válogatott kiegészítők is elérhetők. Az aktuális választékról érdeklődjön személyesen vagy WhatsAppon.</p><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">Érdeklődés WhatsAppon</a></div><div class=\"feature-image\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.avif 480w, /assets/images/barna-bor-penztarca-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.webp 480w, /assets/images/barna-bor-penztarca-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Barna bőr pénztárca Budapest\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/barna-bor-penztarca-budapest.webp\" width=\"900\"></picture></div></div></section>\n<section class=\"store-cta\"><div class=\"wrap\"><div><h2>Próbálja fel üzletünkben</h2><p>Kossuth Lajos u. 18 · Budapest 1053</p></div><a class=\"btn btn-primary\" href=\"/uzlet/\">Üzlet információk</a></div></section>\n",
+    "pageSchema": {
+      "@type": "CollectionPage",
+      "name": "Bőrkabát kollekciók Budapest",
+      "url": "https://kaftanangelo.com/kollekciok/",
+      "inLanguage": "hu",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      },
+      {
+        "name": "Bőrkabát kollekciók Budapest",
+        "url": "/kollekciok/"
+      }
+    ]
+  },
+  "/egyedi-rendeles/": {
+    "path": "/egyedi-rendeles/",
+    "lang": "hu",
+    "title": "Egyedi bőrkabát rendelés Budapest | Kaftan Angelo",
+    "description": "Egyedi bőrkabát rendelés és javítási ügyintézés a Kaftan Angelo budapesti üzletében.",
+    "canonical": "https://kaftanangelo.com/egyedi-rendeles/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-leather-jackets-budapest.webp",
+    "counterpart": "/en/custom-orders/",
+    "mainHtml": "\n<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-leather-jackets-budapest-480.avif')\"><div class=\"wrap\">\n<div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / Egyedi bőrkabát rendelés Budapest</div><span class=\"tag mono\">Testreszabás</span>\n<h1>Egyedi rendelés &amp; javítás</h1><p>Egyedi bőrkabát rendelésére is van lehetőség. A részleteket személyesen egyeztetjük budapesti üzletünkben.</p>\n<div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://wa.me/36203593216\">WhatsApp</a><a class=\"btn btn-ghost\" href=\"/uzlet/\">Üzlet információk</a></div>\n</div></section>\n<section><div class=\"wrap\"><div class=\"service-grid\">\n<article class=\"service-card\"><span class=\"mono\">01</span><h2>Egyedi bőrkabát rendelés</h2><p>A választható fazonokról, színekről, méretekről, anyagokról és az elkészítési időről érdeklődjön személyesen üzletünkben.</p></article>\n<article class=\"service-card\"><span class=\"mono\">02</span><h2>Javítási ügyintézés</h2><p>Segítséget nyújtunk a nálunk vásárolt bőrtermékek javításának ügyintézésében. A lehetőségek a termék állapotától és a szükséges javítástól függnek.</p></article>\n</div></div></section>\n<section class=\"store-cta\"><div class=\"wrap\"><div><h2>Beszéljük meg személyesen.</h2><p>Kossuth Lajos u. 18 · Astoria — Ferenciek tere</p></div><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Útvonalterv</a></div></section>\n",
+    "pageSchema": {
+      "@type": "Service",
+      "name": "Egyedi bőrkabát rendelés Budapest",
+      "url": "https://kaftanangelo.com/egyedi-rendeles/",
+      "inLanguage": "hu",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      },
+      {
+        "name": "Egyedi bőrkabát rendelés Budapest",
+        "url": "/egyedi-rendeles/"
+      }
+    ]
+  },
+  "/en/": {
+    "path": "/en/",
+    "lang": "en",
+    "title": "Leather Jackets Budapest | Kaftan Angelo Leather Store",
+    "description": "Genuine leather jackets for women and men, shearling and fur styles in central Budapest. Visit Kaftan Angelo at Kossuth Lajos u. 18.",
+    "canonical": "https://kaftanangelo.com/en/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "counterpart": "/",
+    "mainHtml": "\n<section class=\"home-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\">\n<div class=\"wrap home-hero-inner\">\n<span class=\"tag mono\">Kaftan Angelo · Budapest</span>\n<h1>Genuine leather jackets in central Budapest.</h1>\n<p>Men’s and women’s genuine leather jackets, shearling and fur styles, in-store fitting and custom-order options at Kossuth Lajos utca 18.</p>\n<div class=\"actions\"><a class=\"btn btn-primary\" href=\"/en/collections/\">Explore collections</a><a class=\"btn btn-ghost\" href=\"/en/visit/\">Visit the store</a></div>\n<div class=\"proofs\"><span class=\"pill\">Budapest District V</span><span class=\"pill\">Custom orders</span><span class=\"pill\">Repair assistance</span></div>\n</div>\n</section>\n<section><div class=\"wrap\">\n<div class=\"section-head\"><div><span class=\"tag mono\">Collections</span><h2>Choose a category</h2></div><p>The homepage is now an entry point; each collection has its own dedicated page.</p></div>\n<div class=\"category-grid\">\n<a class=\"category-card\" href=\"/en/womens-leather-jackets/\" style=\"--card-img:url('/assets/images/kaftan-angelo-womens-leather-jackets-budapest-480.avif')\"><span>01</span><h3>Women’s leather jackets</h3><p>Genuine leather jackets and coats for women.</p></a>\n<a class=\"category-card\" href=\"/en/mens-leather-jackets/\" style=\"--card-img:url('/assets/images/kaftan-angelo-mens-leather-jackets-budapest-480.avif')\"><span>02</span><h3>Men’s leather jackets</h3><p>Classic, biker and modern leather jackets.</p></a>\n<a class=\"category-card\" href=\"/en/shearling-jackets/\" style=\"--card-img:url('/assets/images/womens-shearling-jacket-budapest-480.avif')\"><span>03</span><h3>Shearling jackets</h3><p>Warm shearling styles for women and men.</p></a>\n<a class=\"category-card\" href=\"/en/fur-coats/\" style=\"--card-img:url('/assets/images/womens-fur-coat-budapest-480.avif')\"><span>04</span><h3>Fur jackets &amp; coats</h3><p>Fur coats, jackets and vests.</p></a>\n</div>\n<div class=\"center-action\"><a class=\"btn btn-ghost\" href=\"/en/collections/\">View all collections</a></div>\n</div></section>\n<section class=\"split-section\"><div class=\"wrap split-grid\">\n<div><span class=\"tag mono\">Custom orders &amp; repairs</span><h2>When the right piece is not in the collection.</h2><p>Custom leather jacket orders are available. Visit the store to discuss style, colour, sizing, materials and estimated completion time.</p><a class=\"text-link\" href=\"/en/custom-orders/\">Custom order details →</a></div>\n<div class=\"feature-image\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-leather-jackets-budapest-480.avif 480w, /assets/images/kaftan-angelo-leather-jackets-budapest-800.avif 800w, /assets/images/kaftan-angelo-leather-jackets-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-leather-jackets-budapest-480.webp 480w, /assets/images/kaftan-angelo-leather-jackets-budapest-800.webp 800w, /assets/images/kaftan-angelo-leather-jackets-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Kaftan Angelo leather jackets Budapest\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/kaftan-angelo-leather-jackets-budapest.webp\" width=\"1535\"></picture></div>\n</div></section>\n<section><div class=\"wrap\">\n<div class=\"section-head\"><div><span class=\"tag mono\">Guides</span><h2>Useful information before and after buying leather</h2></div><a class=\"text-link\" href=\"/en/guides/\">All guides →</a></div>\n<div class=\"guide-list\">\n<article class=\"guide-card\"><h3>Leather jacket care</h3><p>Practical basics for daily care and what to avoid.</p><a href=\"/en/guides/leather-jacket-care/\">Read guide</a></article>\n<article class=\"guide-card\"><h3>How to tell real leather</h3><p>What to look for in texture, surface and construction.</p><a href=\"/en/guides/how-to-tell-real-leather/\">Read guide</a></article>\n<article class=\"guide-card\"><h3>Leather jacket fit guide</h3><p>Shoulders, sleeve length and fit: why trying it on matters.</p><a href=\"/en/guides/leather-jacket-fit-guide/\">Read guide</a></article>\n</div>\n</div></section>\n<section class=\"partner-teaser\"><div class=\"wrap split-grid\">\n<div><span class=\"tag mono\">Partner Program</span><h2>We work with tourism professionals in Budapest.</h2><p>Hotels, concierges, tour guides, apartment operators and travel professionals have a dedicated partner program.</p><div class=\"proofs\"><span class=\"pill\">Over 15 partners</span></div><a class=\"btn btn-ghost\" href=\"/en/partners/\">Partner program details</a></div>\n<div class=\"mini-panel\"><strong>Dedicated B2B page</strong><p>Partnership terms, contact, process and partner feedback now live on a separate page rather than inside the consumer homepage.</p></div>\n</div></section>\n<section class=\"store-cta\"><div class=\"wrap\">\n<div><span class=\"tag mono\">Visit</span><h2>Try the collection in person in central Budapest.</h2><p>Kossuth Lajos u. 18 · Astoria — Ferenciek tere</p></div>\n<div class=\"actions\"><a class=\"btn btn-primary\" href=\"/en/visit/\">Opening hours &amp; contact</a><a class=\"btn btn-ghost\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Get directions</a></div>\n</div></section>\n",
+    "pageSchema": {
+      "@type": "WebPage",
+      "name": "Leather Jackets Budapest",
+      "url": "https://kaftanangelo.com/en/",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      }
+    ]
+  },
+  "/uzlet/": {
+    "path": "/uzlet/",
+    "lang": "hu",
+    "title": "Kaftan Angelo üzlet Budapest | Nyitvatartás és cím",
+    "description": "Kaftan Angelo: Kossuth Lajos u. 18, Budapest 1053. Nyitvatartás, telefon, WhatsApp és térkép.",
+    "canonical": "https://kaftanangelo.com/uzlet/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "counterpart": "/en/visit/",
+    "mainHtml": "\n<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\"><div class=\"wrap\">\n<div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / Kaftan Angelo üzlet Budapest</div><span class=\"tag mono\">Látogasson el hozzánk</span>\n<h1>Kaftan Angelo Budapest</h1><p>Budapest belvárosában, Astoria és a Ferenciek tere között.</p>\n<div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Térkép megnyitása</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div>\n</div></section>\n<section><div class=\"wrap visit-layout\">\n<div class=\"contact-card\"><h2>Elérhetőség</h2><dl class=\"details\"><dt>Cím</dt><dd>Kossuth Lajos u. 18, Budapest 1053</dd><dt>Telefon</dt><dd><a href=\"tel:+3612667274\">+36&nbsp;1&nbsp;266&nbsp;7274</a></dd><dt>WhatsApp</dt><dd><a href=\"https://wa.me/36203593216\">+36 20 359 3216</a></dd></dl></div>\n<div class=\"contact-card\"><h2>Nyitvatartás</h2><div class=\"hours\"><div><span>Hétfő–Péntek</span><b>10:00–19:00</b></div><div><span>Szombat</span><b>10:00–17:00</b></div><div><span>Vasárnap</span><b>Zárva</b></div></div></div>\n</div></section>\n<section><div class=\"wrap\"><div class=\"map-frame\"><iframe loading=\"lazy\" src=\"https://www.google.com/maps?q=Kossuth%20Lajos%20u.%2018%2C%20Budapest%201053&amp;output=embed\" title=\"Kaftan Angelo térkép\"></iframe></div></div></section>\n<section class=\"store-cta\"><div class=\"wrap\"><div><h2>Kérdése van egy modellről?</h2><p>Írjon WhatsAppon, vagy látogasson el személyesen.</p></div><a class=\"btn btn-primary\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></section>\n",
+    "pageSchema": {
+      "@type": "ContactPage",
+      "name": "Kaftan Angelo üzlet Budapest",
+      "url": "https://kaftanangelo.com/uzlet/",
+      "inLanguage": "hu",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      },
+      {
+        "name": "Kaftan Angelo üzlet Budapest",
+        "url": "/uzlet/"
+      }
+    ]
+  },
+  "/en/visit/": {
+    "path": "/en/visit/",
+    "lang": "en",
+    "title": "Visit Kaftan Angelo Budapest | Opening Hours & Address",
+    "description": "Kaftan Angelo at Kossuth Lajos u. 18, Budapest 1053. Opening hours, phone, WhatsApp and map.",
+    "canonical": "https://kaftanangelo.com/en/visit/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "counterpart": "/uzlet/",
+    "mainHtml": "\n<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\"><div class=\"wrap\">\n<div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / Visit Kaftan Angelo Budapest</div><span class=\"tag mono\">Visit Us</span>\n<h1>Kaftan Angelo Budapest</h1><p>In central Budapest, between Astoria and Ferenciek tere.</p>\n<div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Open map</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div>\n</div></section>\n<section><div class=\"wrap visit-layout\">\n<div class=\"contact-card\"><h2>Contact</h2><dl class=\"details\"><dt>Address</dt><dd>Kossuth Lajos u. 18, Budapest 1053</dd><dt>Phone</dt><dd><a href=\"tel:+3612667274\">+36&nbsp;1&nbsp;266&nbsp;7274</a></dd><dt>WhatsApp</dt><dd><a href=\"https://wa.me/36203593216\">+36 20 359 3216</a></dd></dl></div>\n<div class=\"contact-card\"><h2>Opening hours</h2><div class=\"hours\"><div><span>Monday–Friday</span><b>10:00–19:00</b></div><div><span>Saturday</span><b>10:00–17:00</b></div><div><span>Sunday</span><b>Closed</b></div></div></div>\n</div></section>\n<section><div class=\"wrap\"><div class=\"map-frame\"><iframe loading=\"lazy\" src=\"https://www.google.com/maps?q=Kossuth%20Lajos%20u.%2018%2C%20Budapest%201053&amp;output=embed\" title=\"Kaftan Angelo map\"></iframe></div></div></section>\n<section class=\"store-cta\"><div class=\"wrap\"><div><h2>Have a question about a style?</h2><p>Message us on WhatsApp or visit the store.</p></div><a class=\"btn btn-primary\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></section>\n",
+    "pageSchema": {
+      "@type": "ContactPage",
+      "name": "Visit Kaftan Angelo Budapest",
+      "url": "https://kaftanangelo.com/en/visit/",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      },
+      {
+        "name": "Visit Kaftan Angelo Budapest",
+        "url": "/en/visit/"
+      }
+    ]
+  },
+  "/en/shearling-jackets/": {
+    "path": "/en/shearling-jackets/",
+    "lang": "en",
+    "title": "Shearling Jackets Budapest | Kaftan Angelo",
+    "description": "Women’s and men’s shearling jackets and coats at Kaftan Angelo in Budapest.",
+    "canonical": "https://kaftanangelo.com/en/shearling-jackets/",
+    "ogImage": "https://kaftanangelo.com/womens-shearling-jacket-budapest.webp",
+    "counterpart": "/irhakabatok/",
+    "mainHtml": "<section class=\"page-hero\" style=\"--hero:url('/assets/images/womens-shearling-jacket-budapest-800.avif');--hero-mobile:url('/assets/images/womens-shearling-jacket-budapest-480.avif')\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / <a href=\"/en/collections/\">Collections</a> / Shearling Jackets Budapest</div><span class=\"tag mono\">Kaftan Angelo · Budapest</span><h1>Shearling Jackets Budapest</h1><p>Women’s and men’s shearling jackets and coats at Kaftan Angelo in Budapest.</p><div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Try it on in store</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Selection</span><h2>A few styles from the collection</h2></div><p>The models shown online are a preview of the in-store selection.</p></div><div class=\"product-grid\"><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-shearling-jacket-budapest-480.avif 480w, /assets/images/womens-shearling-jacket-budapest-800.avif 800w, /assets/images/womens-shearling-jacket-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-shearling-jacket-budapest-480.webp 480w, /assets/images/womens-shearling-jacket-budapest-800.webp 800w, /assets/images/womens-shearling-jacket-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Women’s shearling jacket\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/womens-shearling-jacket-budapest.webp\" width=\"1536\"></picture><div class=\"product-card-body\"><h3>Women’s shearling jacket</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.avif 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.webp 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Dark brown men’s shearling jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-sotetbarna-irhadzseki-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Dark brown men’s shearling jacket</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Light brown men’s shearling coat\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-vilagosbarna-irhakabat-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Light brown men’s shearling coat</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Brown men’s shearling coat\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-barna-irhakabat-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Brown men’s shearling coat</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-shearling-fur-budapest-480.avif 480w, /assets/images/kaftan-angelo-shearling-fur-budapest-800.avif 800w, /assets/images/kaftan-angelo-shearling-fur-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-shearling-fur-budapest-480.webp 480w, /assets/images/kaftan-angelo-shearling-fur-budapest-800.webp 800w, /assets/images/kaftan-angelo-shearling-fur-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Shearling and fur collection\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/kaftan-angelo-shearling-fur-budapest.webp\" width=\"1536\"></picture><div class=\"product-card-body\"><h3>Shearling and fur collection</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article></div></div></section><section><div class=\"wrap content\"><h2>What to consider when choosing</h2><p>Fit, leather feel, shoulder placement and sleeve length all determine whether a jacket truly works for you. That is why we recommend trying styles on in person.</p><div class=\"callout\"><strong>Related pages: </strong><a href=\"/en/guides/leather-jacket-fit-guide/\">Fit guide</a> · <a href=\"/en/guides/leather-jacket-care/\">Leather care</a> · <a href=\"/en/custom-orders/\">Custom orders</a></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Try it on in Budapest</h2><p>Kossuth Lajos u. 18 · Astoria — Ferenciek tere</p></div><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Get directions</a></div></section>",
+    "pageSchema": {
+      "@type": "CollectionPage",
+      "name": "Shearling Jackets Budapest",
+      "url": "https://kaftanangelo.com/en/shearling-jackets/",
+      "inLanguage": "en",
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      },
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      },
+      {
+        "name": "Collections",
+        "url": "/en/collections/"
+      },
+      {
+        "name": "Shearling Jackets Budapest",
+        "url": "/en/shearling-jackets/"
+      }
+    ]
+  },
+  "/en/custom-orders/": {
+    "path": "/en/custom-orders/",
+    "lang": "en",
+    "title": "Custom Leather Jackets Budapest | Kaftan Angelo",
+    "description": "Custom leather jacket orders and repair assistance at the Kaftan Angelo store in central Budapest.",
+    "canonical": "https://kaftanangelo.com/en/custom-orders/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-leather-jackets-budapest.webp",
+    "counterpart": "/egyedi-rendeles/",
+    "mainHtml": "\n<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-leather-jackets-budapest-480.avif')\"><div class=\"wrap\">\n<div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / Custom Leather Jackets Budapest</div><span class=\"tag mono\">Customization</span>\n<h1>Custom Orders &amp; Repairs</h1><p>Custom leather jacket orders are available. Details are discussed in person at our Budapest store.</p>\n<div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://wa.me/36203593216\">WhatsApp</a><a class=\"btn btn-ghost\" href=\"/en/visit/\">Store information</a></div>\n</div></section>\n<section><div class=\"wrap\"><div class=\"service-grid\">\n<article class=\"service-card\"><span class=\"mono\">01</span><h2>Custom leather orders</h2><p>Visit our store to discuss possible styles, colours, sizing, materials and estimated completion time.</p></article>\n<article class=\"service-card\"><span class=\"mono\">02</span><h2>Repair assistance</h2><p>We can assist with arranging repairs for leather items purchased from our store. Available options depend on the condition of the item and the type of repair required.</p></article>\n</div></div></section>\n<section class=\"store-cta\"><div class=\"wrap\"><div><h2>Let’s discuss it in store.</h2><p>Kossuth Lajos u. 18 · Astoria — Ferenciek tere</p></div><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Get directions</a></div></section>\n",
+    "pageSchema": {
+      "@type": "Service",
+      "name": "Custom Leather Jackets Budapest",
+      "url": "https://kaftanangelo.com/en/custom-orders/",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      },
+      {
+        "name": "Custom Leather Jackets Budapest",
+        "url": "/en/custom-orders/"
+      }
+    ]
+  },
+  "/en/collections/": {
+    "path": "/en/collections/",
+    "lang": "en",
+    "title": "Leather Jacket Collections Budapest | Kaftan Angelo",
+    "description": "Women’s and men’s leather jackets, shearling, fur and leather accessories in central Budapest.",
+    "canonical": "https://kaftanangelo.com/en/collections/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-shearling-fur-budapest.webp",
+    "counterpart": "/kollekciok/",
+    "mainHtml": "\n<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-shearling-fur-budapest-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-shearling-fur-budapest-480.avif')\"><div class=\"wrap\">\n<div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / Leather Jacket Collections Budapest</div><span class=\"tag mono\">Kaftan Angelo · Budapest</span>\n<h1>Collections</h1><p>Explore the main product categories. The online selection is a preview; in-store availability can change seasonally.</p>\n</div></section>\n<section><div class=\"wrap\"><div class=\"category-grid\">\n<a class=\"category-card\" href=\"/en/womens-leather-jackets/\" style=\"--card-img:url('/assets/images/kaftan-angelo-womens-leather-jackets-budapest-480.avif')\"><span>01</span><h3>Women’s leather jackets</h3><p>Genuine leather jackets and coats.</p></a>\n<a class=\"category-card\" href=\"/en/mens-leather-jackets/\" style=\"--card-img:url('/assets/images/kaftan-angelo-mens-leather-jackets-budapest-480.avif')\"><span>02</span><h3>Men’s leather jackets</h3><p>Genuine leather jackets in different cuts.</p></a>\n<a class=\"category-card\" href=\"/en/shearling-jackets/\" style=\"--card-img:url('/assets/images/womens-shearling-jacket-budapest-480.avif')\"><span>03</span><h3>Shearling jackets</h3><p>Warm shearling styles for women and men.</p></a>\n<a class=\"category-card\" href=\"/en/fur-coats/\" style=\"--card-img:url('/assets/images/womens-fur-coat-budapest-480.avif')\"><span>04</span><h3>Fur jackets &amp; coats</h3><p>Fur coats, jackets and vests.</p></a>\n</div></div></section>\n<section class=\"split-section\"><div class=\"wrap split-grid\"><div><span class=\"tag mono\">Accessories</span><h2>Leather accessories in store</h2><p>Leather belts, wallets and selected accessories are also available. Ask in store or on WhatsApp for current availability.</p><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div><div class=\"feature-image\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.avif 480w, /assets/images/barna-bor-penztarca-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.webp 480w, /assets/images/barna-bor-penztarca-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Brown leather wallet Budapest\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/barna-bor-penztarca-budapest.webp\" width=\"900\"></picture></div></div></section>\n<section class=\"store-cta\"><div class=\"wrap\"><div><h2>Try the collection in store</h2><p>Kossuth Lajos u. 18 · Budapest 1053</p></div><a class=\"btn btn-primary\" href=\"/en/visit/\">Store information</a></div></section>\n",
+    "pageSchema": {
+      "@type": "CollectionPage",
+      "name": "Leather Jacket Collections Budapest",
+      "url": "https://kaftanangelo.com/en/collections/",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      },
+      {
+        "name": "Leather Jacket Collections Budapest",
+        "url": "/en/collections/"
+      }
+    ]
+  },
+  "/en/leather-jackets-budapest/": {
+    "path": "/en/leather-jackets-budapest/",
+    "lang": "en",
+    "title": "Leather Jackets Budapest | Kaftan Angelo",
+    "description": "Genuine leather jackets in central Budapest for women and men, plus shearling and fur styles at Kossuth Lajos u. 18.",
+    "canonical": "https://kaftanangelo.com/en/leather-jackets-budapest/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "counterpart": "/borkabat-budapest/",
+    "mainHtml": "<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\"><div class=\"wrap\"><span class=\"tag mono\">Kaftan Angelo · Budapest</span><h1>Leather Jackets Budapest</h1><p>Genuine leather jackets in central Budapest for women and men, plus shearling and fur styles at Kossuth Lajos u. 18.</p><div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Get directions</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Collections</span><h2>Choose a category</h2></div></div><div class=\"grid\"><article class=\"card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-leather-jacket-budapest-480.avif 480w, /assets/images/womens-leather-jacket-budapest-800.avif 800w, /assets/images/womens-leather-jacket-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-leather-jacket-budapest-480.webp 480w, /assets/images/womens-leather-jacket-budapest-800.webp 800w, /assets/images/womens-leather-jacket-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Women's leather jackets\" decoding=\"async\" height=\"854\" loading=\"lazy\" src=\"/womens-leather-jacket-budapest.webp\" width=\"1600\"></picture><div class=\"card-body\"><h3>Women's leather jackets</h3><a class=\"text-link\" href=\"/en/womens-leather-jackets/\">Explore</a></div></article><article class=\"card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-mens-leather-jackets-budapest-480.avif 480w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-800.avif 800w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-mens-leather-jackets-budapest-480.webp 480w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-800.webp 800w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Men's leather jackets\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/kaftan-angelo-mens-leather-jackets-budapest.webp\" width=\"1536\"></picture><div class=\"card-body\"><h3>Men's leather jackets</h3><a class=\"text-link\" href=\"/en/mens-leather-jackets/\">Explore</a></div></article><article class=\"card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-shearling-jacket-budapest-480.avif 480w, /assets/images/womens-shearling-jacket-budapest-800.avif 800w, /assets/images/womens-shearling-jacket-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-shearling-jacket-budapest-480.webp 480w, /assets/images/womens-shearling-jacket-budapest-800.webp 800w, /assets/images/womens-shearling-jacket-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Shearling\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/womens-shearling-jacket-budapest.webp\" width=\"1536\"></picture><div class=\"card-body\"><h3>Shearling</h3><a class=\"text-link\" href=\"/en/shearling-jackets/\">Explore</a></div></article><article class=\"card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-fur-coat-budapest-480.avif 480w, /assets/images/womens-fur-coat-budapest-800.avif 800w, /assets/images/womens-fur-coat-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-fur-coat-budapest-480.webp 480w, /assets/images/womens-fur-coat-budapest-800.webp 800w, /assets/images/womens-fur-coat-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Fur\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/womens-fur-coat-budapest.webp\" width=\"1536\"></picture><div class=\"card-body\"><h3>Fur</h3><a class=\"text-link\" href=\"/en/fur-coats/\">Explore</a></div></article></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Try the collection in central Budapest</h2><p>Kossuth Lajos u. 18 · 1053 Budapest</p></div><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Get directions</a></div></section>",
+    "pageSchema": {
+      "@type": "WebPage",
+      "name": "Leather Jackets Budapest | Kaftan Angelo",
+      "url": "https://kaftanangelo.com/en/leather-jackets-budapest/",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      },
+      {
+        "name": "Leather Jackets Budapest",
+        "url": "/en/leather-jackets-budapest/"
+      }
+    ]
+  },
+  "/en/partners/": {
+    "path": "/en/partners/",
+    "lang": "en",
+    "title": "Partner Program | Kaftan Angelo Budapest",
+    "description": "Partner with Kaftan Angelo: a Budapest leather shopping experience for hotel guests, tour clients and travellers.",
+    "canonical": "https://kaftanangelo.com/en/partners/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "counterpart": "/partnerprogram/",
+    "mainHtml": "<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / Partner Program</div><span class=\"tag mono\">Kaftan Angelo · Budapest</span><h1>Partner program for Budapest tourism professionals</h1><p>Recommend a personal leather shopping experience in central Budapest. We welcome hotels, concierges, tour guides, apartment hosts and travel agencies to our partner network.</p><div class=\"proofs\"><span class=\"pill\">Over 15 partners</span><span class=\"pill\">Kossuth Lajos u. 18</span><span class=\"pill\">Direct partnership discussion</span></div><div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://wa.me/36203593216?text=Hello%21%20I%20would%20like%20to%20learn%20about%20the%20Kaftan%20Angelo%20partner%20program.\">Discuss on WhatsApp</a></div></div></section><section><div class=\"wrap partner-layout\"><div><div class=\"section-head\"><div><span class=\"tag mono\">Who is it for?</span><h2>An easy experience to recommend to your guests</h2></div></div><div class=\"grid\"><article class=\"card\"><div class=\"card-body\"><h3>Hotel &amp; concierge</h3><p>A personal, central Budapest shopping option for premium guests.</p></div></article><article class=\"card\"><div class=\"card-body\"><h3>Tour guides</h3><p>A local recommendation that can fit naturally into a guest's Budapest itinerary.</p></div></article><article class=\"card\"><div class=\"card-body\"><h3>Apartments &amp; travel agencies</h3><p>No stock or order handling for the partner; purchases happen directly in our store.</p></div></article></div></div><aside class=\"contact-card\"><h2>Let's discuss working together</h2><form data-partner-form=\"\"><label>Name<input name=\"name\" required type=\"text\"></label><label>Company / accommodation<input name=\"company\" required type=\"text\"></label><label>Email<input name=\"email\" required type=\"email\"></label><label>Phone<input name=\"phone\" type=\"text\"></label><label>Partner type<select name=\"type\"><option>Hotel / concierge</option><option>Tour guide</option><option>Airbnb / apartment</option><option>Travel agency</option><option>Other</option></select></label><label>Message<textarea name=\"message\" required></textarea></label><button class=\"btn btn-primary\" type=\"submit\">Prepare email</button></form></aside></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Process</span><h2>Working together in three steps</h2></div></div><div class=\"steps\"><div class=\"step\"><b>01</b><h3>Let's get acquainted</h3><p>Tell us which hotel, accommodation or guiding service you represent.</p></div><div class=\"step\"><b>02</b><h3>Agree the details</h3><p>We discuss how referrals work and agree the partnership terms before guests are directed to us.</p></div><div class=\"step\"><b>03</b><h3>Refer your guests</h3><p>Your guests can explore and try on the available models at Kossuth Lajos utca 18.</p></div></div></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Partner feedback</span><h2>What our partners say</h2></div><p>Feedback from our existing partner network.</p></div><div class=\"partner-review-marquee\" tabindex=\"0\"><div class=\"partner-review-track\"><div class=\"partner-review-group\"><figure class=\"testimonial\"><blockquote>My guests expect the best. Kaftan Angelo’s VIP service never disappoints. A truly reliable partner.</blockquote><figcaption><span class=\"avatar\">ZV</span><span>Zsófia V. – Luxury Hotel Concierge</span></figcaption></figure><figure class=\"testimonial\"><blockquote>Quality is guaranteed, and the commission system is incredibly transparent and punctual. Highly recommended for tourism professionals.</blockquote><figcaption><span class=\"avatar\">SN</span><span>Szilárd N. – Professional Tour Guide</span></figcaption></figure><figure class=\"testimonial\"><blockquote>The exclusive discounts for my guests—especially on Thursdays and Fridays—have boosted my own Airbnb ratings! A fantastic collaboration.</blockquote><figcaption><span class=\"avatar\">ML</span><span>Márton L. – Airbnb Superhost</span></figcaption></figure><figure class=\"testimonial\"><blockquote>Since 1973, they’ve mastered the craft of leather. I always send my premium clients here because I know they are in good hands.</blockquote><figcaption><span class=\"avatar\">PF</span><span>Péter F. – Private Guide</span></figcaption></figure><figure class=\"testimonial\"><blockquote>Trust is everything. When I recommend Kaftan Angelo, our hotel guests return with beautiful jackets and wonderful experiences.</blockquote><figcaption><span class=\"avatar\">ET</span><span>Eszter T. – Boutique Hotel Manager</span></figcaption></figure><figure class=\"testimonial\"><blockquote>They handle large tour groups smoothly. The welcoming coffee and hospitality create an instant connection with weary travelers.</blockquote><figcaption><span class=\"avatar\">KB</span><span>Katalin B. – Travel Agency Coordinator</span></figcaption></figure><figure class=\"testimonial\"><blockquote>A brilliant partner program. It requires zero extra effort from my side but provides a steady, transparent additional income.</blockquote><figcaption><span class=\"avatar\">BD</span><span>Bence D. – Apartment Network Owner</span></figcaption></figure></div><div aria-hidden=\"true\" class=\"partner-review-group\"><figure class=\"testimonial\"><blockquote>My guests expect the best. Kaftan Angelo’s VIP service never disappoints. A truly reliable partner.</blockquote><figcaption><span class=\"avatar\">ZV</span><span>Zsófia V. – Luxury Hotel Concierge</span></figcaption></figure><figure class=\"testimonial\"><blockquote>Quality is guaranteed, and the commission system is incredibly transparent and punctual. Highly recommended for tourism professionals.</blockquote><figcaption><span class=\"avatar\">SN</span><span>Szilárd N. – Professional Tour Guide</span></figcaption></figure><figure class=\"testimonial\"><blockquote>The exclusive discounts for my guests—especially on Thursdays and Fridays—have boosted my own Airbnb ratings! A fantastic collaboration.</blockquote><figcaption><span class=\"avatar\">ML</span><span>Márton L. – Airbnb Superhost</span></figcaption></figure><figure class=\"testimonial\"><blockquote>Since 1973, they’ve mastered the craft of leather. I always send my premium clients here because I know they are in good hands.</blockquote><figcaption><span class=\"avatar\">PF</span><span>Péter F. – Private Guide</span></figcaption></figure><figure class=\"testimonial\"><blockquote>Trust is everything. When I recommend Kaftan Angelo, our hotel guests return with beautiful jackets and wonderful experiences.</blockquote><figcaption><span class=\"avatar\">ET</span><span>Eszter T. – Boutique Hotel Manager</span></figcaption></figure><figure class=\"testimonial\"><blockquote>They handle large tour groups smoothly. The welcoming coffee and hospitality create an instant connection with weary travelers.</blockquote><figcaption><span class=\"avatar\">KB</span><span>Katalin B. – Travel Agency Coordinator</span></figcaption></figure><figure class=\"testimonial\"><blockquote>A brilliant partner program. It requires zero extra effort from my side but provides a steady, transparent additional income.</blockquote><figcaption><span class=\"avatar\">BD</span><span>Bence D. – Apartment Network Owner</span></figcaption></figure></div></div></div></div></section>",
+    "pageSchema": {
+      "@type": "WebPage",
+      "name": "Partner Program | Kaftan Angelo Budapest",
+      "url": "https://kaftanangelo.com/en/partners/",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      },
+      {
+        "name": "Partner Program",
+        "url": "/en/partners/"
+      }
+    ]
+  },
+  "/en/fur-coats/": {
+    "path": "/en/fur-coats/",
+    "lang": "en",
+    "title": "Fur Coats Budapest | Kaftan Angelo",
+    "description": "Women’s fur coats, jackets and vests in central Budapest at Kaftan Angelo.",
+    "canonical": "https://kaftanangelo.com/en/fur-coats/",
+    "ogImage": "https://kaftanangelo.com/womens-fur-coat-budapest.webp",
+    "counterpart": "/szormekabatok/",
+    "mainHtml": "<section class=\"page-hero\" style=\"--hero:url('/assets/images/womens-fur-coat-budapest-800.avif');--hero-mobile:url('/assets/images/womens-fur-coat-budapest-480.avif')\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / <a href=\"/en/collections/\">Collections</a> / Fur Coats Budapest</div><span class=\"tag mono\">Kaftan Angelo · Budapest</span><h1>Fur Coats Budapest</h1><p>Women’s fur coats, jackets and vests in central Budapest at Kaftan Angelo.</p><div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Try it on in store</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Selection</span><h2>A few styles from the collection</h2></div><p>The models shown online are a preview of the in-store selection.</p></div><div class=\"product-grid\"><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-fur-coat-budapest-480.avif 480w, /assets/images/womens-fur-coat-budapest-800.avif 800w, /assets/images/womens-fur-coat-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-fur-coat-budapest-480.webp 480w, /assets/images/womens-fur-coat-budapest-800.webp 800w, /assets/images/womens-fur-coat-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Women’s fur coat\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/womens-fur-coat-budapest.webp\" width=\"1536\"></picture><div class=\"product-card-body\"><h3>Women’s fur coat</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.avif 480w, /assets/images/noi-feher-szormemelleny-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.webp 480w, /assets/images/noi-feher-szormemelleny-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"White women’s fur vest\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-feher-szormemelleny-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>White women’s fur vest</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-shearling-fur-budapest-480.avif 480w, /assets/images/kaftan-angelo-shearling-fur-budapest-800.avif 800w, /assets/images/kaftan-angelo-shearling-fur-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-shearling-fur-budapest-480.webp 480w, /assets/images/kaftan-angelo-shearling-fur-budapest-800.webp 800w, /assets/images/kaftan-angelo-shearling-fur-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Fur collection\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/kaftan-angelo-shearling-fur-budapest.webp\" width=\"1536\"></picture><div class=\"product-card-body\"><h3>Fur collection</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article></div></div></section><section><div class=\"wrap content\"><h2>What to consider when choosing</h2><p>Fit, leather feel, shoulder placement and sleeve length all determine whether a jacket truly works for you. That is why we recommend trying styles on in person.</p><div class=\"callout\"><strong>Related pages: </strong><a href=\"/en/guides/leather-jacket-fit-guide/\">Fit guide</a> · <a href=\"/en/guides/leather-jacket-care/\">Leather care</a> · <a href=\"/en/custom-orders/\">Custom orders</a></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Try it on in Budapest</h2><p>Kossuth Lajos u. 18 · Astoria — Ferenciek tere</p></div><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Get directions</a></div></section>",
+    "pageSchema": {
+      "@type": "CollectionPage",
+      "name": "Fur Coats Budapest",
+      "url": "https://kaftanangelo.com/en/fur-coats/",
+      "inLanguage": "en",
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      },
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      },
+      {
+        "name": "Collections",
+        "url": "/en/collections/"
+      },
+      {
+        "name": "Fur Coats Budapest",
+        "url": "/en/fur-coats/"
+      }
+    ]
+  },
+  "/en/faq/": {
+    "path": "/en/faq/",
+    "lang": "en",
+    "title": "FAQ | Kaftan Angelo Budapest",
+    "description": "Frequently asked questions about Kaftan Angelo, custom leather jacket orders and payment methods.",
+    "canonical": "https://kaftanangelo.com/en/faq/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "counterpart": "/gyik/",
+    "mainHtml": "\n<section class=\"page-hero\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / FAQ</div><span class=\"tag mono\">FAQ</span><h1>Frequently Asked Questions</h1><p>Key questions about our store, custom orders and payment.</p></div></section>\n<section><div class=\"wrap faq-list\"><article><h2>Do you offer made-to-measure leather jackets?</h2><p>Yes. Custom leather jacket orders are available; style, colour, sizing, material and production details are discussed in person.</p></article><article><h2>Where is the Kaftan Angelo store?</h2><p>1053 Budapest, Kossuth Lajos utca 18, between Astoria and Ferenciek tere.</p></article><article><h2>What payment methods do you accept?</h2><p>Cash and credit card payments are available in store; HUF and EUR are accepted.</p></article><article><h2>Can I try the jackets on before buying?</h2><p>Yes. The website shows a selection; garments can be tried on in person at our Budapest store.</p></article><article><h2>Do you offer repairs?</h2><p>We can assist with arranging repairs for leather items purchased from our store. Options depend on the condition of the item and the type of repair required.</p></article><article><h2>What products do you carry?</h2><p>Genuine leather jackets and coats for women and men, shearling and fur styles, plus leather accessories.</p></article><article><h2>How can I ask about a specific model?</h2><p>Message us on WhatsApp at +36 20 359 3216 or call the store at +36 1 266 7274.</p></article><article><h2>What are the opening hours?</h2><p>Monday to Friday 10:00–19:00, Saturday 10:00–17:00. Closed Sunday.</p></article></div></section>\n",
+    "pageSchema": {
+      "@type": "FAQPage",
+      "name": "FAQ",
+      "url": "https://kaftanangelo.com/en/faq/",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do you offer made-to-measure leather jackets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Custom leather jacket orders are available; style, colour, sizing, material and production details are discussed in person."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is the Kaftan Angelo store?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1053 Budapest, Kossuth Lajos utca 18, between Astoria and Ferenciek tere."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What payment methods do you accept?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cash and credit card payments are available in store; HUF and EUR are accepted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I try the jackets on before buying?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The website shows a selection; garments can be tried on in person at our Budapest store."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer repairs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We can assist with arranging repairs for leather items purchased from our store. Options depend on the condition of the item and the type of repair required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What products do you carry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Genuine leather jackets and coats for women and men, shearling and fur styles, plus leather accessories."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I ask about a specific model?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Message us on WhatsApp at +36 20 359 3216 or call the store at +36 1 266 7274."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the opening hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Monday to Friday 10:00–19:00, Saturday 10:00–17:00. Closed Sunday."
+          }
+        }
+      ]
+    },
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      },
+      {
+        "name": "FAQ",
+        "url": "/en/faq/"
+      }
+    ]
+  },
+  "/en/about/": {
+    "path": "/en/about/",
+    "lang": "en",
+    "title": "About Kaftan Angelo | Leather Store Budapest",
+    "description": "The Kaftan Angelo story: leather craftsmanship from Istanbul and a Budapest city-centre store since 2004.",
+    "canonical": "https://kaftanangelo.com/en/about/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "counterpart": "/rolunk/",
+    "mainHtml": "\n<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\"><div class=\"wrap\">\n<div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / About Kaftan Angelo</div><span class=\"tag mono\">Our Story</span>\n<h1>From Istanbul to the heart of Budapest</h1><p>Kaftan Angelo is a leather and fur clothing store in central Budapest, between Astoria and Ferenciek tere.</p>\n</div></section>\n<section><div class=\"wrap timeline\">\n<article><span class=\"timeline-year\">1973 · ISTANBUL</span><h2>The story began with the craft of leather.</h2><p>Angelo began working with leather in Istanbul in 1973.</p></article>\n<article><span class=\"timeline-year\">2004 · BUDAPEST</span><h2>The experience found a new home.</h2><p>In 2004, Angelo brought decades of experience to Budapest and opened his city-centre store.</p></article>\n<article><span class=\"timeline-year\">TODAY · KOSSUTH LAJOS U. 18</span><h2>Finding the right piece remains personal.</h2><p>We offer genuine leather jackets and coats for women and men, shearling and fur styles, and leather accessories. If the right piece is not in the collection, a leather jacket can also be made to order.</p></article>\n</div></section>\n<section class=\"store-cta\"><div class=\"wrap\"><div><h2>Explore the collection in person</h2><p>Kossuth Lajos u. 18 · Budapest</p></div><a class=\"btn btn-primary\" href=\"/en/collections/\">Collections</a></div></section>\n",
+    "pageSchema": {
+      "@type": "WebPage",
+      "name": "About Kaftan Angelo",
+      "url": "https://kaftanangelo.com/en/about/",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      },
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      },
+      {
+        "name": "About Kaftan Angelo",
+        "url": "/en/about/"
+      }
+    ]
+  },
+  "/en/womens-leather-jackets/": {
+    "path": "/en/womens-leather-jackets/",
+    "lang": "en",
+    "title": "Women’s Leather Jackets Budapest | Kaftan Angelo",
+    "description": "Women’s genuine leather jackets in Budapest. Explore styles and try them on at Kaftan Angelo.",
+    "canonical": "https://kaftanangelo.com/en/womens-leather-jackets/",
+    "ogImage": "https://kaftanangelo.com/noi-sarga-borkabat-budapest.webp",
+    "counterpart": "/noi-borkabatok/",
+    "mainHtml": "<section class=\"page-hero\" style=\"--hero:url('/assets/images/noi-sarga-borkabat-budapest-800.avif');--hero-mobile:url('/assets/images/noi-sarga-borkabat-budapest-480.avif')\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / <a href=\"/en/collections/\">Collections</a> / Women’s Leather Jackets Budapest</div><span class=\"tag mono\">Kaftan Angelo · Budapest</span><h1>Women’s Leather Jackets Budapest</h1><p>Women’s genuine leather jackets in Budapest. Explore styles and try them on at Kaftan Angelo.</p><div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Try it on in store</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Selection</span><h2>A few styles from the collection</h2></div><p>The models shown online are a preview of the in-store selection.</p></div><div class=\"product-grid\"><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.avif 480w, /assets/images/noi-sarga-borkabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.webp 480w, /assets/images/noi-sarga-borkabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Yellow women’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-sarga-borkabat-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Yellow women’s leather jacket</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.avif 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.webp 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Studded women’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-szegecses-bordzseki-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Studded women’s leather jacket</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-leather-jacket-budapest-480.avif 480w, /assets/images/womens-leather-jacket-budapest-800.avif 800w, /assets/images/womens-leather-jacket-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/womens-leather-jacket-budapest-480.webp 480w, /assets/images/womens-leather-jacket-budapest-800.webp 800w, /assets/images/womens-leather-jacket-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Women’s genuine leather jacket\" decoding=\"async\" height=\"854\" loading=\"lazy\" src=\"/womens-leather-jacket-budapest.webp\" width=\"1600\"></picture><div class=\"product-card-body\"><h3>Women’s genuine leather jacket</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-womens-leather-jackets-budapest-480.avif 480w, /assets/images/kaftan-angelo-womens-leather-jackets-budapest-800.avif 800w, /assets/images/kaftan-angelo-womens-leather-jackets-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-womens-leather-jackets-budapest-480.webp 480w, /assets/images/kaftan-angelo-womens-leather-jackets-budapest-800.webp 800w, /assets/images/kaftan-angelo-womens-leather-jackets-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Women’s leather jacket collection\" decoding=\"async\" height=\"916\" loading=\"lazy\" src=\"/kaftan-angelo-womens-leather-jackets-budapest.webp\" width=\"1717\"></picture><div class=\"product-card-body\"><h3>Women’s leather jacket collection</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article></div></div></section><section><div class=\"wrap content\"><h2>What to consider when choosing</h2><p>Fit, leather feel, shoulder placement and sleeve length all determine whether a jacket truly works for you. That is why we recommend trying styles on in person.</p><div class=\"callout\"><strong>Related pages: </strong><a href=\"/en/guides/leather-jacket-fit-guide/\">Fit guide</a> · <a href=\"/en/guides/leather-jacket-care/\">Leather care</a> · <a href=\"/en/custom-orders/\">Custom orders</a></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Try it on in Budapest</h2><p>Kossuth Lajos u. 18 · Astoria — Ferenciek tere</p></div><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Get directions</a></div></section>",
+    "pageSchema": {
+      "@type": "CollectionPage",
+      "name": "Women’s Leather Jackets Budapest",
+      "url": "https://kaftanangelo.com/en/womens-leather-jackets/",
+      "inLanguage": "en",
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      },
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      },
+      {
+        "name": "Collections",
+        "url": "/en/collections/"
+      },
+      {
+        "name": "Women’s Leather Jackets Budapest",
+        "url": "/en/womens-leather-jackets/"
+      }
+    ]
+  },
+  "/en/mens-leather-jackets/": {
+    "path": "/en/mens-leather-jackets/",
+    "lang": "en",
+    "title": "Men’s Leather Jackets Budapest | Kaftan Angelo",
+    "description": "Men’s genuine leather jackets in Budapest in a range of classic and modern styles.",
+    "canonical": "https://kaftanangelo.com/en/mens-leather-jackets/",
+    "ogImage": "https://kaftanangelo.com/ferfi-klasszikus-bordzseki-budapest.webp",
+    "counterpart": "/ferfi-borkabatok/",
+    "mainHtml": "<section class=\"page-hero\" style=\"--hero:url('/assets/images/ferfi-klasszikus-bordzseki-budapest-480.avif')\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / <a href=\"/en/collections/\">Collections</a> / Men’s Leather Jackets Budapest</div><span class=\"tag mono\">Kaftan Angelo · Budapest</span><h1>Men’s Leather Jackets Budapest</h1><p>Men’s genuine leather jackets in Budapest in a range of classic and modern styles.</p><div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Try it on in store</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></div></section><section><div class=\"wrap\"><div class=\"section-head\"><div><span class=\"tag mono\">Selection</span><h2>A few styles from the collection</h2></div><p>The models shown online are a preview of the in-store selection.</p></div><div class=\"product-grid\"><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Men’s biker leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-motoros-bordzseki-budapest.webp\" width=\"675\"></picture><div class=\"product-card-body\"><h3>Men’s biker leather jacket</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Classic men’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-klasszikus-bordzseki-budapest.webp\" width=\"675\"></picture><div class=\"product-card-body\"><h3>Classic men’s leather jacket</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.avif 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.webp 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Patterned men’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-mintas-bordzseki-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Patterned men’s leather jacket</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-mens-leather-jackets-budapest-480.avif 480w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-800.avif 800w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-1200.avif 1200w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/kaftan-angelo-mens-leather-jackets-budapest-480.webp 480w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-800.webp 800w, /assets/images/kaftan-angelo-mens-leather-jackets-budapest-1200.webp 1200w\" type=\"image/webp\"><img alt=\"Men’s leather jacket collection\" decoding=\"async\" height=\"1024\" loading=\"lazy\" src=\"/kaftan-angelo-mens-leather-jackets-budapest.webp\" width=\"1536\"></picture><div class=\"product-card-body\"><h3>Men’s leather jacket collection</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.avif 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.webp 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Dark brown men’s shearling jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-sotetbarna-irhadzseki-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Dark brown men’s shearling jacket</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article><article class=\"product-card\"><picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Light brown men’s shearling coat\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-vilagosbarna-irhakabat-budapest.webp\" width=\"900\"></picture><div class=\"product-card-body\"><h3>Light brown men’s shearling coat</h3><p>Current in-store availability may change seasonally.</p><a class=\"text-link\" href=\"https://wa.me/36203593216\">Ask on WhatsApp</a></div></article></div></div></section><section><div class=\"wrap content\"><h2>What to consider when choosing</h2><p>Fit, leather feel, shoulder placement and sleeve length all determine whether a jacket truly works for you. That is why we recommend trying styles on in person.</p><div class=\"callout\"><strong>Related pages: </strong><a href=\"/en/guides/leather-jacket-fit-guide/\">Fit guide</a> · <a href=\"/en/guides/leather-jacket-care/\">Leather care</a> · <a href=\"/en/custom-orders/\">Custom orders</a></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Try it on in Budapest</h2><p>Kossuth Lajos u. 18 · Astoria — Ferenciek tere</p></div><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Get directions</a></div></section>",
+    "pageSchema": {
+      "@type": "CollectionPage",
+      "name": "Men’s Leather Jackets Budapest",
+      "url": "https://kaftanangelo.com/en/mens-leather-jackets/",
+      "inLanguage": "en",
+      "about": {
+        "@id": "https://kaftanangelo.com/#store"
+      },
+      "isPartOf": {
+        "@id": "https://kaftanangelo.com/#website"
+      }
+    },
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      },
+      {
+        "name": "Collections",
+        "url": "/en/collections/"
+      },
+      {
+        "name": "Men’s Leather Jackets Budapest",
+        "url": "/en/mens-leather-jackets/"
+      }
+    ]
+  }
+}

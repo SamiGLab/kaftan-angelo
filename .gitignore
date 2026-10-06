@@ -1,1 +1,7 @@
 node_modules/
+dist/
+.astro/
+.lighthouseci/
+.lycheecache
+.DS_Store
+public/assets/images/

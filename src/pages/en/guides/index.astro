@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../../components/BaseLayout.astro';
+const modules = import.meta.glob('../../../content/guides/en/*.md', { eager:true });
+const guides = Object.entries(modules).map(([path, mod])=>({slug:path.split('/').pop().replace('.md',''),...mod.frontmatter})).sort((a,b)=>b.publishDate.localeCompare(a.publishDate));
+const page={lang:'en',title:'Leather Jacket Guides | Kaftan Angelo Budapest',description:'Practical guides to leather jacket care, fit and identifying genuine leather from Kaftan Angelo Budapest.',canonical:'https://kaftanangelo.com/en/guides/',counterpart:'/utmutatok/',ogImage:'https://kaftanangelo.com/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif',breadcrumbs:[{name:'Home',url:'/en/'},{name:'Guides',url:'/en/guides/'}],pageSchema:{'@type':'CollectionPage',name:'Leather Jacket Guides'}};
+---
+<BaseLayout page={page}>
+<section class="page-hero" style="--hero:url('/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-leather-jackets-budapest-480.avif')"><div class="wrap"><div class="breadcrumbs"><a href="/en/">Home</a> / Guides</div><span class="tag mono">Knowledge Base</span><h1>Leather Jacket Guides</h1><p>Practical help with choosing, fitting and caring for genuine leather.</p></div></section>
+<section class="guide-search-section"><div class="wrap"><div id="guide-search"></div></div></section>
+<section><div class="wrap"><div class="guide-list">{guides.map(g=><article class="guide-card"><h2><a href={`/en/guides/${g.slug}/`}>{g.title}</a></h2><p>{g.description}</p><a href={`/en/guides/${g.slug}/`}>Read guide →</a></article>)}</div></div></section>
+<Fragment slot="scripts"><script is:inline>
+window.addEventListener('load', () => {
+  const startSearch = () => {
+    const style = document.createElement('link');
+    style.rel = 'stylesheet'; style.href = '/pagefind/pagefind-ui.css';
+    document.head.append(style);
+    const script = document.createElement('script');
+    script.src = '/pagefind/pagefind-ui.js';
+    script.onload = () => new PagefindUI({element:'#guide-search',showSubResults:true,showImages:false});
+    document.body.append(script);
+  };
+  if ('requestIdleCallback' in window) requestIdleCallback(startSearch);
+  else setTimeout(startSearch, 0);
+});
+</script></Fragment>
+</BaseLayout>

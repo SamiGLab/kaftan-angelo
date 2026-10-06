@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+import pages from '../data/pages.json';
+export function getStaticPaths() {
+  return Object.entries(pages)
+    .filter(([path]) => path !== '/' && !path.startsWith('/utmutatok/') && !path.startsWith('/en/guides/'))
+    .map(([path, page]) => ({ params: { slug: path.replace(/^\//,'').replace(/\/$/,'') }, props: { page } }));
+}
+const { page } = Astro.props;
+---
+<BaseLayout page={page}><Fragment set:html={page.mainHtml} /></BaseLayout>

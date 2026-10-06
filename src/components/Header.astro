@@ -1,0 +1,17 @@
+---
+import { nav } from '../data/site';
+const { lang = 'hu', counterpart = lang === 'hu' ? '/en/' : '/' } = Astro.props;
+const home = lang === 'hu' ? '/' : '/en/';
+const otherLabel = lang === 'hu' ? 'EN' : 'HU';
+const items = nav[lang as 'hu'|'en'];
+---
+<div class="announcement">Kossuth Lajos u. 18 · Astoria — Ferenciek tere</div>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href={home}>Kaftan <span>Angelo</span></a>
+    <nav class="links" aria-label={lang === 'hu' ? 'Fő navigáció' : 'Primary navigation'}>
+      {items.map(([label, href]) => <a href={href}>{label}</a>)}
+      <a class="lang-link" href={counterpart}>{otherLabel}</a>
+    </nav>
+  </div>
+</header>

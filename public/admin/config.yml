@@ -1,0 +1,37 @@
+backend:
+  name: github
+  repo: SamiGLab/kaftan-angelo
+  branch: main
+
+local_backend: true
+publish_mode: editorial_workflow
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: guides_hu
+    label: "Útmutatók — HU"
+    folder: src/content/guides/hu
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - { label: "Cím", name: title, widget: string }
+      - { label: "Leírás", name: description, widget: text }
+      - { label: "Dátum", name: publishDate, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Hero kép", name: heroImage, widget: string, default: "/kaftan-angelo-leather-jackets-budapest.webp" }
+      - { label: "Tartalom", name: body, widget: markdown }
+  - name: guides_en
+    label: "Guides — EN"
+    folder: src/content/guides/en
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: title, widget: string }
+      - { label: "Description", name: description, widget: text }
+      - { label: "Date", name: publishDate, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Hero image", name: heroImage, widget: string, default: "/kaftan-angelo-leather-jackets-budapest.webp" }
+      - { label: "Body", name: body, widget: markdown }

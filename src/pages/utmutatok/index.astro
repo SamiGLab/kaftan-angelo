@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+const modules = import.meta.glob('../../content/guides/hu/*.md', { eager:true });
+const guides = Object.entries(modules).map(([path, mod])=>({slug:path.split('/').pop().replace('.md',''),...mod.frontmatter})).sort((a,b)=>b.publishDate.localeCompare(a.publishDate));
+const page={lang:'hu',title:'Bőrkabát útmutatók | Kaftan Angelo Budapest',description:'Bőrkabát ápolás, méretválasztás és valódi bőr felismerése: gyakorlati útmutatók a Kaftan Angelótól.',canonical:'https://kaftanangelo.com/utmutatok/',counterpart:'/en/guides/',ogImage:'https://kaftanangelo.com/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif',breadcrumbs:[{name:'Főoldal',url:'/'},{name:'Útmutatók',url:'/utmutatok/'}],pageSchema:{'@type':'CollectionPage',name:'Bőrkabát útmutatók'}};
+---
+<BaseLayout page={page}>
+<section class="page-hero" style="--hero:url('/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-leather-jackets-budapest-480.avif')"><div class="wrap"><div class="breadcrumbs"><a href="/">Főoldal</a> / Útmutatók</div><span class="tag mono">Tudástár</span><h1>Bőrkabát útmutatók</h1><p>Gyakorlati segítség a választáshoz, méretezéshez és a valódi bőr ápolásához.</p></div></section>
+<section class="guide-search-section"><div class="wrap"><div id="guide-search"></div></div></section>
+<section><div class="wrap"><div class="guide-list">{guides.map(g=><article class="guide-card"><h2><a href={`/utmutatok/${g.slug}/`}>{g.title}</a></h2><p>{g.description}</p><a href={`/utmutatok/${g.slug}/`}>Olvasás →</a></article>)}</div></div></section>
+<Fragment slot="scripts"><script is:inline>
+window.addEventListener('load', () => {
+  const startSearch = () => {
+    const style = document.createElement('link');
+    style.rel = 'stylesheet'; style.href = '/pagefind/pagefind-ui.css';
+    document.head.append(style);
+    const script = document.createElement('script');
+    script.src = '/pagefind/pagefind-ui.js';
+    script.onload = () => new PagefindUI({element:'#guide-search',showSubResults:true,showImages:false});
+    document.body.append(script);
+  };
+  if ('requestIdleCallback' in window) requestIdleCallback(startSearch);
+  else setTimeout(startSearch, 0);
+});
+</script></Fragment>
+</BaseLayout>

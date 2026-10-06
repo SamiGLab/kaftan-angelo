@@ -1,0 +1,28 @@
+name: External link monitor
+
+on:
+  schedule:
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Check external links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --cache
+            --max-cache-age 7d
+            --no-progress
+            --exclude 'https://wa.me/.*'
+            --exclude 'https://maps.app.goo.gl/.*'
+            --exclude 'https://www.instagram.com/.*'
+            './**/*.html' './**/*.md'
+          fail: false
+          jobSummary: true

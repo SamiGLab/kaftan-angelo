@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../../components/BaseLayout.astro';
+const counterparts = {
+  'leather-jacket-care':'/utmutatok/borkabat-apolas/',
+  'how-to-tell-real-leather':'/utmutatok/valodi-bor-felismerese/',
+  'leather-jacket-fit-guide':'/utmutatok/borkabat-meret-utmutato/'
+};
+export function getStaticPaths() {
+  const modules = import.meta.glob('../../../content/guides/en/*.md', { eager: true });
+  return Object.entries(modules).map(([path, mod]) => {
+    const slug = path.split('/').pop().replace('.md','');
+    return { params:{slug}, props:{mod, slug} };
+  });
+}
+const { mod, slug } = Astro.props;
+const { Content, frontmatter } = mod;
+const canonical = `https://kaftanangelo.com/en/guides/${slug}/`;
+const page = {
+  lang:'en', title:`${frontmatter.title} | Kaftan Angelo`, description:frontmatter.description, canonical,
+  counterpart:counterparts[slug] ?? '/utmutatok/', ogImage:`https://kaftanangelo.com${frontmatter.heroImage}`,
+  breadcrumbs:[{name:'Home',url:'/en/'},{name:'Guides',url:'/en/guides/'},{name:frontmatter.title,url:`/en/guides/${slug}/`}],
+  pageSchema:{'@type':'Article',headline:frontmatter.title,description:frontmatter.description,datePublished:frontmatter.publishDate,dateModified:frontmatter.publishDate,image:`https://kaftanangelo.com${frontmatter.heroImage}`,author:{'@id':'https://kaftanangelo.com/#store'}}
+};
+---
+<BaseLayout page={page}>
+<section class="page-hero" style={`--hero:url('${frontmatter.heroImage}')`}><div class="wrap"><div class="breadcrumbs"><a href="/en/">Home</a> / <a href="/en/guides/">Guides</a> / {frontmatter.title}</div><span class="tag mono">Kaftan Angelo · Budapest</span><h1>{frontmatter.title}</h1><p>{frontmatter.description}</p></div></section>
+<section><article class="wrap content article-content"><Content /></article></section>
+<section class="store-cta"><div class="wrap"><div><h2>Want to inspect jackets in person?</h2><p>Kossuth Lajos u. 18 · Budapest</p></div><a class="btn btn-primary" href="/en/visit/">Visit &amp; opening hours</a></div></section>
+</BaseLayout>

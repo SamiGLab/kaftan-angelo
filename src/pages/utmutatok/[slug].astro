@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+const counterparts = {
+  'borkabat-apolas':'/en/guides/leather-jacket-care/',
+  'valodi-bor-felismerese':'/en/guides/how-to-tell-real-leather/',
+  'borkabat-meret-utmutato':'/en/guides/leather-jacket-fit-guide/'
+};
+export function getStaticPaths() {
+  const modules = import.meta.glob('../../content/guides/hu/*.md', { eager: true });
+  return Object.entries(modules).map(([path, mod]) => {
+    const slug = path.split('/').pop().replace('.md','');
+    return { params:{slug}, props:{mod, slug} };
+  });
+}
+const { mod, slug } = Astro.props;
+const { Content, frontmatter } = mod;
+const canonical = `https://kaftanangelo.com/utmutatok/${slug}/`;
+const page = {
+  lang:'hu', title:`${frontmatter.title} | Kaftan Angelo`, description:frontmatter.description, canonical,
+  counterpart:counterparts[slug] ?? '/en/guides/', ogImage:`https://kaftanangelo.com${frontmatter.heroImage}`,
+  breadcrumbs:[{name:'Főoldal',url:'/'},{name:'Útmutatók',url:'/utmutatok/'},{name:frontmatter.title,url:`/utmutatok/${slug}/`}],
+  pageSchema:{'@type':'Article',headline:frontmatter.title,description:frontmatter.description,datePublished:frontmatter.publishDate,dateModified:frontmatter.publishDate,image:`https://kaftanangelo.com${frontmatter.heroImage}`,author:{'@id':'https://kaftanangelo.com/#store'}}
+};
+---
+<BaseLayout page={page}>
+<section class="page-hero" style={`--hero:url('${frontmatter.heroImage}')`}><div class="wrap"><div class="breadcrumbs"><a href="/">Főoldal</a> / <a href="/utmutatok/">Útmutatók</a> / {frontmatter.title}</div><span class="tag mono">Kaftan Angelo · Budapest</span><h1>{frontmatter.title}</h1><p>{frontmatter.description}</p></div></section>
+<section><article class="wrap content article-content"><Content /></article></section>
+<section class="store-cta"><div class="wrap"><div><h2>Személyesen is megnézné a kabátokat?</h2><p>Kossuth Lajos u. 18 · Budapest</p></div><a class="btn btn-primary" href="/uzlet/">Üzlet és nyitvatartás</a></div></section>
+</BaseLayout>
