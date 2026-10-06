@@ -8,6 +8,11 @@ const canonical = `https://kaftanangelo.com${root}${slug}/`;
 const headings = mod.getHeadings().filter(h => h.depth === 2);
 const published = `${f.publishDate}T12:00:00+02:00`;
 const modified = `${f.modifiedDate ?? f.publishDate}T12:00:00+02:00`;
+const material = /shearling-coat|irhakabat/.test(slug) ? 'shearling' : /fur-coat|szormekabat/.test(slug) ? 'fur' : 'all';
+const collection = material === 'shearling' ? (hu ? '/irhakabatok/' : '/en/shearling-jackets/') : material === 'fur' ? (hu ? '/szormekabatok/' : '/en/fur-coats/') : (hu ? '/kollekciok/' : '/en/collections/');
+const collectionLabel = material === 'shearling' ? (hu ? 'Irhakollekció megtekintése' : 'Explore shearling') : material === 'fur' ? (hu ? 'Szőrmekollekció megtekintése' : 'Explore fur') : (hu ? 'Kollekciók megtekintése' : 'Explore the collections');
+const enquiry = hu ? `Üdvözlöm! A(z) „${f.title}” útmutatót olvastam. Szeretnék érdeklődni egy modell elérhetőségéről és a budapesti próbáról. ${canonical}` : `Hello! I read your guide “${f.title}”. I would like to ask about a model's availability and trying it on at your Budapest store. ${canonical}`;
+const whatsapp = `https://wa.me/36203593216?text=${encodeURIComponent(enquiry)}`;
 const page = {
   lang, title: `${f.title} | Kaftan Angelo`, description: f.description, canonical,
   counterpart: f.counterpart, ogImage: `https://kaftanangelo.com${f.heroImage}`,
@@ -22,6 +27,11 @@ const page = {
     <p class="guide-meta"><a href={hu ? '/rolunk/' : '/en/about/'}>Kaftan Angelo</a> · {hu ? 'Frissítve' : 'Updated'} <time datetime={f.modifiedDate ?? f.publishDate}>{f.modifiedDate ?? f.publishDate}</time> · {f.readingMinutes} {hu ? 'perc olvasás' : 'min read'}</p>
     <nav class="guide-toc" aria-label={hu ? 'A cikk tartalma' : 'On this page'} data-pagefind-ignore><h2>{hu ? 'Ebben az útmutatóban' : 'On this page'}</h2><ul>{headings.map(h => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ul></nav>
     <Content />
+    <aside class="guide-toc" aria-label={hu ? 'Következő lépés' : 'Your next step'} data-pagefind-ignore>
+      <h2>{hu ? 'A választástól a személyes próbáig' : 'From choosing to trying it on'}</h2>
+      <p>{hu ? 'Nézze meg a modelleket, majd küldje el WhatsAppon a kiválasztott darab képét és a keresett méretet. Látogatás előtt érdeklődjön az elérhetőségről; az illeszkedést személyes próbával ellenőrizheti.' : 'Explore the models, then send the photo of the piece you like and your preferred size on WhatsApp. Ask about availability before visiting; an in-store fitting helps you check the fit.'}</p>
+      <p><a href={collection}>{collectionLabel}</a> · <a href={whatsapp}>{hu ? 'Érdeklődés WhatsAppon' : 'Ask on WhatsApp'}</a></p>
+    </aside>
   </article></section>
-  <section class="store-cta"><div class="wrap"><div><h2>{hu ? 'Próbálja fel a kollekciót Budapesten' : 'Try the collection in Budapest'}</h2><p>Kossuth Lajos u. 18, Budapest 1053</p></div><a class="btn btn-primary" href={hu ? '/uzlet/' : '/en/visit/'}>{hu ? 'Üzlet és nyitvatartás' : 'Store & opening hours'}</a></div></section>
+  <section class="store-cta"><div class="wrap"><div><h2>{hu ? 'Próbálja fel a kollekciót Budapesten' : 'Try the collection in Budapest'}</h2><p>Kossuth Lajos u. 18, Budapest 1053</p><p>{hu ? 'Bőr, irha, szőrme és kiegészítők · Budapesten 2004 óta' : 'Leather, shearling, fur & accessories · In Budapest since 2004'}</p></div><a class="btn btn-primary" href={hu ? '/uzlet/' : '/en/visit/'}>{hu ? 'Útvonal és nyitvatartás' : 'Directions & opening hours'}</a></div></section>
 </BaseLayout>
