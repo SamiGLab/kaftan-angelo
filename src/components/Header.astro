@@ -1,17 +1,17 @@
 ---
 import { nav } from '../data/site';
 const { lang = 'hu', counterpart = lang === 'hu' ? '/en/' : '/' } = Astro.props;
-const home = lang === 'hu' ? '/' : '/en/';
-const otherLabel = lang === 'hu' ? 'EN' : 'HU';
-const items = nav[lang as 'hu'|'en'];
+const hu = lang === 'hu';
+const home = hu ? '/' : '/en/';
+const visit = hu ? '/uzlet/' : '/en/visit/';
+const route = Astro.url.pathname;
+const collections = hu ? ['/kollekciok/','/noi-borkabatok/','/ferfi-borkabatok/','/irhakabatok/','/szormekabatok/'] : ['/en/collections/','/en/womens-leather-jackets/','/en/mens-leather-jackets/','/en/shearling-jackets/','/en/fur-coats/'];
+const items = [...nav[lang as 'hu'|'en'], [hu ? 'GYIK' : 'FAQ', hu ? '/gyik/' : '/en/faq/']];
+const active = (href:string) => route === href || (href === collections[0] && collections.includes(route)) || (href !== home && route.startsWith(href));
 ---
-<div class="announcement">Kossuth Lajos u. 18 · Astoria — Ferenciek tere</div>
-<header class="site-header">
-  <div class="wrap nav">
-    <a class="brand" href={home}>Kaftan <span>Angelo</span></a>
-    <nav class="links" aria-label={lang === 'hu' ? 'Fő navigáció' : 'Primary navigation'}>
-      {items.map(([label, href]) => <a href={href}>{label}</a>)}
-      <a class="lang-link" href={counterpart}>{otherLabel}</a>
-    </nav>
-  </div>
-</header>
+<div class="announcement"><a href={visit}>Kossuth Lajos u. 18, Budapest 1053 <span aria-hidden="true">↗</span></a><a class="announcement-phone" href="tel:+3612667274">+36&nbsp;1&nbsp;266&nbsp;7274</a></div>
+<header class="site-header"><div class="wrap nav">
+  <a class="brand" href={home} aria-label={hu ? 'Kaftan Angelo — főoldal' : 'Kaftan Angelo — home'}>Kaftan <span>Angelo</span></a>
+  <div class="nav-tools"><a class="lang-link" href={counterpart} lang={hu ? 'en' : 'hu'} aria-label={hu ? 'View this page in English' : 'Az oldal magyarul'}>{hu ? 'EN' : 'HU'}</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-icon" aria-hidden="true"></span><span>{hu ? 'Menü' : 'Menu'}</span></button></div>
+  <nav id="primary-navigation" class="links" data-menu aria-label={hu ? 'Fő navigáció' : 'Primary navigation'}>{items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}</nav>
+</div></header>

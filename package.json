@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "npm run optimize:images && astro dev",
     "optimize:images": "node _dev/scripts/optimize-images.mjs",
-    "build:astro": "astro build",
+    "build:astro": "astro build && node _dev/scripts/optimize-styles.mjs",
     "search:index": "pagefind --site dist",
     "build": "npm run optimize:images && npm run build:astro && npm run search:index",
     "preview": "astro preview",
@@ -27,6 +27,7 @@
     "@lhci/cli": "0.15.1",
     "astro": "7.3.6",
     "html-validate": "11.16.2",
+    "lightningcss": "1.33.0",
     "pa11y-ci": "5.0.0",
     "pagefind": "1.5.2",
     "sharp": "0.35.5"
