@@ -20,6 +20,10 @@ collections:
       - { label: "Cím", name: title, widget: string }
       - { label: "Leírás", name: description, widget: text }
       - { label: "Dátum", name: publishDate, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Frissítve", name: modifiedDate, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Angol megfelelő URL", name: counterpart, widget: string }
+      - { label: "Téma", name: topic, widget: string }
+      - { label: "Olvasási idő (perc)", name: readingMinutes, widget: number, default: 2, min: 1 }
       - { label: "Hero kép", name: heroImage, widget: string, default: "/kaftan-angelo-leather-jackets-budapest.webp" }
       - { label: "Tartalom", name: body, widget: markdown }
   - name: guides_en
@@ -33,5 +37,9 @@ collections:
       - { label: "Title", name: title, widget: string }
       - { label: "Description", name: description, widget: text }
       - { label: "Date", name: publishDate, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Updated", name: modifiedDate, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Hungarian counterpart URL", name: counterpart, widget: string }
+      - { label: "Topic", name: topic, widget: string }
+      - { label: "Reading minutes", name: readingMinutes, widget: number, default: 2, min: 1 }
       - { label: "Hero image", name: heroImage, widget: string, default: "/kaftan-angelo-leather-jackets-budapest.webp" }
       - { label: "Body", name: body, widget: markdown }

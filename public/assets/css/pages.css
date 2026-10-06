@@ -8,6 +8,7 @@
   --bright: #dcb27c;
   --line: #efe4d229;
   --burgundy: #5e2a2f;
+  --product-surface: #e8e5df;
 }
 
 * {
@@ -221,7 +222,7 @@ section {
 .card img {
   aspect-ratio: 1;
   object-fit: contain;
-  background: #e8e5df;
+  background: var(--product-surface);
   width: 100%;
   padding: 10px;
 }
@@ -708,7 +709,7 @@ var(--card-img, none) center/cover no-repeat;
 
 .feature-image {
   border: 1px solid var(--line);
-  background: #e8e5df;
+  background: var(--product-surface);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -954,7 +955,7 @@ picture {
 }
 
 .card picture, .product-card picture {
-  background: #e8e5df;
+  background: var(--product-surface);
 }
 
 .product-grid {
@@ -973,7 +974,7 @@ picture {
 .product-card picture img {
   aspect-ratio: 1;
   object-fit: contain;
-  background: #e8e5df;
+  background: var(--product-surface);
   width: 100%;
   padding: 10px;
 }
@@ -1301,6 +1302,9 @@ main:focus {
 
 .category-card:after {
   content: "↗";
+  inset: auto;
+  border: 0;
+  border-radius: 0;
   color: var(--cream);
   font-size: 1.3rem;
   position: absolute;
@@ -1344,7 +1348,7 @@ main:focus {
 }
 
 .product-image-button {
-  background: #e8e5df;
+  background: var(--product-surface);
   border: 0;
   width: 100%;
   padding: 0;
@@ -1435,7 +1439,7 @@ main:focus {
 
 .preview-body img {
   object-fit: contain;
-  background: #e8e5df;
+  background: var(--product-surface);
   width: 100%;
   height: min(65dvh, 600px);
 }
@@ -1792,3 +1796,11 @@ main:focus {
   border-color: #d9b27e;
   color: #241911;
 }
+
+.guide-meta { color: var(--dim); font-size: .88rem; }
+.guide-toc { background: var(--bg2); border: 1px solid var(--line); border-radius: 8px; padding: 1.2rem; margin: 1.5rem 0 2rem; }
+.guide-toc h2 { font-size: 1.2rem; }
+.guide-toc ul { padding-left: 1.3rem; margin-bottom: 0; }
+.article-content blockquote { margin: 1.5rem 0; padding: 1rem 1.2rem; border-left: 3px solid var(--bright); background: var(--bg2); }
+.article-content table { width: 100%; border-collapse: collapse; }
+.article-content th, .article-content td { border: 1px solid var(--line); padding: .65rem; text-align: left; vertical-align: top; }

@@ -1,0 +1,27 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { mod, slug, lang } = Astro.props;
+const { Content, frontmatter: f } = mod;
+const hu = lang === 'hu';
+const root = hu ? '/utmutatok/' : '/en/guides/';
+const canonical = `https://kaftanangelo.com${root}${slug}/`;
+const headings = mod.getHeadings().filter(h => h.depth === 2);
+const published = `${f.publishDate}T12:00:00+02:00`;
+const modified = `${f.modifiedDate ?? f.publishDate}T12:00:00+02:00`;
+const page = {
+  lang, title: `${f.title} | Kaftan Angelo`, description: f.description, canonical,
+  counterpart: f.counterpart, ogImage: `https://kaftanangelo.com${f.heroImage}`,
+  breadcrumbs: [{ name: hu ? 'Főoldal' : 'Home', url: hu ? '/' : '/en/' }, { name: hu ? 'Útmutatók' : 'Guides', url: root }, { name: f.title, url: `${root}${slug}/` }],
+  pageSchema: { '@type': 'Article', '@id': `${canonical}#article`, headline: f.title, description: f.description, datePublished: published, dateModified: modified, inLanguage: lang, articleSection: f.topic, mainEntityOfPage: canonical, image: `https://kaftanangelo.com${f.heroImage}`, author: { '@type': 'Organization', name: 'Kaftan Angelo', url: 'https://kaftanangelo.com' + (hu ? '/rolunk/' : '/en/about/') }, publisher: { '@id': 'https://kaftanangelo.com/#store' } }
+};
+---
+<BaseLayout page={page}>
+  <Fragment slot="head"><meta property="article:published_time" content={published} /><meta property="article:modified_time" content={modified} /></Fragment>
+  <section class="page-hero" style={`--hero:url('${f.heroImage}');--hero-mobile:url('${f.heroImage.replace('-800.avif','-480.avif')}')`}><div class="wrap"><div class="breadcrumbs"><a href={hu ? '/' : '/en/'}>{hu ? 'Főoldal' : 'Home'}</a> / <a href={root}>{hu ? 'Útmutatók' : 'Guides'}</a> / {f.title}</div><span class="tag mono">{f.topic} · Kaftan Angelo</span><h1>{f.title}</h1><p>{f.description}</p></div></section>
+  <section><article class="wrap content article-content" data-pagefind-filter="type:guide">
+    <p class="guide-meta"><a href={hu ? '/rolunk/' : '/en/about/'}>Kaftan Angelo</a> · {hu ? 'Frissítve' : 'Updated'} <time datetime={f.modifiedDate ?? f.publishDate}>{f.modifiedDate ?? f.publishDate}</time> · {f.readingMinutes} {hu ? 'perc olvasás' : 'min read'}</p>
+    <nav class="guide-toc" aria-label={hu ? 'A cikk tartalma' : 'On this page'} data-pagefind-ignore><h2>{hu ? 'Ebben az útmutatóban' : 'On this page'}</h2><ul>{headings.map(h => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ul></nav>
+    <Content />
+  </article></section>
+  <section class="store-cta"><div class="wrap"><div><h2>{hu ? 'Próbálja fel a kollekciót Budapesten' : 'Try the collection in Budapest'}</h2><p>Kossuth Lajos u. 18, Budapest 1053</p></div><a class="btn btn-primary" href={hu ? '/uzlet/' : '/en/visit/'}>{hu ? 'Üzlet és nyitvatartás' : 'Store & opening hours'}</a></div></section>
+</BaseLayout>

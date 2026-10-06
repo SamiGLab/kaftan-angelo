@@ -11,7 +11,10 @@ export function GET() {
   urls.add('/en/guides/');
   Object.keys(huGuides).forEach(p=>urls.add(`/utmutatok/${slug(p)}/`));
   Object.keys(enGuides).forEach(p=>urls.add(`/en/guides/${slug(p)}/`));
-  const today = new Date().toISOString().slice(0,10);
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...urls].sort().map(u=>`  <url><loc>${BASE}${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}\n</urlset>`;
+  const modified = new Map(Object.entries(pages).filter(([, page]) => page.modifiedDate).map(([url, page]) => [url, page.modifiedDate]));
+  for (const [modules, root] of [[huGuides, '/utmutatok/'], [enGuides, '/en/guides/']]) {
+    for (const [path, mod] of Object.entries(modules)) modified.set(`${root}${slug(path)}/`, mod.frontmatter.modifiedDate ?? mod.frontmatter.publishDate);
+  }
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...urls].sort().map(u=>`  <url><loc>${BASE}${u}</loc>${modified.has(u) ? `<lastmod>${modified.get(u)}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>`;
   return new Response(xml,{headers:{'Content-Type':'application/xml; charset=utf-8'}});
 }

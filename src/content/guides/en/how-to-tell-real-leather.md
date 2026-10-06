@@ -2,8 +2,14 @@
 title: "How to Tell if Leather Is Real"
 description: "Practical signs that can help you distinguish genuine leather from synthetic alternatives."
 publishDate: "2026-10-06"
+modifiedDate: "2026-10-06"
+counterpart: "/utmutatok/valodi-bor-felismerese/"
+topic: "Choosing"
+readingMinutes: 2
 heroImage: "/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif"
 ---
+> **Quick answer:** Start with the label and material description. Visual clues help, but a photograph or one home test cannot prove the material.
+
 No single “trick” proves that an item is genuine leather. It is better to look at several signs together.
 
 ## Surface and pores
@@ -13,9 +19,23 @@ Real leather often has slight natural irregularities. A perfectly repeating prin
 Natural leather often feels warmer and more flexible and less plastic-like, although finishing treatments can change this.
 
 ## Edges and reverse side
-If visible, cut edges and the reverse side can reveal useful clues. A fabric backing often indicates a synthetic material.
+With permission, accessible cut edges can provide clues. Do not confuse a garment’s fabric lining with the outer material: a lining does not disprove a leather shell. Surface treatment can also change appearance and feel.
 
 ## The safest approach
 Ask the seller what the material is and buy somewhere you can inspect the garment in person.
 
 **Related pages:** [Collections](/en/collections/) · [Fit guide](/en/guides/leather-jacket-fit-guide/) · [Visit](/en/visit/)
+
+## Read the label and ask about each part
+The outer body, trims and lining may be different materials. Ask what “leather look” or a blend description means for the actual garment. Clear material information is more useful than a marketing phrase or a photograph alone.
+
+## Avoid destructive tests
+Do not burn, scratch, soak or apply solvents to identify a garment. Damage can result without a clear answer. Smell is affected by finish and storage and should not be treated as proof.
+
+## Common questions
+**Can a photo prove authenticity?** No. It shows a design, not complete material evidence.
+
+**Does “genuine leather” explain every quality difference?** No. Ask about finish, construction, care and intended use too.
+
+## Further reading
+[Leather Naturally material fact sheets](https://www.leathernaturally.org/resources/fact-sheets/) · [Leather, shearling or fur?](/en/guides/leather-shearling-fur-comparison/)
