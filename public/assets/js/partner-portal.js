@@ -12,6 +12,7 @@
   previewDialog.setAttribute('aria-labelledby','portal-preview-title');
   const previewTitle = document.createElement('h3');
   previewTitle.id = 'portal-preview-title';
+  previewTitle.textContent = t('Material preview','Anyag előnézete');
   const previewClose = document.createElement('button');
   previewClose.type = 'button';
   previewClose.className = 'btn btn-ghost';
