@@ -72,18 +72,6 @@ portal_hu_html = """
 
     <button type="submit" class="gate-submit-btn" id="gate-submit-btn">Belépés a Fiókba &rarr;</button>
   </form>
-
-  <div class="gate-demo-pills">
-    <span class="demo-label">Gyors próba demó fiókokkal:</span>
-    <button type="button" class="demo-btn" data-demo-code="HOTEL-01" data-demo-pin="1904">
-      <span>🏨 Four Seasons Hotel Concierge</span>
-      <span class="mono" style="opacity:0.75">HOTEL-01 / PIN: 1904</span>
-    </button>
-    <button type="button" class="demo-btn" data-demo-code="GUIDE-02" data-demo-pin="4821">
-      <span>🗺️ Budapesti Idegenvezető</span>
-      <span class="mono" style="opacity:0.75">GUIDE-02 / PIN: 4821</span>
-    </button>
-  </div>
 </div>
 
 <!-- Logged In Dashboard -->
@@ -522,18 +510,6 @@ portal_en_html = """
 
     <button type="submit" class="gate-submit-btn" id="gate-submit-btn">Access Partner Dashboard &rarr;</button>
   </form>
-
-  <div class="gate-demo-pills">
-    <span class="demo-label">Quick test with demo partner accounts:</span>
-    <button type="button" class="demo-btn" data-demo-code="HOTEL-01" data-demo-pin="1904">
-      <span>🏨 Four Seasons Hotel Concierge</span>
-      <span class="mono" style="opacity:0.75">HOTEL-01 / PIN: 1904</span>
-    </button>
-    <button type="button" class="demo-btn" data-demo-code="GUIDE-02" data-demo-pin="4821">
-      <span>🗺️ Budapest Tour Specialist</span>
-      <span class="mono" style="opacity:0.75">GUIDE-02 / PIN: 4821</span>
-    </button>
-  </div>
 </div>
 
 <!-- Logged In Dashboard -->
