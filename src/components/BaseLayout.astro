@@ -1,6 +1,7 @@
 ---
 import Header from './Header.astro';
 import Footer from './Footer.astro';
+import WhatsAppButton from './WhatsAppButton.astro';
 import '@fontsource-variable/fraunces';
 
 import headingFont from '@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2?url';
@@ -26,7 +27,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
 <head>
   <meta charset="utf-8" />
   <script is:inline>document.documentElement.classList.add("js");</script>
-  <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5D5T9W6Q');</script>
+  <script is:inline type="text/partytown">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5D5T9W6Q');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>{page.title}</title>
   <meta name="description" content={page.description} />
@@ -70,6 +71,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <Header lang={lang} counterpart={page.counterpart} />
   <main id="main-content" tabindex="-1" data-pagefind-body><slot /></main>
   <Footer lang={lang} />
+  <WhatsAppButton lang={lang} pageTitle={page.title} canonicalUrl={page.canonical} />
   {page.mainHtml?.includes('data-product-image') && <dialog class="product-dialog" data-product-dialog aria-labelledby="product-preview-title">
     <div class="preview-header"><h2 id="product-preview-title" data-preview-title>{lang === 'hu' ? 'Modell' : 'Model'}</h2><button class="preview-close" type="button" data-preview-close aria-label={lang === 'hu' ? 'Bezárás' : 'Close'}>×</button></div>
     <div class="preview-body"><img data-preview-image src={heroImage} alt="" width="900" height="900" loading="lazy" /><div class="preview-details"><p>{lang === 'hu' ? 'Az aktuális méretekről és elérhetőségről érdeklődjön közvetlenül az üzletben. A kabátokat személyesen próbálhatja fel.' : 'Ask our store about available sizes and current availability. Visit us to try the jackets on in person.'}</p><a class="btn btn-primary" data-preview-inquiry href="https://wa.me/36203593216">{lang === 'hu' ? 'Érdeklődés WhatsAppon' : 'Ask on WhatsApp'}</a><div class="preview-controls"><button type="button" data-preview-prev aria-label={lang === 'hu' ? 'Előző modell' : 'Previous model'}>←</button><span data-preview-count></span><button type="button" data-preview-next aria-label={lang === 'hu' ? 'Következő modell' : 'Next model'}>→</button></div></div></div>

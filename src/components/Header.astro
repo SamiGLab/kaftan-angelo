@@ -1,5 +1,7 @@
 ---
 import { nav } from '../data/site';
+import { announcements, announcementCycle } from '../data/announcements';
+
 const { lang = 'hu', counterpart = lang === 'hu' ? '/en/' : '/' } = Astro.props;
 const hu = lang === 'hu';
 const home = hu ? '/' : '/en/';
@@ -8,10 +10,93 @@ const route = Astro.url.pathname;
 const collections = hu ? ['/kollekciok/','/noi-borkabatok/','/ferfi-borkabatok/','/irhakabatok/','/szormekabatok/'] : ['/en/collections/','/en/womens-leather-jackets/','/en/mens-leather-jackets/','/en/shearling-jackets/','/en/fur-coats/'];
 const items = [...nav[lang as 'hu'|'en'], [hu ? 'GYIK' : 'FAQ', hu ? '/gyik/' : '/en/faq/']];
 const active = (href:string) => route === href || (href === collections[0] && collections.includes(route)) || (href !== home && route.startsWith(href));
+
+// Server-side deterministic default announcement for zero CLS and SEO
+const now = new Date();
+const startOfYear = new Date(now.getFullYear(), 0, 0);
+const diff = now.getTime() - startOfYear.getTime();
+const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
+const defaultAnnouncement = announcements[announcementCycle[dayOfYear % announcementCycle.length] - 1] ?? announcements[0];
+const defaultText = hu ? defaultAnnouncement.hu : defaultAnnouncement.en;
+const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
 ---
-<div class="announcement"><a href={visit}>Kossuth Lajos u. 18, Budapest 1053 <span aria-hidden="true">↗</span></a><a class="announcement-phone" href="tel:+3612667274">+36&nbsp;1&nbsp;266&nbsp;7274</a></div>
+<div class="announcement">
+  <div class="announcement-inner">
+    <div class="announcement-main">
+      <span class="announcement-badge" aria-hidden="true">◆</span>
+      <a class="announcement-link" href={defaultUrl} data-announcement-link>
+        <span class="announcement-text" data-announcement-text>{defaultText}</span>
+        <span aria-hidden="true"> ↗</span>
+      </a>
+    </div>
+    <div class="announcement-store">
+      <a href={visit}>Kossuth Lajos u. 18 <span aria-hidden="true">↗</span></a>
+      <span aria-hidden="true">·</span>
+      <a class="announcement-phone" href="tel:+3612667274">+36&nbsp;1&nbsp;266&nbsp;7274</a>
+    </div>
+  </div>
+</div>
 <header class="site-header"><div class="wrap nav">
   <a class="brand" href={home} aria-label={hu ? 'Kaftan Angelo — főoldal' : 'Kaftan Angelo — home'}>Kaftan <span>Angelo</span></a>
   <div class="nav-tools"><a class="lang-link" href={counterpart} lang={hu ? 'en' : 'hu'} aria-label={hu ? 'View this page in English' : 'Az oldal magyarul'}>{hu ? 'EN' : 'HU'}</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-icon" aria-hidden="true"></span><span>{hu ? 'Menü' : 'Menu'}</span></button></div>
   <nav id="primary-navigation" class="links" data-menu aria-label={hu ? 'Fő navigáció' : 'Primary navigation'}>{items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}</nav>
 </div></header>
+
+<script is:inline define:vars={{ announcements, lang }}>
+  (function() {
+    try {
+      var STORAGE_KEY_SEEN = 'kaftan_recent_announcements';
+      var STORAGE_KEY_DATE = 'kaftan_announcement_date';
+      var STORAGE_KEY_CURRENT = 'kaftan_current_announcement_id';
+      
+      var now = new Date();
+      var today = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+      var savedDate = localStorage.getItem(STORAGE_KEY_DATE);
+      var currentId = parseInt(localStorage.getItem(STORAGE_KEY_CURRENT) || '0', 10);
+      var seen = [];
+      try {
+        seen = JSON.parse(localStorage.getItem(STORAGE_KEY_SEEN) || '[]');
+        if (!Array.isArray(seen)) seen = [];
+      } catch (e) {
+        seen = [];
+      }
+
+      if (savedDate !== today || !currentId) {
+        var available = announcements.filter(function(it) {
+          return seen.indexOf(it.id) === -1;
+        });
+
+        var pool = available.length > 0 ? available : announcements;
+        var selected = pool[Math.floor(Math.random() * pool.length)];
+        currentId = selected.id;
+
+        seen.push(currentId);
+        while (seen.length > 10) {
+          seen.shift();
+        }
+
+        localStorage.setItem(STORAGE_KEY_DATE, today);
+        localStorage.setItem(STORAGE_KEY_CURRENT, String(currentId));
+        localStorage.setItem(STORAGE_KEY_SEEN, JSON.stringify(seen));
+      }
+
+      var currentItem = announcements.find(function(it) { return it.id === currentId; });
+      if (currentItem) {
+        var textEl = document.querySelector('[data-announcement-text]');
+        var linkEl = document.querySelector('[data-announcement-link]');
+        var isHu = lang === 'hu';
+        var newText = isHu ? currentItem.hu : currentItem.en;
+        var newUrl = isHu ? currentItem.url_hu : currentItem.url_en;
+
+        if (textEl && textEl.textContent !== newText) {
+          textEl.textContent = newText;
+        }
+        if (linkEl && newUrl) {
+          linkEl.setAttribute('href', newUrl);
+        }
+      }
+    } catch (e) {
+      // Graceful fallback to default
+    }
+  })();
+</script>

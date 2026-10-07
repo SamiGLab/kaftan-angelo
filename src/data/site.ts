@@ -46,6 +46,13 @@ export const businessSchema = {
       contactType: 'sales and appointments',
       availableLanguage: ['hu', 'en'],
     },
+    {
+      '@type': 'ContactPoint',
+      telephone: '+36 20 359 3216',
+      contactType: 'WhatsApp support',
+      availableLanguage: ['hu', 'en'],
+      url: 'https://wa.me/36203593216',
+    },
   ],
   paymentAccepted: 'Cash, Credit Card',
   priceRange: '€€',
@@ -58,6 +65,7 @@ export const businessSchema = {
   sameAs: [
     'https://www.google.com/maps/place/Kaftan+Angelo/@47.4944346,19.0600201,17.25z/data=!4m6!3m5!1s0x4741dc43988120f9:0x928c92ecc4745e63!8m2!3d47.4940457!4d19.0584288!16s%2Fg%2F11bwy_15vk',
     'https://www.instagram.com/kaftanangelo.budapest/',
+    'https://wa.me/36203593216',
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',

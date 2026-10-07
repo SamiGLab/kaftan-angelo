@@ -65,10 +65,64 @@ h1, h2, h3 {
 .announcement {
   background: var(--bright);
   color: var(--bg);
-  text-align: center;
   padding: 8px 16px;
   font-size: .82rem;
   font-weight: 600;
+}
+
+.announcement-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+.announcement-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  text-align: left;
+}
+
+.announcement-badge {
+  color: var(--burgundy);
+  font-size: 0.72rem;
+  flex-shrink: 0;
+}
+
+.announcement-link {
+  color: var(--bg);
+  text-decoration: none;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.announcement-link:hover {
+  text-decoration: underline;
+}
+
+.announcement-store {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.announcement-store a {
+  color: var(--bg);
+  text-decoration: none;
+}
+
+.announcement-store a:hover {
+  text-decoration: underline;
 }
 
 .site-header {
@@ -1106,11 +1160,8 @@ main:focus {
 }
 
 .announcement {
-  justify-content: center;
-  gap: 32px;
-  padding: 9px 18px;
+  padding: 9px 24px;
   font-size: .8rem;
-  display: flex;
 }
 
 .announcement a {
@@ -1623,13 +1674,26 @@ main:focus {
   }
 }
 
-@media (width <= 620px) {
-  .announcement-phone {
+@media (width <= 820px) {
+  .announcement-store {
     display: none;
   }
+  .announcement-inner {
+    justify-content: center;
+  }
+  .announcement-main {
+    text-align: center;
+    white-space: normal;
+  }
+  .announcement-link {
+    white-space: normal;
+  }
+}
 
+@media (width <= 620px) {
   .announcement {
     font-size: .72rem;
+    padding: 6px 12px;
   }
 
   .brand {

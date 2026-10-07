@@ -54,7 +54,7 @@ def resolve_local(ref, page):
 
 def main():
     broken=[]; seo=[]; semantics=[]; routes={}
-    html_files=[p for p in ROOT.rglob('*.html') if not any(x in p.parts for x in ('_dev','node_modules','.astro'))]
+    html_files=[p for p in ROOT.rglob('*.html') if not any(x in p.parts for x in ('_dev','node_modules','.astro','~partytown'))]
     for page in html_files:
         rel=page.relative_to(ROOT)
         p=Parser()
