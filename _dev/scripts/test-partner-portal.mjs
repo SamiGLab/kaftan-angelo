@@ -36,6 +36,7 @@ try {
         {partner_code:'TEST-ONLY',kind:'mobile',language:'hu',png_url:'javascript:alert(1)'}
       ];
       if (mode === 'manifest' || mode === 'wrong-owner') data.materials = {code: mode === 'wrong-owner' ? 'OTHER-PARTNER' : 'TEST-ONLY', draft:true, storage_code:'partner-hashed-code', files:['card','poster','mobile'].flatMap(format => ['hu','en'].flatMap(language => (format === 'mobile' ? ['png'] : ['pdf','png']).map(type => ({format,language,type,filename:format+'-'+language+'.'+type,url:type === 'png' ? 'https://example.com/material-preview.png' : 'https://example.com/'+format+'-'+language+'.pdf'}))))};
+      if (mode === 'paused') data.materials = {code:'TEST-ONLY',status:'paused',files:[]};
       return request.respond({status:200,contentType:'application/json',headers:{'access-control-allow-origin':'*'},body:JSON.stringify(data)});
     });
     await page.setViewport({width:390,height:844});
@@ -82,15 +83,15 @@ try {
     assert.equal(await page.$$eval('#portal-materials-grid a',links=>links.some(link=>link.href.includes('other.pdf') || link.href.startsWith('javascript:'))),false);
     await page.focus('#portal-logout-btn');
     await page.keyboard.press('Enter');
-    for (const state of ['manifest','wrong-owner']) {
+    for (const state of ['manifest','wrong-owner','paused']) {
       mode=state;
       await page.type('#partner-code-input','TEST-ONLY');
       await page.type('#partner-pin-input','0000');
       await page.focus('#gate-submit-btn'); await page.keyboard.press('Enter');
       await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
-      assert.equal(await page.$$eval('.portal-material-card',cards=>cards.length),6);
+      assert.equal(await page.$$eval('.portal-material-card',cards=>cards.length),state === 'paused' ? 0 : 6);
       assert.equal(await page.$$eval('.portal-material-actions a',links=>links.length),state === 'manifest' ? 10 : 0);
-      assert.equal(await page.$$eval('.portal-material-draft',notes=>notes.length),state === 'manifest' ? 1 : 0);
+      assert.equal(await page.$$eval('.portal-material-draft',notes=>notes.length),state === 'wrong-owner' ? 0 : 1);
       assert.equal(await page.$$eval('#portal-materials-grid img',images=>images.length),0);
       if (state === 'manifest') {
         assert.equal(await page.$$eval('.portal-material-preview',buttons=>buttons.length),6);

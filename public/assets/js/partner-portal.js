@@ -47,6 +47,14 @@
     grid.replaceChildren();
     const manifest = data.materials;
     const owned = !manifest?.code || manifest.code === data.code;
+    if (owned && manifest?.status === 'paused') {
+      const notice = document.createElement('p');
+      notice.className = 'portal-material-draft';
+      notice.setAttribute('role','status');
+      notice.textContent = t('Materials temporarily unavailable.','Az anyagok átmenetileg nem érhetők el.');
+      grid.append(notice);
+      return;
+    }
     const materials = Array.isArray(manifest) ? manifest : [];
     const files = owned && Array.isArray(manifest?.files) ? manifest.files : [];
     if (owned && manifest?.draft === true) {
