@@ -20,6 +20,7 @@ if '/en/partners/' in pages:
         pages['/en/partners/']['mainHtml'] = old_en_html.replace('</div></div></section>', f'{en_portal_btn}</div></div></section>', 1)
 
 portal_hu_html = """
+<link rel="stylesheet" href="/assets/css/portal.css">
 <section class="page-hero" style="--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')">
 <div class="wrap">
 <div class="breadcrumbs"><a href="/">Főoldal</a> / <a href="/partnerprogram/">Partnerprogram</a> / Partner Portál</div>
