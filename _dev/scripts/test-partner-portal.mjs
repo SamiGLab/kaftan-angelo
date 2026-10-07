@@ -35,6 +35,7 @@ try {
         {partner_code:'OTHER-PARTNER',kind:'print',language:'en',pdf_url:'https://example.com/other.pdf'},
         {partner_code:'TEST-ONLY',kind:'mobile',language:'hu',png_url:'javascript:alert(1)'}
       ];
+      if (mode === 'manifest' || mode === 'wrong-owner') data.materials = {code: mode === 'wrong-owner' ? 'OTHER-PARTNER' : 'TEST-ONLY', draft:true, storage_code:'partner-hashed-code', files:['card','poster','mobile'].flatMap(format => ['hu','en'].flatMap(language => (format === 'mobile' ? ['png'] : ['pdf','png']).map(type => ({format,language,type,filename:format+'-'+language+'.'+type,url:type === 'png' ? 'https://example.com/material-preview.png' : 'https://example.com/'+format+'-'+language+'.pdf'}))))};
       return request.respond({status:200,contentType:'application/json',headers:{'access-control-allow-origin':'*'},body:JSON.stringify(data)});
     });
     await page.setViewport({width:390,height:844});
@@ -47,8 +48,8 @@ try {
     assert.equal(await page.$$eval('#transactions-tbody img',rows=>rows.length),0);
     assert.equal(await page.$eval('#stat-guests',node=>node.textContent),'3');
     assert.equal(await page.$eval('#stat-paid',node=>node.textContent),'100 HUF');
-    assert.equal(await page.$$eval('.portal-material-card',cards=>cards.length),4);
-    assert.equal(await page.$$eval('.portal-material-pending',cards=>cards.length),4);
+    assert.equal(await page.$$eval('.portal-material-card',cards=>cards.length),6);
+    assert.equal(await page.$$eval('.portal-material-pending',cards=>cards.length),6);
     assert.equal(await page.$$eval('.portal-material-actions a',links=>links.length),0);
     assert.equal(await page.$eval('#request-payout-btn',node=>node.href.includes('HU42')),false);
     assert.equal(await page.evaluate(()=>localStorage.getItem('kaftan_portal_session')),null);
@@ -76,11 +77,23 @@ try {
     await page.focus('#gate-submit-btn'); await page.keyboard.press('Enter');
     await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
     assert.equal(await page.$$eval('.portal-material-actions a',links=>links.length),2);
-    assert.equal(await page.$$eval('.portal-material-pending',cards=>cards.length),2);
+    assert.equal(await page.$$eval('.portal-material-pending',cards=>cards.length),4);
     assert.equal(await page.$$eval('#portal-materials-grid img',images=>images.length),1);
     assert.equal(await page.$$eval('#portal-materials-grid a',links=>links.some(link=>link.href.includes('other.pdf') || link.href.startsWith('javascript:'))),false);
     await page.focus('#portal-logout-btn');
     await page.keyboard.press('Enter');
+    for (const state of ['manifest','wrong-owner']) {
+      mode=state;
+      await page.type('#partner-code-input','TEST-ONLY');
+      await page.type('#partner-pin-input','0000');
+      await page.focus('#gate-submit-btn'); await page.keyboard.press('Enter');
+      await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
+      assert.equal(await page.$$eval('.portal-material-card',cards=>cards.length),6);
+      assert.equal(await page.$$eval('.portal-material-actions a',links=>links.length),state === 'manifest' ? 10 : 0);
+      assert.equal(await page.$$eval('.portal-material-draft',notes=>notes.length),state === 'manifest' ? 1 : 0);
+      assert.equal(await page.$$eval('#portal-materials-grid img',images=>images.length),state === 'manifest' ? 6 : 0);
+      await page.focus('#portal-logout-btn'); await page.keyboard.press('Enter');
+    }
     mode='invalid';
     await page.type('#partner-code-input','TEST-ONLY');
     await page.type('#partner-pin-input','wrong');
@@ -94,4 +107,3 @@ try {
     await page.close();
   }
 } finally { await browser.close(); server.close(); }
-

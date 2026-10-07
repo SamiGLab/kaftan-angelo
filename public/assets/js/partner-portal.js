@@ -10,20 +10,30 @@
   function renderMaterials(data) {
     const grid = $('portal-materials-grid');
     grid.replaceChildren();
-    const materials = Array.isArray(data.materials) ? data.materials : [];
+    const manifest = data.materials;
+    const owned = !manifest?.code || manifest.code === data.code;
+    const materials = Array.isArray(manifest) ? manifest : [];
+    const files = owned && Array.isArray(manifest?.files) ? manifest.files : [];
+    if (owned && manifest?.draft === true) {
+      const draft = document.createElement('p');
+      draft.className = 'portal-material-draft';
+      draft.textContent = t('Draft materials — check the details before printing or sending.','Tervezet — nyomtatás vagy küldés előtt ellenőrizze az adatokat.');
+      grid.append(draft);
+    }
     const safeUrl = value => {
       try { const url = new URL(value); return url.protocol === 'https:' && !url.username && !url.password ? url.href : null; } catch { return null; }
     };
-    for (const format of ['print','mobile']) {
+    for (const format of ['card','poster','mobile']) {
       for (const language of ['hu','en']) {
-        const entry = materials.find(item => item && item.kind === format && item.language === language && (!item.partner_code || item.partner_code === data.code));
-        const pdf = safeUrl(entry?.pdf_url);
-        const png = safeUrl(entry?.png_url);
+        const entry = materials.find(item => item && item.kind === (format === 'card' ? 'print' : format) && item.language === language && (!item.partner_code || item.partner_code === data.code));
+        const matching = files.filter(file => file && file.format === format && file.language === language);
+        const pdf = safeUrl(matching.find(file => file.type === 'pdf')?.url) || safeUrl(entry?.pdf_url);
+        const png = safeUrl(matching.find(file => file.type === 'png')?.url) || safeUrl(entry?.png_url);
         const preview = safeUrl(entry?.preview_url) || png;
         const card = document.createElement('article');
         card.className = 'portal-material-card';
         const heading = document.createElement('h4');
-        heading.textContent = (format === 'print' ? t('Print card · 10 × 15 cm','Nyomtatott kártya · 10 × 15 cm') : t('Mobile invitation · 9:16','Mobil meghívó · 9:16')) + ' · ' + (language === 'hu' ? t('Hungarian','Magyar') : t('English','Angol'));
+        heading.textContent = (format === 'card' ? t('Print card · 10 × 15 cm','Nyomtatott kártya · 10 × 15 cm') : format === 'poster' ? t('Poster · A4','Plakát · A4') : t('Mobile invitation · 9:16','Mobil meghívó · 9:16')) + ' · ' + (language === 'hu' ? t('Hungarian','Magyar') : t('English','Angol'));
         card.append(heading);
         if (preview) {
           const image = document.createElement('img');

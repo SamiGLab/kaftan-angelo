@@ -970,3 +970,4 @@
 .portal-nav a { min-width:0; overflow-wrap:anywhere; }
 .portal-material-card h4,.portal-material-card p,.portal-material-help { overflow-wrap:anywhere; }
 .portal-materials-grid > * { min-width:0; }
+.portal-material-draft { grid-column:1/-1; padding:1rem; border:1px solid #a78150; border-radius:8px; color:#f3d7b0; background:#46301b; }
