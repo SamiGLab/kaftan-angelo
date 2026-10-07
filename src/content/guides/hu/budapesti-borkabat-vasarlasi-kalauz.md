@@ -23,7 +23,7 @@ A Kossuth Lajos utca a belváros történelmi ütőere. A gyors divatláncok szi
 
 ## Vásárlási tanácsok az üzlet felkeresése előtt
 1. **Személyes próba:** A valódi bőr idomul a viselője testalkatához. Próbálja fel a kiválasztott modellt az üzletben azzal a felsőruházattal, amit alatta hordani tervez.
-2. **Fizetés és kiszolgálás:** Készpénz (HUF, EUR) és bankkártya egyaránt elfogadott. Munkatársaink magyarul, angolul, németül, törökül és arabul is készséggel állnak rendelkezésre.
+2. **Fizetés és kiszolgálás:** Készpénz (HUF, EUR) és bankkártya egyaránt elfogadott. Munkatársaink magyarul és angolul is készséggel állnak rendelkezésre.
 3. **Előzetes egyeztetés:** Ha a weboldal galériájában megtetszett egy darab, küldje el a fotóját WhatsAppon a méret és elérhetőség ellenőrzéséhez.
 
 ## Cím és nyitvatartás

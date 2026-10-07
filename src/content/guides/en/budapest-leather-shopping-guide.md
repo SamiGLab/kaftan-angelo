@@ -26,7 +26,7 @@ Kaftan Angelo has served local and international visitors at **Kossuth Lajos u. 
 ## Tips for international visitors
 1. **Try before you buy:** Leather expands and conforms to your posture. Always try the jacket on over your typical layers in store.
 2. **Payment & Currencies:** Major credit cards, Euro (EUR), and Hungarian Forint (HUF) are accepted.
-3. **Languages spoken:** The boutique staff assists visitors comfortably in English, Hungarian, German, Turkish, and Arabic.
+3. **Languages spoken:** The boutique staff assists visitors comfortably in English and Hungarian.
 4. **Pre-visit enquiries:** If you see a specific style in our online gallery, send a photo via WhatsApp to check sizing and availability before walking in.
 
 ## Store address and hours
