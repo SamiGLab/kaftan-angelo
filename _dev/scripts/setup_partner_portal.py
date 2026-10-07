@@ -39,8 +39,8 @@ portal_hu_html = """
   <p>Adja meg partnerkódját és személyes PIN-kódját a forgalom és a kifizetési egyenleg megtekintéséhez.</p>
   <form id="portal-login-form" class="gate-form">
     <div class="gate-input-wrap">
-      <input type="text" id="partner-code-input" class="gate-input" placeholder="Partnerkód (pl. HOTEL-01)" required autocomplete="username">
-      <input type="password" id="partner-pin-input" class="gate-input" placeholder="PIN-kód (pl. 1904)" required autocomplete="current-password">
+      <input type="text" id="partner-code-input" class="gate-input" placeholder="Partnerkód (pl. HOTEL-01)" aria-label="Partnerkód" required autocomplete="username">
+      <input type="password" id="partner-pin-input" class="gate-input" placeholder="PIN-kód (pl. 1904)" aria-label="PIN-kód" required autocomplete="current-password">
       <button type="submit" class="btn btn-primary gate-submit-btn" id="gate-submit-btn">Belépés a fiókba</button>
     </div>
     <p id="portal-error-msg" class="gate-error" hidden>Érvénytelen partnerkód vagy PIN-kód. Kérjük, ellenőrizze az adatokat!</p>
@@ -369,6 +369,8 @@ portal_en_html = portal_hu_html.replace('Főoldal', 'Home') \
   .replace('Jutalék kifizetésének kérése', 'Request Commission Payout') \
   .replace('A felhalmozott jutalékot készpénzben a Kossuth Lajos utcai üzletben vagy banki átutalással veheti át.', 'Collect your balance directly at our Kossuth Lajos boutique or request a wire transfer.') \
   .replace('Kifizetés kérése WhatsAppon &rarr;', 'Request Payout on WhatsApp &rarr;') \
+  .replace('aria-label="Partnerkód"', 'aria-label="Partner Code"') \
+  .replace('aria-label="PIN-kód"', 'aria-label="PIN Code"') \
   .replace('Ellenőrzés...', 'Verifying...') \
   .replace('fő', 'guests')
 
