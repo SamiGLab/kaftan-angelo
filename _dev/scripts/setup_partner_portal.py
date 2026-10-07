@@ -195,6 +195,43 @@ portal_hu_html = """
 
   </div>
 
+  <!-- Official B2B Partnership Agreement Card -->
+  <div class="contract-card">
+    <div class="contract-header">
+      <div class="contract-header-text">
+        <span class="tag mono">Hivatalos B2B Dokumentáció · Bilateral B2B Agreement</span>
+        <h3>Partneri Megállapodás &amp; Általános Feltételek</h3>
+        <p>A Kaftan Angelo Luxury Outerwear és az Ön intézménye közötti hivatalos kétnyelvű (magyar és angol) együttműködési szerződés.</p>
+      </div>
+      <div class="contract-badge">● Érvényes &amp; Hitelesített Megállapodás</div>
+    </div>
+
+    <div class="contract-preview-grid">
+      <div>
+        <div class="contract-col-title">🇭🇺 Magyar Nyelvű Záradék</div>
+        <ul class="contract-clause-list">
+          <li><span>✓</span> <div><strong>10% VIP Vendégkedvezmény:</strong> Minden közvetített szállóvendég azonnali 10% kedvezményt kap az üzletben az Ön partnerkódjával.</div></li>
+          <li><span>✓</span> <div><strong>10% Partneri Jutalék:</strong> A közvetített vásárlások nettó összege után 10% jutalék jár, mely készpénzben vagy banki átutalással kérhető.</div></li>
+          <li><span>✓</span> <div><strong>VIP Kiszolgálás:</strong> Személyes méretre igazítás, prémium kávé és transzfer koordináció a Kossuth Lajos utcai szalonban.</div></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="contract-col-title">🇬🇧 English Bilateral Clause</div>
+        <ul class="contract-clause-list">
+          <li><span>✓</span> <div><strong>10% VIP Guest Privilege:</strong> All referred hotel guests receive an exclusive 10% in-store savings upon presenting your VIP code.</div></li>
+          <li><span>✓</span> <div><strong>10% Partner Commission:</strong> A 10% commission is earned on completed boutique purchases, payable via instant cash or bank wire.</div></li>
+          <li><span>✓</span> <div><strong>Boutique Hospitality:</strong> Bespoke tailoring adjustments, VIP concierge lounge reception &amp; multilingual service in Budapest.</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="contract-action-bar">
+      <span class="contract-secure-note">🔒 Hitelesített, titkosított Supabase tárolóból származó hivatalos PDF példány.</span>
+      <a id="contract-download-link" class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/sign/partner-contracts/b2b-contract.pdf?token=eyJraWQiOiJmZWIxYzExNS0xM2ZlLTRhODYtYThiOC01MWM4N2ZmMjNkMjciLCJhbGciOiJIUzUxMiJ9.eyJ1cmwiOiJwYXJ0bmVyLWNvbnRyYWN0cy9iMmItY29udHJhY3QucGRmIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MTM5MDAyNywiZXhwIjoxODIyOTI2MDI3fQ.7NDbvw2memZll3qPq3bn8IrBUUOzzV1kS2PHpXImlvZA5kCeTRsBC6Qv5-Hrg6ab2gvmEkRdrKsyHOyK4iVJDw">📄 Hivatalos Szerződés Letöltése (Kétnyelvű PDF) &rarr;</a>
+    </div>
+  </div>
+
   <!-- Financial Ledger / Transactions Section -->
   <div class="transactions-section">
     <div class="transactions-header">
@@ -606,6 +643,43 @@ portal_en_html = """
       <a id="request-payout-btn" class="btn-payout-wa" target="_blank" rel="noopener noreferrer" href="#">Request Payout on WhatsApp &rarr;</a>
     </div>
 
+  </div>
+
+  <!-- Official B2B Partnership Agreement Card -->
+  <div class="contract-card">
+    <div class="contract-header">
+      <div class="contract-header-text">
+        <span class="tag mono">Official B2B Documentation · Bilateral B2B Agreement</span>
+        <h3>Partnership Agreement &amp; General Terms</h3>
+        <p>Official bilateral (Hungarian &amp; English) cooperation agreement between Kaftan Angelo Luxury Outerwear and your partner organization.</p>
+      </div>
+      <div class="contract-badge">● Active &amp; Certified Agreement</div>
+    </div>
+
+    <div class="contract-preview-grid">
+      <div>
+        <div class="contract-col-title">🇬🇧 English Bilateral Clause</div>
+        <ul class="contract-clause-list">
+          <li><span>✓</span> <div><strong>10% VIP Guest Privilege:</strong> All referred hotel guests receive an exclusive 10% in-store savings upon presenting your VIP code.</div></li>
+          <li><span>✓</span> <div><strong>10% Partner Commission:</strong> A 10% commission is earned on completed boutique purchases, payable via instant cash or bank wire.</div></li>
+          <li><span>✓</span> <div><strong>Boutique Hospitality:</strong> Bespoke tailoring adjustments, VIP concierge lounge reception &amp; multilingual service in Budapest.</div></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="contract-col-title">🇭🇺 Hungarian Bilateral Clause</div>
+        <ul class="contract-clause-list">
+          <li><span>✓</span> <div><strong>10% VIP Vendégkedvezmény:</strong> Minden közvetített szállóvendég azonnali 10% kedvezményt kap az üzletben az Ön partnerkódjával.</div></li>
+          <li><span>✓</span> <div><strong>10% Partneri Jutalék:</strong> A közvetített vásárlások nettó összege után 10% jutalék jár, mely készpénzben vagy banki átutalással kérhető.</div></li>
+          <li><span>✓</span> <div><strong>VIP Kiszolgálás:</strong> Személyes méretre igazítás, prémium kávé és transzfer koordináció a Kossuth Lajos utcai szalonban.</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="contract-action-bar">
+      <span class="contract-secure-note">🔒 Official certified document served from private encrypted Supabase storage.</span>
+      <a id="contract-download-link" class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/sign/partner-contracts/b2b-contract.pdf?token=eyJraWQiOiJmZWIxYzExNS0xM2ZlLTRhODYtYThiOC01MWM4N2ZmMjNkMjciLCJhbGciOiJIUzUxMiJ9.eyJ1cmwiOiJwYXJ0bmVyLWNvbnRyYWN0cy9iMmItY29udHJhY3QucGRmIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MTM5MDAyNywiZXhwIjoxODIyOTI2MDI3fQ.7NDbvw2memZll3qPq3bn8IrBUUOzzV1kS2PHpXImlvZA5kCeTRsBC6Qv5-Hrg6ab2gvmEkRdrKsyHOyK4iVJDw">📄 Download Official Agreement (Bilingual PDF) &rarr;</a>
+    </div>
   </div>
 
   <!-- Financial Ledger / Transactions Section -->
