@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Sets up live Supabase connection & ultra-luxury UI for Kaftan Angelo Partner Portal."""
+"""Masterpiece 5-Star Hotel Concierge & VIP Partner Portal for Kaftan Angelo."""
 
 import json
 
@@ -23,7 +23,7 @@ portal_hu_html = """
 <section class="page-hero" style="--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')">
 <div class="wrap">
 <div class="breadcrumbs"><a href="/">Főoldal</a> / <a href="/partnerprogram/">Partnerprogram</a> / Partner Portál</div>
-<span class="tag mono">Kaftan Angelo · B2B &amp; Turisztikai Partnerek</span>
+<span class="tag mono">Kaftan Angelo · Five-Star Concierge &amp; VIP Club</span>
 <h1>Partner &amp; Concierge Portál</h1>
 <p>Közvetített vendégek, vásárlások és valós idejű jutalék (hak edis) egyenleg nyomon követése budapesti partnereink számára.</p>
 </div>
@@ -57,18 +57,18 @@ portal_hu_html = """
 
     <p id="portal-error-msg" class="gate-error" hidden>⚠️ Érvénytelen partnerkód vagy PIN-kód. Kérjük, ellenőrizze az adatokat!</p>
 
-    <button type="submit" class="btn btn-primary gate-submit-btn" id="gate-submit-btn">Belépés a Fiókba &rarr;</button>
+    <button type="submit" class="gate-submit-btn" id="gate-submit-btn">Belépés a Fiókba &rarr;</button>
   </form>
 
   <div class="gate-demo-pills">
     <span class="demo-label">Gyors próba demó fiókokkal:</span>
-    <button type="button" class="btn demo-btn" data-demo-code="HOTEL-01" data-demo-pin="1904">
-      <span>🏨 Hotel Concierge</span>
-      <span class="mono" style="opacity:0.7">HOTEL-01 / PIN: 1904</span>
+    <button type="button" class="demo-btn" data-demo-code="HOTEL-01" data-demo-pin="1904">
+      <span>🏨 Four Seasons Hotel Concierge</span>
+      <span class="mono" style="opacity:0.75">HOTEL-01 / PIN: 1904</span>
     </button>
-    <button type="button" class="btn demo-btn" data-demo-code="GUIDE-02" data-demo-pin="4821">
-      <span>🗺️ Idegenvezető</span>
-      <span class="mono" style="opacity:0.7">GUIDE-02 / PIN: 4821</span>
+    <button type="button" class="demo-btn" data-demo-code="GUIDE-02" data-demo-pin="4821">
+      <span>🗺️ Budapesti Idegenvezető</span>
+      <span class="mono" style="opacity:0.75">GUIDE-02 / PIN: 4821</span>
     </button>
   </div>
 </div>
@@ -84,7 +84,7 @@ portal_hu_html = """
       <p id="partner-display-type" class="dashboard-partner-sub">Hotel Concierge</p>
     </div>
     <div class="dashboard-actions">
-      <button type="button" id="portal-logout-btn" class="btn btn-ghost" style="border-radius:10px; padding:0.6rem 1.2rem;">Kijelentkezés</button>
+      <button type="button" id="portal-logout-btn" class="btn btn-ghost" style="border-radius:12px; padding:0.65rem 1.4rem;">Kijelentkezés</button>
     </div>
   </div>
 
@@ -114,7 +114,7 @@ portal_hu_html = """
         <span class="stat-icon" aria-hidden="true">💰</span>
       </div>
       <strong id="stat-unpaid" class="stat-val accent">0 HUF</strong>
-      <span class="stat-sub" style="color:var(--bright); opacity:0.9;">Azonnal kifizethető egyenleg</span>
+      <span class="stat-sub" style="color:#ffd8a8;">Azonnal kifizethető egyenleg</span>
     </div>
 
     <div class="stat-card">
@@ -127,32 +127,35 @@ portal_hu_html = """
     </div>
   </div>
 
-  <!-- Actions Grid: VIP Voucher Card + Instant Payout -->
+  <!-- Actions Grid: VIP Concierge Pass + Instant Payout -->
   <div class="portal-actions-grid">
 
-    <!-- Digital VIP Concierge Voucher Pass -->
-    <div class="vip-voucher-box">
-      <div class="voucher-header">
-        <div class="voucher-brand-group">
-          <span class="voucher-brand">Kaftan Angelo · Budapest</span>
+    <!-- Luxury Apple Wallet Style Concierge Pass -->
+    <div class="vip-pass-card">
+      <div class="vip-pass-top">
+        <div class="vip-pass-brand">
+          <span class="vip-brand-name">Kaftan Angelo</span>
+          <span class="vip-brand-city">Budapest · Luxury Outerwear</span>
         </div>
-        <span class="voucher-badge">10% VIP Vendégkedvezmény</span>
+        <span class="vip-pass-pill">10% VIP Guest Pass</span>
       </div>
 
-      <p class="voucher-desc">Adja meg ezt a partnerkódot vendégeinek vagy küldje el WhatsAppon. A vásárló <strong>10% exkluzív kedvezményt</strong> kap az üzletben, a vásárlás pedig automatikusan az Ön jutalékához íródik.</p>
+      <div class="vip-pass-body">
+        <p class="vip-pass-desc">Mutassa be ezt a kártyát vendégének vagy küldje el WhatsAppon. A vásárló <strong>10% exkluzív VIP kedvezményt</strong> kap az üzletben, a vásárlás pedig automatikusan az Ön jutalékához íródik.</p>
 
-      <div class="voucher-code-plate">
-        <div class="voucher-code-info">
-          <span class="voucher-code-label">Az Ön VIP Ajánlókódja:</span>
-          <strong id="voucher-code-val" class="voucher-code-text">HOTEL-01</strong>
+        <div class="vip-pass-voucher-strip">
+          <div class="vip-strip-info">
+            <span class="vip-strip-label">Az Ön Hivatalos VIP Kódja:</span>
+            <strong id="voucher-code-val" class="vip-strip-code">HOTEL-01</strong>
+          </div>
+          <button type="button" id="copy-voucher-btn" class="btn btn-ghost" style="padding:0.6rem 1.1rem; border-radius:10px;">📋 Kód Másolása</button>
         </div>
-        <button type="button" id="copy-voucher-btn" class="btn btn-ghost" style="padding:0.5rem 1rem; border-radius:8px;">📋 Kód Másolása</button>
+
+        <p class="vip-pass-address">📍 Kossuth Lajos u. 18, Budapest 1053 (Astoria — Ferenciek tere)</p>
       </div>
 
-      <p class="voucher-address">📍 Kossuth Lajos u. 18, Budapest 1053 (Astoria — Ferenciek tere)</p>
-
-      <div class="voucher-actions">
-        <a id="share-voucher-wa" class="btn btn-luxury-gold" target="_blank" rel="noopener noreferrer" href="#">📲 VIP Kártya Küldése Vendégnek WhatsAppon</a>
+      <div class="vip-pass-actions">
+        <a id="share-voucher-wa" class="btn-luxury-wa" target="_blank" rel="noopener noreferrer" href="#">📲 VIP Kártya Küldése Vendégnek WhatsAppon</a>
       </div>
       <span id="copy-voucher-status" class="copy-status" role="status"></span>
     </div>
@@ -170,16 +173,16 @@ portal_hu_html = """
       </div>
 
       <div class="payout-summary-box">
-        <span class="payout-summary-label">Jelenlegi igényelhető összeg:</span>
+        <span class="payout-summary-label">Jelenlegi igényelhető egyenleg:</span>
         <strong id="payout-amount-preview" class="payout-summary-val">0 HUF</strong>
       </div>
 
-      <a id="request-payout-btn" class="btn btn-primary btn-payout-wa" target="_blank" rel="noopener noreferrer" href="#">Kifizetés kérése WhatsAppon &rarr;</a>
+      <a id="request-payout-btn" class="btn-payout-wa" target="_blank" rel="noopener noreferrer" href="#">Kifizetés kérése WhatsAppon &rarr;</a>
     </div>
 
   </div>
 
-  <!-- Transactions Table Section -->
+  <!-- Financial Ledger / Transactions Section -->
   <div class="transactions-section">
     <div class="transactions-header">
       <div>
@@ -204,6 +207,33 @@ portal_hu_html = """
           <!-- Populated by JS -->
         </tbody>
       </table>
+    </div>
+  </div>
+
+  <!-- 4-Step Partner Guide -->
+  <div class="portal-guide-section">
+    <h3 class="portal-guide-title">Hogyan működik a partnerség?</h3>
+    <div class="guide-steps-grid">
+      <div class="guide-step-card">
+        <span class="guide-step-num">01</span>
+        <h4>Ajánlja a butikot</h4>
+        <p>Küldje el a fenti VIP kártyát vendégének WhatsAppon vagy említse meg a belvárosi Kossuth Lajos utcai üzletet.</p>
+      </div>
+      <div class="guide-step-card">
+        <span class="guide-step-num">02</span>
+        <h4>10% VIP Kedvezmény</h4>
+        <p>A vendég bemutatja az Ön partnerkódját és azonnali 10% kedvezményben részesül minden prémium bőrkabátból és bundából.</p>
+      </div>
+      <div class="guide-step-card">
+        <span class="guide-step-num">03</span>
+        <h4>Azonnali Jóváírás</h4>
+        <p>A sikeres bolti vásárlás automatikusan rögzítésre kerül az Ön fiókjában, jutaléka valós időben megjelenik.</p>
+      </div>
+      <div class="guide-step-card">
+        <span class="guide-step-num">04</span>
+        <h4>Gyors Kifizetés</h4>
+        <p>A felhalmozott hak ediş összeget bármikor kikérheti készpénzben a boltban vagy azonnali banki átutalással.</p>
+      </div>
     </div>
   </div>
 
@@ -402,6 +432,7 @@ portal_hu_html = """
 portal_en_html = portal_hu_html.replace('Főoldal', 'Home') \
   .replace('Partnerprogram', 'Partner Program') \
   .replace('Partner Portál', 'Partner Portal') \
+  .replace('Five-Star Concierge &amp; VIP Club', 'Five-Star Concierge &amp; VIP Partner Portal') \
   .replace('Közvetített vendégek, vásárlások és valós idejű jutalék (hak edis) egyenleg nyomon követése budapesti partnereink számára.', 'Track referred guest purchases, live commission earnings (hak edis), and payout balance for Budapest hospitality partners.') \
   .replace('🔒 Biztonságos Partner Belépés', '🔒 Secure Concierge Portal') \
   .replace('Partner Fiók Belépés', 'Partner Portal Login') \
@@ -412,8 +443,8 @@ portal_en_html = portal_hu_html.replace('Főoldal', 'Home') \
   .replace('Belépés a Fiókba &rarr;', 'Access Partner Dashboard &rarr;') \
   .replace('⚠️ Érvénytelen partnerkód vagy PIN-kód. Kérjük, ellenőrizze az adatokat!', '⚠️ Invalid partner code or PIN. Please verify your credentials.') \
   .replace('Gyors próba demó fiókokkal:', 'Quick test with demo partner accounts:') \
-  .replace('🏨 Hotel Concierge', '🏨 Hotel Concierge Desk') \
-  .replace('🗺️ Idegenvezető', '🗺️ Tour Specialist') \
+  .replace('🏨 Four Seasons Hotel Concierge', '🏨 Four Seasons Hotel Concierge') \
+  .replace('🗺️ Budapesti Idegenvezető', '🗺️ Budapest Tour Specialist') \
   .replace('● Aktív B2B Partner Státusz', '● Active B2B Partner Status') \
   .replace('Kijelentkezés', 'Log Out') \
   .replace('Közvetített vendégek', 'Referred Guests') \
@@ -424,14 +455,13 @@ portal_en_html = portal_hu_html.replace('Főoldal', 'Home') \
   .replace('Azonnal kifizethető egyenleg', 'Available for payout') \
   .replace('Kifizetett jutalék', 'Settled Commissions') \
   .replace('Korábban rendezve', 'Previously settled') \
-  .replace('10% VIP Vendégkedvezmény', '10% VIP Guest Discount') \
-  .replace('Adja meg ezt a partnerkódot vendégeinek vagy küldje el WhatsAppon. A vásárló <strong>10% exkluzív kedvezményt</strong> kap az üzletben, a vásárlás pedig automatikusan az Ön jutalékához íródik.', 'Share this pass with your hotel guests or tour groups. Visitors receive a <strong>10% VIP discount</strong> at our store, and commissions are credited to your account automatically.') \
-  .replace('Az Ön VIP Ajánlókódja:', 'Your VIP Referral Code:') \
+  .replace('Mutassa be ezt a kártyát vendégének vagy küldje el WhatsAppon. A vásárló <strong>10% exkluzív VIP kedvezményt</strong> kap az üzletben, a vásárlás pedig automatikusan az Ön jutalékához íródik.', 'Share this pass with your hotel guests or tour groups. Visitors receive an <strong>exclusive 10% VIP discount</strong> in store, and commissions are credited to your account automatically.') \
+  .replace('Az Ön Hivatalos VIP Kódja:', 'Your Official VIP Code:') \
   .replace('📋 Kód Másolása', '📋 Copy Code') \
   .replace('📲 VIP Kártya Küldése Vendégnek WhatsAppon', '📲 Send VIP Pass via WhatsApp') \
   .replace('Hak Ediş Kifizetése', 'Commission Payout') \
   .replace('A felhalmozott jutalékot készpénzben a Kossuth Lajos utcai üzletben vagy banki átutalással veheti át.', 'Collect your accrued balance in cash at our Kossuth Lajos boutique or request an instant wire transfer.') \
-  .replace('Jelenlegi igényelhető összeg:', 'Current available balance:') \
+  .replace('Jelenlegi igényelhető egyenleg:', 'Current available balance:') \
   .replace('Kifizetés kérése WhatsAppon &rarr;', 'Request Payout on WhatsApp &rarr;') \
   .replace('Elszámolás', 'Ledger') \
   .replace('Közvetített Vásárlások &amp; Jutalékok', 'Referred Purchases &amp; Commissions') \
@@ -442,6 +472,15 @@ portal_en_html = portal_hu_html.replace('Főoldal', 'Home') \
   .replace('Jutalék (Hak Ediş)', 'Commission') \
   .replace('Állapot', 'Status') \
   .replace('Még nincs rögzített vásárlási tranzakció. Amint vendége vásárol a kóddal, azonnal itt fog megjelenni!', 'No guest purchases recorded yet. As soon as a guest redeems your code in store, transactions appear here.') \
+  .replace('Hogyan működik a partnerség?', 'How the Partnership Works') \
+  .replace('Ajánlja a butikot', 'Recommend the Boutique') \
+  .replace('Küldje el a fenti VIP kártyát vendégének WhatsAppon vagy említse meg a belvárosi Kossuth Lajos utcai üzletet.', 'Share your VIP pass with your guests on WhatsApp or recommend our Kossuth Lajos boutique in person.') \
+  .replace('10% VIP Kedvezmény', '10% VIP Guest Savings') \
+  .replace('A vendég bemutatja az Ön partnerkódját és azonnali 10% kedvezményben részesül minden prémium bőrkabátból és bundából.', 'Guests present your referral code to receive an instant 10% VIP savings on all handcrafted leather &amp; shearling coats.') \
+  .replace('Azonnali Jóváírás', 'Automatic Credit') \
+  .replace('A sikeres bolti vásárlás automatikusan rögzítésre kerül az Ön fiókjában, jutaléka valós időben megjelenik.', 'Completed purchases are recorded in your account, with your commission updated in real time.') \
+  .replace('Gyors Kifizetés', 'Instant Payouts') \
+  .replace('A felhalmozott hak ediş összeget bármikor kikérheti készpénzben a boltban vagy azonnali banki átutalással.', 'Withdraw your accrued balance anytime in cash at our central boutique or request an instant bank wire.') \
   .replace('aria-label="Partnerkód"', 'aria-label="Partner Code"') \
   .replace('aria-label="PIN-kód"', 'aria-label="PIN Code"') \
   .replace('Ellenőrzés...', 'Verifying...') \
@@ -453,4 +492,4 @@ pages['/en/partner-portal/']['mainHtml'] = portal_en_html
 with open('src/data/pages.json', 'w', encoding='utf-8') as f:
     json.dump(pages, f, ensure_ascii=False, indent=2)
 
-print("pages.json successfully configured with ultra-luxury portal design.")
+print("pages.json successfully configured with master luxury concierge design.")
