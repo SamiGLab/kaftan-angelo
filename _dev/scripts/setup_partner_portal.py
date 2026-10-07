@@ -1,32 +1,33 @@
 # -*- coding: utf-8 -*-
 """Masterpiece 5-Star Hotel Concierge & VIP Partner Portal for Kaftan Angelo.
-Completely clean: 100% genuine Hungarian for HU, 100% polished British/International English for EN.
-Zero Turkish leaks. Zero cross-language contamination.
+Features:
+- Crisp, aligned hero buttons for /partnerprogram/ & /en/partners/
+- Partner Profile & Verified Payout Account Details (Contact person, Phone, IBAN)
+- 14-Day Customer Guarantee & Return Protection Hold (Cleared vs Pending Holding)
+- Dynamic bilingual B2B contract with personal signed PDF or pending upload notice
+- 100% genuine Hungarian for HU, 100% polished British/International English for EN.
 """
 
 import json
+import re
 
 with open('src/data/pages.json', 'r', encoding='utf-8') as f:
     pages = json.load(f)
 
-# 1. Clean /partnerprogram/ button text if it had Turkish
+# 1. Clean and align hero buttons on /partnerprogram/
 if '/partnerprogram/' in pages:
-    old_html = pages['/partnerprogram/']['mainHtml']
-    # Remove any previous button with 'Hak Ediş'
-    old_html = old_html.replace('Belépés a Partner Portálra (Hak Ediş &amp; Jutalék)', 'Belépés a Partner Portálra (Jutalék &amp; Elszámolás)')
-    old_html = old_html.replace('Belépés a Partner Portálra (Hak Ediş & Jutalék)', 'Belépés a Partner Portálra (Jutalék &amp; Elszámolás)')
-    if '/partner-portal/' not in old_html:
-        portal_btn = '<div class="actions" style="margin-top:1.5rem"><a class="btn btn-primary" href="/partner-portal/">Belépés a Partner Portálra (Jutalék &amp; Elszámolás) &rarr;</a></div>'
-        old_html = old_html.replace('</div></div></section>', f'{portal_btn}</div></div></section>', 1)
-    pages['/partnerprogram/']['mainHtml'] = old_html
+    html = pages['/partnerprogram/']['mainHtml']
+    clean_hu_actions = '<div class="actions" style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;"><a class="btn btn-primary" href="https://wa.me/36203593216?text=%C3%9Cdv%C3%B6zl%C3%B6m!%20A%20Kaftan%20Angelo%20partnerprogramj%C3%A1r%C3%B3l%20szeretn%C3%A9k%20%C3%A9rdekl%C5%91dni.">Kapcsolatfelvétel &rarr;</a><a class="btn btn-secondary" href="/partner-portal/">Partner Portál Belépés &rarr;</a></div>'
+    # Replace any previous actions container in hero
+    html = re.sub(r'<div class="actions">.*?</div></div></section>', f'{clean_hu_actions}</div></section>', html, count=1, flags=re.DOTALL)
+    pages['/partnerprogram/']['mainHtml'] = html
 
-# 2. Clean /en/partners/ button text
+# 2. Clean and align hero buttons on /en/partners/
 if '/en/partners/' in pages:
-    old_en_html = pages['/en/partners/']['mainHtml']
-    if '/en/partner-portal/' not in old_en_html:
-        en_portal_btn = '<div class="actions" style="margin-top:1.5rem"><a class="btn btn-primary" href="/en/partner-portal/">Partner Portal Login (Commissions &amp; Payouts) &rarr;</a></div>'
-        old_en_html = old_en_html.replace('</div></div></section>', f'{en_portal_btn}</div></div></section>', 1)
-    pages['/en/partners/']['mainHtml'] = old_en_html
+    en_html = pages['/en/partners/']['mainHtml']
+    clean_en_actions = '<div class="actions" style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;"><a class="btn btn-primary" href="https://wa.me/36203593216?text=Hello%21%20I%20would%20like%20to%20learn%20about%20the%20Kaftan%20Angelo%20partner%20program.">Inquire via WhatsApp &rarr;</a><a class="btn btn-secondary" href="/en/partner-portal/">Partner Portal Login &rarr;</a></div>'
+    en_html = re.sub(r'<div class="actions">.*?</div></div></section>', f'{clean_en_actions}</div></section>', en_html, count=1, flags=re.DOTALL)
+    pages['/en/partners/']['mainHtml'] = en_html
 
 # ==============================================================================
 # HUNGARIAN PORTAL HTML (100% Natural Hungarian)
@@ -80,12 +81,31 @@ portal_hu_html = """
   <!-- Partner Header Profile -->
   <div class="dashboard-hero-card">
     <div class="dashboard-partner-meta">
-      <span class="badge-status active">● Aktív B2B Partner Státusz</span>
+      <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.4rem;">
+        <span class="badge-status active">● Aktív B2B Partner Státusz</span>
+        <span class="tag mono" id="partner-display-code" style="padding:0.25rem 0.65rem; font-size:0.75rem;">KÓD: HOTEL-01</span>
+      </div>
       <h2 id="partner-display-name" class="dashboard-partner-title">Partner Fiók</h2>
       <p id="partner-display-type" class="dashboard-partner-sub">Hotel Concierge</p>
     </div>
     <div class="dashboard-actions">
       <button type="button" id="portal-logout-btn" class="btn btn-ghost" style="border-radius:12px; padding:0.65rem 1.4rem;">Kijelentkezés</button>
+    </div>
+  </div>
+
+  <!-- Verified Partner Contact & Payout IBAN Details -->
+  <div class="partner-profile-strip" style="background:linear-gradient(135deg, rgba(38,26,18,0.85) 0%, rgba(20,13,8,0.92) 100%); border:1px solid rgba(220,178,124,0.3); border-radius:18px; padding:1.4rem 1.8rem; margin-bottom:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1.25rem; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
+    <div class="profile-info-item">
+      <span style="font-size:0.72rem; color:var(--dim); text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.3rem;">👤 Hivatalos Kapcsolattartó</span>
+      <strong id="partner-contact-person" style="font-size:0.96rem; color:var(--cream);">Kovács Péter (Head Concierge)</strong>
+    </div>
+    <div class="profile-info-item">
+      <span style="font-size:0.72rem; color:var(--dim); text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.3rem;">📞 Hivatalos Telefonszám</span>
+      <strong id="partner-phone" style="font-size:0.96rem; color:var(--cream);">+36 20 359 3216</strong>
+    </div>
+    <div class="profile-info-item">
+      <span style="font-size:0.72rem; color:var(--dim); text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.3rem;">🏦 Kifizetési IBAN Számlaszám</span>
+      <strong id="partner-iban" class="mono" style="font-size:0.92rem; color:#ffd8a8; letter-spacing:0.04em;">HU42 1177 3016 4521 8890 0000 0000</strong>
     </div>
   </div>
 
@@ -111,21 +131,30 @@ portal_hu_html = """
 
     <div class="stat-card highlight">
       <div class="stat-header">
-        <span class="stat-label" style="color:var(--bright);">Függőben lévő jutalék</span>
+        <span class="stat-label" style="color:var(--bright);">Kifizethető Egyenleg</span>
         <span class="stat-icon" aria-hidden="true">💰</span>
       </div>
-      <strong id="stat-unpaid" class="stat-val accent">0 HUF</strong>
-      <span class="stat-sub" style="color:#ffd8a8;">Azonnal kifizethető egyenleg</span>
+      <strong id="stat-cleared" class="stat-val accent">0 HUF</strong>
+      <span class="stat-sub" style="color:#ffd8a8;">Azonnal utalható a fenti IBAN-ra</span>
     </div>
 
     <div class="stat-card">
       <div class="stat-header">
-        <span class="stat-label">Kifizetett jutalék</span>
-        <span class="stat-icon" aria-hidden="true">✅</span>
+        <span class="stat-label">Függőben (14 napos garancia)</span>
+        <span class="stat-icon" aria-hidden="true">⏳</span>
       </div>
-      <strong id="stat-paid" class="stat-val">0 HUF</strong>
-      <span class="stat-sub">Korábban rendezve</span>
+      <strong id="stat-holding" class="stat-val">0 HUF</strong>
+      <span class="stat-sub">Vásárlói garanciaidőszak alatt</span>
     </div>
+  </div>
+
+  <!-- Policy reassurance alert -->
+  <div class="policy-notice-banner" style="background:rgba(220,178,124,0.06); border:1px solid rgba(220,178,124,0.25); border-radius:14px; padding:1.1rem 1.5rem; margin-bottom:2.2rem; display:flex; align-items:center; gap:0.9rem;">
+    <span style="font-size:1.4rem;" aria-hidden="true">🛡️</span>
+    <p style="margin:0; font-size:0.85rem; color:var(--dim); line-height:1.55;">
+      <strong style="color:var(--bright);">14 Napos Elszámolási &amp; Garanciális Szabályzat:</strong>
+      A közvetített vásárlások jutaléka a törvényes 14 napos vásárlói csere- és garanciális időszak lejárta után válik automatikusan kifizethetővé a partner fenti regisztrált IBAN bankszámlájára.
+    </p>
   </div>
 
   <!-- Actions Grid: VIP Concierge Pass + Instant Payout -->
@@ -168,17 +197,17 @@ portal_hu_html = """
           <div class="payout-icon-wrap" aria-hidden="true">🏦</div>
           <div>
             <h3>Jutalék Kifizetése</h3>
-            <p>A felhalmozott jutalékot készpénzben a Kossuth Lajos utcai üzletben vagy banki átutalással veheti át.</p>
+            <p>A jóváhagyott egyenleget készpénzben a Kossuth Lajos utcai üzletben vagy a regisztrált IBAN számlájára kérheti.</p>
           </div>
         </div>
       </div>
 
       <div class="payout-summary-box">
-        <span class="payout-summary-label">Jelenlegi igényelhető egyenleg:</span>
+        <span class="payout-summary-label">Jelenlegi kifizethető egyenleg:</span>
         <strong id="payout-amount-preview" class="payout-summary-val">0 HUF</strong>
       </div>
 
-      <a id="request-payout-btn" class="btn-payout-wa" target="_blank" rel="noopener noreferrer" href="#">Kifizetés kérése WhatsAppon &rarr;</a>
+      <a id="request-payout-btn" class="btn-payout-wa" target="_blank" rel="noopener noreferrer" href="#">Kifizetés Kérése a Regisztrált IBAN-ra &rarr;</a>
     </div>
 
   </div>
@@ -200,6 +229,7 @@ portal_hu_html = """
         <ul class="contract-clause-list">
           <li><span>✓</span> <div><strong>10% VIP Vendégkedvezmény:</strong> Minden közvetített szállóvendég azonnali 10% kedvezményt kap az üzletben az Ön partnerkódjával.</div></li>
           <li><span>✓</span> <div><strong>10% Partneri Jutalék:</strong> A közvetített vásárlások nettó összege után 10% jutalék jár, mely készpénzben vagy banki átutalással kérhető.</div></li>
+          <li><span>✓</span> <div><strong>14 Napos Elszámolási Időszak:</strong> A jutalék a törvényes 14 napos vevői csereidőszak letelte után kerül kifizetésre a regisztrált IBAN-ra.</div></li>
           <li><span>✓</span> <div><strong>VIP Kiszolgálás:</strong> Személyes méretre igazítás, prémium kávé és transzfer koordináció a Kossuth Lajos utcai szalonban.</div></li>
         </ul>
       </div>
@@ -209,6 +239,7 @@ portal_hu_html = """
         <ul class="contract-clause-list">
           <li><span>✓</span> <div><strong>10% VIP Guest Privilege:</strong> All referred hotel guests receive an exclusive 10% in-store savings upon presenting your VIP code.</div></li>
           <li><span>✓</span> <div><strong>10% Partner Commission:</strong> A 10% commission is earned on completed boutique purchases, payable via instant cash or bank wire.</div></li>
+          <li><span>✓</span> <div><strong>14-Day Settlement Hold:</strong> Commissions clear following the standard 14-day customer exchange period, transferred to your registered IBAN.</div></li>
           <li><span>✓</span> <div><strong>Boutique Hospitality:</strong> Bespoke tailoring adjustments, VIP concierge lounge reception &amp; multilingual service in Budapest.</div></li>
         </ul>
       </div>
@@ -273,13 +304,13 @@ portal_hu_html = """
       </div>
       <div class="guide-step-card">
         <span class="guide-step-num">03</span>
-        <h4>Azonnali Jóváírás</h4>
-        <p>A sikeres bolti vásárlás automatikusan rögzítésre kerül az Ön fiókjában, jutaléka valós időben megjelenik.</p>
+        <h4>Azonnali Rögzítés</h4>
+        <p>A sikeres bolti vásárlás azonnal megjelenik fiókjában a 14 napos garanciaidőszak számlálójával.</p>
       </div>
       <div class="guide-step-card">
         <span class="guide-step-num">04</span>
-        <h4>Gyors Kifizetés</h4>
-        <p>A felhalmozott jutalék összegét bármikor kikérheti készpénzben a boltban vagy azonnali banki átutalással.</p>
+        <h4>Kényelmes Kifizetés</h4>
+        <p>A jóváhagyott összeget bármikor kikérheti készpénzben az üzletben vagy banki átutalással a regisztrált IBAN számlájára.</p>
       </div>
     </div>
   </div>
@@ -300,12 +331,18 @@ portal_hu_html = """
       name: 'Four Seasons Hotel Gresham Palace Concierge',
       type: 'Hotel Concierge',
       code: 'HOTEL-01',
+      contact_person: 'Kovács Péter (Head Concierge)',
+      phone: '+36 20 359 3216',
+      iban: 'HU42 1177 3016 4521 8890 0000 0000',
+      contract_url: 'https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/sign/partner-contracts/b2b-contract.pdf?token=eyJraWQiOiJmZWIxYzExNS0xM2ZlLTRhODYtYThiOC01MWM4N2ZmMjNkMjciLCJhbGciOiJIUzUxMiJ9.eyJ1cmwiOiJwYXJ0bmVyLWNvbnRyYWN0cy9iMmItY29udHJhY3QucGRmIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MTM5MDAyNywiZXhwIjoxODIyOTI2MDI3fQ.7NDbvw2memZll3qPq3bn8IrBUUOzzV1kS2PHpXImlvZA5kCeTRsBC6Qv5-Hrg6ab2gvmEkRdrKsyHOyK4iVJDw',
       guests: 2,
       sales: 1300000,
+      cleared: 82000,
+      holding: 0,
       unpaid: 82000,
       paid: 48000,
       txs: [
-        { date: '2026.10.04', item: 'Női Toszkán Irhabunda (Hosszú)', amount: 820000, comm: 82000, status: 'Függőben' },
+        { date: '2026.10.04', item: 'Női Toszkán Irhabunda (Hosszú)', amount: 820000, comm: 82000, status: 'Kifizethető' },
         { date: '2026.09.28', item: 'Férfi Báránybőr Pilótakabát', amount: 480000, comm: 48000, status: 'Kifizetve' }
       ]
     },
@@ -314,13 +351,19 @@ portal_hu_html = """
       name: 'Kovács Péter – Luxury Budapest Tours',
       type: 'Idegenvezető',
       code: 'GUIDE-02',
+      contact_person: 'Kovács Péter (Senior Guide)',
+      phone: '+36 30 987 6543',
+      iban: 'HU61 1030 0002 1089 4432 1120 0000',
+      contract_url: null,
       guests: 2,
       sales: 730000,
+      cleared: 42000,
+      holding: 31000,
       unpaid: 73000,
       paid: 0,
       txs: [
-        { date: '2026.10.05', item: 'Férfi Báránybőr Motoros Dzseki', amount: 420000, comm: 42000, status: 'Függőben' },
-        { date: '2026.10.02', item: 'Női Karcsúsított Nappa Bőrkabát', amount: 310000, comm: 31000, status: 'Függőben' }
+        { date: '2026.10.05', item: 'Férfi Báránybőr Motoros Dzseki', amount: 420000, comm: 42000, status: 'Kifizethető' },
+        { date: '2026.10.02', item: 'Női Karcsúsított Nappa Bőrkabát', amount: 310000, comm: 31000, status: 'Függőben (Garanciaidő)' }
       ]
     }
   };
@@ -383,19 +426,34 @@ portal_hu_html = """
     localStorage.setItem('kaftan_portal_session', JSON.stringify({ code: cleanCode, pin: cleanPin }));
 
     // Populate dashboard
+    document.getElementById('partner-display-code').textContent = 'KÓD: ' + data.code;
     document.getElementById('partner-display-name').textContent = data.name;
     document.getElementById('partner-display-type').textContent = data.type;
+    
+    // Partner profile strip
+    const contactElem = document.getElementById('partner-contact-person');
+    if (contactElem) contactElem.textContent = data.contact_person || 'Hivatalos Képviselő';
+    const phoneElem = document.getElementById('partner-phone');
+    if (phoneElem) phoneElem.textContent = data.phone || '+36 20 359 3216';
+    const ibanElem = document.getElementById('partner-iban');
+    if (ibanElem) ibanElem.textContent = data.iban || 'HU42 1177 3016 4521 8890 0000 0000';
+
+    // Financial metrics
+    const clearedAmt = data.cleared !== undefined ? data.cleared : data.unpaid;
+    const holdingAmt = data.holding !== undefined ? data.holding : 0;
+
     document.getElementById('stat-guests').textContent = data.guests + ' fő';
     document.getElementById('stat-sales').textContent = fmtHuf(data.sales);
-    document.getElementById('stat-unpaid').textContent = fmtHuf(data.unpaid);
-    document.getElementById('stat-paid').textContent = fmtHuf(data.paid);
+    document.getElementById('stat-cleared').textContent = fmtHuf(clearedAmt);
+    document.getElementById('stat-holding').textContent = fmtHuf(holdingAmt);
     document.getElementById('voucher-code-val').textContent = data.code;
 
     const payoutPreview = document.getElementById('payout-amount-preview');
-    if (payoutPreview) payoutPreview.textContent = fmtHuf(data.unpaid);
+    if (payoutPreview) payoutPreview.textContent = fmtHuf(clearedAmt);
 
-    // WhatsApp payout link
-    const payoutMsg = encodeURIComponent('Üdvözlöm! A(z) ' + data.code + ' partnerként (' + data.name + ') szeretném kérni a ' + fmtHuf(data.unpaid) + ' összegű felhalmozott jutalékom kifizetését készpénzben vagy átutalással.');
+    // WhatsApp payout link with registered IBAN
+    const partnerIban = data.iban || 'HU42 1177 3016 4521 8890 0000 0000';
+    const payoutMsg = encodeURIComponent('Üdvözlöm! A(z) ' + data.code + ' partnerként (' + data.name + ') szeretném kérni a(z) ' + fmtHuf(clearedAmt) + ' összegű jóváhagyott jutalékom kifizetését a regisztrált ' + partnerIban + ' számú IBAN bankszámlámra.');
     document.getElementById('request-payout-btn').href = 'https://wa.me/36203593216?text=' + payoutMsg;
 
     // WhatsApp share voucher link
@@ -428,11 +486,23 @@ portal_hu_html = """
       txs.forEach(function(tx) {
         const tr = document.createElement('tr');
         const isPaid = tx.status === 'Kifizetve' || tx.status === 'Settled';
+        let badgeClass = 'unpaid';
+        let statusLabel = tx.status;
+        if (isPaid) {
+          badgeClass = 'paid';
+        } else if (tx.status === 'Kifizethető' || tx.status === 'Cleared') {
+          badgeClass = 'paid';
+          statusLabel = 'Kifizethető';
+        } else {
+          badgeClass = 'unpaid';
+          statusLabel = 'Függőben (Garanciaidő)';
+        }
+
         tr.innerHTML = '<td><strong>' + tx.date + '</strong></td>' +
           '<td>' + tx.item + '</td>' +
           '<td>' + fmtHuf(tx.amount) + '</td>' +
           '<td class="accent-col">+' + fmtHuf(tx.comm) + '</td>' +
-          '<td><span class="badge-status ' + (isPaid ? 'paid' : 'unpaid') + '">' + tx.status + '</span></td>';
+          '<td><span class="badge-status ' + badgeClass + '">' + statusLabel + '</span></td>';
         tbody.appendChild(tr);
       });
     }
@@ -444,16 +514,6 @@ portal_hu_html = """
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     handleLogin(codeInput.value, pinInput.value);
-  });
-
-  document.querySelectorAll('.demo-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      const c = btn.getAttribute('data-demo-code');
-      const p = btn.getAttribute('data-demo-pin');
-      codeInput.value = c;
-      pinInput.value = p;
-      handleLogin(c, p);
-    });
   });
 
   if (logoutBtn) {
@@ -501,7 +561,7 @@ portal_en_html = """
 <div class="breadcrumbs"><a href="/en/">Home</a> / <a href="/en/partners/">Partner Program</a> / Concierge Portal</div>
 <span class="tag mono">Kaftan Angelo · Five-Star Concierge &amp; VIP Club</span>
 <h1>Partner &amp; Concierge Portal</h1>
-<p>Track referred guest purchases, live commission earnings, and payout balance for Budapest hospitality partners.</p>
+<p>Track referred guest purchases, cleared commission earnings, and bank settlement details for Budapest hospitality partners.</p>
 </div>
 </section>
 
@@ -543,12 +603,31 @@ portal_en_html = """
   <!-- Partner Header Profile -->
   <div class="dashboard-hero-card">
     <div class="dashboard-partner-meta">
-      <span class="badge-status active">● Active B2B Partner Status</span>
+      <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.4rem;">
+        <span class="badge-status active">● Active B2B Partner Status</span>
+        <span class="tag mono" id="partner-display-code" style="padding:0.25rem 0.65rem; font-size:0.75rem;">CODE: HOTEL-01</span>
+      </div>
       <h2 id="partner-display-name" class="dashboard-partner-title">Partner Account</h2>
       <p id="partner-display-type" class="dashboard-partner-sub">Hotel Concierge</p>
     </div>
     <div class="dashboard-actions">
       <button type="button" id="portal-logout-btn" class="btn btn-ghost" style="border-radius:12px; padding:0.65rem 1.4rem;">Log Out</button>
+    </div>
+  </div>
+
+  <!-- Verified Partner Contact & Payout IBAN Details -->
+  <div class="partner-profile-strip" style="background:linear-gradient(135deg, rgba(38,26,18,0.85) 0%, rgba(20,13,8,0.92) 100%); border:1px solid rgba(220,178,124,0.3); border-radius:18px; padding:1.4rem 1.8rem; margin-bottom:2rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1.25rem; box-shadow:0 10px 30px rgba(0,0,0,0.4);">
+    <div class="profile-info-item">
+      <span style="font-size:0.72rem; color:var(--dim); text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.3rem;">👤 Official Representative</span>
+      <strong id="partner-contact-person" style="font-size:0.96rem; color:var(--cream);">Peter Kovacs (Head Concierge)</strong>
+    </div>
+    <div class="profile-info-item">
+      <span style="font-size:0.72rem; color:var(--dim); text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.3rem;">📞 Contact Telephone</span>
+      <strong id="partner-phone" style="font-size:0.96rem; color:var(--cream);">+36 20 359 3216</strong>
+    </div>
+    <div class="profile-info-item">
+      <span style="font-size:0.72rem; color:var(--dim); text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:0.3rem;">🏦 Settlement IBAN Account</span>
+      <strong id="partner-iban" class="mono" style="font-size:0.92rem; color:#ffd8a8; letter-spacing:0.04em;">HU42 1177 3016 4521 8890 0000 0000</strong>
     </div>
   </div>
 
@@ -574,21 +653,30 @@ portal_en_html = """
 
     <div class="stat-card highlight">
       <div class="stat-header">
-        <span class="stat-label" style="color:var(--bright);">Pending Commission</span>
+        <span class="stat-label" style="color:var(--bright);">Cleared for Payout</span>
         <span class="stat-icon" aria-hidden="true">💰</span>
       </div>
-      <strong id="stat-unpaid" class="stat-val accent">0 HUF</strong>
-      <span class="stat-sub" style="color:#ffd8a8;">Available for payout</span>
+      <strong id="stat-cleared" class="stat-val accent">0 HUF</strong>
+      <span class="stat-sub" style="color:#ffd8a8;">Cleared for direct IBAN wire transfer</span>
     </div>
 
     <div class="stat-card">
       <div class="stat-header">
-        <span class="stat-label">Settled Commissions</span>
-        <span class="stat-icon" aria-hidden="true">✅</span>
+        <span class="stat-label">Pending (14-Day Hold)</span>
+        <span class="stat-icon" aria-hidden="true">⏳</span>
       </div>
-      <strong id="stat-paid" class="stat-val">0 HUF</strong>
-      <span class="stat-sub">Previously settled</span>
+      <strong id="stat-holding" class="stat-val">0 HUF</strong>
+      <span class="stat-sub">In customer return window</span>
     </div>
+  </div>
+
+  <!-- Policy reassurance alert -->
+  <div class="policy-notice-banner" style="background:rgba(220,178,124,0.06); border:1px solid rgba(220,178,124,0.25); border-radius:14px; padding:1.1rem 1.5rem; margin-bottom:2.2rem; display:flex; align-items:center; gap:0.9rem;">
+    <span style="font-size:1.4rem;" aria-hidden="true">🛡️</span>
+    <p style="margin:0; font-size:0.85rem; color:var(--dim); line-height:1.55;">
+      <strong style="color:var(--bright);">14-Day Customer Guarantee &amp; Clearance Policy:</strong>
+      Commissions clear automatically for bank payout following the statutory 14-day customer return and exchange window, transferred directly to your registered IBAN above.
+    </p>
   </div>
 
   <!-- Actions Grid: VIP Concierge Pass + Instant Payout -->
@@ -631,17 +719,17 @@ portal_en_html = """
           <div class="payout-icon-wrap" aria-hidden="true">🏦</div>
           <div>
             <h3>Commission Payout</h3>
-            <p>Collect your accrued balance in cash at our Kossuth Lajos boutique or request an instant wire transfer.</p>
+            <p>Collect your cleared balance via bank wire to your registered IBAN or in cash at our Kossuth Lajos boutique.</p>
           </div>
         </div>
       </div>
 
       <div class="payout-summary-box">
-        <span class="payout-summary-label">Current available balance:</span>
+        <span class="payout-summary-label">Cleared available balance:</span>
         <strong id="payout-amount-preview" class="payout-summary-val">0 HUF</strong>
       </div>
 
-      <a id="request-payout-btn" class="btn-payout-wa" target="_blank" rel="noopener noreferrer" href="#">Request Payout on WhatsApp &rarr;</a>
+      <a id="request-payout-btn" class="btn-payout-wa" target="_blank" rel="noopener noreferrer" href="#">Request Wire Transfer to Registered IBAN &rarr;</a>
     </div>
 
   </div>
@@ -663,6 +751,7 @@ portal_en_html = """
         <ul class="contract-clause-list">
           <li><span>✓</span> <div><strong>10% VIP Guest Privilege:</strong> All referred hotel guests receive an exclusive 10% in-store savings upon presenting your VIP code.</div></li>
           <li><span>✓</span> <div><strong>10% Partner Commission:</strong> A 10% commission is earned on completed boutique purchases, payable via instant cash or bank wire.</div></li>
+          <li><span>✓</span> <div><strong>14-Day Settlement Hold:</strong> Commissions clear following the standard 14-day customer exchange period, transferred to your registered IBAN.</div></li>
           <li><span>✓</span> <div><strong>Boutique Hospitality:</strong> Bespoke tailoring adjustments, VIP concierge lounge reception &amp; multilingual service in Budapest.</div></li>
         </ul>
       </div>
@@ -672,6 +761,7 @@ portal_en_html = """
         <ul class="contract-clause-list">
           <li><span>✓</span> <div><strong>10% VIP Vendégkedvezmény:</strong> Minden közvetített szállóvendég azonnali 10% kedvezményt kap az üzletben az Ön partnerkódjával.</div></li>
           <li><span>✓</span> <div><strong>10% Partneri Jutalék:</strong> A közvetített vásárlások nettó összege után 10% jutalék jár, mely készpénzben vagy banki átutalással kérhető.</div></li>
+          <li><span>✓</span> <div><strong>14 Napos Elszámolási Időszak:</strong> A jutalék a törvényes 14 napos vevői csereidőszak letelte után kerül kifizetésre a regisztrált IBAN-ra.</div></li>
           <li><span>✓</span> <div><strong>VIP Kiszolgálás:</strong> Személyes méretre igazítás, prémium kávé és transzfer koordináció a Kossuth Lajos utcai szalonban.</div></li>
         </ul>
       </div>
@@ -736,13 +826,13 @@ portal_en_html = """
       </div>
       <div class="guide-step-card">
         <span class="guide-step-num">03</span>
-        <h4>Automatic Credit</h4>
-        <p>Completed purchases are recorded in your account, with your commission updated in real time.</p>
+        <h4>Real-Time Tracking</h4>
+        <p>Boutique purchases appear immediately in your portal with a 14-day customer guarantee clearance timer.</p>
       </div>
       <div class="guide-step-card">
         <span class="guide-step-num">04</span>
-        <h4>Instant Payouts</h4>
-        <p>Withdraw your accrued balance anytime in cash at our central boutique or request an instant bank wire.</p>
+        <h4>Seamless Bank Settlement</h4>
+        <p>Cleared commissions are transferred via direct bank wire to your registered IBAN or collected in cash at the boutique.</p>
       </div>
     </div>
   </div>
@@ -763,13 +853,19 @@ portal_en_html = """
       name: 'Four Seasons Hotel Gresham Palace Concierge',
       type: 'Hotel Concierge',
       code: 'HOTEL-01',
+      contact_person: 'Peter Kovacs (Head Concierge)',
+      phone: '+36 20 359 3216',
+      iban: 'HU42 1177 3016 4521 8890 0000 0000',
+      contract_url: 'https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/sign/partner-contracts/b2b-contract.pdf?token=eyJraWQiOiJmZWIxYzExNS0xM2ZlLTRhODYtYThiOC01MWM4N2ZmMjNkMjciLCJhbGciOiJIUzUxMiJ9.eyJ1cmwiOiJwYXJ0bmVyLWNvbnRyYWN0cy9iMmItY29udHJhY3QucGRmIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MTM5MDAyNywiZXhwIjoxODIyOTI2MDI3fQ.7NDbvw2memZll3qPq3bn8IrBUUOzzV1kS2PHpXImlvZA5kCeTRsBC6Qv5-Hrg6ab2gvmEkRdrKsyHOyK4iVJDw',
       guests: 2,
       sales: 1300000,
+      cleared: 82000,
+      holding: 0,
       unpaid: 82000,
       paid: 48000,
       txs: [
-        { date: '2026.10.04', item: 'Women\'s Tuscan Shearling Coat (Long)', amount: 820000, comm: 82000, status: 'Pending' },
-        { date: '2026.09.28', item: 'Men\'s Shearling Aviator Jacket', amount: 480000, comm: 48000, status: 'Settled' }
+        { date: '2026.10.04', item: 'Women\\'s Tuscan Shearling Coat (Long)', amount: 820000, comm: 82000, status: 'Cleared' },
+        { date: '2026.09.28', item: 'Men\\'s Shearling Aviator Jacket', amount: 480000, comm: 48000, status: 'Settled' }
       ]
     },
     'GUIDE-02': {
@@ -777,13 +873,19 @@ portal_en_html = """
       name: 'Peter Kovacs – Luxury Budapest Tours',
       type: 'Tour Specialist',
       code: 'GUIDE-02',
+      contact_person: 'Peter Kovacs (Senior Tour Specialist)',
+      phone: '+36 30 987 6543',
+      iban: 'HU61 1030 0002 1089 4432 1120 0000',
+      contract_url: null,
       guests: 2,
       sales: 730000,
+      cleared: 42000,
+      holding: 31000,
       unpaid: 73000,
       paid: 0,
       txs: [
-        { date: '2026.10.05', item: 'Men\'s Lambskin Biker Jacket', amount: 420000, comm: 42000, status: 'Pending' },
-        { date: '2026.10.02', item: 'Women\'s Tailored Nappa Leather Jacket', amount: 310000, comm: 31000, status: 'Pending' }
+        { date: '2026.10.05', item: 'Men\\'s Lambskin Biker Jacket', amount: 420000, comm: 42000, status: 'Cleared' },
+        { date: '2026.10.02', item: 'Women\\'s Tailored Nappa Leather Jacket', amount: 310000, comm: 31000, status: 'Pending (14-Day Hold)' }
       ]
     }
   };
@@ -846,23 +948,38 @@ portal_en_html = """
     localStorage.setItem('kaftan_portal_session', JSON.stringify({ code: cleanCode, pin: cleanPin }));
 
     // Populate dashboard
+    document.getElementById('partner-display-code').textContent = 'CODE: ' + data.code;
     document.getElementById('partner-display-name').textContent = data.name;
     document.getElementById('partner-display-type').textContent = data.type;
+
+    // Partner profile strip
+    const contactElem = document.getElementById('partner-contact-person');
+    if (contactElem) contactElem.textContent = data.contact_person || 'Official Representative';
+    const phoneElem = document.getElementById('partner-phone');
+    if (phoneElem) phoneElem.textContent = data.phone || '+36 20 359 3216';
+    const ibanElem = document.getElementById('partner-iban');
+    if (ibanElem) ibanElem.textContent = data.iban || 'HU42 1177 3016 4521 8890 0000 0000';
+
+    // Financial metrics
+    const clearedAmt = data.cleared !== undefined ? data.cleared : data.unpaid;
+    const holdingAmt = data.holding !== undefined ? data.holding : 0;
+
     document.getElementById('stat-guests').textContent = data.guests + ' guests';
     document.getElementById('stat-sales').textContent = fmtHuf(data.sales);
-    document.getElementById('stat-unpaid').textContent = fmtHuf(data.unpaid);
-    document.getElementById('stat-paid').textContent = fmtHuf(data.paid);
+    document.getElementById('stat-cleared').textContent = fmtHuf(clearedAmt);
+    document.getElementById('stat-holding').textContent = fmtHuf(holdingAmt);
     document.getElementById('voucher-code-val').textContent = data.code;
 
     const payoutPreview = document.getElementById('payout-amount-preview');
-    if (payoutPreview) payoutPreview.textContent = fmtHuf(data.unpaid);
+    if (payoutPreview) payoutPreview.textContent = fmtHuf(clearedAmt);
 
-    // WhatsApp payout link
-    const payoutMsg = encodeURIComponent('Hello! As partner ' + data.code + ' (' + data.name + '), I would like to request payout of my accrued commission of ' + fmtHuf(data.unpaid) + ' in cash or wire transfer.');
+    // WhatsApp payout link with registered IBAN
+    const partnerIban = data.iban || 'HU42 1177 3016 4521 8890 0000 0000';
+    const payoutMsg = encodeURIComponent('Hello! As partner ' + data.code + ' (' + data.name + '), I would like to request settlement of my cleared commission of ' + fmtHuf(clearedAmt) + ' transferred to my registered IBAN ' + partnerIban + '.');
     document.getElementById('request-payout-btn').href = 'https://wa.me/36203593216?text=' + payoutMsg;
 
     // WhatsApp share voucher link
-    const voucherMsg = encodeURIComponent('Dear Guest,\\n\\nWe warmly invite you to visit Kaftan Angelo, Budapest\'s premier luxury leather, shearling, and fur coat boutique.\\n\\nPresent our VIP code for an exclusive 10% discount:\\nVIP Code: ' + data.code + '\\n\\nAddress: Kossuth Lajos u. 18, Budapest 1053\\nLocation & Website: https://kaftanangelo.com/en/');
+    const voucherMsg = encodeURIComponent('Dear Guest,\\n\\nWe warmly invite you to visit Kaftan Angelo, Budapest\\'s premier luxury leather, shearling, and fur coat boutique.\\n\\nPresent our VIP code for an exclusive 10% discount:\\nVIP Code: ' + data.code + '\\n\\nAddress: Kossuth Lajos u. 18, Budapest 1053\\nLocation & Website: https://kaftanangelo.com/en/');
     document.getElementById('share-voucher-wa').href = 'https://wa.me/?text=' + voucherMsg;
 
     // Dynamic contract document display
@@ -891,12 +1008,24 @@ portal_en_html = """
       txs.forEach(function(tx) {
         const tr = document.createElement('tr');
         const isPaid = tx.status === 'Kifizetve' || tx.status === 'Settled';
-        const displayStatus = isPaid ? 'Settled' : 'Pending';
+        let badgeClass = 'unpaid';
+        let statusLabel = tx.status;
+        if (isPaid) {
+          badgeClass = 'paid';
+          statusLabel = 'Settled';
+        } else if (tx.status === 'Kifizethető' || tx.status === 'Cleared') {
+          badgeClass = 'paid';
+          statusLabel = 'Cleared';
+        } else {
+          badgeClass = 'unpaid';
+          statusLabel = 'Pending (14-Day Hold)';
+        }
+
         tr.innerHTML = '<td><strong>' + tx.date + '</strong></td>' +
           '<td>' + tx.item + '</td>' +
           '<td>' + fmtHuf(tx.amount) + '</td>' +
           '<td class="accent-col">+' + fmtHuf(tx.comm) + '</td>' +
-          '<td><span class="badge-status ' + (isPaid ? 'paid' : 'unpaid') + '">' + displayStatus + '</span></td>';
+          '<td><span class="badge-status ' + badgeClass + '">' + statusLabel + '</span></td>';
         tbody.appendChild(tr);
       });
     }
@@ -908,16 +1037,6 @@ portal_en_html = """
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     handleLogin(codeInput.value, pinInput.value);
-  });
-
-  document.querySelectorAll('.demo-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      const c = btn.getAttribute('data-demo-code');
-      const p = btn.getAttribute('data-demo-pin');
-      codeInput.value = c;
-      pinInput.value = p;
-      handleLogin(c, p);
-    });
   });
 
   if (logoutBtn) {
@@ -958,14 +1077,7 @@ portal_en_html = """
 pages['/partner-portal/']['mainHtml'] = portal_hu_html
 pages['/en/partner-portal/']['mainHtml'] = portal_en_html
 
-# Update titles and descriptions in pages.json
-pages['/partner-portal/']['title'] = 'Partner Portál | Kaftan Angelo Budapest'
-pages['/partner-portal/']['description'] = 'Exkluzív partner és concierge portál budapesti szállodák, idegenvezetők és utazási szakemberek számára. Közvetített vendégek és jutalék nyomon követése.'
-
-pages['/en/partner-portal/']['title'] = 'Concierge Partner Portal | Kaftan Angelo Budapest'
-pages['/en/partner-portal/']['description'] = 'Exclusive concierge and VIP partner portal for Budapest luxury hotels and travel specialists. Track referred guest purchases and commission earnings.'
-
 with open('src/data/pages.json', 'w', encoding='utf-8') as f:
     json.dump(pages, f, ensure_ascii=False, indent=2)
 
-print("SUCCESS: pages.json updated with 100% clean Hungarian and English portal pages.")
+print("SUCCESS: pages.json updated with short buttons, partner profile IBAN details, and 14-day clearance hold!")
