@@ -7,6 +7,66 @@
   const money = value => new Intl.NumberFormat(en ? 'en-GB' : 'hu-HU', { maximumFractionDigits: 0 }).format(Number(value) || 0) + ' HUF';
   const text = (id, value) => { if ($(id)) $(id).textContent = value ?? '—'; };
   let transactions = [];
+  function renderMaterials(data) {
+    const grid = $('portal-materials-grid');
+    grid.replaceChildren();
+    const materials = Array.isArray(data.materials) ? data.materials : [];
+    const safeUrl = value => {
+      try { const url = new URL(value); return url.protocol === 'https:' && !url.username && !url.password ? url.href : null; } catch { return null; }
+    };
+    for (const format of ['print','mobile']) {
+      for (const language of ['hu','en']) {
+        const entry = materials.find(item => item && item.kind === format && item.language === language && (!item.partner_code || item.partner_code === data.code));
+        const pdf = safeUrl(entry?.pdf_url);
+        const png = safeUrl(entry?.png_url);
+        const preview = safeUrl(entry?.preview_url) || png;
+        const card = document.createElement('article');
+        card.className = 'portal-material-card';
+        const heading = document.createElement('h4');
+        heading.textContent = (format === 'print' ? t('Print card · 10 × 15 cm','Nyomtatott kártya · 10 × 15 cm') : t('Mobile invitation · 9:16','Mobil meghívó · 9:16')) + ' · ' + (language === 'hu' ? t('Hungarian','Magyar') : t('English','Angol'));
+        card.append(heading);
+        if (preview) {
+          const image = document.createElement('img');
+          image.src = preview;
+          image.alt = heading.textContent + ' · ' + data.code;
+          image.loading = 'lazy';
+          image.referrerPolicy = 'no-referrer';
+          image.addEventListener('error', () => {
+            image.remove();
+            const note = document.createElement('p');
+            note.textContent = t('Preview unavailable. Try opening the file; if it has expired, sign in again.','Az előnézet nem érhető el. Nyissa meg a fájlt; lejárt hivatkozás esetén jelentkezzen be újra.');
+            card.append(note);
+          }, {once:true});
+          card.append(image);
+        }
+        const actions = document.createElement('div');
+        actions.className = 'portal-material-actions';
+        for (const [url, label] of [[pdf,t('Open PDF / print','PDF megnyitása / nyomtatás')],[png,t('Open / save PNG','PNG megnyitása / mentés')]]) {
+          if (!url) continue;
+          const link = document.createElement('a');
+          link.href = url;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.className = 'btn btn-ghost';
+          link.textContent = label;
+          actions.append(link);
+        }
+        if (png && format === 'mobile') {
+          const note = document.createElement('p');
+          note.textContent = t('Save the image, then attach it in WhatsApp, Viber or your messaging app.','Mentse el a képet, majd csatolja WhatsAppon, Viberen vagy más üzenetküldő alkalmazásban.');
+          card.append(note);
+        }
+        if (!pdf && !png) {
+          const note = document.createElement('p');
+          note.className = 'portal-material-pending';
+          note.textContent = t('Your personalized material is being prepared.','Személyre szabott anyaga előkészítés alatt áll.');
+          card.append(note);
+        }
+        card.append(actions);
+        grid.append(card);
+      }
+    }
+  }
   const kind = status => ['Kifizetve','Settled','Paid'].includes(status) ? 'paid' : ['Kifizethető','Cleared'].includes(status) ? 'cleared' : 'holding';
   const labels = () => en ? ['Date','Item / Purchase','Sale Amount','Commission','Status'] : ['Dátum','Termék / Vásárlás','Vásárlási összeg','Jutalék','Állapot'];
   function render() {
@@ -35,6 +95,7 @@
     text('portal-results-status', selected.length ? t(`${selected.length} completed sales`, `${selected.length} teljesült vásárlás`) : transactions.length ? t('No sales match these filters.','Nincs a szűrésnek megfelelő vásárlás.') : t('No completed sales recorded yet.','Még nincs rögzített teljesült vásárlás.'));
   }
   function populate(data) {
+    renderMaterials(data);
     text('partner-display-code', data.code);
     text('partner-display-name', data.name);
     text('partner-display-type', data.type);
@@ -106,6 +167,7 @@
   });
   $('portal-logout-btn').addEventListener('click', () => {
     transactions = [];
+    $('portal-materials-grid').replaceChildren();
     $('transactions-tbody').replaceChildren();
     $('portal-dashboard').hidden = true;
     $('portal-login-gate').hidden = false;
