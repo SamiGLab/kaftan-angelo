@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Sets up live Supabase connection for Kaftan Angelo Partner Portal."""
+"""Sets up live Supabase connection & ultra-luxury UI for Kaftan Angelo Partner Portal."""
 
 import json
 
@@ -10,7 +10,7 @@ with open('src/data/pages.json', 'r', encoding='utf-8') as f:
 if '/partnerprogram/' in pages:
     old_html = pages['/partnerprogram/']['mainHtml']
     if '/partner-portal/' not in old_html:
-        portal_btn = '<div class="actions" style="margin-top:1.5rem"><a class="btn btn-primary" href="/partner-portal/">Belépés a Partner Portálra (Hak Edi\u015f &amp; Jutal\u00e9k) &rarr;</a></div>'
+        portal_btn = '<div class="actions" style="margin-top:1.5rem"><a class="btn btn-primary" href="/partner-portal/">Belépés a Partner Portálra (Hak Ediş &amp; Jutalék) &rarr;</a></div>'
         pages['/partnerprogram/']['mainHtml'] = old_html.replace('</div></div></section>', f'{portal_btn}</div></div></section>', 1)
 
 if '/en/partners/' in pages:
@@ -25,7 +25,7 @@ portal_hu_html = """
 <div class="breadcrumbs"><a href="/">Főoldal</a> / <a href="/partnerprogram/">Partnerprogram</a> / Partner Portál</div>
 <span class="tag mono">Kaftan Angelo · B2B &amp; Turisztikai Partnerek</span>
 <h1>Partner &amp; Concierge Portál</h1>
-<p>Közvetített vendégek, forgalom és valós idejű jutalék (hak edis) egyenleg nyomon követése budapesti partnereink számára.</p>
+<p>Közvetített vendégek, vásárlások és valós idejű jutalék (hak edis) egyenleg nyomon követése budapesti partnereink számára.</p>
 </div>
 </section>
 
@@ -34,125 +34,177 @@ portal_hu_html = """
 
 <!-- Login Gate -->
 <div class="portal-gate-card" id="portal-login-gate">
-  <div class="gate-icon" aria-hidden="true">🔑</div>
-  <h2>Partner bejelentkezés</h2>
-  <p>Adja meg partnerkódját és személyes PIN-kódját a forgalom és a kifizetési egyenleg megtekintéséhez.</p>
+  <div class="gate-badge-pill">🔒 Biztonságos Partner Belépés</div>
+  <h2>Partner Fiók Belépés</h2>
+  <p>Adja meg az Önnek kiállított egyedi partnerkódot és PIN-kódot a hak ediş egyenleg és elszámolások megtekintéséhez.</p>
+
   <form id="portal-login-form" class="gate-form">
-    <div class="gate-input-wrap">
-      <input type="text" id="partner-code-input" class="gate-input" placeholder="Partnerkód (pl. HOTEL-01)" aria-label="Partnerkód" required autocomplete="username">
-      <input type="password" id="partner-pin-input" class="gate-input" placeholder="PIN-kód (pl. 1904)" aria-label="PIN-kód" required autocomplete="current-password">
-      <button type="submit" class="btn btn-primary gate-submit-btn" id="gate-submit-btn">Belépés a fiókba</button>
+    <div class="gate-field">
+      <label for="partner-code-input">Partner azonosító kód</label>
+      <div class="gate-input-wrapper">
+        <span class="gate-input-icon" aria-hidden="true">🏷️</span>
+        <input type="text" id="partner-code-input" class="gate-input" placeholder="pl. HOTEL-01" aria-label="Partnerkód" required autocomplete="username">
+      </div>
     </div>
-    <p id="portal-error-msg" class="gate-error" hidden>Érvénytelen partnerkód vagy PIN-kód. Kérjük, ellenőrizze az adatokat!</p>
+
+    <div class="gate-field">
+      <label for="partner-pin-input">Személyes PIN-kód</label>
+      <div class="gate-input-wrapper">
+        <span class="gate-input-icon" aria-hidden="true">🔑</span>
+        <input type="password" id="partner-pin-input" class="gate-input" placeholder="••••" aria-label="PIN-kód" required autocomplete="current-password">
+      </div>
+    </div>
+
+    <p id="portal-error-msg" class="gate-error" hidden>⚠️ Érvénytelen partnerkód vagy PIN-kód. Kérjük, ellenőrizze az adatokat!</p>
+
+    <button type="submit" class="btn btn-primary gate-submit-btn" id="gate-submit-btn">Belépés a Fiókba &rarr;</button>
   </form>
 
   <div class="gate-demo-pills">
     <span class="demo-label">Gyors próba demó fiókokkal:</span>
-    <button type="button" class="btn btn-ghost demo-btn" data-demo-code="HOTEL-01" data-demo-pin="1904">🏨 Hotel Concierge (HOTEL-01 / PIN: 1904)</button>
-    <button type="button" class="btn btn-ghost demo-btn" data-demo-code="GUIDE-02" data-demo-pin="4821">🗺️ Idegenvezető (GUIDE-02 / PIN: 4821)</button>
+    <button type="button" class="btn demo-btn" data-demo-code="HOTEL-01" data-demo-pin="1904">
+      <span>🏨 Hotel Concierge</span>
+      <span class="mono" style="opacity:0.7">HOTEL-01 / PIN: 1904</span>
+    </button>
+    <button type="button" class="btn demo-btn" data-demo-code="GUIDE-02" data-demo-pin="4821">
+      <span>🗺️ Idegenvezető</span>
+      <span class="mono" style="opacity:0.7">GUIDE-02 / PIN: 4821</span>
+    </button>
   </div>
 </div>
 
 <!-- Logged In Dashboard -->
 <div class="portal-dashboard" id="portal-dashboard" hidden>
-  <div class="dashboard-top-bar">
-    <div>
-      <span class="badge-status active">● Aktív partner státusz</span>
+
+  <!-- Partner Header Profile -->
+  <div class="dashboard-hero-card">
+    <div class="dashboard-partner-meta">
+      <span class="badge-status active">● Aktív B2B Partner Státusz</span>
       <h2 id="partner-display-name" class="dashboard-partner-title">Partner Fiók</h2>
-      <p id="partner-display-type" class="dashboard-partner-sub">Hotel &amp; Concierge</p>
+      <p id="partner-display-type" class="dashboard-partner-sub">Hotel Concierge</p>
     </div>
     <div class="dashboard-actions">
-      <button type="button" id="portal-logout-btn" class="btn btn-ghost">Kijelentkezés</button>
+      <button type="button" id="portal-logout-btn" class="btn btn-ghost" style="border-radius:10px; padding:0.6rem 1.2rem;">Kijelentkezés</button>
     </div>
   </div>
 
-  <!-- Stat Cards -->
+  <!-- 4-Stat Metric Grid -->
   <div class="stats-grid">
     <div class="stat-card">
-      <span class="stat-icon" aria-hidden="true">👥</span>
-      <span class="stat-label">Közvetített vendégek</span>
+      <div class="stat-header">
+        <span class="stat-label">Közvetített vendégek</span>
+        <span class="stat-icon" aria-hidden="true">👥</span>
+      </div>
       <strong id="stat-guests" class="stat-val">0 fő</strong>
-      <span class="stat-sub">Sikeres bolti látogatás</span>
+      <span class="stat-sub">Sikeres bolti vásárlás</span>
     </div>
+
     <div class="stat-card">
-      <span class="stat-icon" aria-hidden="true">🛍️</span>
-      <span class="stat-label">Generált forgalom</span>
+      <div class="stat-header">
+        <span class="stat-label">Generált forgalom</span>
+        <span class="stat-icon" aria-hidden="true">🛍️</span>
+      </div>
       <strong id="stat-sales" class="stat-val">0 HUF</strong>
       <span class="stat-sub">Összes vásárlási érték</span>
     </div>
+
     <div class="stat-card highlight">
-      <span class="stat-icon" aria-hidden="true">💰</span>
-      <span class="stat-label">Függőben lévő jutalék (Hak edis)</span>
+      <div class="stat-header">
+        <span class="stat-label" style="color:var(--bright);">Függőben lévő hak ediş</span>
+        <span class="stat-icon" aria-hidden="true">💰</span>
+      </div>
       <strong id="stat-unpaid" class="stat-val accent">0 HUF</strong>
-      <span class="stat-sub">Azonnal kérhető egyenleg</span>
+      <span class="stat-sub" style="color:var(--bright); opacity:0.9;">Azonnal kifizethető egyenleg</span>
     </div>
+
     <div class="stat-card">
-      <span class="stat-icon" aria-hidden="true">✅</span>
-      <span class="stat-label">Eddig kifizetett jutalék</span>
+      <div class="stat-header">
+        <span class="stat-label">Kifizetett jutalék</span>
+        <span class="stat-icon" aria-hidden="true">✅</span>
+      </div>
       <strong id="stat-paid" class="stat-val">0 HUF</strong>
       <span class="stat-sub">Korábban rendezve</span>
     </div>
   </div>
 
-  <!-- Digital VIP Voucher Card -->
-  <div class="vip-voucher-section">
+  <!-- Actions Grid: VIP Voucher Card + Instant Payout -->
+  <div class="portal-actions-grid">
+
+    <!-- Digital VIP Concierge Voucher Pass -->
     <div class="vip-voucher-box">
       <div class="voucher-header">
-        <span class="voucher-brand">Kaftan Angelo · Budapest</span>
+        <div class="voucher-brand-group">
+          <span class="voucher-brand">Kaftan Angelo · Budapest</span>
+        </div>
         <span class="voucher-badge">10% VIP Vendégkedvezmény</span>
       </div>
-      <div class="voucher-body">
-        <p class="voucher-desc">Mutassa be ezt a kártyát vendégének telefonon vagy küldje el WhatsAppon. A vendég 10% kedvezményt kap a boltban, a vásárlás pedig automatikusan az Ön jutalékához íródik.</p>
-        <div class="voucher-code-wrap">
-          <span class="voucher-code-label">Partner azonosító kód:</span>
+
+      <p class="voucher-desc">Adja meg ezt a partnerkódot vendégeinek vagy küldje el WhatsAppon. A vásárló <strong>10% exkluzív kedvezményt</strong> kap az üzletben, a vásárlás pedig automatikusan az Ön jutalékához íródik.</p>
+
+      <div class="voucher-code-plate">
+        <div class="voucher-code-info">
+          <span class="voucher-code-label">Az Ön VIP Ajánlókódja:</span>
           <strong id="voucher-code-val" class="voucher-code-text">HOTEL-01</strong>
         </div>
-        <p class="voucher-address">📍 Kossuth Lajos u. 18, Budapest 1053 (Astoria — Ferenciek tere)</p>
+        <button type="button" id="copy-voucher-btn" class="btn btn-ghost" style="padding:0.5rem 1rem; border-radius:8px;">📋 Kód Másolása</button>
       </div>
+
+      <p class="voucher-address">📍 Kossuth Lajos u. 18, Budapest 1053 (Astoria — Ferenciek tere)</p>
+
       <div class="voucher-actions">
-        <button type="button" id="copy-voucher-btn" class="btn btn-ghost">📋 Partnerkód másolása</button>
-        <a id="share-voucher-wa" class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="#">📲 Kártya küldése vendégnek WhatsAppon</a>
+        <a id="share-voucher-wa" class="btn btn-luxury-gold" target="_blank" rel="noopener noreferrer" href="#">📲 VIP Kártya Küldése Vendégnek WhatsAppon</a>
       </div>
       <span id="copy-voucher-status" class="copy-status" role="status"></span>
     </div>
+
+    <!-- Payout Request Card -->
+    <div class="payout-card">
+      <div>
+        <div class="payout-header">
+          <div class="payout-icon-wrap" aria-hidden="true">🏦</div>
+          <div>
+            <h3>Hak Ediş Kifizetése</h3>
+            <p>A felhalmozott jutalékot készpénzben a Kossuth Lajos utcai üzletben vagy banki átutalással veheti át.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="payout-summary-box">
+        <span class="payout-summary-label">Jelenlegi igényelhető összeg:</span>
+        <strong id="payout-amount-preview" class="payout-summary-val">0 HUF</strong>
+      </div>
+
+      <a id="request-payout-btn" class="btn btn-primary btn-payout-wa" target="_blank" rel="noopener noreferrer" href="#">Kifizetés kérése WhatsAppon &rarr;</a>
+    </div>
+
   </div>
 
-  <!-- Transactions Table -->
+  <!-- Transactions Table Section -->
   <div class="transactions-section">
-    <div class="section-head">
+    <div class="transactions-header">
       <div>
-        <span class="tag mono">Elszámolás</span>
-        <h3>Közvetített vásárlások és jutalékok</h3>
+        <span class="tag mono" style="margin-bottom:0.3rem;">Elszámolás</span>
+        <h3>Közvetített Vásárlások &amp; Jutalékok</h3>
       </div>
+      <span class="badge-status active">Valós idejű szinkronizáció</span>
     </div>
+
     <div class="table-responsive">
       <table class="portal-table">
         <thead>
           <tr>
             <th>Dátum</th>
-            <th>Tétel / Kategória</th>
-            <th>Vásárlási összeg</th>
-            <th>Jutalék</th>
+            <th>Tétel / Vásárlás</th>
+            <th>Vásárlási Összeg</th>
+            <th>Jutalék (Hak Ediş)</th>
             <th>Állapot</th>
           </tr>
         </thead>
         <tbody id="transactions-tbody">
-          <!-- Filled by JS -->
+          <!-- Populated by JS -->
         </tbody>
       </table>
     </div>
-  </div>
-
-  <!-- Payout Action Box -->
-  <div class="payout-box">
-    <div class="payout-content">
-      <span class="payout-icon" aria-hidden="true">🏦</span>
-      <div>
-        <h3>Jutalék kifizetésének kérése</h3>
-        <p>A felhalmozott jutalékot készpénzben a Kossuth Lajos utcai üzletben vagy banki átutalással veheti át.</p>
-      </div>
-    </div>
-    <a id="request-payout-btn" class="btn btn-primary payout-btn" target="_blank" rel="noopener noreferrer" href="#">Kifizetés kérése WhatsAppon &rarr;</a>
   </div>
 
 </div>
@@ -168,37 +220,30 @@ portal_hu_html = """
   const FALLBACK_DB = {
     'HOTEL-01': {
       pin: '1904',
-      name: 'Kempinski Hotel Corvinus Concierge',
-      type: 'Hotel & Concierge Desk · 12% jutalék',
-      rate: 12,
+      name: 'Four Seasons Hotel Gresham Palace Concierge',
+      type: 'Hotel Concierge',
       code: 'HOTEL-01',
-      guests: 18,
-      sales: 2450000,
-      unpaid: 294000,
-      paid: 180000,
+      guests: 2,
+      sales: 1300000,
+      unpaid: 82000,
+      paid: 48000,
       txs: [
-        { date: '2026-10-06', item: 'Férfi toszkán irhakabát (prémium)', amount: 480000, comm: 57600, status: 'Függőben' },
-        { date: '2026-10-04', item: 'Női báránybőr motoros dzseki', amount: 320000, comm: 38400, status: 'Függőben' },
-        { date: '2026-09-28', item: 'Női szőrmebunda és gallér', amount: 850000, comm: 102000, status: 'Kifizetve' },
-        { date: '2026-09-20', item: 'Férfi klasszikus bőrdzseki + öv', amount: 280000, comm: 33600, status: 'Kifizetve' },
-        { date: '2026-09-15', item: 'Egyedi méretre készített bőrkabát', amount: 520000, comm: 62400, status: 'Kifizetve' }
+        { date: '2026.10.04', item: 'Női Toszkán Irhabunda (Hosszú)', amount: 820000, comm: 82000, status: 'Függőben' },
+        { date: '2026.09.28', item: 'Férfi Báránybőr Pilótakabát', amount: 480000, comm: 48000, status: 'Kifizetve' }
       ]
     },
     'GUIDE-02': {
       pin: '4821',
-      name: 'Zoltán K. — Budapesti Idegenvezető',
-      type: 'Idegenvezető / Tour Guide · 12% jutalék',
-      rate: 12,
+      name: 'Kovács Péter – Luxury Budapest Tours',
+      type: 'Idegenvezető',
       code: 'GUIDE-02',
-      guests: 14,
-      sales: 1680000,
-      unpaid: 201600,
-      paid: 120000,
+      guests: 2,
+      sales: 730000,
+      unpaid: 73000,
+      paid: 0,
       txs: [
-        { date: '2026-10-05', item: 'Férfi aviátor irhadzseki', amount: 420000, comm: 50400, status: 'Függőben' },
-        { date: '2026-10-02', item: 'Női karcsúsított nappa dzseki', amount: 310000, comm: 37200, status: 'Függőben' },
-        { date: '2026-09-25', item: 'Bőr kiegészítők, kesztyűk, táska', amount: 150000, comm: 18000, status: 'Kifizetve' },
-        { date: '2026-09-18', item: 'Toszkán női irhakabát', amount: 800000, comm: 96000, status: 'Kifizetve' }
+        { date: '2026.10.05', item: 'Férfi Báránybőr Motoros Dzseki', amount: 420000, comm: 42000, status: 'Függőben' },
+        { date: '2026.10.02', item: 'Női Karcsúsított Nappa Bőrkabát', amount: 310000, comm: 31000, status: 'Függőben' }
       ]
     }
   };
@@ -245,12 +290,12 @@ portal_hu_html = """
     // 1. Try Supabase cloud database
     let data = await querySupabase(cleanCode, cleanPin);
 
-    // 2. Fallback to local accounts if Supabase SQL not yet executed
+    // 2. Fallback to local accounts if Supabase not populated
     if (!data && FALLBACK_DB[cleanCode] && FALLBACK_DB[cleanCode].pin === cleanPin) {
       data = FALLBACK_DB[cleanCode];
     }
 
-    if (submitBtn) submitBtn.textContent = 'Belépés a fiókba';
+    if (submitBtn) submitBtn.textContent = 'Belépés a Fiókba →';
 
     if (!data) {
       if (errorMsg) errorMsg.hidden = false;
@@ -269,6 +314,9 @@ portal_hu_html = """
     document.getElementById('stat-paid').textContent = fmtHuf(data.paid);
     document.getElementById('voucher-code-val').textContent = data.code;
 
+    const payoutPreview = document.getElementById('payout-amount-preview');
+    if (payoutPreview) payoutPreview.textContent = fmtHuf(data.unpaid);
+
     // WhatsApp payout link
     const payoutMsg = encodeURIComponent('Üdvözlöm! A(z) ' + data.code + ' partnerként (' + data.name + ') szeretném kérni a ' + fmtHuf(data.unpaid) + ' összegű felhalmozott jutalékom kifizetését készpénzben vagy átutalással.');
     document.getElementById('request-payout-btn').href = 'https://wa.me/36203593216?text=' + payoutMsg;
@@ -281,16 +329,20 @@ portal_hu_html = """
     const tbody = document.getElementById('transactions-tbody');
     tbody.innerHTML = '';
     const txs = data.txs || [];
-    txs.forEach(function(tx) {
-      const tr = document.createElement('tr');
-      const isPaid = tx.status === 'Kifizetve' || tx.status === 'Settled';
-      tr.innerHTML = '<td><strong>' + tx.date + '</strong></td>' +
-        '<td>' + tx.item + '</td>' +
-        '<td>' + fmtHuf(tx.amount) + '</td>' +
-        '<td class="accent-col"><strong>+' + fmtHuf(tx.comm) + '</strong></td>' +
-        '<td><span class="badge-status ' + (isPaid ? 'paid' : 'unpaid') + '">' + tx.status + '</span></td>';
-      tbody.appendChild(tr);
-    });
+    if (txs.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5" class="table-empty-state"><div class="table-empty-icon">📋</div><div>Még nincs rögzített vásárlási tranzakció. Amint vendége vásárol a kóddal, azonnal itt fog megjelenni!</div></td></tr>';
+    } else {
+      txs.forEach(function(tx) {
+        const tr = document.createElement('tr');
+        const isPaid = tx.status === 'Kifizetve' || tx.status === 'Settled';
+        tr.innerHTML = '<td><strong>' + tx.date + '</strong></td>' +
+          '<td>' + tx.item + '</td>' +
+          '<td>' + fmtHuf(tx.amount) + '</td>' +
+          '<td class="accent-col">+' + fmtHuf(tx.comm) + '</td>' +
+          '<td><span class="badge-status ' + (isPaid ? 'paid' : 'unpaid') + '">' + tx.status + '</span></td>';
+        tbody.appendChild(tr);
+      });
+    }
 
     gate.hidden = true;
     dash.hidden = false;
@@ -350,25 +402,46 @@ portal_hu_html = """
 portal_en_html = portal_hu_html.replace('Főoldal', 'Home') \
   .replace('Partnerprogram', 'Partner Program') \
   .replace('Partner Portál', 'Partner Portal') \
-  .replace('Partner bejelentkezés', 'Partner Portal Login') \
-  .replace('Adja meg partnerkódját és személyes PIN-kódját a forgalom és a kifizetési egyenleg megtekintéséhez.', 'Enter your unique partner code and personal PIN to view your referred guest transactions, earnings, and payout balance.') \
-  .replace('Partnerkód (pl. HOTEL-01)', 'Partner Code (e.g. HOTEL-01)') \
-  .replace('PIN-kód (pl. 1904)', 'PIN Code (e.g. 1904)') \
-  .replace('Belépés a fiókba', 'Access Dashboard') \
-  .replace('Érvénytelen partnerkód vagy PIN-kód. Kérjük, ellenőrizze az adatokat!', 'Invalid partner code or PIN. Please check your credentials.') \
+  .replace('Közvetített vendégek, vásárlások és valós idejű jutalék (hak edis) egyenleg nyomon követése budapesti partnereink számára.', 'Track referred guest purchases, live commission earnings (hak edis), and payout balance for Budapest hospitality partners.') \
+  .replace('🔒 Biztonságos Partner Belépés', '🔒 Secure Concierge Portal') \
+  .replace('Partner Fiók Belépés', 'Partner Portal Login') \
+  .replace('Adja meg az Önnek kiállított egyedi partnerkódot és PIN-kódot a hak ediş egyenleg és elszámolások megtekintéséhez.', 'Enter your unique partner code and personal PIN to view your referred guest purchases, commission balance, and statements.') \
+  .replace('Partner azonosító kód', 'Partner Referral Code') \
+  .replace('Személyes PIN-kód', 'Personal Security PIN') \
+  .replace('pl. HOTEL-01', 'e.g. HOTEL-01') \
+  .replace('Belépés a Fiókba &rarr;', 'Access Partner Dashboard &rarr;') \
+  .replace('⚠️ Érvénytelen partnerkód vagy PIN-kód. Kérjük, ellenőrizze az adatokat!', '⚠️ Invalid partner code or PIN. Please verify your credentials.') \
   .replace('Gyors próba demó fiókokkal:', 'Quick test with demo partner accounts:') \
-  .replace('Idegenvezető', 'Tour Specialist') \
+  .replace('🏨 Hotel Concierge', '🏨 Hotel Concierge Desk') \
+  .replace('🗺️ Idegenvezető', '🗺️ Tour Specialist') \
+  .replace('● Aktív B2B Partner Státusz', '● Active B2B Partner Status') \
   .replace('Kijelentkezés', 'Log Out') \
   .replace('Közvetített vendégek', 'Referred Guests') \
+  .replace('Sikeres bolti vásárlás', 'Completed boutique sales') \
   .replace('Generált forgalom', 'Total Sales Volume') \
-  .replace('Függőben lévő jutalék (Hak edis)', 'Pending Commission (Hak Edis)') \
-  .replace('Eddig kifizetett jutalék', 'Settled Commissions') \
+  .replace('Összes vásárlási érték', 'Total purchase value') \
+  .replace('Függőben lévő hak ediş', 'Pending Commission (Hak Edis)') \
+  .replace('Azonnal kifizethető egyenleg', 'Available for payout') \
+  .replace('Kifizetett jutalék', 'Settled Commissions') \
+  .replace('Korábban rendezve', 'Previously settled') \
   .replace('10% VIP Vendégkedvezmény', '10% VIP Guest Discount') \
-  .replace('📋 Partnerkód másolása', '📋 Copy Referral Code') \
-  .replace('📲 Kártya küldése vendégnek WhatsAppon', '📲 Send Pass to Guest on WhatsApp') \
-  .replace('Jutalék kifizetésének kérése', 'Request Commission Payout') \
-  .replace('A felhalmozott jutalékot készpénzben a Kossuth Lajos utcai üzletben vagy banki átutalással veheti át.', 'Collect your balance directly at our Kossuth Lajos boutique or request a wire transfer.') \
+  .replace('Adja meg ezt a partnerkódot vendégeinek vagy küldje el WhatsAppon. A vásárló <strong>10% exkluzív kedvezményt</strong> kap az üzletben, a vásárlás pedig automatikusan az Ön jutalékához íródik.', 'Share this pass with your hotel guests or tour groups. Visitors receive a <strong>10% VIP discount</strong> at our store, and commissions are credited to your account automatically.') \
+  .replace('Az Ön VIP Ajánlókódja:', 'Your VIP Referral Code:') \
+  .replace('📋 Kód Másolása', '📋 Copy Code') \
+  .replace('📲 VIP Kártya Küldése Vendégnek WhatsAppon', '📲 Send VIP Pass via WhatsApp') \
+  .replace('Hak Ediş Kifizetése', 'Commission Payout') \
+  .replace('A felhalmozott jutalékot készpénzben a Kossuth Lajos utcai üzletben vagy banki átutalással veheti át.', 'Collect your accrued balance in cash at our Kossuth Lajos boutique or request an instant wire transfer.') \
+  .replace('Jelenlegi igényelhető összeg:', 'Current available balance:') \
   .replace('Kifizetés kérése WhatsAppon &rarr;', 'Request Payout on WhatsApp &rarr;') \
+  .replace('Elszámolás', 'Ledger') \
+  .replace('Közvetített Vásárlások &amp; Jutalékok', 'Referred Purchases &amp; Commissions') \
+  .replace('Valós idejű szinkronizáció', 'Real-time sync') \
+  .replace('Dátum', 'Date') \
+  .replace('Tétel / Vásárlás', 'Item / Purchase') \
+  .replace('Vásárlási Összeg', 'Sale Amount') \
+  .replace('Jutalék (Hak Ediş)', 'Commission') \
+  .replace('Állapot', 'Status') \
+  .replace('Még nincs rögzített vásárlási tranzakció. Amint vendége vásárol a kóddal, azonnal itt fog megjelenni!', 'No guest purchases recorded yet. As soon as a guest redeems your code in store, transactions appear here.') \
   .replace('aria-label="Partnerkód"', 'aria-label="Partner Code"') \
   .replace('aria-label="PIN-kód"', 'aria-label="PIN Code"') \
   .replace('Ellenőrzés...', 'Verifying...') \
@@ -380,4 +453,4 @@ pages['/en/partner-portal/']['mainHtml'] = portal_en_html
 with open('src/data/pages.json', 'w', encoding='utf-8') as f:
     json.dump(pages, f, ensure_ascii=False, indent=2)
 
-print("pages.json successfully configured with Supabase connection.")
+print("pages.json successfully configured with ultra-luxury portal design.")
