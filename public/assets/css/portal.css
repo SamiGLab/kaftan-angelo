@@ -904,3 +904,57 @@
   }
 }
 
+
+/* Partner workspace: calm surfaces, readable controls and mobile sales cards. */
+.portal-section { background:#17120e; --cream:#f4eee5; --dim:#c9bbaa; }
+.portal-dashboard[hidden], .portal-gate-card[hidden] { display:none; }
+.portal-gate-card,.dashboard-hero-card,.stat-card,.stat-card.highlight,.vip-pass-card,.payout-card,.transactions-section,.contract-card,.portal-guide-section { background:#231b15; border:1px solid #69503a; border-radius:16px; box-shadow:none; backdrop-filter:none; }
+.portal-gate-card::before,.dashboard-hero-card::before,.vip-pass-card::after { display:none; }
+.portal-dashboard { gap:1.5rem; }
+.portal-gate-card { padding:2rem; }
+.portal-section p,.portal-table td { font-size:1rem; }
+.portal-section .stat-sub,.portal-section .stat-label,.portal-section .gate-field label,.portal-section .badge-status,.portal-section .contract-clause-list,.portal-section .guide-step-card p,.portal-section .portal-table th { font-size:.875rem; opacity:1; }
+.stat-card:hover { transform:none; box-shadow:none; }
+.stat-card.highlight { border-color:#dcb27c; }
+.stat-val.accent { text-shadow:none; }
+.portal-section button,.portal-section .btn,.portal-section select { min-height:44px; }
+.gate-submit-btn,.btn-payout-wa,.vip-pass-pill { background:#dcb27c; color:#17120e; box-shadow:none; }
+.btn-luxury-wa { background:#234c38; color:#f4eee5; border:1px solid #7caf90; box-shadow:none; }
+.gate-submit-btn:hover,.btn-payout-wa:hover,.btn-luxury-wa:hover { transform:none; box-shadow:none; }
+.btn-payout-wa[aria-disabled="true"] { background:#352b23; color:#c9bbaa !important; cursor:default; }
+.portal-nav { display:flex; flex-wrap:wrap; gap:.5rem; padding:.5rem; background:#231b15; border:1px solid #69503a; border-radius:12px; }
+.portal-nav a { padding:.75rem 1rem; color:#f4eee5; text-decoration:none; border-radius:8px; }
+.portal-nav a:hover { background:#352b23; }
+.portal-filters { display:flex; gap:1rem; flex-wrap:wrap; }
+.portal-filters label { display:grid; gap:.5rem; flex:1; min-width:180px; color:#f4eee5; }
+.portal-filters input,.portal-filters select { width:100%; padding:.75rem; font:inherit; background:#17120e; color:#f4eee5; border:1px solid #927455; border-radius:8px; }
+.portal-section :focus-visible { outline:2px solid #dcb27c; outline-offset:4px; }
+.portal-pin-toggle { margin-left:.5rem; background:#352b23; border:1px solid #927455; color:#f4eee5; border-radius:8px; padding:.5rem; flex-shrink:0; }
+.gate-input-wrapper .gate-input { min-width:0; }
+.badge-status.cleared { background:#193c31; color:#adedd4; border:1px solid #588d76; }
+.badge-status.paid { background:#20364e; color:#c4defa; border:1px solid #6386ab; }
+.badge-status.holding { background:#46301b; color:#f3d7b0; border:1px solid #a78150; }
+.partner-profile-strip { background:#231b15 !important; box-shadow:none !important; margin-bottom:0 !important; grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr)) !important; }
+.partner-profile-strip span { font-size:.875rem !important; }
+.profile-info-item { min-width:0; overflow-wrap:anywhere; }
+.contract-card { margin-top:0; }
+.policy-notice-banner { margin-bottom:0 !important; }
+#portal-overview,#portal-sales,#portal-payments,#portal-account { scroll-margin-top:7rem; }
+@media(max-width:600px) {
+  .portal-section { padding-top:1.5rem; }
+  .dashboard-hero-card,.transactions-section,.payout-card,.contract-card,.portal-guide-section { padding:1.25rem; }
+  .stats-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; }
+  .stat-card { padding:1rem; min-width:0; }
+  .stat-val { font-size:1.5rem; overflow-wrap:anywhere; }
+  .stat-icon { display:none; }
+  .portal-nav { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .portal-nav a { text-align:center; padding:.75rem .25rem; }
+  .portal-table thead { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+  .portal-table,.portal-table tbody { display:block; }
+  .portal-table tr { display:block; border:1px solid #69503a; border-radius:12px; margin:1rem 0; padding:.5rem; }
+  .portal-table td { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:.75rem; padding:.75rem .5rem; overflow-wrap:anywhere; }
+  .portal-table td::before { content:attr(data-label); color:#c9bbaa; font-size:.875rem; }
+  .portal-table td:last-child { border-bottom:0; }
+  .portal-section .contract-preview-grid { grid-template-columns:1fr; }
+}
+@media(prefers-reduced-motion:reduce) { .portal-section * { transition:none !important; scroll-behavior:auto; } }
