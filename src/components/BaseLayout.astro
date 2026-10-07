@@ -35,6 +35,11 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <link rel="alternate" hreflang="hu" href={huUrl} />
   <link rel="alternate" hreflang="en" href={enUrl} />
   <link rel="alternate" hreflang="x-default" href={huUrl} />
+  <meta name="geo.region" content="HU-BU" />
+  <meta name="geo.placename" content="Budapest" />
+  <meta name="geo.position" content="47.4940457;19.0584288" />
+  <meta name="ICBM" content="47.4940457, 19.0584288" />
+  <meta name="format-detection" content="telephone=no" />
   <meta property="og:type" content={page.pageSchema?.['@type'] === 'Article' ? 'article' : 'website'} />
   <meta property="og:site_name" content="Kaftan Angelo" />
   <meta property="og:url" content={page.canonical} />
@@ -42,11 +47,15 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <meta property="og:description" content={page.description} />
   <meta property="og:image" content={socialImage} />
   <meta property="og:locale" content={lang === 'hu' ? 'hu_HU' : 'en_GB'} />
+  <meta property="og:locale:alternate" content={lang === 'hu' ? 'en_GB' : 'hu_HU'} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={page.title} />
   <meta name="twitter:description" content={page.description} />
   <meta name="twitter:image" content={socialImage} />
   <meta name="theme-color" content="#1b120c" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="help" type="text/plain" href="/llms.txt" title="LLM context" />
   <link rel="preload" as="font" type="font/woff2" href={headingFont} crossorigin="anonymous" />
   {lang === 'hu' && <link rel="preload" as="font" type="font/woff2" href={headingExtendedFont} crossorigin="anonymous" />}
   <link rel="preload" as="image" href={mobileHero} media="(max-width: 620px)" fetchpriority="high" />

@@ -5,6 +5,7 @@ export const businessSchema = {
   '@id': `${BASE}/#store`,
   url: `${BASE}/`,
   name: 'Kaftan Angelo',
+  legalName: 'Alfina Fashion Kft.',
   description: "Clothing store in central Budapest offering genuine men's and women's leather jackets, leather coats, shearling and fur clothing, leather accessories and custom-made leather jackets.",
   image: [
     `${BASE}/kaftan-angelo-hero-leather-collection.webp`,
@@ -12,6 +13,7 @@ export const businessSchema = {
     `${BASE}/womens-shearling-jacket-budapest.webp`,
     `${BASE}/womens-fur-coat-budapest.webp`,
   ],
+  logo: `${BASE}/kaftan-angelo-hero-leather-collection.webp`,
   foundingDate: '2004',
   founder: { '@type': 'Person', name: 'Angelo' },
   telephone: '+36 1 266 7274',
@@ -21,10 +23,30 @@ export const businessSchema = {
     streetAddress: 'Kossuth Lajos u. 18',
     postalCode: '1053',
     addressLocality: 'Budapest',
+    addressRegion: 'Budapest',
     addressCountry: 'HU',
   },
   geo: { '@type': 'GeoCoordinates', latitude: 47.4940457, longitude: 19.0584288 },
   hasMap: 'https://www.google.com/maps/place/Kaftan+Angelo/@47.4944346,19.0600201,17.25z/data=!4m6!3m5!1s0x4741dc43988120f9:0x928c92ecc4745e63!8m2!3d47.4940457!4d19.0584288!16s%2Fg%2F11bwy_15vk',
+  areaServed: [
+    { '@type': 'City', name: 'Budapest' },
+    { '@type': 'Country', name: 'Hungary' },
+  ],
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      telephone: '+36 1 266 7274',
+      contactType: 'customer service',
+      areaServed: 'HU',
+      availableLanguage: ['hu', 'en', 'de', 'tr', 'ar'],
+    },
+    {
+      '@type': 'ContactPoint',
+      telephone: '+36 20 359 3216',
+      contactType: 'sales and appointments',
+      availableLanguage: ['hu', 'en', 'de', 'tr', 'ar'],
+    },
+  ],
   paymentAccepted: 'Cash, Credit Card',
   priceRange: '€€',
   currenciesAccepted: 'HUF, EUR',
@@ -55,6 +77,7 @@ export const websiteSchema = {
   '@id': `${BASE}/#website`,
   url: `${BASE}/`,
   name: 'Kaftan Angelo',
+  inLanguage: ['hu', 'en'],
   publisher: { '@id': `${BASE}/#store` },
 };
 

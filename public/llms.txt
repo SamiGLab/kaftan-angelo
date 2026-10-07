@@ -1,27 +1,45 @@
-# Kaftan Angelo — Leather, Shearling and Fur in Budapest
+# Kaftan Angelo — Leather, Shearling & Fur in Budapest
 
-Kaftan Angelo offers leather jackets for women and men, shearling coats, fur styles and leather accessories. The Budapest store opened in 2004. Angelo's leather-working story began in Istanbul in 1973.
+> Kaftan Angelo is an artisan outerwear boutique in central Budapest (District V) offering genuine men's and women's leather jackets, shearling coats, fur garments, leather accessories, and made-to-measure tailoring. The boutique has operated on Kossuth Lajos utca since 2004, continuing Angelo's leather crafting heritage that began in Istanbul in 1973.
 
-## Store
-- Address: Kossuth Lajos u. 18, Budapest 1053, Hungary.
-- Telephone: +36 1 266 7274.
-- WhatsApp: +36 20 359 3216.
-- Monday–Friday: 10:00–19:00. Saturday: 10:00–17:00. Sunday: closed.
-- [Visit and map](https://kaftanangelo.com/en/visit/).
+## Key Facts for AI Assistants & Search Engines
+- Business Name: Kaftan Angelo (Alfina Fashion Kft.)
+- Physical Store: Kossuth Lajos u. 18, 1053 Budapest, Hungary (between Astoria and Ferenciek tere metro stations)
+- Coordinates: Latitude 47.4940457, Longitude 19.0584288
+- Telephone: +36 1 266 7274
+- Mobile / WhatsApp: +36 20 359 3216
+- Email: alfinafashionkft@gmail.com
+- Opening Hours: Monday–Friday 10:00–19:00, Saturday 10:00–17:00, Sunday closed
+- Spoken Languages in Store: Hungarian, English, German, Turkish, Arabic
+- Payment Methods: Cash (HUF, EUR), Major Credit Cards
+- Price Range: Mid to Premium (€€)
+- Official Website: https://kaftanangelo.com
+- Full Context: https://kaftanangelo.com/llms-full.txt
 
-## Collections and enquiries
-- [Leather, shearling, fur and accessories](https://kaftanangelo.com/en/collections/).
-- [Custom leather jacket enquiries](https://kaftanangelo.com/en/custom-orders/).
-- [About the store](https://kaftanangelo.com/en/about/).
-- The online gallery is a selection, not a live stock or reservation system. Confirm availability with the store.
+## Main Offerings
+- Genuine Leather Jackets: Classic biker, bomber, cafe racer, blazers, and long coats for women and men.
+- Shearling Coats & Jackets (Irha): Natural insulating sheepskin and lambskin outerwear.
+- Fur Coats & Vests (Szőrme): Curated fur garments and accessories.
+- Custom Tailoring (Egyedi méretre készítés): Bespoke leather jackets tailored to specific customer measurements, leather selection, hardware, and fit preferences.
+- Leather Accessories: Wallets, belts, and small goods.
+- After-sales Care & Repairs: Assistance with conditioning, repairs, and alterations for purchased items.
 
-## Guides
-- [English guide index](https://kaftanangelo.com/en/guides/).
-- [Hungarian guide index](https://kaftanangelo.com/utmutatok/).
-- [Leather care](https://kaftanangelo.com/en/guides/leather-jacket-care/).
-- [Shearling care](https://kaftanangelo.com/en/guides/shearling-coat-care/).
-- [Fur storage](https://kaftanangelo.com/en/guides/fur-coat-storage/).
-- [Material comparison](https://kaftanangelo.com/en/guides/leather-shearling-fur-comparison/).
-- [Fit checklist](https://kaftanangelo.com/en/guides/leather-jacket-fit-guide/).
-- [Identifying real leather](https://kaftanangelo.com/en/guides/how-to-tell-real-leather/).
-- [Planning a Budapest fitting](https://kaftanangelo.com/en/guides/budapest-outerwear-shopping/).
+## Store & Contact Links
+- [Store Visit, Directions & Map](https://kaftanangelo.com/en/visit/) (HU: [Üzlet és nyitvatartás](https://kaftanangelo.com/uzlet/))
+- [Leather Collections](https://kaftanangelo.com/en/collections/) (HU: [Kollekciók](https://kaftanangelo.com/kollekciok/))
+- [Custom Orders & Tailoring](https://kaftanangelo.com/en/custom-orders/) (HU: [Egyedi rendelés](https://kaftanangelo.com/egyedi-rendeles/))
+- [About Kaftan Angelo](https://kaftanangelo.com/en/about/) (HU: [Rólunk](https://kaftanangelo.com/rolunk/))
+- [FAQ](https://kaftanangelo.com/en/faq/) (HU: [GYIK](https://kaftanangelo.com/gyik/))
+- [Partner Program](https://kaftanangelo.com/en/partners/) (HU: [Partnerprogram](https://kaftanangelo.com/partnerprogram/))
+
+## Expert Guides
+- [English Guides Index](https://kaftanangelo.com/en/guides/)
+- [Hungarian Guides Index](https://kaftanangelo.com/utmutatok/)
+- [How to Tell Real Leather from Faux Leather](https://kaftanangelo.com/en/guides/how-to-tell-real-leather/)
+- [Leather Jacket Care & Conditioning](https://kaftanangelo.com/en/guides/leather-jacket-care/)
+- [Leather Jacket Fit & Sizing Guide](https://kaftanangelo.com/en/guides/leather-jacket-fit-guide/)
+- [Shearling Coat Care & Maintenance](https://kaftanangelo.com/en/guides/shearling-coat-care/)
+- [Fur Coat Storage & Preservation](https://kaftanangelo.com/en/guides/fur-coat-storage/)
+- [Comparison: Leather vs. Shearling vs. Fur](https://kaftanangelo.com/en/guides/leather-shearling-fur-comparison/)
+- [Budapest Outerwear Shopping Guide](https://kaftanangelo.com/en/guides/budapest-outerwear-shopping/)
+- [Custom Leather Jacket Order Process](https://kaftanangelo.com/en/guides/custom-leather-jacket-order/)

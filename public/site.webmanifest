@@ -1,0 +1,17 @@
+{
+  "name": "Kaftan Angelo",
+  "short_name": "Kaftan Angelo",
+  "description": "Genuine leather jackets, shearling coats and fur outerwear in central Budapest since 2004.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1b120c",
+  "theme_color": "#1b120c",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
