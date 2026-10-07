@@ -215,8 +215,17 @@ portal_hu_html = """
     </div>
 
     <div class="contract-action-bar">
-      <span class="contract-secure-note">🔒 Hitelesített, titkosított Supabase tárolóból származó hivatalos PDF példány.</span>
-      <a id="contract-download-link" class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/sign/partner-contracts/b2b-contract.pdf?token=eyJraWQiOiJmZWIxYzExNS0xM2ZlLTRhODYtYThiOC01MWM4N2ZmMjNkMjciLCJhbGciOiJIUzUxMiJ9.eyJ1cmwiOiJwYXJ0bmVyLWNvbnRyYWN0cy9iMmItY29udHJhY3QucGRmIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MTM5MDAyNywiZXhwIjoxODIyOTI2MDI3fQ.7NDbvw2memZll3qPq3bn8IrBUUOzzV1kS2PHpXImlvZA5kCeTRsBC6Qv5-Hrg6ab2gvmEkRdrKsyHOyK4iVJDw">📄 Hivatalos Szerződés Letöltése (Kétnyelvű PDF) &rarr;</a>
+      <div id="contract-ready-box" style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:1.5rem; flex-wrap:wrap;">
+        <span class="contract-secure-note">🔒 Hitelesített, titkosított kétnyelvű partneri szerződés.</span>
+        <a id="contract-download-link" class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="#">📄 Hivatalos Szerződés Letöltése (Kétnyelvű PDF) &rarr;</a>
+      </div>
+      <div id="contract-pending-box" style="display:none; align-items:center; gap:0.85rem; background:rgba(220,178,124,0.08); border:1px solid rgba(220,178,124,0.3); border-radius:14px; padding:1.1rem 1.5rem; width:100%;">
+        <span style="font-size:1.5rem;" aria-hidden="true">⏳</span>
+        <div>
+          <strong style="color:var(--bright); font-size:0.92rem; display:block; margin-bottom:0.2rem;">Hivatalos Aláírt Szerződés Előkészítés Alatt</strong>
+          <span style="color:var(--dim); font-size:0.84rem;">Az Ön személyre szabott, hivatalosan ellenjegyzett kétnyelvű szerződése hamarosan feltöltésre kerül fiókjába.</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -392,6 +401,22 @@ portal_hu_html = """
     // WhatsApp share voucher link
     const voucherMsg = encodeURIComponent('Kedves Vendégünk!\\n\\nSzeretettel ajánlom figyelmébe a budapesti Kaftan Angelo prémium bőr-, irha- és szőrmeboltot.\\n\\nBemutatva az alábbi partnerkódomat 10% VIP kedvezményt kap:\\nKód: ' + data.code + '\\n\\nCím: Kossuth Lajos u. 18, Budapest 1053\\nTérkép & Weboldal: https://kaftanangelo.com/');
     document.getElementById('share-voucher-wa').href = 'https://wa.me/?text=' + voucherMsg;
+
+    // Dynamic contract document display
+    const contractReadyBox = document.getElementById('contract-ready-box');
+    const contractPendingBox = document.getElementById('contract-pending-box');
+    const contractLink = document.getElementById('contract-download-link');
+    const defaultSignedDoc = 'https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/sign/partner-contracts/b2b-contract.pdf?token=eyJraWQiOiJmZWIxYzExNS0xM2ZlLTRhODYtYThiOC01MWM4N2ZmMjNkMjciLCJhbGciOiJIUzUxMiJ9.eyJ1cmwiOiJwYXJ0bmVyLWNvbnRyYWN0cy9iMmItY29udHJhY3QucGRmIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MTM5MDAyNywiZXhwIjoxODIyOTI2MDI3fQ.7NDbvw2memZll3qPq3bn8IrBUUOzzV1kS2PHpXImlvZA5kCeTRsBC6Qv5-Hrg6ab2gvmEkRdrKsyHOyK4iVJDw';
+
+    const hasContract = Boolean(data.contract_url || (data.code === 'HOTEL-01'));
+    if (hasContract) {
+      if (contractLink) contractLink.href = data.contract_url || defaultSignedDoc;
+      if (contractReadyBox) contractReadyBox.style.display = 'flex';
+      if (contractPendingBox) contractPendingBox.style.display = 'none';
+    } else {
+      if (contractReadyBox) contractReadyBox.style.display = 'none';
+      if (contractPendingBox) contractPendingBox.style.display = 'flex';
+    }
 
     // Render transactions
     const tbody = document.getElementById('transactions-tbody');
@@ -653,8 +678,17 @@ portal_en_html = """
     </div>
 
     <div class="contract-action-bar">
-      <span class="contract-secure-note">🔒 Official certified document served from private encrypted Supabase storage.</span>
-      <a id="contract-download-link" class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/sign/partner-contracts/b2b-contract.pdf?token=eyJraWQiOiJmZWIxYzExNS0xM2ZlLTRhODYtYThiOC01MWM4N2ZmMjNkMjciLCJhbGciOiJIUzUxMiJ9.eyJ1cmwiOiJwYXJ0bmVyLWNvbnRyYWN0cy9iMmItY29udHJhY3QucGRmIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MTM5MDAyNywiZXhwIjoxODIyOTI2MDI3fQ.7NDbvw2memZll3qPq3bn8IrBUUOzzV1kS2PHpXImlvZA5kCeTRsBC6Qv5-Hrg6ab2gvmEkRdrKsyHOyK4iVJDw">📄 Download Official Agreement (Bilingual PDF) &rarr;</a>
+      <div id="contract-ready-box" style="display:flex; align-items:center; justify-content:space-between; width:100%; gap:1.5rem; flex-wrap:wrap;">
+        <span class="contract-secure-note">🔒 Certified, encrypted bilateral partnership agreement.</span>
+        <a id="contract-download-link" class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="#">📄 Download Official Agreement (Bilingual PDF) &rarr;</a>
+      </div>
+      <div id="contract-pending-box" style="display:none; align-items:center; gap:0.85rem; background:rgba(220,178,124,0.08); border:1px solid rgba(220,178,124,0.3); border-radius:14px; padding:1.1rem 1.5rem; width:100%;">
+        <span style="font-size:1.5rem;" aria-hidden="true">⏳</span>
+        <div>
+          <strong style="color:var(--bright); font-size:0.92rem; display:block; margin-bottom:0.2rem;">Official Signed Agreement Pending Upload</strong>
+          <span style="color:var(--dim); font-size:0.84rem;">Your personalized, officially countersigned bilingual agreement will be uploaded to your account shortly.</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -830,6 +864,22 @@ portal_en_html = """
     // WhatsApp share voucher link
     const voucherMsg = encodeURIComponent('Dear Guest,\\n\\nWe warmly invite you to visit Kaftan Angelo, Budapest\'s premier luxury leather, shearling, and fur coat boutique.\\n\\nPresent our VIP code for an exclusive 10% discount:\\nVIP Code: ' + data.code + '\\n\\nAddress: Kossuth Lajos u. 18, Budapest 1053\\nLocation & Website: https://kaftanangelo.com/en/');
     document.getElementById('share-voucher-wa').href = 'https://wa.me/?text=' + voucherMsg;
+
+    // Dynamic contract document display
+    const contractReadyBox = document.getElementById('contract-ready-box');
+    const contractPendingBox = document.getElementById('contract-pending-box');
+    const contractLink = document.getElementById('contract-download-link');
+    const defaultSignedDoc = 'https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/sign/partner-contracts/b2b-contract.pdf?token=eyJraWQiOiJmZWIxYzExNS0xM2ZlLTRhODYtYThiOC01MWM4N2ZmMjNkMjciLCJhbGciOiJIUzUxMiJ9.eyJ1cmwiOiJwYXJ0bmVyLWNvbnRyYWN0cy9iMmItY29udHJhY3QucGRmIiwic2NvcGUiOiJkb3dubG9hZCIsImlhdCI6MTc5MTM5MDAyNywiZXhwIjoxODIyOTI2MDI3fQ.7NDbvw2memZll3qPq3bn8IrBUUOzzV1kS2PHpXImlvZA5kCeTRsBC6Qv5-Hrg6ab2gvmEkRdrKsyHOyK4iVJDw';
+
+    const hasContract = Boolean(data.contract_url || (data.code === 'HOTEL-01'));
+    if (hasContract) {
+      if (contractLink) contractLink.href = data.contract_url || defaultSignedDoc;
+      if (contractReadyBox) contractReadyBox.style.display = 'flex';
+      if (contractPendingBox) contractPendingBox.style.display = 'none';
+    } else {
+      if (contractReadyBox) contractReadyBox.style.display = 'none';
+      if (contractPendingBox) contractPendingBox.style.display = 'flex';
+    }
 
     // Render transactions
     const tbody = document.getElementById('transactions-tbody');
