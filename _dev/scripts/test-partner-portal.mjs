@@ -78,7 +78,7 @@ try {
     await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
     assert.equal(await page.$$eval('.portal-material-actions a',links=>links.length),2);
     assert.equal(await page.$$eval('.portal-material-pending',cards=>cards.length),4);
-    assert.equal(await page.$$eval('#portal-materials-grid img',images=>images.length),1);
+    assert.equal(await page.$$eval('#portal-materials-grid img',images=>images.length),0);
     assert.equal(await page.$$eval('#portal-materials-grid a',links=>links.some(link=>link.href.includes('other.pdf') || link.href.startsWith('javascript:'))),false);
     await page.focus('#portal-logout-btn');
     await page.keyboard.press('Enter');
@@ -91,7 +91,16 @@ try {
       assert.equal(await page.$$eval('.portal-material-card',cards=>cards.length),6);
       assert.equal(await page.$$eval('.portal-material-actions a',links=>links.length),state === 'manifest' ? 10 : 0);
       assert.equal(await page.$$eval('.portal-material-draft',notes=>notes.length),state === 'manifest' ? 1 : 0);
-      assert.equal(await page.$$eval('#portal-materials-grid img',images=>images.length),state === 'manifest' ? 6 : 0);
+      assert.equal(await page.$$eval('#portal-materials-grid img',images=>images.length),0);
+      if (state === 'manifest') {
+        assert.equal(await page.$$eval('.portal-material-preview',buttons=>buttons.length),6);
+        await page.focus('.portal-material-preview'); await page.keyboard.press('Enter');
+        assert.equal(await page.$eval('.portal-preview-dialog',dialog=>dialog.open),true);
+        await page.waitForFunction(()=>document.querySelector('.portal-preview-dialog img')?.naturalWidth>0);
+        await page.keyboard.press('Escape');
+        assert.equal(await page.$eval('.portal-preview-dialog',dialog=>dialog.open),false);
+        await page.waitForFunction(()=>document.querySelectorAll('.portal-preview-dialog img').length===0);
+      }
       await page.focus('#portal-logout-btn'); await page.keyboard.press('Enter');
     }
     mode='invalid';

@@ -7,6 +7,40 @@
   const money = value => new Intl.NumberFormat(en ? 'en-GB' : 'hu-HU', { maximumFractionDigits: 0 }).format(Number(value) || 0) + ' HUF';
   const text = (id, value) => { if ($(id)) $(id).textContent = value ?? '—'; };
   let transactions = [];
+  const previewDialog = document.createElement('dialog');
+  previewDialog.className = 'portal-preview-dialog';
+  previewDialog.setAttribute('aria-labelledby','portal-preview-title');
+  const previewTitle = document.createElement('h3');
+  previewTitle.id = 'portal-preview-title';
+  const previewClose = document.createElement('button');
+  previewClose.type = 'button';
+  previewClose.className = 'btn btn-ghost';
+  previewClose.textContent = t('Close preview','Előnézet bezárása');
+  const previewBody = document.createElement('div');
+  previewDialog.append(previewClose, previewTitle, previewBody);
+  document.body.append(previewDialog);
+  previewClose.addEventListener('click', () => previewDialog.close());
+  previewDialog.addEventListener('click', event => {
+    if (event.target !== previewDialog) return;
+    const bounds = previewDialog.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) previewDialog.close();
+  });
+  previewDialog.addEventListener('close', () => previewBody.replaceChildren());
+  function openMaterialPreview(url, title) {
+    previewTitle.textContent = title;
+    const image = document.createElement('img');
+    image.alt = title;
+    image.referrerPolicy = 'no-referrer';
+    image.addEventListener('error', () => {
+      const note = document.createElement('p');
+      note.setAttribute('role','status');
+      note.textContent = t('Preview unavailable. Try opening the PNG file or sign in again.','Az előnézet nem érhető el. Nyissa meg a PNG fájlt, vagy jelentkezzen be újra.');
+      previewBody.replaceChildren(note);
+    }, {once:true});
+    image.src = url;
+    previewBody.replaceChildren(image);
+    previewDialog.showModal();
+  }
   function renderMaterials(data) {
     const grid = $('portal-materials-grid');
     grid.replaceChildren();
@@ -36,18 +70,13 @@
         heading.textContent = (format === 'card' ? t('Print card · 10 × 15 cm','Nyomtatott kártya · 10 × 15 cm') : format === 'poster' ? t('Poster · A4','Plakát · A4') : t('Mobile invitation · 9:16','Mobil meghívó · 9:16')) + ' · ' + (language === 'hu' ? t('Hungarian','Magyar') : t('English','Angol'));
         card.append(heading);
         if (preview) {
-          const image = document.createElement('img');
-          image.src = preview;
-          image.alt = heading.textContent + ' · ' + data.code;
-          image.loading = 'lazy';
-          image.referrerPolicy = 'no-referrer';
-          image.addEventListener('error', () => {
-            image.remove();
-            const note = document.createElement('p');
-            note.textContent = t('Preview unavailable. Try opening the file; if it has expired, sign in again.','Az előnézet nem érhető el. Nyissa meg a fájlt; lejárt hivatkozás esetén jelentkezzen be újra.');
-            card.append(note);
-          }, {once:true});
-          card.append(image);
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'btn btn-ghost portal-material-preview';
+          button.textContent = t('Preview','Előnézet');
+          button.setAttribute('aria-haspopup','dialog');
+          button.addEventListener('click', () => openMaterialPreview(preview, heading.textContent + ' · ' + data.code));
+          card.append(button);
         }
         const actions = document.createElement('div');
         actions.className = 'portal-material-actions';
@@ -177,6 +206,8 @@
   });
   $('portal-logout-btn').addEventListener('click', () => {
     transactions = [];
+    if (previewDialog.open) previewDialog.close();
+    previewBody.replaceChildren();
     $('portal-materials-grid').replaceChildren();
     $('transactions-tbody').replaceChildren();
     $('portal-dashboard').hidden = true;

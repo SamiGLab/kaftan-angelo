@@ -971,3 +971,10 @@
 .portal-material-card h4,.portal-material-card p,.portal-material-help { overflow-wrap:anywhere; }
 .portal-materials-grid > * { min-width:0; }
 .portal-material-draft { grid-column:1/-1; padding:1rem; border:1px solid #a78150; border-radius:8px; color:#f3d7b0; background:#46301b; }
+.portal-preview-dialog { width:min(860px,calc(100vw - 2rem)); max-height:90dvh; overflow:auto; padding:1.25rem; border:1px solid #a78150; border-radius:16px; background:#231b15; color:#f4eee5; }
+.portal-preview-dialog::backdrop { background:rgba(0,0,0,.8); }
+.portal-preview-dialog h3 { font-size:1.1rem; margin:1rem 0; }
+.portal-preview-dialog img { display:block; max-width:100%; max-height:70dvh; margin:auto; object-fit:contain; }
+.portal-preview-dialog button { min-height:44px; }
+.portal-preview-dialog :focus-visible { outline:2px solid #dcb27c; outline-offset:3px; }
+.portal-material-preview { margin-bottom:1rem; }
