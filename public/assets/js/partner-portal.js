@@ -115,18 +115,22 @@
       }
     }
   }
-  const kind = status => ['Kifizetve','Settled','Paid'].includes(status) ? 'paid' : ['Kifizethető','Cleared'].includes(status) ? 'cleared' : 'holding';
+  const kind = tx => {
+    if (['Kifizetve','Settled','Paid'].includes(tx.status)) return 'paid';
+    if (['İptal','Cancelled','Visszatérítve'].includes(tx.status) || (Number(tx.amount) === 0 && Number(tx.comm) === 0)) return 'cancelled';
+    return ['Kifizethető','Cleared'].includes(tx.status) ? 'cleared' : 'holding';
+  };
   const labels = () => en ? ['Date','Item / Purchase','Sale Amount','Commission','Status'] : ['Dátum','Termék / Vásárlás','Vásárlási összeg','Jutalék','Állapot'];
   function render() {
     const query = $('portal-search').value.trim().toLocaleLowerCase();
     const filter = $('portal-status-filter').value;
-    const selected = transactions.filter(tx => (filter === 'all' || kind(tx.status) === filter) && [tx.item,tx.date].join(' ').toLocaleLowerCase().includes(query));
+    const selected = transactions.filter(tx => (filter === 'all' || kind(tx) === filter) && [tx.item,tx.date].join(' ').toLocaleLowerCase().includes(query));
     const body = $('transactions-tbody');
     body.replaceChildren();
     selected.forEach(tx => {
       const row = document.createElement('tr');
-      const status = kind(tx.status);
-      const statusText = status === 'paid' ? t('Paid','Kifizetve') : status === 'cleared' ? t('Available','Kifizethető') : t('Pending · 14 days','Függőben · 14 nap');
+      const status = kind(tx);
+      const statusText = status === 'paid' ? t('Paid','Kifizetve') : status === 'cancelled' ? t('Returned / cancelled','Visszatérítve / törölve') : status === 'cleared' ? t('Available','Kifizethető') : t('Pending · 14 days','Függőben · 14 nap');
       [tx.date, tx.item, money(tx.amount), money(tx.comm), statusText].forEach((value,index) => {
         const cell = document.createElement('td');
         cell.dataset.label = labels()[index];

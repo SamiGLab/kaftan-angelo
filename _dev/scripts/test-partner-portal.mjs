@@ -29,6 +29,7 @@ try {
       if (!request.url().includes('/rpc/get_partner_portal')) return request.continue();
       if (request.method()==='OPTIONS') return request.respond({status:204,headers:{'access-control-allow-origin':'*','access-control-allow-headers':'*','access-control-allow-methods':'POST, OPTIONS'}});
       const data = mode === 'invalid' ? {success:false} : {success:true,code:'TEST-ONLY',name:'Synthetic partner',type:'Hotel',contact_person:'Test representative',phone:'+36 000',iban:null,contract_url:null,guests:3,paid:100,cleared:200,holding:300,sales:6000,txs:[{date:'2026.09.01',item:'<img src=x onerror=alert(1)>',amount:1000,comm:100,status:'Kifizetve'},{date:'2026.09.02',item:'Leather jacket',amount:2000,comm:200,status:'Kifizethető'},{date:'2026.10.06',item:'Fur coat',amount:3000,comm:300,status:'Függőben (14 napos garancia)'}]};
+      if (mode === 'cancelled') data.txs.push({date:'2026.10.07',item:'Returned jacket',amount:0,comm:0,status:'Függőben'});
       if (mode === 'materials') data.materials = [
         {partner_code:'TEST-ONLY',kind:'print',language:'hu',pdf_url:'https://example.com/print-hu.pdf'},
         {partner_code:'TEST-ONLY',kind:'mobile',language:'en',png_url:'https://example.com/material-preview.png'},
@@ -104,6 +105,17 @@ try {
       }
       await page.focus('#portal-logout-btn'); await page.keyboard.press('Enter');
     }
+    mode='cancelled';
+    await page.type('#partner-code-input','TEST-ONLY');
+    await page.type('#partner-pin-input','0000');
+    await page.focus('#gate-submit-btn'); await page.keyboard.press('Enter');
+    await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
+    assert.equal(await page.$$eval('#transactions-tbody .cancelled',rows=>rows.length),1);
+    await page.select('#portal-status-filter','holding');
+    assert.equal(await page.$$eval('#transactions-tbody tr',rows=>rows.length),1);
+    await page.select('#portal-status-filter','cancelled');
+    assert.equal(await page.$$eval('#transactions-tbody tr',rows=>rows.length),1);
+    await page.focus('#portal-logout-btn'); await page.keyboard.press('Enter');
     mode='invalid';
     await page.type('#partner-code-input','TEST-ONLY');
     await page.type('#partner-pin-input','wrong');
