@@ -55,6 +55,14 @@ try {
     assert.equal(await page.$$eval('.portal-material-actions a',links=>links.length),0);
     assert.equal(await page.$eval('#request-payout-btn',node=>node.href.includes('HU42')),false);
     assert.equal(await page.evaluate(()=>localStorage.getItem('kaftan_portal_session')),null);
+    const savedView = await page.evaluate(()=>JSON.parse(sessionStorage.getItem('kaftan_portal_view_v1')));
+    assert.equal(savedView.data.code,'TEST-ONLY');
+    assert.equal(JSON.stringify(savedView).includes('0000'),false);
+    assert.equal('p_pin' in savedView.data,false);
+    await page.reload();
+    await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
+    assert.equal(await page.$eval('#partner-display-code',node=>node.textContent),'TEST-ONLY');
+
     for (const filter of ['holding','cleared','paid']) {
       await page.select('#portal-status-filter',filter);
       assert.equal(await page.$$eval('#transactions-tbody tr',rows=>rows.length),1);
@@ -71,6 +79,9 @@ try {
     }
     await page.focus('#portal-logout-btn');
     await page.keyboard.press('Enter');
+    assert.equal(await page.$eval('#portal-dashboard',node=>node.hidden),true);
+    assert.equal(await page.evaluate(()=>sessionStorage.getItem('kaftan_portal_view_v1')),null);
+    await page.reload();
     assert.equal(await page.$eval('#portal-dashboard',node=>node.hidden),true);
     assert.equal(await page.$$eval('#portal-materials-grid a',links=>links.length),0);
     mode='materials';

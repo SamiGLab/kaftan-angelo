@@ -7,6 +7,15 @@
   const money = value => new Intl.NumberFormat(en ? 'en-GB' : 'hu-HU', { maximumFractionDigits: 0 }).format(Number(value) || 0) + ' HUF';
   const text = (id, value) => { if ($(id)) $(id).textContent = value ?? '—'; };
   let transactions = [];
+  const sessionKey = 'kaftan_portal_view_v1';
+  const sessionLifetime = 30 * 60 * 1000;
+  function clearSession() {
+    try { sessionStorage.removeItem(sessionKey); } catch {}
+  }
+  function rememberView(data) {
+    // Keep this tab's read-only dashboard, never the PIN or login credentials.
+    try { sessionStorage.setItem(sessionKey, JSON.stringify({expires: Date.now() + sessionLifetime, data})); } catch {}
+  }
   const previewDialog = document.createElement('dialog');
   previewDialog.className = 'portal-preview-dialog';
   previewDialog.setAttribute('aria-labelledby','portal-preview-title');
@@ -207,7 +216,10 @@
       if (!data?.success) {
         text('portal-error-msg',t('Invalid partner code or PIN. Please try again.','Érvénytelen partnerkód vagy PIN. Próbálja újra.'));
         $('portal-error-msg').hidden = false;
-      } else populate(data);
+      } else {
+        populate(data);
+        rememberView(data);
+      }
     } catch {
       text('portal-error-msg',t('Unable to reach your account. Please try again shortly.','A fiók jelenleg nem érhető el. Próbálja újra később.'));
       $('portal-error-msg').hidden = false;
@@ -218,6 +230,7 @@
     }
   });
   $('portal-logout-btn').addEventListener('click', () => {
+    clearSession();
     transactions = [];
     if (previewDialog.open) previewDialog.close();
     previewBody.replaceChildren();
@@ -245,4 +258,10 @@
   $('portal-status-filter').addEventListener('change',render);
   // Remove legacy persisted credentials; PINs remain in the login request only.
   try { localStorage.removeItem('kaftan_portal_session'); } catch {}
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(sessionKey) || 'null');
+    if (saved?.expires > Date.now() && saved.expires <= Date.now() + sessionLifetime && saved.data?.success === true && typeof saved.data.code === 'string') {
+      populate(saved.data);
+    } else clearSession();
+  } catch { clearSession(); }
 })();
