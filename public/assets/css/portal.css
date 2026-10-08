@@ -978,3 +978,4 @@
 .portal-preview-dialog button { min-height:44px; }
 .portal-preview-dialog :focus-visible { outline:2px solid #dcb27c; outline-offset:3px; }
 .portal-material-preview { margin-bottom:1rem; }
+.badge-status.cancelled { color:#f4eee5; background:#463d35; }
