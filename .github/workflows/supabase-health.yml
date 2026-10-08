@@ -1,0 +1,27 @@
+name: Supabase database health
+
+on:
+  schedule:
+    - cron: '43 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: supabase-database-health
+  cancel-in-progress: false
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate monitor
+        run: node --test _dev/scripts/check-supabase-health.test.mjs
+      - name: Check database availability and anonymous access
+        run: node _dev/scripts/check-supabase-health.mjs
