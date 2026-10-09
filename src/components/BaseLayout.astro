@@ -1,6 +1,7 @@
 ---
 import Header from './Header.astro';
 import Footer from './Footer.astro';
+import AnalyticsConsent from './AnalyticsConsent.astro';
 import WhatsAppButton from './WhatsAppButton.astro';
 import '@fontsource-variable/fraunces';
 
@@ -68,7 +69,8 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <a class="skip-link" href="#main-content">{lang === "hu" ? "Ugrás a tartalomhoz" : "Skip to content"}</a>
   <Header lang={lang} counterpart={page.counterpart} />
   <main id="main-content" tabindex="-1" data-pagefind-body><slot /></main>
-  <Footer lang={lang} />
+  <Footer lang={lang} trackingAllowed={!page.canonical.includes('/partner-portal/')} />
+  {!page.canonical.includes('/partner-portal/') && <AnalyticsConsent lang={lang} />}
   {page.mainHtml?.includes('data-map-panel') && <script is:inline defer src="/assets/js/privacy-settings.js"></script>}
   <WhatsAppButton lang={lang} pageTitle={page.title} canonicalUrl={page.canonical} />
   {page.mainHtml?.includes('data-product-image') && <dialog class="product-dialog" data-product-dialog aria-labelledby="product-preview-title">

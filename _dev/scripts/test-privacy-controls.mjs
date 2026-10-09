@@ -13,8 +13,9 @@ try {
     await page.evaluate(()=>window.scrollTo(0,document.body.scrollHeight));
     assert.equal(requests.filter(u=>/googletagmanager|google-analytics|google\.com\/maps/.test(u)).length,0,'No optional external requests before interaction');
     assert.equal(await page.$$eval('[data-map-slot] iframe',x=>x.length),0);
-    assert.equal(await page.evaluate(()=>localStorage.length),0,'No daily announcement persistence');
+    assert.deepEqual(await page.evaluate(()=>Object.keys(localStorage).filter(k=>k!=='kaftan_consent_v1')),[],'Only the explicit consent preference may persist');
     assert.equal(await page.evaluate(()=>sessionStorage.length),0,'No storage on public store pages');
+    if(await page.$eval('[data-consent-banner]',el=>!el.hidden)) await page.click('[data-consent-reject]');
     await page.click('[data-map-load]');
     await page.waitForSelector('[data-map-slot] iframe');
     assert.equal(await page.$$eval('#privacy-settings,[data-privacy-open]',x=>x.length),0,'No separate settings dialog');

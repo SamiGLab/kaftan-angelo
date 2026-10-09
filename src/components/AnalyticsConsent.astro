@@ -1,0 +1,22 @@
+---
+const {lang='hu'}=Astro.props;
+const hu=lang==='hu';
+---
+<section class="consent-banner" data-consent-banner aria-labelledby="consent-title" hidden>
+  <div class="wrap">
+    <h2 id="consent-title">{hu?'Adatvédelmi választások':'Privacy choices'}</h2>
+    <p>{hu?'Engedélyével a Google Analytics látogatási statisztikákat, a Microsoft Clarity kattintási és görgetési térképeket, valamint maszkolt munkamenet-felvételeket készít. Ezek nélkül is használhatja az oldalt.':'With your permission, Google Analytics measures visits, and Microsoft Clarity creates click and scroll maps and masked session recordings. You can use the site without them.'} <a href={hu?'/sutikezeles/':'/en/cookies/'}>{hu?'Részletek':'Details'}</a></p>
+    <div data-consent-options hidden>
+      <label><input type="checkbox" data-consent-analytics /> {hu?'Látogatási statisztikák · Google Analytics':'Visit statistics · Google Analytics'}</label>
+      <label><input type="checkbox" data-consent-recordings /> {hu?'Munkamenet-felvételek és hőtérképek · Microsoft Clarity':'Session recordings and heatmaps · Microsoft Clarity'}</label>
+      <p>{hu?'A választását 180 napig tároljuk. A láblécben bármikor módosíthatja vagy visszavonhatja.':'We remember your choice for 180 days. Change or withdraw it at any time in the footer.'}</p>
+    </div>
+    <div class="consent-actions">
+      <button type="button" class="btn btn-ghost" data-consent-reject>{hu?'Elutasítás':'Reject optional'}</button>
+      <button type="button" class="btn btn-ghost" data-consent-accept>{hu?'Mind elfogadása':'Accept all'}</button>
+      <button type="button" class="btn btn-ghost" data-consent-customize>{hu?'Beállítások':'Choose settings'}</button>
+      <button type="button" class="btn btn-ghost" data-consent-save hidden>{hu?'Kiválasztás mentése':'Save selection'}</button>
+    </div>
+  </div>
+</section>
+<script is:inline defer src="/assets/js/analytics-consent.js"></script>
