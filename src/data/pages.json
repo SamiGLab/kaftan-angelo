@@ -278,7 +278,7 @@
     "canonical": "https://kaftanangelo.com/gyik/",
     "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
     "counterpart": "/en/faq/",
-    "mainHtml": "\n<section class=\"page-hero\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / Gyakran Ismételt Kérdések</div><span class=\"tag mono\">GYIK</span><h1>Gyakran Ismételt Kérdések</h1><p>A legfontosabb kérdések üzletünkről, egyedi rendelésről és fizetésről.</p></div></section>\n<section><div class=\"wrap faq-list\"><details class=\"faq-item\"><summary>Vállalnak egyedi méretre szabott bőrkabát készítést?</summary><div><p>Igen. Egyedi bőrkabát rendelésére van lehetőség; a fazont, színt, méretet, anyagot és az elkészítés részleteit személyesen egyeztetjük.</p></div></details><details class=\"faq-item\"><summary>Hol található a Kaftan Angelo üzlet?</summary><div><p>1053 Budapest, Kossuth Lajos utca 18., az Astoria és a Ferenciek tere között.</p></div></details><details class=\"faq-item\"><summary>Milyen fizetési módokat fogadnak el?</summary><div><p>Az üzletben készpénzes és bankkártyás fizetés is elérhető; HUF és EUR is elfogadott.</p></div></details><details class=\"faq-item\"><summary>Fel lehet próbálni a kabátokat vásárlás előtt?</summary><div><p>Igen. A weboldal a választékból ad ízelítőt; a modellek személyesen próbálhatók fel budapesti üzletünkben.</p></div></details><details class=\"faq-item\"><summary>Van javítási lehetőség?</summary><div><p>A nálunk vásárolt bőrtermékek javításának ügyintézésében segítséget nyújtunk. A lehetőség a termék állapotától és a szükséges javítástól függ.</p></div></details><details class=\"faq-item\"><summary>Milyen termékeket tartanak?</summary><div><p>Női és férfi valódi bőrkabátokat, bőrdzsekiket, irha- és szőrmemodelleket, valamint bőr kiegészítőket.</p></div></details><details class=\"faq-item\"><summary>Hogyan kérdezhetek rá egy konkrét modellre?</summary><div><p>Írhat WhatsAppon a +36 20 359 3216 számon, vagy hívhatja az üzletet a +36 1 266 7274 telefonszámon.</p></div></details><details class=\"faq-item\"><summary>Mikor van nyitva az üzlet?</summary><div><p>Hétfőtől péntekig 10:00–19:00, szombaton 10:00–17:00. Vasárnap zárva.</p></div></details></div></section>\n",
+    "mainHtml": "\n<section class=\"page-hero\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / Gyakran Ismételt Kérdések</div><span class=\"tag mono\">GYIK</span><h1>Gyakran Ismételt Kérdések</h1><p>A legfontosabb kérdések üzletünkről, egyedi rendelésről és fizetésről.</p></div></section>\n<section><div class=\"wrap faq-list\"><details class=\"faq-item\"><summary>Vállalnak egyedi méretre szabott bőrkabát készítést?</summary><div><p>Igen. Egyedi bőrkabát rendelésére van lehetőség; a fazont, színt, méretet, anyagot és az elkészítés részleteit személyesen egyeztetjük.</p></div></details><details class=\"faq-item\"><summary>Hol található a Kaftan Angelo üzlet?</summary><div><p>1053 Budapest, Kossuth Lajos utca 18., az Astoria és a Ferenciek tere között.</p></div></details><details class=\"faq-item\"><summary>Milyen fizetési módokat fogadnak el?</summary><div><p>Az üzletben készpénzes és bankkártyás fizetés is elérhető; HUF és EUR is elfogadott.</p></div></details><details class=\"faq-item\"><summary>Fel lehet próbálni a kabátokat vásárlás előtt?</summary><div><p>Igen. A weboldal a választékból ad ízelítőt; a modellek személyesen próbálhatók fel budapesti üzletünkben.</p></div></details><details class=\"faq-item\"><summary>Van javítási lehetőség?</summary><div><p>A nálunk vásárolt bőrtermékek javításának ügyintézésében segítséget nyújtunk. A lehetőség a termék állapotától és a szükséges javítástól függ.</p></div></details><details class=\"faq-item\"><summary>Milyen termékeket tartanak?</summary><div><p>Női és férfi valódi bőrkabátokat, bőrdzsekiket, irha- és szőrmemodelleket, valamint bőr kiegészítőket.</p></div></details><details class=\"faq-item\"><summary>Hogyan kérdezhetek rá egy konkrét modellre?</summary><div><p>Írhat WhatsAppon a +36 20 359 3216 számon, vagy hívhatja az üzletet a +36 1 266 7274 telefonszámon.</p></div></details><details class=\"faq-item\"><summary>Mikor van nyitva az üzlet?</summary><div><p>Hétfőtől péntekig 10:00–19:00, szombaton 10:00–17:00. Vasárnap zárva.</p></div></details></div></section>\n\n<section><div class=\"wrap content\"><h2>Látogatás és online érdeklődés</h2><details><summary>Vásárolhatok a weboldalon?</summary><p>A weboldal a választékot mutatja be; nincs online kosár vagy fizetés. Az elérhetőséget és a vásárlás részleteit az üzlettel egyeztesse.</p></details><details><summary>A galéria aktuális készletet mutat?</summary><p>A fotók válogatást mutatnak, nem valós idejű készletet. Konkrét modell, szín és méret esetén látogatás előtt érdeklődjön.</p></details><details><summary>Mit hozzak a próbára?</summary><p>Hozza a megszokott ruharéteget és a kiválasztott modell képét. Az anyagról, bélésről, kezelésről és esetleges módosításról az adott darab alapján kérdezzen.</p></details></div></section>",
     "pageSchema": {
       "@type": "FAQPage",
       "name": "Gyakran Ismételt Kérdések",
@@ -354,6 +354,30 @@
             "@type": "Answer",
             "text": "Hétfőtől péntekig 10:00–19:00, szombaton 10:00–17:00. Vasárnap zárva."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Vásárolhatok a weboldalon?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A weboldal a választékot mutatja be; nincs online kosár vagy fizetés. Az elérhetőséget és a vásárlás részleteit az üzlettel egyeztesse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A galéria aktuális készletet mutat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A fotók válogatást mutatnak, nem valós idejű készletet. Konkrét modell, szín és méret esetén látogatás előtt érdeklődjön."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mit hozzak a próbára?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hozza a megszokott ruharéteget és a kiválasztott modell képét. Az anyagról, bélésről, kezelésről és esetleges módosításról az adott darab alapján kérdezzen."
+          }
         }
       ]
     },
@@ -366,7 +390,8 @@
         "name": "Gyakran Ismételt Kérdések",
         "url": "/gyik/"
       }
-    ]
+    ],
+    "modifiedDate": "2026-10-09"
   },
   "/kollekciok/": {
     "path": "/kollekciok/",
@@ -468,7 +493,7 @@
     "canonical": "https://kaftanangelo.com/uzlet/",
     "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
     "counterpart": "/en/visit/",
-    "mainHtml": "\n<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\"><div class=\"wrap\">\n<div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / Kaftan Angelo üzlet Budapest</div><span class=\"tag mono\">Látogasson el hozzánk</span>\n<h1>Bőr-, irha- és szőrmekabát üzlet Budapest belvárosában</h1><p>Budapest belvárosában, Astoria és a Ferenciek tere között.</p>\n<div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Térkép megnyitása</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div>\n</div></section>\n<section><div class=\"wrap visit-layout\">\n<div class=\"contact-card\"><h2>Elérhetőség</h2><dl class=\"details\"><dt>Cím</dt><dd>Kossuth Lajos u. 18, Budapest 1053</dd><dt>Telefon</dt><dd><a href=\"tel:+3612667274\">+36&nbsp;1&nbsp;266&nbsp;7274</a></dd><dt>WhatsApp</dt><dd><a href=\"https://wa.me/36203593216\">+36 20 359 3216</a></dd></dl></div>\n<div class=\"contact-card\"><h2>Nyitvatartás</h2><div class=\"hours\"><div><span>Hétfő–Péntek</span><b>10:00–19:00</b></div><div><span>Szombat</span><b>10:00–17:00</b></div><div><span>Vasárnap</span><b>Zárva</b></div></div></div>\n</div></section>\n<section><div class=\"wrap\"><div class=\"map-frame\"><iframe loading=\"lazy\" src=\"https://www.google.com/maps?q=Kossuth%20Lajos%20u.%2018%2C%20Budapest%201053&amp;output=embed\" title=\"Kaftan Angelo térkép\"></iframe></div></div></section>\n<section><div class=\"wrap content\"><h2>Látogatás előtt</h2><p>Budapesti üzletünk 2004 óta: Kossuth Lajos u. 18, Budapest 1053. Női és férfi modellek, személyes próba Astoria és Ferenciek tere között.</p><ol><li>Nézze meg a modelleket a kollekcióban.</li><li>Küldje el WhatsAppon a kiválasztott darab fotóját és a keresett méretet, hogy érdeklődhessen az elérhetőségről.</li><li>Hozza a kabát alatt viselendő ruharéteget a személyes próbához. Ünnepnapok körül erősítse meg a nyitvatartást.</li></ol><div class=\"actions\"><a class=\"btn btn-primary\" href=\"/kollekciok/\">Modellek megtekintése</a><a class=\"btn btn-ghost\" href=\"tel:+3612667274\">Üzlet&nbsp;felhívása</a></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Kérdése van egy modellről?</h2><p>Írjon WhatsAppon, vagy látogasson el személyesen.</p></div><a class=\"btn btn-primary\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></section>\n",
+    "mainHtml": "\n<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\"><div class=\"wrap\">\n<div class=\"breadcrumbs\"><a href=\"/\">Főoldal</a> / Kaftan Angelo üzlet Budapest</div><span class=\"tag mono\">Látogasson el hozzánk</span>\n<h1>Bőr-, irha- és szőrmekabát üzlet Budapest belvárosában</h1><p>Budapest belvárosában, Astoria és a Ferenciek tere között.</p>\n<div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Térkép megnyitása</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div>\n</div></section>\n<section><div class=\"wrap visit-layout\">\n<div class=\"contact-card\"><h2>Elérhetőség</h2><dl class=\"details\"><dt>Cím</dt><dd>Kossuth Lajos u. 18, Budapest 1053</dd><dt>Telefon</dt><dd><a href=\"tel:+3612667274\">+36&nbsp;1&nbsp;266&nbsp;7274</a></dd><dt>WhatsApp</dt><dd><a href=\"https://wa.me/36203593216\">+36 20 359 3216</a></dd></dl></div>\n<div class=\"contact-card\"><h2>Nyitvatartás</h2><div class=\"hours\"><div><span>Hétfő–Péntek</span><b>10:00–19:00</b></div><div><span>Szombat</span><b>10:00–17:00</b></div><div><span>Vasárnap</span><b>Zárva</b></div></div></div>\n</div></section>\n<section><div class=\"wrap\"><div class=\"map-frame\"><div data-map-panel><p>A Google-térkép csak a gomb megnyomásakor töltődik be. A Google ekkor technikai adatokat kaphat.</p><button type=\"button\" class=\"btn btn-ghost\" data-map-load>Google-térkép betöltése</button><div data-map-slot></div><noscript><p>A beágyazott térkép JavaScript nélkül nem töltődik be; használja a Térkép megnyitása linket.</p></noscript></div></div></div></section>\n<section><div class=\"wrap content\"><h2>Látogatás előtt</h2><p>Budapesti üzletünk 2004 óta: Kossuth Lajos u. 18, Budapest 1053. Női és férfi modellek, személyes próba Astoria és Ferenciek tere között.</p><ol><li>Nézze meg a modelleket a kollekcióban.</li><li>Küldje el WhatsAppon a kiválasztott darab fotóját és a keresett méretet, hogy érdeklődhessen az elérhetőségről.</li><li>Hozza a kabát alatt viselendő ruharéteget a személyes próbához. Ünnepnapok körül erősítse meg a nyitvatartást.</li></ol><div class=\"actions\"><a class=\"btn btn-primary\" href=\"/kollekciok/\">Modellek megtekintése</a><a class=\"btn btn-ghost\" href=\"tel:+3612667274\">Üzlet&nbsp;felhívása</a></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Kérdése van egy modellről?</h2><p>Írjon WhatsAppon, vagy látogasson el személyesen.</p></div><a class=\"btn btn-primary\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></section>\n\n<section><div class=\"wrap content\"><h2>Megközelítés Astoria és Ferenciek tere felől</h2><p>A Kossuth Lajos u. 18. az Astoria és Ferenciek tere közötti szakaszon található. Indulás előtt a BudapestGO útvonaltervezőben adja meg a pontos címet, és ellenőrizze az aktuális járatokat, lezárásokat és akadálymentes megközelítést. Nem ígérünk állandó menetidőt vagy parkolóhelyet.</p><p><a href=\"https://go.bkk.hu/\">BudapestGO útvonaltervező</a> · <a href=\"/utmutatok/budapesti-kabatvasarlas/\">Felkészülés a személyes próbára</a></p></div></section>",
     "pageSchema": {
       "@type": "ContactPage",
       "name": "Kaftan Angelo üzlet Budapest",
@@ -490,7 +515,8 @@
         "name": "Kaftan Angelo üzlet Budapest",
         "url": "/uzlet/"
       }
-    ]
+    ],
+    "modifiedDate": "2026-10-09"
   },
   "/en/visit/": {
     "path": "/en/visit/",
@@ -500,7 +526,7 @@
     "canonical": "https://kaftanangelo.com/en/visit/",
     "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
     "counterpart": "/uzlet/",
-    "mainHtml": "\n<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\"><div class=\"wrap\">\n<div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / Visit Kaftan Angelo Budapest</div><span class=\"tag mono\">Visit Us</span>\n<h1>Leather, shearling &amp; fur store in central Budapest</h1><p>In central Budapest, between Astoria and Ferenciek tere.</p>\n<div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Open map</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div>\n</div></section>\n<section><div class=\"wrap visit-layout\">\n<div class=\"contact-card\"><h2>Contact</h2><dl class=\"details\"><dt>Address</dt><dd>Kossuth Lajos u. 18, Budapest 1053</dd><dt>Phone</dt><dd><a href=\"tel:+3612667274\">+36&nbsp;1&nbsp;266&nbsp;7274</a></dd><dt>WhatsApp</dt><dd><a href=\"https://wa.me/36203593216\">+36 20 359 3216</a></dd></dl></div>\n<div class=\"contact-card\"><h2>Opening hours</h2><div class=\"hours\"><div><span>Monday–Friday</span><b>10:00–19:00</b></div><div><span>Saturday</span><b>10:00–17:00</b></div><div><span>Sunday</span><b>Closed</b></div></div></div>\n</div></section>\n<section><div class=\"wrap\"><div class=\"map-frame\"><iframe loading=\"lazy\" src=\"https://www.google.com/maps?q=Kossuth%20Lajos%20u.%2018%2C%20Budapest%201053&amp;output=embed\" title=\"Kaftan Angelo map\"></iframe></div></div></section>\n<section><div class=\"wrap content\"><h2>Before your visit</h2><p>Our Budapest store since 2004: Kossuth Lajos u. 18, Budapest 1053. Women’s and men’s styles, with in-store fitting between Astoria and Ferenciek tere.</p><ol><li>Browse the models in our collection.</li><li>Send the photo of the piece you like and your preferred size on WhatsApp to ask about availability.</li><li>Bring the layer you plan to wear underneath for your fitting. Confirm opening hours around public holidays.</li></ol><div class=\"actions\"><a class=\"btn btn-primary\" href=\"/en/collections/\">See the models</a><a class=\"btn btn-ghost\" href=\"tel:+3612667274\">Call&nbsp;the&nbsp;store</a></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Have a question about a style?</h2><p>Message us on WhatsApp or visit the store.</p></div><a class=\"btn btn-primary\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></section>\n",
+    "mainHtml": "\n<section class=\"page-hero\" style=\"--hero:url('/assets/images/kaftan-angelo-hero-leather-collection-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-hero-leather-collection-480.avif')\"><div class=\"wrap\">\n<div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / Visit Kaftan Angelo Budapest</div><span class=\"tag mono\">Visit Us</span>\n<h1>Leather, shearling &amp; fur store in central Budapest</h1><p>In central Budapest, between Astoria and Ferenciek tere.</p>\n<div class=\"actions\"><a class=\"btn btn-primary\" href=\"https://maps.app.goo.gl/keuQRmecRpFn5Vjr5\">Open map</a><a class=\"btn btn-ghost\" href=\"https://wa.me/36203593216\">WhatsApp</a></div>\n</div></section>\n<section><div class=\"wrap visit-layout\">\n<div class=\"contact-card\"><h2>Contact</h2><dl class=\"details\"><dt>Address</dt><dd>Kossuth Lajos u. 18, Budapest 1053</dd><dt>Phone</dt><dd><a href=\"tel:+3612667274\">+36&nbsp;1&nbsp;266&nbsp;7274</a></dd><dt>WhatsApp</dt><dd><a href=\"https://wa.me/36203593216\">+36 20 359 3216</a></dd></dl></div>\n<div class=\"contact-card\"><h2>Opening hours</h2><div class=\"hours\"><div><span>Monday–Friday</span><b>10:00–19:00</b></div><div><span>Saturday</span><b>10:00–17:00</b></div><div><span>Sunday</span><b>Closed</b></div></div></div>\n</div></section>\n<section><div class=\"wrap\"><div class=\"map-frame\"><div data-map-panel><p>Google Maps loads only when you press the button. Google may then receive technical data.</p><button type=\"button\" class=\"btn btn-ghost\" data-map-load>Load Google Maps</button><div data-map-slot></div><noscript><p>The embedded map does not load without JavaScript; use the Open map link.</p></noscript></div></div></div></section>\n<section><div class=\"wrap content\"><h2>Before your visit</h2><p>Our Budapest store since 2004: Kossuth Lajos u. 18, Budapest 1053. Women’s and men’s styles, with in-store fitting between Astoria and Ferenciek tere.</p><ol><li>Browse the models in our collection.</li><li>Send the photo of the piece you like and your preferred size on WhatsApp to ask about availability.</li><li>Bring the layer you plan to wear underneath for your fitting. Confirm opening hours around public holidays.</li></ol><div class=\"actions\"><a class=\"btn btn-primary\" href=\"/en/collections/\">See the models</a><a class=\"btn btn-ghost\" href=\"tel:+3612667274\">Call&nbsp;the&nbsp;store</a></div></div></section><section class=\"store-cta\"><div class=\"wrap\"><div><h2>Have a question about a style?</h2><p>Message us on WhatsApp or visit the store.</p></div><a class=\"btn btn-primary\" href=\"https://wa.me/36203593216\">WhatsApp</a></div></section>\n\n<section><div class=\"wrap content\"><h2>Reaching us from Astoria and Ferenciek tere</h2><p>Kossuth Lajos u. 18 is on the section between Astoria and Ferenciek tere. Enter the exact address in BudapestGO before travelling and check current services, closures and accessible routes. We do not promise a fixed journey time or parking space.</p><p><a href=\"https://go.bkk.hu/\">BudapestGO journey planner</a> · <a href=\"/en/guides/budapest-outerwear-shopping/\">Prepare for an in-store fitting</a></p></div></section>",
     "pageSchema": {
       "@type": "ContactPage",
       "name": "Visit Kaftan Angelo Budapest",
@@ -522,7 +548,8 @@
         "name": "Visit Kaftan Angelo Budapest",
         "url": "/en/visit/"
       }
-    ]
+    ],
+    "modifiedDate": "2026-10-09"
   },
   "/en/shearling-jackets/": {
     "path": "/en/shearling-jackets/",
@@ -733,7 +760,7 @@
     "canonical": "https://kaftanangelo.com/en/faq/",
     "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
     "counterpart": "/gyik/",
-    "mainHtml": "\n<section class=\"page-hero\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / FAQ</div><span class=\"tag mono\">FAQ</span><h1>Frequently Asked Questions</h1><p>Key questions about our store, custom orders and payment.</p></div></section>\n<section><div class=\"wrap faq-list\"><details class=\"faq-item\"><summary>Do you offer made-to-measure leather jackets?</summary><div><p>Yes. Custom leather jacket orders are available; style, colour, sizing, material and production details are discussed in person.</p></div></details><details class=\"faq-item\"><summary>Where is the Kaftan Angelo store?</summary><div><p>1053 Budapest, Kossuth Lajos utca 18, between Astoria and Ferenciek tere.</p></div></details><details class=\"faq-item\"><summary>What payment methods do you accept?</summary><div><p>Cash and credit card payments are available in store; HUF and EUR are accepted.</p></div></details><details class=\"faq-item\"><summary>Can I try the jackets on before buying?</summary><div><p>Yes. The website shows a selection; garments can be tried on in person at our Budapest store.</p></div></details><details class=\"faq-item\"><summary>Do you offer repairs?</summary><div><p>We can assist with arranging repairs for leather items purchased from our store. Options depend on the condition of the item and the type of repair required.</p></div></details><details class=\"faq-item\"><summary>What products do you carry?</summary><div><p>Genuine leather jackets and coats for women and men, shearling and fur styles, plus leather accessories.</p></div></details><details class=\"faq-item\"><summary>How can I ask about a specific model?</summary><div><p>Message us on WhatsApp at +36 20 359 3216 or call the store at +36 1 266 7274.</p></div></details><details class=\"faq-item\"><summary>What are the opening hours?</summary><div><p>Monday to Friday 10:00–19:00, Saturday 10:00–17:00. Closed Sunday.</p></div></details></div></section>\n",
+    "mainHtml": "\n<section class=\"page-hero\"><div class=\"wrap\"><div class=\"breadcrumbs\"><a href=\"/en/\">Home</a> / FAQ</div><span class=\"tag mono\">FAQ</span><h1>Frequently Asked Questions</h1><p>Key questions about our store, custom orders and payment.</p></div></section>\n<section><div class=\"wrap faq-list\"><details class=\"faq-item\"><summary>Do you offer made-to-measure leather jackets?</summary><div><p>Yes. Custom leather jacket orders are available; style, colour, sizing, material and production details are discussed in person.</p></div></details><details class=\"faq-item\"><summary>Where is the Kaftan Angelo store?</summary><div><p>1053 Budapest, Kossuth Lajos utca 18, between Astoria and Ferenciek tere.</p></div></details><details class=\"faq-item\"><summary>What payment methods do you accept?</summary><div><p>Cash and credit card payments are available in store; HUF and EUR are accepted.</p></div></details><details class=\"faq-item\"><summary>Can I try the jackets on before buying?</summary><div><p>Yes. The website shows a selection; garments can be tried on in person at our Budapest store.</p></div></details><details class=\"faq-item\"><summary>Do you offer repairs?</summary><div><p>We can assist with arranging repairs for leather items purchased from our store. Options depend on the condition of the item and the type of repair required.</p></div></details><details class=\"faq-item\"><summary>What products do you carry?</summary><div><p>Genuine leather jackets and coats for women and men, shearling and fur styles, plus leather accessories.</p></div></details><details class=\"faq-item\"><summary>How can I ask about a specific model?</summary><div><p>Message us on WhatsApp at +36 20 359 3216 or call the store at +36 1 266 7274.</p></div></details><details class=\"faq-item\"><summary>What are the opening hours?</summary><div><p>Monday to Friday 10:00–19:00, Saturday 10:00–17:00. Closed Sunday.</p></div></details></div></section>\n\n<section><div class=\"wrap content\"><h2>Visiting and online enquiries</h2><details><summary>Can I buy through the website?</summary><p>The website presents the selection; it has no online cart or payment. Agree availability and purchasing details with the store.</p></details><details><summary>Does the gallery show current stock?</summary><p>The photos show a selection rather than real-time stock. Enquire before visiting if a specific model, colour or size matters.</p></details><details><summary>What should I bring to a fitting?</summary><p>Bring your usual layer and a photo of the chosen model. Ask about material, lining, care and any proposed adjustment for that particular garment.</p></details></div></section>",
     "pageSchema": {
       "@type": "FAQPage",
       "name": "FAQ",
@@ -809,6 +836,30 @@
             "@type": "Answer",
             "text": "Monday to Friday 10:00–19:00, Saturday 10:00–17:00. Closed Sunday."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I buy through the website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The website presents the selection; it has no online cart or payment. Agree availability and purchasing details with the store."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the gallery show current stock?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The photos show a selection rather than real-time stock. Enquire before visiting if a specific model, colour or size matters."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I bring to a fitting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bring your usual layer and a photo of the chosen model. Ask about material, lining, care and any proposed adjustment for that particular garment."
+          }
         }
       ]
     },
@@ -821,7 +872,8 @@
         "name": "FAQ",
         "url": "/en/faq/"
       }
-    ]
+    ],
+    "modifiedDate": "2026-10-09"
   },
   "/en/about/": {
     "path": "/en/about/",
@@ -1000,5 +1052,105 @@
         "url": "/en/partner-portal/"
       }
     ]
+  },
+  "/sutikezeles/": {
+    "path": "/sutikezeles/",
+    "lang": "hu",
+    "title": "Sütik és külső szolgáltatások | Kaftan Angelo",
+    "description": "A weboldal technikai tárolása, térképe és külső kapcsolatai.",
+    "canonical": "https://kaftanangelo.com/sutikezeles/",
+    "counterpart": "/en/cookies/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "modifiedDate": "2026-10-09",
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      },
+      {
+        "name": "Sütik és külső szolgáltatások",
+        "url": "/sutikezeles/"
+      }
+    ],
+    "pageSchema": {
+      "@type": "WebPage",
+      "name": "Sütik és külső szolgáltatások"
+    },
+    "mainHtml": "<section class=\"page-hero\"><div class=\"wrap\"><h1>Sütik és külső szolgáltatások</h1><p>A weboldal technikai tárolása, térképe és külső kapcsolatai.</p></div></section><section><div class=\"wrap content\"><p>Frissítve: 2026-10-09</p>\n<h2>Analitika és marketing</h2><p>A weboldal jelenlegi verziója nem tölti be a Google Tag Manager vagy más analitikai és marketing követőkódot. Nincs olyan analitikai kategória, amelyet itt engedélyezhetne. A kollekciókat és útmutatókat enélkül is elérheti.</p>\n<h2>Térkép csak kérésre</h2><p>Az üzletoldalon a Google-térkép csak a „Google-térkép betöltése” gomb vagy a lábléc beállítása alapján töltődik be. Ekkor a böngésző a Google szolgáltatásához kapcsolódik, és például IP-cím vagy böngészőadat átadása történhet. A lábléc „Külső szolgáltatások beállításai” gombjával leállíthatja. A már átadott adatokat ez nem vonja vissza. A választás csak a megnyitott oldalra vonatkozik, nem mentjük sütibe vagy böngészőtárba.</p><p><a href=\"https://policies.google.com/privacy\">Google adatvédelmi tájékoztató</a></p>\n<h2>Böngészőtár és keresés</h2><p>A napi tájékoztató szöveg nem használ böngészőtárat. A partnerportál sikeres belépés után az adott lap sessionStorage tárában legfeljebb 30 percig tartja a megjelenített fióknézetet, hogy frissítéskor megmaradjon; PIN-t nem ment ide. Kijelentkezéskor törli a nézetet. A tartalmi kereső helyi Pagefind indexet használ.</p>\n<h2>Külső kapcsolat és tárhely</h2><p>A WhatsApp, Instagram, e-mail és útvonaltervező linkjei az Ön kattintására külső szolgáltatáshoz vagy alkalmazáshoz vezetnek. Ezek saját adatkezelési szabályai vonatkoznak a további használatra. A weboldalt GitHub Pages szolgálja ki; a tárhely működéséhez technikai kérések és szolgáltatói naplók kapcsolódhatnak. Ez az oldal nem állítja, hogy a külső szolgáltatók semmilyen adatot nem kezelnek.</p><p><a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">GitHub adatvédelmi tájékoztató</a></p>\n<h2>Kérdés vagy beállítás</h2><p>A térképhez a lábléc beállításgombját használja. A partnernézet törléséhez jelentkezzen ki. A weboldal technikai működésével kapcsolatos kérdést az <a href=\"mailto:alfinafashionkft@gmail.com\">alfinafashionkft@gmail.com</a> címre küldheti. Ez a technikai leírás nem a személyes üzleti levelezés vagy partneri iratok teljes adatkezelési tájékoztatója.</p>\n</div></section>"
+  },
+  "/en/cookies/": {
+    "path": "/en/cookies/",
+    "lang": "en",
+    "title": "Cookies and External Services | Kaftan Angelo",
+    "description": "Technical storage, maps and external connections used by this website.",
+    "canonical": "https://kaftanangelo.com/en/cookies/",
+    "counterpart": "/sutikezeles/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "modifiedDate": "2026-10-09",
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      },
+      {
+        "name": "Cookies and External Services",
+        "url": "/en/cookies/"
+      }
+    ],
+    "pageSchema": {
+      "@type": "WebPage",
+      "name": "Cookies and External Services"
+    },
+    "mainHtml": "<section class=\"page-hero\"><div class=\"wrap\"><h1>Cookies and External Services</h1><p>Technical storage, maps and external connections used by this website.</p></div></section><section><div class=\"wrap content\"><p>Updated: 2026-10-09</p>\n<h2>Analytics and marketing</h2><p>The current website version does not load Google Tag Manager or other analytics or marketing tracking code. There is no analytics category to enable here. Collections and guides remain available without it.</p>\n<h2>Maps only on request</h2><p>Google Maps on the store page loads only through the “Load Google Maps” button or the footer settings. Your browser then connects to Google and technical data such as an IP address or browser information may be transmitted. Stop it using “External service settings” in the footer. This does not recall data already transmitted. The choice applies to the current page only; it is not saved in cookies or browser storage.</p><p><a href=\"https://policies.google.com/privacy\">Google Privacy Policy</a></p>\n<h2>Browser storage and search</h2><p>The daily information text uses no browser storage. After a successful partner login, the portal stores its displayed account view in that tab’s sessionStorage for up to 30 minutes to preserve it across refreshes; it does not save the PIN there. Logout clears the view. Content search uses a local Pagefind index.</p>\n<h2>External links and hosting</h2><p>WhatsApp, Instagram, email and journey planner links open external services or applications when you click. Those services’ own privacy policies apply to subsequent use. GitHub Pages serves this website; technical requests and provider logs may be involved in hosting. This page does not claim that external providers process no data.</p><p><a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">GitHub Privacy Statement</a></p>\n<h2>Questions and settings</h2><p>Use the footer settings button for maps. Log out to clear the partner view. Send questions about the website’s technical operation to <a href=\"mailto:alfinafashionkft@gmail.com\">alfinafashionkft@gmail.com</a>. This technical description is not a complete privacy notice for business correspondence or partner records.</p>\n</div></section>"
+  },
+  "/uzemelteto/": {
+    "path": "/uzemelteto/",
+    "lang": "hu",
+    "title": "Üzemeltető és weboldalhasználat | Kaftan Angelo",
+    "description": "Kaftan Angelo üzemeltetői adatok és a bemutató weboldal használata.",
+    "canonical": "https://kaftanangelo.com/uzemelteto/",
+    "counterpart": "/en/site-information/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "modifiedDate": "2026-10-09",
+    "breadcrumbs": [
+      {
+        "name": "Főoldal",
+        "url": "/"
+      },
+      {
+        "name": "Üzemeltető és weboldalhasználat",
+        "url": "/uzemelteto/"
+      }
+    ],
+    "pageSchema": {
+      "@type": "WebPage",
+      "name": "Üzemeltető és weboldalhasználat"
+    },
+    "mainHtml": "<section class=\"page-hero\"><div class=\"wrap\"><h1>Üzemeltető és weboldalhasználat</h1><p>Kaftan Angelo üzemeltetői adatok és a bemutató weboldal használata.</p></div></section><section><div class=\"wrap content\"><p>Frissítve: 2026-10-09</p>\n<h2>Kapcsolati adatok</h2><p>Üzemeltető: <strong>Alfina Fashion Kft.</strong><br>Székhely és üzlet: Kossuth Lajos u. 18, Budapest 1053, Magyarország.<br>E-mail: <a href=\"mailto:alfinafashionkft@gmail.com\">alfinafashionkft@gmail.com</a><br>Telefon: <a href=\"tel:+3612667274\">+36&nbsp;1&nbsp;266&nbsp;7274</a></p>\n<h2>Bemutató oldal, nem online pénztár</h2><p>A weboldal kollekciókat, útmutatókat és üzleti kapcsolatfelvételt kínál. Nem működik rajta kosár vagy online fizetés. Egy fotó, érdeklődő üzenet vagy partneri kapcsolatfelvétel önmagában nem igazol készletet, rendelés elfogadását vagy fizetést.</p>\n<h2>Vásárlás és egyedi rendelés</h2><p>A konkrét darab anyagát, méretét, árát, fizetési feltételeit és az esetleges módosítást az üzlettel egyeztesse. Egyedi rendelésnél az anyagot, fazont, méreteket és várható időt külön beszéljük meg. A weboldal nem közöl egységes szállítási vagy átalakítási ígéretet. A vásárlásra irányadó jogokat ez az oldal nem korlátozza.</p>\n<h2>Üzenet és partnerprogram</h2><p>A partneri érdeklődő űrlap az Ön e-mail- vagy WhatsApp-alkalmazásában készít elő üzenetet. Az üzenet elküldését az alkalmazásban végezze el; a mezők kitöltése nem jelent automatikus beérkezést vagy partnerfiók-nyitást.</p>\n<h2>Tájékozódás</h2><p><a href=\"/uzlet/\">Üzlet, útvonal és nyitvatartás</a> · <a href=\"/gyik/\">Gyakori kérdések</a> · <a href=\"/sutikezeles/\">Sütik és külső szolgáltatások</a></p>\n</div></section>"
+  },
+  "/en/site-information/": {
+    "path": "/en/site-information/",
+    "lang": "en",
+    "title": "Operator and Website Use | Kaftan Angelo",
+    "description": "Kaftan Angelo operator details and use of this collection and information website.",
+    "canonical": "https://kaftanangelo.com/en/site-information/",
+    "counterpart": "/uzemelteto/",
+    "ogImage": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp",
+    "modifiedDate": "2026-10-09",
+    "breadcrumbs": [
+      {
+        "name": "Home",
+        "url": "/en/"
+      },
+      {
+        "name": "Operator and Website Use",
+        "url": "/en/site-information/"
+      }
+    ],
+    "pageSchema": {
+      "@type": "WebPage",
+      "name": "Operator and Website Use"
+    },
+    "mainHtml": "<section class=\"page-hero\"><div class=\"wrap\"><h1>Operator and Website Use</h1><p>Kaftan Angelo operator details and use of this collection and information website.</p></div></section><section><div class=\"wrap content\"><p>Updated: 2026-10-09</p>\n<h2>Contact details</h2><p>Operator: <strong>Alfina Fashion Kft.</strong><br>Registered office and store: Kossuth Lajos u. 18, Budapest 1053, Hungary.<br>Email: <a href=\"mailto:alfinafashionkft@gmail.com\">alfinafashionkft@gmail.com</a><br>Telephone: <a href=\"tel:+3612667274\">+36&nbsp;1&nbsp;266&nbsp;7274</a></p>\n<h2>An information website, not an online checkout</h2><p>The website presents collections, guides and business contact options. It has no cart or online payment. A photo, enquiry or partnership message does not by itself establish stock, an accepted order or payment.</p>\n<h2>Purchases and custom orders</h2><p>Agree the individual garment’s material, size, price, payment arrangements and any proposed adjustment with the store. For custom orders, discuss material, cut, measurements and estimated timing separately. The website does not make a universal delivery or alteration promise. This page does not restrict applicable purchasing rights.</p>\n<h2>Messages and partnerships</h2><p>The partnership enquiry form prepares a message in your own email or WhatsApp application. Send it there; completing the fields does not establish automatic receipt or creation of a partner account.</p>\n<h2>Further information</h2><p><a href=\"/en/visit/\">Store, directions and opening hours</a> · <a href=\"/en/faq/\">Common questions</a> · <a href=\"/en/cookies/\">Cookies and external services</a></p>\n</div></section>"
   }
 }

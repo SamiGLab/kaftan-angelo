@@ -44,3 +44,5 @@ Do not burn, scratch, soak or apply solvents to identify a garment. Damage can r
 The description “genuine leather” does not itself guarantee a lifespan. Check that stitching is intact and even, fastenings work comfortably and the lining does not pull during movement. Ask about the finish and care appropriate to your intended use. Softness or a higher price alone does not establish durability.
 
 Ask the seller to explain surface variations or marks on the individual garment. Do not use destructive home tests to judge quality. [Women’s leather jackets](/en/womens-leather-jackets/) · [Men’s leather jackets](/en/mens-leather-jackets/)
+
+[Second-hand leather jacket buying checklist](/en/guides/second-hand-leather-jacket-checklist/)

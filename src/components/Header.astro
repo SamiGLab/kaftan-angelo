@@ -42,61 +42,16 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
   <nav id="primary-navigation" class="links" data-menu aria-label={hu ? 'Fő navigáció' : 'Primary navigation'}>{items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}</nav>
 </div></header>
 
-<script is:inline define:vars={{ announcements, lang }}>
-  (function() {
-    try {
-      var STORAGE_KEY_SEEN = 'kaftan_recent_announcements';
-      var STORAGE_KEY_DATE = 'kaftan_announcement_date';
-      var STORAGE_KEY_CURRENT = 'kaftan_current_announcement_id';
-      
-      var now = new Date();
-      var today = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
-      var savedDate = localStorage.getItem(STORAGE_KEY_DATE);
-      var currentId = parseInt(localStorage.getItem(STORAGE_KEY_CURRENT) || '0', 10);
-      var seen = [];
-      try {
-        seen = JSON.parse(localStorage.getItem(STORAGE_KEY_SEEN) || '[]');
-        if (!Array.isArray(seen)) seen = [];
-      } catch (e) {
-        seen = [];
-      }
-
-      if (savedDate !== today || !currentId) {
-        var available = announcements.filter(function(it) {
-          return seen.indexOf(it.id) === -1;
-        });
-
-        var pool = available.length > 0 ? available : announcements;
-        var selected = pool[Math.floor(Math.random() * pool.length)];
-        currentId = selected.id;
-
-        seen.push(currentId);
-        while (seen.length > 10) {
-          seen.shift();
-        }
-
-        localStorage.setItem(STORAGE_KEY_DATE, today);
-        localStorage.setItem(STORAGE_KEY_CURRENT, String(currentId));
-        localStorage.setItem(STORAGE_KEY_SEEN, JSON.stringify(seen));
-      }
-
-      var currentItem = announcements.find(function(it) { return it.id === currentId; });
-      if (currentItem) {
-        var textEl = document.querySelector('[data-announcement-text]');
-        var linkEl = document.querySelector('[data-announcement-link]');
-        var isHu = lang === 'hu';
-        var newText = isHu ? currentItem.hu : currentItem.en;
-        var newUrl = isHu ? currentItem.url_hu : currentItem.url_en;
-
-        if (textEl && textEl.textContent !== newText) {
-          textEl.textContent = newText;
-        }
-        if (linkEl && newUrl) {
-          linkEl.setAttribute('href', newUrl);
-        }
-      }
-    } catch (e) {
-      // Graceful fallback to default
-    }
-  })();
+<script is:inline define:vars={{ announcements, announcementCycle, lang }}>
+(() => {
+  // Daily selection without cookies or browser storage.
+  const parts = new Intl.DateTimeFormat('en-CA', {timeZone:'Europe/Budapest',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+  const values = Object.fromEntries(parts.map(p => [p.type,p.value]));
+  const today = Date.UTC(Number(values.year),Number(values.month)-1,Number(values.day));
+  const ordinal = Math.floor((today-Date.UTC(Number(values.year),0,0))/86400000);
+  const item = announcements.find(a => a.id === announcementCycle[ordinal % announcementCycle.length]) || announcements[0];
+  const text = document.querySelector('[data-announcement-text]');
+  const link = document.querySelector('[data-announcement-link]');
+  if (text && link) {text.textContent=lang==='hu'?item.hu:item.en;link.href=lang==='hu'?item.url_hu:item.url_en;}
+})();
 </script>

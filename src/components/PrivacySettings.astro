@@ -1,0 +1,13 @@
+---
+const {lang='hu'}=Astro.props;
+const hu=lang==='hu';
+---
+<dialog class="privacy-dialog" id="privacy-settings" aria-labelledby="privacy-settings-title">
+  <div class="preview-header"><h2 id="privacy-settings-title">{hu?'Külső szolgáltatások':'External services'}</h2><button class="btn btn-ghost" type="button" data-privacy-close>{hu?'Bezárás':'Close'}</button></div>
+  <p>{hu?'A weboldal nem tölt be analitikai vagy marketing követőkódot. A Google-térkép csak az Ön kérésére töltődik be, ekkor a Google technikai adatokat kaphat. A döntés csak ezen az oldalon érvényes, nem tároljuk a böngészőben.':'This website does not load analytics or marketing tracking code. Google Maps loads only at your request and Google may then receive technical data. Your choice applies to this page only and is not stored in the browser.'}</p>
+  <label class="privacy-choice"><input type="checkbox" data-map-permission /> {hu?'Google-térkép betöltése ezen az oldalon':'Load Google Maps on this page'}</label>
+  <p><a href="https://policies.google.com/privacy">{hu?'Google adatvédelmi tájékoztató':'Google Privacy Policy'}</a></p>
+  <div class="privacy-actions"><button type="button" class="btn btn-ghost" data-privacy-reject>{hu?'Külső szolgáltatások tiltása':'Block external services'}</button><button type="button" class="btn btn-ghost" data-privacy-save>{hu?'Kiválasztás mentése':'Apply selection'}</button><button type="button" class="btn btn-ghost" data-privacy-accept>{hu?'Térkép engedélyezése':'Allow map'}</button></div>
+  <p data-privacy-status role="status"></p>
+</dialog>
+<script is:inline defer src="/assets/js/privacy-settings.js"></script>

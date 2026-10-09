@@ -1,5 +1,6 @@
 ---
 import Header from './Header.astro';
+import PrivacySettings from './PrivacySettings.astro';
 import Footer from './Footer.astro';
 import WhatsAppButton from './WhatsAppButton.astro';
 import '@fontsource-variable/fraunces';
@@ -27,7 +28,6 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
 <head>
   <meta charset="utf-8" />
   <script is:inline>document.documentElement.classList.add("js");</script>
-  <script is:inline type="text/partytown">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5D5T9W6Q');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>{page.title}</title>
   <meta name="description" content={page.description} />
@@ -66,11 +66,11 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <slot name="head" />
 </head>
 <body>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5D5T9W6Q" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
   <a class="skip-link" href="#main-content">{lang === "hu" ? "Ugrás a tartalomhoz" : "Skip to content"}</a>
   <Header lang={lang} counterpart={page.counterpart} />
   <main id="main-content" tabindex="-1" data-pagefind-body><slot /></main>
   <Footer lang={lang} />
+  <PrivacySettings lang={lang} />
   <WhatsAppButton lang={lang} pageTitle={page.title} canonicalUrl={page.canonical} />
   {page.mainHtml?.includes('data-product-image') && <dialog class="product-dialog" data-product-dialog aria-labelledby="product-preview-title">
     <div class="preview-header"><h2 id="product-preview-title" data-preview-title>{lang === 'hu' ? 'Modell' : 'Model'}</h2><button class="preview-close" type="button" data-preview-close aria-label={lang === 'hu' ? 'Bezárás' : 'Close'}>×</button></div>

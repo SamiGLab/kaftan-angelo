@@ -42,6 +42,8 @@ jobs:
           python3 -m http.server 4173 --directory dist >/tmp/kaftan-http.log 2>&1 &
           echo $! > /tmp/kaftan-http.pid
           sleep 2
+      - name: Check external-service privacy controls
+        run: node _dev/scripts/test-privacy-controls.mjs
       - name: WCAG 2 AA audit across sitemap
         run: npx pa11y-ci --config .pa11yci.cjs --sitemap http://127.0.0.1:4173/sitemap.xml --sitemap-find "https://kaftanangelo.com" --sitemap-replace "http://127.0.0.1:4173" --threshold 0
       - name: Stop accessibility server
