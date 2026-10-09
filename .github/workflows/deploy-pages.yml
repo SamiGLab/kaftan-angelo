@@ -46,6 +46,8 @@ jobs:
         run: node _dev/scripts/test-privacy-controls.mjs
       - name: Check large collection browsing
         run: node _dev/scripts/test-collection-gallery.mjs
+      - name: Check product photo and WhatsApp links
+        run: node _dev/scripts/test-model-inquiries.mjs
       - name: Check analytics consent and partner exclusion
         run: node _dev/scripts/test-analytics-consent.mjs
 

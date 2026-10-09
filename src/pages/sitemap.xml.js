@@ -1,4 +1,6 @@
-import pages from '../data/pages.json';
+import basePages from '../data/pages.json';
+import { modelPages } from '../data/model-pages';
+const pages = { ...basePages, ...modelPages };
 const huGuides = import.meta.glob('../content/guides/hu/*.md', { eager:true });
 const enGuides = import.meta.glob('../content/guides/en/*.md', { eager:true });
 const BASE = 'https://kaftanangelo.com';
@@ -10,6 +12,8 @@ function xmlEscape(value) {
 // Include the original model photos, independently of thumbnail formats and batch display.
 function modelImages(url) {
   const html = pages[url]?.mainHtml ?? '';
+  const modelPhoto = pages[url]?.pageSchema?.primaryImageOfPage?.contentUrl;
+  if (modelPhoto) return `<image:image><image:loc>${xmlEscape(modelPhoto)}</image:loc></image:image>`;
   return [...new Set([...html.matchAll(/data-product-image="([^"<>]+)"/g)].map(match => match[1]))]
     .filter(image => image.startsWith('/') && !image.startsWith('//'))
     .map(image => `<image:image><image:loc>${xmlEscape(BASE + image)}</image:loc></image:image>`).join('');

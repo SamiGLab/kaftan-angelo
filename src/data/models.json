@@ -1,0 +1,134 @@
+[
+  {
+    "slug": "noi-sarga-borkabat-budapest",
+    "image": "/noi-sarga-borkabat-budapest.webp",
+    "names": {
+      "hu": "Sárga női bőrkabát",
+      "en": "Yellow women’s leather jacket"
+    },
+    "pictures": {
+      "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.avif 480w, /assets/images/noi-sarga-borkabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.webp 480w, /assets/images/noi-sarga-borkabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Sárga női bőrkabát\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-sarga-borkabat-budapest.webp\" width=\"900\"></picture>",
+      "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.avif 480w, /assets/images/noi-sarga-borkabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.webp 480w, /assets/images/noi-sarga-borkabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Yellow women’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-sarga-borkabat-budapest.webp\" width=\"900\"></picture>"
+    }
+  },
+  {
+    "slug": "noi-szegecses-bordzseki-budapest",
+    "image": "/noi-szegecses-bordzseki-budapest.webp",
+    "names": {
+      "hu": "Szegecses női bőrdzseki",
+      "en": "Studded women’s leather jacket"
+    },
+    "pictures": {
+      "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.avif 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.webp 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Szegecses női bőrdzseki\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-szegecses-bordzseki-budapest.webp\" width=\"900\"></picture>",
+      "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.avif 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.webp 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Studded women’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-szegecses-bordzseki-budapest.webp\" width=\"900\"></picture>"
+    }
+  },
+  {
+    "slug": "ferfi-motoros-bordzseki-budapest",
+    "image": "/ferfi-motoros-bordzseki-budapest.webp",
+    "names": {
+      "hu": "Férfi motoros bőrdzseki",
+      "en": "Men’s biker leather jacket"
+    },
+    "pictures": {
+      "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Férfi motoros bőrdzseki\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-motoros-bordzseki-budapest.webp\" width=\"675\"></picture>",
+      "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Men’s biker leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-motoros-bordzseki-budapest.webp\" width=\"675\"></picture>"
+    }
+  },
+  {
+    "slug": "ferfi-klasszikus-bordzseki-budapest",
+    "image": "/ferfi-klasszikus-bordzseki-budapest.webp",
+    "names": {
+      "hu": "Klasszikus férfi bőrdzseki",
+      "en": "Classic men’s leather jacket"
+    },
+    "pictures": {
+      "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Klasszikus férfi bőrdzseki\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-klasszikus-bordzseki-budapest.webp\" width=\"675\"></picture>",
+      "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Classic men’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-klasszikus-bordzseki-budapest.webp\" width=\"675\"></picture>"
+    }
+  },
+  {
+    "slug": "ferfi-mintas-bordzseki-budapest",
+    "image": "/ferfi-mintas-bordzseki-budapest.webp",
+    "names": {
+      "hu": "Mintás férfi bőrdzseki",
+      "en": "Patterned men’s leather jacket"
+    },
+    "pictures": {
+      "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.avif 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.webp 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Mintás férfi bőrdzseki\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-mintas-bordzseki-budapest.webp\" width=\"900\"></picture>",
+      "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.avif 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.webp 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Patterned men’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-mintas-bordzseki-budapest.webp\" width=\"900\"></picture>"
+    }
+  },
+  {
+    "slug": "ferfi-sotetbarna-irhadzseki-budapest",
+    "image": "/ferfi-sotetbarna-irhadzseki-budapest.webp",
+    "names": {
+      "hu": "Sötétbarna férfi irhadzseki",
+      "en": "Dark brown men’s shearling jacket"
+    },
+    "pictures": {
+      "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.avif 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.webp 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Sötétbarna férfi irhadzseki\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-sotetbarna-irhadzseki-budapest.webp\" width=\"900\"></picture>",
+      "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.avif 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.webp 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Dark brown men’s shearling jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-sotetbarna-irhadzseki-budapest.webp\" width=\"900\"></picture>"
+    }
+  },
+  {
+    "slug": "ferfi-vilagosbarna-irhakabat-budapest",
+    "image": "/ferfi-vilagosbarna-irhakabat-budapest.webp",
+    "names": {
+      "hu": "Világosbarna férfi irhakabát",
+      "en": "Light brown men’s shearling coat"
+    },
+    "pictures": {
+      "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Világosbarna férfi irhakabát\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-vilagosbarna-irhakabat-budapest.webp\" width=\"900\"></picture>",
+      "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Light brown men’s shearling coat\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-vilagosbarna-irhakabat-budapest.webp\" width=\"900\"></picture>"
+    }
+  },
+  {
+    "slug": "ferfi-barna-irhakabat-budapest",
+    "image": "/ferfi-barna-irhakabat-budapest.webp",
+    "names": {
+      "hu": "Barna férfi irhakabát",
+      "en": "Brown men’s shearling coat"
+    },
+    "pictures": {
+      "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Barna férfi irhakabát\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-barna-irhakabat-budapest.webp\" width=\"900\"></picture>",
+      "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Brown men’s shearling coat\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-barna-irhakabat-budapest.webp\" width=\"900\"></picture>"
+    }
+  },
+  {
+    "slug": "noi-feher-szormemelleny-budapest",
+    "image": "/noi-feher-szormemelleny-budapest.webp",
+    "names": {
+      "hu": "Női fehér szőrmemellény",
+      "en": "White women’s fur vest"
+    },
+    "pictures": {
+      "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.avif 480w, /assets/images/noi-feher-szormemelleny-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.webp 480w, /assets/images/noi-feher-szormemelleny-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Női fehér szőrmemellény\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-feher-szormemelleny-budapest.webp\" width=\"900\"></picture>",
+      "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.avif 480w, /assets/images/noi-feher-szormemelleny-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.webp 480w, /assets/images/noi-feher-szormemelleny-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"White women’s fur vest\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-feher-szormemelleny-budapest.webp\" width=\"900\"></picture>"
+    }
+  },
+  {
+    "slug": "fekete-borov-budapest",
+    "image": "/fekete-borov-budapest.webp",
+    "names": {
+      "hu": "Fekete bőröv",
+      "en": "Black leather belt"
+    },
+    "pictures": {
+      "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/fekete-borov-budapest-480.avif 480w\"><source type=\"image/webp\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/fekete-borov-budapest-480.webp 480w\"><img src=\"/fekete-borov-budapest.webp\" alt=\"Fekete bőröv\" width=\"675\" height=\"900\" loading=\"lazy\" decoding=\"async\"></picture>",
+      "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/fekete-borov-budapest-480.avif 480w\"><source type=\"image/webp\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/fekete-borov-budapest-480.webp 480w\"><img src=\"/fekete-borov-budapest.webp\" alt=\"Black leather belt\" width=\"675\" height=\"900\" loading=\"lazy\" decoding=\"async\"></picture>"
+    }
+  },
+  {
+    "slug": "barna-bor-penztarca-budapest",
+    "image": "/barna-bor-penztarca-budapest.webp",
+    "names": {
+      "hu": "Barna bőr pénztárca",
+      "en": "Brown leather wallet"
+    },
+    "pictures": {
+      "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.avif 480w, /assets/images/barna-bor-penztarca-budapest-800.avif 800w\"><source type=\"image/webp\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.webp 480w, /assets/images/barna-bor-penztarca-budapest-800.webp 800w\"><img src=\"/barna-bor-penztarca-budapest.webp\" alt=\"Barna bőr pénztárca\" width=\"900\" height=\"900\" loading=\"lazy\" decoding=\"async\"></picture>",
+      "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.avif 480w, /assets/images/barna-bor-penztarca-budapest-800.avif 800w\"><source type=\"image/webp\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.webp 480w, /assets/images/barna-bor-penztarca-budapest-800.webp 800w\"><img src=\"/barna-bor-penztarca-budapest.webp\" alt=\"Brown leather wallet\" width=\"900\" height=\"900\" loading=\"lazy\" decoding=\"async\"></picture>"
+    }
+  }
+]
