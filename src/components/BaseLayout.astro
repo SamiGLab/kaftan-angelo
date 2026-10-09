@@ -1,6 +1,5 @@
 ---
 import Header from './Header.astro';
-import PrivacySettings from './PrivacySettings.astro';
 import Footer from './Footer.astro';
 import WhatsAppButton from './WhatsAppButton.astro';
 import '@fontsource-variable/fraunces';
@@ -70,7 +69,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <Header lang={lang} counterpart={page.counterpart} />
   <main id="main-content" tabindex="-1" data-pagefind-body><slot /></main>
   <Footer lang={lang} />
-  <PrivacySettings lang={lang} />
+  {page.mainHtml?.includes('data-map-panel') && <script is:inline defer src="/assets/js/privacy-settings.js"></script>}
   <WhatsAppButton lang={lang} pageTitle={page.title} canonicalUrl={page.canonical} />
   {page.mainHtml?.includes('data-product-image') && <dialog class="product-dialog" data-product-dialog aria-labelledby="product-preview-title">
     <div class="preview-header"><h2 id="product-preview-title" data-preview-title>{lang === 'hu' ? 'Modell' : 'Model'}</h2><button class="preview-close" type="button" data-preview-close aria-label={lang === 'hu' ? 'Bezárás' : 'Close'}>×</button></div>

@@ -1861,9 +1861,6 @@ main:focus {
 
 /* Optional external services stay inactive until requested. */
 [data-map-slot] iframe { width:100%; min-height:320px; border:0; display:block; }
-.privacy-dialog { color:var(--cream); background:var(--bg2); border:1px solid var(--line); border-radius:12px; padding:1.5rem; width:min(680px,calc(100vw - 2rem)); max-height:85vh; overflow:auto; }
-.privacy-dialog::backdrop { background:rgba(0,0,0,.7); }
-.privacy-choice { display:flex; gap:.75rem; align-items:center; }
-.privacy-choice input { width:auto; }
-.privacy-actions { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:1rem; }
+[data-map-panel] { padding:1.25rem; }
+[data-map-slot]:not(:empty) { margin-top:1rem; }
 [hidden] { display:none!important; }

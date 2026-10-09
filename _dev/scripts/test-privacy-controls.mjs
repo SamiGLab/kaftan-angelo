@@ -17,12 +17,12 @@ try {
     assert.equal(await page.evaluate(()=>sessionStorage.length),0,'No storage on public store pages');
     await page.click('[data-map-load]');
     await page.waitForSelector('[data-map-slot] iframe');
-    await page.click('[data-privacy-open]');
-    assert.equal(await page.$eval('#privacy-settings',x=>x.open),true);
-    await page.click('[data-privacy-reject]');
-    assert.equal(await page.$$eval('[data-map-slot] iframe',x=>x.length),0,'Reject unloads maps');
-    await page.click('[data-privacy-open]');
-    await page.click('[data-map-permission]');await page.click('[data-privacy-save]');
+    assert.equal(await page.$$eval('#privacy-settings,[data-privacy-open]',x=>x.length),0,'No separate settings dialog');
+    assert.equal(await page.$eval('[data-map-load]',x=>x.getAttribute('aria-expanded')),'true');
+    await page.click('[data-map-load]');
+    assert.equal(await page.$$eval('[data-map-slot] iframe',x=>x.length),0,'Same button closes map');
+    assert.equal(await page.$eval('[data-map-load]',x=>x.getAttribute('aria-expanded')),'false');
+    await page.click('[data-map-load]');
     await page.waitForSelector('[data-map-slot] iframe');
     await page.reload({waitUntil:'networkidle2'});
     assert.equal(await page.$$eval('[data-map-slot] iframe',x=>x.length),0,'Reload defaults to no map');
