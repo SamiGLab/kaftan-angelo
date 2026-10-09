@@ -2,10 +2,10 @@
 title: "Bőrkabát méret útmutató: hogyan kell jól állnia?"
 description: "Váll, mellkas, ujjhossz és rétegezés: így ellenőrizze, hogy megfelelő-e egy bőrkabát mérete."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-06"
+modifiedDate: "2026-10-09"
 counterpart: "/en/guides/leather-jacket-fit-guide/"
 topic: "Választás"
-readingMinutes: 2
+readingMinutes: 3
 heroImage: "/assets/images/kaftan-angelo-womens-leather-jackets-budapest-800.avif"
 ---
 > **Rövid válasz:** A tervezett ruharéteggel ellenőrizze a záródást, vállat, ujjat és hétköznapi mozgást. A méretszám önmagában nem elég.
@@ -38,3 +38,8 @@ Irha és szőrme próbájához hozza a tervezett pulóvert. A súlyt, bélést �
 **Bőrből kisebb méretet válasszak?** Ne a tágulástól várja a rossz illeszkedés megoldását.
 
 [Anyagok összehasonlítása](/utmutatok/bor-irha-szorme-osszehasonlitas/) · [Budapesti kabátpróba](/utmutatok/budapesti-kabatvasarlas/)
+
+## Otthoni mérés a kapcsolatfelvételhez
+Mellbőségét vízszintesen, nem szoros mérőszalaggal mérje, és jelezze, milyen ruharéteggel mérte. Egy kényelmes kabáton a kabáthossz és ujjhossz is összehasonlítható: írja le, honnan hová mérte. A testméret nem azonos a ruhadarab méretével; bőségi ráhagyást vagy konkrét készletet ne következtessen belőle automatikusan.
+
+Az üzletnek küldje el a modell képét, a megszokott méretet és ezeket a tájékoztató adatokat. A pontos illeszkedést továbbra is személyes próba ellenőrzi. [Női fazonválasztás](/utmutatok/noi-borkabat-valasztas/) · [Irhakabát választása](/utmutatok/irhakabat-valasztas/) · [Útvonal és nyitvatartás](/uzlet/)

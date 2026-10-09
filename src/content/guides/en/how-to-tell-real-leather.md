@@ -2,10 +2,10 @@
 title: "How to Tell if Leather Is Real"
 description: "Practical signs that can help you distinguish genuine leather from synthetic alternatives."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-06"
+modifiedDate: "2026-10-09"
 counterpart: "/utmutatok/valodi-bor-felismerese/"
 topic: "Choosing"
-readingMinutes: 2
+readingMinutes: 3
 heroImage: "/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif"
 ---
 > **Quick answer:** Start with the label and material description. Visual clues help, but a photograph or one home test cannot prove the material.
@@ -39,3 +39,8 @@ Do not burn, scratch, soak or apply solvents to identify a garment. Damage can r
 
 ## Further reading
 [Leather Naturally material fact sheets](https://www.leathernaturally.org/resources/fact-sheets/) · [Leather, shearling or fur?](/en/guides/leather-shearling-fur-comparison/)
+
+## Material and durability are different questions
+The description “genuine leather” does not itself guarantee a lifespan. Check that stitching is intact and even, fastenings work comfortably and the lining does not pull during movement. Ask about the finish and care appropriate to your intended use. Softness or a higher price alone does not establish durability.
+
+Ask the seller to explain surface variations or marks on the individual garment. Do not use destructive home tests to judge quality. [Women’s leather jackets](/en/womens-leather-jackets/) · [Men’s leather jackets](/en/mens-leather-jackets/)

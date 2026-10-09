@@ -2,10 +2,10 @@
 title: "Hogyan ismerhető fel a valódi bőr?"
 description: "Gyakorlati jelek, amelyek segítenek megkülönböztetni a valódi bőrt a műbőrtől."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-06"
+modifiedDate: "2026-10-09"
 counterpart: "/en/guides/how-to-tell-real-leather/"
 topic: "Választás"
-readingMinutes: 2
+readingMinutes: 3
 heroImage: "/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif"
 ---
 > **Rövid válasz:** Kezdje az anyagjelöléssel és leírással. A látható jelek segíthetnek, de egy fotó vagy házi próba nem bizonyítja biztosan az anyagot.
@@ -39,3 +39,8 @@ Anyagvizsgálatként ne égesse, karcolja, áztassa vagy oldószerezze a ruhát.
 
 ## További olvasnivaló
 [Leather Naturally anyagismertetők](https://www.leathernaturally.org/resources/fact-sheets/) · [Bőr, irha vagy szőrme?](/utmutatok/bor-irha-szorme-osszehasonlitas/)
+
+## Anyag és tartósság: két külön kérdés
+A „valódi bőr” megnevezés nem ad önmagában élettartam-garanciát. Nézze meg, egyenletesek és épek-e a varrások, kényelmesen működik-e a záródás, és nem húzódik-e a bélés mozgás közben. Kérdezzen a felületről és a használathoz illő ápolásról. A puhaság vagy egy magasabb ár önmagában nem bizonyítja a tartósságot.
+
+A természetes felületi eltérések és a sérülések megítéléséhez kérjen magyarázatot az adott darabról. Ne próbáljon otthoni roncsolással „minőséget mérni”. [Női bőrkabátok](/noi-borkabatok/) · [Férfi bőrkabátok](/ferfi-borkabatok/)

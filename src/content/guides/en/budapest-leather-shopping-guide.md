@@ -1,38 +1,35 @@
 ---
 title: "Budapest Leather Shopping Guide"
-description: "A complete visitor guide to shopping for genuine leather jackets, shearling coats and custom tailoring in central Budapest's historic District 5."
+description: "Plan leather, shearling and fur shopping in Budapest: compare collections and ask about stock, materials and custom orders at Kaftan Angelo."
 publishDate: "2026-10-07"
-modifiedDate: "2026-10-07"
+modifiedDate: "2026-10-09"
 counterpart: "/utmutatok/budapesti-borkabat-vasarlasi-kalauz/"
 topic: "Budapest"
 readingMinutes: 3
 heroImage: "/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif"
 ---
-> **Quick answer:** For authentic leather, shearling and fur shopping in central Budapest, visit Kossuth Lajos u. 18 in District V (Belváros), conveniently located right between the Astoria (M2) and Ferenciek tere (M3) metro stations.
+> **Quick answer:** Start your Budapest coat shopping with a category, then enquire about an individual model. Try Kaftan Angelo’s leather, shearling and fur collections at Kossuth Lajos u. 18, Budapest 1053.
 
-Budapest has a rich tradition of leathercraft and European boutique fashion. When shopping for an outerwear investment piece during your visit, finding an established artisan boutique with in-person fitting and multi-lingual service makes all the difference.
+## Which collection should you start with?
+- [Women’s leather jackets](/en/womens-leather-jackets/): compare cuts with the [women’s selection guide](/en/guides/choosing-womens-leather-jacket/).
+- [Men’s leather jackets](/en/mens-leather-jackets/): check layering, fastening and movement.
+- [Shearling coats](/en/shearling-jackets/): compare length and weight with the [shearling selection guide](/en/guides/choosing-shearling-coat/).
+- [Fur coats](/en/fur-coats/): ask about the specific garment’s material and care.
 
-## Why shopping in central Budapest District 5?
-Kossuth Lajos utca connects the bustling pedestrian corridors of Ferenciek tere and Astoria. Unlike crowded fast-fashion chains, this historic shopping stretch is home to specialized boutiques where garments are inspected, tailored, and fitted by master artisans.
+Photos illustrate the selection rather than real-time inventory. Send the chosen model’s image and ask about your preferred size and colour.
 
-Kaftan Angelo has served local and international visitors at **Kossuth Lajos u. 18 since 2004**, continuing a family leather-working heritage that began in 1973.
+## Questions before purchasing
+Ask about the individual garment’s exact material, finish, lining, care and current price. Confirm payment arrangements and any proposed adjustments; the website does not promise identical services or timing for every garment.
 
-## What outerwear to look for in Budapest
-- **Genuine Leather Jackets:** Soft lambskin nappa jackets, cafe racers, classic biker cuts, and tailored leather blazers for spring and autumn.
-- **Natural Shearling Coats (Irha):** Thick insulating sheepskin coats that provide warmth during cold Central European winters while remaining naturally breathable.
-- **Fur Outerwear & Vests:** Statement coats and lightweight vests for luxury seasonal wear.
-- **Custom Bespoke Tailoring:** If your preferred cut or size is not on the rack, bespoke made-to-measure orders can be arranged directly with the artisan.
+## If you cannot find a suitable model
+Enquire in person about [custom leather jacket orders](/en/custom-orders/). Bring reference photos and describe how you plan to wear it. Agree material, measurements, price and estimated timing individually. Visitors should state their travel dates.
 
-## Tips for international visitors
-1. **Try before you buy:** Leather expands and conforms to your posture. Always try the jacket on over your typical layers in store.
-2. **Payment & Currencies:** Major credit cards, Euro (EUR), and Hungarian Forint (HUF) are accepted.
-3. **Languages spoken:** The boutique staff assists visitors comfortably in English and Hungarian.
-4. **Pre-visit enquiries:** If you see a specific style in our online gallery, send a photo via WhatsApp to check sizing and availability before walking in.
+## Plan the fitting
+The store is in District V between Astoria and Ferenciek tere; the Budapest shop opened in 2004. Visit preparation, layers, movement checks and contact details are covered separately in the [in-store fitting guide](/en/guides/budapest-outerwear-shopping/). Find current opening hours and the map on the [store page](/en/visit/).
 
-## Store address and hours
-- **Address:** Kossuth Lajos u. 18, 1053 Budapest, Hungary.
-- **Hours:** Monday–Friday 10:00–19:00, Saturday 10:00–17:00, Sunday closed.
-- **Phone:** +36 1 266 7274 | **WhatsApp:** +36 20 359 3216.
+## Common questions
+**Is a pictured model definitely available?** Confirm stock and size with the store first.
 
-## Related guides & collections
-[Explore collections](/en/collections/) · [Fit checklist](/en/guides/leather-jacket-fit-guide/) · [How to tell real leather](/en/guides/how-to-tell-real-leather/) · [Visit our store](/en/visit/)
+**Does the material name establish warmth and durability?** Not by itself. Consider construction and your own use too.
+
+[Recognising genuine leather](/en/guides/how-to-tell-real-leather/) · [Material comparison](/en/guides/leather-shearling-fur-comparison/)

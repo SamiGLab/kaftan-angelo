@@ -2,10 +2,10 @@
 title: "Bőr, irha vagy szőrme: kabátválasztás"
 description: "Bőr, irha és szőrme összehasonlítása illeszkedés, rétegezés, kialakítás és ápolás alapján, személyes kabátpróbához."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-06"
+modifiedDate: "2026-10-09"
 counterpart: "/en/guides/leather-shearling-fur-comparison/"
 topic: "Választás"
-readingMinutes: 2
+readingMinutes: 3
 heroImage: "/assets/images/kaftan-angelo-shearling-fur-budapest-800.avif"
 ---
 > **Rövid válasz:** Az adott ruhát a tervezett rétegekkel hasonlítsa össze. A súly, bélés, fedés, szabás és ápolás az anyag mellett is fontos; a kategórianév nem határozza meg önmagában a meleget.
@@ -37,3 +37,8 @@ A szőr felületét, a ruha súlyát, bélését és a rétegeken való elhelyez
 A kollekciókat és kiegészítőket a Kossuth Lajos u. 18, Budapest 1053 címen találja. A weboldal válogatás, nem élő készletnyilvántartás; konkrét modell esetén indulás előtt érdeklődjön.
 
 [Kollekciók](/kollekciok/) · [Méretválasztás](/utmutatok/borkabat-meret-utmutato/) · [Látogatás tervezése](/utmutatok/budapesti-kabatvasarlas/)
+
+## Ápolás és tárolás: ne használjon közös receptet
+A bőr külső felülete, az irha gyapjas oldala és a szőrme eltérő kezelést igényelhet. Mindig az adott kabát címkéjéből induljon ki. Más felületre bevált szert ne vigyen át automatikusan; bizonytalan foltot kezelés előtt mutasson meg megfelelő szakembernek.
+
+A részletes lépésekhez: [Bőrkabát ápolása](/utmutatok/borkabat-apolas/) · [Irhakabát ápolása](/utmutatok/irhakabat-apolas/) · [Szőrmekabát tárolása](/utmutatok/szormekabat-tarolas/). Vásárlási szempontokhoz olvassa el az [irhakabát-választási útmutatót](/utmutatok/irhakabat-valasztas/).

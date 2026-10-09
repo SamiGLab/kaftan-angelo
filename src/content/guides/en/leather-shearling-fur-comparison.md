@@ -2,10 +2,10 @@
 title: "Leather, Shearling or Fur: Choosing Your Coat"
 description: "Compare leather, shearling and fur through fit, layers, construction and care before choosing your next coat in Budapest."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-06"
+modifiedDate: "2026-10-09"
 counterpart: "/utmutatok/bor-irha-szorme-osszehasonlitas/"
 topic: "Choosing"
-readingMinutes: 2
+readingMinutes: 3
 heroImage: "/assets/images/kaftan-angelo-shearling-fur-budapest-800.avif"
 ---
 > **Quick answer:** Compare the actual garment with your intended layers. Weight, lining, coverage, cut and care needs matter alongside the outer material; a category name alone cannot establish warmth.
@@ -37,3 +37,8 @@ Consider the hair surface, garment weight, lining and how the piece sits over yo
 Explore leather, shearling, fur and accessories at Kossuth Lajos u. 18, Budapest 1053. The website is a selection rather than a live stock system, so ask about a specific model before travelling.
 
 [Collections](/en/collections/) · [Fit checklist](/en/guides/leather-jacket-fit-guide/) · [Plan your visit](/en/guides/budapest-outerwear-shopping/)
+
+## Care and storage: avoid a shared recipe
+A leather outer finish, the wool side of shearling and fur may need different treatment. Start with the individual coat’s label. Do not transfer a product that worked on another finish automatically; show uncertain stains to an appropriate specialist before treating them.
+
+For detailed guidance: [Leather care](/en/guides/leather-jacket-care/) · [Shearling care](/en/guides/shearling-coat-care/) · [Fur storage](/en/guides/fur-coat-storage/). For buying considerations, read [choosing a shearling coat](/en/guides/choosing-shearling-coat/).

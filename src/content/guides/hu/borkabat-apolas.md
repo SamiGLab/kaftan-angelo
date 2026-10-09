@@ -2,7 +2,7 @@
 title: "Bőrkabát ápolása: hogyan ápold helyesen?"
 description: "A bőrkabát ápolásának alapjai: tisztítás, szárítás, tárolás és kondicionálás."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-06"
+modifiedDate: "2026-10-09"
 counterpart: "/en/guides/leather-jacket-care/"
 topic: "Ápolás"
 readingMinutes: 2
@@ -22,7 +22,7 @@ Hagyja szobahőmérsékleten, vállfán megszáradni. Közvetlen hőforrás a b�
 Széles vállfát használjon, és ne préselje hosszú időre szűk ruhazsákba. A bőrnek jót tesz a levegőzés.
 
 ## 4. Kondicionálás
-Csak az adott bőrtípushoz megfelelő ápolót használjon, először kevésbé látható részen tesztelve.
+Csak akkor használjon ápolót, ha azt az adott ruhadarab kezelési előírása megengedi, és a szer az adott felülethez való. A kevésbé látható részen végzett próba sem helyettesíti az anyagra vonatkozó útmutatást. Velúrra, nubukra vagy eltérő betétekre ne használjon általános bőrkrémet automatikusan.
 
 **Kapcsolódó oldalak:** [Női bőrkabátok](/noi-borkabatok/) · [Férfi bőrkabátok](/ferfi-borkabatok/) · [Egyedi rendelés](/egyedi-rendeles/) · [Üzlet](/uzlet/)
 

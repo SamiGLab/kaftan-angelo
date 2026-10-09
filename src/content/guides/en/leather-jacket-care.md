@@ -2,7 +2,7 @@
 title: "How to Care for a Leather Jacket"
 description: "Leather jacket care basics: cleaning, drying, storage and conditioning."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-06"
+modifiedDate: "2026-10-09"
 counterpart: "/utmutatok/borkabat-apolas/"
 topic: "Care"
 readingMinutes: 2
@@ -22,7 +22,7 @@ Let it dry naturally on a hanger at room temperature. Direct heat can dry the le
 Use a wide hanger and avoid compressing it for long periods. Leather benefits from ventilation.
 
 ## 4. Conditioning
-Use a conditioner suitable for the specific leather type and test it on a discreet area first.
+Use conditioner only when the garment’s care instructions permit it and the product is intended for that finish. A discreet-area test does not replace material-specific guidance. Do not automatically use general leather cream on suede, nubuck or contrasting trims.
 
 **Related pages:** [Women’s leather jackets](/en/womens-leather-jackets/) · [Men’s leather jackets](/en/mens-leather-jackets/) · [Custom orders](/en/custom-orders/) · [Visit](/en/visit/)
 

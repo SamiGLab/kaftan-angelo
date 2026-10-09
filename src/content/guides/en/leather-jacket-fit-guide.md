@@ -2,10 +2,10 @@
 title: "Leather Jacket Fit Guide"
 description: "Shoulders, chest, sleeve length and layering: how to check whether a leather jacket fits properly."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-06"
+modifiedDate: "2026-10-09"
 counterpart: "/utmutatok/borkabat-meret-utmutato/"
 topic: "Choosing"
-readingMinutes: 2
+readingMinutes: 3
 heroImage: "/assets/images/kaftan-angelo-womens-leather-jackets-budapest-800.avif"
 ---
 > **Quick answer:** Check fastening, shoulders, sleeves and everyday movement with your intended layer underneath. The size label alone is not enough.
@@ -38,3 +38,8 @@ Bring your intended sweater when trying shearling or fur. Assess the weight, lin
 **Should I size down because it is leather?** Do not rely on stretching to solve poor fit.
 
 [Material comparison](/en/guides/leather-shearling-fur-comparison/) · [Plan a Budapest fitting](/en/guides/budapest-outerwear-shopping/)
+
+## Measurements before an enquiry
+Measure your chest with a level, comfortably loose tape and explain which layer you wore. You can also compare body and sleeve lengths on a comfortable jacket: state where each measurement starts and ends. Body measurements are not garment measurements; they do not automatically determine ease or available stock.
+
+Send the store a model photo, your usual size and these approximate measurements. An in-person fitting still checks the actual fit. [Choosing a women’s jacket](/en/guides/choosing-womens-leather-jacket/) · [Choosing shearling](/en/guides/choosing-shearling-coat/) · [Directions and opening hours](/en/visit/)
