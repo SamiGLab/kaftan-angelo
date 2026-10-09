@@ -33,3 +33,5 @@ Nem minden bőr igényel azonos kondicionálást. Krémet vagy olajat csak a ruh
 
 ## Próba Budapesten
 Konkrét anyag, szín vagy méret esetén látogatás előtt kérdezzen az elérhetőségről. A galéria nem igazolja mindkét bőrtípus aktuális készletét. [Férfi bőrkabátok](/ferfi-borkabatok/) · [Női bőrkabátok](/noi-borkabatok/) · [Méretválasztás](/utmutatok/borkabat-meret-utmutato/) · [Üzlet](/uzlet/)
+
+A [budapesti bőrkabát-kínálatban](/borkabat-budapest/) fazonokat is összehasonlíthat; az adott darab anyagát és elérhetőségét külön egyeztesse.

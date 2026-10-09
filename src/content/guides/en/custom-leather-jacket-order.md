@@ -2,7 +2,7 @@
 title: "Custom Leather Jacket in Budapest: What to Prepare"
 description: "Prepare photos, fit preferences and questions about material, price and timing before discussing a custom leather jacket at Kaftan Angelo in Budapest."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-06"
+modifiedDate: "2026-10-09"
 counterpart: "/utmutatok/egyedi-borkabat-rendeles/"
 topic: "Choosing"
 readingMinutes: 2
@@ -19,7 +19,7 @@ If the collection does not offer the combination of cut, colour or fit you want,
 - The sweater or other layer you expect to wear underneath.
 - Your budget and any date by which you hope to have the jacket.
 
-First [browse the collection](/en/collections/): an existing model may already suit you. If you have a particular piece in mind, send its photo to the store and ask about availability before travelling.
+First browse our [women’s leather jackets](/en/womens-leather-jackets/) or [men’s leather jackets](/en/mens-leather-jackets/): an existing model may already suit you. If you have a particular piece in mind, send its photo to the store and ask about availability before travelling.
 
 ## Which measurements are needed?
 Chest, sleeve and body length are useful discussion points, but the final requirements depend on the cut. A usual size label or self-measurement does not confirm the fit. Use the [fit checklist](/en/guides/leather-jacket-fit-guide/) to prepare for the conversation, and ask the store how measurements and any fitting should be arranged.

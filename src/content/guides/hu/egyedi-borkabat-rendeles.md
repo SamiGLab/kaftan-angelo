@@ -2,7 +2,7 @@
 title: "Egyedi bőrkabát rendelés Budapesten: mire készüljön?"
 description: "Referenciafotók, fazon, méretek, anyag, ár és elkészítési idő: ezekről érdemes egyeztetni egyedi bőrkabát rendelése előtt a Kaftan Angelónál."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-06"
+modifiedDate: "2026-10-09"
 counterpart: "/en/guides/custom-leather-jacket-order/"
 topic: "Választás"
 readingMinutes: 2
@@ -19,7 +19,7 @@ Ha a kollekcióban nem találja a keresett fazon, szín és illeszkedés kombin�
 - A kabát alatt viselendő pulóvert vagy más ruharéteget.
 - A költségkeretet és az esetleges kívánt elkészülési dátumot.
 
-Először nézze meg a [kollekciókat](/kollekciok/): lehet, hogy egy meglévő modell is megfelel. Ha konkrét darabot választott, küldje el a fotóját az üzletnek, és látogatás előtt érdeklődjön az elérhetőségről.
+Először nézze meg a [női bőrkabátokat](/noi-borkabatok/) vagy a [férfi bőrkabátokat](/ferfi-borkabatok/): lehet, hogy egy meglévő modell is megfelel. Ha konkrét darabot választott, küldje el a fotóját az üzletnek, és látogatás előtt érdeklődjön az elérhetőségről.
 
 ## Milyen méretekre van szükség?
 A mellbőség, ujjhossz és kabáthossz hasznos kiindulópont, de a pontos igény a szabástól függ. A megszokott méretszám vagy az otthoni mérés önmagában nem igazolja az illeszkedést. A [méretválasztási útmutató](/utmutatok/borkabat-meret-utmutato/) segít felkészülni; a méretvétel és az esetleges próba menetéről az üzlettel egyeztessen.

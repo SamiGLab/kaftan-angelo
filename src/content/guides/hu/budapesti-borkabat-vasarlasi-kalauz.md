@@ -18,6 +18,8 @@ heroImage: "/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif"
 
 A fényképek a választékot szemléltetik, nem valós idejű készletadatok. Küldje el a kiválasztott modell képét, és kérdezzen a keresett méretről és színről.
 
+A fazonok áttekintéséhez nézze meg a [budapesti bőrkabát-kínálatot](/borkabat-budapest/), majd érdeklődjön a kiválasztott modell aktuális méretéről és színéről.
+
 ## Mit kérdezzen vásárlás előtt?
 A pontos anyag, a felület, a bélés, a kezelés és az aktuális ár az adott darabra vonatkozzon. Kérdezze meg a fizetés és az esetleges módosítás feltételeit; a weboldal nem ígér minden ruhára azonos szolgáltatást vagy határidőt.
 

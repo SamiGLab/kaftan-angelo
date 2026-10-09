@@ -33,3 +33,5 @@ Not all leather needs the same conditioning. Use cream or oil only in line with 
 
 ## Try garments in Budapest
 Ask about availability before visiting if material, colour or size matters. The gallery does not establish current stock of both hide types. [Men’s leather jackets](/en/mens-leather-jackets/) · [Women’s leather jackets](/en/womens-leather-jackets/) · [Fit guide](/en/guides/leather-jacket-fit-guide/) · [Visit the store](/en/visit/)
+
+Explore our [leather jackets in Budapest](/en/leather-jackets-budapest/) to compare styles, and confirm each garment’s material and availability with the store.

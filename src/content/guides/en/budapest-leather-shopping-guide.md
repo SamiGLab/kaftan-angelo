@@ -18,6 +18,8 @@ heroImage: "/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif"
 
 Photos illustrate the selection rather than real-time inventory. Send the chosen model’s image and ask about your preferred size and colour.
 
+For an overview of styles, explore our [leather jackets in Budapest](/en/leather-jackets-budapest/), then ask about the chosen model’s current sizes and colours.
+
 ## Questions before purchasing
 Ask about the individual garment’s exact material, finish, lining, care and current price. Confirm payment arrangements and any proposed adjustments; the website does not promise identical services or timing for every garment.
 
