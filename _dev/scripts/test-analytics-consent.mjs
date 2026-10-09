@@ -35,5 +35,19 @@ try{
  await privatePage.click('[data-consent-accept]');
  assert.equal(await privatePage.$$eval('script[src*="googletagmanager"]',els=>els.length),0);
  await privateContext.close();
+ for (const source of ['instagram','facebook','tiktok']) {
+  const socialContext=await browser.createBrowserContext();const socialPage=await socialContext.newPage();
+  const socialRequests=[];socialPage.on('request',r=>socialRequests.push(r.url()));
+  await socialPage.setRequestInterception(true);socialPage.on('request',r=>/googletagmanager|google-analytics|clarity\.ms/.test(r.url())?r.respond({status:200,contentType:'application/javascript',body:''}):r.continue());
+  await socialPage.goto(base+'/en/visit/?utm_source='+source+'&utm_medium=social&utm_campaign=profile&utm_content=bio&fbclid=test_click_123&ttclid=test_click_456&igshid=test_click_789',{waitUntil:'networkidle2'});
+  assert.equal(socialRequests.some(u=>/googletagmanager|google-analytics|clarity\.ms/.test(u)),false);
+  assert.equal(await socialPage.evaluate(()=>window.kaftanAnalytics.permitted),true);
+  assert.deepEqual(await socialPage.evaluate(()=>window.kaftanAnalytics.campaign),{campaign_source:source,campaign_medium:'social',campaign_name:'profile',campaign_content:'bio'});
+  assert.equal(await socialPage.evaluate(()=>/fbclid|ttclid|igshid/.test(location.search)),false);
+  await socialPage.click('[data-consent-accept]');
+  await socialPage.waitForSelector('script[src*="googletagmanager"]');
+  assert.ok(await socialPage.evaluate(()=>window.dataLayer.some(e=>e.event==='kaftan_analytics_ready')));
+  await socialContext.close();
+ }
  console.log('PASS consent defaults, reject persistence, independent categories, interest event, withdrawal, mobile and partner exclusion');
 }finally{await browser.close();}

@@ -3,6 +3,17 @@
   if (!banner) return;
   const key = 'kaftan_consent_v1';
   const maxAge = 180 * 86400000;
+  const incomingUrl = new URL(location.href);
+  let removedClickId = false;
+  for (const name of ['fbclid','ttclid','igshid']) {
+    const values = incomingUrl.searchParams.getAll(name);
+    if (values.length && values.every(value => /^[A-Za-z0-9_-]{1,500}$/.test(value))) {
+      incomingUrl.searchParams.delete(name);
+      removedClickId = true;
+    }
+  }
+  // Keep campaign labels, but do not forward platform click identifiers to trackers.
+  if (removedClickId) history.replaceState(history.state,'',incomingUrl.pathname+incomingUrl.search+incomingUrl.hash);
   const permitted = !location.pathname.includes('/partner-portal/') && !location.pathname.includes('/admin') && [...new URLSearchParams(location.search)].every(([k,v]) => /^utm_(source|medium|campaign|content|term)$/.test(k) && /^[\w .-]{1,80}$/.test(v)) && (!location.hash || /^#[A-Za-z][A-Za-z0-9_-]{0,60}$/.test(location.hash));
   let choice = {analytics:false, recordings:false};
   let loaded = false;
