@@ -1884,3 +1884,16 @@ main:focus {
 .model-note { font-size:.9rem; margin-top:1.5rem; }
 .product-detail-link { display:inline-block; margin-bottom:.75rem; }
 @media(max-width:760px) { .model-detail { grid-template-columns:1fr; } .model-photo img { max-height:65vh; } .model-info .actions { flex-direction:column; } }
+
+/* Consent controls use their own compact scale, separate from page CTAs. */
+.consent-banner { padding:.75rem 0; }
+.consent-banner h2 { font-size:1rem; margin-bottom:.35rem; }
+.consent-banner p { font-size:.82rem; line-height:1.45; margin:.35rem 0 .6rem; }
+.consent-actions { gap:.4rem; align-items:center; }
+.consent-actions .btn { min-height:36px; width:auto; padding:7px 12px; font-size:.8rem; line-height:1.2; letter-spacing:0; text-transform:none; border-radius:6px; }
+.consent-banner label { font-size:.82rem; margin:.35rem 0; }
+@media (max-width:620px) {
+  .consent-banner { padding:.6rem 0; max-height:65svh; }
+  .consent-actions .btn { min-height:44px; padding:8px 10px; }
+  .consent-banner label { min-height:44px; }
+}
