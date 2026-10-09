@@ -3,6 +3,18 @@ const huGuides = import.meta.glob('../content/guides/hu/*.md', { eager:true });
 const enGuides = import.meta.glob('../content/guides/en/*.md', { eager:true });
 const BASE = 'https://kaftanangelo.com';
 
+function xmlEscape(value) {
+  return String(value).replace(/[&<>"']/g, character => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&apos;' }[character]));
+}
+
+// Include the original model photos, independently of thumbnail formats and batch display.
+function modelImages(url) {
+  const html = pages[url]?.mainHtml ?? '';
+  return [...new Set([...html.matchAll(/data-product-image="([^"<>]+)"/g)].map(match => match[1]))]
+    .filter(image => image.startsWith('/') && !image.startsWith('//'))
+    .map(image => `<image:image><image:loc>${xmlEscape(BASE + image)}</image:loc></image:image>`).join('');
+}
+
 function slug(path){ return path.split('/').pop().replace('.md',''); }
 
 function getPriority(u) {
@@ -27,6 +39,6 @@ export function GET() {
   for (const [modules, root] of [[huGuides, '/utmutatok/'], [enGuides, '/en/guides/']]) {
     for (const [path, mod] of Object.entries(modules)) modified.set(`${root}${slug(path)}/`, mod.frontmatter.modifiedDate ?? mod.frontmatter.publishDate);
   }
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...urls].sort().map(u=>`  <url><loc>${BASE}${u}</loc>${modified.has(u) ? `<lastmod>${modified.get(u)}</lastmod>` : ''}<changefreq>${getChangefreq(u)}</changefreq><priority>${getPriority(u)}</priority></url>`).join('\n')}\n</urlset>`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${[...urls].sort().map(u=>`  <url><loc>${BASE}${u}</loc>${modified.has(u) ? `<lastmod>${modified.get(u)}</lastmod>` : ''}<changefreq>${getChangefreq(u)}</changefreq><priority>${getPriority(u)}</priority>${modelImages(u)}</url>`).join('\n')}\n</urlset>`;
   return new Response(xml,{headers:{'Content-Type':'application/xml; charset=utf-8'}});
 }
