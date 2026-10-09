@@ -69,18 +69,7 @@ export const businessSchema = {
     'https://www.tiktok.com/@kaftanangelo.budapest',
     'https://wa.me/36203593216',
   ],
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Kaftan Angelo leather and outerwear collections',
-    itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Product', name: "Men's genuine leather jackets" } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Product', name: "Women's genuine leather jackets" } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Shearling jackets and coats' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Fur jackets and coats' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Leather accessories (bags, belts, wallets, gloves, fur hats)' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Custom made-to-measure leather tailoring and repairs' } },
-    ],
-  },
+
 };
 
 export const websiteSchema = {
