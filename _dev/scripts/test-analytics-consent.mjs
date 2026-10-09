@@ -29,5 +29,11 @@ try{
  }
  const context=await browser.createBrowserContext();const page=await context.newPage();await page.goto(base+'/en/partner-portal/',{waitUntil:'networkidle2'});
  assert.equal(await page.$('[data-consent-banner]'),null);assert.equal(await page.evaluate(()=>typeof window.kaftanAnalytics),'undefined');await context.close();
+ const privateContext=await browser.createBrowserContext();const privatePage=await privateContext.newPage();
+ await privatePage.goto(base+'/en/visit/?utm_source=private%40example.com',{waitUntil:'networkidle2'});
+ assert.equal(await privatePage.evaluate(()=>window.kaftanAnalytics.permitted),false,'Sensitive campaign values cannot enable tracking');
+ await privatePage.click('[data-consent-accept]');
+ assert.equal(await privatePage.$$eval('script[src*="googletagmanager"]',els=>els.length),0);
+ await privateContext.close();
  console.log('PASS consent defaults, reject persistence, independent categories, interest event, withdrawal, mobile and partner exclusion');
 }finally{await browser.close();}

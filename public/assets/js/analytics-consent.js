@@ -3,7 +3,7 @@
   if (!banner) return;
   const key = 'kaftan_consent_v1';
   const maxAge = 180 * 86400000;
-  const permitted = !location.pathname.includes('/partner-portal/') && !location.pathname.includes('/admin') && [...new URLSearchParams(location.search).keys()].every(k => /^utm_(source|medium|campaign|content|term)$/.test(k));
+  const permitted = !location.pathname.includes('/partner-portal/') && !location.pathname.includes('/admin') && [...new URLSearchParams(location.search)].every(([k,v]) => /^utm_(source|medium|campaign|content|term)$/.test(k) && /^[\w .-]{1,80}$/.test(v)) && (!location.hash || /^#[A-Za-z][A-Za-z0-9_-]{0,60}$/.test(location.hash));
   let choice = {analytics:false, recordings:false};
   let loaded = false;
   let gaStarted = false;
