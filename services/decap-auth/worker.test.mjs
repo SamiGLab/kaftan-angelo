@@ -89,6 +89,8 @@ test('successful callback uses PKCE, drops secrets and refresh token, and clears
   assert.match(response.headers.get('Set-Cookie'), /Max-Age=0/);
   assert.match(response.headers.get('Content-Security-Policy'), /frame-ancestors 'none'/);
   const sessionData = JSON.parse(Buffer.from(session.cookie.split('=')[1].split('.')[0], 'base64url'));
+  for (const call of github.calls) assert.equal(call.options.redirect, 'manual');
+  assert.equal(github.calls[0].options.headers['User-Agent'], 'Kaftan-Angelo-Decap');
   const exchange = new URLSearchParams(github.calls[0].options.body);
   assert.equal(exchange.get('code_verifier'), sessionData.verifier);
   assert.equal(exchange.get('redirect_uri'), `${base}/callback`);
@@ -116,4 +118,17 @@ test('upstream error content and credentials are never reflected', async () => {
   const response = await worker.fetch(callback(await begin(worker)), env);
   assert.equal(response.status, 502);
   assert.ok(!(await response.text()).includes('secret-upstream-detail'));
+});
+
+test('unexpected token redirects fail closed without following or exposing the response', async () => {
+  const worker = createWorker({ fetch: async (_url, options) => {
+    assert.equal(options.redirect, 'manual');
+    return new Response('private-upstream-response', { status: 302, headers: { Location: 'https://evil.example' } });
+  } });
+  const response = await worker.fetch(callback(await begin(worker)), env);
+  const html = await response.text();
+  assert.equal(response.status, 502);
+  assert.match(html, /token_exchange_http_302/);
+  assert.ok(!html.includes('private-upstream-response'));
+  assert.ok(!html.includes('evil.example'));
 });

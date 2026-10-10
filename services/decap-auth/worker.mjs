@@ -65,7 +65,7 @@ function finish(result, success, status = 200) {
       window.removeEventListener('message',receive);
       openerWindow.postMessage(${scriptValue(message)},origin);
     };window.addEventListener('message',receive);openerWindow.postMessage('authorizing:github',origin);}`;
-  const body = `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kaftan Angelo — GitHub sign-in</title><body><p>${success ? 'Sign-in complete. You can return to the content panel.' : 'Sign-in could not be completed. Return to the panel and try again.'}</p><script nonce="${nonce}">${script}</script></body></html>`;
+  const body = `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kaftan Angelo - GitHub sign-in</title><body><p>${success ? 'Sign-in complete. You can return to the content panel.' : result.message}</p><script nonce="${nonce}">${script}</script></body></html>`;
   return new Response(body, { status, headers: {
     ...headers, 'Content-Type': 'text/html; charset=utf-8',
     'Content-Security-Policy': `default-src 'none'; script-src 'nonce-${nonce}'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'`,
@@ -83,6 +83,7 @@ export function createWorker({ fetch: fetcher = globalThis.fetch, now = () => Ma
     if (!env.GITHUB_CLIENT_ID || !env.GITHUB_CLIENT_SECRET || env.GITHUB_CLIENT_SECRET.length < 20) {
       return text('GitHub sign-in setup is not complete yet.', 503);
     }
+    let stage = 'session';
     try {
       // Domain separation lets the existing server-only client secret sign the short-lived cookie.
       const signingSecret = `kaftan-decap-state-v1:${env.GITHUB_CLIENT_SECRET}`;
@@ -104,26 +105,31 @@ export function createWorker({ fetch: fetcher = globalThis.fetch, now = () => Ma
       if (url.searchParams.has('error')) return finish({ message: 'GitHub authorization was cancelled.' }, false, 400);
       const code = url.searchParams.get('code');
       if (!code || code.length > 256) return finish({ message: 'Missing GitHub authorization code.' }, false, 400);
+      stage = 'token_exchange';
       const tokenResponse = await fetcher('https://github.com/login/oauth/access_token', {
-        method: 'POST', redirect: 'error', signal: AbortSignal.timeout(10000),
-        headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
+        method: 'POST', redirect: 'manual', signal: AbortSignal.timeout(10000),
+        headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'Kaftan-Angelo-Decap' },
         body: new URLSearchParams({ client_id: env.GITHUB_CLIENT_ID, client_secret: env.GITHUB_CLIENT_SECRET,
           code, code_verifier: session.verifier, redirect_uri: `${SERVICE}/callback` }).toString(),
       });
-      if (!tokenResponse.ok) throw new Error('Token exchange failed');
+      if (!tokenResponse.ok) { stage = `token_exchange_http_${tokenResponse.status}`; throw new Error('Token exchange failed'); }
+      stage = 'token_response';
       const token = await tokenResponse.json();
+      if (['incorrect_client_credentials', 'bad_verification_code', 'redirect_uri_mismatch'].includes(token.error)) stage = token.error;
       if (typeof token.access_token !== 'string' || token.access_token.length > 1024 || token.error) throw new Error('Invalid token');
       const apiHeaders = { Accept: 'application/vnd.github+json', Authorization: `Bearer ${token.access_token}`,
         'User-Agent': 'Kaftan-Angelo-Decap', 'X-GitHub-Api-Version': '2022-11-28' };
-      const userResponse = await fetcher('https://api.github.com/user', { headers: apiHeaders, redirect: 'error', signal: AbortSignal.timeout(10000) });
+      stage = 'github_identity';
+      const userResponse = await fetcher('https://api.github.com/user', { headers: apiHeaders, redirect: 'manual', signal: AbortSignal.timeout(10000) });
       if (!userResponse.ok || !(await userResponse.json()).login) throw new Error('Invalid GitHub identity');
-      const repoResponse = await fetcher(`https://api.github.com/repos/${REPOSITORY}`, { headers: apiHeaders, redirect: 'error', signal: AbortSignal.timeout(10000) });
+      stage = 'repository_permission';
+      const repoResponse = await fetcher(`https://api.github.com/repos/${REPOSITORY}`, { headers: apiHeaders, redirect: 'manual', signal: AbortSignal.timeout(10000) });
       if (!repoResponse.ok || (await repoResponse.json()).permissions?.push !== true) return finish({ message: 'This GitHub account cannot edit the Kaftan Angelo repository.' }, false, 403);
       // Do not expose client_secret or refresh_token to the CMS. Expired sessions sign in again.
       return finish({ token: token.access_token, provider: 'github' }, true);
     } catch {
       // Deliberately omit upstream responses, codes and credentials from errors and logs.
-      return finish({ message: 'GitHub sign-in is temporarily unavailable. Please try again.' }, false, 502);
+      return finish({ message: `GitHub sign-in could not be completed (${stage}). Please try again.` }, false, 502);
     }
   } };
 }
