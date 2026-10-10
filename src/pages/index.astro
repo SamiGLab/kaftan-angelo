@@ -1,6 +1,7 @@
 ---
+import { withIcons } from '../components/icon';
 import BaseLayout from '../components/BaseLayout.astro';
 import pages from '../data/pages.json';
 const page = pages['/'];
 ---
-<BaseLayout page={page}><Fragment set:html={page.mainHtml} /></BaseLayout>
+<BaseLayout page={page}><Fragment set:html={withIcons(page.mainHtml)} /></BaseLayout>

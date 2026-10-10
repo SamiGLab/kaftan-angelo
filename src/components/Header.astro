@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import { nav } from '../data/site';
 import { announcements, announcementCycle } from '../data/announcements';
 
@@ -30,15 +31,15 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
       </a>
     </div>
     <div class="announcement-store">
-      <a href={visit}>Kossuth Lajos u. 18 <span aria-hidden="true">↗</span></a>
+      <a href={visit}><Icon name="location" />Kossuth Lajos u. 18 <span aria-hidden="true">↗</span></a>
       <span aria-hidden="true">·</span>
-      <a class="announcement-phone" href="tel:+3612667274">+36&nbsp;1&nbsp;266&nbsp;7274</a>
+      <a class="announcement-phone" href="tel:+3612667274"><Icon name="phone" />+36&nbsp;1&nbsp;266&nbsp;7274</a>
     </div>
   </div>
 </div>
 <header class="site-header"><div class="wrap nav">
   <a class="brand" href={home} aria-label={hu ? 'Kaftan Angelo — főoldal' : 'Kaftan Angelo — home'}>Kaftan <span>Angelo</span></a>
-  <div class="nav-tools"><a class="lang-link" href={counterpart} lang={hu ? 'en' : 'hu'} aria-label={hu ? 'View this page in English' : 'Az oldal magyarul'}>{hu ? 'EN' : 'HU'}</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-icon" aria-hidden="true"></span><span>{hu ? 'Menü' : 'Menu'}</span></button></div>
+  <div class="nav-tools"><a class="lang-link" href={counterpart} lang={hu ? 'en' : 'hu'} aria-label={hu ? 'View this page in English' : 'Az oldal magyarul'}>{hu ? 'EN' : 'HU'}</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><Icon name="menu" class="menu-open-icon" /><Icon name="x" class="menu-close-icon" /><span>{hu ? 'Menü' : 'Menu'}</span></button></div>
   <nav id="primary-navigation" class="links" data-menu aria-label={hu ? 'Fő navigáció' : 'Primary navigation'}>{items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}</nav>
 </div></header>
 

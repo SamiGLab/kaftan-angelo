@@ -1229,23 +1229,17 @@ main:focus {
   display: none;
 }
 
-.menu-icon, .menu-icon:after {
-  background: currentColor;
-  width: 18px;
-  height: 2px;
-  display: block;
-}
-
-.menu-icon {
-  margin-bottom: 6px;
-  position: relative;
-}
-
-.menu-icon:after {
-  content: "";
-  position: absolute;
-  top: 6px;
-}
+/* Lucide icons are rendered at build time; no client library or icon font. */
+.ui-icon { width: 20px; height: 20px; flex: 0 0 auto; display: inline-block; vertical-align: -.22em; margin-inline-end: .4em; }
+button > .ui-icon:only-child { margin: 0; }
+.menu-toggle .ui-icon { margin: 0; }
+.menu-close-icon { display: none; }
+.menu-toggle[aria-expanded="true"] .menu-open-icon { display: none; }
+.menu-toggle[aria-expanded="true"] .menu-close-icon { display: inline-block; }
+.announcement .ui-icon { width: 15px; height: 15px; }
+.image-hint { display: inline-flex; align-items: center; }
+.image-hint .ui-icon { width: 17px; height: 17px; }
+.preview-close, .preview-controls button { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
 
 .btn {
   border-radius: 5px;
@@ -1897,3 +1891,5 @@ main:focus {
   .consent-actions .btn { min-height:44px; padding:8px 10px; }
   .consent-banner label { min-height:44px; }
 }
+
+.guide-search-section .pagefind-ui .pagefind-ui__form::before { -webkit-mask-image: url('/assets/icons/search.svg'); mask-image: url('/assets/icons/search.svg'); mask-size: contain; mask-repeat: no-repeat; }
