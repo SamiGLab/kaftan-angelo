@@ -1,0 +1,76 @@
+[
+  {
+    "name": "KA | HU | Üdvözlés",
+    "subject": "Üdvözöljük a Kaftan Angelónál",
+    "preview": "Bőr, irha és szőrme Budapest belvárosában. Ismerje meg üzletünket.",
+    "eyebrow": "ÖRÜLÜNK, HOGY ITT VAN",
+    "title": "Találja meg a saját stílusát.",
+    "intro": "Köszönjük, hogy feliratkozott a Kaftan Angelo híreire. Új modellekről, szezonális válogatásokról és budapesti üzletünk híreiről fogunk írni Önnek.",
+    "text": "Női és férfi bőrkabátok, irha- és szőrmemodellek várják Budapest belvárosában. A megfelelő fazont és méretet személyes próbával választhatja ki.",
+    "cta": "Üzlet és elérhetőség",
+    "type": "welcome",
+    "lang": "hu",
+    "file": "welcome-hu.html"
+  },
+  {
+    "name": "KA | HU | Új modellek",
+    "subject": "Fedezze fel a Kaftan Angelo modelljeit",
+    "preview": "Három modell kollekciónkból — nézze meg online, próbálja fel személyesen.",
+    "eyebrow": "VÁLOGATÁS KOLLEKCIÓNKBÓL",
+    "title": "Egy új kedvenc személyes próbával kezdődik.",
+    "intro": "Nézze meg kollekciónk néhány darabját, majd látogasson el hozzánk, hogy megtalálja az Önnek megfelelő fazont.",
+    "cta": "Kollekciók megtekintése",
+    "type": "arrivals",
+    "lang": "hu",
+    "file": "arrivals-hu.html"
+  },
+  {
+    "name": "KA | HU | Szezonális válogatás",
+    "subject": "Irha a hűvösebb napokra — Kaftan Angelo",
+    "preview": "Sötétbarna és világosbarna férfi irhamodellek, személyes próbával.",
+    "eyebrow": "SZEZONÁLIS VÁLOGATÁS",
+    "title": "Irha a hűvösebb budapesti napokra.",
+    "intro": "Rövidebb dzseki vagy hosszabb kabát? Válogasson férfi irhamodelljeink közül, és hasonlítsa össze a fazonokat személyesen.",
+    "cta": "Próbálja fel az üzletben",
+    "type": "season",
+    "lang": "hu",
+    "file": "season-hu.html"
+  },
+  {
+    "name": "KA | EN | Welcome",
+    "subject": "Welcome to Kaftan Angelo",
+    "preview": "Leather, shearling and fur in central Budapest. Discover our store.",
+    "eyebrow": "WELCOME TO KAFTAN ANGELO",
+    "title": "Find a style that feels like you.",
+    "intro": "Thank you for subscribing to Kaftan Angelo updates. We will share new styles, seasonal selections and news from our Budapest store.",
+    "text": "Explore women’s and men’s leather jackets, shearling and fur styles in central Budapest. Visit us to try on different fits and find the right size.",
+    "cta": "Visit our Budapest store",
+    "type": "welcome",
+    "lang": "en",
+    "file": "welcome-en.html"
+  },
+  {
+    "name": "KA | EN | New arrivals",
+    "subject": "Discover styles at Kaftan Angelo",
+    "preview": "Three styles from our collection — explore online and try them in store.",
+    "eyebrow": "FROM OUR COLLECTION",
+    "title": "Your next favourite starts with a fitting.",
+    "intro": "Explore a few styles from our collection, then visit us to find the shape and fit that suit you.",
+    "cta": "Explore the collections",
+    "type": "arrivals",
+    "lang": "en",
+    "file": "arrivals-en.html"
+  },
+  {
+    "name": "KA | EN | Seasonal selection",
+    "subject": "Shearling for cooler days — Kaftan Angelo",
+    "preview": "Dark and light brown men’s shearling styles to try in our Budapest store.",
+    "eyebrow": "SEASONAL SELECTION",
+    "title": "Shearling for cooler Budapest days.",
+    "intro": "A shorter jacket or a longer coat? Explore our men’s shearling styles and compare the fits in person.",
+    "cta": "Try them in our store",
+    "type": "season",
+    "lang": "en",
+    "file": "season-en.html"
+  }
+]
