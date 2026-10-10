@@ -24,6 +24,8 @@ jobs:
           node-version: 24
       - name: Install dependencies
         run: npm ci
+      - name: Test CMS authentication bridge
+        run: node --test services/decap-auth/worker.test.mjs
       - name: Install accessibility browser
         run: npx puppeteer browsers install chrome
       - name: Build Astro + Pagefind

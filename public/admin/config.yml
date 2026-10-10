@@ -2,6 +2,12 @@ backend:
   name: github
   repo: SamiGLab/kaftan-angelo
   branch: main
+  base_url: https://kaftan-decap-auth.samigrowlab.workers.dev
+  auth_endpoint: auth
+  auth_scope: public_repo
+
+site_url: https://kaftanangelo.com
+display_url: https://kaftanangelo.com
 
 local_backend: true
 publish_mode: editorial_workflow

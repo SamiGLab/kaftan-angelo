@@ -4,4 +4,6 @@ dist/
 .lighthouseci/
 .lycheecache
 .DS_Store
+services/decap-auth/.dev.vars*
+services/decap-auth/.wrangler/
 public/assets/images/

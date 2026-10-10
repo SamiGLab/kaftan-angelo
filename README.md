@@ -87,9 +87,13 @@ Decap CMS is prepared at `/admin/` and edits Markdown files under:
 
 ### One-time CMS authentication requirement
 
-GitHub Pages alone does not provide the OAuth callback service Decap's GitHub backend needs. Before `/admin/` can log into GitHub in production, configure a GitHub OAuth app plus a Decap-compatible OAuth bridge and add its `base_url` / `auth_endpoint` to `public/admin/config.yml`.
+The panel uses a small Cloudflare Worker for GitHub authentication, configured in
+`public/admin/config.yml`. The website remains on GitHub Pages. Worker source,
+tests, permissions and the one-time GitHub OAuth / Cloudflare secret setup are
+documented in [services/decap-auth/README.md](services/decap-auth/README.md).
 
-The content model and admin interface are already included; this external authentication step cannot be completed only by repository files.
+The service refuses login until the OAuth application ID and server-only client
+secret are configured. Production login must be verified after those steps.
 
 ## SEO implemented
 
