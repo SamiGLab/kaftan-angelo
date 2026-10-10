@@ -17,6 +17,12 @@ document.addEventListener('keydown', event => {
 });
 matchMedia('(min-width: 981px)').addEventListener('change', closeMenu);
 menu?.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
+document.addEventListener('click', event => {
+  if (menuButton?.getAttribute('aria-expanded') === 'true' && !event.target.closest('.site-header')) closeMenu();
+});
+document.addEventListener('focusin', event => {
+  if (menuButton?.getAttribute('aria-expanded') === 'true' && !event.target.closest('.site-header')) closeMenu();
+});
 
 // Native dialogs trap focus, handle Escape, and restore focus to the trigger.
 const dialog = document.querySelector('[data-product-dialog]');
@@ -124,4 +130,34 @@ document.addEventListener('click', event => {
   button.classList.add('active');
   button.setAttribute('aria-pressed', 'true');
   collectionViews.filter(view => scope.contains(view.scope)).forEach(view => view.setFilter(button.dataset.filter));
+});
+document.querySelectorAll('.newsletter-form').forEach(form => {
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    if (form.getAttribute('aria-busy') === 'true' || !form.reportValidity()) return;
+    const hu = form.dataset.language === 'hu';
+    const status = form.querySelector('.newsletter-status');
+    const button = form.querySelector('button[type="submit"]');
+    const endpoint = new URL(form.action);
+    if (endpoint.protocol !== 'https:' || !/^[a-z0-9-]+\.sibforms\.com$/i.test(endpoint.hostname)) return;
+    endpoint.searchParams.set('isAjax', '1');
+    status.hidden = false;
+    status.textContent = hu ? 'Küldés…' : 'Sending…';
+    form.setAttribute('aria-busy', 'true');
+    button.disabled = true;
+    try {
+      const data = new FormData(form);
+      data.delete('html_type');
+      const response = await fetch(endpoint, { method: 'POST', body: data, credentials: 'omit', signal: AbortSignal.timeout(20000) });
+      const result = await response.json();
+      if (!response.ok || !result.success) throw new Error('Subscription failed');
+      status.textContent = hu ? 'Kérjük, erősítse meg feliratkozását a kapott e-mailben.' : 'Please confirm your subscription using the email we have sent you.';
+      form.reset();
+    } catch {
+      status.textContent = hu ? 'A feliratkozást nem sikerült menteni. Kérjük, próbálja újra.' : 'We could not save your subscription. Please try again.';
+    } finally {
+      form.removeAttribute('aria-busy');
+      button.disabled = false;
+    }
+  });
 });

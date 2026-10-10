@@ -1,0 +1,29 @@
+---
+import { newsletter } from '../data/newsletter';
+import Icon from './Icon.astro';
+const { lang = 'hu' } = Astro.props;
+const language = lang === 'hu' ? 'hu' : 'en';
+const copy = newsletter.copy[language];
+const formUrl = newsletter.forms[language];
+// Only public Brevo form URLs belong here. Never API keys or admin URLs.
+const allowed = /^https:\/\/[a-z0-9-]+\.sibforms\.com\//i.test(formUrl);
+const preview = import.meta.env.NEWSLETTER_PREVIEW === 'true';
+---
+{((newsletter.enabled && allowed) || preview) && <section class="newsletter" aria-label={copy.title} data-pagefind-ignore>
+  <div class="wrap newsletter-inner">
+    <div><h2><Icon name="mail" />{copy.title}</h2><p>{copy.intro}</p><small>{copy.note} <a href={copy.privacyUrl}>{copy.privacy}</a></small></div>
+    <form class="newsletter-form" method="post" action={allowed ? formUrl : undefined} aria-label={copy.title} data-language={language}>
+      <label for="newsletter-email">{language === 'hu' ? 'E-mail-cím' : 'Email address'}</label>
+      <div class="newsletter-entry">
+        <input id="newsletter-email" name="EMAIL" type="email" autocomplete="email" maxlength="254" required placeholder={language === 'hu' ? 'nev@pelda.hu' : 'you@example.com'} disabled={!newsletter.enabled} />
+        <button class="btn btn-primary" type="submit" disabled={!newsletter.enabled || !allowed}>{copy.action}</button>
+      </div>
+      <label class="newsletter-consent"><input name="OPT_IN" type="checkbox" value="1" required disabled={!newsletter.enabled} /><span>{copy.consent} <a href={copy.privacyUrl}>{copy.privacy}</a></span></label>
+      <div class="newsletter-honeypot" aria-hidden="true"><label for="newsletter-check">Leave empty</label><input id="newsletter-check" name="email_address_check" type="text" tabindex="-1" autocomplete="off" /></div>
+      <input name="locale" type="hidden" value="en" />
+      <input name="html_type" type="hidden" value="simple" />
+      <p class="newsletter-status" role="status" aria-live="polite" hidden></p>
+      <noscript><a href={formUrl}>{language === 'hu' ? 'Feliratkozás a Brevo űrlapján' : 'Subscribe using the Brevo form'}</a></noscript>
+    </form>
+  </div>
+</section>}
