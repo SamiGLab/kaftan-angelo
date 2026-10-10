@@ -4,5 +4,6 @@
   "compatibility_date": "2026-10-10",
   "workers_dev": true,
   "preview_urls": false,
+  "vars": { "GITHUB_CLIENT_ID": "Ov23liVKRECixk0vdaBZ" },
   "observability": { "enabled": false }
 }
