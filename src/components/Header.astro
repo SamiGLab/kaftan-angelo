@@ -39,7 +39,13 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
 </div>
 <header class="site-header"><div class="wrap nav">
   <a class="brand" href={home} aria-label={hu ? 'Kaftan Angelo — főoldal' : 'Kaftan Angelo — home'}>Kaftan <span>Angelo</span></a>
-  <div class="nav-tools"><a class="lang-link" href={counterpart} lang={hu ? 'en' : 'hu'} aria-label={hu ? 'View this page in English' : 'Az oldal magyarul'}>{hu ? 'EN' : 'HU'}</a><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><Icon name="menu" class="menu-open-icon" /><Icon name="x" class="menu-close-icon" /><span>{hu ? 'Menü' : 'Menu'}</span></button></div>
+  <div class="nav-tools">
+    <nav class="language-choice" aria-label={hu ? 'Nyelvválasztás' : 'Language selection'}>
+      {hu ? <span class="language-option" lang="hu" aria-current="true">Magyar</span> : <a class="language-option" href={counterpart} lang="hu" hreflang="hu" rel="alternate" aria-label="Az oldal magyarul">Magyar</a>}
+      {hu ? <a class="language-option" href={counterpart} lang="en" hreflang="en" rel="alternate" aria-label="View this page in English">English</a> : <span class="language-option" lang="en" aria-current="true">English</span>}
+    </nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><Icon name="menu" class="menu-open-icon" /><Icon name="x" class="menu-close-icon" /><span>{hu ? 'Menü' : 'Menu'}</span></button>
+  </div>
   <nav id="primary-navigation" class="links" data-menu aria-label={hu ? 'Fő navigáció' : 'Primary navigation'}>{items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}</nav>
 </div></header>
 

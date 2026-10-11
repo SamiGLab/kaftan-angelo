@@ -15,7 +15,7 @@ menuButton?.addEventListener('click', () => {
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') { closeMenu(); menuButton.focus(); }
 });
-matchMedia('(min-width: 981px)').addEventListener('change', closeMenu);
+matchMedia('(min-width: 1101px)').addEventListener('change', closeMenu);
 menu?.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
 document.addEventListener('click', event => {
   if (menuButton?.getAttribute('aria-expanded') === 'true' && !event.target.closest('.site-header')) closeMenu();
