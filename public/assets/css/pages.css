@@ -1157,7 +1157,7 @@ picture {
   }
 
   .page-hero, .home-hero {
-    --hero-active: var(--hero-mobile, var(--hero));
+    --hero-active: var(--hero-sharp, var(--hero-mobile, var(--hero)));
   }
 }
 

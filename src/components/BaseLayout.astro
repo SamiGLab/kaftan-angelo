@@ -12,7 +12,8 @@ import { BASE, businessSchema, websiteSchema } from '../data/site';
 const { page } = Astro.props;
 const lang = page.lang ?? 'hu';
 const heroImage = page.mainHtml?.match(/--hero:url\('([^']+)'\)/)?.[1] ?? new URL(page.ogImage).pathname;
-const mobileHero = heroImage.replace('-800.avif', '-480.avif');
+import { backgroundImage } from './responsive-images';
+const sharpHero = backgroundImage(heroImage);
 const socialImage = page.ogImage.replace(/\/assets\/images\/(.+)-(480|800|1200)\.avif$/, '/$1.webp');
 const huUrl = lang === 'hu' ? page.canonical : BASE + page.counterpart;
 const enUrl = lang === 'en' ? page.canonical : BASE + page.counterpart;
@@ -62,7 +63,6 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <link rel="help" type="text/plain" href="/llms.txt" title="LLM context" />
   <link rel="preload" as="font" type="font/woff2" href={headingFont} crossorigin="anonymous" />
   {lang === 'hu' && <link rel="preload" as="font" type="font/woff2" href={headingExtendedFont} crossorigin="anonymous" />}
-  <link rel="preload" as="image" href={mobileHero} media="(max-width: 620px)" fetchpriority="high" />
   <link rel="preload" as="image" href={heroImage} media="(min-width: 621px)" fetchpriority="high" />
   <link rel="stylesheet" href="/assets/css/pages.css" />
   <script type="application/ld+json" set:html={JSON.stringify(graph)}></script>
@@ -71,7 +71,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
 <body>
   <a class="skip-link" href="#main-content">{lang === "hu" ? "Ugrás a tartalomhoz" : "Skip to content"}</a>
   <Header lang={lang} counterpart={page.counterpart} />
-  <main id="main-content" tabindex="-1" data-pagefind-body><slot /></main>
+  <main id="main-content" tabindex="-1" data-pagefind-body style={`--hero-sharp:${sharpHero}`}><slot /></main>
   <Footer lang={lang} trackingAllowed={!page.canonical.includes('/partner-portal/')} />
   {!page.canonical.includes('/partner-portal/') && <AnalyticsConsent lang={lang} />}
   {page.mainHtml?.includes('data-map-panel') && <script is:inline defer src="/assets/js/privacy-settings.js"></script>}

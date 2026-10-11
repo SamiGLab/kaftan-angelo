@@ -1,5 +1,6 @@
 ---
 import { withIcons } from '../components/icon';
+import { responsiveImages } from '../components/responsive-images';
 import BaseLayout from '../components/BaseLayout.astro';
 import pages from '../data/pages.json';
 import { modelPages } from '../data/model-pages';
@@ -10,4 +11,4 @@ export function getStaticPaths() {
 }
 const { page } = Astro.props;
 ---
-<BaseLayout page={page}><Fragment set:html={withIcons(page.mainHtml)} /></BaseLayout>
+<BaseLayout page={page}><Fragment set:html={withIcons(responsiveImages(page.mainHtml))} /></BaseLayout>
