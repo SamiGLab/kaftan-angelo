@@ -2,7 +2,7 @@
 
 Six reusable marketing templates: welcome, new arrivals, seasonal selection in HU and EN. Sender: Kaftan Angelo <hello@kaftanangelo.com>.
 
-Only the bilingual DOI template #3 is currently automated. These six are saved designs, not active sending workflows.
+The bilingual DOI template #3 and separate HU/EN welcome workflows are active. See AUTOMATIONS.md for workflow configuration. Product and seasonal emails remain campaign templates without scheduled sending.
 
 Before a campaign: update the featured models, subject and preview; verify current availability and store hours; select the matching confirmed language list; preview on mobile and desktop; check the unsubscribe link in an authorized test campaign. Prices, discounts and stock are not invented.
 

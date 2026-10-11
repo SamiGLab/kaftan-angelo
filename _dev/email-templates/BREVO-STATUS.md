@@ -15,6 +15,6 @@ Sender: Kaftan Angelo <hello@kaftanangelo.com>. Reopened every record and confir
 
 The existing bilingual double opt-in confirmation is template #3. There are seven custom templates including #3; the other three default account templates are vendor-provided. The account has ten records in total.
 
-Actual inbox rendering across mail clients and personalized campaign unsubscribe behavior still require an authorized test campaign before the first real campaign. Update products and availability before sending; sample new-arrivals copy does not claim newly received stock.
+Subsequently, HU and EN welcome workflows were activated; see AUTOMATIONS.md. Actual inbox rendering across mail clients and personalized campaign unsubscribe behavior still require an authorized test campaign before the first real campaign. Update products and availability before sending; sample new-arrivals copy does not claim newly received stock.
 
 Open saved templates: https://app.brevo.com/templates/listing
