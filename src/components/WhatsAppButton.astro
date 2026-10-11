@@ -188,6 +188,8 @@ const quickChips = hu
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    max-height: calc(100vh - 110px);
+    max-height: calc(100dvh - 110px);
     animation: chat-appear 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
@@ -202,6 +204,7 @@ const quickChips = hu
 
   /* Header */
   .chat-header {
+    flex-shrink: 0;
     background: #1b120c;
     padding: 0.9rem 1rem;
     display: flex;
@@ -278,6 +281,9 @@ const quickChips = hu
 
   /* Body */
   .chat-body {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 1rem;
     background: radial-gradient(circle at 50% 0, #2c2016 0%, #20150e 100%);
     display: flex;
@@ -349,6 +355,7 @@ const quickChips = hu
 
   /* Footer */
   .chat-footer {
+    flex-shrink: 0;
     background: #1b120c;
     padding: 0.85rem 1rem;
     border-top: 1px solid rgba(196, 157, 100, 0.2);

@@ -11,6 +11,7 @@ import headingExtendedFont from '@fontsource-variable/fraunces/files/fraunces-la
 import { BASE, businessSchema, websiteSchema } from '../data/site';
 const { page } = Astro.props;
 const lang = page.lang ?? 'hu';
+const preloadHero = !page.mainHtml?.includes('class="model-detail"');
 const heroImage = page.mainHtml?.match(/--hero:url\('([^']+)'\)/)?.[1] ?? new URL(page.ogImage).pathname;
 import { backgroundImage } from './responsive-images';
 const sharpHero = backgroundImage(heroImage, page.mainHtml?.includes('class="home-hero"') ? 1600 : 1200);
@@ -65,8 +66,8 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <link rel="help" type="text/plain" href="/llms.txt" title="LLM context" />
   <link rel="preload" as="font" type="font/woff2" href={headingFont} crossorigin="anonymous" />
   {lang === 'hu' && <link rel="preload" as="font" type="font/woff2" href={headingExtendedFont} crossorigin="anonymous" />}
-  <link rel="preload" as="image" href={heroCandidates[0]?.[1] ?? heroImage} imagesrcset={mobileHeroSrcset || undefined} media="(max-width: 620px)" fetchpriority="high" />
-  <link rel="preload" as="image" href={heroImage} media="(min-width: 621px)" fetchpriority="high" />
+  {preloadHero && <link rel="preload" as="image" href={heroCandidates[0]?.[1] ?? heroImage} imagesrcset={mobileHeroSrcset || undefined} media="(max-width: 620px)" fetchpriority="high" />}
+  {preloadHero && <link rel="preload" as="image" href={heroImage} media="(min-width: 621px)" fetchpriority="high" />}
   <link rel="stylesheet" href="/assets/css/pages.css" />
   <script type="application/ld+json" set:html={JSON.stringify(graph)}></script>
   <slot name="head" />
