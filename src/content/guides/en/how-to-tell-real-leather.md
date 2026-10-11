@@ -1,8 +1,8 @@
 ---
 title: "How to Tell if Leather Is Real"
-description: "Practical signs that can help you distinguish genuine leather from synthetic alternatives."
+description: "Check labels, surface, edges and material descriptions before buying leather. Learn why photos, smell and home tests cannot prove authenticity."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-09"
+modifiedDate: "2026-10-11"
 counterpart: "/utmutatok/valodi-bor-felismerese/"
 topic: "Choosing"
 readingMinutes: 3

@@ -1,8 +1,8 @@
 ---
 title: "How to Care for a Leather Jacket"
-description: "Leather jacket care basics: cleaning, drying, storage and conditioning."
+description: "How to clean, dry and store a leather jacket safely: follow the care label, check the finish and know when to ask a specialist."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-09"
+modifiedDate: "2026-10-11"
 counterpart: "/utmutatok/borkabat-apolas/"
 topic: "Care"
 readingMinutes: 2

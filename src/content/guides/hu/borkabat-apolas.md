@@ -1,8 +1,8 @@
 ---
 title: "Bőrkabát ápolása: hogyan ápold helyesen?"
-description: "A bőrkabát ápolásának alapjai: tisztítás, szárítás, tárolás és kondicionálás."
+description: "Bőrkabát tisztítása, szárítása és tárolása: kövesse a címkét, azonosítsa a felületet, és tudja meg, mikor érdemes szakemberhez fordulni."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-09"
+modifiedDate: "2026-10-11"
 counterpart: "/en/guides/leather-jacket-care/"
 topic: "Ápolás"
 readingMinutes: 2

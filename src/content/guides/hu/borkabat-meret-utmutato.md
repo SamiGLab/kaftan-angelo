@@ -1,8 +1,8 @@
 ---
 title: "Bőrkabát méret útmutató: hogyan kell jól állnia?"
-description: "Váll, mellkas, ujjhossz és rétegezés: így ellenőrizze, hogy megfelelő-e egy bőrkabát mérete."
+description: "Váll, záródás, ujjhossz és mozgás: ellenőrizze a bőrkabát illeszkedését a megszokott ruharétegekkel, személyes próba és mérési tanácsok alapján."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-09"
+modifiedDate: "2026-10-11"
 counterpart: "/en/guides/leather-jacket-fit-guide/"
 topic: "Választás"
 readingMinutes: 3

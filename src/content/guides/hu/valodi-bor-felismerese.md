@@ -1,8 +1,8 @@
 ---
 title: "Hogyan ismerhető fel a valódi bőr?"
-description: "Gyakorlati jelek, amelyek segítenek megkülönböztetni a valódi bőrt a műbőrtől."
+description: "Címke, felület, élek és anyagleírás: mit ellenőrizzen valódi bőr vásárlásakor, és miért nem bizonyítja az anyagot egy fotó vagy otthoni próba?"
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-09"
+modifiedDate: "2026-10-11"
 counterpart: "/en/guides/how-to-tell-real-leather/"
 topic: "Választás"
 readingMinutes: 3
