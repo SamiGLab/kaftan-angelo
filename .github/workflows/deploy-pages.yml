@@ -28,6 +28,8 @@ jobs:
         run: node --test services/decap-auth/worker.test.mjs
       - name: Test partner security monitor
         run: node --test _dev/scripts/check-supabase-health.test.mjs
+      - name: Test private partner contract handler
+        run: node --test services/partner-security/contract-handler.test.mjs
       - name: Install accessibility browser
         run: npx puppeteer browsers install chrome
       - name: Build Astro + Pagefind

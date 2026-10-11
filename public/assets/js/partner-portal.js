@@ -7,6 +7,11 @@
   const money = value => new Intl.NumberFormat(en ? 'en-GB' : 'hu-HU', { maximumFractionDigits: 0 }).format(Number(value) || 0) + ' HUF';
   const text = (id, value) => { if ($(id)) $(id).textContent = value ?? '—'; };
   let transactions = [];
+  let sessionToken = '';
+  let contractPending = false;
+  let contractExpires = 0;
+  let contractTimer;
+  const contractEndpoint = 'https://bezlzeojivucnqkfjpwo.supabase.co/functions/v1/partner-contract';
   const sessionKey = 'kaftan_portal_view_v1';
   const sessionLifetime = 30 * 60 * 1000;
   let expiresAt = 0;
@@ -22,9 +27,9 @@
     try { sessionStorage.removeItem(sessionKey); } catch {}
   }
   function rememberView(data) {
-    // Keep this tab's read-only dashboard, never the PIN or login credentials.
+    // Keep this tab's dashboard and short-lived document capability, never its PIN or admin credentials.
     const view = {};
-    for (const field of ['success','code','name','type','contact_person','phone','iban','guests','paid','cleared','holding','sales','txs','materials','contract_url']) {
+    for (const field of ['success','code','name','type','contact_person','phone','iban','guests','paid','cleared','holding','sales','txs','materials','has_contract','session_token']) {
       if (Object.hasOwn(data, field)) view[field] = data[field];
     }
     const pick = (entry,fields) => Object.fromEntries(fields.filter(field=>Object.hasOwn(entry,field)).map(field=>[field,entry[field]]));
@@ -186,6 +191,7 @@
     text('portal-results-status', selected.length ? t(`${selected.length} completed sales`, `${selected.length} teljesült vásárlás`) : transactions.length ? t('No sales match these filters.','Nincs a szűrésnek megfelelő vásárlás.') : t('No completed sales recorded yet.','Még nincs rögzített teljesült vásárlás.'));
   }
   function populate(data) {
+    sessionToken = /^[0-9a-f]{64}$/.test(data.session_token || '') ? data.session_token : '';
     renderMaterials(data);
     text('partner-display-code', data.code);
     text('partner-display-name', data.name);
@@ -212,11 +218,11 @@
     else payout.removeAttribute('href');
     const message = t(`Visit Kaftan Angelo for leather, shearling and fur outerwear. Present VIP code ${data.code} for 10% in-store savings.\nKossuth Lajos u. 18, Budapest 1053\nhttps://kaftanangelo.com/en/`, `Látogasson el a Kaftan Angelo bőr-, irha- és szőrmeüzletébe. Partnerkód: ${data.code}, 10% bolti kedvezmény.\nKossuth Lajos u. 18, Budapest 1053\nhttps://kaftanangelo.com/`);
     $('share-voucher-wa').href = 'https://wa.me/?text=' + encodeURIComponent(message);
-    const contract = safeDocumentUrl(data.contract_url, true);
+    const contract = data.has_contract === true && !!sessionToken;
     $('contract-ready-box').style.display = contract ? 'flex' : 'none';
     $('contract-pending-box').style.display = contract ? 'none' : 'flex';
-    if (contract) $('contract-download-link').href = contract;
-    else $('contract-download-link').removeAttribute('href');
+    $('contract-download-link').removeAttribute('href');
+    if (contract) $('contract-download-link').href = '#portal-account';
     const badge = document.querySelector('.contract-badge');
     if (badge) badge.textContent = contract ? t('Document available','Dokumentum elérhető') : t('Document pending','Dokumentum előkészítés alatt');
     $('portal-login-gate').hidden = true;
@@ -241,6 +247,13 @@
         body: JSON.stringify({p_code: requestedCode, p_pin: $('partner-pin-input').value.trim()}),
         signal: AbortSignal.timeout(15000)
       });
+      if (response.status === 429) {
+        const seconds = Number(response.headers.get('Retry-After')) || 900;
+        const minutes = Math.max(1, Math.min(15, Math.ceil(seconds/60)));
+        text('portal-error-msg',t(`Too many sign-in attempts. Try again in ${minutes} minutes.`,`Túl sok belépési kísérlet. Próbálja újra ${minutes} perc múlva.`));
+        $('portal-error-msg').hidden = false;
+        return;
+      }
       if (!response.ok) throw new Error('network');
       const data = await response.json();
       if (!data?.success) {
@@ -261,6 +274,13 @@
     }
   });
   function logout() {
+    const token = sessionToken;
+    sessionToken = '';
+    contractExpires = 0;
+    clearTimeout(contractTimer);
+    contractLink.textContent = contractLabel;
+    contractStatus.textContent = '';
+    if (token) fetch(contractEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'logout',token}),keepalive:true}).catch(()=>{});
     clearSession();
     transactions = [];
     if (previewDialog.open) previewDialog.close();
@@ -279,6 +299,42 @@
     $('partner-code-input').focus();
   }
   $('portal-logout-btn').addEventListener('click', logout);
+  const contractStatus = document.createElement('p');
+  contractStatus.setAttribute('role','status');
+  $('contract-ready-box').after(contractStatus);
+  const contractLink = $('contract-download-link');
+  const contractLabel = contractLink.textContent;
+  contractLink.addEventListener('click', async event => {
+    if (contractExpires > Date.now()) return;
+    event.preventDefault();
+    if (!sessionToken || contractPending) return;
+    const token = sessionToken;
+    const popup = window.open('about:blank','_blank');
+    if (popup) popup.opener = null;
+    contractPending = true;
+    contractLink.setAttribute('aria-busy','true');
+    contractStatus.textContent = t('Preparing your private contract…','A privát szerződés előkészítése…');
+    try {
+      const response = await fetch(contractEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'download',token}),signal:AbortSignal.timeout(15000)});
+      if (!response.ok) throw new Error('contract');
+      const data = await response.json();
+      const url = safeDocumentUrl(data.url,true);
+      if (!data.success || !url || token !== sessionToken) throw new Error('contract');
+      contractExpires = Date.now()+300000;
+      contractLink.href = url;
+      contractLink.textContent = t('Open contract · valid for 5 minutes','Szerződés megnyitása · 5 percig érvényes');
+      clearTimeout(contractTimer);
+      contractTimer = setTimeout(()=>{contractExpires=0;contractLink.href='#portal-account';contractLink.textContent=contractLabel;},300000);
+      contractStatus.textContent = t('Your private link is ready and expires in 5 minutes.','A privát hivatkozás elkészült, és 5 perc múlva lejár.');
+      if (popup) popup.location.replace(url);
+    } catch {
+      if (popup) popup.close();
+      if (token === sessionToken) contractStatus.textContent = t('Contract unavailable. Sign in again if your session expired, or try again shortly.','A szerződés nem érhető el. Lejárt munkamenet esetén jelentkezzen be újra, vagy próbálja meg később.');
+    } finally {
+      contractPending = false;
+      contractLink.removeAttribute('aria-busy');
+    }
+  });
   document.addEventListener('visibilitychange', () => {
     if (expiresAt && Date.now() >= expiresAt) logout();
   });

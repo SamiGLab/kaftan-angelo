@@ -1,0 +1,4 @@
+project_id = "kaftan-partner-security"
+
+[functions.partner-contract]
+verify_jwt = false

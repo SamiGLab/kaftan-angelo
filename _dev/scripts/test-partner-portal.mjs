@@ -24,16 +24,27 @@ try {
     page.on('pageerror',error=>errors.push(error.message));
     await page.setRequestInterception(true);
     let mode='success';
+    let contractCalls=0;
     page.on('request',request=> {
+      if (request.url().includes('/functions/v1/partner-contract')) {
+        if (request.method()==='OPTIONS') return request.respond({status:204,headers:{'access-control-allow-origin':'*','access-control-allow-headers':'*','access-control-allow-methods':'POST, OPTIONS'}});
+        const body=JSON.parse(request.postData() || '{}');
+        if (body.action==='download') contractCalls++;
+        const result=body.action==='logout'?{success:true}:{success:true,url:'https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/sign/partner-contracts/TEST-ONLY_sozlesme.pdf?token=SIGNED-TEST',expires_in:300};
+        return request.respond({status:200,contentType:'application/json',headers:{'access-control-allow-origin':'*'},body:JSON.stringify(result)});
+      }
       if (request.url().endsWith('/material-preview.png')) return request.respond({status:200,contentType:'image/png',body:Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a2ioAAAAASUVORK5CYII=','base64')});
       if (!request.url().includes('/rpc/get_partner_portal')) return request.continue();
       if (request.method()==='OPTIONS') return request.respond({status:204,headers:{'access-control-allow-origin':'*','access-control-allow-headers':'*','access-control-allow-methods':'POST, OPTIONS'}});
+      if (mode==='rate-limited') return request.respond({status:429,contentType:'application/json',headers:{'access-control-allow-origin':'*','access-control-expose-headers':'Retry-After','Retry-After':'120'},body:'{"success":false}'});
       const data = mode === 'invalid' ? {success:false} : {success:true,code:'TEST-ONLY',name:'Synthetic partner',type:'Hotel',contact_person:'Test representative',phone:'+36 000',iban:null,contract_url:null,guests:3,paid:100,cleared:200,holding:300,sales:6000,txs:[{date:'2026.09.01',item:'<img src=x onerror=alert(1)>',amount:1000,comm:100,status:'Kifizetve'},{date:'2026.09.02',item:'Leather jacket',amount:2000,comm:200,status:'Kifizethető'},{date:'2026.10.06',item:'Fur coat',amount:3000,comm:300,status:'Függőben (14 napos garancia)'}]};
       if (mode === 'cancelled') data.txs.push({date:'2026.10.07',item:'Returned jacket',amount:0,comm:0,status:'Függőben'});
       if (mode === 'mismatched-account') data.code = 'OTHER-PARTNER';
       data.p_pin = 'SERVER-ONLY-TEST-PIN';
       if (data.txs?.length) data.txs[0].pin_hash='NESTED-SECRET-TEST';
       if (data.success) data.iban='HU42123456789012345678901234';
+      if (data.success) data.session_token='a'.repeat(64);
+      if (mode==='contract') data.has_contract=true;
       if (mode === 'materials') data.materials = [
         {partner_code:'TEST-ONLY',kind:'print',language:'hu',pdf_url:'https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/public/partner-materials/print-hu.pdf'},
         {partner_code:'TEST-ONLY',kind:'mobile',language:'en',png_url:'https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/public/partner-materials/material-preview.png'},
@@ -171,6 +182,28 @@ try {
     await page.select('#portal-status-filter','cancelled');
     assert.equal(await page.$$eval('#transactions-tbody tr',rows=>rows.length),1);
     await page.focus('#portal-logout-btn'); await page.keyboard.press('Enter');
+    mode='contract';
+    await page.type('#partner-code-input','TEST-ONLY');
+    await page.type('#partner-pin-input','0000');
+    await page.focus('#gate-submit-btn'); await page.keyboard.press('Enter');
+    await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
+    assert.equal(contractCalls,0,'Contract is not signed until the user requests it');
+    await page.evaluate(()=>{window.open=()=>null;});
+    await page.$eval('#contract-download-link',link=>link.click());
+    await page.waitForFunction(()=>document.getElementById('contract-download-link').href.includes('SIGNED-TEST'));
+    assert.equal(contractCalls,1);
+    await page.setViewport({width:360,height:844});
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'Private contract controls fit on mobile');
+    await page.reload();
+    assert.equal(await page.$eval('#contract-download-link',link=>link.href.includes('SIGNED-TEST')),false,'Signed link is not cached across reload');
+    await page.focus('#portal-logout-btn');await page.keyboard.press('Enter');
+    mode='rate-limited';
+    await page.type('#partner-code-input','TEST-ONLY');await page.type('#partner-pin-input','0000');
+    await page.focus('#gate-submit-btn');await page.keyboard.press('Enter');
+    await page.waitForFunction(()=>!document.getElementById('portal-error-msg').hidden);
+    assert.equal(await page.$eval('#portal-dashboard',node=>node.hidden),true);
+    assert.equal(await page.$eval('#portal-error-msg',node=>node.textContent.includes('2')),true,'Rate limit wait is shown');
+    await page.$eval('#portal-login-form',form=>form.reset());
     mode='mismatched-account';
     await page.type('#partner-code-input','TEST-ONLY');
     await page.type('#partner-pin-input','0000');
