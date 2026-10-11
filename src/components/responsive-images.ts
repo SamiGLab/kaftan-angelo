@@ -10,7 +10,7 @@ export function backgroundImage(url: string, maximum = 1200) {
   return `image-set(url('/assets/images/${stem}-${standard}.avif') 1x, url('/assets/images/${stem}-${large}.avif') 2x)`;
 }
 export function responsiveImages(html: string) {
-  return html.replace(/--card-img:url\('([^']+)'\)/g, (_match,url)=>`--card-img:${backgroundImage(url)}`)
+  return html.replace(/--card-img:url\('([^']+)'\)/g, (_match,url)=>`--card-img:${backgroundImage(url, 800)}`)
     .replace(/<picture>[\s\S]*?<\/picture>/g, picture => {
       const src = picture.match(/<img[^>]*src="\/([^"/]+)\.webp"/)?.[1];
       const width = picture.match(/<img[^>]*width="(\d+)"/)?.[1];
