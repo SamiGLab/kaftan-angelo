@@ -30,6 +30,8 @@ try {
       if (request.method()==='OPTIONS') return request.respond({status:204,headers:{'access-control-allow-origin':'*','access-control-allow-headers':'*','access-control-allow-methods':'POST, OPTIONS'}});
       const data = mode === 'invalid' ? {success:false} : {success:true,code:'TEST-ONLY',name:'Synthetic partner',type:'Hotel',contact_person:'Test representative',phone:'+36 000',iban:null,contract_url:null,guests:3,paid:100,cleared:200,holding:300,sales:6000,txs:[{date:'2026.09.01',item:'<img src=x onerror=alert(1)>',amount:1000,comm:100,status:'Kifizetve'},{date:'2026.09.02',item:'Leather jacket',amount:2000,comm:200,status:'Kifizethető'},{date:'2026.10.06',item:'Fur coat',amount:3000,comm:300,status:'Függőben (14 napos garancia)'}]};
       if (mode === 'cancelled') data.txs.push({date:'2026.10.07',item:'Returned jacket',amount:0,comm:0,status:'Függőben'});
+      if (mode === 'mismatched-account') data.code = 'OTHER-PARTNER';
+      data.p_pin = 'SERVER-ONLY-TEST-PIN';
       if (mode === 'materials') data.materials = [
         {partner_code:'TEST-ONLY',kind:'print',language:'hu',pdf_url:'https://example.com/print-hu.pdf'},
         {partner_code:'TEST-ONLY',kind:'mobile',language:'en',png_url:'https://example.com/material-preview.png'},
@@ -59,6 +61,7 @@ try {
     assert.equal(savedView.data.code,'TEST-ONLY');
     assert.equal(JSON.stringify(savedView).includes('0000'),false);
     assert.equal('p_pin' in savedView.data,false);
+    assert.equal(JSON.stringify(savedView).includes('SERVER-ONLY-TEST-PIN'),false);
     await page.reload();
     await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
     assert.equal(await page.$eval('#partner-display-code',node=>node.textContent),'TEST-ONLY');
@@ -77,6 +80,23 @@ try {
       await page.setViewport({width,height:900});
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'Overflow at '+width+' '+route);
     }
+    const separateContext = await browser.createBrowserContext();
+    const separatePage = await separateContext.newPage();
+    await separatePage.goto('http://127.0.0.1:4182'+route);
+    assert.equal(await separatePage.$eval('#portal-dashboard',node=>node.hidden),true,'Another browser session does not inherit partner data');
+    await separateContext.close();
+    await page.evaluate(()=>{
+      const saved=JSON.parse(sessionStorage.getItem('kaftan_portal_view_v1'));
+      saved.expires=Date.now()-1;
+      sessionStorage.setItem('kaftan_portal_view_v1',JSON.stringify(saved));
+    });
+    await page.reload();
+    assert.equal(await page.$eval('#portal-dashboard',node=>node.hidden),true,'Expired saved view is rejected');
+    assert.equal(await page.evaluate(()=>sessionStorage.getItem('kaftan_portal_view_v1')),null);
+    await page.type('#partner-code-input','TEST-ONLY');
+    await page.type('#partner-pin-input','0000');
+    await page.focus('#gate-submit-btn'); await page.keyboard.press('Enter');
+    await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
     await page.focus('#portal-logout-btn');
     await page.keyboard.press('Enter');
     assert.equal(await page.$eval('#portal-dashboard',node=>node.hidden),true);
@@ -127,6 +147,14 @@ try {
     await page.select('#portal-status-filter','cancelled');
     assert.equal(await page.$$eval('#transactions-tbody tr',rows=>rows.length),1);
     await page.focus('#portal-logout-btn'); await page.keyboard.press('Enter');
+    mode='mismatched-account';
+    await page.type('#partner-code-input','TEST-ONLY');
+    await page.type('#partner-pin-input','0000');
+    await page.focus('#gate-submit-btn'); await page.keyboard.press('Enter');
+    await page.waitForFunction(()=>!document.getElementById('portal-error-msg').hidden);
+    assert.equal(await page.$eval('#portal-dashboard',node=>node.hidden),true,'Never show a different partner returned by the server');
+    assert.equal(await page.evaluate(()=>sessionStorage.getItem('kaftan_portal_view_v1')),null);
+    await page.$eval('#portal-login-form',form=>form.reset());
     mode='invalid';
     await page.type('#partner-code-input','TEST-ONLY');
     await page.type('#partner-pin-input','wrong');

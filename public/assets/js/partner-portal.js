@@ -14,7 +14,11 @@
   }
   function rememberView(data) {
     // Keep this tab's read-only dashboard, never the PIN or login credentials.
-    try { sessionStorage.setItem(sessionKey, JSON.stringify({expires: Date.now() + sessionLifetime, data})); } catch {}
+    const view = {};
+    for (const field of ['success','code','name','type','contact_person','phone','iban','guests','paid','cleared','holding','sales','txs','materials','contract_url']) {
+      if (Object.hasOwn(data, field)) view[field] = data[field];
+    }
+    try { sessionStorage.setItem(sessionKey, JSON.stringify({expires: Date.now() + sessionLifetime, data:view})); } catch {}
   }
   const previewDialog = document.createElement('dialog');
   previewDialog.className = 'portal-preview-dialog';
@@ -206,9 +210,10 @@
     form.setAttribute('aria-busy','true');
     $('portal-error-msg').hidden = true;
     try {
+      const requestedCode = $('partner-code-input').value.trim().toUpperCase();
       const response = await fetch('https://bezlzeojivucnqkfjpwo.supabase.co/rest/v1/rpc/get_partner_portal', {
         method: 'POST', headers: { apikey: 'sb_publishable_M-lTei71UX1lmxv62xiNdQ_5t94kZZD', 'Content-Type':'application/json' },
-        body: JSON.stringify({p_code: $('partner-code-input').value.trim().toUpperCase(), p_pin: $('partner-pin-input').value.trim()}),
+        body: JSON.stringify({p_code: requestedCode, p_pin: $('partner-pin-input').value.trim()}),
         signal: AbortSignal.timeout(15000)
       });
       if (!response.ok) throw new Error('network');
@@ -217,6 +222,7 @@
         text('portal-error-msg',t('Invalid partner code or PIN. Please try again.','Érvénytelen partnerkód vagy PIN. Próbálja újra.'));
         $('portal-error-msg').hidden = false;
       } else {
+        if (data.code !== requestedCode) throw new Error('Partner account mismatch');
         populate(data);
         rememberView(data);
       }

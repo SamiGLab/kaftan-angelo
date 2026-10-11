@@ -52,6 +52,8 @@ jobs:
         run: node _dev/scripts/test-model-inquiries.mjs
       - name: Check mobile contact and newsletter retry flows
         run: node _dev/scripts/test-contact-flows.mjs
+      - name: Check partner sessions and material isolation
+        run: node _dev/scripts/test-partner-portal.mjs
       - name: Check analytics consent and partner exclusion
         run: node _dev/scripts/test-analytics-consent.mjs
 

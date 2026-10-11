@@ -33,6 +33,17 @@ try {
     }
     await page.setViewport({width:390,height:844});
     await page.click('#whatsapp-trigger-btn');
+    await page.evaluate(() => {
+      Object.defineProperty(window.visualViewport, 'height', {configurable:true,value:440});
+      window.visualViewport.dispatchEvent(new Event('resize'));
+    });
+    assert.equal(await page.$eval('#whatsapp-chat-card', card => {
+      const bounds=card.getBoundingClientRect(); return bounds.top >= 0 && bounds.bottom <= 440;
+    }),true,'Chat follows the visible viewport when a keyboard covers the lower screen');
+    await page.click('#whatsapp-close-btn');
+    await page.evaluate(() => { delete window.visualViewport.height; });
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'whatsapp-trigger-btn');
+    await page.click('#whatsapp-trigger-btn');
     await page.click('#whatsapp-send-btn');
     const destination = new URL(await page.evaluate(() => window.testWhatsAppUrl));
     assert.equal(destination.hostname, 'wa.me');
@@ -64,7 +75,7 @@ try {
     await page.type('#newsletter-email','audit@example.invalid');
     assert.equal(await page.$eval('.newsletter-form', form => form.checkValidity()), false, 'Consent is required');
     await page.click('.newsletter-consent input');
-    const submit = () => page.$eval('.newsletter-form', form => form.requestSubmit());
+    const submit = () => page.$eval('.newsletter-form', form => { form.requestSubmit(); form.requestSubmit(); });
     for (const mode of ['failure','offline','success']) {
       outcome = mode;
       await submit();
@@ -73,7 +84,7 @@ try {
       const text = await page.$eval('.newsletter-status', status => status.textContent);
       assert.match(text, mode === 'success' ? /erősítse|confirm/ : /nem sikerült|could not/);
     }
-    assert.equal(submissions,3);
+    assert.equal(submissions,3,'Repeated submission while busy must not send a duplicate request');
     assert.equal(await page.$eval('#newsletter-email', input => input.value), '');
     assert.equal(await page.$eval('.newsletter-consent input', input => input.checked), false);
     await page.close();
