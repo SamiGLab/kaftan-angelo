@@ -32,13 +32,20 @@ try {
       if (mode === 'cancelled') data.txs.push({date:'2026.10.07',item:'Returned jacket',amount:0,comm:0,status:'Függőben'});
       if (mode === 'mismatched-account') data.code = 'OTHER-PARTNER';
       data.p_pin = 'SERVER-ONLY-TEST-PIN';
+      if (data.txs?.length) data.txs[0].pin_hash='NESTED-SECRET-TEST';
+      if (data.success) data.iban='HU42123456789012345678901234';
       if (mode === 'materials') data.materials = [
-        {partner_code:'TEST-ONLY',kind:'print',language:'hu',pdf_url:'https://example.com/print-hu.pdf'},
-        {partner_code:'TEST-ONLY',kind:'mobile',language:'en',png_url:'https://example.com/material-preview.png'},
-        {partner_code:'OTHER-PARTNER',kind:'print',language:'en',pdf_url:'https://example.com/other.pdf'},
+        {partner_code:'TEST-ONLY',kind:'print',language:'hu',pdf_url:'https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/public/partner-materials/print-hu.pdf'},
+        {partner_code:'TEST-ONLY',kind:'mobile',language:'en',png_url:'https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/public/partner-materials/material-preview.png'},
+        {partner_code:'OTHER-PARTNER',kind:'print',language:'en',pdf_url:'https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/public/partner-materials/other.pdf'},
         {partner_code:'TEST-ONLY',kind:'mobile',language:'hu',png_url:'javascript:alert(1)'}
       ];
-      if (mode === 'manifest' || mode === 'wrong-owner') data.materials = {code: mode === 'wrong-owner' ? 'OTHER-PARTNER' : 'TEST-ONLY', draft:true, storage_code:'partner-hashed-code', files:['card','poster','mobile'].flatMap(format => ['hu','en'].flatMap(language => (format === 'mobile' ? ['png'] : ['pdf','png']).map(type => ({format,language,type,filename:format+'-'+language+'.'+type,url:type === 'png' ? 'https://example.com/material-preview.png' : 'https://example.com/'+format+'-'+language+'.pdf'}))))};
+      if (['manifest','wrong-owner','missing-owner','untrusted-host'].includes(mode)) data.materials = {code: mode === 'wrong-owner' ? 'OTHER-PARTNER' : 'TEST-ONLY', draft:true, storage_code:'partner-hashed-code', files:['card','poster','mobile'].flatMap(format => ['hu','en'].flatMap(language => (format === 'mobile' ? ['png'] : ['pdf','png']).map(type => ({format,language,type,filename:format+'-'+language+'.'+type,url:type === 'png' ? 'https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/public/partner-materials/material-preview.png' : 'https://bezlzeojivucnqkfjpwo.supabase.co/storage/v1/object/public/partner-materials/'+format+'-'+language+'.pdf'}))))};
+      if (mode === 'missing-owner') delete data.materials.code;
+      if (mode === 'untrusted-host') {
+        data.materials.files.forEach(file=>{file.url='https://untrusted.example/document.pdf';});
+        data.contract_url='https://untrusted.example/contract.pdf';
+      }
       if (mode === 'paused') data.materials = {code:'TEST-ONLY',status:'paused',files:[]};
       return request.respond({status:200,contentType:'application/json',headers:{'access-control-allow-origin':'*'},body:JSON.stringify(data)});
     });
@@ -62,9 +69,25 @@ try {
     assert.equal(JSON.stringify(savedView).includes('0000'),false);
     assert.equal('p_pin' in savedView.data,false);
     assert.equal(JSON.stringify(savedView).includes('SERVER-ONLY-TEST-PIN'),false);
+    assert.equal(JSON.stringify(savedView).includes('NESTED-SECRET-TEST'),false);
+    assert.equal(JSON.stringify(savedView).includes('HU42123456789012345678901234'),false);
     await page.reload();
     await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
     assert.equal(await page.$eval('#partner-display-code',node=>node.textContent),'TEST-ONLY');
+    await page.evaluate(()=>{
+      const saved=JSON.parse(sessionStorage.getItem('kaftan_portal_view_v1'));
+      saved.expires=Date.now()+1200;
+      sessionStorage.setItem('kaftan_portal_view_v1',JSON.stringify(saved));
+    });
+    await page.reload();
+    await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
+    await page.waitForFunction(()=>document.getElementById('portal-dashboard').hidden);
+    assert.equal(await page.$eval('#partner-display-code',node=>node.textContent),'','Expiry clears sensitive DOM data');
+    assert.equal(await page.evaluate(()=>sessionStorage.getItem('kaftan_portal_view_v1')),null);
+    await page.type('#partner-code-input','TEST-ONLY');
+    await page.type('#partner-pin-input','0000');
+    await page.focus('#gate-submit-btn'); await page.keyboard.press('Enter');
+    await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
 
     for (const filter of ['holding','cleared','paid']) {
       await page.select('#portal-status-filter',filter);
@@ -115,7 +138,7 @@ try {
     assert.equal(await page.$$eval('#portal-materials-grid a',links=>links.some(link=>link.href.includes('other.pdf') || link.href.startsWith('javascript:'))),false);
     await page.focus('#portal-logout-btn');
     await page.keyboard.press('Enter');
-    for (const state of ['manifest','wrong-owner','paused']) {
+    for (const state of ['manifest','wrong-owner','missing-owner','untrusted-host','paused']) {
       mode=state;
       await page.type('#partner-code-input','TEST-ONLY');
       await page.type('#partner-pin-input','0000');
@@ -123,7 +146,8 @@ try {
       await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
       assert.equal(await page.$$eval('.portal-material-card',cards=>cards.length),state === 'paused' ? 0 : 6);
       assert.equal(await page.$$eval('.portal-material-actions a',links=>links.length),state === 'manifest' ? 10 : 0);
-      assert.equal(await page.$$eval('.portal-material-draft',notes=>notes.length),state === 'wrong-owner' ? 0 : 1);
+      assert.equal(await page.$$eval('.portal-material-draft',notes=>notes.length),['wrong-owner','missing-owner'].includes(state) ? 0 : 1);
+      if (state === 'untrusted-host') assert.equal(await page.$eval('#contract-download-link',link=>link.hasAttribute('href')),false);
       assert.equal(await page.$$eval('#portal-materials-grid img',images=>images.length),0);
       if (state === 'manifest') {
         assert.equal(await page.$$eval('.portal-material-preview',buttons=>buttons.length),6);

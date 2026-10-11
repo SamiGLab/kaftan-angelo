@@ -9,7 +9,16 @@
   let transactions = [];
   const sessionKey = 'kaftan_portal_view_v1';
   const sessionLifetime = 30 * 60 * 1000;
+  let expiresAt = 0;
+  let expiryTimer;
+  function armExpiry(expires) {
+    expiresAt = expires;
+    clearTimeout(expiryTimer);
+    expiryTimer = setTimeout(logout, Math.max(0, expires-Date.now()));
+  }
   function clearSession() {
+    clearTimeout(expiryTimer);
+    expiresAt = 0;
     try { sessionStorage.removeItem(sessionKey); } catch {}
   }
   function rememberView(data) {
@@ -18,7 +27,26 @@
     for (const field of ['success','code','name','type','contact_person','phone','iban','guests','paid','cleared','holding','sales','txs','materials','contract_url']) {
       if (Object.hasOwn(data, field)) view[field] = data[field];
     }
-    try { sessionStorage.setItem(sessionKey, JSON.stringify({expires: Date.now() + sessionLifetime, data:view})); } catch {}
+    const pick = (entry,fields) => Object.fromEntries(fields.filter(field=>Object.hasOwn(entry,field)).map(field=>[field,entry[field]]));
+    view.txs = Array.isArray(data.txs) ? data.txs.filter(entry=>entry && typeof entry==='object').map(entry=>pick(entry,['date','item','amount','comm','status'])) : [];
+    if (Array.isArray(data.materials)) {
+      view.materials = data.materials.filter(entry=>entry && typeof entry==='object').map(entry=>pick(entry,['partner_code','kind','language','pdf_url','png_url','preview_url']));
+    } else if (data.materials && typeof data.materials==='object') {
+      view.materials = pick(data.materials,['code','draft','status']);
+      view.materials.files = Array.isArray(data.materials.files) ? data.materials.files.filter(entry=>entry && typeof entry==='object').map(entry=>pick(entry,['format','language','type','url'])) : [];
+    }
+    const iban = String(data.iban || '').replace(/\s/g,'');
+    view.iban = iban ? iban.slice(0,4)+'••••'+iban.slice(-4) : '';
+    const expires = Date.now() + sessionLifetime;
+    armExpiry(expires);
+    try { sessionStorage.setItem(sessionKey, JSON.stringify({expires, data:view})); } catch {}
+  }
+  function safeDocumentUrl(value, contract = false) {
+    try {
+      const url = new URL(value);
+      const prefix = contract ? '/storage/v1/object/sign/partner-contracts/' : '/storage/v1/object/public/partner-materials/';
+      return url.origin === 'https://bezlzeojivucnqkfjpwo.supabase.co' && !url.username && !url.password && url.pathname.startsWith(prefix) ? url.href : null;
+    } catch { return null; }
   }
   const previewDialog = document.createElement('dialog');
   previewDialog.className = 'portal-preview-dialog';
@@ -59,7 +87,7 @@
     const grid = $('portal-materials-grid');
     grid.replaceChildren();
     const manifest = data.materials;
-    const owned = !manifest?.code || manifest.code === data.code;
+    const owned = manifest?.code === data.code;
     if (owned && manifest?.status === 'paused') {
       const notice = document.createElement('p');
       notice.className = 'portal-material-draft';
@@ -76,12 +104,10 @@
       draft.textContent = t('Draft materials — check the details before printing or sending.','Tervezet — nyomtatás vagy küldés előtt ellenőrizze az adatokat.');
       grid.append(draft);
     }
-    const safeUrl = value => {
-      try { const url = new URL(value); return url.protocol === 'https:' && !url.username && !url.password ? url.href : null; } catch { return null; }
-    };
+    const safeUrl = safeDocumentUrl;
     for (const format of ['card','poster','mobile']) {
       for (const language of ['hu','en']) {
-        const entry = materials.find(item => item && item.kind === (format === 'card' ? 'print' : format) && item.language === language && (!item.partner_code || item.partner_code === data.code));
+        const entry = materials.find(item => item && item.kind === (format === 'card' ? 'print' : format) && item.language === language && item.partner_code === data.code);
         const matching = files.filter(file => file && file.format === format && file.language === language);
         const pdf = safeUrl(matching.find(file => file.type === 'pdf')?.url) || safeUrl(entry?.pdf_url);
         const png = safeUrl(matching.find(file => file.type === 'png')?.url) || safeUrl(entry?.png_url);
@@ -186,8 +212,7 @@
     else payout.removeAttribute('href');
     const message = t(`Visit Kaftan Angelo for leather, shearling and fur outerwear. Present VIP code ${data.code} for 10% in-store savings.\nKossuth Lajos u. 18, Budapest 1053\nhttps://kaftanangelo.com/en/`, `Látogasson el a Kaftan Angelo bőr-, irha- és szőrmeüzletébe. Partnerkód: ${data.code}, 10% bolti kedvezmény.\nKossuth Lajos u. 18, Budapest 1053\nhttps://kaftanangelo.com/`);
     $('share-voucher-wa').href = 'https://wa.me/?text=' + encodeURIComponent(message);
-    let contract = null;
-    try { const url = new URL(data.contract_url); if (url.protocol === 'https:') contract = url.href; } catch {}
+    const contract = safeDocumentUrl(data.contract_url, true);
     $('contract-ready-box').style.display = contract ? 'flex' : 'none';
     $('contract-pending-box').style.display = contract ? 'none' : 'flex';
     if (contract) $('contract-download-link').href = contract;
@@ -235,13 +260,16 @@
       form.removeAttribute('aria-busy');
     }
   });
-  $('portal-logout-btn').addEventListener('click', () => {
+  function logout() {
     clearSession();
     transactions = [];
     if (previewDialog.open) previewDialog.close();
     previewBody.replaceChildren();
     $('portal-materials-grid').replaceChildren();
     $('transactions-tbody').replaceChildren();
+    for (const id of ['partner-display-code','partner-display-name','partner-display-type','partner-contact-person','partner-phone','partner-iban','stat-guests','stat-paid','stat-cleared','stat-holding','payout-amount-preview','voucher-code-val','portal-results-status']) text(id,'');
+    text('partner-display-name',t('Partner account','Partnerfiók'));
+    for (const id of ['request-payout-btn','share-voucher-wa','contract-download-link']) $(id).removeAttribute('href');
     $('portal-dashboard').hidden = true;
     $('portal-login-gate').hidden = false;
     form.reset();
@@ -249,6 +277,13 @@
     $('toggle-pin').setAttribute('aria-pressed','false');
     $('toggle-pin').textContent = t('Show PIN','PIN megjelenítése');
     $('partner-code-input').focus();
+  }
+  $('portal-logout-btn').addEventListener('click', logout);
+  document.addEventListener('visibilitychange', () => {
+    if (expiresAt && Date.now() >= expiresAt) logout();
+  });
+  window.addEventListener('pageshow', () => {
+    if (expiresAt && Date.now() >= expiresAt) logout();
   });
   $('toggle-pin').addEventListener('click', event => {
     const visible = $('partner-pin-input').type === 'password';
@@ -268,6 +303,7 @@
     const saved = JSON.parse(sessionStorage.getItem(sessionKey) || 'null');
     if (saved?.expires > Date.now() && saved.expires <= Date.now() + sessionLifetime && saved.data?.success === true && typeof saved.data.code === 'string') {
       populate(saved.data);
+      armExpiry(saved.expires);
     } else clearSession();
   } catch { clearSession(); }
 })();

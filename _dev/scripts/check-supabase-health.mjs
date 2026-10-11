@@ -18,6 +18,10 @@ export async function checkHealth({ fetchImpl = fetch, sleep = ms => new Promise
         redirect: 'error', signal: AbortSignal.timeout(10_000),
       });
       if (!response.ok) {
+        if (response.status === 401 || response.status === 403) {
+          const denied = await response.json().catch(() => null);
+          if (denied?.code === '42501') return {ok:true,anonymousRowsVisible:false};
+        }
         const error = new Error(`Supabase database health check failed (HTTP ${response.status}).`);
         error.retryable = response.status === 429 || response.status >= 500;
         throw error;

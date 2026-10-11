@@ -18,6 +18,12 @@ test('does not expose returned partner data', async () => {
   await assert.rejects(checkHealth({ fetchImpl: async () => new Response('[{"id":"private-test-id"}]') }), /Anonymous partner rows are visible/);
 });
 
+test('explicit database permission denial is healthy; other forbidden errors are not', async () => {
+  assert.equal((await checkHealth({fetchImpl:async()=>new Response('{"code":"42501"}',{status:403})})).ok,true);
+  assert.equal((await checkHealth({fetchImpl:async()=>new Response('{"code":"42501"}',{status:401})})).ok,true);
+  await assert.rejects(checkHealth({fetchImpl:async()=>new Response('{"code":"unknown"}',{status:403})}),/HTTP 403/);
+});
+
 test('retries transient failure but not invalid credentials', async () => {
   let attempts = 0;
   await checkHealth({ sleep: async () => {}, fetchImpl: async () => ++attempts === 1 ? new Response('', { status: 503 }) : new Response('[]') });
