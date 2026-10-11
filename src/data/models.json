@@ -9,6 +9,38 @@
     "pictures": {
       "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.avif 480w, /assets/images/noi-sarga-borkabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.webp 480w, /assets/images/noi-sarga-borkabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Sárga női bőrkabát\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-sarga-borkabat-budapest.webp\" width=\"900\"></picture>",
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.avif 480w, /assets/images/noi-sarga-borkabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.webp 480w, /assets/images/noi-sarga-borkabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Yellow women’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-sarga-borkabat-budapest.webp\" width=\"900\"></picture>"
+    },
+    "intro": {
+      "hu": "A sárga női bőrkabát karakteres színével a ruhatár hangsúlyos darabja lehet. Nézze meg a termék fotóját, és érdeklődjön a budapesti üzletben a keresett méretről.",
+      "en": "This yellow women’s leather jacket offers a colourful alternative to darker outerwear. Explore its photo and ask our Budapest store about your preferred size."
+    },
+    "advice": {
+      "hu": "Próbálja fel a kabátot a hozzá viselni kívánt felsővel. Ellenőrizze a vállak illeszkedését és azt, hogy a sárga árnyalat hogyan mutat természetes fényben.",
+      "en": "Try the jacket with the layer you intend to wear underneath. Check the shoulder fit and how the yellow shade looks in natural light."
+    },
+    "category": {
+      "hu": {
+        "url": "/noi-borkabatok/",
+        "name": "Női bőrkabátok"
+      },
+      "en": {
+        "url": "/en/womens-leather-jackets/",
+        "name": "Women’s leather jackets"
+      }
+    },
+    "guide": {
+      "hu": {
+        "url": "/utmutatok/borkabat-meret-utmutato/",
+        "name": "Bőrkabát méretútmutató"
+      },
+      "en": {
+        "url": "/en/guides/leather-jacket-fit-guide/",
+        "name": "Leather jacket fit guide"
+      }
+    },
+    "description": {
+      "hu": "Sárga női bőrkabát fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
+      "en": "Yellow women’s leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
     }
   },
   {
@@ -21,6 +53,38 @@
     "pictures": {
       "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.avif 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.webp 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Szegecses női bőrdzseki\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-szegecses-bordzseki-budapest.webp\" width=\"900\"></picture>",
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.avif 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.webp 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Studded women’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-szegecses-bordzseki-budapest.webp\" width=\"900\"></picture>"
+    },
+    "intro": {
+      "hu": "A szegecses női bőrdzseki díszítése hangsúlyosabb megjelenést ad. A fotó segít kiválasztani a darabot, amelyről ár- és méretinformációt kérhet üzletünktől.",
+      "en": "Studded details give this women’s leather jacket a distinctive look. Use the photo to identify the piece when asking our store about price and sizing."
+    },
+    "advice": {
+      "hu": "Nézze meg a szegecsek elhelyezkedését, és próbánál ellenőrizze, hogy a dzseki kényelmesen záródik-e. A váll és a kar szabad mozgása fontosabb, mint a méretcímke.",
+      "en": "Look at the placement of the studs and check that the jacket closes comfortably during a fitting. Shoulder and arm movement matter more than the size label."
+    },
+    "category": {
+      "hu": {
+        "url": "/noi-borkabatok/",
+        "name": "Női bőrkabátok"
+      },
+      "en": {
+        "url": "/en/womens-leather-jackets/",
+        "name": "Women’s leather jackets"
+      }
+    },
+    "guide": {
+      "hu": {
+        "url": "/utmutatok/borkabat-meret-utmutato/",
+        "name": "Bőrkabát méretútmutató"
+      },
+      "en": {
+        "url": "/en/guides/leather-jacket-fit-guide/",
+        "name": "Leather jacket fit guide"
+      }
+    },
+    "description": {
+      "hu": "Szegecses női bőrdzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
+      "en": "Studded women’s leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
     }
   },
   {
@@ -33,6 +97,38 @@
     "pictures": {
       "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Férfi motoros bőrdzseki\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-motoros-bordzseki-budapest.webp\" width=\"675\"></picture>",
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Men’s biker leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-motoros-bordzseki-budapest.webp\" width=\"675\"></picture>"
+    },
+    "intro": {
+      "hu": "A férfi motoros bőrdzseki a motoros stílust keresők számára bemutatott modell. A termékfotó alapján közvetlenül érdeklődhet az üzletben.",
+      "en": "This men’s biker leather jacket is a model for those looking for biker styling. Ask our store about the piece shown in the product photo."
+    },
+    "advice": {
+      "hu": "Próbánál emelje előre a karját, és ellenőrizze az ujjak és a váll kényelmét. A motoros fazon megnevezése önmagában nem jelent minősített motoros védőruházatot.",
+      "en": "During a fitting, reach your arms forward and check the sleeves and shoulders. Biker styling alone does not establish certification as protective motorcycle clothing."
+    },
+    "category": {
+      "hu": {
+        "url": "/ferfi-borkabatok/",
+        "name": "Férfi bőrkabátok"
+      },
+      "en": {
+        "url": "/en/mens-leather-jackets/",
+        "name": "Men’s leather jackets"
+      }
+    },
+    "guide": {
+      "hu": {
+        "url": "/utmutatok/borkabat-meret-utmutato/",
+        "name": "Bőrkabát méretútmutató"
+      },
+      "en": {
+        "url": "/en/guides/leather-jacket-fit-guide/",
+        "name": "Leather jacket fit guide"
+      }
+    },
+    "description": {
+      "hu": "Férfi motoros bőrdzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
+      "en": "Men’s biker leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
     }
   },
   {
@@ -45,6 +141,38 @@
     "pictures": {
       "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Klasszikus férfi bőrdzseki\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-klasszikus-bordzseki-budapest.webp\" width=\"675\"></picture>",
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Classic men’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-klasszikus-bordzseki-budapest.webp\" width=\"675\"></picture>"
+    },
+    "intro": {
+      "hu": "A klasszikus férfi bőrdzseki a visszafogottabb stílust kedvelőknek bemutatott darab. Tekintse meg a fotót, majd egyeztessen üzletünkkel a próbáról.",
+      "en": "This classic men’s leather jacket is presented for those who prefer understated styling. View the photo and contact our store about trying it on."
+    },
+    "advice": {
+      "hu": "A kabátot inggel vagy a megszokott hétköznapi felsővel is próbálja fel. Ellenőrizze az ujjak hosszát és a kabát aljának helyzetét ülés közben is.",
+      "en": "Try it over a shirt or your usual everyday layer. Check sleeve length and where the hem sits when you are seated as well as standing."
+    },
+    "category": {
+      "hu": {
+        "url": "/ferfi-borkabatok/",
+        "name": "Férfi bőrkabátok"
+      },
+      "en": {
+        "url": "/en/mens-leather-jackets/",
+        "name": "Men’s leather jackets"
+      }
+    },
+    "guide": {
+      "hu": {
+        "url": "/utmutatok/borkabat-meret-utmutato/",
+        "name": "Bőrkabát méretútmutató"
+      },
+      "en": {
+        "url": "/en/guides/leather-jacket-fit-guide/",
+        "name": "Leather jacket fit guide"
+      }
+    },
+    "description": {
+      "hu": "Klasszikus férfi bőrdzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
+      "en": "Classic men’s leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
     }
   },
   {
@@ -57,6 +185,38 @@
     "pictures": {
       "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.avif 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.webp 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Mintás férfi bőrdzseki\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-mintas-bordzseki-budapest.webp\" width=\"900\"></picture>",
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.avif 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.webp 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Patterned men’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-mintas-bordzseki-budapest.webp\" width=\"900\"></picture>"
+    },
+    "intro": {
+      "hu": "A mintás férfi bőrdzseki a felület mintázatával különül el az egyszerűbb modellektől. A fotó alapján kérhet további információt a konkrét darabról.",
+      "en": "The patterned surface sets this men’s leather jacket apart from plainer styles. Ask for further information about the specific piece shown in the photo."
+    },
+    "advice": {
+      "hu": "A mintázatot közelről és természetes fényben is nézze meg. Ha más darabokkal párosítaná, a próbára hozza el a hozzá viselni kívánt felsőt.",
+      "en": "Look at the pattern up close and in natural light. Bring the layer you plan to wear with it to see how the pieces work together."
+    },
+    "category": {
+      "hu": {
+        "url": "/ferfi-borkabatok/",
+        "name": "Férfi bőrkabátok"
+      },
+      "en": {
+        "url": "/en/mens-leather-jackets/",
+        "name": "Men’s leather jackets"
+      }
+    },
+    "guide": {
+      "hu": {
+        "url": "/utmutatok/borkabat-meret-utmutato/",
+        "name": "Bőrkabát méretútmutató"
+      },
+      "en": {
+        "url": "/en/guides/leather-jacket-fit-guide/",
+        "name": "Leather jacket fit guide"
+      }
+    },
+    "description": {
+      "hu": "Mintás férfi bőrdzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
+      "en": "Patterned men’s leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
     }
   },
   {
@@ -69,6 +229,38 @@
     "pictures": {
       "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.avif 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.webp 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Sötétbarna férfi irhadzseki\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-sotetbarna-irhadzseki-budapest.webp\" width=\"900\"></picture>",
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.avif 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.webp 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Dark brown men’s shearling jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-sotetbarna-irhadzseki-budapest.webp\" width=\"900\"></picture>"
+    },
+    "intro": {
+      "hu": "A sötétbarna férfi irhadzseki a rövidebb irha felsőruhák között bemutatott modell. Fotója alapján érdeklődhet az aktuális méretekről és árról.",
+      "en": "This dark brown men’s shearling jacket is presented among our shorter shearling styles. Use its photo to ask about current sizes and price."
+    },
+    "advice": {
+      "hu": "Próbálja fel a dzsekit téli felsővel, és ellenőrizze a mozgásteret a vállnál. A sötétbarna árnyalatot személyesen is érdemes megnézni.",
+      "en": "Try it over a winter layer and check room to move at the shoulders. View the dark brown shade in person before deciding."
+    },
+    "category": {
+      "hu": {
+        "url": "/irhakabatok/",
+        "name": "Irhakabátok"
+      },
+      "en": {
+        "url": "/en/shearling-jackets/",
+        "name": "Shearling jackets"
+      }
+    },
+    "guide": {
+      "hu": {
+        "url": "/utmutatok/irhakabat-valasztas/",
+        "name": "Irhakabát választása"
+      },
+      "en": {
+        "url": "/en/guides/choosing-shearling-coat/",
+        "name": "Choosing a shearling coat"
+      }
+    },
+    "description": {
+      "hu": "Sötétbarna férfi irhadzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
+      "en": "Dark brown men’s shearling jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
     }
   },
   {
@@ -81,6 +273,38 @@
     "pictures": {
       "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Világosbarna férfi irhakabát\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-vilagosbarna-irhakabat-budapest.webp\" width=\"900\"></picture>",
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Light brown men’s shearling coat\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-vilagosbarna-irhakabat-budapest.webp\" width=\"900\"></picture>"
+    },
+    "intro": {
+      "hu": "A világosbarna férfi irhakabát a világosabb árnyalatú téli felsőruhák iránt érdeklődőknek bemutatott darab. Elérhetőségéről üzletünk ad tájékoztatást.",
+      "en": "This light brown men’s shearling coat is presented for those considering lighter winter outerwear. Our store can confirm availability of the pictured piece."
+    },
+    "advice": {
+      "hu": "A világos árnyalatnál kérdezzen rá az ajánlott ápolásra. Próbánál ellenőrizze a kabát hosszát és a kényelmet a megszokott téli ruházattal.",
+      "en": "Ask about suitable care for the lighter shade. Check the coat’s length and comfort with your usual winter clothing during a fitting."
+    },
+    "category": {
+      "hu": {
+        "url": "/irhakabatok/",
+        "name": "Irhakabátok"
+      },
+      "en": {
+        "url": "/en/shearling-jackets/",
+        "name": "Shearling jackets"
+      }
+    },
+    "guide": {
+      "hu": {
+        "url": "/utmutatok/irhakabat-valasztas/",
+        "name": "Irhakabát választása"
+      },
+      "en": {
+        "url": "/en/guides/choosing-shearling-coat/",
+        "name": "Choosing a shearling coat"
+      }
+    },
+    "description": {
+      "hu": "Világosbarna férfi irhakabát fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
+      "en": "Light brown men’s shearling coat from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
     }
   },
   {
@@ -93,6 +317,38 @@
     "pictures": {
       "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Barna férfi irhakabát\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-barna-irhakabat-budapest.webp\" width=\"900\"></picture>",
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Brown men’s shearling coat\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-barna-irhakabat-budapest.webp\" width=\"900\"></picture>"
+    },
+    "intro": {
+      "hu": "A barna férfi irhakabát a barna téli kabátot keresőknek bemutatott modell. Nézze meg a fotót, és a konkrét darabról kérdezze budapesti üzletünket.",
+      "en": "This brown men’s shearling coat is presented for those looking for brown winter outerwear. View the photo and ask our Budapest store about the specific piece."
+    },
+    "advice": {
+      "hu": "Ellenőrizze, hogyan illeszkedik a kabát a mellkasnál és csípőnél. Üljön le benne, és próbálja meg a karját mozgatni a téli rétegekkel együtt.",
+      "en": "Check the fit through the chest and hips. Sit down in the coat and move your arms while wearing the winter layers you plan to use."
+    },
+    "category": {
+      "hu": {
+        "url": "/irhakabatok/",
+        "name": "Irhakabátok"
+      },
+      "en": {
+        "url": "/en/shearling-jackets/",
+        "name": "Shearling jackets"
+      }
+    },
+    "guide": {
+      "hu": {
+        "url": "/utmutatok/irhakabat-valasztas/",
+        "name": "Irhakabát választása"
+      },
+      "en": {
+        "url": "/en/guides/choosing-shearling-coat/",
+        "name": "Choosing a shearling coat"
+      }
+    },
+    "description": {
+      "hu": "Barna férfi irhakabát fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
+      "en": "Brown men’s shearling coat from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
     }
   },
   {
@@ -105,6 +361,38 @@
     "pictures": {
       "hu": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.avif 480w, /assets/images/noi-feher-szormemelleny-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.webp 480w, /assets/images/noi-feher-szormemelleny-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Női fehér szőrmemellény\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-feher-szormemelleny-budapest.webp\" width=\"900\"></picture>",
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.avif 480w, /assets/images/noi-feher-szormemelleny-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.webp 480w, /assets/images/noi-feher-szormemelleny-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"White women’s fur vest\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-feher-szormemelleny-budapest.webp\" width=\"900\"></picture>"
+    },
+    "intro": {
+      "hu": "A fehér női szőrmemellény ujjatlan alternatíva a kabátok mellett. A fotón bemutatott darab áráról és elérhetőségéről közvetlenül érdeklődhet.",
+      "en": "This white women’s fur vest offers a sleeveless alternative to a coat. Contact our store about the price and availability of the piece in the photo."
+    },
+    "advice": {
+      "hu": "Próbálja fel a mellényt a hozzá viselni kívánt felsővel. Ellenőrizze a karöltő kényelmét, és kérdezzen rá a tisztításra és a nyári tárolásra.",
+      "en": "Try the vest over your intended layer. Check comfort around the arm openings and ask about cleaning and storage outside the season."
+    },
+    "category": {
+      "hu": {
+        "url": "/szormekabatok/",
+        "name": "Szőrmekabátok és mellények"
+      },
+      "en": {
+        "url": "/en/fur-coats/",
+        "name": "Fur coats and vests"
+      }
+    },
+    "guide": {
+      "hu": {
+        "url": "/utmutatok/szormekabat-tarolas/",
+        "name": "Szőrmekabát tárolása"
+      },
+      "en": {
+        "url": "/en/guides/fur-coat-storage/",
+        "name": "Fur coat storage"
+      }
+    },
+    "description": {
+      "hu": "Női fehér szőrmemellény fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
+      "en": "White women’s fur vest from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
     }
   },
   {
@@ -117,6 +405,38 @@
     "pictures": {
       "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/fekete-borov-budapest-480.avif 480w\"><source type=\"image/webp\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/fekete-borov-budapest-480.webp 480w\"><img src=\"/fekete-borov-budapest.webp\" alt=\"Fekete bőröv\" width=\"675\" height=\"900\" loading=\"lazy\" decoding=\"async\"></picture>",
       "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/fekete-borov-budapest-480.avif 480w\"><source type=\"image/webp\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/fekete-borov-budapest-480.webp 480w\"><img src=\"/fekete-borov-budapest.webp\" alt=\"Black leather belt\" width=\"675\" height=\"900\" loading=\"lazy\" decoding=\"async\"></picture>"
+    },
+    "intro": {
+      "hu": "A fekete bőröv a bőr kiegészítőink között bemutatott darab. A termék fotójával érdeklődhet a megfelelő hosszúságról és az aktuális árról.",
+      "en": "This black leather belt is a piece from our leather accessories selection. Send its photo when asking about the appropriate length and current price."
+    },
+    "advice": {
+      "hu": "Mérje meg egy jól illeszkedő öv használatban lévő lyukáig a hosszt. Az üzletben ellenőrizze az öv szélességét a nadrág bújtatóihoz és a csat használatát.",
+      "en": "Measure a belt that fits you to the hole you use. In store, check the belt width against your trouser loops and try the buckle."
+    },
+    "category": {
+      "hu": {
+        "url": "/kollekciok/",
+        "name": "Kollekciók és kiegészítők"
+      },
+      "en": {
+        "url": "/en/collections/",
+        "name": "Collections and accessories"
+      }
+    },
+    "guide": {
+      "hu": {
+        "url": "/utmutatok/valodi-bor-felismerese/",
+        "name": "A valódi bőr felismerése"
+      },
+      "en": {
+        "url": "/en/guides/how-to-tell-real-leather/",
+        "name": "How to tell real leather"
+      }
+    },
+    "description": {
+      "hu": "Fekete bőröv fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
+      "en": "Black leather belt from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
     }
   },
   {
@@ -129,6 +449,38 @@
     "pictures": {
       "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.avif 480w, /assets/images/barna-bor-penztarca-budapest-800.avif 800w\"><source type=\"image/webp\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.webp 480w, /assets/images/barna-bor-penztarca-budapest-800.webp 800w\"><img src=\"/barna-bor-penztarca-budapest.webp\" alt=\"Barna bőr pénztárca\" width=\"900\" height=\"900\" loading=\"lazy\" decoding=\"async\"></picture>",
       "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.avif 480w, /assets/images/barna-bor-penztarca-budapest-800.avif 800w\"><source type=\"image/webp\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.webp 480w, /assets/images/barna-bor-penztarca-budapest-800.webp 800w\"><img src=\"/barna-bor-penztarca-budapest.webp\" alt=\"Brown leather wallet\" width=\"900\" height=\"900\" loading=\"lazy\" decoding=\"async\"></picture>"
+    },
+    "intro": {
+      "hu": "A barna bőr pénztárca a mindennapi bőr kiegészítők között bemutatott termék. A fotó segítségével kérhet tájékoztatást a konkrét darabról.",
+      "en": "This brown leather wallet is presented among our everyday leather accessories. Use the photo to ask our store about the specific piece."
+    },
+    "advice": {
+      "hu": "Vásárlás előtt ellenőrizze a méreteket és a belső elrendezést. Kérdezzen rá, hogyan férnek el benne a kártyái és bankjegyei; a fotó nem mutat minden belső részletet.",
+      "en": "Check dimensions and the interior layout before buying. Ask how your cards and banknotes will fit; the photo does not show every internal detail."
+    },
+    "category": {
+      "hu": {
+        "url": "/kollekciok/",
+        "name": "Kollekciók és kiegészítők"
+      },
+      "en": {
+        "url": "/en/collections/",
+        "name": "Collections and accessories"
+      }
+    },
+    "guide": {
+      "hu": {
+        "url": "/utmutatok/valodi-bor-felismerese/",
+        "name": "A valódi bőr felismerése"
+      },
+      "en": {
+        "url": "/en/guides/how-to-tell-real-leather/",
+        "name": "How to tell real leather"
+      }
+    },
+    "description": {
+      "hu": "Barna bőr pénztárca fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
+      "en": "Brown leather wallet from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
     }
   }
 ]

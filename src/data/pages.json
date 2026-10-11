@@ -164,7 +164,7 @@
     "path": "/noi-borkabatok/",
     "lang": "hu",
     "title": "Női bőrkabátok Budapest | Kaftan Angelo",
-    "description": "Női valódi bőrkabátok és bőrdzsekik Budapesten. Próbálja fel a Kaftan Angelo üzletben.",
+    "description": "Női bőrkabátok fotókkal: sárga és szegecses modellek a Kaftan Angelo kollekciójából. Érdeklődjön a méretekről, és próbálja fel őket budapesti üzletünkben.",
     "canonical": "https://kaftanangelo.com/noi-borkabatok/",
     "ogImage": "https://kaftanangelo.com/noi-sarga-borkabat-budapest.webp",
     "counterpart": "/en/womens-leather-jackets/",
@@ -195,13 +195,13 @@
         "url": "/noi-borkabatok/"
       }
     ],
-    "modifiedDate": "2026-10-09"
+    "modifiedDate": "2026-10-11"
   },
   "/irhakabatok/": {
     "path": "/irhakabatok/",
     "lang": "hu",
     "title": "Irhakabátok Budapest | Kaftan Angelo",
-    "description": "Női és férfi irhakabátok, irhadzsekik a Kaftan Angelo budapesti üzletében.",
+    "description": "Irhakabátok és irhadzsekik fotókkal, választási és ápolási útmutatókkal. Kérdezzen a méretekről és elérhetőségről a Kaftan Angelo budapesti üzletében.",
     "canonical": "https://kaftanangelo.com/irhakabatok/",
     "ogImage": "https://kaftanangelo.com/womens-shearling-jacket-budapest.webp",
     "counterpart": "/en/shearling-jackets/",
@@ -232,13 +232,13 @@
         "url": "/irhakabatok/"
       }
     ],
-    "modifiedDate": "2026-10-09"
+    "modifiedDate": "2026-10-11"
   },
   "/szormekabatok/": {
     "path": "/szormekabatok/",
     "lang": "hu",
     "title": "Szőrmekabátok Budapest | Kaftan Angelo",
-    "description": "Női szőrmekabátok, szőrmedzsekik és mellények Budapest belvárosában.",
+    "description": "Szőrmekabátok, dzsekik és mellények a Kaftan Angelo kollekciójában. Nézze meg a fotókat, olvassa el tárolási útmutatónkat, és érdeklődjön budapesti üzletünkben.",
     "canonical": "https://kaftanangelo.com/szormekabatok/",
     "ogImage": "https://kaftanangelo.com/womens-fur-coat-budapest.webp",
     "counterpart": "/en/fur-coats/",
@@ -268,7 +268,8 @@
         "name": "Szőrmekabátok Budapest",
         "url": "/szormekabatok/"
       }
-    ]
+    ],
+    "modifiedDate": "2026-10-11"
   },
   "/gyik/": {
     "path": "/gyik/",
@@ -397,7 +398,7 @@
     "path": "/kollekciok/",
     "lang": "hu",
     "title": "Bőr, irha, szőrme és kiegészítők | Kaftan Angelo Budapest",
-    "description": "Női és férfi bőrkabátok, irhakabátok, szőrmekabátok és bőr kiegészítők Budapest belvárosában.",
+    "description": "Fedezze fel női és férfi bőrkabátjainkat, irha- és szőrmemodelljeinket, valamint bőr kiegészítőinket. Fotók, termékoldalak és személyes próba Budapesten.",
     "canonical": "https://kaftanangelo.com/kollekciok/",
     "ogImage": "https://kaftanangelo.com/kaftan-angelo-shearling-fur-budapest.webp",
     "counterpart": "/en/collections/",
@@ -423,7 +424,8 @@
         "name": "Bőr, irha és szőrme",
         "url": "/kollekciok/"
       }
-    ]
+    ],
+    "modifiedDate": "2026-10-11"
   },
   "/egyedi-rendeles/": {
     "path": "/egyedi-rendeles/",
@@ -555,7 +557,7 @@
     "path": "/en/shearling-jackets/",
     "lang": "en",
     "title": "Shearling Jackets Budapest | Kaftan Angelo",
-    "description": "Women’s and men’s shearling jackets and coats at Kaftan Angelo in Budapest.",
+    "description": "Explore shearling jacket and coat photos with advice on fit and care. Ask Kaftan Angelo in Budapest about current sizes, prices and in-store availability.",
     "canonical": "https://kaftanangelo.com/en/shearling-jackets/",
     "ogImage": "https://kaftanangelo.com/womens-shearling-jacket-budapest.webp",
     "counterpart": "/irhakabatok/",
@@ -586,7 +588,7 @@
         "url": "/en/shearling-jackets/"
       }
     ],
-    "modifiedDate": "2026-10-09"
+    "modifiedDate": "2026-10-11"
   },
   "/en/custom-orders/": {
     "path": "/en/custom-orders/",
@@ -624,7 +626,7 @@
     "path": "/en/collections/",
     "lang": "en",
     "title": "Leather, Shearling, Fur & Accessories | Kaftan Angelo Budapest",
-    "description": "Women’s and men’s leather jackets, shearling, fur and leather accessories in central Budapest.",
+    "description": "Explore women’s and men’s leather jackets, shearling, fur and leather accessories. View product photos and arrange an in-store fitting in central Budapest.",
     "canonical": "https://kaftanangelo.com/en/collections/",
     "ogImage": "https://kaftanangelo.com/kaftan-angelo-shearling-fur-budapest.webp",
     "counterpart": "/kollekciok/",
@@ -650,7 +652,8 @@
         "name": "Leather, shearling and fur",
         "url": "/en/collections/"
       }
-    ]
+    ],
+    "modifiedDate": "2026-10-11"
   },
   "/en/leather-jackets-budapest/": {
     "path": "/en/leather-jackets-budapest/",
@@ -720,7 +723,7 @@
     "path": "/en/fur-coats/",
     "lang": "en",
     "title": "Fur Coats Budapest | Kaftan Angelo",
-    "description": "Women’s fur coats, jackets and vests in central Budapest at Kaftan Angelo.",
+    "description": "Explore fur coats, jackets and vests from Kaftan Angelo. View photos, read our storage guide and ask about the collection at our central Budapest store.",
     "canonical": "https://kaftanangelo.com/en/fur-coats/",
     "ogImage": "https://kaftanangelo.com/womens-fur-coat-budapest.webp",
     "counterpart": "/szormekabatok/",
@@ -750,7 +753,8 @@
         "name": "Fur Coats Budapest",
         "url": "/en/fur-coats/"
       }
-    ]
+    ],
+    "modifiedDate": "2026-10-11"
   },
   "/en/faq/": {
     "path": "/en/faq/",
@@ -912,7 +916,7 @@
     "path": "/en/womens-leather-jackets/",
     "lang": "en",
     "title": "Women’s Leather Jackets Budapest | Kaftan Angelo",
-    "description": "Women’s genuine leather jackets in Budapest. Explore styles and try them on at Kaftan Angelo.",
+    "description": "Browse women’s leather jacket photos, including yellow and studded styles. Ask about sizes and try your preferred piece at Kaftan Angelo in Budapest.",
     "canonical": "https://kaftanangelo.com/en/womens-leather-jackets/",
     "ogImage": "https://kaftanangelo.com/noi-sarga-borkabat-budapest.webp",
     "counterpart": "/noi-borkabatok/",
@@ -943,7 +947,7 @@
         "url": "/en/womens-leather-jackets/"
       }
     ],
-    "modifiedDate": "2026-10-09"
+    "modifiedDate": "2026-10-11"
   },
   "/en/mens-leather-jackets/": {
     "path": "/en/mens-leather-jackets/",
