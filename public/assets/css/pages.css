@@ -1983,3 +1983,24 @@ button > .ui-icon:only-child { margin: 0; }
 }
 
 .guide-search-section .pagefind-ui .pagefind-ui__form::before { -webkit-mask-image: url('/assets/icons/search.svg'); mask-image: url('/assets/icons/search.svg'); mask-size: contain; mask-repeat: no-repeat; }
+
+/* Warm cream surfaces with dark brand framing. */
+
+:root {--bg:#f7f2e9;--bg2:#fffdf8;--bg3:#eee4d5;--cream:#302116;--dim:#675546;--bright:#77502b;--line:#5c402329;--product-surface:#e8e5df;--panel:#fffdf8;--text:#302116;}
+body{background:#f7f2e9;}
+.site-header,.footer,.home-hero,.page-hero,.category-card,.consent-banner {--bg:#1b120c;--bg2:#241a12;--cream:#efe4d2;--dim:#c9bba5;--bright:#dcb27c;--line:#efe4d229;color:var(--cream);}
+.site-header{background:#1b120c;}.footer{background:#1b120c;}
+.announcement{background:#dcb27c;color:#1b120c;--bg:#1b120c;}
+.split-section{background:#eee5d8;}
+.partner-teaser{background:#f0e8dc;}
+.mini-panel{background:#fffdf8;border-color:#5c402329;}
+.store-cta{background:#eadcca;}
+.newsletter{background:#fffdf8;}
+main .btn-primary{background:#684329;border-color:#684329;color:#fff9ee;}
+main .btn-primary:hover{background:#4d301d;color:#fff9ee;}
+.home-hero .btn-primary,.page-hero .btn-primary{background:#dcb27c;border-color:#dcb27c;color:#1b120c;}
+.home-hero .btn-primary:hover,.page-hero .btn-primary:hover{background:#efe4d2;color:#1b120c;}
+main .btn-ghost{border-color:#77502b88;}
+.home-hero .btn-ghost,.page-hero .btn-ghost{border-color:#dcb27c88;}
+.guide-card{box-shadow:0 4px 18px #54391e06;}
+
