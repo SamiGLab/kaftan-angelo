@@ -1,5 +1,5 @@
-import { Menu, X, Search, SlidersHorizontal, ChevronLeft, ChevronRight, ZoomIn, MapPin, Route, Phone, Clock, Scissors, Ruler, BookOpen, Store, Mail } from 'lucide';
-const nodes = { menu: Menu, x: X, search: Search, filter: SlidersHorizontal, previous: ChevronLeft, next: ChevronRight, zoom: ZoomIn, location: MapPin, route: Route, phone: Phone, clock: Clock, scissors: Scissors, ruler: Ruler, book: BookOpen, store: Store, mail: Mail };
+import { Menu, X, Search, SlidersHorizontal, ChevronLeft, ChevronRight, ZoomIn, MapPin, Route, Phone, Clock, Scissors, Ruler, BookOpen, Store, Mail, MessageCircle } from 'lucide';
+const nodes = { menu: Menu, x: X, search: Search, filter: SlidersHorizontal, previous: ChevronLeft, next: ChevronRight, zoom: ZoomIn, location: MapPin, route: Route, phone: Phone, clock: Clock, scissors: Scissors, ruler: Ruler, book: BookOpen, store: Store, mail: Mail, message: MessageCircle };
 export type IconName = keyof typeof nodes;
 const escape = (value: string) => value.replace(/[&"<>]/g, char => ({ '&': '&amp;', '"': '&quot;', '<': '&lt;', '>': '&gt;' }[char]!));
 export function icon(name: IconName, extraClass = '') {
