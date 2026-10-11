@@ -13,6 +13,6 @@ Both messages use Kaftan Angelo <hello@kaftanangelo.com>, localized subjects and
 
 Product selection and seasonal templates remain available for campaigns after current products and availability are reviewed. They are not sent on a recurring schedule.
 
-Configuration and active status were verified in the UI. Real message delivery testing is awaiting user authorization; existing DOI delivery was tested separately before these workflows were created.
+Configuration and active status were verified in the UI. With user authorization, one HU and one EN test message were sent to samigrowlab@gmail.com using each workflow's Test messages feature on 2026-10-11 at 10:01 Budapest time. Both were processed by Brevo and received in Gmail INBOX: HU in Promotions and EN in Updates, neither in Spam. Both had SPF, DKIM and DMARC PASS and List-Unsubscribe / one-click unsubscribe headers. This verifies message delivery; the test feature skips non-message actions and does not exercise a fresh double-opt-in/list-entry event. Existing DOI delivery was tested separately before these workflows were created.
 
 Manage workflows: https://app.brevo.com/automation/automations
