@@ -13,7 +13,9 @@ const { page } = Astro.props;
 const lang = page.lang ?? 'hu';
 const heroImage = page.mainHtml?.match(/--hero:url\('([^']+)'\)/)?.[1] ?? new URL(page.ogImage).pathname;
 import { backgroundImage } from './responsive-images';
-const sharpHero = backgroundImage(heroImage);
+const sharpHero = backgroundImage(heroImage, page.mainHtml?.includes('class="home-hero"') ? 1600 : 1200);
+const heroCandidates = [...sharpHero.matchAll(/url\('([^']+)'\) (\d)x/g)];
+const mobileHeroSrcset = heroCandidates.map(match => `${match[1]} ${match[2]}x`).join(', ');
 const socialImage = page.ogImage.replace(/\/assets\/images\/(.+)-(480|800|1200)\.avif$/, '/$1.webp');
 const huUrl = lang === 'hu' ? page.canonical : BASE + page.counterpart;
 const enUrl = lang === 'en' ? page.canonical : BASE + page.counterpart;
@@ -63,6 +65,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <link rel="help" type="text/plain" href="/llms.txt" title="LLM context" />
   <link rel="preload" as="font" type="font/woff2" href={headingFont} crossorigin="anonymous" />
   {lang === 'hu' && <link rel="preload" as="font" type="font/woff2" href={headingExtendedFont} crossorigin="anonymous" />}
+  <link rel="preload" as="image" href={heroCandidates[0]?.[1] ?? heroImage} imagesrcset={mobileHeroSrcset || undefined} media="(max-width: 620px)" fetchpriority="high" />
   <link rel="preload" as="image" href={heroImage} media="(min-width: 621px)" fetchpriority="high" />
   <link rel="stylesheet" href="/assets/css/pages.css" />
   <script type="application/ld+json" set:html={JSON.stringify(graph)}></script>

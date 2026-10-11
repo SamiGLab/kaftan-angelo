@@ -1,10 +1,10 @@
 import { existsSync, readdirSync } from 'node:fs';
 const files = readdirSync('public/assets/images');
-export function backgroundImage(url: string) {
+export function backgroundImage(url: string, maximum = 1200) {
   const stem = url.match(/\/assets\/images\/(.+)-\d+\.avif$/)?.[1];
   if (!stem) return `url('${url}')`;
   const widths = files.map(file => file.match(new RegExp(`^${stem.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}-(\\d+)\\.avif$`))?.[1]).filter(Boolean).map(Number).sort((a,b)=>a-b);
-  const large = widths.at(-1);
+  const large = widths.filter(width=>width<=maximum).at(-1) ?? widths[0];
   if (!large) return `url('${url}')`;
   const standard = widths.find(width=>width>=800) ?? large;
   return `image-set(url('/assets/images/${stem}-${standard}.avif') 1x, url('/assets/images/${stem}-${large}.avif') 2x)`;
