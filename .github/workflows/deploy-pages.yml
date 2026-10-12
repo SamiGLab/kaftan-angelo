@@ -18,12 +18,14 @@ jobs:
   build-test-upload:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
       - name: Install dependencies
         run: npm ci
+      - name: Validate CMS content and uploaded images
+        run: node _dev/scripts/validate-content.mjs
       - name: Test CMS authentication bridge
         run: node --test services/decap-auth/worker.test.mjs
       - name: Test partner security monitor
@@ -69,6 +71,14 @@ jobs:
           if [ -f /tmp/kaftan-http.pid ]; then kill $(cat /tmp/kaftan-http.pid) || true; fi
       - name: Lighthouse performance budget
         run: npx lhci autorun --config=lighthouserc.cjs
+      - name: Fingerprint the tested release
+        run: node _dev/scripts/release-manifest.mjs create dist "$GITHUB_SHA"
+      - name: Keep a tested recovery snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-release
+          path: dist
+          retention-days: 7
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:

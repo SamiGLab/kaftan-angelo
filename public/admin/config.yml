@@ -11,6 +11,9 @@ display_url: https://kaftanangelo.com
 
 local_backend: true
 publish_mode: editorial_workflow
+media_library:
+  config:
+    max_file_size: 5242880
 media_folder: public/uploads
 public_folder: /uploads
 
@@ -19,6 +22,10 @@ collections:
     label: "Útmutatók — HU"
     folder: src/content/guides/hu
     create: true
+    delete: false
+    description: "Mentés először piszkozatként. Törlés helyett használja a GitHub előzményeket a visszaállításhoz."
+    editor:
+      preview: true
     extension: md
     format: frontmatter
     slug: "{{slug}}"
@@ -27,15 +34,19 @@ collections:
       - { label: "Leírás", name: description, widget: text }
       - { label: "Dátum", name: publishDate, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Frissítve", name: modifiedDate, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Angol megfelelő URL", name: counterpart, widget: string }
+      - { label: "Angol megfelelő URL", name: counterpart, widget: string, pattern: ['^/en/guides/[a-z0-9-]+/$', 'Az angol útmutató teljes útvonala szükséges: /en/guides/slug/'] }
       - { label: "Téma", name: topic, widget: string }
       - { label: "Olvasási idő (perc)", name: readingMinutes, widget: number, default: 2, min: 1 }
-      - { label: "Hero kép", name: heroImage, widget: string, default: "/kaftan-angelo-leather-jackets-budapest.webp" }
+      - { label: "Hero kép", name: heroImage, widget: image, choose_url: false, default: "/kaftan-angelo-leather-jackets-budapest.webp", media_library: { config: { multiple: false, max_file_size: 5242880 } } }
       - { label: "Tartalom", name: body, widget: markdown }
   - name: guides_en
     label: "Guides — EN"
     folder: src/content/guides/en
     create: true
+    delete: false
+    description: "Save as a draft first. Use GitHub history to restore content; deleting guides in this panel is disabled."
+    editor:
+      preview: true
     extension: md
     format: frontmatter
     slug: "{{slug}}"
@@ -44,8 +55,8 @@ collections:
       - { label: "Description", name: description, widget: text }
       - { label: "Date", name: publishDate, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Updated", name: modifiedDate, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
-      - { label: "Hungarian counterpart URL", name: counterpart, widget: string }
+      - { label: "Hungarian counterpart URL", name: counterpart, widget: string, pattern: ['^/utmutatok/[a-z0-9-]+/$', 'Use the complete Hungarian guide path: /utmutatok/slug/'] }
       - { label: "Topic", name: topic, widget: string }
       - { label: "Reading minutes", name: readingMinutes, widget: number, default: 2, min: 1 }
-      - { label: "Hero image", name: heroImage, widget: string, default: "/kaftan-angelo-leather-jackets-budapest.webp" }
+      - { label: "Hero image", name: heroImage, widget: image, choose_url: false, default: "/kaftan-angelo-leather-jackets-budapest.webp", media_library: { config: { multiple: false, max_file_size: 5242880 } } }
       - { label: "Body", name: body, widget: markdown }

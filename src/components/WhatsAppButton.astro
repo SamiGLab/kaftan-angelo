@@ -546,6 +546,11 @@ const quickChips = hu
     });
 
     // Close on Escape
+    chatCard.addEventListener('focusout', function(e) {
+      if (e.relatedTarget && !chatCard.contains(e.relatedTarget) && !triggerBtn.contains(e.relatedTarget)) {
+        closeChat();
+      }
+    });
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && !chatCard.hasAttribute('hidden')) {
         closeChat();

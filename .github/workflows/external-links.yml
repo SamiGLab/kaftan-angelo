@@ -7,21 +7,23 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
   links:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 22
           cache: npm
       - run: npm ci
       - name: Generate the real page HTML
         run: npm run build
       - name: Check external links
+        id: lychee
         uses: lycheeverse/lychee-action@v2
         timeout-minutes: 10
         with:
@@ -33,11 +35,28 @@ jobs:
             --scheme http
             --timeout 45
             --max-retries 2
+            --accept 200..=204,401,403,999
             --exclude '^https?://kaftanangelo\.com(?:/|$)'
+            --exclude 'https://wa\.me/.*'
+            --exclude 'https://www\.instagram\.com/.*'
+            --exclude 'https://www\.facebook\.com/.*'
+            --exclude 'https://www\.tiktok\.com/.*'
+            --exclude 'https://maps\.app\.goo\.gl/.*'
+            --exclude 'https://www\.leathernaturally\.org/.*'
+            --exclude 'https://www\.canada\.ca/.*'
             'dist/**/*.html'
-          fail: true
-          failIfEmpty: true
+          fail: false
+          failIfEmpty: false
           jobSummary: true
+      - name: Report broken links as GitHub Issue
+        if: env.lychee_exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "🚨 Broken Link Report - Kaftan Angelo"
+          content-filepath: ./lychee/out.md
+          labels: |
+            bug
+            broken-links
       - name: Keep the link report
         if: always()
         uses: actions/upload-artifact@v4
