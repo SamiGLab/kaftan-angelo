@@ -13,16 +13,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Generate the real page HTML
+        run: npm run build:astro
       - name: Check external links
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
-            --cache
-            --max-cache-age 7d
+            --exclude-all-private
             --no-progress
-            --exclude 'https://wa.me/.*'
-            --exclude 'https://maps.app.goo.gl/.*'
-            --exclude 'https://www.instagram.com/.*'
-            './**/*.html' './**/*.md'
-          fail: false
+            --scheme https
+            --scheme http
+            --timeout 45
+            --max-retries 2
+            --exclude '^https?://kaftanangelo\.com(?:/|$)'
+            'dist/**/*.html'
+          fail: true
+          failIfEmpty: true
           jobSummary: true
+      - name: Keep the link report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: external-link-report
+          path: lychee/out.md
+          retention-days: 7
