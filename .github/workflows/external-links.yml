@@ -26,6 +26,7 @@ jobs:
           args: >-
             --exclude-all-private
             --no-progress
+            --root-dir dist
             --scheme https
             --scheme http
             --timeout 45
