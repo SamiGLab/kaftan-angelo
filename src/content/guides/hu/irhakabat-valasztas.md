@@ -31,4 +31,4 @@ Az irha elnevezésből ne következtessen általános hőmérséklet-garanciára
 A vásárlási döntés része, hogy tudja-e követni a ruha saját utasítását. Bőrkabáthoz használt krémet ne alkalmazzon automatikusan az irhára vagy gyapjas oldalra. Részletesen: [irhakabát ápolása](/utmutatok/irhakabat-apolas/).
 
 ## Következő lépés Budapesten
-Nézze meg az [irhakabát-kollekciót](/irhakabatok/), és érdeklődjön a kiválasztott modellről látogatás előtt. [Méretválasztás](/utmutatok/borkabat-meret-utmutato/) · [Anyagok összehasonlítása](/utmutatok/bor-irha-szorme-osszehasonlitas/) · [Üzlet és nyitvatartás](/uzlet/)
+Nézze meg az [irhakabát-kollekciót](/irhakabatok/), vagy hasonlítsa össze konkrét darabjainkat: [Sötétbarna férfi irhadzseki](/modellek/ferfi-sotetbarna-irhadzseki-budapest/), [Világosbarna férfi irhakabát](/modellek/ferfi-vilagosbarna-irhakabat-budapest/) és [Barna férfi irhakabát](/modellek/ferfi-barna-irhakabat-budapest/). [Méretválasztás](/utmutatok/borkabat-meret-utmutato/) · [Anyagok összehasonlítása](/utmutatok/bor-irha-szorme-osszehasonlitas/) · [Üzlet és nyitvatartás](/uzlet/)

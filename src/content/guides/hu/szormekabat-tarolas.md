@@ -30,4 +30,4 @@ Mondja el a folt okát és a már felvitt szereket. Kérdezze meg, foglalkozik-e
 **Fotóból eldönthető a kezelés?** A fotó elindíthatja az egyeztetést, de személyes vizsgálat is szükséges lehet. Az üzlettől az elérhető segítségről érdeklődjön.
 
 ## Forrás és kapcsolódó oldalak
-[American Fur Council: tárolás és tisztítás](https://www.fur.org/fur-storage-and-cleaning/) · [Szőrmemodellek](/szormekabatok/) · [Anyagok összehasonlítása](/utmutatok/bor-irha-szorme-osszehasonlitas/) · [Kapcsolat](/uzlet/)
+[American Fur Council: tárolás és tisztítás](https://www.fur.org/fur-storage-and-cleaning/) · [Szőrmemodellek](/szormekabatok/) · [Fehér női szőrmemellény](/modellek/noi-feher-szormemelleny-budapest/) · [Anyagok összehasonlítása](/utmutatok/bor-irha-szorme-osszehasonlitas/) · [Kapcsolat](/uzlet/)

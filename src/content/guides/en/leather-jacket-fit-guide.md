@@ -24,6 +24,8 @@ Depending on the style, sleeves usually finish around the wrist. Biker styles ca
 ## Layering
 If you will wear it over a sweater, try it that way. The right size depends on how you will actually use the jacket.
 
+**Related styles:** [Biker leather jacket](/en/models/ferfi-motoros-bordzseki-budapest/) · [Classic leather jacket](/en/models/ferfi-klasszikus-bordzseki-budapest/) · [Patterned jacket](/en/models/ferfi-mintas-bordzseki-budapest/)
+
 **Related pages:** [Women’s leather jackets](/en/womens-leather-jackets/) · [Men’s leather jackets](/en/mens-leather-jackets/) · [Leather care](/en/guides/leather-jacket-care/)
 
 ## A movement checklist

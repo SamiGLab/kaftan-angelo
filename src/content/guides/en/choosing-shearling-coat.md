@@ -31,4 +31,4 @@ Do not infer a universal temperature guarantee: cut, coverage, layers and wearin
 Part of choosing a coat is knowing whether you can follow its own instructions. Do not automatically apply your leather-jacket cream to shearling or its wool side. Read the [shearling care guide](/en/guides/shearling-coat-care/).
 
 ## Your next step in Budapest
-Browse the [shearling collection](/en/shearling-jackets/) and ask about your chosen model before visiting. [Fit guide](/en/guides/leather-jacket-fit-guide/) · [Material comparison](/en/guides/leather-shearling-fur-comparison/) · [Store and opening hours](/en/visit/)
+Browse the [shearling collection](/en/shearling-jackets/) or compare specific pieces like our [Dark brown shearling jacket](/en/models/ferfi-sotetbarna-irhadzseki-budapest/), [Light brown shearling coat](/en/models/ferfi-vilagosbarna-irhakabat-budapest/) and [Brown shearling coat](/en/models/ferfi-barna-irhakabat-budapest/) before visiting. [Fit guide](/en/guides/leather-jacket-fit-guide/) · [Material comparison](/en/guides/leather-shearling-fur-comparison/) · [Store and opening hours](/en/visit/)

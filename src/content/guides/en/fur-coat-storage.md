@@ -30,4 +30,4 @@ Tell the specialist what caused a mark and which products were already applied. 
 **Can a photo settle the treatment?** It can begin the enquiry, but a final assessment may require inspection. Ask the store about available assistance rather than assuming a particular service.
 
 ## Source and related pages
-[American Fur Council: storage and cleaning](https://www.fur.org/fur-storage-and-cleaning/) · [Fur styles](/en/fur-coats/) · [Material comparison](/en/guides/leather-shearling-fur-comparison/) · [Contact](/en/visit/)
+[American Fur Council: storage and cleaning](https://www.fur.org/fur-storage-and-cleaning/) · [Fur styles](/en/fur-coats/) · [White fur vest](/en/models/noi-feher-szormemelleny-budapest/) · [Material comparison](/en/guides/leather-shearling-fur-comparison/) · [Contact](/en/visit/)

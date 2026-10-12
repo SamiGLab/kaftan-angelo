@@ -42,4 +42,6 @@ Irha és szőrme próbájához hozza a tervezett pulóvert. A súlyt, bélést �
 ## Otthoni mérés a kapcsolatfelvételhez
 Mellbőségét vízszintesen, nem szoros mérőszalaggal mérje, és jelezze, milyen ruharéteggel mérte. Egy kényelmes kabáton a kabáthossz és ujjhossz is összehasonlítható: írja le, honnan hová mérte. A testméret nem azonos a ruhadarab méretével; bőségi ráhagyást vagy konkrét készletet ne következtessen belőle automatikusan.
 
-Az üzletnek küldje el a modell képét, a megszokott méretet és ezeket a tájékoztató adatokat. A pontos illeszkedést továbbra is személyes próba ellenőrzi. [Női fazonválasztás](/utmutatok/noi-borkabat-valasztas/) · [Irhakabát választása](/utmutatok/irhakabat-valasztas/) · [Útvonal és nyitvatartás](/uzlet/)
+Az üzletnek küldje el a modell képét, a megszokott méretet és ezeket a tájékoztató adatokat. A pontos illeszkedést továbbra is személyes próba ellenőrzi. Kiemelt modellek: [Férfi motoros bőrdzseki](/modellek/ferfi-motoros-bordzseki-budapest/) · [Klasszikus bőrdzseki](/modellek/ferfi-klasszikus-bordzseki-budapest/) · [Mintás bőrdzseki](/modellek/ferfi-mintas-bordzseki-budapest/)
+
+[Női fazonválasztás](/utmutatok/noi-borkabat-valasztas/) · [Irhakabát választása](/utmutatok/irhakabat-valasztas/) · [Útvonal és nyitvatartás](/uzlet/)

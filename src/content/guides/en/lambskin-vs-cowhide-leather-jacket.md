@@ -32,6 +32,6 @@ Stitching, fastening and lining matter alongside material. Do not choose a tight
 Not all leather needs the same conditioning. Use cream or oil only in line with the garment’s instructions and finish-specific guidance. Do not automatically transfer a treatment to suede, nubuck or contrasting trims. Read [leather care](/en/guides/leather-jacket-care/).
 
 ## Try garments in Budapest
-Ask about availability before visiting if material, colour or size matters. The gallery does not establish current stock of both hide types. [Men’s leather jackets](/en/mens-leather-jackets/) · [Women’s leather jackets](/en/womens-leather-jackets/) · [Fit guide](/en/guides/leather-jacket-fit-guide/) · [Visit the store](/en/visit/)
+Ask about availability before visiting if material, colour or size matters. The gallery does not establish current stock of both hide types. [Biker leather jacket](/en/models/ferfi-motoros-bordzseki-budapest/) · [Patterned leather jacket](/en/models/ferfi-mintas-bordzseki-budapest/) · [Men’s leather jackets](/en/mens-leather-jackets/) · [Women’s leather jackets](/en/womens-leather-jackets/) · [Fit guide](/en/guides/leather-jacket-fit-guide/) · [Visit the store](/en/visit/)
 
 Explore our [leather jackets in Budapest](/en/leather-jackets-budapest/) to compare styles, and confirm each garment’s material and availability with the store.

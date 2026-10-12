@@ -43,6 +43,6 @@ Anyagvizsgálatként ne égesse, karcolja, áztassa vagy oldószerezze a ruhát.
 ## Anyag és tartósság: két külön kérdés
 A „valódi bőr” megnevezés nem ad önmagában élettartam-garanciát. Nézze meg, egyenletesek és épek-e a varrások, kényelmesen működik-e a záródás, és nem húzódik-e a bélés mozgás közben. Kérdezzen a felületről és a használathoz illő ápolásról. A puhaság vagy egy magasabb ár önmagában nem bizonyítja a tartósságot.
 
-A természetes felületi eltérések és a sérülések megítéléséhez kérjen magyarázatot az adott darabról. Ne próbáljon otthoni roncsolással „minőséget mérni”. [Női bőrkabátok](/noi-borkabatok/) · [Férfi bőrkabátok](/ferfi-borkabatok/)
+A természetes felületi eltérések és a sérülések megítéléséhez kérjen magyarázatot az adott darabról. Ne próbáljon otthoni roncsolással „minőséget mérni”. [Női bőrkabátok](/noi-borkabatok/) · [Férfi bőrkabátok](/ferfi-borkabatok/) · [Fekete bőröv](/modellek/fekete-borov-budapest/) · [Barna bőr pénztárca](/modellek/barna-bor-penztarca-budapest/)
 
 [Használt bőrkabát vásárlási ellenőrzőlista](/utmutatok/hasznalt-borkabat-ellenorzes/)

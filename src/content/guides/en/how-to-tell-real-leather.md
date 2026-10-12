@@ -24,6 +24,8 @@ With permission, accessible cut edges can provide clues. Do not confuse a garmen
 ## The safest approach
 Ask the seller what the material is and buy somewhere you can inspect the garment in person.
 
+**Related pieces:** [Black leather belt](/en/models/fekete-borov-budapest/) · [Brown leather wallet](/en/models/barna-bor-penztarca-budapest/)
+
 **Related pages:** [Collections](/en/collections/) · [Fit guide](/en/guides/leather-jacket-fit-guide/) · [Visit](/en/visit/)
 
 ## Read the label and ask about each part

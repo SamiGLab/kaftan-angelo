@@ -34,4 +34,6 @@ Nézze meg nyitva és zárva a gallért, az övet és a cipzár vonalát. Hozza 
 
 **Minden fazon egyedileg módosítható?** Az adott darabról és a kívánt módosításról külön egyeztessen; a weboldal nem ígér minden modellre átalakítást.
 
+Kiemelt budapesti modellek: [Sárga női bőrkabát](/modellek/noi-sarga-borkabat-budapest/) · [Szegecses női bőrdzseki](/modellek/noi-szegecses-bordzseki-budapest/)
+
 [Méretválasztás](/utmutatok/borkabat-meret-utmutato/) · [Valódi bőr felismerése](/utmutatok/valodi-bor-felismerese/) · [Budapesti személyes próba](/uzlet/)

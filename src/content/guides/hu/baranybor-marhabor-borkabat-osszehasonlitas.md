@@ -32,6 +32,6 @@ A varrás, záródás és bélés állapota az anyag mellett is fontos. Ne vála
 Nem minden bőr igényel azonos kondicionálást. Krémet vagy olajat csak a ruhadarab előírása és a konkrét felülethez való útmutatás alapján használjon; velúrra, nubukra és eltérő betétekre ne alkalmazzon automatikusan más bőrhöz bevált szert. [Bőrkabát ápolása](/utmutatok/borkabat-apolas/).
 
 ## Próba Budapesten
-Konkrét anyag, szín vagy méret esetén látogatás előtt kérdezzen az elérhetőségről. A galéria nem igazolja mindkét bőrtípus aktuális készletét. [Férfi bőrkabátok](/ferfi-borkabatok/) · [Női bőrkabátok](/noi-borkabatok/) · [Méretválasztás](/utmutatok/borkabat-meret-utmutato/) · [Üzlet](/uzlet/)
+Konkrét anyag, szín vagy méret esetén látogatás előtt kérdezzen az elérhetőségről. A galéria nem igazolja mindkét bőrtípus aktuális készletét. [Férfi motoros bőrdzseki](/modellek/ferfi-motoros-bordzseki-budapest/) · [Mintás férfi bőrdzseki](/modellek/ferfi-mintas-bordzseki-budapest/) · [Férfi bőrkabátok](/ferfi-borkabatok/) · [Női bőrkabátok](/noi-borkabatok/) · [Méretválasztás](/utmutatok/borkabat-meret-utmutato/) · [Üzlet](/uzlet/)
 
 A [budapesti bőrkabát-kínálatban](/borkabat-budapest/) fazonokat is összehasonlíthat; az adott darab anyagát és elérhetőségét külön egyeztesse.
