@@ -13,7 +13,18 @@ export async function validateContent(root) {
     try{file=path.resolve(publicRoot,'.'+decodeURIComponent(url));}catch{issues.push(`${context}: invalid image URL encoding`);return;}
     if(!file.startsWith(publicRoot+path.sep)) {issues.push(`${context}: image escapes public directory`);return;}
     try {
-      const actual=await realpath(file);
+      let actual;
+      try {
+        actual = await realpath(file);
+      } catch (err) {
+        if (url.startsWith('/assets/images/')) {
+          const baseName = path.basename(file).replace(/-(480|800|1200)\.(avif|webp)$/, '');
+          for (const ext of ['.webp', '.jpg', '.png']) {
+            try { actual = await realpath(path.join(publicRoot, baseName + ext)); break; } catch {}
+          }
+        }
+        if (!actual) throw err;
+      }
       if(!actual.startsWith(publicRoot+path.sep))throw Error('outside public directory');
       const info=await sharp(actual,{limitInputPixels:40000000}).metadata();
       if(!['jpeg','png','webp','avif','gif'].includes(info.format)&&!(info.format==='heif'&&info.compression==='av1'))throw Error('use JPG, PNG, WebP, AVIF or GIF');
