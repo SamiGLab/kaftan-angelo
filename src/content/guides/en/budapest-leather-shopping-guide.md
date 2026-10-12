@@ -24,14 +24,23 @@ For an overview of styles, explore our [leather jackets in Budapest](/en/leather
 Ask about the individual garment’s exact material, finish, lining, care and current price. Confirm payment arrangements and any proposed adjustments; the website does not promise identical services or timing for every garment.
 
 ## If you cannot find a suitable model
-Enquire in person about [custom leather jacket orders](/en/custom-orders/). Bring reference photos and describe how you plan to wear it. Agree material, measurements, price and estimated timing individually. Visitors should state their travel dates.
+Enquire in person about [custom leather jacket orders](/en/custom-orders/). Bring reference photos and describe how you plan to wear it. Agree material, measurements, price and estimated timing individually. If you are visiting Budapest, please let our team know your travel dates so fitting schedules can be planned smoothly.
+
+## Central Budapest location: near Váci Street & Ferenciek tere
+The boutique is located in central Budapest (District V / Belváros) at **Kossuth Lajos u. 18**, only a **2 to 3-minute walk from Váci utca** and directly between **Ferenciek tere (M3 metro)** and **Astoria (M2 metro)**. 
+
+While many Budapest guides direct tourists to second-hand thrift or vintage shops, Kaftan Angelo specializes in brand-new, premium lambskin and cowhide leather jackets, warm shearling coats and fur outerwear crafted for long-term wear.
+
+## Visiting Budapest? Plan your fitting via WhatsApp
+Before you arrive in Budapest or from your hotel, message our boutique on [WhatsApp](https://wa.me/36203593216). Send us the photo of the model you like, your approximate size and travel dates. We can confirm availability and have your piece ready for a relaxed personal fitting when you stop by.
 
 ## Plan the fitting
-The store is in District V between Astoria and Ferenciek tere; the Budapest shop opened in 2004. Visit preparation, layers, movement checks and contact details are covered separately in the [in-store fitting guide](/en/guides/budapest-outerwear-shopping/). Find current opening hours and the map on the [store page](/en/visit/).
+The store has welcomed local and international guests since 2004. Visit preparation, layers, movement checks and contact details are covered separately in the [in-store fitting guide](/en/guides/budapest-outerwear-shopping/). Find current opening hours, transit directions and the map on the [store page](/en/visit/).
 
 ## Common questions
-**Is a pictured model definitely available?** Confirm stock and size with the store first.
+**Is a pictured model definitely available?** Confirm stock and size with the store first via WhatsApp or phone.
 
-**Does the material name establish warmth and durability?** Not by itself. Consider construction and your own use too.
+**Does the material name establish warmth and durability?** Not by itself. Consider construction, lining and your intended use too.
 
 [Recognising genuine leather](/en/guides/how-to-tell-real-leather/) · [Material comparison](/en/guides/leather-shearling-fur-comparison/)
+
