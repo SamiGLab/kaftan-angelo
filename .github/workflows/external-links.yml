@@ -19,7 +19,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Generate the real page HTML
-        run: npm run build:astro
+        run: npm run build
       - name: Check external links
         uses: lycheeverse/lychee-action@v2
         with:
