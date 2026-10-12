@@ -42,6 +42,8 @@ export function GET() {
   const modified = new Map(Object.entries(pages).filter(([, page]) => page.modifiedDate).map(([url, page]) => [url, page.modifiedDate]));
   for (const [modules, root] of [[huGuides, '/utmutatok/'], [enGuides, '/en/guides/']]) {
     for (const [path, mod] of Object.entries(modules)) modified.set(`${root}${slug(path)}/`, mod.frontmatter.modifiedDate ?? mod.frontmatter.publishDate);
+    const dates = Object.values(modules).map(mod => mod.frontmatter.modifiedDate ?? mod.frontmatter.publishDate).filter(Boolean).sort();
+    if (dates.length) modified.set(root, dates.at(-1));
   }
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${[...urls].sort().map(u=>`  <url><loc>${BASE}${u}</loc>${modified.has(u) ? `<lastmod>${modified.get(u)}</lastmod>` : ''}<changefreq>${getChangefreq(u)}</changefreq><priority>${getPriority(u)}</priority>${modelImages(u)}</url>`).join('\n')}\n</urlset>`;
   return new Response(xml,{headers:{'Content-Type':'application/xml; charset=utf-8'}});

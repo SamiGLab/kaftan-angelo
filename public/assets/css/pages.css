@@ -2037,6 +2037,11 @@ main .btn-ghost{border-color:#77502b88;}
 
 /* A quiet mobile shell: one header row and a compact, readable store footer. */
 .language-short { display:none; }
+.model-checklist { padding-left:1.2em; }
+.model-checklist li { margin-bottom:10px; line-height:1.6; }
+.model-related { border-top:1px solid var(--line); margin-top:24px; padding-top:12px; }
+.model-related ul { padding-left:1.2em; }
+.model-related a { display:inline-flex; align-items:center; min-height:44px; }
 .footer { padding-top:28px; }
 .footer-grid { gap:24px; }
 .footer-since { display:block; color:var(--dim); font-size:.8rem; }
