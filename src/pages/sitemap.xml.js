@@ -13,7 +13,7 @@ function xmlEscape(value) {
 function modelImages(url) {
   const html = pages[url]?.mainHtml ?? '';
   const modelPhoto = pages[url]?.pageSchema?.primaryImageOfPage?.contentUrl;
-  if (modelPhoto) return `<image:image><image:loc>${xmlEscape(modelPhoto)}</image:loc></image:image>`;
+  if (modelPhoto) return (pages[url]?.productSchema?.image ?? [modelPhoto]).map(image => `<image:image><image:loc>${xmlEscape(image)}</image:loc></image:image>`).join('');
   return [...new Set([...html.matchAll(/data-product-image="([^"<>]+)"/g)].map(match => match[1]))]
     .filter(image => image.startsWith('/') && !image.startsWith('//'))
     .map(image => `<image:image><image:loc>${xmlEscape(BASE + image)}</image:loc></image:image>`).join('');

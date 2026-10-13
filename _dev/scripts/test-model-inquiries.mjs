@@ -24,5 +24,5 @@ try {
     assert.equal(links.length,models.filter(model=>!model.catalogHidden).length);
     links.forEach(link=>assert.ok(link.message.includes(link.detail.replace(base,'https://kaftanangelo.com'))));
   }
-  console.log('PASS: all 22 HU/EN model pages use the correct image and product-specific WhatsApp link; all collection cards match.');
+  console.log(`PASS: all ${models.length*2} HU/EN model pages use the correct image and product-specific WhatsApp link; all active collection cards match.`);
 } finally { await browser.close(); }

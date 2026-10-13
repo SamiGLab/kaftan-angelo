@@ -20,7 +20,7 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
   const checklist = modelQuestions[model.slug]?.[lang] ?? [];
   const related = models.filter(other => !other.catalogHidden && other.slug !== model.slug && other.category[lang].url === collection).slice(0, 2);
   const extraPhotos = model.gallery.slice(1).map(photo => `<figure>${photo.pictures[lang]}<figcaption><a href="${photo.image}">${escape(photo.labels[lang])} ↗</a></figcaption></figure>`).join('');
-  const galleryHtml = extraPhotos ? `<div class="model-gallery" aria-label="${hu ? 'A kabát mindkét oldala' : 'Both sides of the jacket'}">${extraPhotos}</div>` : '';
+  const galleryHtml = extraPhotos ? `<div class="model-gallery" role="group" aria-label="${hu ? 'Termékfotók' : 'Product photos'}">${extraPhotos}</div>` : '';
   const defaultPhotos = `${model.pictures[lang].replace('loading="lazy"', 'loading="eager" fetchpriority="high"')}<a class="text-link" href="${model.image}">${hu ? 'Teljes méretű fotó megnyitása' : 'Open full-size photo'} ↗</a>${galleryHtml}`;
   const photosHtml = model.variants.length ? `<div data-colour-selector hidden><p>${hu ? 'Válasszon színt' : 'Choose a colour'}</p><div class="colour-options">${model.variants.map((v,i)=>`<button type="button" class="btn btn-ghost" data-colour="${v.key}" aria-pressed="${i===0}">${escape(v.names[lang])}</button>`).join('')}</div><p role="status" data-colour-status></p></div>${model.variants.map((v,i)=>`<section class="model-colour-panel" data-colour-panel="${v.key}" data-colour-name="${escape(v.names[lang])}"><h2>${escape(v.names[lang])}</h2>${i===0 ? v.gallery[0].pictures[lang].replace('loading="lazy"', 'loading="eager" fetchpriority="high"') : v.gallery[0].pictures[lang]}<div class="model-gallery">${v.gallery.slice(1).map(photo=>`<figure>${photo.pictures[lang]}<figcaption><a href="${photo.image}">${escape(photo.labels[lang])} ↗</a></figcaption></figure>`).join('')}</div></section>`).join('')}` : defaultPhotos;
   const enquiryHint = isWallet
@@ -32,7 +32,7 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
   const relatedHtml = related.length ? `<div class="model-related"><h2>${hu ? 'Hasonlítsa össze más modellekkel' : 'Compare with other models'}</h2><ul>${related.map(other => `<li><a href="${hu ? '/modellek/' : '/en/models/'}${other.slug}/">${escape(other.names[lang])}</a></li>`).join('')}</ul></div>` : '';
 
   return [path, {
-    path, lang, title: `${name} | Kaftan Angelo Budapest`, description,
+    path, lang, title: `${name} | Kaftan Angelo`.length <= 70 ? `${name} | Kaftan Angelo` : name, description,
     canonical: BASE + path, counterpart, ogImage: BASE + model.image,
     modifiedDate: model.gallery.length ? '2026-10-13' : '2026-10-12',
     pageSchema: {
