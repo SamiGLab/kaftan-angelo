@@ -9,6 +9,10 @@ permissions:
   contents: read
   issues: write
 
+concurrency:
+  group: external-link-monitor
+  cancel-in-progress: false
+
 jobs:
   links:
     runs-on: ubuntu-latest
@@ -19,48 +23,57 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python _dev/scripts/test_external_links.py
       - run: npm ci
       - name: Generate the real page HTML
         run: npm run build
-      - name: Check external links
-        id: lychee
-        uses: lycheeverse/lychee-action@v2
+      - name: Check internal page and asset links
+        run: python _dev/scripts/site_audit.py dist
+      - name: Check external links over HTTP/1.1
+        id: links
+        continue-on-error: true
         timeout-minutes: 10
+        run: python _dev/scripts/check_external_links.py dist
+      - name: Maintain one confirmed broken-link issue
+        if: always() && steps.links.outputs.broken != ''
+        uses: actions/github-script@v7
+        env:
+          BROKEN: ${{ steps.links.outputs.broken }}
+          UNVERIFIED: ${{ steps.links.outputs.unverified }}
         with:
-          args: >-
-            --exclude-all-private
-            --no-progress
-            --root-dir dist
-            --scheme https
-            --scheme http
-            --timeout 45
-            --max-retries 2
-            --accept 200..=204,401,403,999
-            --exclude '^https?://kaftanangelo\.com(?:/|$)'
-            --exclude 'https://wa\.me/.*'
-            --exclude 'https://www\.instagram\.com/.*'
-            --exclude 'https://www\.facebook\.com/.*'
-            --exclude 'https://www\.tiktok\.com/.*'
-            --exclude 'https://maps\.app\.goo\.gl/.*'
-            --exclude 'https://www\.leathernaturally\.org/.*'
-            --exclude 'https://www\.canada\.ca/.*'
-            'dist/**/*.html'
-          fail: false
-          failIfEmpty: false
-          jobSummary: true
-      - name: Report broken links as GitHub Issue
-        if: env.lychee_exit_code != 0
-        uses: peter-evans/create-issue-from-file@v5
-        with:
-          title: "🚨 Broken Link Report - Kaftan Angelo"
-          content-filepath: ./lychee/out.md
-          labels: |
-            bug
-            broken-links
+          script: |
+            const fs = require('fs');
+            const title = 'Broken Link Report - Kaftan Angelo';
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              ...context.repo, state: 'open', per_page: 100
+            });
+            const existing = issues.find(i => !i.pull_request &&
+              i.user.login === 'github-actions[bot]' &&
+              (i.title === title || i.title === '🚨 ' + title));
+            if (Number(process.env.BROKEN) > 0) {
+              const body = fs.readFileSync('link-report/report.md', 'utf8');
+              if (existing) {
+                if (existing.body !== body) await github.rest.issues.update({
+                  ...context.repo, issue_number: existing.number, body
+                });
+              } else {
+                await github.rest.issues.create({ ...context.repo, title, body });
+              }
+            } else if (existing && Number(process.env.UNVERIFIED) === 0) {
+              await github.rest.issues.update({
+                ...context.repo, issue_number: existing.number, state: 'closed'
+              });
+            }
       - name: Keep the link report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: external-link-report
-          path: lychee/out.md
+          path: link-report/
           retention-days: 7
+      - name: Fail on confirmed broken links or checker failure
+        if: always() && steps.links.outcome == 'failure'
+        run: exit 1

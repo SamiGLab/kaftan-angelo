@@ -39,7 +39,7 @@ class Parser(HTMLParser):
 def resolve_local(ref, page):
     if not ref or ref.startswith(('#','mailto:','tel:','javascript:','data:')): return None
     u=urlparse(ref)
-    if u.scheme in ('http','https'): return None
+    if u.scheme in ('http','https') and u.hostname not in ('kaftanangelo.com','www.kaftanangelo.com'): return None
     path=unquote(u.path)
     if not path: return None
     if path.startswith('/'):

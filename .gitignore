@@ -3,6 +3,9 @@ dist/
 .astro/
 .lighthouseci/
 .lycheecache
+link-report/
+__pycache__/
+*.pyc
 .DS_Store
 services/decap-auth/.dev.vars*
 services/decap-auth/.wrangler/
