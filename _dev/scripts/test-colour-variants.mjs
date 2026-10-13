@@ -13,7 +13,7 @@ try {
    assert.equal(await page.$eval(`[data-colour-panel="${colour}"]`,p=>p.hidden),false);
    assert.equal(await page.$$eval('[data-colour-panel]',panels=>panels.filter(p=>!p.hidden).length),1);
    const images=await page.$$eval(`[data-colour-panel="${colour}"] img`,imgs=>imgs.map(i=>i.getAttribute('src')));
-   assert.ok(images.length>=4);
+   assert.equal(images.length,4);
    for(const image of images) {
     const response=await fetch(base+image);
     assert.equal(response.status,200);
