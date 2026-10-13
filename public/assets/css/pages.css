@@ -2092,3 +2092,10 @@ main .btn-ghost{border-color:#77502b88;}
   .site-header .nav-tools { gap:2px; }
   .language-option { min-width:32px; }
 }
+
+.model-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:16px; } .model-gallery figure { margin:0; min-width:0; } .model-gallery figcaption { font-size:.85rem; padding:8px 0; } .model-gallery img { height:auto; width:100%; }
+.model-colour-panel { padding:0; margin-top:16px; }
+.model-colour-panel[hidden] { display:none; }
+.colour-options { display:flex; flex-wrap:wrap; gap:8px; }
+.colour-options button { padding:9px 13px; min-height:44px; }
+.colour-options [aria-pressed="true"] { background:var(--bright); color:#21170f; }

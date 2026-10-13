@@ -1,4 +1,30 @@
 const hu = document.documentElement.lang === 'hu';
+
+const colourSelector = document.querySelector('[data-colour-selector]');
+if (colourSelector) {
+  const panels = [...document.querySelectorAll('[data-colour-panel]')];
+  const inquiry = document.querySelector('[data-model-inquiry]');
+  const originalInquiry = inquiry?.getAttribute('href');
+  function selectColour(key) {
+    const selected = panels.find(panel => panel.dataset.colourPanel === key);
+    if (!selected) return;
+    panels.forEach(panel => { panel.hidden = panel !== selected; });
+    colourSelector.querySelectorAll('[data-colour]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.colour === key)));
+    colourSelector.querySelector('[data-colour-status]').textContent = `${hu ? 'Kiválasztott szín:' : 'Selected colour:'} ${selected.dataset.colourName}`;
+    if (inquiry && originalInquiry) {
+      const url = new URL(originalInquiry);
+      url.searchParams.set('text', `${url.searchParams.get('text')}\n${hu ? 'Szín:' : 'Colour:'} ${selected.dataset.colourName}\n${new URL(selected.querySelector('img').getAttribute('src'), 'https://kaftanangelo.com').href}`);
+      inquiry.href = url.href;
+    }
+  }
+  colourSelector.hidden = false;
+  const requestedColour = new URLSearchParams(location.search).get('colour');
+  selectColour(panels.some(panel => panel.dataset.colourPanel === requestedColour) ? requestedColour : panels[0].dataset.colourPanel);
+  colourSelector.addEventListener('click', event => {
+    const button = event.target.closest('[data-colour]');
+    if (button) selectColour(button.dataset.colour);
+  });
+}
 document.querySelectorAll('.current-year').forEach(element => { element.textContent = String(new Date().getFullYear()); });
 
 const menuButton = document.querySelector('.menu-toggle');

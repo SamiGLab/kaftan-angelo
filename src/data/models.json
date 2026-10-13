@@ -41,7 +41,10 @@
     "description": {
       "hu": "Sárga női bőrkabát fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
       "en": "Yellow women’s leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
-    }
+    },
+    "gallery": [],
+    "catalogHidden": true,
+    "variants": []
   },
   {
     "slug": "noi-szegecses-bordzseki-budapest",
@@ -85,7 +88,10 @@
     "description": {
       "hu": "Szegecses női bőrdzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
       "en": "Studded women’s leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
-    }
+    },
+    "gallery": [],
+    "catalogHidden": true,
+    "variants": []
   },
   {
     "slug": "ferfi-motoros-bordzseki-budapest",
@@ -129,7 +135,10 @@
     "description": {
       "hu": "Férfi motoros bőrdzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
       "en": "Men’s biker leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
-    }
+    },
+    "gallery": [],
+    "catalogHidden": false,
+    "variants": []
   },
   {
     "slug": "ferfi-klasszikus-bordzseki-budapest",
@@ -173,7 +182,10 @@
     "description": {
       "hu": "Klasszikus férfi bőrdzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
       "en": "Classic men’s leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
-    }
+    },
+    "gallery": [],
+    "catalogHidden": false,
+    "variants": []
   },
   {
     "slug": "ferfi-mintas-bordzseki-budapest",
@@ -217,7 +229,10 @@
     "description": {
       "hu": "Mintás férfi bőrdzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
       "en": "Patterned men’s leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
-    }
+    },
+    "gallery": [],
+    "catalogHidden": false,
+    "variants": []
   },
   {
     "slug": "ferfi-sotetbarna-irhadzseki-budapest",
@@ -261,7 +276,10 @@
     "description": {
       "hu": "Sötétbarna férfi irhadzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
       "en": "Dark brown men’s shearling jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
-    }
+    },
+    "gallery": [],
+    "catalogHidden": false,
+    "variants": []
   },
   {
     "slug": "ferfi-vilagosbarna-irhakabat-budapest",
@@ -305,7 +323,10 @@
     "description": {
       "hu": "Világosbarna férfi irhakabát fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
       "en": "Light brown men’s shearling coat from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
-    }
+    },
+    "gallery": [],
+    "catalogHidden": false,
+    "variants": []
   },
   {
     "slug": "ferfi-barna-irhakabat-budapest",
@@ -349,7 +370,10 @@
     "description": {
       "hu": "Barna férfi irhakabát fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
       "en": "Brown men’s shearling coat from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
-    }
+    },
+    "gallery": [],
+    "catalogHidden": false,
+    "variants": []
   },
   {
     "slug": "noi-feher-szormemelleny-budapest",
@@ -393,7 +417,10 @@
     "description": {
       "hu": "Női fehér szőrmemellény fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
       "en": "White women’s fur vest from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
-    }
+    },
+    "gallery": [],
+    "catalogHidden": false,
+    "variants": []
   },
   {
     "slug": "fekete-borov-budapest",
@@ -437,7 +464,10 @@
     "description": {
       "hu": "Fekete bőröv fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
       "en": "Black leather belt from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
-    }
+    },
+    "gallery": [],
+    "catalogHidden": false,
+    "variants": []
   },
   {
     "slug": "barna-bor-penztarca-budapest",
@@ -481,6 +511,543 @@
     "description": {
       "hu": "Barna bőr pénztárca fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
       "en": "Brown leather wallet from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
-    }
+    },
+    "gallery": [],
+    "catalogHidden": false,
+    "variants": []
+  },
+  {
+    "slug": "noi-ketoldalas-vizallo-borkabat-budapest",
+    "image": "/noi-piros-ketoldalas-borkabat-budapest-plain-front.webp",
+    "names": {
+      "hu": "Kétoldalas női bőrkabát",
+      "en": "Reversible women’s leather jacket"
+    },
+    "pictures": {
+      "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Piros kétoldalas női bőrkabát: Egyszínű oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+      "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Red reversible women’s leather jacket: Plain side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+    },
+    "gallery": [
+      {
+        "image": "/noi-piros-ketoldalas-borkabat-budapest-plain-front.webp",
+        "labels": {
+          "hu": "Egyszínű oldal – elöl",
+          "en": "Plain side — front"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Piros kétoldalas női bőrkabát: Egyszínű oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Red reversible women’s leather jacket: Plain side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-piros-ketoldalas-borkabat-budapest-plain-back.webp",
+        "labels": {
+          "hu": "Egyszínű oldal – hátul",
+          "en": "Plain side — back"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Piros kétoldalas női bőrkabát: Egyszínű oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Red reversible women’s leather jacket: Plain side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-piros-ketoldalas-borkabat-budapest-patterned-front.webp",
+        "labels": {
+          "hu": "Mintás oldal – elöl",
+          "en": "Patterned side — front"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Piros kétoldalas női bőrkabát: Mintás oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Red reversible women’s leather jacket: Patterned side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-piros-ketoldalas-borkabat-budapest-patterned-back.webp",
+        "labels": {
+          "hu": "Mintás oldal – hátul",
+          "en": "Patterned side — back"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Piros kétoldalas női bőrkabát: Mintás oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Red reversible women’s leather jacket: Patterned side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-krem-ketoldalas-borkabat-budapest-plain-front.webp",
+        "labels": {
+          "hu": "Egyszínű oldal – elöl",
+          "en": "Plain side — front"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Krém kétoldalas női bőrkabát: Egyszínű oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Cream reversible women’s leather jacket: Plain side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-krem-ketoldalas-borkabat-budapest-plain-back.webp",
+        "labels": {
+          "hu": "Egyszínű oldal – hátul",
+          "en": "Plain side — back"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Krém kétoldalas női bőrkabát: Egyszínű oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Cream reversible women’s leather jacket: Plain side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-krem-ketoldalas-borkabat-budapest-patterned-front.webp",
+        "labels": {
+          "hu": "Mintás oldal – elöl",
+          "en": "Patterned side — front"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Krém kétoldalas női bőrkabát: Mintás oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Cream reversible women’s leather jacket: Patterned side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-krem-ketoldalas-borkabat-budapest-patterned-back.webp",
+        "labels": {
+          "hu": "Mintás oldal – hátul",
+          "en": "Patterned side — back"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Krém kétoldalas női bőrkabát: Mintás oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Cream reversible women’s leather jacket: Patterned side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front.webp",
+        "labels": {
+          "hu": "Egyszínű oldal – elöl",
+          "en": "Plain side — front"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Narancssárga kétoldalas női bőrkabát: Egyszínű oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Orange reversible women’s leather jacket: Plain side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back.webp",
+        "labels": {
+          "hu": "Egyszínű oldal – hátul",
+          "en": "Plain side — back"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Narancssárga kétoldalas női bőrkabát: Egyszínű oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Orange reversible women’s leather jacket: Plain side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front.webp",
+        "labels": {
+          "hu": "Mintás oldal – elöl",
+          "en": "Patterned side — front"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Narancssárga kétoldalas női bőrkabát: Mintás oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Orange reversible women’s leather jacket: Patterned side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back.webp",
+        "labels": {
+          "hu": "Mintás oldal – hátul",
+          "en": "Patterned side — back"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Narancssárga kétoldalas női bőrkabát: Mintás oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Orange reversible women’s leather jacket: Patterned side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-zold-ketoldalas-borkabat-budapest-plain-front.webp",
+        "labels": {
+          "hu": "Egyszínű oldal – elöl",
+          "en": "Plain side — front"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Zöld kétoldalas női bőrkabát: Egyszínű oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Green reversible women’s leather jacket: Plain side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-zold-ketoldalas-borkabat-budapest-plain-back.webp",
+        "labels": {
+          "hu": "Egyszínű oldal – hátul",
+          "en": "Plain side — back"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Zöld kétoldalas női bőrkabát: Egyszínű oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Green reversible women’s leather jacket: Plain side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-zold-ketoldalas-borkabat-budapest-patterned-front.webp",
+        "labels": {
+          "hu": "Mintás oldal – elöl",
+          "en": "Patterned side — front"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Zöld kétoldalas női bőrkabát: Mintás oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Green reversible women’s leather jacket: Patterned side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-zold-ketoldalas-borkabat-budapest-patterned-back.webp",
+        "labels": {
+          "hu": "Mintás oldal – hátul",
+          "en": "Patterned side — back"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Zöld kétoldalas női bőrkabát: Mintás oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Green reversible women’s leather jacket: Patterned side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-fekete-ketoldalas-borkabat-budapest-plain-front.webp",
+        "labels": {
+          "hu": "Egyszínű oldal – elöl",
+          "en": "Plain side — front"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Fekete kétoldalas női bőrkabát: Egyszínű oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Black reversible women’s leather jacket: Plain side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-fekete-ketoldalas-borkabat-budapest-plain-back.webp",
+        "labels": {
+          "hu": "Egyszínű oldal – hátul",
+          "en": "Plain side — back"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Fekete kétoldalas női bőrkabát: Egyszínű oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Black reversible women’s leather jacket: Plain side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-fekete-ketoldalas-borkabat-budapest-patterned-front.webp",
+        "labels": {
+          "hu": "Mintás oldal – elöl",
+          "en": "Patterned side — front"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Fekete kétoldalas női bőrkabát: Mintás oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Black reversible women’s leather jacket: Patterned side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      },
+      {
+        "image": "/noi-fekete-ketoldalas-borkabat-budapest-patterned-back.webp",
+        "labels": {
+          "hu": "Mintás oldal – hátul",
+          "en": "Patterned side — back"
+        },
+        "pictures": {
+          "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Fekete kétoldalas női bőrkabát: Mintás oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+          "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Black reversible women’s leather jacket: Patterned side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+        }
+      }
+    ],
+    "catalogHidden": false,
+    "intro": {
+      "hu": "Egy modell, öt szín: piros, krém, narancssárga, zöld és fekete. A kétoldalas, vízálló női bőrkabát egyik oldala egyszínű, a másik mintás. Kerek nyakkivágás, középső cipzár, perforált szegélyek és zsebek. Válasszon színt a hozzá tartozó négy fotó megtekintéséhez.",
+      "en": "One model in five colours: red, cream, orange, green and black. This reversible waterproof women’s leather jacket has a plain leather face and a patterned reverse, with a round neckline, centre zip, perforated trims and pockets. Choose a colour to see its four photos."
+    },
+    "advice": {
+      "hu": "Próbálja fel mindkét oldalával kifelé, és ellenőrizze a váll, az ujjhossz és a cipzár kényelmét. A vízálló tulajdonság nem helyettesíti az ápolási útmutatót: a tisztításról és szárításról kérdezzen üzletünkben.",
+      "en": "Try it with each side facing out and check the shoulders, sleeve length and comfort of the zip. Waterproof performance does not replace care instructions: ask our store about cleaning and drying."
+    },
+    "category": {
+      "hu": {
+        "url": "/noi-borkabatok/",
+        "name": "Női bőrkabátok"
+      },
+      "en": {
+        "url": "/en/womens-leather-jackets/",
+        "name": "Women’s leather jackets"
+      }
+    },
+    "guide": {
+      "hu": {
+        "url": "/utmutatok/borkabat-meret-utmutato/",
+        "name": "Bőrkabát méretútmutató"
+      },
+      "en": {
+        "url": "/en/guides/leather-jacket-fit-guide/",
+        "name": "Leather jacket fit guide"
+      }
+    },
+    "description": {
+      "hu": "Kétoldalas, vízálló női bőrkabát öt színben, egyszínű és mintás oldallal. Nézze meg a 20 fotót, és érdeklődjön a Kaftan Angelo budapesti üzletében.",
+      "en": "Reversible waterproof women’s leather jacket in five colours, with plain and patterned sides. View 20 photos and ask Kaftan Angelo Budapest about sizes."
+    },
+    "variants": [
+      {
+        "key": "red",
+        "names": {
+          "hu": "Piros",
+          "en": "Red"
+        },
+        "gallery": [
+          {
+            "image": "/noi-piros-ketoldalas-borkabat-budapest-plain-front.webp",
+            "labels": {
+              "hu": "Egyszínű oldal – elöl",
+              "en": "Plain side — front"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Piros kétoldalas női bőrkabát: Egyszínű oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Red reversible women’s leather jacket: Plain side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-piros-ketoldalas-borkabat-budapest-plain-back.webp",
+            "labels": {
+              "hu": "Egyszínű oldal – hátul",
+              "en": "Plain side — back"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Piros kétoldalas női bőrkabát: Egyszínű oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Red reversible women’s leather jacket: Plain side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-piros-ketoldalas-borkabat-budapest-patterned-front.webp",
+            "labels": {
+              "hu": "Mintás oldal – elöl",
+              "en": "Patterned side — front"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Piros kétoldalas női bőrkabát: Mintás oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Red reversible women’s leather jacket: Patterned side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-piros-ketoldalas-borkabat-budapest-patterned-back.webp",
+            "labels": {
+              "hu": "Mintás oldal – hátul",
+              "en": "Patterned side — back"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Piros kétoldalas női bőrkabát: Mintás oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-piros-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-piros-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Red reversible women’s leather jacket: Patterned side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          }
+        ]
+      },
+      {
+        "key": "cream",
+        "names": {
+          "hu": "Krém",
+          "en": "Cream"
+        },
+        "gallery": [
+          {
+            "image": "/noi-krem-ketoldalas-borkabat-budapest-plain-front.webp",
+            "labels": {
+              "hu": "Egyszínű oldal – elöl",
+              "en": "Plain side — front"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Krém kétoldalas női bőrkabát: Egyszínű oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Cream reversible women’s leather jacket: Plain side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-krem-ketoldalas-borkabat-budapest-plain-back.webp",
+            "labels": {
+              "hu": "Egyszínű oldal – hátul",
+              "en": "Plain side — back"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Krém kétoldalas női bőrkabát: Egyszínű oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Cream reversible women’s leather jacket: Plain side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-krem-ketoldalas-borkabat-budapest-patterned-front.webp",
+            "labels": {
+              "hu": "Mintás oldal – elöl",
+              "en": "Patterned side — front"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Krém kétoldalas női bőrkabát: Mintás oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Cream reversible women’s leather jacket: Patterned side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-krem-ketoldalas-borkabat-budapest-patterned-back.webp",
+            "labels": {
+              "hu": "Mintás oldal – hátul",
+              "en": "Patterned side — back"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Krém kétoldalas női bőrkabát: Mintás oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-krem-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-krem-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Cream reversible women’s leather jacket: Patterned side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          }
+        ]
+      },
+      {
+        "key": "orange",
+        "names": {
+          "hu": "Narancssárga",
+          "en": "Orange"
+        },
+        "gallery": [
+          {
+            "image": "/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front.webp",
+            "labels": {
+              "hu": "Egyszínű oldal – elöl",
+              "en": "Plain side — front"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Narancssárga kétoldalas női bőrkabát: Egyszínű oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Orange reversible women’s leather jacket: Plain side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back.webp",
+            "labels": {
+              "hu": "Egyszínű oldal – hátul",
+              "en": "Plain side — back"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Narancssárga kétoldalas női bőrkabát: Egyszínű oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Orange reversible women’s leather jacket: Plain side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front.webp",
+            "labels": {
+              "hu": "Mintás oldal – elöl",
+              "en": "Patterned side — front"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Narancssárga kétoldalas női bőrkabát: Mintás oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Orange reversible women’s leather jacket: Patterned side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back.webp",
+            "labels": {
+              "hu": "Mintás oldal – hátul",
+              "en": "Patterned side — back"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Narancssárga kétoldalas női bőrkabát: Mintás oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-narancssarga-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Orange reversible women’s leather jacket: Patterned side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          }
+        ]
+      },
+      {
+        "key": "green",
+        "names": {
+          "hu": "Zöld",
+          "en": "Green"
+        },
+        "gallery": [
+          {
+            "image": "/noi-zold-ketoldalas-borkabat-budapest-plain-front.webp",
+            "labels": {
+              "hu": "Egyszínű oldal – elöl",
+              "en": "Plain side — front"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Zöld kétoldalas női bőrkabát: Egyszínű oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Green reversible women’s leather jacket: Plain side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-zold-ketoldalas-borkabat-budapest-plain-back.webp",
+            "labels": {
+              "hu": "Egyszínű oldal – hátul",
+              "en": "Plain side — back"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Zöld kétoldalas női bőrkabát: Egyszínű oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Green reversible women’s leather jacket: Plain side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-zold-ketoldalas-borkabat-budapest-patterned-front.webp",
+            "labels": {
+              "hu": "Mintás oldal – elöl",
+              "en": "Patterned side — front"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Zöld kétoldalas női bőrkabát: Mintás oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Green reversible women’s leather jacket: Patterned side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-zold-ketoldalas-borkabat-budapest-patterned-back.webp",
+            "labels": {
+              "hu": "Mintás oldal – hátul",
+              "en": "Patterned side — back"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Zöld kétoldalas női bőrkabát: Mintás oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-zold-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-zold-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Green reversible women’s leather jacket: Patterned side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          }
+        ]
+      },
+      {
+        "key": "black",
+        "names": {
+          "hu": "Fekete",
+          "en": "Black"
+        },
+        "gallery": [
+          {
+            "image": "/noi-fekete-ketoldalas-borkabat-budapest-plain-front.webp",
+            "labels": {
+              "hu": "Egyszínű oldal – elöl",
+              "en": "Plain side — front"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Fekete kétoldalas női bőrkabát: Egyszínű oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-front-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-plain-front.webp\" alt=\"Black reversible women’s leather jacket: Plain side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-fekete-ketoldalas-borkabat-budapest-plain-back.webp",
+            "labels": {
+              "hu": "Egyszínű oldal – hátul",
+              "en": "Plain side — back"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Fekete kétoldalas női bőrkabát: Egyszínű oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-plain-back-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-plain-back.webp\" alt=\"Black reversible women’s leather jacket: Plain side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-fekete-ketoldalas-borkabat-budapest-patterned-front.webp",
+            "labels": {
+              "hu": "Mintás oldal – elöl",
+              "en": "Patterned side — front"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Fekete kétoldalas női bőrkabát: Mintás oldal – elöl\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-front-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-patterned-front.webp\" alt=\"Black reversible women’s leather jacket: Patterned side — front\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          },
+          {
+            "image": "/noi-fekete-ketoldalas-borkabat-budapest-patterned-back.webp",
+            "labels": {
+              "hu": "Mintás oldal – hátul",
+              "en": "Patterned side — back"
+            },
+            "pictures": {
+              "hu": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Fekete kétoldalas női bőrkabát: Mintás oldal – hátul\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>",
+              "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-480.avif 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-800.avif 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-1200.avif 1200w\"><source type=\"image/webp\" sizes=\"(max-width: 760px) 92vw, 600px\" srcset=\"/assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-480.webp 480w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-800.webp 800w, /assets/images/noi-fekete-ketoldalas-borkabat-budapest-patterned-back-1200.webp 1200w\"><img src=\"/noi-fekete-ketoldalas-borkabat-budapest-patterned-back.webp\" alt=\"Black reversible women’s leather jacket: Patterned side — back\" width=\"1254\" height=\"1254\" loading=\"lazy\" decoding=\"async\"></picture>"
+            }
+          }
+        ]
+      }
+    ]
   }
 ]

@@ -21,7 +21,7 @@ try {
     }
     await page.goto(base+(lang==='hu'?'/kollekciok/':'/en/collections/'),{waitUntil:'networkidle2'});
     const links=await page.$$eval('.product-card',cards=>cards.map(card=>({detail:card.querySelector('.product-detail-link').href,message:new URL(card.querySelector('a[href*="wa.me"]').href).searchParams.get('text')})));
-    assert.equal(links.length,models.length);
+    assert.equal(links.length,models.filter(model=>!model.catalogHidden).length);
     links.forEach(link=>assert.ok(link.message.includes(link.detail.replace(base,'https://kaftanangelo.com'))));
   }
   console.log('PASS: all 22 HU/EN model pages use the correct image and product-specific WhatsApp link; all collection cards match.');
