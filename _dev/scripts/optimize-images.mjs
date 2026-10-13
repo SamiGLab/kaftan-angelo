@@ -16,7 +16,7 @@ for(const file of files){
     const current=await Promise.all(targets.map(target=>stat(target).then(info=>info.mtimeMs>=sourceTime).catch(()=>false)));
     if(current.every(Boolean))continue;
     await sharp(input).resize({width,withoutEnlargement:true}).webp({quality:78,effort:5}).toFile(path.join(out,`${stem}-${width}.webp`));
-    await sharp(input).resize({width,withoutEnlargement:true}).avif({quality:52,effort:5}).toFile(path.join(out,`${stem}-${width}.avif`));
+    await sharp(input).resize({width,withoutEnlargement:true}).avif({quality:52,effort:2}).toFile(path.join(out,`${stem}-${width}.avif`));
   }
 }
 console.log(`Optimized ${files.length} source images.`);
