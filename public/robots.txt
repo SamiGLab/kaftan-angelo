@@ -27,3 +27,4 @@ Allow: /
 Sitemap: https://kaftanangelo.com/sitemap.xml
 # LLM Context: https://kaftanangelo.com/llms.txt
 # Full LLM Context: https://kaftanangelo.com/llms-full.txt
+# AI Agent Catalog (ARD): https://kaftanangelo.com/.well-known/ai-catalog.json

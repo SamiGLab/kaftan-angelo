@@ -70,10 +70,12 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="help" type="text/plain" href="/llms.txt" title="LLM context" />
+  <link rel="service-desc" type="application/ai-catalog+json" href="/.well-known/ai-catalog.json" title="AI Agent Resource Discovery" />
   <link rel="preload" as="font" type="font/woff2" href={headingFont} crossorigin="anonymous" />
   {lang === 'hu' && <link rel="preload" as="font" type="font/woff2" href={headingExtendedFont} crossorigin="anonymous" />}
   {preloadHero && <link rel="preload" as="image" href={heroCandidates[0]?.[1] ?? heroImage} imagesrcset={mobileHeroSrcset || undefined} media="(max-width: 620px)" fetchpriority="high" />}
   {preloadHero && <link rel="preload" as="image" href={heroImage} media="(min-width: 621px)" fetchpriority="high" />}
+  <link rel="preload" as="style" href="/assets/css/pages.css" />
   <link rel="stylesheet" href="/assets/css/pages.css" />
   <script type="application/ld+json" set:html={JSON.stringify(graph)}></script>
   <slot name="head" />
@@ -91,6 +93,27 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
     <div class="preview-body"><img data-preview-image src={heroImage} alt="" width="900" height="900" loading="lazy" /><div class="preview-details"><p>{lang === 'hu' ? 'Az aktuális méretekről és elérhetőségről érdeklődjön közvetlenül az üzletben. A kabátokat személyesen próbálhatja fel.' : 'Ask our store about available sizes and current availability. Visit us to try the jackets on in person.'}</p><a class="btn btn-primary" data-preview-inquiry href="https://wa.me/36203593216">{lang === 'hu' ? 'Érdeklődés WhatsAppon' : 'Ask on WhatsApp'}</a><div class="preview-controls"><button type="button" data-preview-prev aria-label={lang === 'hu' ? 'Előző modell' : 'Previous model'}><Icon name="previous" /></button><span data-preview-count></span><button type="button" data-preview-next aria-label={lang === 'hu' ? 'Következő modell' : 'Next model'}><Icon name="next" /></button></div></div></div>
   </dialog>}
   <script is:inline defer src="/assets/js/pages.js"></script>
+  <script is:inline>
+    // WebMCP (Web Model Context Protocol) agent tools registration
+    if (typeof document !== 'undefined' && 'modelContext' in document) {
+      try {
+        document.modelContext.registerTool({
+          name: 'getBoutiqueDetails',
+          description: 'Get Kaftan Angelo boutique address, opening hours, contact phone, and WhatsApp in central Budapest',
+          inputSchema: { type: 'object', properties: {} },
+          execute: async () => ({
+            name: 'Kaftan Angelo',
+            address: '1053 Budapest, Kossuth Lajos utca 18, Hungary',
+            landmarks: 'Between Astoria (M2) and Ferenciek tere (M3), 2-3 min from Vaci utca',
+            phone: '+36 1 266 7274',
+            whatsapp: '+36 20 359 3216',
+            openingHours: 'Mon-Fri 10:00-19:00, Sat 10:00-17:00, Sun Closed',
+            products: 'Genuine lambskin & cowhide leather jackets, shearling coats, fur garments, made-to-measure tailoring'
+          })
+        });
+      } catch (e) {}
+    }
+  </script>
   <slot name="scripts" />
 </body>
 </html>

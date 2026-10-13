@@ -12,7 +12,7 @@ const preview = import.meta.env.NEWSLETTER_PREVIEW === 'true';
 {((newsletter.enabled && allowed) || preview) && <section class="newsletter" aria-label={copy.title} data-pagefind-ignore>
   <div class="wrap newsletter-inner">
     <div><h2><Icon name="mail" />{copy.title}</h2><p>{copy.intro}</p><small>{copy.note} <a href={copy.privacyUrl}>{copy.privacy}</a></small></div>
-    <form class="newsletter-form" method="post" action={allowed ? formUrl : undefined} aria-label={copy.title} data-language={language}>
+    <form class="newsletter-form" method="post" action={allowed ? formUrl : undefined} aria-label={copy.title} data-language={language} toolname="newsletter_subscribe" tooldescription="Subscribe customer email to Kaftan Angelo boutique updates and collection previews">
       <label for="newsletter-email">{language === 'hu' ? 'E-mail-cím' : 'Email address'}</label>
       <div class="newsletter-entry">
         <input id="newsletter-email" name="EMAIL" type="email" autocomplete="email" maxlength="254" required placeholder={language === 'hu' ? 'nev@pelda.hu' : 'you@example.com'} disabled={!newsletter.enabled} />

@@ -1,0 +1,42 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Kaftan Angelo Budapest",
+    "identifier": "did:web:kaftanangelo.com",
+    "documentationUrl": "https://kaftanangelo.com/llms.txt",
+    "logoUrl": "https://kaftanangelo.com/kaftan-angelo-hero-leather-collection.webp"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:kaftanangelo.com:catalog:leather-outerwear",
+      "displayName": "Kaftan Angelo Leather & Fur Catalog",
+      "type": "application/ai-catalog+json",
+      "url": "https://kaftanangelo.com/llms.txt",
+      "description": "Artisan luxury boutique catalog in central Budapest (Kossuth Lajos u. 18) featuring genuine lambskin and cowhide leather jackets, warm shearling coats, fur garments, and bespoke tailoring.",
+      "tags": ["leather-jackets", "shearling-coats", "fur-outerwear", "budapest-shopping", "made-to-measure"],
+      "capabilities": ["ProductCatalog", "InStoreFitting", "CustomLeatherTailoring"],
+      "representativeQueries": [
+        "genuine leather jackets in central Budapest near Vaci utca",
+        "custom made to measure leather jacket tailoring Budapest",
+        "luxury shearling and fur coat boutique Budapest Kossuth Lajos"
+      ],
+      "version": "2.0.0",
+      "updatedAt": "2026-10-13T05:00:00Z"
+    },
+    {
+      "identifier": "urn:air:kaftanangelo.com:tools:customer-inquiry",
+      "displayName": "Kaftan Angelo Customer & Model Inquiry",
+      "type": "text/html",
+      "url": "https://kaftanangelo.com/en/visit/",
+      "description": "WhatsApp direct customer fitting assistance, size checks, and boutique directions in central Budapest.",
+      "tags": ["whatsapp-inquiry", "store-visit", "opening-hours", "fitting-appointment"],
+      "capabilities": ["StoreVisitDirections", "WhatsAppCustomerInquiry"],
+      "representativeQueries": [
+        "how to visit Kaftan Angelo leather boutique Budapest",
+        "contact Kaftan Angelo Budapest on WhatsApp for jacket fitting"
+      ],
+      "version": "2.0.0",
+      "updatedAt": "2026-10-13T05:00:00Z"
+    }
+  ]
+}

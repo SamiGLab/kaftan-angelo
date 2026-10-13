@@ -1,7 +1,7 @@
 module.exports = {
   ci: {
     collect: {
-      startServerCommand: 'python3 -u -m http.server 4174 --directory dist',
+      startServerCommand: process.platform === 'win32' ? 'py -m http.server 4174 --directory dist' : 'python3 -u -m http.server 4174 --directory dist',
       startServerReadyPattern: 'Serving HTTP',
       url: [
         'http://127.0.0.1:4174/',
