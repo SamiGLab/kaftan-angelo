@@ -13,9 +13,13 @@ try {
    assert.equal(await page.$eval(`[data-colour-panel="${colour}"]`,p=>p.hidden),false);
    assert.equal(await page.$$eval('[data-colour-panel]',panels=>panels.filter(p=>!p.hidden).length),1);
    const images=await page.$$eval(`[data-colour-panel="${colour}"] img`,imgs=>imgs.map(i=>i.getAttribute('src')));
-   assert.ok(images.length>=4);for(const image of images)assert.equal((await page.goto(base+image)).status(),200);
-   await page.goBack();
-   // Restore the product page after inspecting the four image URLs.
+   assert.ok(images.length>=4);
+   for(const image of images) {
+    const response=await fetch(base+image);
+    assert.equal(response.status,200);
+    assert.ok((await response.arrayBuffer()).byteLength>0);
+   }
+   // Verify direct links to a selected colour as well as button selection.
    await page.goto(base+(lang==='hu'?'/modellek/':'/en/models/')+'noi-ketoldalas-vizallo-borkabat-budapest/?colour='+colour,{waitUntil:'networkidle2'});
    const selected=await page.$eval(`[data-colour-panel="${colour}"]`,p=>p.dataset.colourName);
    const message=await page.$eval('[data-model-inquiry]',a=>new URL(a.href).searchParams.get('text'));
