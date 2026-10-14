@@ -134,6 +134,7 @@ const collectionViews = [...document.querySelectorAll('.product-grid')].map((gri
       card.hidden = !shown.has(card);
       card.classList.toggle('hidden', card.hidden);
     });
+    grid.dataset.galleryReady = 'true';
     status.textContent = hu ? `${Math.min(limit, matching.length)} / ${matching.length} modell` : `${Math.min(limit, matching.length)} of ${matching.length} models`;
     more.hidden = limit >= matching.length;
     controls.hidden = cards.length <= 12 && filter === 'all';

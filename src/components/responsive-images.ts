@@ -20,5 +20,9 @@ export function responsiveImages(html: string) {
         const full = `/assets/images/${src}-${width}.${ext}`;
         return existsSync(`public${full}`) && !set.includes(full) ? `srcset="${set}, ${full} ${width}w"` : `srcset="${set}"`;
       });
-    });
+    })
+    .replace(/<article class="product-card"[\s\S]*?<\/article>/g, card => card
+      .replace(/<source type="image\/webp"[^>]*>/g, '')
+      .replace(/srcset="([^"]+)"/g, (_match, set) => `srcset="${set.split(',').filter((candidate: string) => Number(candidate.trim().match(/(\d+)w$/)?.[1]) <= 1200).join(',')}"`)
+      .replace(/<img src="\/([^"/]+)\.webp"/g, (_match, stem) => existsSync(`public/assets/images/${stem}-800.webp`) ? `<img src="/assets/images/${stem}-800.webp"` : _match));
 }
