@@ -2106,11 +2106,6 @@ main .btn-ghost{border-color:#77502b88;}
 .colour-options button { padding:9px 13px; min-height:44px; }
 .colour-options .btn[aria-pressed="true"] { background:#5a3d24; color:#fff8ed; border-color:#5a3d24; }
 
-/* Defer layout of sections until they approach the viewport. */
-.split-section, .store-cta, .newsletter, .footer {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 450px;
-}
 
 @font-face {
   font-family: 'Fraunces Variable';
