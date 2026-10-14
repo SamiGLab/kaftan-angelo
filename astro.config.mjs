@@ -4,5 +4,5 @@ export default defineConfig({
   site: 'https://kaftanangelo.com',
   output: 'static',
   trailingSlash: 'always',
-  build: { format: 'directory' },
+  build: { format: 'directory', inlineStylesheets: 'always' },
 });
