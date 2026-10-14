@@ -10,12 +10,16 @@ const headingExtendedFont = '/assets/fonts/fraunces-hungarian-wght-normal.woff2'
 import { BASE, businessSchema, websiteSchema } from '../data/site';
 const { page } = Astro.props;
 const lang = page.lang ?? 'hu';
-const preloadHero = !page.mainHtml?.includes('class="model-detail"');
-const heroImage = page.mainHtml?.match(/--hero:url\('([^']+)'\)/)?.[1] ?? new URL(page.ogImage).pathname;
+const isModelPage = Boolean(page.mainHtml?.includes('class="model-detail"'));
+const preloadHero = !isModelPage;
+const heroImage = page.mainHtml?.match(/--hero:\s*url\('([^']+)'\)/)?.[1] ?? new URL(page.ogImage).pathname;
 import { backgroundImage } from './responsive-images';
 const sharpHero = backgroundImage(heroImage, page.mainHtml?.includes('class="home-hero"') ? 1600 : 1200);
 const heroCandidates = [...sharpHero.matchAll(/url\('([^']+)'\) (\d)x/g)];
 const mobileHeroSrcset = heroCandidates.map(match => `${match[1]} ${match[2]}x`).join(', ');
+const modelAvifSource = isModelPage ? (page.mainHtml?.match(/<source\s+[^>]*type="image\/avif"[^>]*>/i) || page.mainHtml?.match(/<source\s+[^>]*srcset="[^"]+\.avif[^"]*"[^>]*>/i))?.[0] : null;
+const modelAvifSrcset = modelAvifSource ? modelAvifSource.match(/srcset="([^"]+)"/)?.[1] : null;
+const modelAvifSizes = modelAvifSource ? modelAvifSource.match(/sizes="([^"]+)"/)?.[1] : null;
 const socialImage = page.ogImage.replace(/\/assets\/images\/(.+)-(480|800|1200)\.avif$/, '/$1.webp');
 const huUrl = lang === 'hu' ? page.canonical : BASE + page.counterpart;
 const enUrl = lang === 'en' ? page.canonical : BASE + page.counterpart;
@@ -70,10 +74,13 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="help" type="text/plain" href="/llms.txt" title="LLM context" />
   <link rel="service-desc" type="application/ai-catalog+json" href="/.well-known/ai-catalog.json" title="AI Agent Resource Discovery" />
+  <link rel="dns-prefetch" href="https://wa.me" />
+  <link rel="preconnect" href="https://wa.me" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href={headingFont} crossorigin="anonymous" />
   {lang === 'hu' && <link rel="preload" as="font" type="font/woff2" href={headingExtendedFont} crossorigin="anonymous" />}
   {preloadHero && <link rel="preload" as="image" href={heroCandidates[0]?.[1] ?? heroImage} imagesrcset={mobileHeroSrcset || undefined} media="(max-width: 620px)" fetchpriority="high" />}
   {preloadHero && <link rel="preload" as="image" href={heroImage} media="(min-width: 621px)" fetchpriority="high" />}
+  {isModelPage && modelAvifSrcset && <link rel="preload" as="image" type="image/avif" imagesrcset={modelAvifSrcset} imagesizes={modelAvifSizes || '(max-width: 760px) 92vw, 600px'} fetchpriority="high" />}
   <link rel="preload" as="style" href="/assets/css/pages.css" />
   <link rel="stylesheet" href="/assets/css/pages.css" />
   <script type="application/ld+json" set:html={JSON.stringify(graph)}></script>
