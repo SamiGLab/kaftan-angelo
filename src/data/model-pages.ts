@@ -18,7 +18,15 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
   const isWallet = model.slug === 'barna-bor-penztarca-budapest';
   const isBelt = model.slug === 'fekete-borov-budapest';
   const checklist = modelQuestions[model.slug]?.[lang] ?? [];
-  const related = models.filter(other => !other.catalogHidden && other.slug !== model.slug && other.category[lang].url === collection).slice(0, 2);
+  const sameCategory = models.filter(other => other.slug !== model.slug && other.category[lang].url === collection);
+  const related = (sameCategory.filter(other => !other.catalogHidden).length > 0 ? sameCategory.filter(other => !other.catalogHidden) : sameCategory).slice(0, 3);
+  const isShearling = collection.includes('irha') || collection.includes('shearling');
+  const isFur = collection.includes('szorme') || collection.includes('fur');
+  const material = isShearling
+    ? (hu ? 'Valódi báránybőr, irha' : 'Genuine shearling, lambskin')
+    : isFur
+      ? (hu ? 'Valódi szőrme' : 'Genuine fur')
+      : (hu ? 'Valódi bőr' : 'Genuine leather');
   const extraPhotos = model.gallery.slice(1).map(photo => `<figure>${photo.pictures[lang]}<figcaption><a href="${photo.image}">${escape(photo.labels[lang])} ↗</a></figcaption></figure>`).join('');
   const galleryHtml = extraPhotos ? `<div class="model-gallery" role="group" aria-label="${hu ? 'Termékfotók' : 'Product photos'}">${extraPhotos}</div>` : '';
   const defaultPhotos = `${model.pictures[lang].replace('loading="lazy"', 'loading="eager" fetchpriority="high"')}<a class="text-link" href="${model.image}">${hu ? 'Teljes méretű fotó megnyitása' : 'Open full-size photo'} ↗</a>${galleryHtml}`;
@@ -31,14 +39,19 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
   const detailsHtml = checklist.length ? `<h2>${hu ? 'Hasznos kérdések a kiválasztott darabról' : 'Questions about the specific piece'}</h2><ul class="model-checklist">${checklist.map(text => `<li>${escape(text)}</li>`).join('')}</ul>` : '';
   const relatedHtml = related.length ? `<div class="model-related"><h2>${hu ? 'Hasonlítsa össze más modellekkel' : 'Compare with other models'}</h2><ul>${related.map(other => `<li><a href="${hu ? '/modellek/' : '/en/models/'}${other.slug}/">${escape(other.names[lang])}</a></li>`).join('')}</ul></div>` : '';
 
+  const geoTitle = `${name} | Budapest · Kaftan Angelo`;
+  const brandTitle = `${name} | Kaftan Angelo`;
+  const title = geoTitle.length <= 68 ? geoTitle : (brandTitle.length <= 68 ? brandTitle : name);
+
   return [path, {
-    path, lang, title: `${name} | Kaftan Angelo`.length <= 70 ? `${name} | Kaftan Angelo` : name, description,
+    path, lang, title, description,
     canonical: BASE + path, counterpart, ogImage: BASE + model.image,
-    modifiedDate: model.gallery.length ? '2026-10-13' : '2026-10-12',
+    modifiedDate: '2026-10-14',
     pageSchema: {
       '@type': 'ItemPage',
       name,
       description,
+      url: BASE + path,
       primaryImageOfPage: { '@type': 'ImageObject', contentUrl: BASE + model.image },
       mainEntity: { '@id': `${BASE}${path}#product` },
     },
@@ -48,8 +61,9 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
       name,
       description,
       image: model.gallery.length ? model.gallery.map(photo => BASE + photo.image) : [BASE + model.image],
-      brand: { '@type': 'Brand', name: 'Kaftan Angelo' },
+      brand: { '@type': 'Brand', name: 'Kaftan Angelo', url: BASE },
       category: collectionLabel,
+      material,
       itemCondition: 'https://schema.org/NewCondition',
       offers: {
         '@type': 'Offer',
@@ -58,9 +72,14 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
         availability: 'https://schema.org/InStoreOnly',
         itemCondition: 'https://schema.org/NewCondition',
         seller: { '@id': `${BASE}/#store` },
+        availableAtOrFrom: { '@id': `${BASE}/#store` },
+        areaServed: {
+          '@type': 'AdministrativeArea',
+          name: 'Budapest',
+        },
       },
     },
     breadcrumbs: [{ name: hu ? 'Főoldal' : 'Home', url: hu ? '/' : '/en/' }, { name: collectionLabel, url: collection }, { name, url: path }],
-    mainHtml: `<section><div class="wrap"><div class="breadcrumbs"><a href="${collection}">← ${collectionLabel}</a></div><div class="model-detail"><div class="model-photo">${photosHtml}</div><div class="model-info"><span class="tag mono">Kaftan Angelo · Budapest</span><h1>${escape(name)}</h1><p>${escape(model.intro[lang])}</p><div class="actions"><a class="btn btn-primary" data-model-inquiry href="https://wa.me/36203593216?text=${encodeURIComponent(message)}">${hu ? 'Érdeklődés erről a termékről' : 'Ask about this product'}</a><a class="btn btn-ghost" href="${hu ? '/uzlet/' : '/en/visit/'}">${hu ? (isWallet || isBelt ? 'Nézze meg üzletünkben' : 'Próbálja fel üzletünkben') : 'Visit our store'}</a></div><h2>${hu ? 'Mire figyeljen választáskor?' : 'What to check when choosing'}</h2><p>${escape(model.advice[lang])}</p>${detailsHtml}<h2>${hu ? 'Ár, méret és elérhetőség' : 'Price, size and availability'}</h2><p>${escape(enquiryHint)}</p><p>${hu ? 'Kérjen megerősítést a kiválasztott darabról. Az aktuális árat, méreteket és színeket az üzlet tudja megerősíteni; a fotó nem valós idejű készletjelzés.' : 'Ask for confirmation about the selected piece. Our store can confirm the current price, sizes and colours; the photo does not indicate real-time stock.'}</p><p>${hu ? 'Üzletünk: Kossuth Lajos u. 18, Budapest 1053.' : 'Our store: Kossuth Lajos u. 18, Budapest 1053.'}</p><div class="callout"><strong>${hu ? 'Kapcsolódó útmutató: ' : 'Related guide: '}</strong><a href="${model.guide[lang].url}">${escape(model.guide[lang].name)}</a></div>${relatedHtml}</div></div></div></section>`,
+    mainHtml: `<section><div class="wrap"><div class="breadcrumbs"><a href="${collection}">← ${collectionLabel}</a></div><div class="model-detail"><div class="model-photo">${photosHtml}</div><div class="model-info"><span class="tag mono">Kaftan Angelo · Budapest</span><h1>${escape(name)}</h1><p>${escape(model.intro[lang])}</p><div class="actions"><a class="btn btn-primary" data-model-inquiry href="https://wa.me/36203593216?text=${encodeURIComponent(message)}">${hu ? 'Érdeklődés erről a termékről' : 'Ask about this product'}</a><a class="btn btn-ghost" href="${hu ? '/uzlet/' : '/en/visit/'}">${hu ? (isWallet || isBelt ? 'Nézze meg üzletünkben' : 'Próbálja fel üzletünkben') : 'Visit our store'}</a></div><h2>${hu ? 'Mire figyeljen választáskor?' : 'What to check when choosing'}</h2><p>${escape(model.advice[lang])}</p>${detailsHtml}<h2>${hu ? 'Ár, méret és elérhetőség' : 'Price, size and availability'}</h2><p>${escape(enquiryHint)}</p><p>${hu ? 'Kérjen megerősítést a kiválasztott darabról. Az aktuális árat, méreteket és színeket az üzlet tudja megerősíteni; a fotó nem valós idejű készletjelzés.' : 'Ask for confirmation about the selected piece. Our store can confirm the current price, sizes and colours; the photo does not indicate real-time stock.'}</p><p>${hu ? 'Üzletünk és próbalehetőség: <a href="/uzlet/">Kossuth Lajos u. 18, 1053 Budapest</a> (Belváros, Ferenciek tere közelében).' : 'Store fitting and viewing: <a href="/en/visit/">Kossuth Lajos u. 18, 1053 Budapest</a> (Belváros / city centre, near Ferenciek tere).'}</p><div class="callout"><strong>${hu ? 'Kapcsolódó útmutató: ' : 'Related guide: '}</strong><a href="${model.guide[lang].url}">${escape(model.guide[lang].name)}</a></div>${relatedHtml}</div></div></div></section>`,
   }];
 })));
