@@ -2,6 +2,12 @@
 
 The Pages deployment keeps `site-release` for **7 days**. This is a short-term recovery copy of the tested static website, not a database or Storage backup. Expired artifacts cannot be recovered by this workflow. Keep a separate, access-controlled long-term copy if the business needs longer recovery coverage.
 
+## Artifact completeness
+
+The actual recovery ZIP from deployment #38930323802 was downloaded on 16 October 2026. Its digest matched GitHub, but its manifest verification failed because `.well-known/ai-catalog.json` was missing. Treat that old artifact as incomplete; do not edit its manifest to hide the failure. A local tar round trip alone did not exercise GitHub's hidden-file exclusion.
+
+New uploads explicitly include hidden files from the already-public built site, fail when no files exist, and are downloaded and verified before Pages publishing. PR quality also uploads/downloads a one-day rehearsal artifact and checks its full file list, commit identity, hashes and local metadata. This is evidence of an actual artifact round trip when those steps pass, not a production rollback or long-term backup.
+
 ## Rehearsal before publishing
 
 1. Open Actions → **Restore tested site release** → Run workflow on `main`.

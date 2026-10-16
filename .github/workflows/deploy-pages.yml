@@ -116,6 +116,17 @@ jobs:
           name: site-release
           path: dist
           retention-days: 7
+          include-hidden-files: true
+          if-no-files-found: error
+      - name: Download the uploaded recovery snapshot
+        uses: actions/download-artifact@v4
+        with:
+          name: site-release
+          path: ${{ runner.temp }}/site-release-verified
+      - name: Verify the actual recovery download before publishing
+        run: |
+          node _dev/scripts/release-manifest.mjs verify "$RUNNER_TEMP/site-release-verified" "$GITHUB_SHA"
+          python3 _dev/scripts/site_audit.py "$RUNNER_TEMP/site-release-verified"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
