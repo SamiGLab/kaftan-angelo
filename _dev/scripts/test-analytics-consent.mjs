@@ -19,6 +19,30 @@ try{
   const events=await page.evaluate(()=>window.dataLayer.filter(e=>e.event).map(e=>e.event));assert.ok(events.includes('kaftan_analytics_ready'));assert.ok(!events.includes('kaftan_recordings_ready'));
   await page.evaluate(()=>document.querySelector('main a[href^="tel:"]').addEventListener('click',e=>e.preventDefault()));await page.click('main a[href^="tel:"]');
   assert.ok(await page.evaluate(()=>window.dataLayer.some(e=>e.event==='kaftan_interest'&&e.interest_action==='phone_click')));
+  // Each store-contact CTA should emit exactly one PII-free intent after analytics opt-in.
+  // Avoid leaving the test page while clicking ordinary external contact anchors.
+  for (const [selector,action] of [
+   ['main a[href^="https://wa.me/"]','whatsapp_click'],
+   ['main a[href^="https://maps.app.goo.gl/"]','directions_click']
+  ]) {
+   assert.ok(await page.$(selector),path+' '+action+' CTA exists');
+   await page.$eval(selector,el=>el.addEventListener('click',event=>event.preventDefault()));
+   const before=await page.evaluate(a=>window.dataLayer.filter(entry=>entry.event==='kaftan_interest'&&entry.interest_action===a).length,action);
+   await page.click(selector);
+   const after=await page.evaluate(a=>window.dataLayer.filter(entry=>entry.event==='kaftan_interest'&&entry.interest_action===a).length,action);
+   assert.equal(after,before+1,path+' '+action+' emits exactly once');
+  }
+  const interestEvents=await page.evaluate(()=>window.dataLayer.filter(e=>e.event==='kaftan_interest'));
+  assert.deepEqual(
+   [...new Set(interestEvents.map(e=>e.interest_action))].sort(),
+   ['directions_click','phone_click','whatsapp_click'],
+   path+' all three store interest intents were recorded'
+  );
+  for(const event of interestEvents) {
+   assert.deepEqual(Object.keys(event).sort(),['event','interest_action','page_language','page_path'].sort(),'Only approved, non-PII fields enter dataLayer');
+   assert.equal(event.page_path,path);
+   assert.equal(event.page_language,path.startsWith('/en/')?'en':'hu');
+  }
   await page.click('[data-consent-open]');await page.click('[data-consent-reject]');await page.waitForFunction(()=>window.kaftanAnalytics&&!window.kaftanAnalytics.choice.analytics);
   assert.equal(await page.evaluate(()=>window.dataLayer.some(e=>e.event==='kaftan_analytics_ready')),false,'Withdrawal reload does not initialize GA');
   await page.click('[data-consent-open]');await page.click('[data-consent-customize]');await page.click('[data-consent-recordings]');await page.click('[data-consent-save]');
