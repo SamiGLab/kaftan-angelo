@@ -20,7 +20,9 @@ BEGIN
       ADD CONSTRAINT partner_inquiries_retention_hold_pair CHECK (
         (retention_hold_until IS NULL AND retention_hold_reason IS NULL)
         OR (retention_hold_until IS NOT NULL
+            AND retention_hold_reason IS NOT NULL
             AND retention_hold_reason IN ('legal_obligation','active_dispute')
+            AND isfinite(retention_hold_until)
             AND retention_hold_until > created_at)
       );
   END IF;

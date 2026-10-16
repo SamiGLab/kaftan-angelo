@@ -118,6 +118,20 @@ BEGIN
 
   -- A legal exception must have both a reason and a finite expiration.
   BEGIN
+    UPDATE kaftan_intake.partner_inquiries
+      SET retention_hold_until=transaction_timestamp()+interval '1 day',
+          retention_hold_reason=NULL WHERE id=v_recent_id;
+    RAISE EXCEPTION 'Expiry without reason was allowed';
+  EXCEPTION WHEN check_violation THEN NULL;
+  END;
+  BEGIN
+    UPDATE kaftan_intake.partner_inquiries
+      SET retention_hold_until='infinity'::timestamptz,
+          retention_hold_reason='active_dispute' WHERE id=v_recent_id;
+    RAISE EXCEPTION 'Infinite preservation was allowed';
+  EXCEPTION WHEN check_violation THEN NULL;
+  END;
+  BEGIN
     UPDATE kaftan_intake.partner_inquiries SET retention_hold_reason='active_dispute'
       WHERE id=v_recent_id;
     RAISE EXCEPTION 'Reason without expiry was allowed';
