@@ -11,3 +11,5 @@ services/decap-auth/.dev.vars*
 services/decap-auth/.wrangler/
 public/assets/images/
 services/partner-security/supabase/.temp/
+*.age
+recovery-private/
