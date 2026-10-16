@@ -49,7 +49,8 @@ Generated HTML and the old one-page frontend are not committed. Build the site t
 
 GitHub Actions now contains:
 
-- **Lighthouse CI** — performance/SEO/accessibility/best-practices budgets
+- **Lighthouse** — performance/SEO/accessibility/best-practices budgets, with retained JSON/HTML evidence
+- **Dependency audit** — lockfile security gate, including development dependencies
 - **Pa11y CI** — WCAG 2 AA checks across the generated sitemap
 - **Lychee** — local broken-link gate on deploy plus weekly external-link monitoring
 - **HTML Validate** — generated HTML validation
@@ -59,7 +60,7 @@ Deployment only proceeds after the deployment workflow passes the quality gates.
 
 ### Performance budgets
 
-The current **CI acceptance thresholds** below are taken from `lighthouserc.cjs` (not from a real-user field report). Lighthouse CI samples six HU/EN pages twice on an automated runner; these scores do not establish real-world Core Web Vitals or mobile visitor experience.
+The current **CI acceptance thresholds** below are taken from `lighthouserc.cjs` (not from a real-user field report). The direct Lighthouse runner samples six HU/EN pages twice. Every run must pass the hard budgets; missing metrics or incomplete collection fail closed. JSON/HTML reports and a summary are kept as a seven-day Actions artifact. Lighthouse was upgraded from 12.6.1 to 13.5.0 when replacing the vulnerable LHCI dependency chain, so scores across that version boundary require a fresh baseline. These scores do not establish real-world Core Web Vitals or mobile visitor experience.
 
 - Lighthouse Performance ≥ 0.80
 - Accessibility ≥ 0.95
@@ -141,4 +142,4 @@ Custom domain file `CNAME` is preserved as `kaftanangelo.com`.
 
 Fonts are bundled locally through Fontsource. Hero images are preloaded and category backgrounds use optimized AVIF files. The custom domain is required: root-relative URLs intentionally deploy at https://kaftanangelo.com/, not under /kaftan-angelo/.
 
-Responsive image variants in `public/assets/images/` are generated during build and are not committed. Python 3 is required for the static audit. Local dependency auditing currently reports advisories in the Lighthouse/Pa11y development toolchain; these packages do not ship as site JavaScript.
+Responsive image variants in `public/assets/images/` are generated during build and are not committed. Python 3 is required for the static audit and local Lighthouse server. Run `npm run check:dependencies` for the current lockfile audit, including development packages; it fails on reported vulnerabilities. The direct Lighthouse/Puppeteer packages are pinned, and the lockfile is committed. Test tooling is not shipped as site JavaScript.
