@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
 import { evaluateBudgets } from './lighthouse-budgets.mjs';
+import { launchLighthouseBrowser } from './lighthouse-browser.mjs';
 const require = createRequire(import.meta.url);
 const rules = require('../../lighthouserc.cjs').ci.assert.assertions;
 function result() {
@@ -36,4 +37,16 @@ test('empty or unknown rule shapes cannot silently disable the gate', () => {
   assert.throws(() => evaluateBudgets(result(), {}));
   assert.throws(() => evaluateBudgets(result(), {'categories:performance':['off',{minScore:0.8}]}));
   assert.throws(() => evaluateBudgets(result(), {'categories:performance':['error',{maxNumericValue:1}]}));
+});
+test('async Puppeteer executable paths are resolved before launching Chrome', async () => {
+  const browser = await launchLighthouseBrowser({executablePath:async()=>'/test/chrome',ci:true,launch:options=>{
+    assert.equal(options.chromePath,'/test/chrome');
+    assert.ok(options.chromeFlags.includes('--no-sandbox'));
+    return 'synthetic browser';
+  }});
+  assert.equal(browser,'synthetic browser');
+});
+test('missing browser paths never reach the launcher; local runs keep the sandbox', async () => {
+  await assert.rejects(launchLighthouseBrowser({executablePath:async()=>undefined,launch:()=>{throw Error('Must not launch');}}),/path is unavailable/);
+  await launchLighthouseBrowser({executablePath:()=>'/test/chrome',ci:false,launch:options=>assert.ok(!options.chromeFlags.includes('--no-sandbox'))});
 });
