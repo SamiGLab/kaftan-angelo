@@ -121,6 +121,8 @@ jobs:
         run: node _dev/scripts/test-colour-variants.mjs
       - name: Check mobile contact and newsletter retry flows
         run: node _dev/scripts/test-contact-flows.mjs
+      - name: Check HU/EN store-visit conversion CTAs on mobile
+        run: node _dev/scripts/test-store-visit-ctas.mjs
       - name: Check disabled-by-default HU/EN partner intake preview
         run: node _dev/scripts/test-partner-intake-form.mjs
       - name: Check partner sessions and material isolation

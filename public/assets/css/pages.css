@@ -2121,3 +2121,18 @@ main .btn-ghost{border-color:#77502b88;}
   src: url('/assets/fonts/fraunces-latin-wght-normal.woff2') format('woff2-variations');
   unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
+
+/* Direct store directions: readable on dark hero, keyboard reachable. */
+.home-hero .home-visit-direct { margin: 12px 0 0; font-size: .92rem; }
+.home-hero .home-visit-direct a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 100%;
+  color: #f1c58d;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+.home-hero .home-visit-direct a:focus-visible { outline: 2px solid #f1c58d; outline-offset: 3px; }
+.page-hero .proofs { margin-top: 18px; max-width: 850px; }
