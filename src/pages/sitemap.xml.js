@@ -34,7 +34,8 @@ function getChangefreq(u) {
 }
 
 export function GET() {
-  const urls = new Set(Object.keys(pages));
+  const excluded = new Set(['/partner-portal/', '/en/partner-portal/']);
+  const urls = new Set(Object.keys(pages).filter(url => !excluded.has(url)));
   urls.add('/utmutatok/');
   urls.add('/en/guides/');
   Object.keys(huGuides).forEach(p=>urls.add(`/utmutatok/${slug(p)}/`));
