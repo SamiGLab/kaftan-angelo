@@ -24,6 +24,10 @@ jobs:
           node-version: 24
       - name: Install dependencies
         run: npm ci
+      - name: Dependency security gate
+        run: npm run check:dependencies
+      - name: Test Lighthouse budget enforcement
+        run: node --test _dev/scripts/lighthouse-budgets.test.mjs
       - name: Generate optimized images
         run: npm run optimize:images
       - name: Validate CMS content and uploaded images
@@ -78,7 +82,14 @@ jobs:
         run: |
           if [ -f /tmp/kaftan-http.pid ]; then kill $(cat /tmp/kaftan-http.pid) || true; fi
       - name: Lighthouse performance budget
-        run: npx lhci autorun --config=lighthouserc.cjs
+        run: npm run check:lighthouse
+      - name: Keep Lighthouse evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/
+          retention-days: 7
       - name: Fingerprint the tested release
         run: node _dev/scripts/release-manifest.mjs create dist "$GITHUB_SHA"
       - name: Keep a tested recovery snapshot

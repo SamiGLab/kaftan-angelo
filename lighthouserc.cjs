@@ -1,8 +1,6 @@
 module.exports = {
   ci: {
     collect: {
-      startServerCommand: process.platform === 'win32' ? 'py -m http.server 4174 --directory dist' : 'python3 -u -m http.server 4174 --directory dist',
-      startServerReadyPattern: 'Serving HTTP',
       url: [
         'http://127.0.0.1:4174/',
         'http://127.0.0.1:4174/kollekciok/',
@@ -11,8 +9,7 @@ module.exports = {
         'http://127.0.0.1:4174/utmutatok/',
         'http://127.0.0.1:4174/en/'
       ],
-      numberOfRuns: 2,
-      settings: { chromeFlags: process.env.CI ? '--no-sandbox --headless --disable-gpu --disable-dev-shm-usage' : '' }
+      numberOfRuns: 2
     },
     assert: {
       assertions: {
@@ -25,7 +22,6 @@ module.exports = {
         'total-blocking-time': ['error', {maxNumericValue: 400}],
         'speed-index': ['warn', {maxNumericValue: 4000}]
       }
-    },
-    upload: { target: 'temporary-public-storage' }
+    }
   }
 };
