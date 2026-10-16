@@ -230,9 +230,11 @@
     if (pendingTitle) pendingTitle.textContent = needsSignIn
       ? t('Sign in again to access your agreement', 'A szerződés megnyitásához jelentkezzen be újra')
       : t('Official Signed Agreement Pending Upload', 'Hivatalos Aláírt Szerződés Előkészítés Alatt');
-    if (pendingHelp && needsSignIn) pendingHelp.textContent =
-      t('For your security, contract access is only available during a fresh sign-in. Log out and sign in again with your partner code and PIN.',
-        'Biztonsági okokból a szerződés csak új bejelentkezés után érhető el. Jelentkezzen ki, majd lépjen be újra a partnerkóddal és PIN-kóddal.');
+    if (pendingHelp) pendingHelp.textContent = needsSignIn
+      ? t('For your security, contract access is only available during a fresh sign-in. Log out and sign in again with your partner code and PIN.',
+          'Biztonsági okokból a szerződés csak új bejelentkezés után érhető el. Jelentkezzen ki, majd lépjen be újra a partnerkóddal és PIN-kóddal.')
+      : t('Your signed bilingual agreement will appear here once it is available.',
+          'Az aláírt kétnyelvű szerződése itt lesz elérhető, amint elkészült.');
     $('contract-download-link').removeAttribute('href');
     if (contract) $('contract-download-link').href = '#portal-account';
     const badge = document.querySelector('.contract-badge');
