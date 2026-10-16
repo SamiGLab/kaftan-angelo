@@ -26,3 +26,10 @@ Retention must follow necessity for the purpose, not a universal default: [Europ
 The **designated operator mailbox is alfinafashionkft@gmail.com**, approved on 16 October 2026. This does not configure email transport, prove notification delivery, or authorize sending applicant PII to a third-party system. An actual adapter must use a server-only email provider secret and retryable outbox processing. Use `node --test services/partner-intake/handler.test.mjs` for the synthetic request-boundary regressions.
 
 **Do not make this handler publicly reachable yet.** The project has no verified trusted-ingress attestation adapter, atomically enforced DB rate limits/idempotency, privacy-approved retention, permitted operator authentication, or end-to-end encrypted notification receipt. These must be tested together before migrating/deploying a production public Edge Function, and the legacy mailto/WhatsApp fallback must remain in place until then.
+
+
+## Optional server-only Cloudflare Turnstile verification (not deployed)
+
+`turnstile.mjs` exports a verifier which takes a server-only secret, posts the challenge to the fixed Cloudflare `siteverify` URL with a 4.5-second timeout, refuses redirects, and accepts only an exact `hostname=kaftanangelo.com` and `action=partner_application` on a successful response. Provider outages and missing secrets fail closed. Only a minimal proof object is returned; submitted token, secret and provider errors are not reflected.
+
+The public site key/widget has **not** been configured; no service endpoint is exposed. The future adapter must still supply verified ingress, database limiting/idempotency, legal/operational notification flow and synthetic E2E. Test with `node --test services/partner-intake/turnstile.test.mjs`.
