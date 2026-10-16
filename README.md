@@ -59,14 +59,18 @@ Deployment only proceeds after the deployment workflow passes the quality gates.
 
 ### Performance budgets
 
-- Lighthouse Performance ≥ 0.85
+The current **CI acceptance thresholds** below are taken from `lighthouserc.cjs` (not from a real-user field report). Lighthouse CI samples six HU/EN pages twice on an automated runner; these scores do not establish real-world Core Web Vitals or mobile visitor experience.
+
+- Lighthouse Performance ≥ 0.80
 - Accessibility ≥ 0.95
 - Best Practices ≥ 0.90
 - SEO ≥ 0.95
-- LCP ≤ 2.5 s
+- LCP ≤ 3.0 s
 - CLS ≤ 0.10
-- TBT ≤ 300 ms
-- Speed Index ≤ 3.5 s warning threshold
+- TBT ≤ 400 ms
+- Speed Index ≤ 4.0 s (**warning**, not a deployment blocker)
+
+Actual mobile performance must be assessed separately using appropriate real-user data (e.g. Search Console Core Web Vitals and CrUX where available). Do not loosen thresholds to conceal regressions; tighten them only after measuring the impact on the six sampled pages.
 
 ## Images
 
