@@ -5,7 +5,9 @@ const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:4173';
 const browser = await launch({headless:true, args:process.env.CI ? ['--no-sandbox','--disable-setuid-sandbox'] : []});
 try {
   for (const lang of ['hu','en']) {
-    const page = await browser.newPage();
+    // Isolate consent per locale: analytics acceptance in HU must not persist to EN.
+    const context = await browser.createBrowserContext();
+    const page = await context.newPage();
     const modelPath = `${lang === 'hu' ? '/modellek/' : '/en/models/'}noi-sarga-borkabat-budapest/`;
     const requests = [];
     page.on('request', request => requests.push(request.url()));
@@ -65,7 +67,7 @@ try {
     assert.equal(JSON.stringify(quickChatEvents).includes('Private customer enquiry audit_12345'),false,'Never send customer chat text to analytics');
     assert.equal(quickChatEvents[0].page_path,modelPath,'Attribution event uses current product page');
     assert.equal(quickChatEvents[0].page_language,lang);
-    await page.close();
+    await context.close();
   }
 
   for (const lang of ['hu','en']) {
