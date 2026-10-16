@@ -8,6 +8,39 @@ permissions:
   contents: read
 
 jobs:
+  intake-db:
+    name: intake-db
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: ci-only-password
+          POSTGRES_DB: kaftan_intake_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d kaftan_intake_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      PGHOST: 127.0.0.1
+      PGPORT: "5432"
+      PGUSER: postgres
+      PGPASSWORD: ci-only-password
+      PGDATABASE: kaftan_intake_test
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ensure PostgreSQL client
+        run: command -v psql || { sudo apt-get update && sudo apt-get install -y postgresql-client; }
+      - name: Initialize disposable Supabase-style roles
+        run: psql -X -v ON_ERROR_STOP=1 -f services/partner-intake/supabase/tests/roles.sql
+      - name: Apply staging-only private intake schema
+        run: psql -X -v ON_ERROR_STOP=1 -f services/partner-intake/supabase/migrations/20261016_private_intake.sql
+      - name: Verify deny-by-default RLS, rate limits and durable idempotency
+        run: psql -X -v ON_ERROR_STOP=1 -f services/partner-intake/supabase/tests/regression.sql
+
   quality:
     runs-on: ubuntu-latest
     steps:
