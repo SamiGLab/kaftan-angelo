@@ -47,6 +47,10 @@ jobs:
         run: psql -X -v ON_ERROR_STOP=1 -f services/partner-intake/supabase/migrations/20261016_private_intake.sql
       - name: Verify deny-by-default RLS, rate limits and durable idempotency
         run: psql -X -v ON_ERROR_STOP=1 -f services/partner-intake/supabase/tests/regression.sql
+      - name: Apply staging-only 90-day non-converted enquiry retention
+        run: psql -X -v ON_ERROR_STOP=1 -f services/partner-intake/supabase/migrations/20261016_90_day_retention.sql
+      - name: Verify dry-run, 90-day expiry, signed preservation and RLS
+        run: psql -X -v ON_ERROR_STOP=1 -f services/partner-intake/supabase/tests/retention-regression.sql
 
   build-test-upload:
     runs-on: ubuntu-latest
