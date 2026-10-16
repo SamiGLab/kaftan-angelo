@@ -89,6 +89,7 @@ jobs:
         with:
           name: lighthouse-reports
           path: .lighthouseci/
+          include-hidden-files: true
           retention-days: 7
       - name: Fingerprint the tested release
         run: node _dev/scripts/release-manifest.mjs create dist "$GITHUB_SHA"
