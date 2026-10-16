@@ -9,10 +9,10 @@ const phone='tel:+3612667274';
 const cases=[
   {lang:'hu',home:'/',visit:'/uzlet/',catalog:'/kollekciok/',
    hero:/Látogasson el üzletünkbe/,mapLabel:/Útvonaltervezés/,
-   call:/Üzlet felhívása/,weekday:/Hétfő.Péntek 10:00.19:00/,sunday:/Vasárnap zárva/},
+   call:/Üzlet\s+felhívása/,weekday:/Hétfő.Péntek 10:00.19:00/,sunday:/Vasárnap zárva/},
   {lang:'en',home:'/en/',visit:'/en/visit/',catalog:'/en/collections/',
    hero:/Plan your store visit/,mapLabel:/Get directions/,
-   call:/Call the store/,weekday:/Monday.Friday 10:00.19:00/,sunday:/Sunday closed/}
+   call:/Call\s+the\s+store/,weekday:/Monday.Friday 10:00.19:00/,sunday:/Sunday closed/}
 ];
 const browser=await launch({headless:true,args:process.env.CI?['--no-sandbox','--disable-setuid-sandbox']:[]});
 try {
