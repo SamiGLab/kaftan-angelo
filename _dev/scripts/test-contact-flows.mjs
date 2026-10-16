@@ -15,7 +15,11 @@ try {
     await page.goto(base + modelPath, {waitUntil:'networkidle2'});
     assert.equal(await page.$eval('.model-photo img', image => image.complete && image.naturalWidth > 0), true);
     assert.equal(requests.some(url => url.endsWith('/noi-sarga-borkabat-budapest.webp')), false, 'Do not download the full-size WebP in addition to the responsive photo');
-    if (await page.$eval('[data-consent-banner]', element => !element.hidden)) await page.click('[data-consent-reject]');
+    // Ensure the chat test has explicitly rejected analytics (including after
+    // any previously saved consent) before asserting no quick-chat event.
+    if (await page.$eval('[data-consent-banner]', element => element.hidden)) await page.click('[data-consent-open]');
+    await page.click('[data-consent-reject]');
+    await page.waitForFunction(() => window.kaftanAnalytics && !window.kaftanAnalytics.choice.analytics);
     await page.evaluate(() => { window.open = (url) => { window.testWhatsAppUrl = url; }; });
     for (const viewport of [{width:390,height:844},{width:320,height:568},{width:844,height:390},{width:390,height:360}]) {
       await page.setViewport(viewport);
