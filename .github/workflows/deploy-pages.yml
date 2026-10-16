@@ -126,6 +126,8 @@ jobs:
         run: node _dev/scripts/test-colour-variants.mjs
       - name: Check mobile contact and newsletter retry flows
         run: node _dev/scripts/test-contact-flows.mjs
+      - name: Check disabled-by-default HU/EN partner intake preview
+        run: node _dev/scripts/test-partner-intake-form.mjs
       - name: Check partner sessions and material isolation
         run: node _dev/scripts/test-partner-portal.mjs
       - name: Check analytics consent and partner exclusion
