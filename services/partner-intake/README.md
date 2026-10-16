@@ -17,3 +17,12 @@ Run `node --test services/partner-intake/validation.test.mjs`.
 - Document a retention schedule and deletion/backup process before collection. An engineering proposal is **90 days from submission for unsigned prospect inquiries**, with a review before expiry and deletion when no longer needed. Signed partners belong to a separately defined contractual/accounting process. Do not silently extend the inquiry lifetime or reuse leads for newsletters. The 90-day value is an operational proposal, **not a GDPR-mandated period or legal approval**, and no automatic deletion is deployed in this package.
 
 Retention must follow necessity for the purpose, not a universal default: [European Commission storage limitation principle](https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/principles-gdpr_en). The business must confirm its actual follow-up cycle, lawful basis, responsible operator and legal exceptions before enabling production collection/deletion.
+
+
+## Request boundary (inert until a trusted adapter is deployed)
+
+`handler.mjs` provides a **server-only, non-deployed** HTTP boundary for Issue #48. It requires an exact HU/EN site origin, an opaque UUID idempotency key, a gateway **attestation** with a 64-character HMAC client key, an atomic rate limit, a server-verified bot challenge with exact hostname/action, and an atomic private database commit with a notification outbox. All collaborators are required. If any are missing, time out, or refuse authorization, it fails closed without acknowledging the lead. Error responses never echo applicant fields or challenge details. CORS alone is not authentication.
+
+The **designated operator mailbox is alfinafashionkft@gmail.com**, approved on 16 October 2026. This does not configure email transport, prove notification delivery, or authorize sending applicant PII to a third-party system. An actual adapter must use a server-only email provider secret and retryable outbox processing. Use `node --test services/partner-intake/handler.test.mjs` for the synthetic request-boundary regressions.
+
+**Do not make this handler publicly reachable yet.** The project has no verified trusted-ingress attestation adapter, atomically enforced DB rate limits/idempotency, privacy-approved retention, permitted operator authentication, or end-to-end encrypted notification receipt. These must be tested together before migrating/deploying a production public Edge Function, and the legacy mailto/WhatsApp fallback must remain in place until then.

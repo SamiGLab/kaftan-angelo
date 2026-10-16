@@ -16,6 +16,6 @@ export default [
   {ignores:['node_modules/**','dist/**','.astro/**','.lighthouseci/**']},
   {files:['_dev/scripts/**/*.mjs','services/**/*.mjs','src/pages/*.js','*.mjs','*.cjs'],languageOptions:{globals:globals.node},rules:correctness},
   {files:['_dev/scripts/test-*.mjs'],languageOptions:{globals:globals.browser}},
-  {files:['services/decap-auth/worker.mjs','services/partner-security/**/*.mjs','services/partner-intake/validation.mjs'],languageOptions:{globals:globals.worker}},
+  {files:['services/decap-auth/worker.mjs','services/partner-security/**/*.mjs','services/partner-intake/validation.mjs','services/partner-intake/handler.mjs'],languageOptions:{globals:globals.worker}},
   {files:['public/assets/js/*.js'],languageOptions:{sourceType:'script',globals:{...globals.browser,lucide:'readonly'}},rules:correctness},
 ];
