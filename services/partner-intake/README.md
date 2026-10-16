@@ -36,6 +36,13 @@ The **designated operator mailbox is alfinafashionkft@gmail.com**, approved on 1
 Both GitHub Actions workflows run a separate `intake-db` job against a disposable PostgreSQL 17 service, with CI-only fake roles/credentials. The tests stage sample requests in an explicit transaction and roll them back. Pages deploy requires this job as well as the normal static-site quality gate. To reproduce locally: create an empty PostgreSQL 17 database, execute `supabase/tests/roles.sql`, then `supabase/migrations/20261016_private_intake.sql`, and finally `supabase/tests/regression.sql`, using `psql -X -v ON_ERROR_STOP=1`. **Do not run the test roles script or any migration blindly against production**, and do not treat this isolated PostgreSQL rehearsal as real Supabase Storage, ingress trust, or business privacy approval.
 
 
+## Optional server-only Cloudflare Turnstile verification (not deployed)
+
+`turnstile.mjs` exports a verifier which takes a server-only secret, posts the challenge to the fixed Cloudflare `siteverify` URL with a 4.5-second timeout, refuses redirects, and accepts only an exact `hostname=kaftanangelo.com` and `action=partner_application` on a successful response. Provider outages and missing secrets fail closed. Only a minimal proof object is returned; submitted token, secret and provider errors are not reflected.
+
+The public site key/widget has **not** been configured; no service endpoint is exposed. The future adapter must still supply verified ingress, database limiting/idempotency, legal/operational notification flow and synthetic E2E. Test with `node --test services/partner-intake/turnstile.test.mjs`.
+
+
 ## Staging-only leased notification queue (not connected to email)
 
 The staging migration now grants server-only RPC functions `claim_notifications(batch_limit)` and `finish_notification(inquiry_id, lease_token, delivered, retry_after_seconds)`. A trusted mail worker can claim up to 10 due inquiries per invocation; row locking (`FOR UPDATE SKIP LOCKED`), random three-minute leases, a maximum of eight attempts and explicit retry scheduling prevent simultaneous workers from claiming the same row. The private inquiry details are returned **only through the service-role RPC**, not through a public table or analytics event. The SQL regression verifies no double claim, wrong/stale lease rejection, retry delay, new lease on retry, single success acknowledgment and no requeue after success.
