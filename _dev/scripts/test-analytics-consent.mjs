@@ -55,7 +55,7 @@ try{
   assert.equal(await casePage.evaluate(()=>window.kaftanAnalytics.permitted),scenario.permitted,scenario.name+' URL classification');
   assert.equal(trackerRequests.filter(u=>/googletagmanager|google-analytics|clarity\.ms/.test(u)).length,0,scenario.name+' before consent');
   await casePage.click('[data-consent-accept]');
-  assert.equal(await casePage.$eval('script[src*="googletagmanager"]',els=>els.length),scenario.permitted?1:0,scenario.name+' after consent');
+  assert.equal(await casePage.$$eval('script[src*="googletagmanager"]',els=>els.length),scenario.permitted?1:0,scenario.name+' after consent');
   assert.equal(await casePage.evaluate(()=>window.dataLayer.some(entry=>entry?.[0]==='consent'&&entry[1]==='update'&&entry[2].ad_storage==='denied')),true,scenario.name+' does not grant ad storage');
   await caseContext.close();
  }
