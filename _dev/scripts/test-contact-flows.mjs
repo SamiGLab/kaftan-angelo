@@ -52,7 +52,7 @@ try {
     assert.equal(await page.evaluate(() => window.dataLayer.some(entry => entry.event === 'kaftan_interest' && entry.interest_source === 'quick_chat')),false,'Rejected tracking must not log WhatsApp chat');
     await page.click('#whatsapp-close-btn');
     await page.setRequestInterception(true);
-    page.on('request', request => /googletagmanager|google-analytics|clarity\\.ms/.test(request.url())
+    page.on('request', request => /googletagmanager|google-analytics|clarity\.ms/.test(request.url())
       ? request.respond({status:200,contentType:'application/javascript',body:''})
       : request.continue());
     await page.click('[data-consent-open]');
