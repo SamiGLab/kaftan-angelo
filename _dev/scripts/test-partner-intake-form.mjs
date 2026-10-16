@@ -42,7 +42,7 @@ try {
           method:options.method,referrerPolicy:options.referrerPolicy,
           credentials:options.credentials,
         });
-        await new Promise(resolve=>setTimeout(resolve,75));
+        await new Promise(resolve=>{setTimeout(resolve,75);});
         if(window.__mockMode==='offline') throw Error('synthetic offline');
         if(window.__mockMode==='limited') return {ok:false,status:429};
         if(window.__mockMode==='rejected') return {ok:false,status:503};
