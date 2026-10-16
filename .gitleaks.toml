@@ -1,0 +1,9 @@
+title = "Kaftan Angelo current-source secret checks"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Supabase publishable identifiers are intentionally public; secret/service-role credentials remain detectable"
+regexTarget = "secret"
+regexes = ['''^sb_publishable_[A-Za-z0-9_-]+$''']
