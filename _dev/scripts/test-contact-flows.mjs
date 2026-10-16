@@ -49,6 +49,21 @@ try {
     assert.equal(destination.hostname, 'wa.me');
     assert.equal(destination.pathname, '/36203593216');
     assert.ok(destination.searchParams.get('text').includes('https://kaftanangelo.com'+modelPath));
+    assert.equal(await page.evaluate(() => window.dataLayer.some(entry => entry.event === 'kaftan_interest' && entry.interest_source === 'quick_chat')),false,'Rejected tracking must not log WhatsApp chat');
+    await page.click('#whatsapp-close-btn');
+    await page.setRequestInterception(true);
+    page.on('request', request => /googletagmanager|google-analytics|clarity\\.ms/.test(request.url())
+      ? request.respond({status:200,contentType:'application/javascript',body:''})
+      : request.continue());
+    await page.click('[data-consent-open]');
+    await page.click('[data-consent-accept]');
+    await page.click('#whatsapp-trigger-btn');
+    await page.evaluate(() => {document.querySelector('#whatsapp-chat-input').value='Private customer enquiry audit_12345';});
+    await page.click('#whatsapp-send-btn');
+    const quickChatEvents=await page.evaluate(() => window.dataLayer.filter(entry => entry.event === 'kaftan_interest' && entry.interest_action === 'whatsapp_click' && entry.interest_source === 'quick_chat'));
+    assert.equal(quickChatEvents.length,1,'Consented WhatsApp popup click records exactly one event');
+    assert.equal(JSON.stringify(quickChatEvents).includes('Private customer enquiry audit_12345'),false,'Never send customer chat text to analytics');
+    assert.equal(quickChatEvents[0].page_language,lang);
     await page.close();
   }
 
