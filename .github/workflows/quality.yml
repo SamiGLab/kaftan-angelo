@@ -106,3 +106,20 @@ jobs:
           tar -xf "$RUNNER_TEMP/site-recovery.tar" -C "$restored"
           node _dev/scripts/release-manifest.mjs verify "$restored" "$GITHUB_SHA"
           python3 _dev/scripts/site_audit.py "$restored"
+      - name: Upload a complete recovery rehearsal snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: recovery-rehearsal
+          path: dist
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 1
+      - name: Download the recovery rehearsal snapshot
+        uses: actions/download-artifact@v4
+        with:
+          name: recovery-rehearsal
+          path: ${{ runner.temp }}/recovery-download
+      - name: Verify the actual GitHub artifact round trip
+        run: |
+          node _dev/scripts/release-manifest.mjs verify "$RUNNER_TEMP/recovery-download" "$GITHUB_SHA"
+          python3 _dev/scripts/site_audit.py "$RUNNER_TEMP/recovery-download"
