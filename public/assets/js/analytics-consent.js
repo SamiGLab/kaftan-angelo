@@ -22,13 +22,13 @@
     if (location.pathname.includes('/partner-portal/') || location.pathname.includes('/admin')) return false;
     for (const [name, value] of new URLSearchParams(location.search)) {
       if (/^utm_(source|medium|campaign|content|term)$/.test(name)) {
-        if (!/^[\\w .-]{1,80}$/.test(value)) return false;
+        if (!/^[\w .-]{1,80}$/.test(value)) return false;
       } else if (/^(gclid|gbraid|wbraid|dclid|srsltid)$/.test(name)) {
         if (!/^[A-Za-z0-9._~-]{1,500}$/.test(value)) return false;
       } else if (name === 'gad_source') {
-        if (!/^\\d{1,10}$/.test(value)) return false;
+        if (!/^\d{1,10}$/.test(value)) return false;
       } else if (name === 'gad_campaignid') {
-        if (!/^\\d{1,30}$/.test(value)) return false;
+        if (!/^\d{1,30}$/.test(value)) return false;
       } else if (name === 'colour') {
         if (!/^[a-z0-9-]{1,40}$/.test(value)) return false;
       } else {
