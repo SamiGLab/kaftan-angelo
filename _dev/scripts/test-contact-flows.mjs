@@ -71,6 +71,7 @@ try {
     await page.setViewport({width:390,height:844});
     await page.goto(base + (lang === 'hu' ? '/' : '/en/'), {waitUntil:'networkidle2'});
     if (await page.$eval('[data-consent-banner]', element => !element.hidden)) await page.click('[data-consent-reject]');
+    assert.equal(await page.$eval('.newsletter-form input[name="locale"]', input => input.value),lang,'Brevo submission locale matches rendered language');
     assert.equal(await page.$eval('.newsletter-form', form => form.checkValidity()), false);
     await page.type('#newsletter-email','audit@example.invalid');
     assert.equal(await page.$eval('.newsletter-form', form => form.checkValidity()), false, 'Consent is required');
