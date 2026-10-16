@@ -14,7 +14,31 @@
   }
   // Keep campaign labels, but do not forward platform click identifiers to trackers.
   if (removedClickId) history.replaceState(history.state,'',incomingUrl.pathname+incomingUrl.search+incomingUrl.hash);
-  const permitted = !location.pathname.includes('/partner-portal/') && !location.pathname.includes('/admin') && [...new URLSearchParams(location.search)].every(([k,v]) => /^utm_(source|medium|campaign|content|term)$/.test(k) && /^[\w .-]{1,80}$/.test(v)) && (!location.hash || /^#[A-Za-z][A-Za-z0-9_-]{0,60}$/.test(location.hash));
+  // Only allow known, bounded campaign/product parameters to reach analytics.
+  // Consent is still required: a valid URL must never enable tracking on its own.
+  // Google Ads click IDs and product colour selections must not silently disable
+  // measurement after the visitor explicitly accepts analytics.
+  function safeTrackingUrl() {
+    if (location.pathname.includes('/partner-portal/') || location.pathname.includes('/admin')) return false;
+    for (const [name, value] of new URLSearchParams(location.search)) {
+      if (/^utm_(source|medium|campaign|content|term)$/.test(name)) {
+        if (!/^[\w .-]{1,80}$/.test(value)) return false;
+      } else if (/^(gclid|gbraid|wbraid|dclid|srsltid)$/.test(name)) {
+        if (!/^[A-Za-z0-9._~-]{1,500}$/.test(value)) return false;
+      } else if (name === 'gad_source') {
+        if (!/^\d{1,10}$/.test(value)) return false;
+      } else if (name === 'gad_campaignid') {
+        if (!/^\d{1,30}$/.test(value)) return false;
+      } else if (name === 'colour') {
+        if (!/^[a-z0-9-]{1,40}$/.test(value)) return false;
+      } else {
+        // Unknown parameters may contain personal data: fail closed.
+        return false;
+      }
+    }
+    return !location.hash || /^#[A-Za-z][A-Za-z0-9_-]{0,60}$/.test(location.hash);
+  }
+  const permitted = safeTrackingUrl();
   let choice = {analytics:false, recordings:false};
   let loaded = false;
   let gaStarted = false;

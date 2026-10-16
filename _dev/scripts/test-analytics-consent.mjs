@@ -35,6 +35,30 @@ try{
  await privatePage.click('[data-consent-accept]');
  assert.equal(await privatePage.$$eval('script[src*="googletagmanager"]',els=>els.length),0);
  await privateContext.close();
+ // Ad click IDs and on-site colour variants must not defeat explicit consent.
+ // Unknown or sensitive query parameters still fail closed.
+ for (const scenario of [
+  {name:'Google Ads gclid',url:'/en/visit/?gclid=EAIaIQobChMI123_test',permitted:true},
+  {name:'Ads source and campaign',url:'/en/visit/?gad_source=1&gad_campaignid=1234567890&gclid=Click123',permitted:true},
+  {name:'Google b/wbraid',url:'/en/visit/?gbraid=0AAAA_test-123&wbraid=Cj8_Test-123',permitted:true},
+  {name:'Colour selection',url:'/en/visit/?colour=black',permitted:true},
+  {name:'Campaign plus ad click',url:'/en/visit/?utm_source=google&utm_medium=cpc&utm_campaign=leather-jackets&gclid=Click123',permitted:true},
+  {name:'Unknown parameter',url:'/en/visit/?email=visitor%40example.com',permitted:false},
+  {name:'Unsafe click ID',url:'/en/visit/?gclid=visitor%40example.com',permitted:false}
+ ]) {
+  const caseContext=await browser.createBrowserContext();const casePage=await caseContext.newPage();
+  const trackerRequests=[];
+  casePage.on('request',r=>trackerRequests.push(r.url()));
+  await casePage.setRequestInterception(true);
+  casePage.on('request',r=>/googletagmanager|google-analytics|clarity\.ms/.test(r.url())?r.respond({status:200,contentType:'application/javascript',body:''}):r.continue());
+  await casePage.goto(base+scenario.url,{waitUntil:'networkidle2'});
+  assert.equal(await casePage.evaluate(()=>window.kaftanAnalytics.permitted),scenario.permitted,scenario.name+' URL classification');
+  assert.equal(trackerRequests.filter(u=>/googletagmanager|google-analytics|clarity\.ms/.test(u)).length,0,scenario.name+' before consent');
+  await casePage.click('[data-consent-accept]');
+  assert.equal(await casePage.$$eval('script[src*="googletagmanager"]',els=>els.length),scenario.permitted?1:0,scenario.name+' after consent');
+  assert.equal(await casePage.evaluate(()=>window.dataLayer.some(entry=>entry?.[0]==='consent'&&entry[1]==='update'&&entry[2].ad_storage==='denied')),true,scenario.name+' does not grant ad storage');
+  await caseContext.close();
+ }
  for (const source of ['instagram','facebook','tiktok']) {
   const socialContext=await browser.createBrowserContext();const socialPage=await socialContext.newPage();
   const socialRequests=[];socialPage.on('request',r=>socialRequests.push(r.url()));
