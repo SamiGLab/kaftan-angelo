@@ -63,6 +63,7 @@ try {
     const quickChatEvents=await page.evaluate(() => window.dataLayer.filter(entry => entry.event === 'kaftan_interest' && entry.interest_action === 'whatsapp_click' && entry.interest_source === 'quick_chat'));
     assert.equal(quickChatEvents.length,1,'Consented WhatsApp popup click records exactly one event');
     assert.equal(JSON.stringify(quickChatEvents).includes('Private customer enquiry audit_12345'),false,'Never send customer chat text to analytics');
+    assert.equal(quickChatEvents[0].page_path,modelPath,'Attribution event uses current product page');
     assert.equal(quickChatEvents[0].page_language,lang);
     await page.close();
   }
