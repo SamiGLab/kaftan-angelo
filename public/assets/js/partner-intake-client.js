@@ -8,6 +8,9 @@
   const endpoint = form.dataset.partnerIntakeEndpoint;
   const siteKey = form.dataset.partnerIntakeSitekey;
   const privacyPath = form.dataset.partnerIntakePrivacyUrl;
+  // A missing privacy path resolves to the literal /undefined in URL();
+  // explicitly reject it before building any privacy or network controls.
+  if (typeof privacyPath !== 'string' || !/^\/(?!\/)[^?#]+\/$/.test(privacyPath)) return;
   let privacyUrl;
   try { privacyUrl = new URL(privacyPath, location.origin); } catch { return; }
   // Restrict the public form to the configured project's fixed HTTPS endpoint.
@@ -44,8 +47,6 @@
   const submit = form.querySelector('button[type="submit"]');
   const help = form.querySelector('.form-help');
   if (!submit || !help || !globalThis.crypto?.randomUUID) return;
-  const originalText = submit.textContent;
-  const originalHelp = help.textContent;
 
   // The privacy URL and legal wording must be reviewed before activation.
   const notice = document.createElement('label');
@@ -115,7 +116,9 @@
     if (busy || !form.reportValidity()) return;
     const lead=getLead();
     if (!lead) return show(words.retry);
-    const token=globalThis.turnstile?.getResponse?.();
+    let token;
+    try { token=globalThis.turnstile?.getResponse?.(); }
+    catch { return show(words.challenge); }
     if (typeof token !== 'string' || !validChallenge.test(token)) return show(words.challenge);
     const draft=JSON.stringify(lead);
     if (lastDraft !== draft) {
@@ -173,12 +176,4 @@
     location.href='mailto:alfinafashionkft@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(message);
   });
 
-  // Preserve manual mailto on any later operator deactivation of the feature.
-  form.addEventListener('partner-intake-disable',()=>{
-    submit.textContent=originalText;
-    help.textContent=originalHelp;
-    notice.remove();
-    status.remove();
-    emailFallback.remove();
-  },{once:true});
 })();
