@@ -6,6 +6,8 @@ DECLARE
   rows integer;
   created record;
   retried record;
+  claimed record;
+  reclaimed record;
   key text := repeat('a',64);
   idem uuid := 'a0123456-1111-4111-8111-000000000001';
 BEGIN
@@ -73,6 +75,47 @@ BEGIN
   SELECT count(*) INTO rows FROM kaftan_intake.notification_outbox
     WHERE inquiry_id=created.receipt AND state='pending';
   IF rows <> 1 THEN RAISE EXCEPTION 'Missing or repeated durable outbox entry'; END IF;
+
+  -- Only a server-role worker can claim PII; public roles have no EXECUTE.
+  BEGIN
+    PERFORM kaftan_intake.claim_notifications(0);
+    RAISE EXCEPTION 'Invalid batch size accepted';
+  EXCEPTION WHEN SQLSTATE '22023' THEN NULL; END;
+
+  SELECT * INTO claimed FROM kaftan_intake.claim_notifications(1);
+  IF claimed.inquiry_id IS DISTINCT FROM created.receipt
+     OR claimed.lease_token IS NULL OR claimed.recipient_email <> 'synthetic@example.com'
+  THEN RAISE EXCEPTION 'Leased delivery lacks authorized details'; END IF;
+
+  SELECT count(*) INTO rows FROM kaftan_intake.claim_notifications(1);
+  IF rows <> 0 THEN RAISE EXCEPTION 'Same outbox item leased twice'; END IF;
+  IF kaftan_intake.finish_notification(created.receipt,gen_random_uuid(),true,60)
+  THEN RAISE EXCEPTION 'Foreign lease may ack delivery'; END IF;
+  IF NOT kaftan_intake.finish_notification(created.receipt,claimed.lease_token,false,60)
+  THEN RAISE EXCEPTION 'Lease holder cannot queue a failed delivery retry'; END IF;
+
+  SELECT count(*) INTO rows FROM kaftan_intake.claim_notifications(1);
+  IF rows <> 0 THEN RAISE EXCEPTION 'Future retry became due too soon'; END IF;
+  UPDATE kaftan_intake.notification_outbox SET next_attempt_at=clock_timestamp()-interval '1 minute'
+    WHERE inquiry_id=created.receipt;
+  SELECT * INTO reclaimed FROM kaftan_intake.claim_notifications(1);
+  IF reclaimed.inquiry_id IS DISTINCT FROM created.receipt
+    OR reclaimed.lease_token IS NULL
+    OR reclaimed.lease_token=claimed.lease_token
+  THEN RAISE EXCEPTION 'Retry lease not unique'; END IF;
+  IF kaftan_intake.finish_notification(created.receipt,claimed.lease_token,true,60)
+  THEN RAISE EXCEPTION 'Old lease was not invalidated'; END IF;
+  IF NOT kaftan_intake.finish_notification(created.receipt,reclaimed.lease_token,true,60)
+  THEN RAISE EXCEPTION 'Correct lease cannot ack sent delivery'; END IF;
+  IF kaftan_intake.finish_notification(created.receipt,reclaimed.lease_token,true,60)
+  THEN RAISE EXCEPTION 'Already acknowledged lease accepted twice'; END IF;
+
+  SELECT count(*) INTO rows FROM kaftan_intake.notification_outbox
+    WHERE inquiry_id=created.receipt AND state='sent' AND attempts=2
+      AND lease_token IS NULL AND lease_expires_at IS NULL;
+  IF rows <> 1 THEN RAISE EXCEPTION 'Outbox delivery state invalid'; END IF;
+  SELECT count(*) INTO rows FROM kaftan_intake.claim_notifications(1);
+  IF rows <> 0 THEN RAISE EXCEPTION 'Sent notification requeued'; END IF;
 
   BEGIN
     PERFORM kaftan_intake.accept_inquiry(
