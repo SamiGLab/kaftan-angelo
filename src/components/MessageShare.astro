@@ -33,12 +33,15 @@ const encodedUrl = encodeURIComponent(url);
   document.querySelectorAll('[data-copy-message]').forEach(button => {
     button.addEventListener('click', async () => {
       const box = button.closest('.message-share');
+      if (!box) return;
       const status = box.querySelector('[data-copy-status]');
+      const field = box.querySelector('textarea');
+      const message = button.getAttribute('data-message');
+      if (!status || !field || message === null) return;
       try {
-        await navigator.clipboard.writeText(button.getAttribute('data-message'));
+        await navigator.clipboard.writeText(message);
         status.textContent = button.getAttribute('data-success');
       } catch {
-        const field = box.querySelector('textarea');
         field.hidden = false;
         field.focus();
         field.select();

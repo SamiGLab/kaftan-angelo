@@ -15,7 +15,7 @@ const server = http.createServer(async (req,res) => {
     res.end(await fs.readFile(file));
   } catch { res.statusCode=404;res.end(); }
 });
-await new Promise(resolve=>server.listen(4182,'127.0.0.1',resolve));
+await new Promise(resolve=>{ server.listen(4182,'127.0.0.1',resolve); });
 const browser = await puppeteer.launch({headless:true,args:process.env.CI ? ['--no-sandbox','--disable-setuid-sandbox'] : []});
 try {
   for (const route of ['/en/partner-portal/','/partner-portal/']) {

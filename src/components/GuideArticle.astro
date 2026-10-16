@@ -1,6 +1,8 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import MessageShare from './MessageShare.astro';
+import type { GuideModule } from '../data/guide-types';
+interface Props { mod: GuideModule; slug: string; lang: 'hu' | 'en'; }
 const { mod, slug, lang } = Astro.props;
 const { Content, frontmatter: f } = mod;
 const hu = lang === 'hu';
