@@ -1,8 +1,9 @@
 ---
+import type { GuideModule } from '../../../data/guide-types';
 import GuideArticle from '../../../components/GuideArticle.astro';
 export function getStaticPaths() {
- const modules = import.meta.glob('../../../content/guides/en/*.md', { eager: true });
- return Object.entries(modules).map(([path, mod]) => { const slug = path.split('/').pop().replace('.md',''); return { params:{slug}, props:{mod, slug} }; });
+ const modules = import.meta.glob<GuideModule>('../../../content/guides/en/*.md', { eager: true });
+ return Object.entries(modules).map(([path, mod]) => { const slug = path.split('/').pop()!.replace('.md',''); return { params:{slug}, props:{mod, slug} }; });
 }
 const { mod, slug } = Astro.props;
 ---

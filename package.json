@@ -26,22 +26,29 @@
     "check:a11y": "pa11y-ci --config .pa11yci.cjs",
     "check:lighthouse": "node _dev/scripts/run-lighthouse.mjs",
     "check:dependencies": "npm audit --package-lock-only --audit-level=low",
+    "check:types": "astro check --minimumFailingSeverity error",
+    "check:lint": "eslint . --max-warnings 0",
+    "check:secrets": "node _dev/scripts/check-secrets.mjs",
     "check:seo": "npm run audit:static",
     "check:all": "npm run audit:static && npm run check:html"
   },
   "devDependencies": {
+    "@astrojs/check": "0.9.10",
     "@astrojs/partytown": "^2.1.8",
     "@fontsource-variable/fraunces": "5.3.0",
     "astro": "7.3.6",
+    "chrome-launcher": "1.2.1",
+    "eslint": "10.13.0",
+    "globals": "17.13.0",
     "html-validate": "11.16.2",
+    "lighthouse": "13.5.0",
     "lightningcss": "1.33.0",
     "lucide": "1.55.0",
     "pa11y-ci": "5.0.0",
     "pagefind": "1.5.2",
-    "sharp": "0.35.5",
-    "yaml": "2.9.1",
-    "lighthouse": "13.5.0",
     "puppeteer": "25.14.0",
-    "chrome-launcher": "1.2.1"
+    "sharp": "0.35.5",
+    "typescript": "6.0.3",
+    "yaml": "2.9.1"
   }
 }

@@ -143,3 +143,8 @@ Custom domain file `CNAME` is preserved as `kaftanangelo.com`.
 Fonts are bundled locally through Fontsource. Hero images are preloaded and category backgrounds use optimized AVIF files. The custom domain is required: root-relative URLs intentionally deploy at https://kaftanangelo.com/, not under /kaftan-angelo/.
 
 Responsive image variants in `public/assets/images/` are generated during build and are not committed. Python 3 is required for the static audit and local Lighthouse server. Run `npm run check:dependencies` for the current lockfile audit, including development packages; it fails on reported vulnerabilities. The direct Lighthouse/Puppeteer packages are pinned, and the lockfile is committed. Test tooling is not shipped as site JavaScript.
+
+
+### Source correctness and secret checks
+
+PR/deployment CI also runs strict Astro source types, JavaScript correctness lint, and verified redacted current-source secret scanning with positive/negative controls. See [`_dev/QUALITY_CHECKS.md`](_dev/QUALITY_CHECKS.md) for commands, scope and the separate historical Storage capability follow-up. Browser regression covers HU/EN guide copy success, clipboard denial fallback and absent optional DOM elements without sending messages or changing the real clipboard.

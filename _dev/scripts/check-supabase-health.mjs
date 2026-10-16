@@ -4,7 +4,7 @@ import { pathToFileURL } from 'node:url';
 const DEFAULT_URL = 'https://bezlzeojivucnqkfjpwo.supabase.co';
 const DEFAULT_KEY = 'sb_publishable_M-lTei71UX1lmxv62xiNdQ_5t94kZZD';
 
-export async function checkHealth({ fetchImpl = fetch, sleep = ms => new Promise(resolve => setTimeout(resolve, ms)), url = DEFAULT_URL, key = DEFAULT_KEY } = {}) {
+export async function checkHealth({ fetchImpl = fetch, sleep = ms => new Promise(resolve => { setTimeout(resolve, ms); }), url = DEFAULT_URL, key = DEFAULT_KEY } = {}) {
   const origin = new URL(url);
   if (origin.protocol !== 'https:' || !origin.hostname.endsWith('.supabase.co') || origin.username || origin.password || origin.port || origin.pathname !== '/' || origin.search || origin.hash) {
     throw new Error('Invalid Supabase project URL.');

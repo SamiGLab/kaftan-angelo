@@ -25,7 +25,7 @@ try {
       await page.setViewport(viewport);
       await page.click('#whatsapp-trigger-btn');
       await page.waitForFunction(() => document.activeElement.id === 'whatsapp-chat-input');
-      await new Promise(resolve => setTimeout(resolve,300));
+      await new Promise(resolve => { setTimeout(resolve,300); });
       const geometry = await page.evaluate(() => {
         const bounds = element => { const r = element.getBoundingClientRect(); return {top:r.top,bottom:r.bottom,left:r.left,right:r.right}; };
         return {card:bounds(document.querySelector('#whatsapp-chat-card')),close:bounds(document.querySelector('#whatsapp-close-btn')),send:bounds(document.querySelector('#whatsapp-send-btn'))};
@@ -84,7 +84,7 @@ try {
         assert.match(new URL(request.url()).hostname, /^[a-z0-9-]+\.sibforms\.com$/);
         submissions++;
         if (outcome === 'offline') return request.abort('internetdisconnected');
-        await new Promise(resolve => setTimeout(resolve,150));
+        await new Promise(resolve => { setTimeout(resolve,150); });
         return request.respond({status:outcome === 'success' ? 200 : 503,contentType:'application/json',headers:{'Access-Control-Allow-Origin':'*'},body:JSON.stringify({success:outcome === 'success'})});
       }
       if (!request.url().startsWith(base) && !request.url().startsWith('data:')) return request.abort();
@@ -112,6 +112,28 @@ try {
     assert.equal(await page.$eval('.newsletter-consent input', input => input.checked), false);
     await page.close();
   }
-  console.log('PASS: HU/EN short-screen chat, product download, WhatsApp destination, newsletter consent and retry/error flows. No real messages or subscriptions sent.');
+  for (const route of ['/utmutatok/bor-irha-szorme-osszehasonlitas/','/en/guides/leather-shearling-fur-comparison/']) {
+    const page = await browser.newPage();
+    const errors=[];
+    page.on('pageerror',error=>errors.push(error.message));
+    await page.setRequestInterception(true);
+    page.on('request',request=>request.url().startsWith(base)||request.url().startsWith('data:')?request.continue():request.abort());
+    await page.setViewport({width:390,height:844});
+    await page.goto(base+route,{waitUntil:'networkidle2'});
+    await page.click('.message-share-options > summary');
+    await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async text=>{window.__copiedGuide=text;}}}));
+    await page.click('[data-copy-message]');
+    assert.match(await page.$eval('[data-copy-status]',node=>node.textContent),/Kimásolva|Copied/);
+    assert.ok((await page.evaluate(()=>window.__copiedGuide)).includes('https://kaftanangelo.com'+route));
+    await page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async()=>{throw Error('Synthetic clipboard rejection');}}}));
+    await page.click('[data-copy-message]');
+    assert.equal(await page.$eval('[data-copy-fallback]',node=>!node.hidden&&document.activeElement===node),true);
+    assert.match(await page.$eval('[data-copy-status]',node=>node.textContent),/Jelölje|Select and copy/);
+    await page.$eval('[data-copy-status]',node=>node.remove());
+    await page.click('[data-copy-message]');
+    assert.deepEqual(errors,[],'Missing optional DOM must not throw');
+    await page.close();
+  }
+  console.log('PASS: HU/EN short-screen chat, product download, WhatsApp destination, newsletter consent/retries and guide copy/fallback flows. No real messages, clipboard writes or subscriptions sent.');
 } finally { await browser.close(); }
 

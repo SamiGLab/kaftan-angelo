@@ -1,9 +1,10 @@
 ---
+import type { GuideModule } from '../../data/guide-types';
 import BaseLayout from '../../components/BaseLayout.astro';
-const modules = import.meta.glob('../../content/guides/hu/*.md', { eager:true });
-const guides = Object.entries(modules).map(([path, mod])=>({slug:path.split('/').pop().replace('.md',''),...mod.frontmatter})).sort((a,b)=>b.publishDate.localeCompare(a.publishDate));
-const page={lang:'hu',title:'Bőr, irha és szőrme útmutatók | Kaftan Angelo Budapest',description:'Bőr, irha és szőrme ápolása, méretválasztás, anyagok és budapesti vásárlás: gyakorlati útmutatók.',canonical:'https://kaftanangelo.com/utmutatok/',counterpart:'/en/guides/',ogImage:'https://kaftanangelo.com/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif',breadcrumbs:[{name:'Főoldal',url:'/'},{name:'Útmutatók',url:'/utmutatok/'}],pageSchema:{'@type':'CollectionPage',name:'Bőr, irha és szőrme útmutatók'}};
-page.pageSchema.mainEntity = { '@type': 'ItemList', itemListElement: guides.map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.title, url: `https://kaftanangelo.com/utmutatok/${g.slug}/` })) };
+const modules = import.meta.glob<GuideModule>('../../content/guides/hu/*.md', { eager:true });
+const guides = Object.entries(modules).map(([path, mod])=>({slug:path.split('/').pop()!.replace('.md',''),...mod.frontmatter})).sort((a,b)=>b.publishDate.localeCompare(a.publishDate));
+const mainEntity = { '@type': 'ItemList', itemListElement: guides.map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.title, url: `https://kaftanangelo.com/utmutatok/${g.slug}/` })) };
+const page={lang:'hu',title:'Bőr, irha és szőrme útmutatók | Kaftan Angelo Budapest',description:'Bőr, irha és szőrme ápolása, méretválasztás, anyagok és budapesti vásárlás: gyakorlati útmutatók.',canonical:'https://kaftanangelo.com/utmutatok/',counterpart:'/en/guides/',ogImage:'https://kaftanangelo.com/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif',breadcrumbs:[{name:'Főoldal',url:'/'},{name:'Útmutatók',url:'/utmutatok/'}],pageSchema:{'@type':'CollectionPage',name:'Bőr, irha és szőrme útmutatók',mainEntity}};
 ---
 <BaseLayout page={page}>
 <section class="page-hero" style="--hero:url('/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-leather-jackets-budapest-480.avif')"><div class="wrap"><div class="breadcrumbs"><a href="/">Főoldal</a> / Útmutatók</div><span class="tag mono">Tudástár</span><h1>Bőr, irha és szőrme útmutatók</h1><p>Bőr, irha és szőrme választása, próbája és ápolása. Egyértelmű válaszok, gyakorlati listák és segítség a budapesti látogatáshoz.</p></div></section>
