@@ -1,0 +1,9 @@
+# Brevo transactional notification transport — not deployed
+
+`brevo.mjs` is an optional, server-only transactional email adapter for the future partner-intake notification worker. It requires a registered/verified `verifiedSenderEmail`, a **server-only** Brevo `apiKey`, and a claimed private outbox item. It sends plain text only, with a fixed subject and destination `alfinafashionkft@gmail.com`; applicant email/phone are never used as routing headers. No real API key, verified sender, live Edge Function or email delivery is configured in this commit.
+
+Source: https://developers.brevo.com/reference/send-transac-email . The HTTP request includes an `idempotencyKey` tied to inquiry UUID, but Brevo's documented batch-key TTL is limited to 30 minutes (https://developers.brevo.com/docs/heterogenous-versions-batch-emails) and behavior for this single-message endpoint **must be verified against a test account** before operational use. A 2xx `messageId` indicates acceptance by Brevo, not inbox delivery, so the outbox worker must reconcile failures and eventual delivery events. Provider rate limits, verified sender identity, applicant privacy notice, legal retention and GDPR processor terms remain an operational review gate.
+
+The function fails closed if credentials/sender are missing, recipient data is invalid, requests time out or responses cannot prove provider acceptance. No applicant details or API responses appear in returned errors. Automated tests use injected fake HTTP responses: `node --test services/partner-intake/brevo.test.mjs`.
+
+**Do not import this module into Astro or any browser bundle.** Deployment requires configured verified sender credentials in a secret store, a separately authenticated notification worker and successful synthetic end-to-end delivery/retry tests. This package does not modify the existing user-initiated email/WhatsApp partner form.
