@@ -25,6 +25,8 @@ jobs:
         run: node --test _dev/scripts/check-supabase-health.test.mjs
       - name: Test private partner contract handler
         run: node --test services/partner-security/contract-handler.test.mjs
+      - name: Test release recovery integrity
+        run: node --test _dev/scripts/release-manifest.test.mjs
       - name: Install accessibility browser
         run: npx puppeteer browsers install chrome
       - name: Build static site
@@ -65,3 +67,11 @@ jobs:
           if [ -f /tmp/kaftan-http.pid ]; then kill $(cat /tmp/kaftan-http.pid) || true; fi
       - name: Lighthouse performance budget
         run: npx lhci autorun --config=lighthouserc.cjs
+      - name: Rehearse recovery of the tested site archive
+        run: |
+          node _dev/scripts/release-manifest.mjs create dist "$GITHUB_SHA"
+          tar -cf "$RUNNER_TEMP/site-recovery.tar" -C dist .
+          restored="$(mktemp -d "$RUNNER_TEMP/site-recovery.XXXXXX")"
+          tar -xf "$RUNNER_TEMP/site-recovery.tar" -C "$restored"
+          node _dev/scripts/release-manifest.mjs verify "$restored" "$GITHUB_SHA"
+          python3 _dev/scripts/site_audit.py "$restored"
