@@ -1,9 +1,10 @@
 ---
+import type { GuideModule } from '../../../data/guide-types';
 import BaseLayout from '../../../components/BaseLayout.astro';
-const modules = import.meta.glob('../../../content/guides/en/*.md', { eager:true });
-const guides = Object.entries(modules).map(([path, mod])=>({slug:path.split('/').pop().replace('.md',''),...mod.frontmatter})).sort((a,b)=>b.publishDate.localeCompare(a.publishDate));
-const page={lang:'en',title:'Leather, Shearling & Fur Guides | Kaftan Angelo Budapest',description:'Guides to leather, shearling and fur care, fit, material choice and shopping in Budapest.',canonical:'https://kaftanangelo.com/en/guides/',counterpart:'/utmutatok/',ogImage:'https://kaftanangelo.com/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif',breadcrumbs:[{name:'Home',url:'/en/'},{name:'Guides',url:'/en/guides/'}],pageSchema:{'@type':'CollectionPage',name:'Leather, Shearling & Fur Guides'}};
-page.pageSchema.mainEntity = { '@type': 'ItemList', itemListElement: guides.map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.title, url: `https://kaftanangelo.com/en/guides/${g.slug}/` })) };
+const modules = import.meta.glob<GuideModule>('../../../content/guides/en/*.md', { eager:true });
+const guides = Object.entries(modules).map(([path, mod])=>({slug:path.split('/').pop()!.replace('.md',''),...mod.frontmatter})).sort((a,b)=>b.publishDate.localeCompare(a.publishDate));
+const mainEntity = { '@type': 'ItemList', itemListElement: guides.map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.title, url: `https://kaftanangelo.com/en/guides/${g.slug}/` })) };
+const page={lang:'en',title:'Leather, Shearling & Fur Guides | Kaftan Angelo Budapest',description:'Guides to leather, shearling and fur care, fit, material choice and shopping in Budapest.',canonical:'https://kaftanangelo.com/en/guides/',counterpart:'/utmutatok/',ogImage:'https://kaftanangelo.com/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif',breadcrumbs:[{name:'Home',url:'/en/'},{name:'Guides',url:'/en/guides/'}],pageSchema:{'@type':'CollectionPage',name:'Leather, Shearling & Fur Guides',mainEntity}};
 ---
 <BaseLayout page={page}>
 <section class="page-hero" style="--hero:url('/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-leather-jackets-budapest-480.avif')"><div class="wrap"><div class="breadcrumbs"><a href="/en/">Home</a> / Guides</div><span class="tag mono">Knowledge Base</span><h1>Leather, Shearling &amp; Fur Guides</h1><p>Choose, fit and care for leather, shearling and fur. Clear answers, practical checklists and help planning a Budapest store visit.</p></div></section>

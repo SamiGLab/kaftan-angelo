@@ -35,6 +35,12 @@ jobs:
         run: npm ci
       - name: Dependency security gate
         run: npm run check:dependencies
+      - name: Strict Astro source types
+        run: npm run check:types
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+      - name: JavaScript correctness lint
+        run: npm run check:lint
       - name: Test Lighthouse budget enforcement
         run: node --test _dev/scripts/lighthouse-budgets.test.mjs
       - name: Generate optimized images
