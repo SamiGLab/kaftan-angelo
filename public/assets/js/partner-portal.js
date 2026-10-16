@@ -16,6 +16,7 @@
   const sessionLifetime = 30 * 60 * 1000;
   let expiresAt = 0;
   let expiryTimer;
+  let viewGeneration = 0;
   function armExpiry(expires) {
     expiresAt = expires;
     clearTimeout(expiryTimer);
@@ -25,27 +26,6 @@
     clearTimeout(expiryTimer);
     expiresAt = 0;
     try { sessionStorage.removeItem(sessionKey); } catch {}
-  }
-  function rememberView(data) {
-    // Persist a read-only dashboard preview, never the PIN, admin keys or bearer document capability.
-    // Private contract access requires the current in-memory PIN-authenticated session.
-    const view = {};
-    for (const field of ['success','code','name','type','contact_person','phone','iban','guests','paid','cleared','holding','sales','txs','materials','has_contract']) {
-      if (Object.hasOwn(data, field)) view[field] = data[field];
-    }
-    const pick = (entry,fields) => Object.fromEntries(fields.filter(field=>Object.hasOwn(entry,field)).map(field=>[field,entry[field]]));
-    view.txs = Array.isArray(data.txs) ? data.txs.filter(entry=>entry && typeof entry==='object').map(entry=>pick(entry,['date','item','amount','comm','status'])) : [];
-    if (Array.isArray(data.materials)) {
-      view.materials = data.materials.filter(entry=>entry && typeof entry==='object').map(entry=>pick(entry,['partner_code','kind','language','pdf_url','png_url','preview_url']));
-    } else if (data.materials && typeof data.materials==='object') {
-      view.materials = pick(data.materials,['code','draft','status']);
-      view.materials.files = Array.isArray(data.materials.files) ? data.materials.files.filter(entry=>entry && typeof entry==='object').map(entry=>pick(entry,['format','language','type','url'])) : [];
-    }
-    const iban = String(data.iban || '').replace(/\s/g,'');
-    view.iban = iban ? iban.slice(0,4)+'••••'+iban.slice(-4) : '';
-    const expires = Date.now() + sessionLifetime;
-    armExpiry(expires);
-    try { sessionStorage.setItem(sessionKey, JSON.stringify({expires, data:view})); } catch {}
   }
   function safeDocumentUrl(value, contract = false) {
     try {
@@ -223,8 +203,7 @@
     const needsSignIn = data.has_contract === true && !sessionToken;
     $('contract-ready-box').style.display = contract ? 'flex' : 'none';
     $('contract-pending-box').style.display = contract ? 'none' : 'flex';
-    // Restored dashboard previews may show balances, but must never restore bearer tokens.
-    // Tell the partner to sign in again instead of inaccurately saying their contract is pending.
+    // Private contracts require a usable session from the current successful login.
     const pendingTitle = $('contract-pending-box').querySelector('strong');
     const pendingHelp = $('contract-pending-box').querySelector('div span');
     if (pendingTitle) pendingTitle.textContent = needsSignIn
@@ -254,6 +233,7 @@
     button.textContent = t('Checking your account…','Fiók ellenőrzése…');
     form.setAttribute('aria-busy','true');
     $('portal-error-msg').hidden = true;
+    const generation = viewGeneration;
     try {
       const requestedCode = $('partner-code-input').value.trim().toUpperCase();
       const response = await fetch('https://bezlzeojivucnqkfjpwo.supabase.co/rest/v1/rpc/get_partner_portal', {
@@ -270,15 +250,18 @@
       }
       if (!response.ok) throw new Error('network');
       const data = await response.json();
+      if (generation !== viewGeneration) return;
       if (!data?.success) {
         text('portal-error-msg',t('Invalid partner code or PIN. Please try again.','Érvénytelen partnerkód vagy PIN. Próbálja újra.'));
         $('portal-error-msg').hidden = false;
       } else {
         if (data.code !== requestedCode) throw new Error('Partner account mismatch');
         populate(data);
-        rememberView(data);
+        armExpiry(Date.now() + sessionLifetime);
+        form.reset();
       }
     } catch {
+      if (generation !== viewGeneration) return;
       text('portal-error-msg',t('Unable to reach your account. Please try again shortly.','A fiók jelenleg nem érhető el. Próbálja újra később.'));
       $('portal-error-msg').hidden = false;
     } finally {
@@ -288,6 +271,7 @@
     }
   });
   function logout() {
+    viewGeneration++;
     const token = sessionToken;
     sessionToken = '';
     contractExpires = 0;
@@ -297,6 +281,8 @@
     if (token) fetch(contractEndpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'logout',token}),keepalive:true}).catch(()=>{});
     clearSession();
     transactions = [];
+    $('portal-search').value = '';
+    text('copy-voucher-status','');
     if (previewDialog.open) previewDialog.close();
     previewBody.replaceChildren();
     $('portal-materials-grid').replaceChildren();
@@ -352,8 +338,8 @@
   document.addEventListener('visibilitychange', () => {
     if (expiresAt && Date.now() >= expiresAt) logout();
   });
-  window.addEventListener('pageshow', () => {
-    if (expiresAt && Date.now() >= expiresAt) logout();
+  window.addEventListener('pageshow', event => {
+    if (event.persisted || (expiresAt && Date.now() >= expiresAt)) logout();
   });
   $('toggle-pin').addEventListener('click', event => {
     const visible = $('partner-pin-input').type === 'password';
@@ -369,16 +355,8 @@
   $('portal-status-filter').addEventListener('change',render);
   // Remove legacy persisted credentials; PINs remain in the login request only.
   try { localStorage.removeItem('kaftan_portal_session'); } catch {}
-  try {
-    const saved = JSON.parse(sessionStorage.getItem(sessionKey) || 'null');
-    if (saved?.expires > Date.now() && saved.expires <= Date.now() + sessionLifetime && saved.data?.success === true && typeof saved.data.code === 'string') {
-      // Remove any bearer capability cached by an earlier site version before rendering.
-      if (Object.hasOwn(saved.data,'session_token')) {
-        delete saved.data.session_token;
-        sessionStorage.setItem(sessionKey,JSON.stringify(saved));
-      }
-      populate(saved.data);
-      armExpiry(saved.expires);
-    } else clearSession();
-  } catch { clearSession(); }
+  // Earlier versions retained contact, banking and sales previews. Discard them without parsing.
+  clearSession();
+  // Clear sensitive DOM before a page can enter the browser back/forward cache.
+  window.addEventListener('pagehide', logout);
 })();

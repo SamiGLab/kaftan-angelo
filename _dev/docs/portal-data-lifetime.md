@@ -1,0 +1,9 @@
+# Portal browser data lifetime
+
+The portal keeps the authenticated dashboard, contact details, masked bank account, transactions, material links and contract capability in the current page's memory only. It does not write partner data to localStorage, sessionStorage, cookies, IndexedDB or a service worker. The old localStorage credential key and complete sessionStorage dashboard key are removed at startup without parsing their contents.
+
+Reloading requires a fresh partner-code/PIN login. This intentionally replaces the previous restored dashboard preview, which exposed contact and transaction data without another PIN check. A successful login clears the form. The existing 30-minute browser expiry stays in place; backend sessions independently enforce their own validity for private contract access.
+
+Logout, expiry and pagehide clear the sensitive DOM, links and in-memory data and attempt the existing server-side session revocation. A restored back/forward cache page is logged out. An outstanding login response cannot repopulate a page after logout/navigation. A signed contract URL is never persisted and remains subject to its server-issued expiry; revoking the portal session does not retroactively revoke an already issued Storage URL.
+
+HU/EN browser regressions cover legacy-cache removal, reload, suspended-tab expiry, navigation cleanup, late login, logout, private contract reload, separate sessions, account mismatches and existing material/filter/mobile/accessibility behavior. These use synthetic intercepted responses and do not prove live account or Storage ingress behavior. The read-only dashboard still necessarily exists in the DOM while signed in; same-origin script compromise must be addressed separately. Public promotion materials remain public by design and must contain no confidential information.
