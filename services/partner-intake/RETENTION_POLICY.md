@@ -1,5 +1,7 @@
 # B2B partner enquiry retention — staging policy
 
+Operational continuation: [HU/EN review drafts](PRIVACY_NOTICE_REVIEW.md) and [backup/rollout plan](RETENTION_ROLLOUT.md). On 17 October the owner confirmed no encrypted destination exists and requested a plan; automatic deletion remains OFF. Pages publication is verified and does not migrate Supabase.
+
 ## Owner-approved operational decision (16 October 2026)
 
 Kaftan Angelo's business owner approved **90 days from server-recorded creation** for enquiries **that have not become a signed business partnership**. This means the private `kaftan_intake.partner_inquiries` statuses `new`, `contacted`, `qualified`, and `rejected` are eligible after 90 days; `signed` is **never** automatically purged by this process.
