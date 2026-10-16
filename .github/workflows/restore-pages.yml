@@ -47,6 +47,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+      - name: Test release recovery integrity
+        run: node --test _dev/scripts/release-manifest.test.mjs
       - name: Verify every restored file
         env:
           EXPECTED_SHA: ${{ steps.source.outputs.sha }}
