@@ -27,9 +27,10 @@
     try { sessionStorage.removeItem(sessionKey); } catch {}
   }
   function rememberView(data) {
-    // Keep this tab's dashboard and short-lived document capability, never its PIN or admin credentials.
+    // Persist a read-only dashboard preview, never the PIN, admin keys or bearer document capability.
+    // Private contract access requires the current in-memory PIN-authenticated session.
     const view = {};
-    for (const field of ['success','code','name','type','contact_person','phone','iban','guests','paid','cleared','holding','sales','txs','materials','has_contract','session_token']) {
+    for (const field of ['success','code','name','type','contact_person','phone','iban','guests','paid','cleared','holding','sales','txs','materials','has_contract']) {
       if (Object.hasOwn(data, field)) view[field] = data[field];
     }
     const pick = (entry,fields) => Object.fromEntries(fields.filter(field=>Object.hasOwn(entry,field)).map(field=>[field,entry[field]]));
@@ -219,12 +220,23 @@
     const message = t(`Visit Kaftan Angelo for leather, shearling and fur outerwear. Present VIP code ${data.code} for 10% in-store savings.\nKossuth Lajos u. 18, Budapest 1053\nhttps://kaftanangelo.com/en/`, `Látogasson el a Kaftan Angelo bőr-, irha- és szőrmeüzletébe. Partnerkód: ${data.code}, 10% bolti kedvezmény.\nKossuth Lajos u. 18, Budapest 1053\nhttps://kaftanangelo.com/`);
     $('share-voucher-wa').href = 'https://wa.me/?text=' + encodeURIComponent(message);
     const contract = data.has_contract === true && !!sessionToken;
+    const needsSignIn = data.has_contract === true && !sessionToken;
     $('contract-ready-box').style.display = contract ? 'flex' : 'none';
     $('contract-pending-box').style.display = contract ? 'none' : 'flex';
+    // Restored dashboard previews may show balances, but must never restore bearer tokens.
+    // Tell the partner to sign in again instead of inaccurately saying their contract is pending.
+    const pendingTitle = $('contract-pending-box').querySelector('strong');
+    const pendingHelp = $('contract-pending-box').querySelector('div span');
+    if (pendingTitle) pendingTitle.textContent = needsSignIn
+      ? t('Sign in again to access your agreement', 'A szerződés megnyitásához jelentkezzen be újra')
+      : t('Official Signed Agreement Pending Upload', 'Hivatalos Aláírt Szerződés Előkészítés Alatt');
+    if (pendingHelp && needsSignIn) pendingHelp.textContent =
+      t('For your security, contract access is only available during a fresh sign-in. Log out and sign in again with your partner code and PIN.',
+        'Biztonsági okokból a szerződés csak új bejelentkezés után érhető el. Jelentkezzen ki, majd lépjen be újra a partnerkóddal és PIN-kóddal.');
     $('contract-download-link').removeAttribute('href');
     if (contract) $('contract-download-link').href = '#portal-account';
     const badge = document.querySelector('.contract-badge');
-    if (badge) badge.textContent = contract ? t('Document available','Dokumentum elérhető') : t('Document pending','Dokumentum előkészítés alatt');
+    if (badge) badge.textContent = contract ? t('Document available','Dokumentum elérhető') : needsSignIn ? t('Sign in required','Új bejelentkezés szükséges') : t('Document pending','Dokumentum előkészítés alatt');
     $('portal-login-gate').hidden = true;
     $('portal-dashboard').hidden = false;
     $('partner-pin-input').value = '';
@@ -358,6 +370,11 @@
   try {
     const saved = JSON.parse(sessionStorage.getItem(sessionKey) || 'null');
     if (saved?.expires > Date.now() && saved.expires <= Date.now() + sessionLifetime && saved.data?.success === true && typeof saved.data.code === 'string') {
+      // Remove any bearer capability cached by an earlier site version before rendering.
+      if (Object.hasOwn(saved.data,'session_token')) {
+        delete saved.data.session_token;
+        sessionStorage.setItem(sessionKey,JSON.stringify(saved));
+      }
       populate(saved.data);
       armExpiry(saved.expires);
     } else clearSession();
