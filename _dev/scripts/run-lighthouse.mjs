@@ -5,6 +5,7 @@ import lighthouse from 'lighthouse';
 import * as chromeLauncher from 'chrome-launcher';
 import puppeteer from 'puppeteer';
 import { evaluateBudgets } from './lighthouse-budgets.mjs';
+import { launchLighthouseBrowser } from './lighthouse-browser.mjs';
 
 const require = createRequire(import.meta.url);
 const { collect, assert: { assertions } } = require('../../lighthouserc.cjs').ci;
@@ -25,9 +26,7 @@ try {
     server.once('error', error => { clearTimeout(timer); reject(error); });
     server.once('exit', () => { clearTimeout(timer); reject(Error('Lighthouse server exited')); });
   });
-  const chromeFlags = ['--headless', '--disable-gpu', '--disable-dev-shm-usage'];
-  if (process.env.CI) chromeFlags.push('--no-sandbox');
-  chrome = await chromeLauncher.launch({chromePath:puppeteer.executablePath(), chromeFlags});
+  chrome = await launchLighthouseBrowser({executablePath:()=>puppeteer.executablePath(), launch:chromeLauncher.launch, ci:Boolean(process.env.CI)});
   for (const [index,url] of collect.url.entries()) {
     for (let run = 1; run <= collect.numberOfRuns; run++) {
       const result = await lighthouse(url, {port:chrome.port, logLevel:'error', output:['html','json']});
