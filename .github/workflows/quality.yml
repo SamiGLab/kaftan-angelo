@@ -24,6 +24,8 @@ jobs:
         run: node _dev/scripts/check-secrets.mjs
         env:
           GITLEAKS_BIN: ${{ runner.temp }}/gitleaks
+      - name: Test indexing audit and legacy restore compatibility
+        run: python3 _dev/scripts/test_site_audit.py
       - name: Install dependencies
         run: npm ci
       - name: Dependency security gate

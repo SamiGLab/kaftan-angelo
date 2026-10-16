@@ -13,6 +13,7 @@ class Parser(HTMLParser):
         super().__init__()
         self.refs=[]; self.title=False; self.canonical=False; self.h1=0
         self.alternates={}; self.schemas=[]; self.schema_text=None; self.meta=set()
+        self.robots=set()
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
         if tag=='title': self.title=True
@@ -20,6 +21,8 @@ class Parser(HTMLParser):
         if tag=='link' and a.get('rel')=='canonical': self.canonical=a.get('href')
         if tag=='link' and a.get('rel')=='alternate': self.alternates[a.get('hreflang')]=a.get('href')
         if tag=='meta': self.meta.add(a.get('property',a.get('name','')))
+        if tag=='meta' and a.get('name','').lower()=='robots':
+            self.robots.update(value.strip().lower() for value in a.get('content','').split(','))
         if tag=='script' and a.get('type')=='application/ld+json': self.schema_text=''
         for key in ('href','src','srcset'):
             if key in a:
@@ -65,6 +68,7 @@ def main():
             route='/' + page.parent.relative_to(ROOT).as_posix().strip('./')
             if route != '/': route += '/'
             routes[route]=p
+            if 'noindex' in p.robots and route not in {'/partner-portal/','/en/partner-portal/'}: seo.append((rel,'unexpected noindex on public content'))
             if p.canonical != 'https://kaftanangelo.com'+route: seo.append((rel,'canonical mismatch'))
             if set(p.alternates) != {'hu','en','x-default'}: seo.append((rel,'missing hreflang'))
             if not {'og:url','og:title','og:description','og:image','twitter:card','twitter:image'} <= p.meta: seo.append((rel,'missing social metadata'))
@@ -86,7 +90,8 @@ def main():
             if target not in routes or routes[target].alternates.get(lang)!=url: seo.append((route,'hreflang target missing or not reciprocal'))
     try:
         sitemap={x.text.removeprefix('https://kaftanangelo.com') for x in ET.parse(ROOT/'sitemap.xml').iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')}
-        if sitemap!=set(routes): seo.append(('sitemap.xml','route mismatch'))
+        indexable={route for route,page in routes.items() if 'noindex' not in page.robots}
+        if sitemap!=indexable: seo.append(('sitemap.xml','indexable route mismatch'))
     except (FileNotFoundError,ET.ParseError): seo.append(('sitemap.xml','missing or invalid sitemap'))
     for path in ['partnerprogram/index.html','en/partners/index.html']:
         if not (ROOT/path).exists(): seo.append((path,'missing partner page')); continue

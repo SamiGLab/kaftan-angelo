@@ -21,6 +21,8 @@ try {
   for (const route of ['/en/partner-portal/','/partner-portal/']) {
     const page = await browser.newPage();
     const errors=[];
+    const sitemap = await fs.readFile(path.join(root,'sitemap.xml'),'utf8');
+    assert.equal(sitemap.includes(`<loc>https://kaftanangelo.com${route}</loc>`),false,'Portal login is excluded from the sitemap');
     page.on('pageerror',error=>errors.push(error.message));
     await page.setRequestInterception(true);
     let mode='success';
@@ -62,6 +64,7 @@ try {
     });
     await page.setViewport({width:390,height:844});
     await page.goto('http://127.0.0.1:4182'+route);
+    assert.equal(await page.$eval('meta[name="robots"]',node=>node.content),'noindex,follow','Portal login must not be search indexed');
     await page.type('#partner-code-input','TEST-ONLY');
     await page.type('#partner-pin-input','0000');
     await page.focus('#gate-submit-btn'); await page.keyboard.press('Enter');
