@@ -17,8 +17,14 @@ jobs:
           node-version: 24
       - name: Install dependencies
         run: npm ci
+      - name: Validate CMS content and uploaded images
+        run: node _dev/scripts/validate-content.mjs
       - name: Test CMS authentication bridge
         run: node --test services/decap-auth/worker.test.mjs
+      - name: Test partner security monitor
+        run: node --test _dev/scripts/check-supabase-health.test.mjs
+      - name: Test private partner contract handler
+        run: node --test services/partner-security/contract-handler.test.mjs
       - name: Install accessibility browser
         run: npx puppeteer browsers install chrome
       - name: Build static site
@@ -37,6 +43,20 @@ jobs:
           python3 -m http.server 4173 --directory dist >/tmp/kaftan-http.log 2>&1 &
           echo $! > /tmp/kaftan-http.pid
           sleep 2
+      - name: Check external-service privacy controls
+        run: node _dev/scripts/test-privacy-controls.mjs
+      - name: Check large collection browsing
+        run: node _dev/scripts/test-collection-gallery.mjs
+      - name: Check product photo and WhatsApp links
+        run: node _dev/scripts/test-model-inquiries.mjs
+      - name: Check reversible colour variants
+        run: node _dev/scripts/test-colour-variants.mjs
+      - name: Check mobile contact and newsletter retry flows
+        run: node _dev/scripts/test-contact-flows.mjs
+      - name: Check partner sessions and material isolation
+        run: node _dev/scripts/test-partner-portal.mjs
+      - name: Check analytics consent and partner exclusion
+        run: node _dev/scripts/test-analytics-consent.mjs
       - name: Accessibility audit
         run: npx pa11y-ci --config .pa11yci.cjs --sitemap http://127.0.0.1:4173/sitemap.xml --sitemap-find "https://kaftanangelo.com" --sitemap-replace "http://127.0.0.1:4173" --threshold 0
       - name: Stop local server
