@@ -2,7 +2,7 @@
 
 The portal keeps the authenticated dashboard, contact details, masked bank account, transactions, material links and contract capability in the current page's memory only. It does not write partner data to localStorage, sessionStorage, cookies, IndexedDB or a service worker. The old localStorage credential key and complete sessionStorage dashboard key are removed at startup without parsing their contents.
 
-Reloading requires a fresh partner-code/PIN login. This intentionally replaces the previous restored dashboard preview, which exposed contact and transaction data without another PIN check. A successful login clears the form. The existing 30-minute browser expiry stays in place; backend sessions independently enforce their shorter validity for private contract access.
+Reloading requires a fresh partner-code/PIN login. This intentionally replaces the previous restored dashboard preview, which exposed contact and transaction data without another PIN check. A successful login clears the form. The existing 30-minute browser expiry stays in place; backend sessions independently enforce their own validity for private contract access.
 
 Logout, expiry and pagehide clear the sensitive DOM, links and in-memory data and attempt the existing server-side session revocation. A restored back/forward cache page is logged out. An outstanding login response cannot repopulate a page after logout/navigation. A signed contract URL is never persisted and remains subject to its server-issued expiry; revoking the portal session does not retroactively revoke an already issued Storage URL.
 
