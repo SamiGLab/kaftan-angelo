@@ -94,6 +94,8 @@ jobs:
         run: node --test services/partner-intake/handler.test.mjs
       - name: Test partner intake server bot verification
         run: node --test services/partner-intake/turnstile.test.mjs
+      - name: Test partner intake transactional notification transport
+        run: node --test services/partner-intake/brevo.test.mjs
       - name: Test release recovery integrity
         run: node --test _dev/scripts/release-manifest.test.mjs
       - name: Install accessibility browser
