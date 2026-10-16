@@ -22,11 +22,14 @@ try {
     const page = await browser.newPage();
     const errors=[];
     const sitemap = await fs.readFile(path.join(root,'sitemap.xml'),'utf8');
-    assert.equal(sitemap.includes(`<loc>https://kaftanangelo.com${route}</loc>`),false,'Portal login is excluded from the sitemap');
+    assert.equal(sitemap.includes('https://kaftanangelo.com'+route+'</loc>'),false,'Portal login is excluded from the sitemap');
     page.on('pageerror',error=>errors.push(error.message));
     await page.setRequestInterception(true);
     let mode='success';
     let contractCalls=0;
+    let releaseLogin;
+    let loginSeen;
+    const delayedLogin = new Promise(resolve=>{ loginSeen=resolve; });
     page.on('request',request=> {
       if (request.url().includes('/functions/v1/partner-contract')) {
         if (request.method()==='OPTIONS') return request.respond({status:204,headers:{'access-control-allow-origin':'*','access-control-allow-headers':'*','access-control-allow-methods':'POST, OPTIONS'}});
@@ -60,11 +63,13 @@ try {
         data.contract_url='https://untrusted.example/contract.pdf';
       }
       if (mode === 'paused') data.materials = {code:'TEST-ONLY',status:'paused',files:[]};
-      return request.respond({status:200,contentType:'application/json',headers:{'access-control-allow-origin':'*'},body:JSON.stringify(data)});
+      const reply=()=>request.respond({status:200,contentType:'application/json',headers:{'access-control-allow-origin':'*'},body:JSON.stringify(data)});
+      if (mode==='delayed') { releaseLogin=reply; loginSeen(); return; }
+      return reply();
     });
     await page.setViewport({width:390,height:844});
     await page.goto('http://127.0.0.1:4182'+route);
-    assert.equal(await page.$eval('meta[name="robots"]',node=>node.content),'noindex,follow','Portal login must not be search indexed');
+    assert.equal(await page.$eval('meta[name="robots"]',node=>node.content),'noindex,follow');
     await page.type('#partner-code-input','TEST-ONLY');
     await page.type('#partner-pin-input','0000');
     await page.focus('#gate-submit-btn'); await page.keyboard.press('Enter');
@@ -78,34 +83,30 @@ try {
     assert.equal(await page.$$eval('.portal-material-actions a',links=>links.length),0);
     assert.equal(await page.$eval('#request-payout-btn',node=>node.href.includes('HU42')),false);
     assert.equal(await page.evaluate(()=>localStorage.getItem('kaftan_portal_session')),null);
-    const savedView = await page.evaluate(()=>JSON.parse(sessionStorage.getItem('kaftan_portal_view_v1')));
-    assert.equal(savedView.data.code,'TEST-ONLY');
-    assert.equal(Object.hasOwn(savedView.data,'session_token'),false,'Contract bearer token must never persist across reloads');
-    // Migrate away sensitive storage left by previous deployed versions.
-    await page.evaluate(() => {
-      const legacy=JSON.parse(sessionStorage.getItem('kaftan_portal_view_v1'));
-      legacy.data.session_token='a'.repeat(64);
-      sessionStorage.setItem('kaftan_portal_view_v1',JSON.stringify(legacy));
-    });
-    assert.equal(JSON.stringify(savedView).includes('0000'),false);
-    assert.equal('p_pin' in savedView.data,false);
-    assert.equal(JSON.stringify(savedView).includes('SERVER-ONLY-TEST-PIN'),false);
-    assert.equal(JSON.stringify(savedView).includes('NESTED-SECRET-TEST'),false);
-    assert.equal(JSON.stringify(savedView).includes('HU42123456789012345678901234'),false);
+    assert.equal(await page.evaluate(()=>sessionStorage.getItem('kaftan_portal_view_v1')),null,'No dashboard PII persists');
+    assert.equal(await page.$eval('#partner-pin-input',node=>node.value),'','Successful login clears the PIN field');
+    // Purge the whole legacy preview, including nested secrets and untrusted data.
+    await page.evaluate(() => sessionStorage.setItem('kaftan_portal_view_v1',JSON.stringify({
+      expires:Date.now()+100000,data:{success:true,code:'TEST-ONLY',phone:'+36 000',
+      session_token:'a'.repeat(64),txs:[{item:'PRIVATE-LEGACY-SALE'}]}
+    })));
     await page.reload();
+    assert.equal(await page.$eval('#portal-dashboard',node=>node.hidden),true,'Reload requires fresh authentication');
+    assert.equal(await page.evaluate(()=>sessionStorage.getItem('kaftan_portal_view_v1')),null,'All legacy PII is purged');
+    assert.equal(await page.evaluate(()=>document.body.textContent.includes('PRIVATE-LEGACY-SALE')),false);
+    await page.type('#partner-code-input','TEST-ONLY');
+    await page.type('#partner-pin-input','0000');
+    await page.focus('#gate-submit-btn'); await page.keyboard.press('Enter');
     await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
-    assert.equal(await page.$eval('#partner-display-code',node=>node.textContent),'TEST-ONLY');
-    assert.equal(await page.evaluate(()=>Object.hasOwn(JSON.parse(sessionStorage.getItem('kaftan_portal_view_v1')).data,'session_token')),false,'Legacy cached bearer capability is purged on reload');
+    // Simulate the clock advancing while a tab is suspended, then resuming.
     await page.evaluate(()=>{
-      const saved=JSON.parse(sessionStorage.getItem('kaftan_portal_view_v1'));
-      saved.expires=Date.now()+1200;
-      sessionStorage.setItem('kaftan_portal_view_v1',JSON.stringify(saved));
+      const now=Date.now;
+      Date.now=()=>now()+31*60*1000;
+      document.dispatchEvent(new Event('visibilitychange'));
+      Date.now=now;
     });
-    await page.reload();
-    await page.waitForFunction(()=>!document.getElementById('portal-dashboard').hidden);
-    await page.waitForFunction(()=>document.getElementById('portal-dashboard').hidden);
+    assert.equal(await page.$eval('#portal-dashboard',node=>node.hidden),true);
     assert.equal(await page.$eval('#partner-display-code',node=>node.textContent),'','Expiry clears sensitive DOM data');
-    assert.equal(await page.evaluate(()=>sessionStorage.getItem('kaftan_portal_view_v1')),null);
     await page.type('#partner-code-input','TEST-ONLY');
     await page.type('#partner-pin-input','0000');
     await page.focus('#gate-submit-btn'); await page.keyboard.press('Enter');
@@ -130,11 +131,9 @@ try {
     await separatePage.goto('http://127.0.0.1:4182'+route);
     assert.equal(await separatePage.$eval('#portal-dashboard',node=>node.hidden),true,'Another browser session does not inherit partner data');
     await separateContext.close();
-    await page.evaluate(()=>{
-      const saved=JSON.parse(sessionStorage.getItem('kaftan_portal_view_v1'));
-      saved.expires=Date.now()-1;
-      sessionStorage.setItem('kaftan_portal_view_v1',JSON.stringify(saved));
-    });
+    await page.evaluate(()=>window.dispatchEvent(new Event('pagehide')));
+    assert.equal(await page.$eval('#portal-dashboard',node=>node.hidden),true,'Navigation clears the DOM before BFCache');
+    assert.equal(await page.$$eval('#transactions-tbody tr',rows=>rows.length),0);
     await page.reload();
     assert.equal(await page.$eval('#portal-dashboard',node=>node.hidden),true,'Expired saved view is rejected');
     assert.equal(await page.evaluate(()=>sessionStorage.getItem('kaftan_portal_view_v1')),null);
@@ -207,10 +206,17 @@ try {
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true,'Private contract controls fit on mobile');
     await page.reload();
     assert.equal(await page.$eval('#contract-download-link',link=>link.href.includes('SIGNED-TEST')),false,'Signed link is not cached across reload');
-    assert.equal(await page.$eval('#contract-ready-box',box=>box.style.display),'none','Cached view cannot access a contract using a persisted token');
-    assert.equal(await page.$eval('#contract-pending-box strong',node=>/Sign in again|jelentkezzen be újra/.test(node.textContent)),true,'Explain that a new login is required');
-    assert.equal(await page.evaluate(()=>Object.hasOwn(JSON.parse(sessionStorage.getItem('kaftan_portal_view_v1')).data,'session_token')),false);
-    await page.focus('#portal-logout-btn');await page.keyboard.press('Enter');
+    assert.equal(await page.$eval('#portal-dashboard',node=>node.hidden),true,'Reload cannot restore contract or account data');
+    assert.equal(await page.evaluate(()=>sessionStorage.getItem('kaftan_portal_view_v1')),null);
+    mode='delayed';
+    await page.type('#partner-code-input','TEST-ONLY');await page.type('#partner-pin-input','0000');
+    await page.focus('#gate-submit-btn');await page.keyboard.press('Enter');
+    await delayedLogin;
+    await page.evaluate(()=>window.dispatchEvent(new Event('pagehide')));
+    await releaseLogin();
+    await page.waitForFunction(()=>!document.getElementById('portal-login-form').hasAttribute('aria-busy'));
+    assert.equal(await page.$eval('#portal-dashboard',node=>node.hidden),true,'Late login cannot restore a page after navigation/logout');
+    assert.equal(await page.evaluate(()=>sessionStorage.getItem('kaftan_portal_view_v1')),null);
     mode='rate-limited';
     await page.type('#partner-code-input','TEST-ONLY');await page.type('#partner-pin-input','0000');
     await page.focus('#gate-submit-btn');await page.keyboard.press('Enter');
