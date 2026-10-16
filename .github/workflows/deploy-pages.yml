@@ -34,6 +34,8 @@ jobs:
         run: node --test _dev/scripts/check-supabase-health.test.mjs
       - name: Test private partner contract handler
         run: node --test services/partner-security/contract-handler.test.mjs
+      - name: Test partner intake validation
+        run: node --test services/partner-intake/validation.test.mjs
       - name: Test release recovery integrity
         run: node --test _dev/scripts/release-manifest.test.mjs
       - name: Install accessibility browser
