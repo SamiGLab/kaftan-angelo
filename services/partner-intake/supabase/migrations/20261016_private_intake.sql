@@ -147,4 +147,89 @@ REVOKE ALL ON FUNCTION kaftan_intake.take_rate_slot(text) FROM PUBLIC,anon,authe
 REVOKE ALL ON FUNCTION kaftan_intake.accept_inquiry(uuid,text,text,text,text,text,text,text,text) FROM PUBLIC,anon,authenticated;
 GRANT EXECUTE ON FUNCTION kaftan_intake.take_rate_slot(text) TO service_role;
 GRANT EXECUTE ON FUNCTION kaftan_intake.accept_inquiry(uuid,text,text,text,text,text,text,text,text) TO service_role;
+
+-- The notification worker can claim bounded batches without a public SELECT
+-- grant on private inquiries. No email provider is called in this migration.
+ALTER TABLE kaftan_intake.notification_outbox
+  ADD COLUMN IF NOT EXISTS lease_token uuid,
+  ADD COLUMN IF NOT EXISTS lease_expires_at timestamptz;
+
+CREATE OR REPLACE FUNCTION kaftan_intake.claim_notifications(p_limit integer)
+RETURNS TABLE (
+  inquiry_id uuid, lease_token uuid, recipient_name text, company text,
+  recipient_email text, phone text, category text, message text, language text
+)
+LANGUAGE plpgsql SECURITY DEFINER SET search_path = pg_catalog
+AS $$
+BEGIN
+  IF p_limit IS NULL OR p_limit NOT BETWEEN 1 AND 10 THEN
+    RAISE EXCEPTION 'invalid_batch_limit' USING ERRCODE = '22023';
+  END IF;
+  RETURN QUERY
+  WITH ready AS (
+    SELECT o.inquiry_id
+    FROM kaftan_intake.notification_outbox o
+    WHERE o.attempts < 8 AND (
+      (o.state IN ('pending','failed') AND o.next_attempt_at <= clock_timestamp())
+      OR (o.state = 'sending' AND o.lease_expires_at <= clock_timestamp())
+    )
+    ORDER BY o.next_attempt_at, o.created_at
+    FOR UPDATE SKIP LOCKED
+    LIMIT p_limit
+  ), claim AS (
+    UPDATE kaftan_intake.notification_outbox AS o
+      SET state = 'sending',
+          attempts = o.attempts + 1,
+          lease_token = gen_random_uuid(),
+          lease_expires_at = clock_timestamp() + interval '3 minutes'
+    FROM ready
+    WHERE o.inquiry_id = ready.inquiry_id
+    RETURNING o.inquiry_id, o.lease_token
+  )
+  SELECT c.inquiry_id, c.lease_token, p.name, p.company, p.email,
+         p.phone, p.category, p.message, p.language
+  FROM claim c
+  JOIN kaftan_intake.partner_inquiries p ON p.id = c.inquiry_id;
+END;
+$$;
+
+-- A lease-holder acknowledges provider delivery or schedules a retry.
+-- An expired/replaced lease cannot mark a notification sent.
+CREATE OR REPLACE FUNCTION kaftan_intake.finish_notification(
+  p_inquiry_id uuid, p_lease_token uuid, p_delivered boolean,
+  p_retry_after_seconds integer
+)
+RETURNS boolean
+LANGUAGE plpgsql SECURITY DEFINER SET search_path = pg_catalog
+AS $$
+DECLARE
+  v_acked boolean;
+BEGIN
+  IF p_inquiry_id IS NULL OR p_lease_token IS NULL OR p_delivered IS NULL
+      OR p_retry_after_seconds IS NULL
+      OR p_retry_after_seconds NOT BETWEEN 30 AND 86400 THEN
+    RAISE EXCEPTION 'invalid_acknowledgement' USING ERRCODE = '22023';
+  END IF;
+  UPDATE kaftan_intake.notification_outbox AS o
+    SET state = CASE WHEN p_delivered THEN 'sent' ELSE 'failed' END,
+        next_attempt_at = CASE WHEN p_delivered THEN clock_timestamp()
+          ELSE clock_timestamp() + make_interval(secs => p_retry_after_seconds) END,
+        lease_token = NULL,
+        lease_expires_at = NULL
+  WHERE o.inquiry_id = p_inquiry_id
+    AND o.lease_token = p_lease_token
+    AND o.state = 'sending'
+    AND o.lease_expires_at > clock_timestamp()
+  RETURNING true INTO v_acked;
+  RETURN coalesce(v_acked,false);
+END;
+$$;
+
+REVOKE ALL ON FUNCTION kaftan_intake.claim_notifications(integer)
+  FROM PUBLIC,anon,authenticated;
+REVOKE ALL ON FUNCTION kaftan_intake.finish_notification(uuid,uuid,boolean,integer)
+  FROM PUBLIC,anon,authenticated;
+GRANT EXECUTE ON FUNCTION kaftan_intake.claim_notifications(integer) TO service_role;
+GRANT EXECUTE ON FUNCTION kaftan_intake.finish_notification(uuid,uuid,boolean,integer) TO service_role;
+
 COMMIT;
