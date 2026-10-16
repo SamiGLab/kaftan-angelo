@@ -5,7 +5,9 @@ const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:4173';
 const browser = await launch({headless:true, args:process.env.CI ? ['--no-sandbox','--disable-setuid-sandbox'] : []});
 try {
   for (const lang of ['hu','en']) {
-    const page = await browser.newPage();
+    // Isolate consent per locale: analytics acceptance in HU must not persist to EN.
+    const context = await browser.createBrowserContext();
+    const page = await context.newPage();
     const modelPath = `${lang === 'hu' ? '/modellek/' : '/en/models/'}noi-sarga-borkabat-budapest/`;
     const requests = [];
     page.on('request', request => requests.push(request.url()));
@@ -13,7 +15,11 @@ try {
     await page.goto(base + modelPath, {waitUntil:'networkidle2'});
     assert.equal(await page.$eval('.model-photo img', image => image.complete && image.naturalWidth > 0), true);
     assert.equal(requests.some(url => url.endsWith('/noi-sarga-borkabat-budapest.webp')), false, 'Do not download the full-size WebP in addition to the responsive photo');
-    if (await page.$eval('[data-consent-banner]', element => !element.hidden)) await page.click('[data-consent-reject]');
+    // Ensure the chat test has explicitly rejected analytics (including after
+    // any previously saved consent) before asserting no quick-chat event.
+    if (await page.$eval('[data-consent-banner]', element => element.hidden)) await page.click('[data-consent-open]');
+    await page.click('[data-consent-reject]');
+    await page.waitForFunction(() => window.kaftanAnalytics && !window.kaftanAnalytics.choice.analytics);
     await page.evaluate(() => { window.open = (url) => { window.testWhatsAppUrl = url; }; });
     for (const viewport of [{width:390,height:844},{width:320,height:568},{width:844,height:390},{width:390,height:360}]) {
       await page.setViewport(viewport);
@@ -49,7 +55,23 @@ try {
     assert.equal(destination.hostname, 'wa.me');
     assert.equal(destination.pathname, '/36203593216');
     assert.ok(destination.searchParams.get('text').includes('https://kaftanangelo.com'+modelPath));
-    await page.close();
+    assert.equal(await page.evaluate(() => window.dataLayer.some(entry => entry.event === 'kaftan_interest' && entry.interest_source === 'quick_chat')),false,'Rejected tracking must not log WhatsApp chat');
+    await page.click('#whatsapp-close-btn');
+    await page.setRequestInterception(true);
+    page.on('request', request => /googletagmanager|google-analytics|clarity\.ms/.test(request.url())
+      ? request.respond({status:200,contentType:'application/javascript',body:''})
+      : request.continue());
+    await page.click('[data-consent-open]');
+    await page.click('[data-consent-accept]');
+    await page.click('#whatsapp-trigger-btn');
+    await page.evaluate(() => {document.querySelector('#whatsapp-chat-input').value='Private customer enquiry audit_12345';});
+    await page.click('#whatsapp-send-btn');
+    const quickChatEvents=await page.evaluate(() => window.dataLayer.filter(entry => entry.event === 'kaftan_interest' && entry.interest_action === 'whatsapp_click' && entry.interest_source === 'quick_chat'));
+    assert.equal(quickChatEvents.length,1,'Consented WhatsApp popup click records exactly one event');
+    assert.equal(JSON.stringify(quickChatEvents).includes('Private customer enquiry audit_12345'),false,'Never send customer chat text to analytics');
+    assert.equal(quickChatEvents[0].page_path,modelPath,'Attribution event uses current product page');
+    assert.equal(quickChatEvents[0].page_language,lang);
+    await context.close();
   }
 
   for (const lang of ['hu','en']) {

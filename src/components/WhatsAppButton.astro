@@ -517,6 +517,18 @@ const quickChips = hu
       var text = inputEl ? inputEl.value.trim() : '';
       if (!text) return;
       var url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(text);
+      // Track only the intent to open WhatsApp, never the customer's message.
+      // Keep analytics strictly opt-in and respect URL/privacy exclusions.
+      var analytics = window.kaftanAnalytics;
+      if (analytics && analytics.permitted && analytics.choice && analytics.choice.analytics && Array.isArray(window.dataLayer)) {
+        window.dataLayer.push({
+          event: 'kaftan_interest',
+          interest_action: 'whatsapp_click',
+          interest_source: 'quick_chat',
+          page_path: location.pathname,
+          page_language: document.documentElement.lang
+        });
+      }
       window.open(url, '_blank', 'noopener,noreferrer');
     }
 
