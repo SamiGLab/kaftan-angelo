@@ -27,6 +27,14 @@ The **designated operator mailbox is alfinafashionkft@gmail.com**, approved on 1
 
 **Do not make this handler publicly reachable yet.** The project has no verified trusted-ingress attestation adapter, atomically enforced DB rate limits/idempotency, privacy-approved retention, permitted operator authentication, or end-to-end encrypted notification receipt. These must be tested together before migrating/deploying a production public Edge Function, and the legacy mailto/WhatsApp fallback must remain in place until then.
 
+## Disposable PostgreSQL staging migration (not applied to production)
+
+`supabase/migrations/20261016_private_intake.sql` creates a **private** `kaftan_intake` schema with three RLS-protected, non-public tables: partner inquiries, an HMAC-keyed rate limiter, and a notification outbox **without duplicated applicant PII**. Only the server's `service_role` can execute narrow `SECURITY DEFINER` functions. Neither anonymous nor authenticated users can browse/write inquiry rows or execute the functions. No policies deliberately means deny-by-default. The migration does **not** touch existing portal partners or commissions.
+
+`take_rate_slot` atomically limits a verified, server-hashed client key to five requests per 15-minute window; it must only be given a key from an independent trusted-ingress adapter. `accept_inquiry` atomically writes a private inquiry and a pending outbox marker; same UUID + same payload returns the existing receipt, while the same UUID with different PII raises an error. Its `privacy_notice_version` argument must be a **server-assigned legally approved notice version**, not a value copied from the browser. Sending notifications, retrying outbox entries and authenticating staff are **not implemented** by this migration.
+
+Both GitHub Actions workflows run a separate `intake-db` job against a disposable PostgreSQL 17 service, with CI-only fake roles/credentials. The tests stage sample requests in an explicit transaction and roll them back. Pages deploy requires this job as well as the normal static-site quality gate. To reproduce locally: create an empty PostgreSQL 17 database, execute `supabase/tests/roles.sql`, then `supabase/migrations/20261016_private_intake.sql`, and finally `supabase/tests/regression.sql`, using `psql -X -v ON_ERROR_STOP=1`. **Do not run the test roles script or any migration blindly against production**, and do not treat this isolated PostgreSQL rehearsal as real Supabase Storage, ingress trust, or business privacy approval.
+
 
 ## Optional server-only Cloudflare Turnstile verification (not deployed)
 
