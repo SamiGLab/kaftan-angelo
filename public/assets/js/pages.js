@@ -122,7 +122,25 @@ const collectionViews = [...document.querySelectorAll('.product-grid')].map((gri
   more.textContent = hu ? 'További modellek' : 'Show more models';
   grid.id ||= `collection-grid-${index}`;
   more.setAttribute('aria-controls', grid.id);
-  controls.append(status, more);
+  const empty = document.createElement('div');
+  empty.className = 'collection-empty';
+  empty.hidden = true;
+  const explanation = document.createElement('p');
+  explanation.textContent = hu
+    ? 'Ebben a kategóriában még nincs modellfotó. Az aktuális elérhetőségről érdeklődjön üzletünkben.'
+    : 'There are no model photos in this category yet. Ask our store about current availability.';
+  const reset = document.createElement('button');
+  reset.type = 'button';
+  reset.className = 'btn btn-ghost';
+  reset.setAttribute('data-collection-reset', '');
+  reset.setAttribute('aria-controls', grid.id);
+  reset.textContent = hu ? 'Összes modell' : 'Show all models';
+  const visit = document.createElement('a');
+  visit.className = 'btn btn-ghost';
+  visit.href = hu ? '/uzlet/' : '/en/visit/';
+  visit.textContent = hu ? 'Üzlet és elérhetőség' : 'Store and contact';
+  empty.append(explanation, reset, visit);
+  controls.append(status, more, empty);
   grid.after(controls);
   let limit = 12;
   let filter = 'all';
@@ -137,8 +155,21 @@ const collectionViews = [...document.querySelectorAll('.product-grid')].map((gri
     grid.dataset.galleryReady = 'true';
     status.textContent = hu ? `${Math.min(limit, matching.length)} / ${matching.length} modell` : `${Math.min(limit, matching.length)} of ${matching.length} models`;
     more.hidden = limit >= matching.length;
-    controls.hidden = cards.length <= 12 && filter === 'all';
+    empty.hidden = matching.length > 0;
+    controls.hidden = cards.length > 0 && cards.length <= 12 && filter === 'all';
   }
+  reset.addEventListener('click', () => {
+    const all = scope.querySelector('[data-product-filters] [data-filter="all"]');
+    if (all) {
+      all.click();
+      all.focus();
+    } else {
+      filter = 'all';
+      limit = 12;
+      render();
+      grid.querySelector('button, a')?.focus();
+    }
+  });
   more.addEventListener('click', () => {
     const firstNew = matches()[limit];
     limit += 12;

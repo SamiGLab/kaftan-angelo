@@ -2136,3 +2136,6 @@ main .btn-ghost{border-color:#77502b88;}
 }
 .home-hero .home-visit-direct a:focus-visible { outline: 2px solid #f1c58d; outline-offset: 3px; }
 .page-hero .proofs { margin-top: 18px; max-width: 850px; }
+
+.collection-empty { max-width: 650px; margin: 16px auto; }
+.collection-empty .btn { margin: 6px; }
