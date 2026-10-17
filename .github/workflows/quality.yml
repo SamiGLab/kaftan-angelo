@@ -24,6 +24,16 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+      recovery:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: ci-only-password
+          POSTGRES_DB: kaftan_recovery_test
+        options: >-
+          --health-cmd "pg_isready -U postgres -d kaftan_recovery_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     env:
       PGHOST: 127.0.0.1
       PGPORT: "5432"
@@ -44,6 +54,24 @@ jobs:
         run: psql -X -v ON_ERROR_STOP=1 -f services/partner-intake/supabase/migrations/20261016_90_day_retention.sql
       - name: Verify dry-run, 90-day expiry, signed preservation and RLS
         run: psql -X -v ON_ERROR_STOP=1 -f services/partner-intake/supabase/tests/retention-regression.sql
+      - name: Install verified age encryption tool
+        run: |
+          curl --fail --silent --show-error --location https://github.com/FiloSottile/age/releases/download/v1.3.2/age-v1.3.2-linux-amd64.tar.gz --output "$RUNNER_TEMP/age.tar.gz"
+          echo "cbe24006683f8eb669266162894b9a522a1af52f2665fbc63a4bb032ed26ac10  $RUNNER_TEMP/age.tar.gz" | sha256sum --check
+          tar -xzf "$RUNNER_TEMP/age.tar.gz" -C "$RUNNER_TEMP" age/age age/age-keygen
+      - name: Test encrypted backup integrity and failure controls
+        env:
+          AGE_BIN: ${{ runner.temp }}/age/age
+          AGE_KEYGEN_BIN: ${{ runner.temp }}/age/age-keygen
+        run: python3 -m unittest discover -s services/recovery -p test_bundle.py -v
+      - name: Rehearse encrypted recovery into separate disposable PostgreSQL
+        env:
+          AGE_BIN: ${{ runner.temp }}/age/age
+          AGE_KEYGEN_BIN: ${{ runner.temp }}/age/age-keygen
+          RECOVERY_REHEARSAL: synthetic-local-only
+          RECOVERY_SOURCE_CONTAINER: ${{ job.services.postgres.id }}
+          RECOVERY_TARGET_CONTAINER: ${{ job.services.recovery.id }}
+        run: python3 services/recovery/rehearse.py
 
   quality:
     runs-on: ubuntu-latest

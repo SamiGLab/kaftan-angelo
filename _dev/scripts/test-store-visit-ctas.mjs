@@ -32,11 +32,17 @@ try {
     assert.equal(direct.url,map,item.lang+' homepage points to existing directions URL');
     assert.match(direct.text,item.mapLabel);
     assert.ok(direct.rect.height>=44,item.lang+' directions has a comfortable tap target');
-    // The anchor href is checked above; follow that exact internal target and
-    // verify it resolves. A consent overlay can obscure synthetic click
-    // coordinates but must not make a valid static destination appear broken.
-    await page.goto(base+ctas[0].href,{waitUntil:'domcontentloaded'});
-    assert.equal(new URL(page.url()).pathname,item.visit,'Primary store link resolves to the visit page');
+    // Make the same consent choice a visitor makes before activating the CTA.
+    // Navigating directly to its href would miss overlays and broken clicks.
+    if(await page.$eval('[data-consent-banner]',node=>!node.hidden)) {
+      await page.click('[data-consent-reject]');
+      await page.waitForFunction(()=>document.querySelector('[data-consent-banner]').hidden);
+    }
+    await Promise.all([
+      page.waitForNavigation({waitUntil:'domcontentloaded'}),
+      page.click('.home-hero .actions a.btn-primary')
+    ]);
+    assert.equal(new URL(page.url()).pathname,item.visit,'Primary store button click opens the visit page');
 
     const visitLinks=await page.$$eval('.page-hero .actions a',nodes=>nodes.map(x=>({href:x.getAttribute('href'),text:x.textContent.trim()})));
     assert.equal(visitLinks.length,2);
@@ -54,7 +60,7 @@ try {
     assert.equal(await page.$eval('.contact-card a[href*="wa.me"]',a=>a.getAttribute('href')),'https://wa.me/36203593216','WhatsApp still exists');
     assert.equal(await page.$('iframe[src*="google.com/maps"]'),null,'Embedded map is not loaded without click');
 
-    for(const width of [390,320]) {
+    for(const width of [390,320,1365]) {
       await page.setViewport({width,height:700});
       const visitTargets=await page.$$eval('.page-hero .actions a',nodes=>nodes.map(n=>{
         const b=n.getBoundingClientRect();
@@ -74,10 +80,15 @@ try {
         assert.ok(b.height>=44,item.lang+' '+width+' homepage CTA '+i+' tap height');
         assert.ok(b.left>=-1&&b.right<=width+1,item.lang+' '+width+' homepage CTA '+i+' no overflow');
       }
-      await page.goto(base+item.visit,{waitUntil:'domcontentloaded'});
+      await page.focus('.home-hero .actions a.btn-primary');
+      await Promise.all([
+        page.waitForNavigation({waitUntil:'domcontentloaded'}),
+        width===1365 ? page.keyboard.press('Enter') : page.click('.home-hero .actions a.btn-primary')
+      ]);
+      assert.equal(new URL(page.url()).pathname,item.visit,item.lang+' '+width+' primary CTA activates');
     }
     assert.deepEqual(errors,[],item.lang+' pages have no browser script errors');
     await ctx.close();
   }
-  console.log('PASS HU/EN store visit conversions: homepage priority, 1-tap maps/phone, visit hours, safe map load, 320/390 mobile targets.');
+  console.log('PASS HU/EN store visit conversions: real CTA clicks and keyboard navigation, maps/phone, visit hours, safe map load, 320/390 mobile and desktop targets.');
 } finally {await browser.close();}
