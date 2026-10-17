@@ -53,5 +53,55 @@ class IndexingAuditTests(unittest.TestCase):
     def test_previous_tested_archives_remain_auditable_for_restore(self):
         self.assertEqual(self.run_audit(self.fixture(portal_noindex=False, include_portal=True)), 0)
 
+    def test_one_way_language_pair_fails(self):
+        root = self.fixture()
+        page = root/'en/partners/index.html'
+        html = page.read_text(encoding='utf-8')
+        # Every target still exists and self-identifies, but EN no longer links back to its HU partner.
+        html = html.replace('hreflang="hu" href="https://kaftanangelo.com/partnerprogram/"',
+                            'hreflang="hu" href="https://kaftanangelo.com/"')
+        page.write_text(html, encoding='utf-8')
+        self.assertEqual(self.run_audit(root), 1)
+
+    def test_duplicate_hreflang_fails_even_when_last_value_is_correct(self):
+        root = self.fixture()
+        page = root/'en/index.html'
+        html = page.read_text(encoding='utf-8')
+        html = '<link rel="alternate" hreflang="hu" href="https://kaftanangelo.com/partnerprogram/">' + html
+        page.write_text(html, encoding='utf-8')
+        self.assertEqual(self.run_audit(root), 1)
+
+    def test_inconsistent_default_language_pair_fails(self):
+        root = self.fixture()
+        page = root/'en/index.html'
+        html = page.read_text(encoding='utf-8').replace(
+            'hreflang="x-default" href="https://kaftanangelo.com/"',
+            'hreflang="x-default" href="https://kaftanangelo.com/partnerprogram/"')
+        page.write_text(html, encoding='utf-8')
+        self.assertEqual(self.run_audit(root), 1)
+
+    def test_duplicate_sitemap_url_fails(self):
+        root = self.fixture()
+        sitemap = root/'sitemap.xml'
+        xml = sitemap.read_text(encoding='utf-8').replace('</urlset>',
+            '<url><loc>https://kaftanangelo.com/</loc></url></urlset>')
+        sitemap.write_text(xml, encoding='utf-8')
+        self.assertEqual(self.run_audit(root), 1)
+
+    def test_consistent_cluster_must_still_include_current_page(self):
+        root = self.fixture()
+        for path in ['partnerprogram/index.html', 'en/partners/index.html']:
+            page = root/path
+            html = page.read_text(encoding='utf-8')
+            html = html.replace('hreflang="hu" href="https://kaftanangelo.com/partnerprogram/"',
+                                'hreflang="hu" href="https://kaftanangelo.com/"')
+            html = html.replace('hreflang="en" href="https://kaftanangelo.com/en/partners/"',
+                                'hreflang="en" href="https://kaftanangelo.com/en/"')
+            html = html.replace('hreflang="x-default" href="https://kaftanangelo.com/partnerprogram/"',
+                                'hreflang="x-default" href="https://kaftanangelo.com/"')
+            # All clusters agree, but the partner pages never include themselves.
+            page.write_text(html, encoding='utf-8')
+        self.assertEqual(self.run_audit(root), 1)
+
 
 if __name__ == '__main__': unittest.main()
