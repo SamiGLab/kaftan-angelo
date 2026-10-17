@@ -76,6 +76,7 @@ def main():
             if p.canonical != 'https://kaftanangelo.com'+route: seo.append((rel,'canonical mismatch'))
             if set(p.alternates) != {'hu','en','x-default'}: seo.append((rel,'missing hreflang'))
             if p.duplicate_alternates: seo.append((rel,'duplicate hreflang'))
+            if p.canonical not in [p.alternates.get('hu'),p.alternates.get('en')]: seo.append((rel,'missing hreflang self-reference'))
             if not {'og:url','og:title','og:description','og:image','twitter:card','twitter:image'} <= p.meta: seo.append((rel,'missing social metadata'))
             if not p.schemas: seo.append((rel,'missing structured data'))
             for schema in p.schemas:

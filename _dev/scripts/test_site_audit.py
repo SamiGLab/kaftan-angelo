@@ -88,5 +88,20 @@ class IndexingAuditTests(unittest.TestCase):
         sitemap.write_text(xml, encoding='utf-8')
         self.assertEqual(self.run_audit(root), 1)
 
+    def test_consistent_cluster_must_still_include_current_page(self):
+        root = self.fixture()
+        for path in ['partnerprogram/index.html', 'en/partners/index.html']:
+            page = root/path
+            html = page.read_text(encoding='utf-8')
+            html = html.replace('hreflang="hu" href="https://kaftanangelo.com/partnerprogram/"',
+                                'hreflang="hu" href="https://kaftanangelo.com/"')
+            html = html.replace('hreflang="en" href="https://kaftanangelo.com/en/partners/"',
+                                'hreflang="en" href="https://kaftanangelo.com/en/"')
+            html = html.replace('hreflang="x-default" href="https://kaftanangelo.com/partnerprogram/"',
+                                'hreflang="x-default" href="https://kaftanangelo.com/"')
+            # All clusters agree, but the partner pages never include themselves.
+            page.write_text(html, encoding='utf-8')
+        self.assertEqual(self.run_audit(root), 1)
+
 
 if __name__ == '__main__': unittest.main()
