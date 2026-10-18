@@ -106,7 +106,11 @@ def main():
     for path in ['partnerprogram/index.html','en/partners/index.html']:
         if not (ROOT/path).exists(): seo.append((path,'missing partner page')); continue
         html=(ROOT/path).read_text(encoding='utf-8')
-        if html.count('class="testimonial"')!=14 or 'partner-review-marquee' not in html or '1973' not in html or not ('Több mint 15 partner' in html or 'Over 15 partners' in html): seo.append((path,'partner evidence changed'))
+        lower=html.lower()
+        has_base='1973' in html and ('Több mint 15 partner' in html or 'Over 15 partners' in html)
+        verified_terms=('data-partner-program-terms' in html and 'class="testimonial"' not in html and 'partner-review-marquee' not in html and 'csütörtökön és pénteken' not in lower and 'thursdays and fridays' not in lower)
+        legacy_archive=('data-partner-program-terms' not in html and html.count('class="testimonial"')==14 and 'partner-review-marquee' in html)
+        if not has_base or not (verified_terms or legacy_archive): seo.append((path,'partner evidence changed'))
     if not (ROOT/'CNAME').exists() or (ROOT/'CNAME').read_text().strip()!='kaftanangelo.com': seo.append(('CNAME','custom domain mismatch'))
     if not (ROOT/'google2420b38b37454d79.html').exists(): seo.append(('Google verification','missing'))
     print(f'Root: {ROOT}')

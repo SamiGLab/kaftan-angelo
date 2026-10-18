@@ -18,6 +18,8 @@ try {
       assert.ok(text.includes('https://kaftanangelo.com'+path));
       assert.equal(new URL(href).pathname,'/36203593216');
       assert.ok(await page.$eval('.model-photo img',el=>el.getAttribute('src')===new URL(document.querySelector('meta[property="og:image"]').content).pathname));
+      assert.ok((await page.$eval('[data-model-material]',el=>el.textContent)).includes(model.category[lang].name));
+      assert.ok((await page.$eval('[data-model-availability]',el=>el.textContent)).length>30);
     }
     await page.goto(base+(lang==='hu'?'/kollekciok/':'/en/collections/'),{waitUntil:'networkidle2'});
     const links=await page.$$eval('.product-card',cards=>cards.map(card=>({detail:card.querySelector('.product-detail-link').href,message:new URL(card.querySelector('a[href*="wa.me"]').href).searchParams.get('text')})));

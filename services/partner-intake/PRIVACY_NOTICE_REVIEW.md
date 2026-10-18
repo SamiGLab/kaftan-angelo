@@ -1,13 +1,13 @@
 # Partner enquiry privacy notice — HU/EN review package
 
-Version: `partner-enquiry-2026-10-17-draft`. **Not approved for publication or form activation.** This is a source-backed completeness review and draft, not external legal sign-off. Controller identity/address and mailbox below come from the current site and owner instruction; verify their accuracy before publication.
+Version: `partner-enquiry-2026-10-19-v1`. **Approved by owner on 19 October 2026 and published on `/uzemelteto/` (HU) and `/en/site-information/` (EN).** Direct online form submission remains disabled until production database/Storage recovery (#60) and Edge Function deployment (#48) are completed; until then, the form continues to use the existing `mailto:` / WhatsApp handoff.
 
-## Publication blockers
+## Verified controller and publication record (19 October 2026)
 
-- Confirm the lawful basis for each applicant type. A corporate representative is not automatically a party to a prospective contract: Article 6(1)(b) cannot be assumed for every B2B contact. If relying on Article 6(1)(f), document the purpose, necessity, balancing and objection route before adopting the proposed wording below. Notice acknowledgement is not marketing consent.
-- Confirm actual Supabase project region, contracted processors/subprocessors, Brevo use, operator mailbox provider, transfers and safeguards. Publish actual recipient/transfer information, not a claim that everything remains in the EU. Turnstile and Brevo adapters are staged, not active.
-- Establish backup expiry, mailbox/provider copy handling, status handoff and authorized holds. No promise of erasure from every system at exactly day 90 is supportable yet. The approved rule makes unconverted enquiries eligible at 90 days; operating frequency and residual copies must be explained.
-- Confirm who handles rights requests, whether a DPO applies, the final notice URL/version and dated controller/legal review. No new DPO, legal retention duration for signed records, or processor contract is invented here.
+- **Lawful basis:** GDPR Article 6(1)(f) legitimate interest in evaluating and responding to B2B partnership enquiries, or Article 6(1)(b) pre-contractual steps where a natural person personally requests steps toward their own contract. Submitting an enquiry does not subscribe the contact to marketing newsletters.
+- **Processors and infrastructure:** Supabase (`eu-west-1` Ireland) for private database storage when online intake is enabled, Cloudflare Turnstile for bot/abuse verification, Brevo for transactional operator notifications, and operator mailbox `alfinafashionkft@gmail.com`.
+- **Retention (90 days):** Non-converted enquiries become eligible for deletion 90 days after server-recorded creation (status updates do not reset the clock; documented legal obligations or active disputes may require a restricted, time-limited hold; restricted encrypted backups expire on a rolling schedule and database deletion does not recall delivered email). Signed partnerships, contracts, sales and commissions follow separate contractual/accounting retention rules.
+- **Rights and supervisory authority:** Data subjects may exercise access, rectification, erasure, restriction, portability or objection via `alfinafashionkft@gmail.com` (one-month response window) and may lodge complaints with [NAIH](https://www.naih.hu/).
 
 ## English proposed notice
 
