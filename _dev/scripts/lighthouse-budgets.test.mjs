@@ -10,7 +10,7 @@ function result() {
 }
 test('existing category and timing budgets pass at their exact limits', () => {
   const checks = evaluateBudgets(result(), rules);
-  assert.equal(checks.length, 999);
+  assert.equal(checks.length, 8);
   assert.ok(checks.every(check => check.passed));
 });
 test('each category and timing regression is detected independently', () => {

@@ -19,4 +19,5 @@ Reference: [Supabase private downloads and signed URLs](https://supabase.com/doc
 - Pull requests are required before merging, with stale review dismissal, conversation resolution and up-to-date branch enforcement (`strict: true`).
 - Both `Site quality` check-run contexts from GitHub Actions (`app_id: 15368`) are mandatory before merging: `quality` and `intake-db`.
 - Decap CMS uses `publish_mode: editorial_workflow` (`public/admin/config.yml`), so editorial changes open pull requests and must pass the same required checks without a bypass.
+- Verified on 18 October 2026: direct push to `main` was rejected with `GH013: Repository rule violations found for refs/heads/main`, and test-failing commit `57c9cd5` on PR #74 ([run #39168176650](https://github.com/SamiGLab/kaftan-angelo/actions/runs/39168176650)) reported `mergeable_state=blocked` and was rejected with HTTP `405` on merge attempt.
 
