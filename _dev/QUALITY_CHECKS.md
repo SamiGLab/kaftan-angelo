@@ -10,3 +10,14 @@ For local secret scanning, install the official Gitleaks release and put it on P
 The current-source gate does not claim a clean Git history. History must be reviewed separately with `gitleaks git --redact=100`. An initial review of 161 commits found public publishable identifiers and one historical private Storage capability repeated across commits. Its target object no longer exists and is not assigned to a partner, but the old object path must not be reused while that capability can remain valid. Current development examples no longer embed it. Coordinate definitive signed-URL revocation with Supabase Support; Auth JWT signing-key rotation is not a substitute for Storage signed-URL revocation. Keep detailed incident records and token values private.
 
 Reference: [Supabase private downloads and signed URLs](https://supabase.com/docs/guides/storage/serving/downloads). The scanner gate is a preventive control, not proof that every possible credential pattern or historical exposure has been eliminated.
+
+## Branch protection and required checks (#44)
+
+`main` is protected by repository branch protection (`enforce_admins: true`) and active repository ruleset `25358817` (`Protect main branch`, zero bypass actors):
+
+- Direct pushes, force pushes and branch deletions on `main` are blocked for all actors, including repository administrators.
+- Pull requests are required before merging, with stale review dismissal, conversation resolution and up-to-date branch enforcement (`strict: true`).
+- Both `Site quality` check-run contexts from GitHub Actions (`app_id: 15368`) are mandatory before merging: `quality` and `intake-db`.
+- Decap CMS uses `publish_mode: editorial_workflow` (`public/admin/config.yml`), so editorial changes open pull requests and must pass the same required checks without a bypass.
+- Verified on 18 October 2026: direct push to `main` was rejected with `GH013: Repository rule violations found for refs/heads/main`, and test-failing commit `57c9cd5` on PR #74 ([run #39168176650](https://github.com/SamiGLab/kaftan-angelo/actions/runs/39168176650)) reported `mergeable_state=blocked` and was rejected with HTTP `405` on merge attempt.
+
