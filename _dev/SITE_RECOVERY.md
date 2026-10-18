@@ -17,7 +17,7 @@ New uploads explicitly include hidden files from the already-public built site, 
 
 Restoring Pages does not revert the Git branch. Follow up with a reviewed revert PR so the next main deployment does not reintroduce the problem. Keep the normal PR checks enabled. CMS uses `publish_mode: editorial_workflow`: editors save drafts on branches, then the PR must satisfy the same required checks. Do not grant CMS a bypass to publish unverified changes. Validate the actual editor/approval arrangement before enforcing an approval count that a solo maintainer cannot satisfy.
 
-`Site quality` rehearses archive creation/extraction from each newly built PR release, then verifies hashes and local links. Unit tests reject changed, missing, extra, incomplete and wrong-commit releases, malformed manifests and symbolic links. These checks are **not evidence of a successful GitHub artifact download or a production rollback**; retain a separate manual restore rehearsal run for that acceptance criterion.
+`Site quality` rehearses archive creation/extraction from each newly built PR release, then verifies hashes and local links. Unit tests reject changed, missing, extra, incomplete and wrong-commit releases, malformed manifests and symbolic links. On 18 October 2026, a separate manual `Restore tested site release` rehearsal ([run #39167730704](https://github.com/SamiGLab/kaftan-angelo/actions/runs/39167730704), `deploy=false`) verified artifact download, manifest SHA-256 verification and static audit against successful `Deploy GitHub Pages` [run #39058159203](https://github.com/SamiGLab/kaftan-angelo/actions/runs/39058159203) (`3b28eafada0459fd709f4a6372518aafc2c119ce`) with `main` branch protection active.
 
 ## Database and confidential documents remain separate
 
