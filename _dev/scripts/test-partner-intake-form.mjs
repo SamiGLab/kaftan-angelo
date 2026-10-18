@@ -13,8 +13,18 @@ try {
     const context=await browser.createBrowserContext();
     const page=await context.newPage();
     const route=lang==='hu'?'/partnerprogram/':'/en/partners/';
+    const privacyRoute=lang==='hu'?'/uzemelteto/':'/en/site-information/';
     await page.setViewport({width:390,height:844});
+    await page.goto(base+privacyRoute,{waitUntil:'networkidle2'});
+    assert.equal(await page.$eval('[data-partner-privacy-notice]',node=>node.dataset.partnerPrivacyNotice),'partner-enquiry-2026-10-19-v1');
+    assert.match(await page.$eval('[data-partner-privacy-notice]',node=>node.textContent),/Alfina Fashion Kft\./);
+    assert.match(await page.$eval('[data-partner-privacy-notice]',node=>node.textContent),/90/);
+    assert.match(await page.$eval('[data-partner-privacy-notice]',node=>node.textContent),/NAIH/);
     await page.goto(base+route,{waitUntil:'networkidle2'});
+    assert.equal(await page.$eval('[data-partner-program-terms]',node=>node.dataset.partnerProgramTerms),'verified');
+    assert.equal(await page.$$eval('[data-partner-program-terms] .card',nodes=>nodes.length),3);
+    assert.equal(await page.$$eval('.testimonial',nodes=>nodes.length),0);
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth),false);
     const text=await page.$eval('[data-partner-form] button[type="submit"]',node=>node.textContent);
     assert.match(text,lang==='hu'?/E-mail előkészítése/:/Prepare email/);
     assert.equal(await page.$('[data-partner-email-fallback]'),null,'Unconfigured browser form keeps the original mailto UX');

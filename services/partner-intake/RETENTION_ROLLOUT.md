@@ -32,7 +32,7 @@ Status on 17 October 2026: **automation OFF**. Owner confirmed there is no exist
 - [x] Owner policy: 90 days; exclude signed/financial records.
 - [x] Staging SQL and regression coverage in PR #67; live Pages identity verified.
 - [x] HU/EN review drafts and controlled backup/rollout plan prepared.
-- [ ] Final legal/controller notice and processor/transfer record.
+- [x] Final legal/controller notice (`partner-enquiry-2026-10-19-v1`) and processor/transfer record approved by owner and published on `/uzemelteto/` and `/en/site-information/` (19 October 2026).
 - [ ] Approved private destination/key custody and full database + Storage recovery test.
 - [ ] Authorized production migration, preview and signed-status reconciliation.
 - [ ] Supervised synthetic E2E, bounded job, alerts and OFF-switch verification.

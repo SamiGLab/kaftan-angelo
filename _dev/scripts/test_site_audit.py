@@ -20,7 +20,10 @@ class IndexingAuditTests(unittest.TestCase):
                 alternate = ''.join(f'<link rel="alternate" hreflang="{lang}" href="https://kaftanangelo.com{target}">' for lang,target in [('hu',hu),('en',en),('x-default',hu)])
                 evidence = ''
                 if route in ['/partnerprogram/','/en/partners/']:
-                    evidence = '<div class="testimonial"></div>' * 14 + 'partner-review-marquee 1973 Over 15 partners'
+                    if portal_noindex:
+                        evidence = '<section data-partner-program-terms></section> 1973 Over 15 partners'
+                    else:
+                        evidence = '<div class="testimonial"></div>' * 14 + 'partner-review-marquee 1973 Over 15 partners'
                 page = root / route.lstrip('/') / 'index.html'
                 page.parent.mkdir(parents=True, exist_ok=True)
                 page.write_text(f'<title>Fixture</title><meta name="robots" content="{robots}"><link rel="canonical" href="https://kaftanangelo.com{route}">{alternate}{social}<script type="application/ld+json">{{"@graph":[]}}</script><h1>Fixture</h1>{evidence}', encoding='utf-8')
@@ -102,6 +105,13 @@ class IndexingAuditTests(unittest.TestCase):
             # All clusters agree, but the partner pages never include themselves.
             page.write_text(html, encoding='utf-8')
         self.assertEqual(self.run_audit(root), 1)
+
+    def test_unverified_partner_quotes_or_day_discounts_fail(self):
+        for snippet in ['<figure class="testimonial"></figure>', 'special discounts on Thursdays and Fridays']:
+            root = self.fixture()
+            page = root/'en/partners/index.html'
+            page.write_text(page.read_text(encoding='utf-8') + snippet, encoding='utf-8')
+            self.assertEqual(self.run_audit(root), 1)
 
 
 if __name__ == '__main__': unittest.main()

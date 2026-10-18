@@ -116,12 +116,12 @@ secret are configured. Production login must be verified after those steps.
 - Google Search Console verification preserved
 - Google Tag Manager `GTM-5D5T9W6Q` preserved
 
-## Partner proof preserved
+## Partner program evidence (#65)
 
-The partner page retains:
-- `15+` partner proof
-- all seven existing verified partner testimonials
-- horizontal continuously scrolling review cards
+The HU/EN partner pages (`/partnerprogram/`, `/en/partners/`) retain:
+- `15+` partner network indicator and `1973` leathercraft heritage
+- factual, pre-agreed partnership terms (`data-partner-program-terms="verified"`) without unverified personal testimonial quotes or day-specific discount promises
+- links to the published HU/EN partner enquiry data processing notice (`partner-enquiry-2026-10-19-v1`) on `/uzemelteto/` and `/en/site-information/`
 
 ## Commands
 
