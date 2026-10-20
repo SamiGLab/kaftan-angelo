@@ -12,7 +12,7 @@
       "displayName": "Kaftan Angelo Leather & Fur Catalog",
       "type": "application/ai-catalog+json",
       "url": "https://kaftanangelo.com/llms.txt",
-      "description": "Artisan luxury boutique catalog in central Budapest (Kossuth Lajos u. 18) featuring genuine lambskin and cowhide leather jackets, warm shearling coats, fur garments, and bespoke tailoring.",
+      "description": "Premier luxury boutique catalog in central Budapest (Kossuth Lajos u. 18) featuring genuine lambskin and cowhide leather jackets, warm shearling coats, fur garments, and custom sizing.",
       "tags": ["leather-jackets", "shearling-coats", "fur-outerwear", "budapest-shopping", "made-to-measure"],
       "capabilities": ["ProductCatalog", "InStoreFitting", "CustomLeatherTailoring"],
       "representativeQueries": [
