@@ -114,7 +114,7 @@ function renderPicture(pictureHtml: string, eager = false) {
         <p>{model.intro[lang]}</p>
         <div class="actions">
           <a class="btn btn-primary" data-model-inquiry href={`https://wa.me/36203593216?text=${encodeURIComponent(message)}`}>
-            {hu ? 'Érdeklődés erről a termékről' : 'Ask about this product'}
+            <Icon name="message" />{hu ? 'Érdeklődés erről a termékről' : 'Ask about this product'}
           </a>
           <a class="btn btn-ghost" href={hu ? '/uzlet/' : '/en/visit/'}>
             <Icon name="location" />{hu ? (isWallet || isBelt ? 'Nézze meg üzletünkben' : 'Próbálja fel üzletünkben') : 'Visit our store'}
@@ -149,10 +149,15 @@ function renderPicture(pictureHtml: string, eager = false) {
         {related.length > 0 && (
           <div class="model-related">
             <h2>{hu ? 'Hasonlítsa össze más modellekkel' : 'Compare with other models'}</h2>
-            <ul>
+            <ul class="model-related-list">
               {related.map((other: any) => (
                 <li>
-                  <a href={`${hu ? '/modellek/' : '/en/models/'}${other.slug}/`}>{other.names[lang]}</a>
+                  <a class="model-related-card" href={`${hu ? '/modellek/' : '/en/models/'}${other.slug}/`}>
+                    <div class="model-related-photo">
+                      <Fragment set:html={renderPicture(other.pictures[lang])} />
+                    </div>
+                    <span class="model-related-name">{other.names[lang]}</span>
+                  </a>
                 </li>
               ))}
             </ul>

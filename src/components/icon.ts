@@ -11,7 +11,7 @@ export function withIcons(html: string) {
   return html.replace(/<a\b([^>]*)>([\s\S]*?)<\/a>/g, (whole, attributes, label) => {
     if (/<(?:svg|picture|img|h[1-6])\b/.test(label)) return whole;
     const href = attributes.match(/href="([^"]+)"/)?.[1] || '';
-    const name: IconName | undefined = href.startsWith('tel:') ? 'phone' : href.startsWith('mailto:') ? 'mail' : /maps\.app\.goo\.gl|google\.com\/maps/.test(href) ? 'route' : /^(\/uzlet\/|\/en\/visit\/)$/.test(href) ? 'location' : /^(\/egyedi-rendeles\/|\/en\/custom-orders\/)$/.test(href) ? 'scissors' : /^(\/utmutatok\/|\/en\/guides\/)$/.test(href) ? 'book' : /borkabat-meret-utmutato|leather-jacket-size-guide/.test(href) ? 'ruler' : undefined;
+    const name: IconName | undefined = href.startsWith('tel:') ? 'phone' : href.startsWith('mailto:') ? 'mail' : /wa\.me/.test(href) ? 'message' : /maps\.app\.goo\.gl|google\.com\/maps/.test(href) ? 'route' : /^(\/uzlet\/|\/en\/visit\/)$/.test(href) ? 'location' : /^(\/egyedi-rendeles\/|\/en\/custom-orders\/)$/.test(href) ? 'scissors' : /^(\/utmutatok\/|\/en\/guides\/)$/.test(href) ? 'book' : /borkabat-meret-utmutato|leather-jacket-size-guide/.test(href) ? 'ruler' : undefined;
     return name ? `<a${attributes}>${icon(name)}${label}</a>` : whole;
   }).replace(/(<button[^>]*data-filter="all"[^>]*>)/g, `$1${icon('filter')}`)
     .replace(/(<span class="image-hint">)([^<]*)/g, (_whole, start, label) => `${start}${icon('zoom')}${label.replace(/\s*↗$/, '')}`)
