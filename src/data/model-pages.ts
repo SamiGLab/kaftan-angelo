@@ -37,7 +37,7 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
       ? (hu ? 'A termékoldalt küldje el WhatsAppon a keresett övhosszal és szélességgel.' : 'Send this product page on WhatsApp with your required belt length and width.')
       : (hu ? 'A termékoldalt küldje el WhatsAppon a keresett mérettel és színnel.' : 'Send this product page on WhatsApp with your preferred size and colour.');
   const detailsHtml = checklist.length ? `<h2>${hu ? 'Hasznos kérdések a kiválasztott darabról' : 'Questions about the specific piece'}</h2><ul class="model-checklist">${checklist.map(text => `<li>${escape(text)}</li>`).join('')}</ul>` : '';
-  const relatedHtml = related.length ? `<div class="model-related"><h2>${hu ? 'Hasonlítsa össze más modellekkel' : 'Compare with other models'}</h2><ul>${related.map(other => `<li><a href="${hu ? '/modellek/' : '/en/models/'}${other.slug}/">${escape(other.names[lang])}</a></li>`).join('')}</ul></div>` : '';
+  const relatedHtml = related.length ? `<div class="model-related"><h2>${hu ? 'Hasonlítsa össze más modellekkel' : 'Compare with other models'}</h2><ul class="model-related-list">${related.map(other => `<li><a class="model-related-card" href="${hu ? '/modellek/' : '/en/models/'}${other.slug}/"><div class="model-related-photo">${other.pictures[lang]}</div><span class="model-related-name">${escape(other.names[lang])}</span></a></li>`).join('')}</ul></div>` : '';
 
   const geoTitle = `${name} | Budapest · Kaftan Angelo`;
   const brandTitle = `${name} | Kaftan Angelo`;
