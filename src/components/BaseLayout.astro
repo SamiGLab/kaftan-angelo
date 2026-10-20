@@ -11,7 +11,7 @@ import { BASE, businessSchema, websiteSchema } from '../data/site';
 const { page } = Astro.props;
 const lang = page.lang ?? 'hu';
 const isPartnerPortal = ['/partner-portal/', '/en/partner-portal/'].includes(new URL(page.canonical).pathname);
-const isModelPage = Boolean(page.mainHtml?.includes('class="model-detail"'));
+const isModelPage = Boolean(page.isModel || page.mainHtml?.includes('class="model-detail"'));
 const preloadHero = !isModelPage;
 const heroImage = page.mainHtml?.match(/--hero:\s*url\('([^']+)'\)/)?.[1] ?? new URL(page.ogImage).pathname;
 import { backgroundImage } from './responsive-images';

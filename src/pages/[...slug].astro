@@ -2,6 +2,7 @@
 import { withIcons } from '../components/icon';
 import { responsiveImages } from '../components/responsive-images';
 import BaseLayout from '../components/BaseLayout.astro';
+import ModelDetail from '../components/ModelDetail.astro';
 import pages from '../data/pages.json';
 import { modelPages } from '../data/model-pages';
 export function getStaticPaths() {
@@ -9,6 +10,12 @@ export function getStaticPaths() {
     .filter(([path]) => path !== '/' && !path.startsWith('/utmutatok/') && !path.startsWith('/en/guides/'))
     .map(([path, page]) => ({ params: { slug: path.replace(/^\//,'').replace(/\/$/,'') }, props: { page } }));
 }
-const { page } = Astro.props;
+const { page } = Astro.props as { page: any };
 ---
-<BaseLayout page={page}><Fragment set:html={withIcons(responsiveImages(page.mainHtml))} /></BaseLayout>
+<BaseLayout page={page}>
+  {page.isModel ? (
+    <ModelDetail page={page} />
+  ) : (
+    <Fragment set:html={withIcons(responsiveImages(page.mainHtml))} />
+  )}
+</BaseLayout>
