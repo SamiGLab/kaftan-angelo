@@ -47,6 +47,10 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
     path, lang, title, description,
     canonical: BASE + path, counterpart, ogImage: BASE + model.image,
     modifiedDate: '2026-10-14',
+    isModel: true,
+    model,
+    checklist,
+    related,
     pageSchema: {
       '@type': 'ItemPage',
       name,
