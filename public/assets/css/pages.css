@@ -1613,65 +1613,35 @@ button > .ui-icon:only-child { margin: 0; }
 }
 
 .product-card-body a[href*="wa.me"] {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 4;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  min-height: 36px;
-  padding: 0;
-  border-radius: 50%;
-  background: #25d366;
-  border: 1px solid #1fb757;
-  color: #ffffff;
-  font-size: 0;
+  gap: 5px;
+  color: var(--bright);
+  font-size: .78rem;
+  font-weight: 500;
+  margin-top: 6px;
   text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+@media (width <= 620px) {
+  .product-card-body a[href*="wa.me"] {
+    font-size: .72rem;
+    margin-top: 4px;
+  }
 }
 
 .product-card-body a[href*="wa.me"]:hover,
 .product-card-body a[href*="wa.me"]:focus-visible {
-  background: #22bf5b;
-  color: #ffffff;
-  transform: scale(1.1);
-  box-shadow: 0 6px 14px rgba(37, 211, 102, 0.45);
+  color: #25d366;
+  text-decoration: underline;
 }
 
 .product-card-body a[href*="wa.me"] .ui-icon {
-  width: 20px;
-  height: 20px;
-  stroke: #ffffff;
-}
-
-@media (min-width: 861px) {
-  .product-card-body a[href*="wa.me"]::after {
-    content: "WhatsApp";
-    position: absolute;
-    right: 44px;
-    top: 50%;
-    transform: translateY(-50%) scale(0.9);
-    background: rgba(20, 13, 9, 0.94);
-    color: #efe4d2;
-    padding: 4px 9px;
-    border-radius: 6px;
-    font-size: .72rem;
-    font-weight: 500;
-    letter-spacing: .03em;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    border: 1px solid rgba(220, 178, 124, 0.3);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
-  .product-card-body a[href*="wa.me"]:hover::after {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
-  }
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  flex-shrink: 0;
 }
 
 .product-dialog {
@@ -2774,4 +2744,53 @@ main .btn-ghost{border-color:#77502b88;}
 /* Preserve true monospace on explicit codes */
 code, pre, #partner-display-code, .portal-code {
   font-family: ui-monospace, SFMono-Regular, Consolas, monospace !important;
+}
+
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.collection-hero {
+  padding: 36px 0 24px;
+}
+
+.collection-hero h1 {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  margin: 8px 0 10px;
+  max-width: 24ch;
+}
+
+.collection-hero p {
+  font-size: .95rem;
+  max-width: 58ch;
+  margin-bottom: 0;
+}
+
+.collection-models-section {
+  padding-top: 20px;
+}
+
+@media (max-width: 620px) {
+  .collection-hero {
+    padding: 24px 0 16px;
+  }
+  .collection-hero h1 {
+    font-size: 1.6rem;
+    margin: 6px 0 8px;
+  }
+  .collection-hero p {
+    font-size: .86rem;
+  }
+  .collection-models-section {
+    padding-top: 12px;
+  }
 }
