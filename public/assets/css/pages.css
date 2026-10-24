@@ -1102,7 +1102,7 @@ picture {
 
 .product-card {
   content-visibility: auto;
-  contain-intrinsic-size: auto 550px;
+  contain-intrinsic-size: auto 380px;
   background: var(--bg2);
   border: 1px solid var(--line);
   border-radius: 12px;
