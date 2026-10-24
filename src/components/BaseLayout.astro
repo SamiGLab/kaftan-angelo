@@ -14,11 +14,11 @@ const isPartnerPortal = ['/partner-portal/', '/en/partner-portal/'].includes(new
 const isModelPage = Boolean(page.isModel || page.mainHtml?.includes('class="model-detail"'));
 const preloadHero = !isModelPage;
 const heroImage = page.mainHtml?.match(/--hero:\s*url\('([^']+)'\)/)?.[1] ?? new URL(page.ogImage).pathname;
-const heroMobileImage = page.mainHtml?.match(/--hero-mobile:\s*url\('([^']+)'\)/)?.[1];
 import { backgroundImage } from './responsive-images';
 const sharpHero = backgroundImage(heroImage, page.mainHtml?.includes('class="home-hero"') ? 1600 : 1200);
-const heroCandidates = [...sharpHero.matchAll(/url\('([^']+)'\) (\d)x/g)];
-const mobileHeroSrcset = heroCandidates.map(match => `${match[1]} ${match[2]}x`).join(', ');
+const mobileSharpHero = backgroundImage(heroImage, 800);
+const mobileHeroCandidates = [...mobileSharpHero.matchAll(/url\('([^']+)'\) (\d)x/g)];
+const mobileHeroSrcset = mobileHeroCandidates.map(match => `${match[1]} ${match[2]}x`).join(', ');
 const modelAvifSource = isModelPage ? (page.mainHtml?.match(/<source\s+[^>]*type="image\/avif"[^>]*>/i) || page.mainHtml?.match(/<source\s+[^>]*srcset="[^"]+\.avif[^"]*"[^>]*>/i))?.[0] : null;
 const modelAvifSrcset = modelAvifSource ? modelAvifSource.match(/srcset="([^"]+)"/)?.[1] : null;
 const modelAvifSizes = modelAvifSource ? modelAvifSource.match(/sizes="([^"]+)"/)?.[1] : null;
@@ -80,7 +80,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <link rel="preconnect" href="https://wa.me" crossorigin />
   <link rel="preload" as="font" type="font/woff2" href={headingFont} crossorigin="anonymous" />
   {lang === 'hu' && <link rel="preload" as="font" type="font/woff2" href={headingExtendedFont} crossorigin="anonymous" />}
-  {preloadHero && <link rel="preload" as="image" href={heroMobileImage ?? heroCandidates[0]?.[1] ?? heroImage} imagesrcset={heroMobileImage ? undefined : (mobileHeroSrcset || undefined)} media="(max-width: 620px)" fetchpriority="high" />}
+  {preloadHero && <link rel="preload" as="image" href={mobileHeroCandidates[0]?.[1] ?? heroImage} imagesrcset={mobileHeroSrcset || undefined} media="(max-width: 620px)" fetchpriority="high" />}
   {preloadHero && <link rel="preload" as="image" href={heroImage} media="(min-width: 621px)" fetchpriority="high" />}
   {isModelPage && modelAvifSrcset && <link rel="preload" as="image" type="image/avif" imagesrcset={modelAvifSrcset} imagesizes={modelAvifSizes || '(max-width: 760px) 92vw, 600px'} fetchpriority="high" />}
   <link rel="preload" as="style" href="/assets/css/pages.css" />
@@ -91,7 +91,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
 <body>
   <a class="skip-link" href="#main-content">{lang === "hu" ? "Ugrás a tartalomhoz" : "Skip to content"}</a>
   <Header lang={lang} counterpart={page.counterpart} />
-  <main id="main-content" tabindex="-1" data-pagefind-body style={`--hero-sharp:${sharpHero}`}><slot /></main>
+  <main id="main-content" tabindex="-1" data-pagefind-body style={`--hero-sharp:${sharpHero};--hero-mobile-sharp:${mobileSharpHero}`}><slot /></main>
   <Footer lang={lang} trackingAllowed={!page.canonical.includes('/partner-portal/')} />
   {!page.canonical.includes('/partner-portal/') && <AnalyticsConsent lang={lang} />}
   {page.mainHtml?.includes('data-map-panel') && <script is:inline defer src="/assets/js/privacy-settings.js"></script>}
