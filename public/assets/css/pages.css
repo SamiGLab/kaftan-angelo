@@ -1208,7 +1208,7 @@ picture {
 
 @media (width <= 620px) {
   .page-hero, .home-hero {
-    --hero-active: var(--hero-mobile-sharp, var(--hero-sharp, var(--hero-mobile, var(--hero))));
+    --hero-active: var(--hero-mobile, var(--hero-sharp, var(--hero)));
   }
 }
 
