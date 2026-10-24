@@ -46,11 +46,36 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
   return [path, {
     path, lang, title, description,
     canonical: BASE + path, counterpart, ogImage: BASE + model.image,
-    modifiedDate: '2026-10-14',
+    modifiedDate: '2026-10-24',
     isModel: true,
     model,
     checklist,
     related,
+    productSchema: {
+      '@type': 'Product',
+      '@id': `${BASE}${path}#product`,
+      name,
+      description,
+      image: model.gallery.length ? model.gallery.map(photo => BASE + photo.image) : [BASE + model.image],
+      brand: {
+        '@type': 'Brand',
+        name: 'Kaftan Angelo',
+      },
+      category: collectionLabel,
+      material,
+      offers: {
+        '@type': 'Offer',
+        availability: 'https://schema.org/InStoreOnly',
+        itemCondition: 'https://schema.org/NewCondition',
+        priceCurrency: 'HUF',
+        url: BASE + path,
+        seller: {
+          '@type': 'ClothingStore',
+          name: 'Kaftan Angelo Budapest',
+          url: BASE + (hu ? '/' : '/en/'),
+        },
+      },
+    },
     pageSchema: {
       '@type': 'ItemPage',
       name,

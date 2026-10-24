@@ -1,29 +1,160 @@
 ---
 import type { GuideModule } from '../../data/guide-types';
 import BaseLayout from '../../components/BaseLayout.astro';
-const modules = import.meta.glob<GuideModule>('../../content/guides/hu/*.md', { eager:true });
-const guides = Object.entries(modules).map(([path, mod])=>({slug:path.split('/').pop()!.replace('.md',''),...mod.frontmatter})).sort((a,b)=>b.publishDate.localeCompare(a.publishDate));
-const mainEntity = { '@type': 'ItemList', itemListElement: guides.map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.title, url: `https://kaftanangelo.com/utmutatok/${g.slug}/` })) };
-const page={lang:'hu',title:'Bőr, irha és szőrme útmutatók | Kaftan Angelo Budapest',description:'Bőr, irha és szőrme ápolása, méretválasztás, anyagok és budapesti vásárlás: gyakorlati útmutatók.',canonical:'https://kaftanangelo.com/utmutatok/',counterpart:'/en/guides/',ogImage:'https://kaftanangelo.com/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif',breadcrumbs:[{name:'Főoldal',url:'/'},{name:'Útmutatók',url:'/utmutatok/'}],pageSchema:{'@type':'CollectionPage',name:'Bőr, irha és szőrme útmutatók',mainEntity}};
+const modules = import.meta.glob<GuideModule>('../../content/guides/hu/*.md', { eager: true });
+const guides = Object.entries(modules).map(([path, mod]) => ({
+  slug: path.split('/').pop()!.replace('.md', ''),
+  ...mod.frontmatter
+})).sort((a, b) => b.publishDate.localeCompare(a.publishDate));
+
+const mainEntity = {
+  '@type': 'ItemList',
+  numberOfItems: guides.length,
+  itemListElement: guides.map((g, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: g.title,
+    url: `https://kaftanangelo.com/utmutatok/${g.slug}/`
+  }))
+};
+
+const page = {
+  lang: 'hu',
+  title: 'Bőr, irha és szőrme útmutatók | Kaftan Angelo Budapest',
+  description: 'Szakértői útmutatók valódi bőr, irha és szőrme kabátok választásához, méretpróbához, budapesti vásárláshoz és otthoni ápoláshoz.',
+  canonical: 'https://kaftanangelo.com/utmutatok/',
+  counterpart: '/en/guides/',
+  ogImage: 'https://kaftanangelo.com/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif',
+  breadcrumbs: [{ name: 'Főoldal', url: '/' }, { name: 'Útmutatók', url: '/utmutatok/' }],
+  pageSchema: {
+    '@type': 'CollectionPage',
+    '@id': 'https://kaftanangelo.com/utmutatok/#collection',
+    name: 'Bőr, irha és szőrme útmutatók | Kaftan Angelo',
+    description: 'Átfogó szakmai tudástár bőr, irha és szőrme vásárlásához, próbájához és ápolásához Budapesten.',
+    mainEntity
+  }
+};
 ---
 <BaseLayout page={page}>
-<section class="page-hero" style="--hero:url('/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-leather-jackets-budapest-480.avif')"><div class="wrap"><div class="breadcrumbs"><a href="/">Főoldal</a> / Útmutatók</div><span class="tag mono">Tudástár</span><h1>Bőr, irha és szőrme útmutatók</h1><p>Bőr, irha és szőrme választása, próbája és ápolása. Egyértelmű válaszok, gyakorlati listák és segítség a budapesti látogatáshoz.</p></div></section>
-<section><div class="wrap"><div class="section-head"><div><h2>Kabátot keres? Kezdje itt.</h2></div><p>Válasszon anyagot és fazont, nézze meg a kollekciót, majd érdeklődjön az elérhetőségről személyes próba előtt.</p></div><div class="guide-list"><article class="guide-card"><h3><a href="/utmutatok/bor-irha-szorme-osszehasonlitas/">Anyagok összehasonlítása</a></h3><p>Bőr, irha vagy szőrme?</p></article><article class="guide-card"><h3><a href="/utmutatok/borkabat-meret-utmutato/">Méretválasztás</a></h3><p>Ellenőrizze az illeszkedést.</p></article><article class="guide-card"><h3><a href="/utmutatok/budapesti-kabatvasarlas/">Budapesti próba</a></h3><p>Készüljön a látogatásra.</p></article><article class="guide-card"><h3><a href="/utmutatok/egyedi-borkabat-rendeles/">Egyedi rendelés</a></h3><p>Készítse elő az elképzelését.</p></article></div><div class="actions"><a class="btn btn-primary" href="/kollekciok/">Kollekciók megtekintése</a><a class="btn btn-ghost" href="/uzlet/">Útvonal és nyitvatartás</a></div></div></section>
-<section class="guide-search-section"><div class="wrap"><div id="guide-search"></div></div></section>
-<section><div class="wrap"><div class="guide-list">{guides.map(g=><article class="guide-card"><span class="tag mono">{g.topic}</span><h2><a href={`/utmutatok/${g.slug}/`}>{g.title}</a></h2><p>{g.description}</p><p class="guide-meta">{g.readingMinutes} perc olvasás</p><a href={`/utmutatok/${g.slug}/`}>Olvasás →</a></article>)}</div></div></section>
-<Fragment slot="scripts"><script is:inline>
-window.addEventListener('load', () => {
-  const startSearch = () => {
-    const style = document.createElement('link');
-    style.rel = 'stylesheet'; style.href = '/pagefind/pagefind-ui.css';
-    document.head.append(style);
-    const script = document.createElement('script');
-    script.src = '/pagefind/pagefind-ui.js';
-    script.onload = () => new PagefindUI({element:'#guide-search',showSubResults:true,showImages:false});
-    document.body.append(script);
-  };
-  if ('requestIdleCallback' in window) requestIdleCallback(startSearch);
-  else setTimeout(startSearch, 0);
-});
-</script></Fragment>
+  <section class="page-hero" style="--hero:url('/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif');--hero-mobile:url('/assets/images/kaftan-angelo-leather-jackets-budapest-480.avif')">
+    <div class="wrap">
+      <div class="breadcrumbs"><a href="/">Főoldal</a> / Útmutatók</div>
+      <span class="tag mono">Tudástár &amp; Vásárlási Tanácsadás</span>
+      <h1>Bőr, irha és szőrme útmutatók</h1>
+      <p>A Kaftan Angelo több mint 50 éves bőrgyártási és kereskedelmi tapasztalatával (1973-as családi alapítás, 2004 óta Budapesten a Kossuth Lajos u. 18. alatt) készítette el ezt a részletes szakmai tudástárat. Célunk, hogy független, gyakorlati segítséget nyújtsunk az anyagok megismeréséhez, a méretválasztáshoz és a hosszú távú ápoláshoz.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Kiemelt témakörök</h2>
+        </div>
+        <p>Válasszon az alábbi témák közül, vagy böngésszen az összes útmutató között.</p>
+      </div>
+      <div class="guide-list">
+        <article class="guide-card">
+          <span class="tag mono">Anyagismeret</span>
+          <h3><a href="/utmutatok/bor-irha-szorme-osszehasonlitas/">Bőr, irha vagy szőrme?</a></h3>
+          <p>Melyik anyag milyen hőmérsékleten ideális? Részletes összehasonlító táblázat hőtartásról, súlyról és időjárás-állóságról.</p>
+          <a href="/utmutatok/bor-irha-szorme-osszehasonlitas/">Összehasonlítás olvasása →</a>
+        </article>
+        <article class="guide-card">
+          <span class="tag mono">Budapesti vásárlás</span>
+          <h3><a href="/utmutatok/budapesti-borkabat-vasarlasi-kalauz/">Budapesti vásárlási kalauz</a></h3>
+          <p>Lépésről lépésre a modellválasztástól a belvárosi személyes próbáig a Kossuth Lajos u. 18. alatti butikunkban.</p>
+          <a href="/utmutatok/budapesti-borkabat-vasarlasi-kalauz/">Kalauz megnyitása →</a>
+        </article>
+        <article class="guide-card">
+          <span class="tag mono">Minőségellenőrzés</span>
+          <h3><a href="/utmutatok/hasznalt-borkabat-ellenorzes/">Használt bőrkabát ellenőrzőlista</a></h3>
+          <p>Mire figyeljen vásárlás előtt? Anyag, bélés, cipzárak, rejtett javítási költségek és roncsolásmentes minőségtesztek.</p>
+          <a href="/utmutatok/hasznalt-borkabat-ellenorzes/">Ellenőrzőlista megtekintése →</a>
+        </article>
+        <article class="guide-card">
+          <span class="tag mono">Méret és próba</span>
+          <h3><a href="/utmutatok/borkabat-meret-utmutato/">Bőrkabát méret útmutató</a></h3>
+          <p>Hogyan ellenőrizze a vállszélességet, ujjhosszt és a rétegezést a tökéletes kényelemért.</p>
+          <a href="/utmutatok/borkabat-meret-utmutato/">Méretválasztási tippek →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Kiemelt modellajánló</h2>
+        </div>
+        <p>Gyakorlati példa a modern szabás és a minőségi bőr találkozására.</p>
+      </div>
+      <div class="callout">
+        <h3><a href="/modellek/siyah-kapitone-budapest/">Fekete steppelt férfi bőrdzseki</a></h3>
+        <p>Válogatott nappa báránybőrből készült, elegáns rombusz steppelésű, álló galléros modell robusztus fém cipzárral és légáteresztő béléssel. Ideális választás a budapesti átmeneti őszi és tavaszi időjáráshoz. Próbálja fel személyesen üzletünkben!</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/modellek/siyah-kapitone-budapest/">Modell részletei és fotók</a>
+          <a class="btn btn-ghost" href="/ferfi-borkabatok/">Összes férfi bőrkabát</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide-search-section">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Keresés a tudástárban</h2>
+        </div>
+        <p>Keressen kulcsszavakra, anyagokra vagy tanácsokra útmutatóinkban.</p>
+      </div>
+      <div id="guide-search"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Minden útmutató</h2>
+        </div>
+        <p>Böngésszen teljes cikktárunkban téma és olvasási idő szerint.</p>
+      </div>
+      <div class="guide-list">
+        {guides.map(g => (
+          <article class="guide-card">
+            <span class="tag mono">{g.topic}</span>
+            <h2><a href={`/utmutatok/${g.slug}/`}>{g.title}</a></h2>
+            <p>{g.description}</p>
+            <p class="guide-meta">{g.readingMinutes} perc olvasás</p>
+            <a href={`/utmutatok/${g.slug}/`}>Olvasás →</a>
+          </article>
+        ))}
+      </div>
+      <div class="actions" style="margin-top: 2rem;">
+        <a class="btn btn-primary" href="/kollekciok/">Kollekciók megtekintése</a>
+        <a class="btn btn-ghost" href="/uzlet/">Útvonal és nyitvatartás</a>
+      </div>
+    </div>
+  </section>
+
+  <Fragment slot="scripts">
+    <script is:inline>
+      window.addEventListener('load', () => {
+        const startSearch = () => {
+          const style = document.createElement('link');
+          style.rel = 'stylesheet';
+          style.href = '/pagefind/pagefind-ui.css';
+          document.head.append(style);
+          const script = document.createElement('script');
+          script.src = '/pagefind/pagefind-ui.js';
+          script.onload = () => new PagefindUI({ element: '#guide-search', showSubResults: true, showImages: false });
+          document.body.append(script);
+        };
+        if ('requestIdleCallback' in window) requestIdleCallback(startSearch);
+        else setTimeout(startSearch, 0);
+      });
+    </script>
+  </Fragment>
 </BaseLayout>
