@@ -29,7 +29,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: breadcrumbs.map((item:any, i:number) => ({ '@type':'ListItem', position:i+1, name:item.name, item: BASE + item.url })),
 };
-const extraSchemas = page.productSchema ? [page.productSchema] : [];
+const extraSchemas = [page.productSchema, page.faqSchema].filter(Boolean);
 const pageSchema = { ...page.pageSchema, url: page.canonical, isPartOf: { '@id': `${BASE}/#website` }, about: { '@id': `${BASE}/#store` } };
 const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websiteSchema, pageSchema, breadcrumbSchema, ...extraSchemas] };
 ---
