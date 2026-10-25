@@ -155,6 +155,8 @@ jobs:
         run: node _dev/scripts/test-store-visit-ctas.mjs
       - name: Check HU/EN landmark walking routes and FAQ consistency
         run: node _dev/scripts/test-landmark-routes.mjs
+      - name: Check responsive catalogue images and guide preloads
+        run: node _dev/scripts/test-responsive-images.mjs
       - name: Check disabled-by-default HU/EN partner intake preview
         run: node _dev/scripts/test-partner-intake-form.mjs
       - name: Check partner sessions and material isolation
