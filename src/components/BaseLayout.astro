@@ -14,7 +14,12 @@ const isPartnerPortal = ['/partner-portal/', '/en/partner-portal/'].includes(new
 const isModelPage = Boolean(page.isModel || page.mainHtml?.includes('class="model-detail"'));
 const preloadHero = !isModelPage;
 const heroImage = page.mainHtml?.match(/--hero:\s*url\('([^']+)'\)/)?.[1] ?? new URL(page.ogImage).pathname;
-const heroMobileImage = page.mainHtml?.match(/--hero-mobile:\s*url\('([^']+)'\)/)?.[1];
+const heroMobileImage = page.mainHtml?.match(/--hero-mobile:\s*url\('([^']+)'\)/)?.[1]
+  // Guides render their hero outside page.mainHtml. Match the mobile asset used
+  // by the hero CSS rather than preloading the desktop-sized 800px version.
+  ?? (!isModelPage && page.ogImage?.endsWith('-800.avif')
+    ? new URL(page.ogImage.replace(/-800\.avif$/, '-480.avif')).pathname
+    : undefined);
 import { backgroundImage } from './responsive-images';
 const sharpHero = backgroundImage(heroImage, page.mainHtml?.includes('class="home-hero"') ? 1600 : 1200);
 const heroCandidates = [...sharpHero.matchAll(/url\('([^']+)'\) (\d)x/g)];
