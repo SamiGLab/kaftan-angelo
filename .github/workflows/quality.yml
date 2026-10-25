@@ -151,6 +151,8 @@ jobs:
         run: node _dev/scripts/test-contact-flows.mjs
       - name: Check HU/EN store-visit conversion CTAs on mobile
         run: node _dev/scripts/test-store-visit-ctas.mjs
+      - name: Check HU/EN landmark walking routes and FAQ consistency
+        run: node _dev/scripts/test-landmark-routes.mjs
       - name: Check disabled-by-default HU/EN partner intake preview
         run: node _dev/scripts/test-partner-intake-form.mjs
       - name: Check partner sessions and material isolation

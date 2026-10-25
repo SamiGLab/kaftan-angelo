@@ -3,6 +3,8 @@ import { withIcons } from '../components/icon';
 import { responsiveImages } from '../components/responsive-images';
 import BaseLayout from '../components/BaseLayout.astro';
 import ModelDetail from '../components/ModelDetail.astro';
+import LandmarksGrid from '../components/LandmarksGrid.astro';
+import { landmarkPages, landmarkMarker, locationFaq, type LandmarkLanguage } from '../data/landmarks';
 import pages from '../data/pages.json';
 import { modelPages } from '../data/model-pages';
 export function getStaticPaths() {
@@ -10,11 +12,31 @@ export function getStaticPaths() {
     .filter(([path]) => path !== '/' && !path.startsWith('/utmutatok/') && !path.startsWith('/en/guides/'))
     .map(([path, page]) => ({ params: { slug: path.replace(/^\//,'').replace(/\/$/,'') }, props: { page } }));
 }
-const { page } = Astro.props as { page: any };
+const { page: sourcePage } = Astro.props as { page: any };
+const hasLandmarks = landmarkPages.includes(sourcePage.path);
+const fullLandmarks = ['/en/visit/', '/uzlet/'].includes(sourcePage.path);
+const lang = sourcePage.lang as LandmarkLanguage;
+const faq = locationFaq(lang);
+const page = hasLandmarks && !fullLandmarks ? {
+  ...sourcePage,
+  faqSchema: {
+    '@type': 'FAQPage',
+    mainEntity: [...(sourcePage.faqSchema?.mainEntity ?? []), {
+      '@type': 'Question', name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    }],
+  },
+} : sourcePage;
+const sections = hasLandmarks ? page.mainHtml.split(landmarkMarker) : [];
+if (hasLandmarks && sections.length !== 2) throw new Error(`Expected one landmark placement marker: ${page.path}`);
 ---
 <BaseLayout page={page}>
   {page.isModel ? (
     <ModelDetail page={page} />
+  ) : hasLandmarks ? (
+    <Fragment set:html={withIcons(responsiveImages(sections[0]))} />
+    <LandmarksGrid lang={lang} full={fullLandmarks} />
+    <Fragment set:html={withIcons(responsiveImages(sections[1]))} />
   ) : (
     <Fragment set:html={withIcons(responsiveImages(page.mainHtml))} />
   )}

@@ -1,0 +1,44 @@
+---
+import { landmarks, walkingRoute, locationFaq, type LandmarkLanguage } from '../data/landmarks';
+const { lang, full = false } = Astro.props as { lang: LandmarkLanguage; full?: boolean };
+const en = lang === 'en';
+const items = full ? landmarks : landmarks.slice(0, 6);
+const faq = locationFaq(lang);
+---
+<section class="store-landmarks" aria-labelledby="landmarks-heading">
+  <div class="wrap">
+    <span class="tag mono">Budapest · {en ? 'District V' : 'V. kerület'} · Belváros</span>
+    <h2 id="landmarks-heading">{en ? 'Walk to us from Budapest landmarks' : 'Séta az üzlethez Budapest belvárosából'}</h2>
+    <p>{en ? 'Find our showroom at Kossuth Lajos u. 18, between Astoria and Ferenciek tere. Choose your starting point to see walking directions, distance and estimated time in Google Maps.' : 'Üzletünk a Kossuth Lajos u. 18. alatt, az Astoria és a Ferenciek tere között található. Válassza ki az indulási helyet: a Google Térkép mutatja a gyalogos útvonalat, a távolságot és a becsült menetidőt.'}</p>
+    <ul class="landmarks-grid">
+      {items.map(item => <li class="landmark-card">
+        <h3>{item.name[lang]}</h3>
+        <p>{item.description[lang]}</p>
+        <a class="text-link" href={walkingRoute(item.origin)}>{en ? `Walking route from ${item.name.en}` : `Gyalogos útvonal: ${item.name.hu}`}</a>
+      </li>)}
+    </ul>
+    <p>{en ? 'Walking times depend on your starting point, crossings and pace.' : 'A séta ideje az indulási ponttól, az átkelőktől és a haladási tempótól függ.'}</p>
+    {full ? <div class="content landmark-arrival">
+      <h3>{en ? 'Choose your approach' : 'Megközelítési lehetőségek'}</h3>
+      <ol>
+        <li>{en ? 'From Váci utca: start at its junction with Kossuth Lajos utca and follow Kossuth Lajos utca towards Astoria to number 18.' : 'A Váci utcától: a Kossuth Lajos utcai kereszteződéstől haladjon a Kossuth Lajos utcán az Astoria felé, a 18. számig.'}</li>
+        <li>{en ? 'From Deák Ferenc tér: select the walking route above from your metro exit, then follow the route to Kossuth Lajos u. 18.' : 'A Deák Ferenc térről: a fenti gyalogos útvonalat a választott metrókijárattól tervezze meg a Kossuth Lajos u. 18-hoz.'}</li>
+        <li>{en ? 'From Astoria: take the exit towards Kossuth Lajos utca and follow the street towards Ferenciek tere to number 18. Use pedestrian crossings along the route.' : 'Az Astoriától: válassza a Kossuth Lajos utca felé vezető kijáratot, majd haladjon a Ferenciek tere felé a 18. számig. Használja a gyalogos-átkelőhelyeket.'}</li>
+      </ol>
+    </div> : <>
+      <p><a class="text-link" href={en ? '/en/visit/' : '/uzlet/'}>{en ? 'Plan your visit: directions and opening hours' : 'Látogatás tervezése: megközelítés és nyitvatartás'}</a></p>
+      <div class="faq-list"><details class="faq-item"><summary>{faq.question}</summary><div><p>{faq.answer}</p></div></details></div>
+    </>}
+  </div>
+</section>
+<style>
+  .landmarks-grid { list-style: none; padding: 0; margin: 2rem 0 1rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .landmark-card { border: 1px solid var(--line, #d8c9b5); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; min-width: 0; }
+  .landmark-card h3 { margin: 0 0 .5rem; }
+  .landmark-card p { margin: 0 0 1rem; }
+  .landmark-card a { margin-top: auto; display: flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+  .landmark-card a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+  .landmark-arrival { margin-top: 2rem; }
+  @media (max-width: 980px) { .landmarks-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 620px) { .landmarks-grid { grid-template-columns: 1fr; } }
+</style>
