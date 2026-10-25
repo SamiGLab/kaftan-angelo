@@ -32,6 +32,12 @@ try{
    const after=await page.evaluate(a=>window.dataLayer.filter(entry=>entry.event==='kaftan_interest'&&entry.interest_action===a).length,action);
    assert.equal(after,before+1,path+' '+action+' emits exactly once');
   }
+  const walkingLink = '.landmark-card a[href^="https://www.google.com/maps/dir/"]';
+  assert.ok(await page.$(walkingLink),path+' landmark walking link exists');
+  await page.$eval(walkingLink,el=>el.addEventListener('click',event=>event.preventDefault()));
+  const walkingBefore=await page.evaluate(()=>window.dataLayer.filter(entry=>entry.event==='kaftan_interest'&&entry.interest_action==='directions_click').length);
+  await page.click(walkingLink);
+  assert.equal(await page.evaluate(()=>window.dataLayer.filter(entry=>entry.event==='kaftan_interest'&&entry.interest_action==='directions_click').length),walkingBefore+1,path+' landmark route emits one directions intent');
   const interestEvents=await page.evaluate(()=>window.dataLayer.filter(e=>e.event==='kaftan_interest'));
   assert.deepEqual(
    [...new Set(interestEvents.map(e=>e.interest_action))].sort(),

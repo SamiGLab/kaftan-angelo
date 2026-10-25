@@ -15,3 +15,8 @@
    - Goal: Drive store visits to Kossuth Lajos u. 18, Budapest and direct WhatsApp consultations.
    - No cart/checkout: Jackets and coats are high-ticket pieces that customers try on in store.
    - Zero modifications to Supabase database schema, RPC functions, or partner intake boundary without explicit authorization.
+
+4. **No published product prices:**
+   - Do not publish numeric product prices, starting prices or product price ranges in pages or structured data.
+   - Customers may ask the store privately about current prices through WhatsApp or an in-store visit.
+   - Keep factual Product/ItemPage information without Offer markup. Never invent prices, stock status or product ratings for search enhancements.

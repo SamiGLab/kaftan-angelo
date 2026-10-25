@@ -1,87 +1,55 @@
 ---
 title: "Budapesti bőrkabát vásárlási kalauz"
-description: "Útmutató a budapesti bőr-, irha- és szőrmevásárláshoz: kategóriák, minőségi szempontok, belvárosi próba a Kossuth Lajos utcában és készletegyeztetés."
+description: "Tervezze meg a budapesti kabátpróbát: fazonok, méret- és készletegyeztetés, valamint a Kaftan Angelo megközelítése a Kossuth Lajos utcában."
 publishDate: "2026-10-07"
-modifiedDate: "2026-10-24"
+modifiedDate: "2026-10-25"
 counterpart: "/en/guides/budapest-leather-shopping-guide/"
 topic: "Budapest"
-readingMinutes: 6
+readingMinutes: 3
 heroImage: "/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif"
 ---
-> **Rövid válasz:** Budapesti kabátvásárláskor először válasszon alapanyagot (nappa báránybőr, masszív marhabőr, meleg irha vagy szőrme), egyeztesse a kiszemelt darab méretét és készletét WhatsAppon, majd látogasson el személyes próbára a Belvárosba. A Kaftan Angelo kollekciói a Kossuth Lajos u. 18, Budapest 1053 címen próbálhatók fel.
 
-Budapest történelmi belvárosa (az V. kerület, a Kossuth Lajos utca, az Astoria és a Ferenciek tere környéke) évtizedek óta a minőségi divat és a bőr felsőruházat egyik legkedveltebb célpontja. Akár a magyar fővárosban él, akár külföldi utazóként keres időtálló emléket, a valódi bőrkabát vásárlásánál a személyes próba és a szakértő tanácsadás jelenti a legnagyobb biztonságot.
+> **Látogatás előtt:** Válasszon modellt, küldje el a termékoldalt és a keresett méretet az üzletnek, majd érdeklődjön az elérhetőségről. A Kaftan Angelo címe: Kossuth Lajos u. 18., 1053 Budapest; az anyagokat és a fazonokat személyesen hasonlíthatja össze.
 
-A bőr egy élő, természetes anyag: súlyát, tapintását, esését és vállilleszkedését képernyőn keresztül nem lehet tökéletesen megítélni. Ez a vásárlási kalauz végigvezeti Önt a legfontosabb lépéseken a modell kiválasztásától a belvárosi próbáig.
+A fénykép segít a választásban. A próbán ellenőrizheti a kabát súlyát, vállilleszkedését és mozgásszabadságát a tervezett ruharétegekkel.
 
----
+## Melyik kollekcióval kezdjen?
 
-## 1. Melyik kollekcióval és anyaggal érdemes kezdeni?
+- [Női bőrkabátok](/noi-borkabatok/): színek, rövidebb és hosszabb fazonok, kétoldalas modellek. A [női választási útmutató](/utmutatok/noi-borkabat-valasztas/) segít a próbán.
+- [Férfi bőrkabátok](/ferfi-borkabatok/): galléros, steppelt és motoros stílusú dzsekik. A motoros fazon önmagában nem jelent tanúsított védőruházatot.
+- [Irhakabátok](/irhakabatok/): a konkrét darab belső felületét, hosszát és a téli rétegekhez szükséges helyet is ellenőrizze.
+- [Szőrmekabátok és mellények](/szormekabatok/): a kabátokat, rövid dzsekiket és mellényeket külön hasonlítsa össze. Az adott darab anyagáról és ápolásáról az üzletben érdeklődjön.
 
-A megfelelő kabát kiválasztása a tervezett használattól és a szezonális igényektől függ:
+További szempontok a [bőr, irha vagy szőrme összehasonlításában](/utmutatok/bor-irha-szorme-osszehasonlitas/). Az anyag neve önmagában nem garantál hőérzetet, súlyt vagy időjárás-állóságot.
 
-- **[Női bőrkabátok](/noi-borkabatok/):** A lágy esésű nappa báránybőrből készült blézerfazonok, öves kabátok és karcsúsított dzsekik tökéletesek a budapesti tavaszi és őszi időjáráshoz. Olvassa el a [női választási útmutatót](/utmutatok/noi-borkabat-valasztas/).
-- **[Férfi bőrkabátok](/ferfi-borkabatok/):** Klasszikus inggalléros fazonok, sportos bomber dzsekik és steppelt városi modellek (mint a népszerű [fekete steppelt férfi bőrdzseki](/modellek/siyah-kapitone-budapest/)).
-- **[Irhakabátok](/irhakabatok/):** A Duna menti fagyos, szeles téli napokon a valódi báránybőrből és merinó irhából készült darabok nyújtják a legmagasabb szintű természetes hőszigetelést. Részletek az [irhakabát-választási útmutatóban](/utmutatok/irhakabat-valasztas/).
-- **[Szőrmekabátok és mellények](/szormekabatok/):** Luxus elegancia és kivételes melegség formális eseményekre és téli sétákhoz.
+## Felkészülés a személyes próbára
 
-Az anyagok hőérzetének és tartósságának részletes összehasonlításához olvassa el a [bőr, irha vagy szőrme kalauzunkat](/utmutatok/bor-irha-szorme-osszehasonlitas/).
+1. Mentse el a kiválasztott modell fotóját vagy oldalának linkjét.
+2. Küldje el [WhatsAppon (+36 20 359 3216)](https://wa.me/36203593216) a keresett mérettel és színnel. Az aktuális árról és elérhetőségről az üzlet ad tájékoztatást.
+3. Ha szeretné félretetetni a darabot, ezt külön egyeztesse. Az érdeklődés önmagában nem jelent foglalást.
+4. Hozza a kabát alatt viselendő felsőt. Zárja be a kabátot, üljön le és nyújtsa előre a karját.
+5. Döntés előtt kérdezzen rá az anyagcímkére, az ápolásra és az esetleges méretre igazításra.
 
----
+További segítség a [személyes próba útmutatójában](/utmutatok/budapesti-kabatvasarlas/).
 
-## 2. Új prémium butik vagy vintage használtruha üzlet Budapesten?
+## Megközelítés Budapest belvárosában
 
-Budapesten számos vintage és second-hand bolt kínál használt kabátokat, de a vásárlás előtt érdemes mérlegelni a kockázatokat:
+Címünk: **1053 Budapest, Kossuth Lajos u. 18.**, az Astoria és a Ferenciek tere között. Az [üzletoldalon](/uzlet/) ellenőrzött, hozzávetőleges gyalogos becslések és útvonallinkek találhatók. A becslések a linkelt indulási pontokra vonatkoznak; más metrókijárat vagy a Váci utca más része eltérő utat jelenthet.
 
-- **Bőr rugalmassága és illata:** A használt kabátoknál gyakori a bőr kiszáradása, a dohány- vagy dohos szag, valamint az elkopott bélés. A felújítási költségek (béléscsere, cipzárcsere, tisztítás) gyakran meghaladják a kedvező árat.
-- **Garancia és frissesség:** A Kaftan Angelo kizárólag új, válogatott, kifogástalan állapotú prémium bőrből készült kollekciókat kínál. Minden termék azonnal hordható, higiénikus és hibátlan.
-- Részletes kockázatelemzésért tekintse meg a [használt bőrkabát ellenőrzőlistánkat](/utmutatok/hasznalt-borkabat-ellenorzes/).
+Ellenőrizze az aktuális gyalogos útvonalat és a [BudapestGO](https://go.bkk.hu/) járatinformációit. Ünnepnapok körül erősítse meg a nyitvatartást.
 
----
+## A konkrét darabot vizsgálja
 
-## 3. Gyakorlati lépések a budapesti vásárláshoz
+Új és használt ruházat összehasonlításakor ellenőrizze a varrásokat, záródásokat, bélést és felületet. Kérdezzen rá az állapotra és az ápolási előzményekre. A kategória neve önmagában nem dönti el a minőséget vagy a javítás költségét. A [használt bőrkabát ellenőrzőlistája](/utmutatok/hasznalt-borkabat-ellenorzes/) szempontokat ad, nem minősít konkrét darabot.
 
-Hogy a vásárlási élmény a lehető legzökkenőmentesebb legyen, kövesse ezt az 5 lépéses folyamatot:
+## Egyedi kérés és gyakori kérdések
 
-1. **Válassza ki a fazont online:** Böngéssze át a weboldalon a [Kollekciókat](/kollekciok/) vagy a [budapesti bőrkabát-kínálatot](/borkabat-budapest/).
-2. **Készlet- és méretegyeztetés indulás előtt:** Mivel kollekcióink dinamikusan változnak, küldje el a kiszemelt modell fotóját és a méretét [WhatsAppon (+36 20 359 3216)](https://wa.me/36203593216). Munkatársaink visszaigazolják az elérhetőséget, így a kívánt darab készen várja személyes próbára.
-3. **Látogatás az üzletbe:** Butikunk az V. kerületben, a **Kossuth Lajos u. 18.** alatt található, közvetlenül az Astoria és a Ferenciek tere között.
-4. **Személyes próba és mozgásteszt:** Próbálja fel a kabátot tükör előtt, ellenőrizze a vállszélességet, zárja be a cipzárt vagy gombokat, és tegyen néhány mozdulatot. Tapasztalt kollégáink segítenek a legelőnyösebb méret kiválasztásában.
-5. **Ápolási tanácsok:** A vásárláskor részletes tájékoztatást kap az adott bőrfelület helyes tisztításáról és otthoni ápolásáról.
+Különleges méret, szín vagy fazon esetén az [egyedi rendelés lehetőségeiről](/egyedi-rendeles/) közvetlenül az üzletben érdeklődjön. Az anyagot, méreteket, próbákat és várható időt külön egyeztesse. Ha utazik, az időpontokat előre jelezze.
 
----
+**Szükséges időpontot foglalni?** Nyitvatartási időben felkeresheti az üzletet. Konkrét modell vagy egyedi kérés esetén előzetesen érdeklődjön.
 
-## 4. Központi elhelyezkedés: Kossuth Lajos u. 18, Budapest Belváros
+**Minden fotózott modell elérhető?** A weboldal válogatás, nem élő készletjelzés. A méretet, színt és elérhetőséget az üzletnek kell megerősítenie.
 
-Üzletünk a belváros szívében, mindössze **2-3 perc kényelmes sétára található a Váci utcától**:
+**Hol érdeklődhetek az árról?** Termékárakat itt nem közlünk. Kérjen tájékoztatást közvetlenül WhatsAppon vagy az üzletben.
 
-- **Metróval:** Az M3-as metró Ferenciek tere megállója 150 méterre, az M2-es metró Astoria állomása 200 méterre van.
-- **Busszal:** A 7-es, 8E, 110-es, 112-es és 133E buszok közvetlenül az üzlet előtt vagy a Ferenciek terén állnak meg.
-- **Gyalogosan:** A Deák Ferenc tér, a Vörösmarty tér és az Erzsébet híd pesti hídfője szintén néhány perces sétával elérhető.
-
----
-
-## 5. Ha egyedi igényei vannak: méretre készítés
-
-Amennyiben az aktuális készletben nem találja meg a tökéletes ujjhosszt, vagy egyedi színben és fazonban szeretne bőrkabátot, [egyedi bőrkabát rendeléséről](/egyedi-rendeles/) személyesen érdeklődhet üzletünkben. Hozzon magával referenciafotót és elképzeléseit; munkatársaink egyeztetik Önnel az anyagválasztást és a méretvételt. Budapestre látogató vendégeinknek javasoljuk, hogy jelezzék tartózkodási idejüket a próbák ütemezéséhez.
-
----
-
-## 6. Gyakori kérdések a budapesti kabátvásárlásról
-
-**Szükséges előre időpontot foglalni a próbához?**  
-Nem kötelező, nyitvatartási időben bármikor szeretettel várjuk. Ugyanakkor javasoljuk, hogy ha konkrét modellt nézett ki, látogatás előtt írjon nekünk [WhatsAppon](https://wa.me/36203593216), hogy félretehessük az Ön méretét a próbára.
-
-**Milyen fizetési lehetőségek állnak rendelkezésre?**  
-Üzletünkben készpénzzel (HUF és EUR) és minden elterjedt bankkártyával (Visa, Mastercard) kényelmesen fizethet.
-
-**A weboldalon látott összes modell raktáron van?**  
-A weboldal válogatást mutat be kínálatunkból, nem valós idejű készletnyilvántartás. Éppen ezért javasoljuk az indulás előtti egyeztetést, hogy a kiszemelt darab biztosan felpróbálható legyen.
-
----
-
-## Tervezze meg a látogatást a Kaftan Angelo üzletébe
-
-A Kaftan Angelo több mint 50 éves bőrgyártási és kereskedelmi tapasztalattal (1973-as isztambuli alapítás, 2004 óta Budapesten) várja mindazokat, akik kompromisszummentes minőséget keresnek.
-
-További praktikus tippekért a próbához olvassa el a [személyes próba útmutatóját](/utmutatok/budapesti-kabatvasarlas/), a pontos nyitvatartást és interaktív térképet pedig megtalálja az [üzletoldalon](/uzlet/).
+Angelo 1973-ban Isztambulban kezdett bőrrel foglalkozni; a budapesti üzlet 2004-ben nyílt meg. Ismerje meg [történetünket](/rolunk/), nézze meg a [budapesti bőrkabát-kínálatot](/borkabat-budapest/), és ellenőrizze a [megközelítést, nyitvatartást](/uzlet/).

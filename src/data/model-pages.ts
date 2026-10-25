@@ -63,18 +63,6 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
       },
       category: collectionLabel,
       material,
-      offers: {
-        '@type': 'Offer',
-        availability: 'https://schema.org/InStoreOnly',
-        itemCondition: 'https://schema.org/NewCondition',
-        priceCurrency: 'HUF',
-        url: BASE + path,
-        seller: {
-          '@type': 'ClothingStore',
-          name: 'Kaftan Angelo Budapest',
-          url: BASE + (hu ? '/' : '/en/'),
-        },
-      },
     },
     pageSchema: {
       '@type': 'ItemPage',
