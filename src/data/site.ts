@@ -30,7 +30,19 @@ export const businessSchema = {
   hasMap: 'https://www.google.com/maps/place/Kaftan+Angelo/@47.4944346,19.0600201,17.25z/data=!4m6!3m5!1s0x4741dc43988120f9:0x928c92ecc4745e63!8m2!3d47.4940457!4d19.0584288!16s%2Fg%2F11bwy_15vk',
   areaServed: [
     { '@type': 'City', name: 'Budapest' },
+    { '@type': 'AdministrativeArea', name: 'Belváros-Lipótváros (V. kerület)' },
     { '@type': 'Country', name: 'Hungary' },
+  ],
+  amenityFeature: [
+    { '@type': 'LocationFeatureSpecification', name: 'Fitting Room', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Air Conditioning', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Custom Sizing & Fitting Consultation', value: true },
+    { '@type': 'LocationFeatureSpecification', name: 'Near Astoria & Ferenciek tere Metro', value: true },
+  ],
+  publicTransport: [
+    'Astoria Metro Station (M2) - 150m',
+    'Ferenciek tere Metro Station (M3) - 250m',
+    'Bus lines 5, 7, 8E, 110, 112, 133E (Astoria / Ferenciek tere stop)',
   ],
   contactPoint: [
     {
