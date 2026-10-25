@@ -4,7 +4,7 @@ import { responsiveImages } from '../components/responsive-images';
 import BaseLayout from '../components/BaseLayout.astro';
 import ModelDetail from '../components/ModelDetail.astro';
 import LandmarksGrid from '../components/LandmarksGrid.astro';
-import { landmarkPages, landmarkMarker, locationFaq, type LandmarkLanguage } from '../data/landmarks';
+import { landmarkPages, landmarkMarker, locationFaq, heroWalkLabel, type LandmarkLanguage } from '../data/landmarks';
 import pages from '../data/pages.json';
 import { modelPages } from '../data/model-pages';
 export function getStaticPaths() {
@@ -27,7 +27,7 @@ const page = hasLandmarks && !fullLandmarks ? {
     }],
   },
 } : sourcePage;
-const sections = hasLandmarks ? page.mainHtml.split(landmarkMarker) : [];
+const sections = hasLandmarks ? page.mainHtml.replace('<!-- store-landmark-pill -->', heroWalkLabel(lang)).split(landmarkMarker) : [];
 if (hasLandmarks && sections.length !== 2) throw new Error(`Expected one landmark placement marker: ${page.path}`);
 ---
 <BaseLayout page={page}>

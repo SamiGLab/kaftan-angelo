@@ -35,11 +35,18 @@ try {
       assert.equal(url.searchParams.get('api'), '1');
       assert.equal(url.searchParams.get('travelmode'), 'walking');
       assert.match(url.searchParams.get('destination'), /Kossuth Lajos utca 18, 1053 Budapest/);
-      assert.ok(url.searchParams.get('origin').includes('Budapest'));
+      assert.ok(url.searchParams.get('origin').includes('Budapest') || url.searchParams.get('origin') === '47.4918096,19.0537954');
       assert.ok(link.label.length > 15);
       origins.add(url.searchParams.get('origin'));
     }
     assert.equal(origins.size, count);
+    const distances = await page.$$eval('.landmark-distance', nodes => nodes.map(node => node.textContent));
+    assert.equal(distances.length, count);
+    assert.ok(distances.every(text => /^(Approx\.|Kb\.)/.test(text)));
+    assert.match(distances[0], /170 m.*3/);
+    assert.match(distances[2], /500 m.*7/);
+    assert.match(distances[5], /800 m.*11/);
+    if (count === 7) assert.match(distances[6], /1 km.*14/);
     const graph = await page.$eval('script[type="application/ld+json"]', node => JSON.parse(node.textContent)['@graph']);
     if (count === 6) {
       const faq = graph.find(node => node['@type'] === 'FAQPage');

@@ -1,5 +1,5 @@
 ---
-import { landmarks, walkingRoute, locationFaq, type LandmarkLanguage } from '../data/landmarks';
+import { landmarks, walkingRoute, walkLabel, locationFaq, type LandmarkLanguage } from '../data/landmarks';
 const { lang, full = false } = Astro.props as { lang: LandmarkLanguage; full?: boolean };
 const en = lang === 'en';
 const items = full ? landmarks : landmarks.slice(0, 6);
@@ -13,15 +13,16 @@ const faq = locationFaq(lang);
     <ul class="landmarks-grid">
       {items.map(item => <li class="landmark-card">
         <h3>{item.name[lang]}</h3>
+        <strong class="landmark-distance">{walkLabel(item, lang)}</strong>
         <p>{item.description[lang]}</p>
         <a class="text-link" href={walkingRoute(item.origin)}>{en ? `Walking route from ${item.name.en}` : `Gyalogos útvonal: ${item.name.hu}`}</a>
       </li>)}
     </ul>
-    <p>{en ? 'Walking times depend on your starting point, crossings and pace.' : 'A séta ideje az indulási ponttól, az átkelőktől és a haladási tempótól függ.'}</p>
+    <p>{en ? 'Approximate Google Maps walking estimates, checked 25 October 2026, from the linked map points to our store. Times depend on your starting point, crossings and pace.' : 'A Google Térkép hozzávetőleges gyalogos becslései, ellenőrizve: 2026. október 25. A távolságok a linkelt térképpontoktól az üzletig értendők. Az idő az indulási ponttól, az átkelőktől és a tempótól függ.'}</p>
     {full ? <div class="content landmark-arrival">
       <h3>{en ? 'Choose your approach' : 'Megközelítési lehetőségek'}</h3>
       <ol>
-        <li>{en ? 'From Váci utca: start at its junction with Kossuth Lajos utca and follow Kossuth Lajos utca towards Astoria to number 18.' : 'A Váci utcától: a Kossuth Lajos utcai kereszteződéstől haladjon a Kossuth Lajos utcán az Astoria felé, a 18. számig.'}</li>
+        <li>{en ? 'From Váci utca: the linked starting point leads via Duna utca and Kossuth Lajos utca to number 18. If you are elsewhere on the pedestrian street, adjust your starting point in Maps.' : 'A Váci utcától: a linkelt indulási ponttól a Duna utcán és a Kossuth Lajos utcán át vezet az út a 18. számhoz. Ha a sétálóutca más részén tartózkodik, módosítsa az indulási pontot a térképen.'}</li>
         <li>{en ? 'From Deák Ferenc tér: select the walking route above from your metro exit, then follow the route to Kossuth Lajos u. 18.' : 'A Deák Ferenc térről: a fenti gyalogos útvonalat a választott metrókijárattól tervezze meg a Kossuth Lajos u. 18-hoz.'}</li>
         <li>{en ? 'From Astoria: take the exit towards Kossuth Lajos utca and follow the street towards Ferenciek tere to number 18. Use pedestrian crossings along the route.' : 'Az Astoriától: válassza a Kossuth Lajos utca felé vezető kijáratot, majd haladjon a Ferenciek tere felé a 18. számig. Használja a gyalogos-átkelőhelyeket.'}</li>
       </ol>
@@ -35,6 +36,7 @@ const faq = locationFaq(lang);
   .landmarks-grid { list-style: none; padding: 0; margin: 2rem 0 1rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
   .landmark-card { border: 1px solid var(--line, #d8c9b5); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; min-width: 0; }
   .landmark-card h3 { margin: 0 0 .5rem; }
+  .landmark-distance { display: block; margin-bottom: .75rem; }
   .landmark-card p { margin: 0 0 1rem; }
   .landmark-card a { margin-top: auto; display: flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
   .landmark-card a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
