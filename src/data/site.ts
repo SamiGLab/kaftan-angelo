@@ -39,11 +39,6 @@ export const businessSchema = {
     { '@type': 'LocationFeatureSpecification', name: 'Custom Sizing & Fitting Consultation', value: true },
     { '@type': 'LocationFeatureSpecification', name: 'Near Astoria & Ferenciek tere Metro', value: true },
   ],
-  publicTransport: [
-    'Astoria Metro Station (M2) - 150m',
-    'Ferenciek tere Metro Station (M3) - 250m',
-    'Bus lines 5, 7, 8E, 110, 112, 133E (Astoria / Ferenciek tere stop)',
-  ],
   contactPoint: [
     {
       '@type': 'ContactPoint',
