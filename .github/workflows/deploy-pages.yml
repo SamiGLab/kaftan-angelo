@@ -154,6 +154,8 @@ jobs:
         run: node _dev/scripts/test-collection-gallery.mjs
       - name: Check product photo and WhatsApp links
         run: node _dev/scripts/test-model-inquiries.mjs
+      - name: Check responsive catalogue images and guide preloads
+        run: node _dev/scripts/test-responsive-images.mjs
       - name: Check reversible colour variants
         run: node _dev/scripts/test-colour-variants.mjs
       - name: Check mobile contact and newsletter retry flows
