@@ -2,7 +2,20 @@
 import { withIcons } from '../components/icon';
 import { responsiveImages } from '../components/responsive-images';
 import BaseLayout from '../components/BaseLayout.astro';
+import TrustHeritage from '../components/TrustHeritage.astro';
 import pages from '../data/pages.json';
 const page = pages['/'];
+const splitMarker = '<h2>Ha a megfelelő darab nincs a kínálatban.';
+const parts = page.mainHtml.split(splitMarker);
 ---
-<BaseLayout page={page}><Fragment set:html={withIcons(responsiveImages(page.mainHtml))} /></BaseLayout>
+<BaseLayout page={page}>
+  {parts.length === 2 ? (
+    <>
+      <Fragment set:html={withIcons(responsiveImages(parts[0]))} />
+      <TrustHeritage lang="hu" />
+      <Fragment set:html={withIcons(responsiveImages(splitMarker + parts[1]))} />
+    </>
+  ) : (
+    <Fragment set:html={withIcons(responsiveImages(page.mainHtml))} />
+  )}
+</BaseLayout>

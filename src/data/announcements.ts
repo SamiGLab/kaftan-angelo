@@ -94,10 +94,10 @@ export const announcements: AnnouncementItem[] = [
   },
   {
     "id": 14,
-    "hu": "Telefonos érdeklődés: +36 1 266 7274.",
-    "en": "Store enquiries: +36 1 266 7274.",
-    "url_hu": "tel:+3612667274",
-    "url_en": "tel:+3612667274"
+    "hu": "Hívja budapesti üzletünket kérdés vagy próba esetén.",
+    "en": "Call our Budapest store with questions or to arrange a fitting.",
+    "url_hu": "/uzlet/",
+    "url_en": "/en/visit/"
   },
   {
     "id": 15,
