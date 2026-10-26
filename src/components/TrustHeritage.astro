@@ -1,0 +1,212 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  lang: 'hu' | 'en';
+}
+
+const { lang } = Astro.props;
+const en = lang === 'en';
+---
+
+<section class="trust-heritage" aria-labelledby="trust-heading">
+  <div class="wrap">
+    <div class="trust-badge-row">
+      <span class="trust-badge">
+        <Icon name="award" />
+        <span>{en ? 'In Budapest Since 2004 · 20+ Years Heritage' : '2004 óta Budapest szívében · 20+ év szakértelem'}</span>
+      </span>
+      <span class="trust-badge">
+        <Icon name="shield" />
+        <span>{en ? '100% Genuine Leather & Shearling' : '100% valódi bőr és irha minőség'}</span>
+      </span>
+      <span class="trust-badge">
+        <Icon name="star" class="star-gold" />
+        <span>{en ? '4.9★ Customer Rating' : '4.9★ vásárlói elégedettség'}</span>
+      </span>
+    </div>
+
+    <div class="trust-header">
+      <span class="tag mono">{en ? 'Heritage & Satisfaction' : 'Hagyomány és Bizalom'}</span>
+      <h2 id="trust-heading">{en ? '20 years of trusted leather expertise in Budapest' : '20 év tapasztalat és szakértelem Budapest szívében'}</h2>
+      <p>{en ? 'Welcoming international visitors, expats and Budapest residents since 2004 with personalized fitting and premium genuine outerwear.' : 'A Kaftan Angelo 2004 óta áll a hazai és külföldi vásárlók szolgálatában a Kossuth Lajos utcai bemutatóteremben, prémium minőségű bőrkabátokkal és méretre igazítással.'}</p>
+    </div>
+
+    <ul class="trust-grid">
+      <li class="trust-card">
+        <div class="rating-row" role="img" aria-label={en ? '4.9 out of 5 stars' : '4.9 az 5 csillagból'}>
+          <div class="stars" aria-hidden="true">
+            <Icon name="star" class="star-fill" />
+            <Icon name="star" class="star-fill" />
+            <Icon name="star" class="star-fill" />
+            <Icon name="star" class="star-fill" />
+            <Icon name="star" class="star-fill" />
+          </div>
+          <strong class="rating-number">4.9 / 5.0</strong>
+        </div>
+        <h3><Icon name="badge" /> {en ? 'High Google satisfaction' : 'Kiemelkedő Google értékelések'}</h3>
+        <p>{en ? 'Praised by hundreds of guests from Europe, the UK and worldwide for genuine quality, honest guidance and welcoming showroom hospitality.' : 'Több száz elégedett vásárló véleménye igazolja a prémium alapanyagokat, a barátságos kiszolgálást és a szakértő tanácsadást.'}</p>
+      </li>
+
+      <li class="trust-card">
+        <h3><Icon name="scissors" /> {en ? 'Expert personal sizing' : 'Személyre szabott méretre igazítás'}</h3>
+        <p>{en ? 'Every jacket can be fitted and adjusted to your exact measurements. Experience personal fitting directly in our private dressing rooms.' : 'A kiválasztott fazont kényelmes próbafülkénkben felpróbálhatja, és igény esetén méretre igazítjuk vagy egyedi méretben elkészítjük.'}</p>
+        <ul class="trust-perks">
+          <li><Icon name="check" /> {en ? 'Sleeve and waist adjustments' : 'Ujjhossz és derékbőség igazítása'}</li>
+          <li><Icon name="check" /> {en ? 'Custom sizing orders available' : 'Egyedi rendelési és méret opciók'}</li>
+        </ul>
+      </li>
+
+      <li class="trust-card">
+        <h3><Icon name="store" /> {en ? 'Central Belváros showroom' : 'Belvárosi állandó bemutatóterem'}</h3>
+        <p>{en ? 'Permanent showroom on Kossuth Lajos utca for two decades. Enjoy reliable aftercare, advice and transparent service without rush.' : 'Két évtizede stabil pont az V. kerületben. Nyugodt próbalehetőség és megbízható garancia a vásárlás után is.'}</p>
+        <ul class="trust-perks">
+          <li><Icon name="check" /> {en ? 'Walk-ins welcome without booking' : 'Időpontfoglalás nélkül is látogatható'}</li>
+          <li><Icon name="check" /> {en ? 'Card & cash payments accepted' : 'Bankkártyás és készpénzes fizetés'}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .trust-heritage {
+    border-bottom: 1px solid var(--line, #d8c9b5);
+    padding: 3.5rem 0;
+  }
+  .trust-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #dcb27c14;
+    border: 1px solid #dcb27c4d;
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--bright, #dcb27c);
+  }
+  .trust-badge :global(.ui-icon) {
+    color: var(--bright, #dcb27c);
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .trust-badge :global(.star-gold) {
+    fill: #f59e0b;
+    color: #f59e0b;
+  }
+  .trust-header h2 {
+    margin: 0.5rem 0 0.75rem;
+  }
+  .trust-header p {
+    color: var(--dim, #c9bba5);
+    max-width: 65ch;
+    margin-bottom: 2rem;
+  }
+  .trust-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  .trust-card {
+    background: var(--bg2, #241a12);
+    border: 1px solid #dcb27c2e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .trust-card:hover {
+    border-color: var(--bright, #dcb27c);
+    transform: translateY(-2px);
+  }
+  .rating-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .stars {
+    display: inline-flex;
+    gap: 3px;
+    color: #f59e0b;
+  }
+  .stars :global(.star-fill) {
+    width: 17px;
+    height: 17px;
+    fill: #f59e0b;
+    color: #f59e0b;
+  }
+  .rating-number {
+    font-size: 0.95rem;
+    color: var(--cream, #efe4d2);
+  }
+  .trust-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.15rem;
+    margin: 0 0 0.6rem;
+    color: var(--cream, #efe4d2);
+  }
+  .trust-card h3 :global(.ui-icon) {
+    color: var(--bright, #dcb27c);
+    flex-shrink: 0;
+  }
+  .trust-card p {
+    color: var(--dim, #c9bba5);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .trust-perks {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .trust-perks li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    color: var(--dim, #c9bba5);
+  }
+  .trust-perks li :global(.ui-icon) {
+    color: var(--bright, #dcb27c);
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  @media (max-width: 980px) {
+    .trust-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 620px) {
+    .trust-heritage {
+      padding: 2.5rem 0;
+    }
+    .trust-grid {
+      grid-template-columns: 1fr;
+    }
+    .trust-card {
+      padding: 1.25rem;
+    }
+  }
+</style>

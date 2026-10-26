@@ -4,6 +4,7 @@ import { responsiveImages } from '../components/responsive-images';
 import BaseLayout from '../components/BaseLayout.astro';
 import ModelDetail from '../components/ModelDetail.astro';
 import LandmarksGrid from '../components/LandmarksGrid.astro';
+import TrustHeritage from '../components/TrustHeritage.astro';
 import { landmarkPages, landmarkMarker, locationFaq, heroWalkLabel, type LandmarkLanguage } from '../data/landmarks';
 import pages from '../data/pages.json';
 import { modelPages } from '../data/model-pages';
@@ -35,6 +36,7 @@ if (hasLandmarks && sections.length !== 2) throw new Error(`Expected one landmar
     <ModelDetail page={page} />
   ) : hasLandmarks ? (
     <Fragment set:html={withIcons(responsiveImages(sections[0]))} />
+    <TrustHeritage lang={lang} />
     <LandmarksGrid lang={lang} full={fullLandmarks} />
     <Fragment set:html={withIcons(responsiveImages(sections[1]))} />
   ) : (
