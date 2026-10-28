@@ -30,6 +30,12 @@ const page = hasLandmarks && !fullLandmarks ? {
 } : sourcePage;
 const sections = hasLandmarks ? page.mainHtml.replace('<!-- store-landmark-pill -->', heroWalkLabel(lang)).split(landmarkMarker) : [];
 if (hasLandmarks && sections.length !== 2) throw new Error(`Expected one landmark placement marker: ${page.path}`);
+// The English homepage shares the TrustHeritage cards with the Hungarian homepage.
+// Split only at a complete section boundary, never inside the neighbouring split-grid.
+const englishHome = page.path === '/en/';
+const homeMarker = '<section class="split-section">';
+const homeParts = englishHome ? page.mainHtml.split(homeMarker) : [];
+if (englishHome && homeParts.length !== 2) throw new Error('Expected one English homepage trust placement marker');
 ---
 <BaseLayout page={page}>
   {page.isModel ? (
@@ -39,6 +45,12 @@ if (hasLandmarks && sections.length !== 2) throw new Error(`Expected one landmar
     <TrustHeritage lang={lang} />
     <LandmarksGrid lang={lang} full={fullLandmarks} />
     <Fragment set:html={withIcons(responsiveImages(sections[1]))} />
+  ) : englishHome ? (
+    <>
+      <Fragment set:html={withIcons(responsiveImages(homeParts[0]))} />
+      <TrustHeritage lang="en" />
+      <Fragment set:html={withIcons(responsiveImages(homeMarker + homeParts[1]))} />
+    </>
   ) : (
     <Fragment set:html={withIcons(responsiveImages(page.mainHtml))} />
   )}
