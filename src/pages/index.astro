@@ -5,7 +5,8 @@ import BaseLayout from '../components/BaseLayout.astro';
 import TrustHeritage from '../components/TrustHeritage.astro';
 import pages from '../data/pages.json';
 const page = pages['/'];
-const splitMarker = '<h2>Ha a megfelelő darab nincs a kínálatban.';
+// Insert between complete sections: splitting inside a heading nests the cards in .split-grid.
+const splitMarker = '<section class="split-section">';
 const parts = page.mainHtml.split(splitMarker);
 ---
 <BaseLayout page={page}>
