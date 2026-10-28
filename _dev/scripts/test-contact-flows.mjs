@@ -71,6 +71,25 @@ try {
     assert.equal(JSON.stringify(quickChatEvents).includes('Private customer enquiry audit_12345'),false,'Never send customer chat text to analytics');
     assert.equal(quickChatEvents[0].page_path,modelPath,'Attribution event uses current product page');
     assert.equal(quickChatEvents[0].page_language,lang);
+    // Product and footer WhatsApp links emit one event per click, with a public source only.
+    await page.$eval('[data-model-inquiry]',el=>{el.addEventListener('click',event=>event.preventDefault(),{once:true});el.click();});
+    await page.$eval('.footer-contact a[href^="https://wa.me/"]',el=>{el.addEventListener('click',event=>event.preventDefault(),{once:true});el.click();});
+    let sourceEvents=await page.evaluate(()=>window.dataLayer.filter(e=>e.event==='kaftan_interest'&&e.interest_action==='whatsapp_click'));
+    assert.equal(sourceEvents.filter(e=>e.interest_source==='model_detail').length,1,'Model CTA attribution');
+    assert.equal(sourceEvents.filter(e=>e.interest_source==='footer').length,1,'Footer CTA attribution');
+    for(const event of sourceEvents){
+      assert.deepEqual(Object.keys(event).sort(),['event','interest_action','interest_source','page_path','page_language'].sort(),'No customer data in WhatsApp event');
+    }
+    // The collection card and its image preview are separate, consented sources.
+    const collectionPath=lang==='hu'?'/kollekciok/':'/en/collections/';
+    await page.goto(base+collectionPath,{waitUntil:'networkidle2'});
+    await page.$eval('.product-card a[href^="https://wa.me/"]',el=>{el.addEventListener('click',event=>event.preventDefault(),{once:true});el.click();});
+    await page.$eval('[data-product-image]',el=>el.click());
+    await page.$eval('[data-preview-inquiry]',el=>{el.addEventListener('click',event=>event.preventDefault(),{once:true});el.click();});
+    sourceEvents=await page.evaluate(()=>window.dataLayer.filter(e=>e.event==='kaftan_interest'&&e.interest_action==='whatsapp_click'));
+    assert.equal(sourceEvents.filter(e=>e.interest_source==='collection_card').length,1,'Collection card attribution');
+    assert.equal(sourceEvents.filter(e=>e.interest_source==='product_preview').length,1,'Preview CTA attribution');
+    assert.ok(sourceEvents.every(e=>e.page_path===collectionPath));
     await context.close();
   }
 
