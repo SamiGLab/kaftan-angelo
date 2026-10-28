@@ -1,5 +1,16 @@
 # Production HTTPS and HSTS verification
 
+## Verified live result — 2026-10-28
+
+Read-only GitHub Actions run [40704577846](https://github.com/SamiGLab/kaftan-angelo/actions/runs/40704577846) (runner-hosted external network) observed:
+
+- `https://kaftanangelo.com/` returned HTTP/2 **200**, no `Strict-Transport-Security` response header.
+- `https://www.kaftanangelo.com/` returned HTTP/2 **301** redirect to apex, no HSTS header.
+- `http://kaftanangelo.com/` returned HTTP/1.1 **301**, redirecting to HTTPS.
+- Apex A records resolved to `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (GitHub Pages IP addresses).
+
+**Finding:** TLS and HTTP→HTTPS redirect are functional, but HSTS was absent from the two sampled HTTPS responses. The site has no verified public reverse-proxy layer under the repository's control. The audit deliberately does not change DNS, provider settings or TLS configuration.
+
 Kaftan Angelo is rendered as static HTML on GitHub Pages; a `<meta>` tag or file in the Astro repository cannot add the HTTP `Strict-Transport-Security` response header.
 
 ## Evidence and safe change procedure
