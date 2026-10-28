@@ -44,12 +44,12 @@ const en = lang === 'en';
           </div>
           <strong class="rating-number">4.9 / 5.0</strong>
         </div>
-        <h3><Icon name="badge" /> {en ? 'High Google satisfaction' : 'Kiemelkedő Google értékelések'}</h3>
+        <h3><Icon name="badge" /> <span>{en ? 'High Google satisfaction' : 'Kiemelkedő Google értékelések'}</span></h3>
         <p>{en ? 'Praised by hundreds of guests from Europe, the UK and worldwide for genuine quality, honest guidance and welcoming showroom hospitality.' : 'Több száz elégedett vásárló véleménye igazolja a prémium alapanyagokat, a barátságos kiszolgálást és a szakértő tanácsadást.'}</p>
       </li>
 
       <li class="trust-card">
-        <h3><Icon name="scissors" /> {en ? 'Expert personal sizing' : 'Személyre szabott méretre igazítás'}</h3>
+        <h3><Icon name="scissors" /> <span>{en ? 'Expert personal sizing' : 'Személyre szabott méretre igazítás'}</span></h3>
         <p>{en ? 'Every jacket can be fitted and adjusted to your exact measurements. Experience personal fitting directly in our private dressing rooms.' : 'A kiválasztott fazont kényelmes próbafülkénkben felpróbálhatja, és igény esetén méretre igazítjuk vagy egyedi méretben elkészítjük.'}</p>
         <ul class="trust-perks">
           <li><Icon name="check" /> {en ? 'Sleeve and waist adjustments' : 'Ujjhossz és derékbőség igazítása'}</li>
@@ -58,7 +58,7 @@ const en = lang === 'en';
       </li>
 
       <li class="trust-card">
-        <h3><Icon name="store" /> {en ? 'Central Belváros showroom' : 'Belvárosi állandó bemutatóterem'}</h3>
+        <h3><Icon name="store" /> <span>{en ? 'Central Belváros showroom' : 'Belvárosi állandó bemutatóterem'}</span></h3>
         <p>{en ? 'Permanent showroom on Kossuth Lajos utca for two decades. Enjoy reliable aftercare, advice and transparent service without rush.' : 'Két évtizede stabil pont az V. kerületben. Nyugodt próbalehetőség és megbízható garancia a vásárlás után is.'}</p>
         <ul class="trust-perks">
           <li><Icon name="check" /> {en ? 'Walk-ins welcome without booking' : 'Időpontfoglalás nélkül is látogatható'}</li>
@@ -135,11 +135,13 @@ const en = lang === 'en';
   .rating-row {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.75rem;
     margin-bottom: 0.75rem;
   }
   .stars {
     display: inline-flex;
+    flex: 0 0 auto;
     gap: 3px;
     color: #f59e0b;
   }
@@ -150,13 +152,16 @@ const en = lang === 'en';
     color: #f59e0b;
   }
   .rating-number {
+    flex: 0 0 auto;
+    white-space: nowrap;
     font-size: 0.95rem;
     color: var(--cream, #efe4d2);
   }
   .trust-card h3 {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.5rem;
+    line-height: 1.35;
     font-size: 1.15rem;
     margin: 0 0 0.6rem;
     color: var(--cream, #efe4d2);
@@ -164,6 +169,13 @@ const en = lang === 'en';
   .trust-card h3 :global(.ui-icon) {
     color: var(--bright, #dcb27c);
     flex-shrink: 0;
+    width: 1.15rem;
+    height: 1.15rem;
+    margin-top: 0.1rem;
+  }
+  .trust-card h3 span {
+    min-width: 0;
+    overflow-wrap: break-word;
   }
   .trust-card p {
     color: var(--dim, #c9bba5);
