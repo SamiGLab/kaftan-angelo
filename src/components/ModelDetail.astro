@@ -113,7 +113,7 @@ function renderPicture(pictureHtml: string, eager = false) {
         </p>
         <p>{model.intro[lang]}</p>
         <div class="actions">
-          <a class="btn btn-primary" data-model-inquiry href={`https://wa.me/36203593216?text=${encodeURIComponent(message)}`}>
+          <a class="btn btn-primary" data-model-inquiry data-interest-source="model_detail" href={`https://wa.me/36203593216?text=${encodeURIComponent(message)}`}>
             <Icon name="message" />{hu ? 'Érdeklődés erről a termékről' : 'Ask about this product'}
           </a>
           <a class="btn btn-ghost" href={hu ? '/uzlet/' : '/en/visit/'}>

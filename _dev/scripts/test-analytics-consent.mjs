@@ -45,7 +45,10 @@ try{
    path+' all three store interest intents were recorded'
   );
   for(const event of interestEvents) {
-   assert.deepEqual(Object.keys(event).sort(),['event','interest_action','page_language','page_path'].sort(),'Only approved, non-PII fields enter dataLayer');
+   const allowed=['event','interest_action','page_language','page_path'];
+   if(event.interest_action==='whatsapp_click')allowed.push('interest_source');
+   assert.deepEqual(Object.keys(event).sort(),allowed.sort(),'Only approved, non-PII fields enter dataLayer');
+   if(event.interest_action==='whatsapp_click')assert.equal(event.interest_source,'general_link','Store WhatsApp link has an explicit source');
    assert.equal(event.page_path,path);
    assert.equal(event.page_language,path.startsWith('/en/')?'en':'hu');
   }

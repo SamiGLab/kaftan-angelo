@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import { businessSchema } from '../data/site';
 
 interface Props {
   lang: 'hu' | 'en';
@@ -22,7 +23,7 @@ const en = lang === 'en';
       </span>
       <span class="trust-badge">
         <Icon name="star" class="star-gold" />
-        <span>{en ? '4.9★ Customer Rating' : '4.9★ vásárlói elégedettség'}</span>
+        <span>{en ? 'Customer feedback on Google' : 'Vásárlói vélemények a Google-on'}</span>
       </span>
     </div>
 
@@ -34,18 +35,12 @@ const en = lang === 'en';
 
     <ul class="trust-grid">
       <li class="trust-card">
-        <div class="rating-row" role="img" aria-label={en ? '4.9 out of 5 stars' : '4.9 az 5 csillagból'}>
-          <div class="stars" aria-hidden="true">
-            <Icon name="star" class="star-fill" />
-            <Icon name="star" class="star-fill" />
-            <Icon name="star" class="star-fill" />
-            <Icon name="star" class="star-fill" />
-            <Icon name="star" class="star-fill" />
-          </div>
-          <strong class="rating-number">4.9 / 5.0</strong>
-        </div>
-        <h3><Icon name="badge" /> <span>{en ? 'High Google satisfaction' : 'Kiemelkedő Google értékelések'}</span></h3>
-        <p>{en ? 'Praised by hundreds of guests from Europe, the UK and worldwide for genuine quality, honest guidance and welcoming showroom hospitality.' : 'Több száz elégedett vásárló véleménye igazolja a prémium alapanyagokat, a barátságos kiszolgálást és a szakértő tanácsadást.'}</p>
+        <a class="rating-row" data-google-profile href={businessSchema.hasMap} target="_blank" rel="noopener noreferrer">
+          <Icon name="star" />
+          <span>{en ? 'View our Google Business Profile' : 'Google Cégprofil megtekintése'} <span aria-hidden="true">↗</span></span>
+        </a>
+        <h3><Icon name="badge" /> <span>{en ? 'Customer reviews' : 'Vásárlói értékelések'}</span></h3>
+        <p>{en ? 'See the latest public customer reviews and store details directly on Google Maps.' : 'Olvassa el a nyilvános vásárlói véleményeket és az üzlet adatait közvetlenül a Google Térképen.'}</p>
       </li>
 
       <li class="trust-card">
@@ -133,29 +128,26 @@ const en = lang === 'en';
     transform: translateY(-2px);
   }
   .rating-row {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.35rem 0.75rem;
-    margin-bottom: 0.75rem;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+    color: var(--bright, #dcb27c);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    overflow-wrap: anywhere;
   }
-  .stars {
-    display: inline-flex;
+  .rating-row :global(.ui-icon) {
     flex: 0 0 auto;
-    gap: 3px;
-    color: #f59e0b;
-  }
-  .stars :global(.star-fill) {
     width: 17px;
     height: 17px;
-    fill: #f59e0b;
-    color: #f59e0b;
   }
-  .rating-number {
-    flex: 0 0 auto;
-    white-space: nowrap;
-    font-size: 0.95rem;
-    color: var(--cream, #efe4d2);
+  .rating-row:focus-visible {
+    outline: 2px solid var(--bright, #dcb27c);
+    outline-offset: 4px;
   }
   .trust-card h3 {
     display: flex;

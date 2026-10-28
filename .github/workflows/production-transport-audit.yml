@@ -1,0 +1,44 @@
+name: Production transport headers audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - .github/workflows/production-transport-audit.yml
+  schedule:
+    - cron: '23 6 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect live HTTPS headers and redirects (informational)
+        shell: bash
+        run: |
+          set -u
+          for url in https://kaftanangelo.com/ https://www.kaftanangelo.com/; do
+            echo "=== $url ==="
+            headers="$(mktemp)"
+            if curl --silent --show-error --connect-timeout 10 --max-time 25 --max-redirs 0 --dump-header "$headers" --output /dev/null "$url"; then
+              grep -i '^HTTP/' "$headers" | tail -1 || true
+              hsts="$(grep -i '^strict-transport-security:' "$headers" | tail -1 | tr -d '\r' || true)"
+              if [ -n "$hsts" ]; then
+                echo "$hsts"
+              else
+                echo "::warning::No Strict-Transport-Security response header observed at $url"
+              fi
+              location="$(grep -i '^location:' "$headers" | tail -1 | tr -d '\r' || true)"
+              [ -z "$location" ] || echo "$location"
+            else
+              echo "::warning::Could not fetch $url; DNS/certificate/connection must be checked manually."
+            fi
+            rm -f "$headers"
+          done
+          echo "=== http://kaftanangelo.com/ redirect ==="
+          curl --silent --show-error --connect-timeout 10 --max-time 25 --max-redirs 0 --dump-header - --output /dev/null http://kaftanangelo.com/ | grep -iE '^HTTP/|^location:' || true
+          echo "=== DNS apex addresses ==="
+          getent ahostsv4 kaftanangelo.com | awk '!seen[$1]++{print $1}' || true
+          echo "This check never changes TLS/HSTS settings. See docs/production-transport.md."
