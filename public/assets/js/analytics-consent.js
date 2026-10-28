@@ -109,10 +109,24 @@
     const el=event.target.closest('a,[data-map-load]');if(!el)return;
     let action;
     const href=el.getAttribute('href')||'';
+    // A link to public Google reviews is not a request for driving directions.
+    if(el.hasAttribute('data-google-profile'))return;
     if(href.startsWith('tel:'))action='phone_click';
     else if(/^https:\/\/(maps\.app\.goo\.gl|(?:www\.)?google\.com\/maps)/.test(href))action='directions_click';
     else if(/^https:\/\/wa\.me\//.test(href))action='whatsapp_click';
     else if(el.hasAttribute('data-map-load') && el.getAttribute('aria-expanded')==='true')action='map_view';
-    if(action)window.dataLayer.push({event:'kaftan_interest',interest_action:action,page_path:location.pathname,page_language:document.documentElement.lang});
+    if(!action)return;
+    // Only public navigation context, never the WhatsApp message or query data.
+    const event={event:'kaftan_interest',interest_action:action,page_path:location.pathname,page_language:document.documentElement.lang};
+    if(action==='whatsapp_click'){
+      const declared=el.getAttribute('data-interest-source');
+      event.interest_source=(
+        ['model_detail','product_preview','footer'].includes(declared)?declared:
+        el.closest('[data-product-dialog]')?'product_preview':
+        el.closest('.product-card')?'collection_card':
+        el.closest('.footer')?'footer':'general_link'
+      );
+    }
+    window.dataLayer.push(event);
   });
 })();
