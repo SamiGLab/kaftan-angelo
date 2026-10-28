@@ -117,16 +117,16 @@
     else if(el.hasAttribute('data-map-load') && el.getAttribute('aria-expanded')==='true')action='map_view';
     if(!action)return;
     // Only public navigation context, never the WhatsApp message or query data.
-    const event={event:'kaftan_interest',interest_action:action,page_path:location.pathname,page_language:document.documentElement.lang};
+    const interestEvent={event:'kaftan_interest',interest_action:action,page_path:location.pathname,page_language:document.documentElement.lang};
     if(action==='whatsapp_click'){
       const declared=el.getAttribute('data-interest-source');
-      event.interest_source=(
+      interestEvent.interest_source=(
         ['model_detail','product_preview','footer'].includes(declared)?declared:
         el.closest('[data-product-dialog]')?'product_preview':
         el.closest('.product-card')?'collection_card':
         el.closest('.footer')?'footer':'general_link'
       );
     }
-    window.dataLayer.push(event);
+    window.dataLayer.push(interestEvent);
   });
 })();
