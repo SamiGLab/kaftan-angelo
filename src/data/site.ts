@@ -65,6 +65,13 @@ export const businessSchema = {
   priceRange: '€€',
   currenciesAccepted: 'HUF, EUR',
   knowsLanguage: ['hu', 'en'],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5.0',
+    bestRating: '5.0',
+    worstRating: '1.0',
+    ratingCount: '48',
+  },
   openingHoursSpecification: [
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '10:00', closes: '19:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '10:00', closes: '17:00' },
