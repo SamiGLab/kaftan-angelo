@@ -104,6 +104,27 @@
   try {stored=JSON.parse(localStorage.getItem(key));} catch{}
   if(stored && typeof stored.analytics==='boolean' && typeof stored.recordings==='boolean' && Number.isFinite(stored.time) && Date.now()-stored.time>=0 && Date.now()-stored.time<maxAge){choice={analytics:stored.analytics,recordings:stored.recordings};apply();}else open();
   document.querySelectorAll('form,input,textarea,select,[data-search]').forEach(el=>el.setAttribute('data-clarity-mask','true'));
+  // Partner fallback actions only open a visitor's email app or WhatsApp.
+  // Count them as intent, never as a delivered application; never read form values.
+  function recordPartnerIntent(source) {
+    if (!choice.analytics || !permitted) return;
+    window.dataLayer.push({
+      event:'kaftan_interest', interest_action:'partner_contact_start',
+      interest_source:source, page_path:location.pathname,
+      page_language:document.documentElement.lang
+    });
+  }
+  document.addEventListener('submit',event=>{
+    const form=event.target;
+    if (!form?.matches?.('[data-partner-form]') || form.dataset.intakeInitialized==='true' || !form.checkValidity()) return;
+    recordPartnerIntent('partner_email_compose');
+  });
+  document.addEventListener('click',event=>{
+    const button=event.target.closest('[data-partner-whatsapp]');
+    if (!button) return;
+    const form=button.closest('[data-partner-form]');
+    if (form?.checkValidity()) recordPartnerIntent('partner_whatsapp');
+  });
   document.addEventListener('click',event=>{
     if(!choice.analytics || !permitted)return;
     const el=event.target.closest('a,[data-map-load]');if(!el)return;
