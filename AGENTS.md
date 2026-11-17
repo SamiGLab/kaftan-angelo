@@ -20,3 +20,11 @@
    - Do not publish numeric product prices, starting prices or product price ranges in pages or structured data.
    - Customers may ask the store privately about current prices through WhatsApp or an in-store visit.
    - Keep factual Product/ItemPage information without Offer markup. Never invent prices, stock status or product ratings for search enhancements.
+
+## Marketing Workflows
+
+- Read `.agents/product-marketing.md` before changing customer-facing copy, conversion paths, SEO content or marketing measurements.
+- Treat audience needs and positioning in that file as hypotheses until supported by store feedback or first-party data.
+- Optimize for qualified store visits, direct product enquiries and genuine partner conversations; a link click is never proof of a sale or completed message.
+- Keep marketing analytics consent-gated and free of customer or partner form data.
+- Follow all Critical Business Constraints above, even if a general-purpose marketing skill recommends otherwise.

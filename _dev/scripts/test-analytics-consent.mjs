@@ -60,6 +60,64 @@ try{
   assert.ok(!(await page.evaluate(()=>window.dataLayer.some(e=>e.event==='kaftan_analytics_ready'))));
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await context.close();
  }
+ // Partner form fallback analytics: measure only a valid email/WhatsApp intent,
+ // never a completed application or any value typed into the form.
+ for(const lang of ['hu','en']){
+  const context=await browser.createBrowserContext();
+  const page=await context.newPage();
+  await page.setRequestInterception(true);
+  page.on('request',request=>/googletagmanager|google-analytics|clarity\.ms/.test(request.url())
+   ? request.respond({status:200,contentType:'application/javascript',body:''}) : request.continue());
+  const path=lang==='hu'?'/partnerprogram/':'/en/partners/';
+  await page.goto(base+path,{waitUntil:'networkidle2'});
+  await page.click('[data-consent-reject]');
+  await page.evaluate(()=>{
+   // Synthetic extra form is intentionally not wired to the actual mailto/WA
+   // handler: test events without opening an external application.
+   const form=document.createElement('form');
+   form.setAttribute('data-partner-form','');
+   form.innerHTML='<input name="email" required type="email" value="private@example.com"><button type="button" data-partner-whatsapp>Test</button>';
+   document.body.append(form);
+   window.testPartnerIntent=()=>{
+    form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));
+    form.querySelector('button').dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true}));
+   };
+   window.testPartnerIntent();
+  });
+  assert.equal(await page.evaluate(()=>window.dataLayer.filter(entry=>entry.interest_action==='partner_contact_start').length),0,'No partner tracking without consent');
+  // The existing store-page suite covers pointer interaction with the consent UI.
+  // Here exercise its same DOM handlers without Puppeteer's viewport-dependent
+  // clickable-point requirement while inspecting the independent partner events.
+  await page.evaluate(()=>{
+   document.querySelector('[data-consent-open]').click();
+   document.querySelector('[data-consent-customize]').click();
+   document.querySelector('[data-consent-analytics]').click();
+   document.querySelector('[data-consent-save]').click();
+  });
+  await page.waitForFunction(()=>window.kaftanAnalytics.choice.analytics);
+  await page.evaluate(()=>{
+   const input=document.querySelectorAll('[data-partner-form]')[1].querySelector('input');
+   input.value='';
+   window.testPartnerIntent();
+  });
+  assert.equal(await page.evaluate(()=>window.dataLayer.filter(entry=>entry.interest_action==='partner_contact_start').length),0,'Invalid partner fields do not count');
+  const events=await page.evaluate(()=>{
+   const form=document.querySelectorAll('[data-partner-form]')[1];
+   form.querySelector('input').value='private@example.com';
+   window.testPartnerIntent();
+   form.dataset.intakeInitialized='true';
+   form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));
+   return window.dataLayer.filter(entry=>entry.interest_action==='partner_contact_start');
+  });
+  assert.deepEqual(events.map(entry=>entry.interest_source),['partner_email_compose','partner_whatsapp']);
+  for(const event of events){
+   assert.deepEqual(Object.keys(event).sort(),['event','interest_action','interest_source','page_language','page_path'].sort());
+   assert.equal(event.page_path,path);
+   assert.equal(event.page_language,lang);
+   assert.equal(JSON.stringify(event).includes('private@example.com'),false,'No partner email or form data enters analytics');
+  }
+  await context.close();
+ }
  const context=await browser.createBrowserContext();const page=await context.newPage();await page.goto(base+'/en/partner-portal/',{waitUntil:'networkidle2'});
  assert.equal(await page.$('[data-consent-banner]'),null);assert.equal(await page.evaluate(()=>typeof window.kaftanAnalytics),'undefined');await context.close();
  const privateContext=await browser.createBrowserContext();const privatePage=await privateContext.newPage();
