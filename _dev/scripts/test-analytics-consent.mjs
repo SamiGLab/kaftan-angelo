@@ -86,7 +86,10 @@ try{
   });
   assert.equal(await page.evaluate(()=>window.dataLayer.filter(entry=>entry.interest_action==='partner_contact_start').length),0,'No partner tracking without consent');
   await page.click('[data-consent-open]');
-  await page.click('[data-consent-accept]');
+  await page.click('[data-consent-customize]');
+  await page.click('[data-consent-analytics]');
+  await page.click('[data-consent-save]');
+  await page.waitForFunction(()=>window.kaftanAnalytics.choice.analytics);
   await page.evaluate(()=>{
    const input=document.querySelectorAll('[data-partner-form]')[1].querySelector('input');
    input.value='';
