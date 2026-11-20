@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { devices, webkit } from 'playwright';
 
 // Linux WebKit is the closest CI rendering check for Safari, not a substitute
@@ -6,6 +7,10 @@ import { devices, webkit } from 'playwright';
 const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:4173';
 const profiles = ['iPhone SE', 'iPhone 13', 'iPhone 15 Pro Max'];
 const routes = ['/', '/en/', '/kollekciok/', '/en/collections/', '/modellek/siyah-kapitone-budapest/'];
+// Safari added Media Queries Level 4 range comparisons in 16.4. A classic
+// max-width condition retains the mobile layout on earlier supported iPhones.
+const css = await readFile('public/assets/css/pages.css', 'utf8');
+assert.doesNotMatch(css, /@media\s*\(\s*width\s*<=/, 'Mobile breakpoints must work on older iOS Safari');
 const browser = await webkit.launch({ headless: true });
 
 try {
