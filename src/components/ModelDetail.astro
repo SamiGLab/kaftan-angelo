@@ -111,15 +111,30 @@ function renderPicture(pictureHtml: string, eager = false) {
         <p class="model-material" data-model-material="true">
           <strong>{hu ? 'Anyag és kategória: ' : 'Material &amp; category: '}</strong>{material} · {collectionLabel}
         </p>
-        <p>{model.intro[lang]}</p>
+        <p class="model-enquiry-summary">
+          {hu ? 'Érdeklődjön a kiválasztott darab áráról, méretéről és elérhetőségéről. Az üzlet személyesen erősíti meg a részleteket.' : 'Ask about the price, size and availability of this piece. Our store will confirm the details directly.'}
+        </p>
+        <div class="model-enquiry-fields" data-model-enquiry-fields>
+          <label>
+            <span>{hu ? (isBelt ? 'Övhossz (opcionális)' : isWallet ? 'Kívánt méret (opcionális)' : 'Keresett méret (opcionális)') : (isBelt ? 'Belt length (optional)' : 'Preferred size (optional)')}</span>
+            <input type="text" data-enquiry-size maxlength="40" autocomplete="off" placeholder={hu ? 'Pl. M, L vagy cm' : 'e.g. M, L or cm'} />
+          </label>
+          {(!model.variants || model.variants.length === 0) && (
+            <label>
+              <span>{hu ? 'Keresett szín (opcionális)' : 'Preferred colour (optional)'}</span>
+              <input type="text" data-enquiry-colour maxlength="40" autocomplete="off" placeholder={hu ? 'Pl. fekete' : 'e.g. black'} />
+            </label>
+          )}
+        </div>
         <div class="actions">
           <a class="btn btn-primary" data-model-inquiry data-interest-source="model_detail" href={`https://wa.me/36203593216?text=${encodeURIComponent(message)}`}>
-            <Icon name="message" />{hu ? 'Érdeklődés erről a termékről' : 'Ask about this product'}
+            <Icon name="message" />{hu ? 'Ár és méret érdeklődés' : 'Ask about price & size'}
           </a>
           <a class="btn btn-ghost" href={hu ? '/uzlet/' : '/en/visit/'}>
             <Icon name="location" />{hu ? (isWallet || isBelt ? 'Nézze meg üzletünkben' : 'Próbálja fel üzletünkben') : 'Visit our store'}
           </a>
         </div>
+        <p>{model.intro[lang]}</p>
         <h2>{hu ? 'Mire figyeljen választáskor?' : 'What to check when choosing'}</h2>
         <p>{model.advice[lang]}</p>
         {checklist.length > 0 && (
