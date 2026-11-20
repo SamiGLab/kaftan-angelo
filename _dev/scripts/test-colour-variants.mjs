@@ -24,6 +24,10 @@ try {
    const selected=await page.$eval(`[data-colour-panel="${colour}"]`,p=>p.dataset.colourName);
    const message=await page.$eval('[data-model-inquiry]',a=>new URL(a.href).searchParams.get('text'));
    assert.ok(message.includes(selected));assert.ok(message.includes('https://kaftanangelo.com'+images[0]));
+   await page.type('[data-enquiry-size]', 'M');
+   const sizedMessage=await page.$eval('[data-model-inquiry]',a=>new URL(a.href).searchParams.get('text'));
+   assert.ok(sizedMessage.includes(`${lang==='hu'?'Méret':'Size'}: M`));
+   assert.ok(sizedMessage.includes(selected));
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   }
  }

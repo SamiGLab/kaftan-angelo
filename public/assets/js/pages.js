@@ -1,21 +1,33 @@
 const hu = document.documentElement.lang === 'hu';
+const modelInquiry = document.querySelector('[data-model-inquiry]');
+const modelInquiryBase = modelInquiry?.getAttribute('href');
+const modelEnquiryFields = document.querySelector('[data-model-enquiry-fields]');
+let selectedModelColour = null;
+function updateModelInquiry() {
+  if (!modelInquiry || !modelInquiryBase) return;
+  const url = new URL(modelInquiryBase);
+  const parts = [url.searchParams.get('text')];
+  const size = modelEnquiryFields?.querySelector('[data-enquiry-size]')?.value.trim();
+  const colour = selectedModelColour?.name || modelEnquiryFields?.querySelector('[data-enquiry-colour]')?.value.trim();
+  if (size) parts.push(`${hu ? 'Méret' : 'Size'}: ${size}`);
+  if (colour) parts.push(`${hu ? 'Szín' : 'Colour'}: ${colour}`);
+  if (selectedModelColour?.image) parts.push(selectedModelColour.image);
+  url.searchParams.set('text', parts.join('\n'));
+  modelInquiry.href = url.href;
+}
+modelEnquiryFields?.addEventListener('input', updateModelInquiry);
 
 const colourSelector = document.querySelector('[data-colour-selector]');
 if (colourSelector) {
   const panels = [...document.querySelectorAll('[data-colour-panel]')];
-  const inquiry = document.querySelector('[data-model-inquiry]');
-  const originalInquiry = inquiry?.getAttribute('href');
   function selectColour(key) {
     const selected = panels.find(panel => panel.dataset.colourPanel === key);
     if (!selected) return;
     panels.forEach(panel => { panel.hidden = panel !== selected; });
     colourSelector.querySelectorAll('[data-colour]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.colour === key)));
     colourSelector.querySelector('[data-colour-status]').textContent = `${hu ? 'Kiválasztott szín:' : 'Selected colour:'} ${selected.dataset.colourName}`;
-    if (inquiry && originalInquiry) {
-      const url = new URL(originalInquiry);
-      url.searchParams.set('text', `${url.searchParams.get('text')}\n${hu ? 'Szín:' : 'Colour:'} ${selected.dataset.colourName}\n${new URL(selected.querySelector('img').getAttribute('src'), 'https://kaftanangelo.com').href}`);
-      inquiry.href = url.href;
-    }
+    selectedModelColour = {name:selected.dataset.colourName,image:new URL(selected.querySelector('img').getAttribute('src'), 'https://kaftanangelo.com').href};
+    updateModelInquiry();
   }
   colourSelector.hidden = false;
   const requestedColour = new URLSearchParams(location.search).get('colour');
