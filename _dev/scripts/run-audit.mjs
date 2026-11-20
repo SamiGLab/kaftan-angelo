@@ -6,4 +6,7 @@ function getPython() {
 }
 const result = spawnSync(getPython(), ['_dev/scripts/site_audit.py', ...process.argv.slice(2)], { stdio: 'inherit' });
 if (result.error) console.error(result.error.message);
-process.exit(result.status ?? 1);
+if (result.status !== 0) process.exit(result.status ?? 1);
+const images = spawnSync(process.execPath, ['_dev/scripts/test-social-images.mjs', ...process.argv.slice(2)], { stdio: 'inherit' });
+if (images.error) console.error(images.error.message);
+process.exit(images.status ?? 1);
