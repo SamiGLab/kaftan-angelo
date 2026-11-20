@@ -23,6 +23,7 @@ try {
         return Boolean(inquiry && description && (inquiry.compareDocumentPosition(description)&Node.DOCUMENT_POSITION_FOLLOWING));
       }),'Model inquiry appears before long product description');
       assert.ok(await page.$eval('.model-photo img',el=>el.getAttribute('src')===new URL(document.querySelector('meta[property="og:image"]').content).pathname));
+      assert.match(await page.$eval('.model-photo picture source', el => el.sizes), /max-width: 1100px\) 46vw, 600px/, 'Main model image uses detail-column sizes');
       assert.ok((await page.$eval('[data-model-material]',el=>el.textContent)).includes(model.category[lang].name));
       assert.ok((await page.$eval('[data-model-availability]',el=>el.textContent)).length>30);
       if (model.slug === 'siyah-kapitone-budapest') {

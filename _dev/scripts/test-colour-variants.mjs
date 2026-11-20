@@ -14,6 +14,7 @@ try {
    assert.equal(await page.$$eval('[data-colour-panel]',panels=>panels.filter(p=>!p.hidden).length),1);
    const images=await page.$$eval(`[data-colour-panel="${colour}"] img`,imgs=>imgs.map(i=>i.getAttribute('src')));
    assert.equal(images.length,4);
+   assert.match(await page.$eval(`[data-colour-panel="${colour}"] picture source`, el=>el.sizes), /max-width: 1100px\) 46vw, 600px/);
    for(const image of images) {
     const response=await fetch(base+image);
     assert.equal(response.status,200);
