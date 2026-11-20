@@ -2303,6 +2303,8 @@ button > .ui-icon:only-child { margin: 0; }
 .model-photo img { display:block; width:100%; height:auto; max-height:75vh; object-fit:contain; }
 .model-photo > a { display:inline-block; margin-top:1rem; }
 .model-info h1 { font-size:clamp(1.9rem,3.5vw,3rem); }
+.model-enquiry-summary { max-width:55ch; }
+.model-info .actions { margin-top:1rem; margin-bottom:1.5rem; }
 .model-note { font-size:.9rem; margin-top:1.5rem; }
 .product-detail-link { display:inline-block; margin-bottom:.75rem; }
 @media(max-width:760px) { .model-detail { grid-template-columns:1fr; } .model-photo img { max-height:65vh; } .model-info .actions { flex-direction:column; } }

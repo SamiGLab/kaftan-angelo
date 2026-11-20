@@ -17,6 +17,11 @@ try {
       assert.ok(text.includes(model.names[lang]));
       assert.ok(text.includes('https://kaftanangelo.com'+path));
       assert.equal(new URL(href).pathname,'/36203593216');
+      assert.ok(await page.$eval('.model-info',el=>{
+        const inquiry=el.querySelector('[data-model-inquiry]');
+        const description=el.querySelector('.actions + p');
+        return Boolean(inquiry && description && (inquiry.compareDocumentPosition(description)&Node.DOCUMENT_POSITION_FOLLOWING));
+      }),'Model inquiry appears before long product description');
       assert.ok(await page.$eval('.model-photo img',el=>el.getAttribute('src')===new URL(document.querySelector('meta[property="og:image"]').content).pathname));
       assert.ok((await page.$eval('[data-model-material]',el=>el.textContent)).includes(model.category[lang].name));
       assert.ok((await page.$eval('[data-model-availability]',el=>el.textContent)).length>30);
