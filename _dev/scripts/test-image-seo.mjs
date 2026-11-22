@@ -18,7 +18,7 @@ for (const match of xml.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
   assert.ok(images.length <= 1000, url + ' must respect image sitemap limit');
   for (const image of images) {
     assert.ok(image.startsWith(BASE + '/'), url + ' must only use first-party image URLs');
-    const local = path.join('dist', new URL(image).pathname);
+    const local = path.join('dist', new URL(image).pathname.slice(1));
     assert.ok(existsSync(local), url + ' references missing image ' + image);
   }
   sitemap.set(url, images);
@@ -49,10 +49,12 @@ for (const model of models) {
     const itemPage = graph.find(node => node['@type'] === 'ItemPage');
     assert.ok(product && itemPage, route + ' missing schema');
     assert.equal(product.image.length, photos.length, route + ' photo schema length');
-    for (const photo of product.image) {
+    for (const [index, photo] of product.image.entries()) {
       assert.equal(photo['@type'], 'ImageObject');
       assert.ok(photo.contentUrl.startsWith(BASE + '/'));
-      assert.ok(photo.name?.trim(), route + ' image object needs a meaningful HU/EN name');
+      const originalAlt = photos[index].pictures[lang].match(/<img\b[^>]*\balt="([^"]+)"/i)?.[1]?.replace(/&amp;/g, '&');
+      assert.ok(originalAlt, route + ' missing original HU/EN alt for photo ' + index);
+      assert.equal(photo.name, originalAlt, route + ' image schema must use the real descriptive image alt');
       assert.ok(imageUrls.includes(photo.contentUrl), route + ' schema image absent from image sitemap');
     }
     assert.equal(itemPage.primaryImageOfPage.contentUrl, BASE + model.image);
