@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { pageImageUrls } from '../../src/data/image-seo.js';
 
@@ -82,17 +82,26 @@ for (const route of landingPages) {
   assert.ok(listed.length > 1, route + ' should expose more than just the hero');
 }
 
-// Guides previously had no image sitemap entries. Preserve the existing article hero.
-for (const [route, guideFile] of [
-  ['/utmutatok/borkabat-apolas/', 'src/content/guides/hu/borkabat-apolas.md'],
-  ['/en/guides/leather-jacket-care/', 'src/content/guides/en/leather-jacket-care.md'],
-  ['/utmutatok/budapesti-borkabat-vasarlasi-kalauz/', 'src/content/guides/hu/budapesti-borkabat-vasarlasi-kalauz.md'],
-  ['/en/guides/budapest-leather-shopping-guide/', 'src/content/guides/en/budapest-leather-shopping-guide.md'],
+// All published HU/EN guides must expose the same visible hero photo in the sitemap.
+let checkedGuides = 0;
+for (const [directory, root] of [
+  ['src/content/guides/hu', '/utmutatok/'],
+  ['src/content/guides/en', '/en/guides/'],
 ]) {
-  const source = readFileSync(guideFile, 'utf8');
-  const hero = source.match(/^heroImage: "([^"]+)"$/m)?.[1];
-  assert.ok(hero, guideFile + ' has no hero image');
-  assert.ok(verifyPage(route).includes(BASE + hero), route + ' missing guide hero in image sitemap');
+  for (const file of readdirSync(directory).filter(name => name.endsWith('.md'))) {
+    const source = readFileSync(path.join(directory, file), 'utf8');
+    const hero = source.match(/^heroImage: "([^"]+)"$/m)?.[1];
+    assert.ok(hero, file + ' must have a published cover photo');
+    const route = root + file.replace(/\.md$/, '') + '/';
+    assert.ok(verifyPage(route).includes(BASE + hero), route + ' missing original guide hero');
+    checkedGuides++;
+  }
+}
+// The HU/EN guide hubs also have a background cover photo.
+for (const route of ['/utmutatok/', '/en/guides/']) {
+  const html = readFileSync('dist' + route + 'index.html', 'utf8');
+  const url = html.match(/<meta property="og:image" content="([^"]+)"/)?.[1];
+  assert.ok(url && verifyPage(route).includes(url), route + ' missing hub hero in image sitemap');
 }
 
 // Reject external domains, non-image URLs and duplicate variants from the image sitemap.
@@ -104,4 +113,4 @@ assert.deepEqual(
   [BASE + '/jacket.webp'],
 );
 
-console.log('PASS: image SEO validated for ' + checkedModels + ' HU/EN product pages, ' + landingPages.length + ' collection/home pages and four guide covers.');
+console.log('PASS: image SEO validated for ' + checkedModels + ' HU/EN product pages, ' + landingPages.length + ' collection/home pages and ' + checkedGuides + ' guide covers plus both guide hubs.');
