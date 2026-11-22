@@ -43,3 +43,29 @@ A boutique visit or model-specific message is more valuable than a broad irrelev
 No numeric product prices, invented availability, star claims, unverified material claims, checkout, tax-free promises or handcrafting claims have been introduced. The site remains an in-store boutique with model-specific enquiries.
 
 **References:** [Google title link guidelines](https://developers.google.com/search/docs/appearance/title-link), [snippet guidance](https://developers.google.com/search/docs/appearance/snippet), [review snippet policies](https://developers.google.com/search/docs/appearance/structured-data/review-snippet).
+
+
+## 2026-11-22 follow-up: Google autocomplete and competitor-result screenshots
+
+**Second source:** user-provided screenshots of Google autocomplete for `Bőrkabát` and a sample Google search results screen. The screenshots contain candidate phrases, not keyword volumes, rankings for Kaftan Angelo or proof that a particular product result can be reproduced.
+
+Autocomplete shown: `bőrkabát női`, `bőrkabát férfi`, `bőrkabát tisztítás`, `bőrkabát javítás`, `bőrkabátbolt`, `bőrkabát ápolása`, `bőrkabát budapest`, `bőrkabát bolt budapest`, `bőrkabát tisztító`.
+
+**Intent split, not a new batch of doorway pages:**
+
+| Search intent | Best matching existing destination | Implementation |
+| --- | --- | --- |
+| Broad leather jackets in Budapest | `/borkabat-budapest/` | Preserve broad women/men assortment title and two linked, photographed real models |
+| Physical shop in Budapest | `/uzlet/` | Clarify `Bőrkabát bolt Budapest` title and H1, address, category links, visit CTA |
+| Men's leather jackets | `/ferfi-borkabatok/` | Explicit `férfi bőrkabátok` and `bőrdzsekik` H1; link existing men's model comparison guide |
+| Women's leather jackets | `/noi-borkabatok/` | Existing women-focused title/H1 and photographic catalog retained |
+| Cleaning / care (information only) | `/utmutatok/borkabat-apolas/` | Improved existing HU/EN guide; finish-specific handling and specialist referral, no invented cleaning service |
+| Repairs | `/egyedi-rendeles/` | Clarify that repair feasibility, terms and sizes are discussed case-by-case; no automatic commitment |
+
+The sample results screen shows **other websites** with visible product imagery, not verified first-party Kaftan Angelo SERP features. This release links two genuine existing product pages with their **original photos** from the HU and EN Budapest leather-jacket landing pages; it does not use competitors' photographs or copy their content.
+
+Google product/merchant rich-result eligibility is subject to separate requirements; the store does not publish prices, offers, numeric ratings or live stock. Do not fabricate any of those to imitate the appearance of commercial competitors. See [Google Product structured data](https://developers.google.com/search/docs/appearance/structured-data/product) and [Search Essentials](https://developers.google.com/search/docs/essentials).
+
+**Uploaded repository ZIPs reviewed for applicability:** `humanizer` provides useful plain-language review principles; `ui-ux-pro-max` and `obra-superpowers` are general UI/process references. The other uploaded projects are independent social-media, reverse-engineering or GitHub Pages instructional code, not appropriate dependencies for the existing Astro storefront. No third-party code is copied or executed by this release.
+
+**Validation:** the same SEO regression check now also checks the genuine model/photo references, HU/EN model routes, correct local-vs-category intent, men's guide link and cleaning-vs-repair wording. Continue monitoring query-level **and page-level** GSC data after deployment.
