@@ -1,0 +1,42 @@
+# Kaftan Angelo — image SEO release and audit (2026-11-22)
+
+## Evidence and scope
+
+Reviewed the actual Astro source, including `src/data/models.json`, `src/data/pages.json`, `src/data/model-pages.ts`, `src/components/ModelDetail.astro`, `src/pages/sitemap.xml.js` and the image optimization scripts.
+
+The catalog contains **49 model records**, generating **98 HU/EN product detail pages**. Existing photo URLs are stable and use WebP source assets. Responsive AVIF/WebP variants are produced at build time; images use `srcset`, intrinsic dimensions and appropriate lazy/eager behavior. Product records already have language-specific alt descriptions, generally with specific colour/style and front/back/interior views. An initial source audit found no missing `alt` in 334 examined model image markup occurrences or 186 inline `<img>` occurrences in the 30 base page HTML records. Those are HTML occurrences, **not unique physical files** or an assurance of image quality. These are meaningful existing foundations, not work introduced by this release.
+
+## Improvements implemented
+
+1. **Sitemap coverage:** The previous sitemap included images for model galleries and `data-product-image` listing controls, but omitted the cover photos on guide articles and ordinary `<img>` images on some collection/home/local landing pages. A focused shared helper now enumerates the **first-party original photos actually referenced** in the site's source plus the existing page preview image, with deduplication, extension/origin checks, and Google's 1,000-images-per-URL ceiling. On a product detail page, only the specified product's gallery is listed, not unrelated recommendation thumbnails.
+2. **HU/EN article covers:** Each published guide's declared `frontmatter.heroImage` is connected to its own sitemap URL; both guide hubs have their actual original social-cover asset.
+3. **Product photo context:** Each model's `Product.image` now includes `ImageObject` records with the **actual first-party image URL and the existing human-written, localized alt description**. The `ItemPage.primaryImageOfPage` also names its primary photograph. The existing gallery image URL order is preserved.
+4. **Social image descriptions:** `og:image:alt` and `twitter:image:alt` on product pages now match the primary photo, rather than using a generic SEO page title.
+5. **Regression testing:** The post-build `test-image-seo.mjs` checks 98 product pages against their source gallery images, image metadata and social tags, selected HU/EN category and local landing pages, **every published HU/EN guide cover**, both guide hubs, first-party image availability, duplicates and negative external-URL cases. The site's pre-existing static HTML audit, accessibility, model inquiry tests, and Lighthouse remain in place.
+
+## Why we did not rename or duplicate photo files
+
+Image filenames contain a mix of Turkish product naming, Hungarian descriptive segments and existing catalogue IDs. Google says filenames offer *light clues*; descriptive surrounding content and alternative text are materially more useful. Bulk renaming would break already-indexed image URLs and existing references across model pages, guides, sitemap and social sharing. Generating keyword-stuffed duplicates would waste bytes and crawl attention. Keep stable URLs unless an individual source is genuinely wrong.
+
+## What we deliberately did not claim
+
+- **No guaranteed Google Images ranking, rich result, image pack placement, clicks or sales.** Changes improve crawl clarity, not ranking guarantees.
+- **No invented price, Offer, in-stock status, ratings or Merchant Center feed.** This is a showroom site with inquiries, not live online checkout.
+- **No fictitious copyright owner, photographer, usage rights or licensing fields.** Add IPTC/schema image licensing only after those rights are documented.
+- **No automatic claims about sharpness, pixel quality, colour accuracy, compression or photo relevance.** These require review of the actual delivered images and production performance.
+- **No new derivative URLs solely for a keyword.** Keep existing original WebP and optimized, responsive AVIF/WebP choices.
+
+## Release verification and measurement
+
+1. Merge only when the full GitHub Actions quality suite (including image SEO regression, accessibility, link audit and Lighthouse) is green and a reviewer checks the visible pages.
+2. Confirm the deployment and fetch the live sitemap plus several HU/EN product pages; inspect `image:loc`, `Product.image`, `og:image:alt`, correct `src` and `srcset`. Ensure image URLs return HTTP 200.
+3. In Google Search Console, separately review **Performance → Search type: Image** and regular Web results. Filter by page, country, query and device. Check image indexing or crawl availability through URL Inspection as appropriate.
+4. Record matched before/after windows **after recrawling**, accounting for image index latency and seasonal changes. Track image impressions, clicks, image search CTR, landing-page visits and genuine model inquiries separately.
+5. If additional improvement is needed, prioritize manually verifying high-impact photos (women's genuine leather, men's leather jackets, fur and shearling) for image relevance and sufficiently detailed angles. Do not rewrite descriptions without checking what the photograph truly depicts.
+
+## Official documentation
+
+- [Google Search Central: Image SEO best practices](https://developers.google.com/search/docs/appearance/google-images)
+- [Google Search Central: Image sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps)
+- [Google Search Central: Product structured data](https://developers.google.com/search/docs/appearance/structured-data/product-snippet)
+- [Google Search Central: Image licensing metadata](https://developers.google.com/search/docs/appearance/structured-data/image-license-metadata)
