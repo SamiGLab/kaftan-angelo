@@ -6,12 +6,12 @@ const siteSource = readFileSync(new URL('../../src/data/site.ts', import.meta.ur
 
 const expectedTitles = {
   '/': /Bőrkabátok.*Budapesten/,
-  '/borkabat-budapest/': /Bőrkabát bolt Budapest/,
+  '/borkabat-budapest/': /Bőrkabát Budapest/,
   '/noi-borkabatok/': /Női bőrkabátok.*bőrdzsekik/,
   '/ferfi-borkabatok/': /Férfi bőrkabátok/,
   '/irhakabatok/': /Irhakabátok/,
   '/szormekabatok/': /Női szőrmekabátok/,
-  '/uzlet/': /Kaftan Angelo üzlet Budapest/,
+  '/uzlet/': /Bőrkabát bolt Budapest/,
   '/en/': /Leather Jackets.*Budapest/,
   '/en/leather-jackets-budapest/': /Leather Jacket Shop in Budapest/,
   '/en/womens-leather-jackets/': /Women's Leather Jackets in Budapest/,
@@ -48,4 +48,28 @@ for (const [path, href, guidePath] of pairedGuides) {
   assert.ok(pages[path].mainHtml.includes(`href="${href}"`), `Missing contextual guide link: ${path}`);
   assert.ok(existsSync(new URL(guidePath, import.meta.url)), `Missing guide behind link: ${href}`);
 }
-console.log(`SEO metadata, HU/EN counterpart and guide link checks passed for ${Object.keys(expectedTitles).length} priority pages.`);
+
+const modelLinks = [
+  ['noi-ketoldalas-vizallo-borkabat-budapest', 'noi-piros-ketoldalas-borkabat-budapest-plain-front.webp'],
+  ['siyah-kapitone-budapest', 'siyah-kapitone-budapest-01_on.webp'],
+];
+const models = JSON.parse(readFileSync(new URL('../../src/data/models.json', import.meta.url), 'utf8'));
+for (const [slug, image] of modelLinks) {
+  assert.ok(models.some(model => model.slug === slug && model.image === '/' + image), `Photo must belong to a genuine catalogued model: ${slug}`);
+  assert.ok(existsSync(new URL('../../public/' + image, import.meta.url)), `Missing original product photograph: ${image}`);
+  for (const [landing, prefix] of [['/borkabat-budapest/', '/modellek/'], ['/en/leather-jackets-budapest/', '/en/models/']]) {
+    assert.ok(pages[landing].mainHtml.includes(`href="${prefix}${slug}/"`), `Missing model route from ${landing}`);
+    assert.ok(pages[landing].mainHtml.includes('src="/' + image + '"'), `Missing photographed example on ${landing}`);
+  }
+}
+assert.match(pages['/uzlet/'].title, /Bőrkabát bolt Budapest/);
+assert.match(pages['/ferfi-borkabatok/'].mainHtml, /<h1>Férfi bőrkabátok és bőrdzsekik Budapesten<\\/h1>/);
+assert.ok(pages['/ferfi-borkabatok/'].mainHtml.includes('/utmutatok/ferfi-motoros-vagy-klasszikus-bordzseki/'));
+assert.match(pages['/egyedi-rendeles/'].mainHtml, /Bőrkabát javítás: kérjen előzetes tájékoztatást/);
+const careHu = readFileSync(new URL('../../src/content/guides/hu/borkabat-apolas.md', import.meta.url), 'utf8');
+const careEn = readFileSync(new URL('../../src/content/guides/en/leather-jacket-care.md', import.meta.url), 'utf8');
+assert.match(careHu, /Bőrkabát tisztítása és ápolása/);
+assert.match(careHu, /nem általános vegytisztítói szolgáltatáslista/);
+assert.match(careEn, /How to Clean and Care for a Leather Jacket/);
+console.log(`SEO metadata and language pairs passed for ${Object.keys(expectedTitles).length} priority pages; local-intent routes, photographed models and care guides verified.`);
+
