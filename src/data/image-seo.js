@@ -24,6 +24,6 @@ export function pageImageUrls(page = {}, guideHero) {
   // unrelated recommendation thumbnails also present in its HTML.
   const inlinePhotos = page.isModel ? [] : [...html.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/gi)].map(match => match[1]);
   const detailPhotos = page.isModel ? [] : [...html.matchAll(/\bdata-product-image="([^"]+)"/gi)].map(match => match[1]);
-  const candidates = [primary, ...gallery, page.ogImage, ...inlinePhotos, ...detailPhotos, guideHero];
+  const candidates = [primary, ...gallery, page.ogImage, ...inlinePhotos, ...detailPhotos, guideHero].map(image => typeof image === 'object' && image !== null ? image.contentUrl ?? image.url : image);
   return [...new Set(candidates.map(firstPartyImage).filter(Boolean))].slice(0, 1000);
 }
