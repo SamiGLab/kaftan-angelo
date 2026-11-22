@@ -1,5 +1,5 @@
 import { execFileSync, spawnSync } from 'node:child_process';
-import { mkdtemp, mkdir, copyFile, lstat, writeFile, rm } from 'node:fs/promises';
+import { mkdtemp, mkdir, copyFile, lstat, writeFile, readFile, rm } from 'node:fs/promises';
 import { randomBytes } from 'node:crypto';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
@@ -31,7 +31,19 @@ try {
     await mkdir(path.dirname(target),{recursive:true});
     await copyFile(source,target);
   }
-  const result=spawnSync(executable,args(snapshot),{stdio:'inherit'});
-  if(result.error || result.status!==0) throw Error('Current-source secret scan failed');
+  const reportPath=path.join(temp,'redacted-source-findings.json');
+  const result=spawnSync(executable,[...args(snapshot),'--report-format','json','--report-path',reportPath],{stdio:'inherit'});
+  if(result.error || result.status!==0) {
+    // Never log matched values. Paths, line numbers and rule identifiers are
+    // enough to investigate a false positive without leaking a credential.
+    try {
+      const findings=JSON.parse(await readFile(reportPath,'utf8'));
+      for(const finding of findings) {
+        const location=path.relative(snapshot,finding.File || '');
+        console.error(`Secret scan finding: ${location}:${finding.StartLine ?? '?'} [${finding.RuleID ?? 'unknown'}] (value withheld)`);
+      }
+    } catch { console.error('Secret scan did not produce a readable diagnostic report'); }
+    throw Error('Current-source secret scan failed');
+  }
   console.log(`PASS: ${files.length} current-source files; synthetic secret detection and public identifier controls`);
 } finally {await rm(temp,{recursive:true,force:true});}
