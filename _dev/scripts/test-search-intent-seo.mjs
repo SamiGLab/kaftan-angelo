@@ -27,7 +27,7 @@ for (const [path, titlePattern] of Object.entries(expectedTitles)) {
   assert.match(page.title, titlePattern, `Misaligned search intent: ${path}`);
   assert.ok(page.title.length <= 80, `Title is unnecessarily long: ${path}`);
   assert.ok(page.description.length >= 75 && page.description.length <= 180, `Description length outside editorial review range: ${path}`);
-  assert.match(page.mainHtml, /<h1(?:\\s[^>]*)?>[^<]+<\\/h1>/, `Missing visible H1: ${path}`);
+  assert.match(page.mainHtml, /<h1(?:\s[^>]*)?>[^<]+<\/h1>/, `Missing visible H1: ${path}`);
   assert.equal(page.canonical, 'https://kaftanangelo.com' + path, `Canonical changed unexpectedly: ${path}`);
   assert.equal(pages[page.counterpart]?.counterpart, path, `Missing reciprocal language page: ${path}`);
 }
@@ -35,10 +35,10 @@ for (const [path, titlePattern] of Object.entries(expectedTitles)) {
 const titles = Object.values(pages).map(page => page.title);
 assert.equal(new Set(titles).size, titles.length, 'Page titles must stay unique');
 for (const [path, page] of Object.entries(pages)) {
-  assert.doesNotMatch(page.title + ' ' + page.description, /5\\.0★/, `Unverified star claim in search snippet: ${path}`);
+  assert.doesNotMatch(page.title + ' ' + page.description, /5\.0★/, `Unverified star claim in search snippet: ${path}`);
 }
-assert.doesNotMatch(siteSource, /aggregateRating\\s*:/, 'Store must not mark up self-serving aggregate ratings');
-assert.doesNotMatch(siteSource, /priceRange\\s*:/, 'Do not infer a store price range');
+assert.doesNotMatch(siteSource, /aggregateRating\s*:/, 'Store must not mark up self-serving aggregate ratings');
+assert.doesNotMatch(siteSource, /priceRange\s*:/, 'Do not infer a store price range');
 
 const pairedGuides = [
   ['/borkabat-budapest/', '/utmutatok/budapesti-borkabat-vasarlasi-kalauz/', '../../src/content/guides/hu/budapesti-borkabat-vasarlasi-kalauz.md'],
