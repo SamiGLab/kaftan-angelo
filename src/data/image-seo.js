@@ -20,8 +20,10 @@ export function pageImageUrls(page = {}, guideHero) {
   const gallery = Array.isArray(page.pageSchema?.image) ? page.pageSchema.image : [];
   // Keep originals referenced by <img> and the product-photo lightbox.
   // CSS-only hero imagery is represented by the page's existing ogImage.
-  const inlinePhotos = [...html.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/gi)].map(match => match[1]);
-  const detailPhotos = [...html.matchAll(/\bdata-product-image="([^"]+)"/gi)].map(match => match[1]);
+  // A model landing page represents the photographed product, not the
+  // unrelated recommendation thumbnails also present in its HTML.
+  const inlinePhotos = page.isModel ? [] : [...html.matchAll(/<img\b[^>]*\bsrc="([^"]+)"/gi)].map(match => match[1]);
+  const detailPhotos = page.isModel ? [] : [...html.matchAll(/\bdata-product-image="([^"]+)"/gi)].map(match => match[1]);
   const candidates = [primary, ...gallery, page.ogImage, ...inlinePhotos, ...detailPhotos, guideHero];
   return [...new Set(candidates.map(firstPartyImage).filter(Boolean))].slice(0, 1000);
 }
