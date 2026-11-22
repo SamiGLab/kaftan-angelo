@@ -42,7 +42,7 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
   // Use only existing gallery photos and their human-edited HU/EN alt descriptions.
   // ImageObject adds context without claiming prices, offers or stock.
   const imageAlt = (pictureHtml: string, fallback: string) =>
-    pictureHtml.match(/<img\\b[^>]*\\balt="([^"]+)"/i)?.[1]?.replace(/&amp;/g, '&') ?? fallback;
+    pictureHtml.match(/<img\b[^>]*\balt="([^"]+)"/i)?.[1]?.replace(/&amp;/g, '&') ?? fallback;
   const primaryImageAlt = imageAlt(model.pictures[lang], name);
   const photos = model.gallery.length ? model.gallery : [{ image: model.image, pictures: model.pictures }];
   const productImages = photos.map(photo => ({
