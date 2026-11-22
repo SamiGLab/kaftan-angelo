@@ -39,14 +39,26 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
   const detailsHtml = checklist.length ? `<h2>${hu ? 'Hasznos kérdések a kiválasztott darabról' : 'Questions about the specific piece'}</h2><ul class="model-checklist">${checklist.map(text => `<li>${escape(text)}</li>`).join('')}</ul>` : '';
   const relatedHtml = related.length ? `<div class="model-related"><h2>${hu ? 'Hasonlítsa össze más modellekkel' : 'Compare with other models'}</h2><ul class="model-related-list">${related.map(other => `<li><a class="model-related-card" href="${hu ? '/modellek/' : '/en/models/'}${other.slug}/"><div class="model-related-photo">${other.pictures[lang]}</div><span class="model-related-name">${escape(other.names[lang])}</span></a></li>`).join('')}</ul></div>` : '';
 
+  // Use only existing gallery photos and their human-edited HU/EN alt descriptions.
+  // ImageObject adds context without claiming prices, offers or stock.
+  const imageAlt = (pictureHtml: string, fallback: string) =>
+    pictureHtml.match(/<img\\b[^>]*\\balt="([^"]+)"/i)?.[1]?.replace(/&amp;/g, '&') ?? fallback;
+  const primaryImageAlt = imageAlt(model.pictures[lang], name);
+  const photos = model.gallery.length ? model.gallery : [{ image: model.image, pictures: model.pictures }];
+  const productImages = photos.map(photo => ({
+    '@type': 'ImageObject',
+    contentUrl: BASE + photo.image,
+    name: imageAlt(photo.pictures[lang], name),
+  }));
+
   const geoTitle = `${name} | Budapest · Kaftan Angelo`;
   const brandTitle = `${name} | Kaftan Angelo`;
   const title = geoTitle.length <= 68 ? geoTitle : (brandTitle.length <= 68 ? brandTitle : name);
 
   return [path, {
     path, lang, title, description,
-    canonical: BASE + path, counterpart, ogImage: BASE + model.image,
-    modifiedDate: '2026-10-24',
+    canonical: BASE + path, counterpart, ogImage: BASE + model.image, ogImageAlt: primaryImageAlt,
+    modifiedDate: '2026-11-22',
     isModel: true,
     model,
     checklist,
@@ -56,7 +68,7 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
       '@id': `${BASE}${path}#product`,
       name,
       description,
-      image: model.gallery.length ? model.gallery.map(photo => BASE + photo.image) : [BASE + model.image],
+      image: productImages,
       brand: {
         '@type': 'Brand',
         name: 'Kaftan Angelo',
@@ -69,7 +81,7 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
       name,
       description,
       url: BASE + path,
-      primaryImageOfPage: { '@type': 'ImageObject', contentUrl: BASE + model.image },
+      primaryImageOfPage: { '@type': 'ImageObject', contentUrl: BASE + model.image, name: primaryImageAlt },
       image: model.gallery.length ? model.gallery.map(photo => BASE + photo.image) : [BASE + model.image],
     },
     breadcrumbs: [{ name: hu ? 'Főoldal' : 'Home', url: hu ? '/' : '/en/' }, { name: collectionLabel, url: collection }, { name, url: path }],
