@@ -31,7 +31,12 @@ export function GET() {
   urls.add('/en/guides/');
   Object.keys(huGuides).forEach(p=>urls.add(`/utmutatok/${slug(p)}/`));
   Object.keys(enGuides).forEach(p=>urls.add(`/en/guides/${slug(p)}/`));
-  const guideImages = new Map();
+  // Both guide index pages render this same existing photograph as their hero.
+  const guideIndexHero = '/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif';
+  const guideImages = new Map([
+    ['/utmutatok/', guideIndexHero],
+    ['/en/guides/', guideIndexHero],
+  ]);
   const modified = new Map(Object.entries(pages).filter(([, page]) => page.modifiedDate).map(([url, page]) => [url, page.modifiedDate]));
   for (const [modules, root] of [[huGuides, '/utmutatok/'], [enGuides, '/en/guides/']]) {
     for (const [path, mod] of Object.entries(modules)) {
