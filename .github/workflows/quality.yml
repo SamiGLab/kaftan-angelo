@@ -129,6 +129,8 @@ jobs:
         run: npm run build
       - name: Static link and SEO audit
         run: npm run audit:dist
+      - name: Check Cloudflare email protection links and robots crawling policy
+        run: node _dev/scripts/test-cloudflare-email-seo.mjs
       - name: Check image SEO for product galleries, collections and guides
         run: node _dev/scripts/test-image-seo.mjs
       - name: Check editorial products without published prices
