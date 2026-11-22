@@ -45,11 +45,11 @@ for (const model of models) {
     const jsonLd = html.match(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)?.[1];
     assert.ok(jsonLd, route + ' missing JSON-LD');
     const graph = JSON.parse(jsonLd)['@graph'];
-    const product = graph.find(node => node['@type'] === 'Product');
+    assert.ok(!graph.some(node => node['@type'] === 'Product'), route + ' has no ineligible Product snippet schema');
     const itemPage = graph.find(node => node['@type'] === 'ItemPage');
-    assert.ok(product && itemPage, route + ' missing schema');
-    assert.equal(product.image.length, photos.length, route + ' photo schema length');
-    for (const [index, photo] of product.image.entries()) {
+    assert.ok(itemPage, route + ' missing descriptive page schema');
+    assert.equal(itemPage.image.length, photos.length, route + ' photo schema length');
+    for (const [index, photo] of itemPage.image.entries()) {
       assert.equal(photo['@type'], 'ImageObject');
       assert.ok(photo.contentUrl.startsWith(BASE + '/'));
       const originalAlt = photos[index].pictures[lang].match(/<img\b[^>]*\balt="([^"]+)"/i)?.[1]?.replace(/&amp;/g, '&');
