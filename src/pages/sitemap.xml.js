@@ -31,8 +31,8 @@ export function GET() {
   urls.add('/en/guides/');
   Object.keys(huGuides).forEach(p=>urls.add(`/utmutatok/${slug(p)}/`));
   Object.keys(enGuides).forEach(p=>urls.add(`/en/guides/${slug(p)}/`));
-  // Both guide index pages render this same existing photograph as their hero.
-  const guideIndexHero = '/assets/images/kaftan-angelo-leather-jackets-budapest-800.avif';
+  // Both guide hubs use this original photograph for social previews and the cover.
+  const guideIndexHero = '/kaftan-angelo-leather-jackets-budapest.webp';
   const guideImages = new Map([
     ['/utmutatok/', guideIndexHero],
     ['/en/guides/', guideIndexHero],
