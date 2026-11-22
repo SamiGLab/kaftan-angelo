@@ -103,6 +103,8 @@ jobs:
         run: npm run check:lint
       - name: Test Lighthouse budget enforcement
         run: node --test _dev/scripts/lighthouse-budgets.test.mjs
+      - name: Test GSC-driven search intent and HU/EN SEO metadata
+        run: node _dev/scripts/test-search-intent-seo.mjs
       - name: Validate CMS content and uploaded images
         run: node _dev/scripts/validate-content.mjs
       - name: Test CMS authentication bridge
