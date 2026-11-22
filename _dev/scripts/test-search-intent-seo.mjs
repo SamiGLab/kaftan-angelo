@@ -63,7 +63,7 @@ for (const [slug, image] of modelLinks) {
   }
 }
 assert.match(pages['/uzlet/'].title, /Bőrkabát bolt Budapest/);
-assert.match(pages['/ferfi-borkabatok/'].mainHtml, /<h1>Férfi bőrkabátok és bőrdzsekik Budapesten<\\/h1>/);
+assert.ok(pages['/ferfi-borkabatok/'].mainHtml.includes('<h1>Férfi bőrkabátok és bőrdzsekik Budapesten</h1>'));
 assert.ok(pages['/ferfi-borkabatok/'].mainHtml.includes('/utmutatok/ferfi-motoros-vagy-klasszikus-bordzseki/'));
 assert.match(pages['/egyedi-rendeles/'].mainHtml, /Bőrkabát javítás: kérjen előzetes tájékoztatást/);
 const careHu = readFileSync(new URL('../../src/content/guides/hu/borkabat-apolas.md', import.meta.url), 'utf8');
