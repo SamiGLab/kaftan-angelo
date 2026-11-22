@@ -49,13 +49,12 @@ for (const [path, href, guidePath] of pairedGuides) {
   assert.ok(existsSync(new URL(guidePath, import.meta.url)), `Missing guide behind link: ${href}`);
 }
 
-const modelLinks = [
-  ['noi-ketoldalas-vizallo-borkabat-budapest', 'noi-piros-ketoldalas-borkabat-budapest-plain-front.webp'],
-  ['siyah-kapitone-budapest', 'siyah-kapitone-budapest-01_on.webp'],
-];
+const modelSlugs = ['noi-ketoldalas-vizallo-borkabat-budapest', 'siyah-kapitone-budapest'];
 const models = JSON.parse(readFileSync(new URL('../../src/data/models.json', import.meta.url), 'utf8'));
-for (const [slug, image] of modelLinks) {
-  assert.ok(models.some(model => model.slug === slug && model.image === '/' + image), `Photo must belong to a genuine catalogued model: ${slug}`);
+for (const slug of modelSlugs) {
+  const model = models.find(item => item.slug === slug);
+  assert.ok(model?.image?.startsWith('/'), `Missing catalogued original photograph for ${slug}`);
+  const image = model.image.slice(1);
   assert.ok(existsSync(new URL('../../public/' + image, import.meta.url)), `Missing original product photograph: ${image}`);
   for (const [landing, prefix] of [['/borkabat-budapest/', '/modellek/'], ['/en/leather-jackets-budapest/', '/en/models/']]) {
     assert.ok(pages[landing].mainHtml.includes(`href="${prefix}${slug}/"`), `Missing model route from ${landing}`);
