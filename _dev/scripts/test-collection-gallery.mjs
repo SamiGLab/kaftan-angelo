@@ -34,8 +34,31 @@ for(const lang of ['hu','en']) {
   await page.setViewport({width,height:800});
   await page.goto(base+(lang==='hu'?'/kollekciok/':'/en/collections/'),{waitUntil:'networkidle2'});
   if(await page.$eval('[data-consent-banner]',node=>!node.hidden))await page.click('[data-consent-reject]');
+  const header=await page.evaluate(()=>{
+   const hero=document.querySelector('.page-hero');
+   return {
+    heading:hero.querySelector('h1').textContent.trim(),
+    heroHeight:hero.getBoundingClientRect().height,
+    heroImage:getComputedStyle(hero).backgroundImage,
+    announcement:getComputedStyle(document.querySelector('.announcement')).display,
+    mobilePreload:!!document.querySelector('link[rel="preload"][as="image"][media="(max-width: 620px)"]'),
+    headerVisible:document.querySelector('.site-header').getBoundingClientRect().height>0
+   };
+  });
+  assert.ok(header.heading.length>20 && header.headerVisible,'Keep the real heading and navigation');
+  if(width<=620) {
+   assert.equal(header.heroImage,'none','No decorative mobile collection hero image');
+   assert.equal(header.announcement,'none','No promotional strip on mobile collections');
+   assert.equal(header.mobilePreload,false,'Do not preload unused mobile hero');
+   assert.ok(header.heroHeight<=240,'Compact mobile collection title');
+  } else {
+   assert.notEqual(header.heroImage,'none','Retain desktop hero');
+   assert.notEqual(header.announcement,'none','Retain desktop announcement');
+  }
   if(process.env.COLLECTION_SCREENSHOTS) {
    await mkdir(process.env.COLLECTION_SCREENSHOTS,{recursive:true});
+   await page.evaluate(()=>window.scrollTo(0,0));
+   await page.screenshot({path:process.env.COLLECTION_SCREENSHOTS+'/'+lang+'-'+width+'-top.png'});
    await page.$eval('.collection-discovery',el=>el.scrollIntoView({block:'center',behavior:'instant'}));
    await page.screenshot({path:process.env.COLLECTION_SCREENSHOTS+'/'+lang+'-'+width+'-collection.png'});
   }
