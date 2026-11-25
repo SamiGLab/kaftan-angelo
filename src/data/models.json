@@ -11,12 +11,12 @@
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.avif 480w, /assets/images/noi-sarga-borkabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-sarga-borkabat-budapest-480.webp 480w, /assets/images/noi-sarga-borkabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Yellow women’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-sarga-borkabat-budapest.webp\" width=\"900\"></picture>"
     },
     "intro": {
-      "hu": "A sárga női bőrkabát karakteres színével a ruhatár hangsúlyos darabja lehet. Nézze meg a termék fotóját, és érdeklődjön a budapesti üzletben a keresett méretről.",
-      "en": "This yellow women’s leather jacket offers a colourful alternative to darker outerwear. Explore its photo and ask our Budapest store about your preferred size."
+      "hu": "Sárga női bőrkabát. Élénk színfolt semleges összeállításokhoz. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Yellow women’s leather jacket. A bright accent for neutral outfits. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Próbálja fel a kabátot a hozzá viselni kívánt felsővel. Ellenőrizze a vállak illeszkedését és azt, hogy a sárga árnyalat hogyan mutat természetes fényben.",
-      "en": "Try the jacket with the layer you intend to wear underneath. Check the shoulder fit and how the yellow shade looks in natural light."
+      "hu": "Nézze meg a sárga árnyalatot természetes fényben a gyakran viselt ruhái mellett.",
+      "en": "Compare the yellow shade in daylight with colours you usually wear."
     },
     "category": {
       "hu": {
@@ -39,12 +39,21 @@
       }
     },
     "description": {
-      "hu": "Sárga női bőrkabát fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
-      "en": "Yellow women’s leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
+      "hu": "Sárga női bőrkabát. Valódi báránybőr. Élénk színfolt semleges összeállításokhoz. Személyes próba Budapesten.",
+      "en": "Yellow women’s leather jacket. Genuine lambskin. A bright accent for neutral outfits. Try it at Kaftan Angelo Budapest."
     },
     "gallery": [],
     "catalogHidden": true,
-    "variants": []
+    "variants": [],
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Sárga női bőrkabát | Budapest · Kaftan Angelo",
+      "en": "Yellow women’s leather jacket | Budapest · Kaftan Angelo"
+    }
   },
   {
     "slug": "noi-szegecses-bordzseki-budapest",
@@ -58,12 +67,12 @@
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.avif 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-szegecses-bordzseki-budapest-480.webp 480w, /assets/images/noi-szegecses-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Studded women’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-szegecses-bordzseki-budapest.webp\" width=\"900\"></picture>"
     },
     "intro": {
-      "hu": "A szegecses női bőrdzseki díszítése hangsúlyosabb megjelenést ad. A fotó segít kiválasztani a darabot, amelyről ár- és méretinformációt kérhet üzletünktől.",
-      "en": "Studded details give this women’s leather jacket a distinctive look. Use the photo to identify the piece when asking our store about price and sizing."
+      "hu": "Szegecses női bőrdzseki. A szegecsek karaktert adnak az egyszerű összeállításoknak. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Studded women’s leather jacket. Studded details add an edge to simple outfits. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Nézze meg a szegecsek elhelyezkedését, és próbánál ellenőrizze, hogy a dzseki kényelmesen záródik-e. A váll és a kar szabad mozgása fontosabb, mint a méretcímke.",
-      "en": "Look at the placement of the studs and check that the jacket closes comfortably during a fitting. Shoulder and arm movement matter more than the size label."
+      "hu": "Ellenőrizze a szegecsek helyzetét a vállnál és a kar szabad mozgását.",
+      "en": "Check stud placement and freedom of movement around the shoulders."
     },
     "category": {
       "hu": {
@@ -86,12 +95,21 @@
       }
     },
     "description": {
-      "hu": "Szegecses női bőrdzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
-      "en": "Studded women’s leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
+      "hu": "Szegecses női bőrdzseki. Valódi báránybőr. A szegecsek karaktert adnak az egyszerű összeállításoknak. Személyes próba Budapesten.",
+      "en": "Studded women’s leather jacket. Genuine lambskin. Studded details add an edge to simple outfits. Try it at Kaftan Angelo Budapest."
     },
     "gallery": [],
     "catalogHidden": true,
-    "variants": []
+    "variants": [],
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Szegecses női bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Studded women’s leather jacket | Budapest · Kaftan Angelo"
+    }
   },
   {
     "slug": "ferfi-motoros-bordzseki-budapest",
@@ -105,12 +123,12 @@
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-motoros-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Men’s biker leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-motoros-bordzseki-budapest.webp\" width=\"675\"></picture>"
     },
     "intro": {
-      "hu": "A férfi motoros bőrdzseki a motoros stílust keresők számára bemutatott modell. A termékfotó alapján közvetlenül érdeklődhet az üzletben.",
-      "en": "This men’s biker leather jacket is a model for those looking for biker styling. Ask our store about the piece shown in the product photo."
+      "hu": "Férfi motoros bőrdzseki. Sportos motoros fazon hétköznapi viselethez. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Men’s biker leather jacket. Biker styling for everyday outfits. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Próbánál emelje előre a karját, és ellenőrizze az ujjak és a váll kényelmét. A motoros fazon megnevezése önmagában nem jelent minősített motoros védőruházatot.",
-      "en": "During a fitting, reach your arms forward and check the sleeves and shoulders. Biker styling alone does not establish certification as protective motorcycle clothing."
+      "hu": "Próbálja fel ülve és előrenyújtott karral is; divatfazon, nem motoros védőfelszerelés.",
+      "en": "Check the fit seated and with arms extended; this is a fashion style, not protective riding equipment."
     },
     "category": {
       "hu": {
@@ -133,12 +151,21 @@
       }
     },
     "description": {
-      "hu": "Férfi motoros bőrdzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
-      "en": "Men’s biker leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
+      "hu": "Férfi motoros bőrdzseki. Valódi báránybőr. Sportos motoros fazon hétköznapi viselethez. Személyes próba Budapesten.",
+      "en": "Men’s biker leather jacket. Genuine lambskin. Biker styling for everyday outfits. Try it at Kaftan Angelo Budapest."
     },
     "gallery": [],
     "catalogHidden": true,
-    "variants": []
+    "variants": [],
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Férfi motoros bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Men’s biker leather jacket | Budapest · Kaftan Angelo"
+    }
   },
   {
     "slug": "ferfi-klasszikus-bordzseki-budapest",
@@ -152,12 +179,12 @@
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.avif 480w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-klasszikus-bordzseki-budapest-480.webp 480w\" type=\"image/webp\"><img alt=\"Classic men’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-klasszikus-bordzseki-budapest.webp\" width=\"675\"></picture>"
     },
     "intro": {
-      "hu": "A klasszikus férfi bőrdzseki a visszafogottabb stílust kedvelőknek bemutatott darab. Tekintse meg a fotót, majd egyeztessen üzletünkkel a próbáról.",
-      "en": "This classic men’s leather jacket is presented for those who prefer understated styling. View the photo and contact our store about trying it on."
+      "hu": "Klasszikus férfi bőrdzseki. Visszafogott fazon inghez és pulóverhez. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Classic men’s leather jacket. Understated styling for shirts and knitwear. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "A kabátot inggel vagy a megszokott hétköznapi felsővel is próbálja fel. Ellenőrizze az ujjak hosszát és a kabát aljának helyzetét ülés közben is.",
-      "en": "Try it over a shirt or your usual everyday layer. Check sleeve length and where the hem sits when you are seated as well as standing."
+      "hu": "Nézze meg nyitva és zárva a megszokott alsó réteggel.",
+      "en": "Compare the silhouette open and closed over your usual layer."
     },
     "category": {
       "hu": {
@@ -180,12 +207,21 @@
       }
     },
     "description": {
-      "hu": "Klasszikus férfi bőrdzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
-      "en": "Classic men’s leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
+      "hu": "Klasszikus férfi bőrdzseki. Valódi báránybőr. Visszafogott fazon inghez és pulóverhez. Személyes próba Budapesten.",
+      "en": "Classic men’s leather jacket. Genuine lambskin. Understated styling for shirts and knitwear. Try it at Kaftan Angelo Budapest."
     },
     "gallery": [],
     "catalogHidden": true,
-    "variants": []
+    "variants": [],
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Klasszikus férfi bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Classic men’s leather jacket | Budapest · Kaftan Angelo"
+    }
   },
   {
     "slug": "ferfi-mintas-bordzseki-budapest",
@@ -199,12 +235,12 @@
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.avif 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-mintas-bordzseki-budapest-480.webp 480w, /assets/images/ferfi-mintas-bordzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Patterned men’s leather jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-mintas-bordzseki-budapest.webp\" width=\"900\"></picture>"
     },
     "intro": {
-      "hu": "A mintás férfi bőrdzseki a felület mintázatával különül el az egyszerűbb modellektől. A fotó alapján kérhet további információt a konkrét darabról.",
-      "en": "The patterned surface sets this men’s leather jacket apart from plainer styles. Ask for further information about the specific piece shown in the photo."
+      "hu": "Mintás férfi bőrdzseki. A mintás felület karakteres alternatíva a sima bőrhöz. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Patterned men’s leather jacket. Patterned detailing offers an alternative to plain leather. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "A mintázatot közelről és természetes fényben is nézze meg. Ha más darabokkal párosítaná, a próbára hozza el a hozzá viselni kívánt felsőt.",
-      "en": "Look at the pattern up close and in natural light. Bring the layer you plan to wear with it to see how the pieces work together."
+      "hu": "Nézze meg közelről a mintát különböző fényben.",
+      "en": "Inspect the pattern up close under different lighting."
     },
     "category": {
       "hu": {
@@ -227,12 +263,21 @@
       }
     },
     "description": {
-      "hu": "Mintás férfi bőrdzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
-      "en": "Patterned men’s leather jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
+      "hu": "Mintás férfi bőrdzseki. Valódi báránybőr. A mintás felület karakteres alternatíva a sima bőrhöz. Személyes próba Budapesten.",
+      "en": "Patterned men’s leather jacket. Genuine lambskin. Patterned detailing offers an alternative to plain leather. Try it at Kaftan Angelo Budapest."
     },
     "gallery": [],
     "catalogHidden": true,
-    "variants": []
+    "variants": [],
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Mintás férfi bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Patterned men’s leather jacket | Budapest · Kaftan Angelo"
+    }
   },
   {
     "slug": "ferfi-sotetbarna-irhadzseki-budapest",
@@ -246,12 +291,12 @@
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.avif 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.webp 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Dark brown men’s shearling jacket\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-sotetbarna-irhadzseki-budapest.webp\" width=\"900\"></picture>"
     },
     "intro": {
-      "hu": "A sötétbarna férfi irhadzseki a rövidebb irha felsőruhák között bemutatott modell. Fotója alapján érdeklődhet az aktuális méretekről és árról.",
-      "en": "This dark brown men’s shearling jacket is presented among our shorter shearling styles. Use its photo to ask about current sizes and price."
+      "hu": "Sötétbarna férfi irhadzseki. Sötét földszín rövidebb téli fazonban. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Dark brown men’s shearling jacket. A dark earthy tone in a shorter winter style. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Próbálja fel a dzsekit téli felsővel, és ellenőrizze a mozgásteret a vállnál. A sötétbarna árnyalatot személyesen is érdemes megnézni.",
-      "en": "Try it over a winter layer and check room to move at the shoulders. View the dark brown shade in person before deciding."
+      "hu": "Próbálja fel a téli pulóverével, és ellenőrizze a kar mozgását.",
+      "en": "Try it over your winter knitwear and check arm mobility."
     },
     "category": {
       "hu": {
@@ -274,12 +319,21 @@
       }
     },
     "description": {
-      "hu": "Sötétbarna férfi irhadzseki fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
-      "en": "Dark brown men’s shearling jacket from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
+      "hu": "Sötétbarna férfi irhadzseki. Sötét földszín rövidebb téli fazonban. Személyes próba Budapesten.",
+      "en": "Dark brown men’s shearling jacket. A dark earthy tone in a shorter winter style. Try it at Kaftan Angelo Budapest."
     },
     "gallery": [],
     "catalogHidden": true,
-    "variants": []
+    "variants": [],
+    "material": {
+      "hu": "Valódi irha (báránybőr)",
+      "en": "Genuine shearling (lambskin)"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Sötétbarna férfi irhadzseki | Budapest · Kaftan Angelo",
+      "en": "Dark brown men’s shearling jacket | Budapest · Kaftan Angelo"
+    }
   },
   {
     "slug": "ferfi-vilagosbarna-irhakabat-budapest",
@@ -293,12 +347,12 @@
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Light brown men’s shearling coat\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-vilagosbarna-irhakabat-budapest.webp\" width=\"900\"></picture>"
     },
     "intro": {
-      "hu": "A világosbarna férfi irhakabát a világosabb árnyalatú téli felsőruhák iránt érdeklődőknek bemutatott darab. Elérhetőségéről üzletünk ad tájékoztatást.",
-      "en": "This light brown men’s shearling coat is presented for those considering lighter winter outerwear. Our store can confirm availability of the pictured piece."
+      "hu": "Világosbarna férfi irhakabát. Világosabb tónus a téli ruhatárhoz. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Light brown men’s shearling coat. A lighter tone for winter dressing. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "A világos árnyalatnál kérdezzen rá az ajánlott ápolásra. Próbánál ellenőrizze a kabát hosszát és a kényelmet a megszokott téli ruházattal.",
-      "en": "Ask about suitable care for the lighter shade. Check the coat’s length and comfort with your usual winter clothing during a fitting."
+      "hu": "Ellenőrizze a kabát hosszát és a rétegezéshez szükséges helyet.",
+      "en": "Check coat length and room for winter layers."
     },
     "category": {
       "hu": {
@@ -321,12 +375,21 @@
       }
     },
     "description": {
-      "hu": "Világosbarna férfi irhakabát fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
-      "en": "Light brown men’s shearling coat from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
+      "hu": "Világosbarna férfi irhakabát. Világosabb tónus a téli ruhatárhoz. Személyes próba Budapesten.",
+      "en": "Light brown men’s shearling coat. A lighter tone for winter dressing. Try it at Kaftan Angelo Budapest."
     },
     "gallery": [],
     "catalogHidden": true,
-    "variants": []
+    "variants": [],
+    "material": {
+      "hu": "Valódi irha (báránybőr)",
+      "en": "Genuine shearling (lambskin)"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Világosbarna férfi irhakabát | Budapest · Kaftan Angelo",
+      "en": "Light brown men’s shearling coat | Budapest · Kaftan Angelo"
+    }
   },
   {
     "slug": "ferfi-barna-irhakabat-budapest",
@@ -340,12 +403,12 @@
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/ferfi-barna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-barna-irhakabat-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"Brown men’s shearling coat\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/ferfi-barna-irhakabat-budapest.webp\" width=\"900\"></picture>"
     },
     "intro": {
-      "hu": "A barna férfi irhakabát a barna téli kabátot keresőknek bemutatott modell. Nézze meg a fotót, és a konkrét darabról kérdezze budapesti üzletünket.",
-      "en": "This brown men’s shearling coat is presented for those looking for brown winter outerwear. View the photo and ask our Budapest store about the specific piece."
+      "hu": "Barna férfi irhakabát. Természetes barna árnyalat téli rétegekhez. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Brown men’s shearling coat. A natural brown tone to pair with winter layers. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Ellenőrizze, hogyan illeszkedik a kabát a mellkasnál és csípőnél. Üljön le benne, és próbálja meg a karját mozgatni a téli rétegekkel együtt.",
-      "en": "Check the fit through the chest and hips. Sit down in the coat and move your arms while wearing the winter layers you plan to use."
+      "hu": "Hasonlítsa össze a rövidebb irhafazonokkal a megszokott téli ruháiban.",
+      "en": "Compare it with shorter shearling styles over your usual winter clothing."
     },
     "category": {
       "hu": {
@@ -368,12 +431,21 @@
       }
     },
     "description": {
-      "hu": "Barna férfi irhakabát fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
-      "en": "Brown men’s shearling coat from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
+      "hu": "Barna férfi irhakabát. Természetes barna árnyalat téli rétegekhez. Személyes próba Budapesten.",
+      "en": "Brown men’s shearling coat. A natural brown tone to pair with winter layers. Try it at Kaftan Angelo Budapest."
     },
     "gallery": [],
     "catalogHidden": true,
-    "variants": []
+    "variants": [],
+    "material": {
+      "hu": "Valódi irha (báránybőr)",
+      "en": "Genuine shearling (lambskin)"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Barna férfi irhakabát | Budapest · Kaftan Angelo",
+      "en": "Brown men’s shearling coat | Budapest · Kaftan Angelo"
+    }
   },
   {
     "slug": "noi-feher-szormemelleny-budapest",
@@ -387,12 +459,12 @@
       "en": "<picture><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.avif 480w, /assets/images/noi-feher-szormemelleny-budapest-800.avif 800w\" type=\"image/avif\"><source sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/noi-feher-szormemelleny-budapest-480.webp 480w, /assets/images/noi-feher-szormemelleny-budapest-800.webp 800w\" type=\"image/webp\"><img alt=\"White women’s fur vest\" decoding=\"async\" height=\"900\" loading=\"lazy\" src=\"/noi-feher-szormemelleny-budapest.webp\" width=\"900\"></picture>"
     },
     "intro": {
-      "hu": "A fehér női szőrmemellény ujjatlan alternatíva a kabátok mellett. A fotón bemutatott darab áráról és elérhetőségéről közvetlenül érdeklődhet.",
-      "en": "This white women’s fur vest offers a sleeveless alternative to a coat. Contact our store about the price and availability of the piece in the photo."
+      "hu": "Női fehér szőrmemellény. Ujjatlan réteg ing vagy kötött felső fölé. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "White women’s fur vest. A sleeveless layer over shirts or knitwear. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Próbálja fel a mellényt a hozzá viselni kívánt felsővel. Ellenőrizze a karöltő kényelmét, és kérdezzen rá a tisztításra és a nyári tárolásra.",
-      "en": "Try the vest over your intended layer. Check comfort around the arm openings and ask about cleaning and storage outside the season."
+      "hu": "Ellenőrizze a karkivágás kényelmét a választott felsővel.",
+      "en": "Check armhole comfort over the layer you plan to wear."
     },
     "category": {
       "hu": {
@@ -415,12 +487,21 @@
       }
     },
     "description": {
-      "hu": "Női fehér szőrmemellény fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
-      "en": "White women’s fur vest from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
+      "hu": "Női fehér szőrmemellény. Ujjatlan réteg ing vagy kötött felső fölé. Személyes próba Budapesten.",
+      "en": "White women’s fur vest. A sleeveless layer over shirts or knitwear. Try it at Kaftan Angelo Budapest."
     },
     "gallery": [],
     "catalogHidden": true,
-    "variants": []
+    "variants": [],
+    "material": {
+      "hu": "Valódi szőrme",
+      "en": "Genuine fur"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Női fehér szőrmemellény | Budapest · Kaftan Angelo",
+      "en": "White women’s fur vest | Budapest · Kaftan Angelo"
+    }
   },
   {
     "slug": "fekete-borov-budapest",
@@ -434,12 +515,12 @@
       "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/fekete-borov-budapest-480.avif 480w\"><source type=\"image/webp\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/fekete-borov-budapest-480.webp 480w\"><img src=\"/fekete-borov-budapest.webp\" alt=\"Black leather belt\" width=\"675\" height=\"900\" loading=\"lazy\" decoding=\"async\"></picture>"
     },
     "intro": {
-      "hu": "A fekete bőröv a bőr kiegészítőink között bemutatott darab. A termék fotójával érdeklődhet a megfelelő hosszúságról és az aktuális árról.",
-      "en": "This black leather belt is a piece from our leather accessories selection. Send its photo when asking about the appropriate length and current price."
+      "hu": "Fekete bőröv. Visszafogott kiegészítő nadrághoz vagy farmerhez. Tekintse meg üzletünkben, és kérdezzen a részletekről.",
+      "en": "Black leather belt. An understated accessory for trousers or jeans. View the piece in our store and ask about the details."
     },
     "advice": {
-      "hu": "Mérje meg egy jól illeszkedő öv használatban lévő lyukáig a hosszt. Az üzletben ellenőrizze az öv szélességét a nadrág bújtatóihoz és a csat használatát.",
-      "en": "Measure a belt that fits you to the hole you use. In store, check the belt width against your trouser loops and try the buckle."
+      "hu": "Mérje meg a kívánt hosszt és az övbújtatók szélességét.",
+      "en": "Measure the required length and the width of your belt loops."
     },
     "category": {
       "hu": {
@@ -462,12 +543,21 @@
       }
     },
     "description": {
-      "hu": "Fekete bőröv fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
-      "en": "Black leather belt from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
+      "hu": "Fekete bőröv. Visszafogott kiegészítő nadrághoz vagy farmerhez. Nézze meg budapesti üzletünkben.",
+      "en": "Black leather belt. An understated accessory for trousers or jeans. View it at Kaftan Angelo Budapest."
     },
     "gallery": [],
     "catalogHidden": true,
-    "variants": []
+    "variants": [],
+    "material": {
+      "hu": "Valódi bőr",
+      "en": "Genuine leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Fekete bőröv | Budapest · Kaftan Angelo",
+      "en": "Black leather belt | Budapest · Kaftan Angelo"
+    }
   },
   {
     "slug": "barna-bor-penztarca-budapest",
@@ -481,12 +571,12 @@
       "en": "<picture><source type=\"image/avif\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.avif 480w, /assets/images/barna-bor-penztarca-budapest-800.avif 800w\"><source type=\"image/webp\" sizes=\"(max-width: 620px) 92vw, (max-width: 980px) 46vw, 360px\" srcset=\"/assets/images/barna-bor-penztarca-budapest-480.webp 480w, /assets/images/barna-bor-penztarca-budapest-800.webp 800w\"><img src=\"/barna-bor-penztarca-budapest.webp\" alt=\"Brown leather wallet\" width=\"900\" height=\"900\" loading=\"lazy\" decoding=\"async\"></picture>"
     },
     "intro": {
-      "hu": "A barna bőr pénztárca a mindennapi bőr kiegészítők között bemutatott termék. A fotó segítségével kérhet tájékoztatást a konkrét darabról.",
-      "en": "This brown leather wallet is presented among our everyday leather accessories. Use the photo to ask our store about the specific piece."
+      "hu": "Barna bőr pénztárca. Barna árnyalatú hétköznapi bőr kiegészítő. Tekintse meg üzletünkben, és kérdezzen a részletekről.",
+      "en": "Brown leather wallet. A brown leather accessory for everyday use. View the piece in our store and ask about the details."
     },
     "advice": {
-      "hu": "Vásárlás előtt ellenőrizze a méreteket és a belső elrendezést. Kérdezzen rá, hogyan férnek el benne a kártyái és bankjegyei; a fotó nem mutat minden belső részletet.",
-      "en": "Check dimensions and the interior layout before buying. Ask how your cards and banknotes will fit; the photo does not show every internal detail."
+      "hu": "Kérdezzen a méretről, a kártyahelyekről és a rekeszek elrendezéséről.",
+      "en": "Ask about dimensions, card slots and compartment layout."
     },
     "category": {
       "hu": {
@@ -509,12 +599,21 @@
       }
     },
     "description": {
-      "hu": "Barna bőr pénztárca fotóval a Kaftan Angelo budapesti kollekciójából. Kérdezzen az árról és elérhetőségről; látogasson el a Kossuth Lajos u. 18. alá.",
-      "en": "Brown leather wallet from Kaftan Angelo’s Budapest collection. View the photo, ask about price and availability, and visit Kossuth Lajos u. 18."
+      "hu": "Barna bőr pénztárca. Barna árnyalatú hétköznapi bőr kiegészítő. Nézze meg budapesti üzletünkben.",
+      "en": "Brown leather wallet. A brown leather accessory for everyday use. View it at Kaftan Angelo Budapest."
     },
     "gallery": [],
     "catalogHidden": true,
-    "variants": []
+    "variants": [],
+    "material": {
+      "hu": "Valódi bőr",
+      "en": "Genuine leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Barna bőr pénztárca | Budapest · Kaftan Angelo",
+      "en": "Brown leather wallet | Budapest · Kaftan Angelo"
+    }
   },
   {
     "slug": "noi-ketoldalas-vizallo-borkabat-budapest",
@@ -751,8 +850,8 @@
     ],
     "catalogHidden": false,
     "intro": {
-      "hu": "Egy modell, öt szín: piros, krém, narancssárga, zöld és fekete. A kétoldalas, vízálló női bőrkabát egyik oldala egyszínű, a másik mintás. Kerek nyakkivágás, középső cipzár, perforált szegélyek és zsebek. Válasszon színt a hozzá tartozó négy fotó megtekintéséhez.",
-      "en": "One model in five colours: red, cream, orange, green and black. This reversible waterproof women’s leather jacket has a plain leather face and a patterned reverse, with a round neckline, centre zip, perforated trims and pockets. Choose a colour to see its four photos."
+      "hu": "Egy modell, öt szín: piros, krém, narancssárga, zöld és fekete. A valódi báránybőrből készült, kétoldalas, vízálló női bőrkabát egyik oldala egyszínű, a másik mintás. Kerek nyakkivágás, középső cipzár, perforált szegélyek és zsebek. Válasszon színt a hozzá tartozó négy fotó megtekintéséhez.",
+      "en": "One model in five colours: red, cream, orange, green and black. This reversible waterproof women’s lambskin leather jacket has a plain leather face and a patterned reverse, with a round neckline, centre zip, perforated trims and pockets. Choose a colour to see its four photos."
     },
     "advice": {
       "hu": "Próbálja fel mindkét oldalával kifelé, és ellenőrizze a váll, az ujjhossz és a cipzár kényelmét. A vízálló tulajdonság nem helyettesíti az ápolási útmutatót: a tisztításról és szárításról kérdezzen üzletünkben.",
@@ -779,8 +878,8 @@
       }
     },
     "description": {
-      "hu": "Kétoldalas, vízálló női bőrkabát öt színben, egyszínű és mintás oldallal. Nézze meg a 20 fotót, és érdeklődjön a Kaftan Angelo budapesti üzletében.",
-      "en": "Reversible waterproof women’s leather jacket in five colours, with plain and patterned sides. View 20 photos and ask Kaftan Angelo Budapest about sizes."
+      "hu": "Kétoldalas, vízálló női báránybőr kabát öt színben, egyszínű és mintás oldallal. Próbálja fel budapesti üzletünkben.",
+      "en": "Waterproof reversible women’s lambskin jacket in five colours, with plain and patterned sides. Enquire about a fitting at Kaftan Angelo Budapest."
     },
     "variants": [
       {
@@ -1048,7 +1147,16 @@
           }
         ]
       }
-    ]
+    ],
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Kétoldalas vízálló női bőrkabát | Budapest · Kaftan Angelo",
+      "en": "Women’s Waterproof Reversible Jacket | Kaftan Angelo Budapest"
+    }
   },
   {
     "slug": "abito-yesil-gri-desenli-budapest",
@@ -1088,12 +1196,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Zöld-szürke mintás női bőrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Green and grey patterned women’s leather jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Zöld-szürke mintás női bőrdzseki. A zöld-szürke minta egyszínű ruhák mellett érvényesül. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Green and grey patterned women’s leather jacket. Green and grey patterning stands out against solid colours. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Nézze meg, hogyan fut a minta a vállon és a háton felvéve.",
+      "en": "See how the pattern sits across your shoulders and back when worn."
     },
     "category": {
       "hu": {
@@ -1116,8 +1224,17 @@
       }
     },
     "description": {
-      "hu": "Zöld-szürke mintás női bőrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Green and grey patterned women’s leather jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Zöld-szürke mintás női bőrdzseki. Valódi báránybőr. A zöld-szürke minta egyszínű ruhák mellett érvényesül. Személyes próba Budapesten.",
+      "en": "Green and grey patterned women’s leather jacket. Genuine lambskin. Green and grey patterning stands out against solid colours. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Zöld-szürke mintás női bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Green-Grey Patterned Women’s Leather Jacket | Kaftan Angelo Budapest"
     }
   },
   {
@@ -1158,12 +1275,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Piros női velúrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Red women’s suede jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Piros női velúrdzseki. A piros szín és a velúr felület különleges textúrájú összeállítást tesz lehetővé. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Red women’s suede jacket. Red suede combines a strong colour with a distinctive texture. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Nézze meg a velúrt természetes fényben, és kérdezzen a megfelelő ápolásról.",
+      "en": "View the suede in daylight and ask about care suited to its finish."
     },
     "category": {
       "hu": {
@@ -1186,8 +1303,17 @@
       }
     },
     "description": {
-      "hu": "Piros női velúrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Red women’s suede jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Piros női velúrdzseki karakteres színnel és jellegzetes felülettel. Nézze meg természetes fényben a Kaftan Angelo budapesti üzletében.",
+      "en": "Red women’s suede jacket with a distinctive texture. Explore the colour and fit in person at Kaftan Angelo in central Budapest."
+    },
+    "material": {
+      "hu": "Valódi bőr, velúr felület",
+      "en": "Genuine leather, suede finish"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Piros női velúrdzseki | Budapest · Kaftan Angelo",
+      "en": "Red women’s suede jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -1228,12 +1354,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Világoskék öves női bőrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Light blue belted women’s leather jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Világoskék öves női bőrdzseki. A világoskék szín és az öv hangsúlyos derékvonalat kínál. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Light blue belted women’s leather jacket. Light blue and a belt offer a waist-defining styling option. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Próbálja ki az övet lazábban és szorosabban is.",
+      "en": "Try the belt loosely and more closely fastened to assess the waistline."
     },
     "category": {
       "hu": {
@@ -1256,8 +1382,17 @@
       }
     },
     "description": {
-      "hu": "Világoskék öves női bőrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Light blue belted women’s leather jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Világoskék öves női bőrdzseki. Valódi báránybőr. A világoskék szín és az öv hangsúlyos derékvonalat kínál. Személyes próba Budapesten.",
+      "en": "Light blue belted women’s leather jacket. Genuine lambskin. Light blue and a belt offer a waist-defining styling option. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Világoskék öves női bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Light blue belted women’s leather jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -1298,12 +1433,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Piros női bőrdzseki szőrmeszegéllyel a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Red women’s leather jacket with fur trim from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Piros női bőrdzseki szőrmeszegéllyel. Piros bőr és szőrmeszegély kontrasztos felületekkel. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Red women’s leather jacket with fur trim. Red leather and fur trim combine contrasting textures. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Nézze meg a szegély esését felvéve, és kérdezzen a két anyag ápolásáról.",
+      "en": "Check how the trim sits when worn and ask how to care for both materials."
     },
     "category": {
       "hu": {
@@ -1326,8 +1461,17 @@
       }
     },
     "description": {
-      "hu": "Piros női bőrdzseki szőrmeszegéllyel elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Red women’s leather jacket with fur trim with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Piros női bőrdzseki szőrmeszegéllyel. Piros bőr és szőrmeszegély kontrasztos felületekkel. Személyes próba Budapesten.",
+      "en": "Red women’s leather jacket with fur trim. Red leather and fur trim combine contrasting textures. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr, szőrmeszegély",
+      "en": "Genuine lambskin leather, fur trim"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Piros női bőrdzseki szőrmeszegéllyel | Budapest · Kaftan Angelo",
+      "en": "Red women’s leather jacket with fur trim | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -1368,12 +1512,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Bézs női motoros bőrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Beige women’s biker leather jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Bézs női motoros bőrdzseki. Világosabb motoros fazon a sötét dzsekik alternatívájaként. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Beige women’s biker leather jacket. A lighter biker-style alternative to dark leather jackets. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Próbálja ki farmerrel nyitva és zárva.",
+      "en": "Try it open and closed with jeans or your usual trousers."
     },
     "category": {
       "hu": {
@@ -1396,8 +1540,17 @@
       }
     },
     "description": {
-      "hu": "Bézs női motoros bőrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Beige women’s biker leather jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Bézs női motoros bőrdzseki. Valódi báránybőr. Világosabb motoros fazon a sötét dzsekik alternatívájaként. Személyes próba Budapesten.",
+      "en": "Beige women’s biker leather jacket. Genuine lambskin. A lighter biker-style alternative to dark leather jackets. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Bézs női motoros bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Beige women’s biker leather jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -1438,12 +1591,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Szürke női bőrblézer a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Grey women’s leather blazer from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Szürke női bőrblézer. Visszafogott szürke tónus inghez és egyszerű felsőhöz. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Grey women’s leather blazer. An understated grey tone to pair with shirts and simple tops. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Ellenőrizze a váll és a hajtóka vonalát a tervezett felső fölött.",
+      "en": "Check the shoulder line and lapels over the layer you intend to wear."
     },
     "category": {
       "hu": {
@@ -1466,8 +1619,17 @@
       }
     },
     "description": {
-      "hu": "Szürke női bőrblézer elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Grey women’s leather blazer with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Szürke női bőrblézer. Valódi báránybőr. Visszafogott szürke tónus inghez és egyszerű felsőhöz. Személyes próba Budapesten.",
+      "en": "Grey women’s leather blazer. Genuine lambskin. An understated grey tone to pair with shirts and simple tops. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Szürke női bőrblézer | Budapest · Kaftan Angelo",
+      "en": "Grey women’s leather blazer | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -1508,12 +1670,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Fehér öves női bőrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "White belted women’s leather jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Fehér öves női bőrdzseki. Világos, letisztult fazon derékhangsúllyal. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "White belted women’s leather jacket. A clean, light-toned style with a waist-defining belt. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Nézze meg az öv helyzetét ülve és állva, és kérdezzen a fehér felület ápolásáról.",
+      "en": "Check belt placement seated and standing, and ask about care for the white finish."
     },
     "category": {
       "hu": {
@@ -1536,8 +1698,17 @@
       }
     },
     "description": {
-      "hu": "Fehér öves női bőrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "White belted women’s leather jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Fehér öves női bőrdzseki. Valódi báránybőr. Világos, letisztult fazon derékhangsúllyal. Személyes próba Budapesten.",
+      "en": "White belted women’s leather jacket. Genuine lambskin. A clean, light-toned style with a waist-defining belt. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Fehér öves női bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "White belted women’s leather jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -1578,12 +1749,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Bordó mintás női bőrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Burgundy patterned women’s leather jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Bordó mintás női bőrdzseki. Mély bordó minta egyszerű, egyszínű összeállításokhoz. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Burgundy patterned women’s leather jacket. Deep burgundy patterning for simple solid-colour outfits. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Hasonlítsa össze a mintát a gyakran viselt sötét és világos felsőivel.",
+      "en": "Compare the pattern with the dark and light tops you wear most."
     },
     "category": {
       "hu": {
@@ -1606,8 +1777,17 @@
       }
     },
     "description": {
-      "hu": "Bordó mintás női bőrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Burgundy patterned women’s leather jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Bordó mintás női bőrdzseki. Valódi báránybőr. Mély bordó minta egyszerű, egyszínű összeállításokhoz. Személyes próba Budapesten.",
+      "en": "Burgundy patterned women’s leather jacket. Genuine lambskin. Deep burgundy patterning for simple solid-colour outfits. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Bordó mintás női bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Burgundy patterned women’s leather jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -1648,12 +1828,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Fekete női velúrdzseki barna gallérral a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Black women’s suede jacket with tan collar from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Fekete női velúrdzseki barna gallérral. Fekete velúr és barna gallér kétféle tónusban. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Black women’s suede jacket with tan collar. Black suede and a tan collar bring two contrasting tones together. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Ellenőrizze a gallért a nyaknál, és kérdezzen az eltérő felületek ápolásáról.",
+      "en": "Check collar placement and ask about care for the contrasting finishes."
     },
     "category": {
       "hu": {
@@ -1676,8 +1856,17 @@
       }
     },
     "description": {
-      "hu": "Fekete női velúrdzseki barna gallérral elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Black women’s suede jacket with tan collar with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Fekete női velúrdzseki barna gallérral. Fekete velúr és barna gallér kétféle tónusban. Személyes próba Budapesten.",
+      "en": "Black women’s suede jacket with tan collar. Black suede and a tan collar bring two contrasting tones together. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi bőr, velúr felület",
+      "en": "Genuine leather, suede finish"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Fekete női velúrdzseki barna gallérral | Budapest · Kaftan Angelo",
+      "en": "Black women’s suede jacket with tan collar | Kaftan Angelo Budapest"
     }
   },
   {
@@ -1718,12 +1907,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Krém öves női kabát szőrmegallérral a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Cream belted women’s coat with fur collar from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Krém öves női kabát szőrmegallérral. A deréköv és a szőrmegallér elegáns körvonalat ad. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Cream belted women’s coat with fur collar. A belt and fur collar create an elegant, defined silhouette. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Próbálja fel az övet a tervezett rétegekkel, és ellenőrizze a gallér kényelmét.",
+      "en": "Try the belt over your planned layers and check collar comfort."
     },
     "category": {
       "hu": {
@@ -1746,8 +1935,17 @@
       }
     },
     "description": {
-      "hu": "Krém öves női kabát szőrmegallérral elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Cream belted women’s coat with fur collar with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Krém öves női kabát szőrmegallérral. A deréköv és a szőrmegallér elegáns körvonalat ad. Személyes próba Budapesten.",
+      "en": "Cream belted women’s coat with fur collar. A belt and fur collar create an elegant, defined silhouette. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi szőrmegallér",
+      "en": "Genuine fur collar"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Krém öves női kabát szőrmegallérral | Budapest · Kaftan Angelo",
+      "en": "Cream belted women’s coat with fur collar | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -1788,12 +1986,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Fekete kapucnis női bőrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Black hooded women’s leather jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Fekete kapucnis női bőrdzseki. Sportos kapucnis fazon a hétköznapi ruhatárhoz. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Black hooded women’s leather jacket. Relaxed hooded styling for everyday dressing. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Próbálja ki a kapucnit felhajtva és lehajtva.",
+      "en": "Try the hood up and down and check the room around your neck."
     },
     "category": {
       "hu": {
@@ -1816,8 +2014,17 @@
       }
     },
     "description": {
-      "hu": "Fekete kapucnis női bőrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Black hooded women’s leather jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Fekete kapucnis női bőrdzseki. Valódi báránybőr. Sportos kapucnis fazon a hétköznapi ruhatárhoz. Személyes próba Budapesten.",
+      "en": "Black hooded women’s leather jacket. Genuine lambskin. Relaxed hooded styling for everyday dressing. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Fekete kapucnis női bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Black hooded women’s leather jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -1858,12 +2065,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Királykék női kabát szőrmeszegéllyel a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Royal blue women’s coat with fur trim from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Királykék női kabát szőrmeszegéllyel. A királykék és a szőrmeszegély erős vizuális hangsúlyt ad. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Royal blue women’s coat with fur trim. Royal blue and fur trim create a strong visual accent. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Nézze meg a szegély esését mozgás közben, és kérdezzen az anyagösszetételről.",
+      "en": "Check how the trim hangs as you move and ask about material composition."
     },
     "category": {
       "hu": {
@@ -1886,8 +2093,17 @@
       }
     },
     "description": {
-      "hu": "Királykék női kabát szőrmeszegéllyel elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Royal blue women’s coat with fur trim with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Királykék női kabát szőrmeszegéllyel, karakteres színű modell elegáns összeállításokhoz. Személyes próba a Kaftan Angelo budapesti üzletében.",
+      "en": "Royal blue women’s coat with fur trim. A distinctive colour for elegant outfits. Compare the silhouette at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi szőrmeszegély",
+      "en": "Genuine fur trim"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Királykék női kabát szőrmeszegéllyel | Budapest · Kaftan Angelo",
+      "en": "Royal blue women’s coat with fur trim | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -1928,12 +2144,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Krém női poncsó szőrmeszegéllyel a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Cream women’s poncho with fur trim from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Krém női poncsó szőrmeszegéllyel. A poncsófazon a hagyományos kabátok alternatívája. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Cream women’s poncho with fur trim. A poncho silhouette offers an alternative to conventional coats. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Próbálja ki a kar mozgását és a táska viselését.",
+      "en": "Check arm movement and how comfortably you can carry your bag."
     },
     "category": {
       "hu": {
@@ -1956,8 +2172,17 @@
       }
     },
     "description": {
-      "hu": "Krém női poncsó szőrmeszegéllyel elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Cream women’s poncho with fur trim with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Krém női poncsó szőrmeszegéllyel. A poncsófazon a hagyományos kabátok alternatívája. Személyes próba Budapesten.",
+      "en": "Cream women’s poncho with fur trim. A poncho silhouette offers an alternative to conventional coats. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi szőrmeszegély",
+      "en": "Genuine fur trim"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Krém női poncsó szőrmeszegéllyel | Budapest · Kaftan Angelo",
+      "en": "Cream women’s poncho with fur trim | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -1998,12 +2223,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Bézs állógalléros női bőrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Beige stand-collar women’s leather jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Bézs állógalléros női bőrdzseki. Letisztult állógalléros fazon semleges színben. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Beige stand-collar women’s leather jacket. Clean stand-collar styling in a neutral tone. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Ellenőrizze a gallér kényelmét nyitva és zárva.",
+      "en": "Assess collar comfort with the jacket open and closed."
     },
     "category": {
       "hu": {
@@ -2026,8 +2251,17 @@
       }
     },
     "description": {
-      "hu": "Bézs állógalléros női bőrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Beige stand-collar women’s leather jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Bézs állógalléros női bőrdzseki. Valódi báránybőr. Letisztult állógalléros fazon semleges színben. Személyes próba Budapesten.",
+      "en": "Beige stand-collar women’s leather jacket. Genuine lambskin. Clean stand-collar styling in a neutral tone. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Bézs állógalléros női bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Beige stand-collar women’s leather jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -2068,12 +2302,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Barna női szőrmedzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Brown women’s fur jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Barna női szőrmedzseki. Földszínű szőrme visszafogott téli összeállításokhoz. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Brown women’s fur jacket. Earth-toned fur for understated winter outfits. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Nézze meg a vállvonalat, az esést, és kérdezzen a szőrme ápolásáról.",
+      "en": "Check shoulder line and drape, and ask about fur care."
     },
     "category": {
       "hu": {
@@ -2096,8 +2330,17 @@
       }
     },
     "description": {
-      "hu": "Barna női szőrmedzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Brown women’s fur jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Barna női szőrmedzseki. Földszínű szőrme visszafogott téli összeállításokhoz. Személyes próba Budapesten.",
+      "en": "Brown women’s fur jacket. Earth-toned fur for understated winter outfits. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi szőrme",
+      "en": "Genuine fur"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Barna női szőrmedzseki | Budapest · Kaftan Angelo",
+      "en": "Brown women’s fur jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -2138,12 +2381,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Korallszínű mintás női bőrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Coral patterned women’s leather jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Korallszínű mintás női bőrdzseki. A korallszínű minta élénk hangsúlyt adhat. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Coral patterned women’s leather jacket. Coral patterning adds a lively accent to solid colours. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Nézze meg a korall árnyalatát természetes fényben semleges színek mellett.",
+      "en": "View the coral shade in daylight alongside neutral colours."
     },
     "category": {
       "hu": {
@@ -2166,8 +2409,17 @@
       }
     },
     "description": {
-      "hu": "Korallszínű mintás női bőrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Coral patterned women’s leather jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Korallszínű mintás női bőrdzseki. Valódi báránybőr. A korallszínű minta élénk hangsúlyt adhat. Személyes próba Budapesten.",
+      "en": "Coral patterned women’s leather jacket. Genuine lambskin. Coral patterning adds a lively accent to solid colours. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Korallszínű mintás női bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Coral patterned women’s leather jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -2208,12 +2460,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Fekete zsebes női velúrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Black women’s suede jacket with chest pockets from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Fekete zsebes női velúrdzseki. A mellkasi zsebek hangsúlyozzák a velúr dzseki vonalát. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Black women’s suede jacket with chest pockets. Chest pockets give the black suede jacket a distinctive detail. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Ellenőrizze a zsebek helyzetét felvéve, és kérdezzen a velúr ápolásáról.",
+      "en": "Check how the pockets sit when worn and ask about suede care."
     },
     "category": {
       "hu": {
@@ -2236,8 +2488,17 @@
       }
     },
     "description": {
-      "hu": "Fekete zsebes női velúrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Black women’s suede jacket with chest pockets with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Fekete zsebes női velúrdzseki. A mellkasi zsebek hangsúlyozzák a velúr dzseki vonalát. Személyes próba Budapesten.",
+      "en": "Black women’s suede jacket with chest pockets. Chest pockets give the black suede jacket a distinctive detail. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi bőr, velúr felület",
+      "en": "Genuine leather, suede finish"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Fekete zsebes női velúrdzseki | Budapest · Kaftan Angelo",
+      "en": "Black Women’s Suede Jacket with Pockets | Kaftan Angelo Budapest"
     }
   },
   {
@@ -2278,12 +2539,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Fehér női bőrblézer a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "White women’s leather blazer from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Fehér női bőrblézer. Világos, elegáns réteg ing vagy egyszerű felső fölé. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "White women’s leather blazer. A light, elegant layer over a shirt or simple top. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Próbálja fel a megszokott felsőjével, és nézze meg a fehér árnyalatot természetes fényben.",
+      "en": "Try it over your usual top and inspect the white shade in daylight."
     },
     "category": {
       "hu": {
@@ -2306,8 +2567,17 @@
       }
     },
     "description": {
-      "hu": "Fehér női bőrblézer elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "White women’s leather blazer with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Fehér női bőrblézer. Valódi báránybőr. Világos, elegáns réteg ing vagy egyszerű felső fölé. Személyes próba Budapesten.",
+      "en": "White women’s leather blazer. Genuine lambskin. A light, elegant layer over a shirt or simple top. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Fehér női bőrblézer | Budapest · Kaftan Angelo",
+      "en": "White women’s leather blazer | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -2348,12 +2618,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Fekete női bőrblézer a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Black women’s leather blazer from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Fekete női bőrblézer. Szabott megjelenés a bőr karakterével. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Black women’s leather blazer. Tailored styling with the character of leather. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Próbálja fel nyitva és zárva; ellenőrizze a hajtóka és a váll vonalát.",
+      "en": "Try it open and closed, checking the lapel and shoulder line."
     },
     "category": {
       "hu": {
@@ -2376,8 +2646,17 @@
       }
     },
     "description": {
-      "hu": "Fekete női bőrblézer elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Black women’s leather blazer with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Fekete női bőrblézer. Valódi báránybőr. Szabott megjelenés a bőr karakterével. Személyes próba Budapesten.",
+      "en": "Black women’s leather blazer. Genuine lambskin. Tailored styling with the character of leather. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Fekete női bőrblézer | Budapest · Kaftan Angelo",
+      "en": "Black women’s leather blazer | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -2418,12 +2697,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Konyakbarna női bőrblézer a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Tan women’s leather blazer from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Konyakbarna női bőrblézer. Meleg konyakbarna tónus krém és sötét színekhez. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Tan women’s leather blazer. A warm tan tone to pair with cream and dark colours. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Hasonlítsa össze a konyakbarna és a bézs blézert a tervezett ruháival.",
+      "en": "Compare the tan and beige blazers against the clothes you plan to wear."
     },
     "category": {
       "hu": {
@@ -2446,8 +2725,17 @@
       }
     },
     "description": {
-      "hu": "Konyakbarna női bőrblézer elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Tan women’s leather blazer with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Konyakbarna női bőrblézer. Valódi báránybőr. Meleg konyakbarna tónus krém és sötét színekhez. Személyes próba Budapesten.",
+      "en": "Tan women’s leather blazer. Genuine lambskin. A warm tan tone to pair with cream and dark colours. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Konyakbarna női bőrblézer | Budapest · Kaftan Angelo",
+      "en": "Tan women’s leather blazer | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -2488,12 +2776,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Bézs-kék mintás női bőrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Beige and blue patterned women’s leather jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Bézs-kék mintás női bőrdzseki. A bézs-kék minta világos és sötét alapszínekhez is illik. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Beige and blue patterned women’s leather jacket. Beige and blue patterning pairs with light and dark base colours. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Nézze meg a minta elhelyezkedését elöl és hátul felvéve.",
+      "en": "Check pattern placement from the front and back when worn."
     },
     "category": {
       "hu": {
@@ -2516,8 +2804,17 @@
       }
     },
     "description": {
-      "hu": "Bézs-kék mintás női bőrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Beige and blue patterned women’s leather jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Bézs-kék mintás női bőrdzseki. Valódi báránybőr. A bézs-kék minta világos és sötét alapszínekhez is illik. Személyes próba Budapesten.",
+      "en": "Beige and blue patterned women’s leather jacket. Beige and blue patterning pairs with light and dark base colours. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Bézs-kék mintás női bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Beige-Blue Patterned Women’s Leather Jacket | Kaftan Angelo Budapest"
     }
   },
   {
@@ -2558,12 +2855,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Bézs női bőrblézer a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Beige women’s leather blazer from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Bézs női bőrblézer. Semleges bézs tónus többféle összeállításhoz. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Beige women’s leather blazer. A neutral beige tone for a range of outfits. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Ellenőrizze a váll kényelmét ing és vékony pulóver fölött is.",
+      "en": "Check shoulder comfort over both a shirt and a thin sweater."
     },
     "category": {
       "hu": {
@@ -2586,8 +2883,17 @@
       }
     },
     "description": {
-      "hu": "Bézs női bőrblézer elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Beige women’s leather blazer with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Bézs női bőrblézer. Valódi báránybőr. Semleges bézs tónus többféle összeállításhoz. Személyes próba Budapesten.",
+      "en": "Beige women’s leather blazer. Genuine lambskin. A neutral beige tone for a range of outfits. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Bézs női bőrblézer | Budapest · Kaftan Angelo",
+      "en": "Beige women’s leather blazer | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -2628,12 +2934,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Piros női bőrdzseki kötött kapucnival a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Red women’s leather jacket with knitted hood from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Piros női bőrdzseki kötött kapucnival. Piros bőr és kötött kapucni, szín- és textúrahangsúllyal. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Red women’s leather jacket with knitted hood. Red leather and a knitted hood add colour and texture. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Próbálja ki a kapucnit nyitott és zárt dzsekinél; kérdezzen a kötött rész ápolásáról.",
+      "en": "Try the hood with the jacket open and closed; ask about care for the knitted section."
     },
     "category": {
       "hu": {
@@ -2656,8 +2962,17 @@
       }
     },
     "description": {
-      "hu": "Piros női bőrdzseki kötött kapucnival elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Red women’s leather jacket with knitted hood with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Piros női bőrdzseki kötött kapucnival. Valódi báránybőr. Piros bőr és kötött kapucni, szín- és textúrahangsúllyal. Személyes próba Budapesten.",
+      "en": "Red women’s leather jacket with knitted hood. Genuine lambskin. Red leather and a knitted hood add colour and texture. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Piros női bőrdzseki kötött kapucnival | Budapest · Kaftan Angelo",
+      "en": "Red Women’s Leather Jacket, Knitted Hood | Kaftan Angelo Budapest"
     }
   },
   {
@@ -2698,12 +3013,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Krém női bőrdzseki kötött kapucnival a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Cream women’s leather jacket with knitted hood from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Krém női bőrdzseki kötött kapucnival. Krémszín és kötött kapucni világos, sportos összeállításokhoz. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Cream women’s leather jacket with knitted hood. Cream leather and a knitted hood suit light, relaxed outfits. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Nézze meg a kapucni illeszkedését a nyaknál, és kérdezzen a világos felület tisztításáról.",
+      "en": "Check how the hood sits at the neck and ask about cleaning the light finish."
     },
     "category": {
       "hu": {
@@ -2726,8 +3041,17 @@
       }
     },
     "description": {
-      "hu": "Krém női bőrdzseki kötött kapucnival elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Cream women’s leather jacket with knitted hood with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Krém női bőrdzseki kötött kapucnival. Valódi báránybőr. Krémszín és kötött kapucni világos, sportos összeállításokhoz. Személyes próba Budapesten.",
+      "en": "Cream women’s leather jacket with knitted hood. Cream leather and a knitted hood suit light, relaxed outfits. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Krém női bőrdzseki kötött kapucnival | Budapest · Kaftan Angelo",
+      "en": "Cream Leather Jacket, Knitted Hood | Kaftan Angelo Budapest"
     }
   },
   {
@@ -2768,12 +3092,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Sárga női bőrdzseki kötött kapucnival a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Yellow women’s leather jacket with knitted hood from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Sárga női bőrdzseki kötött kapucnival. Élénk sárga szín és kötött kapucni hétköznapi viselethez. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Yellow women’s leather jacket with knitted hood. Bright yellow and a knitted hood for casual dressing. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Hasonlítsa össze a sárga árnyalatot természetes fényben, és ellenőrizze a kapucni kényelmét.",
+      "en": "Compare the yellow shade in daylight and check hood comfort."
     },
     "category": {
       "hu": {
@@ -2796,8 +3120,17 @@
       }
     },
     "description": {
-      "hu": "Sárga női bőrdzseki kötött kapucnival elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Yellow women’s leather jacket with knitted hood with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Sárga női bőrdzseki kötött kapucnival. Valódi báránybőr. Élénk sárga szín és kötött kapucni hétköznapi viselethez. Személyes próba Budapesten.",
+      "en": "Yellow women’s leather jacket with knitted hood. Genuine lambskin. Bright yellow and a knitted hood for casual dressing. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Sárga női bőrdzseki kötött kapucnival | Budapest · Kaftan Angelo",
+      "en": "Yellow Leather Jacket, Knitted Hood | Kaftan Angelo Budapest"
     }
   },
   {
@@ -2838,12 +3171,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Fekete steppelt női motoros bőrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Black quilted women’s biker leather jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Fekete steppelt női motoros bőrdzseki. Steppelt részletek és karakteres motoros fazon. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Black quilted women’s biker leather jacket. Quilted details and distinctive biker styling. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Ellenőrizze a steppelt részek esését a vállon és a kar szabad mozgását.",
+      "en": "Check how the quilted sections sit across the shoulders and how freely your arms move."
     },
     "category": {
       "hu": {
@@ -2866,8 +3199,17 @@
       }
     },
     "description": {
-      "hu": "Fekete steppelt női motoros bőrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Black quilted women’s biker leather jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Fekete steppelt női motoros bőrdzseki. Valódi báránybőr. Steppelt részletek és karakteres motoros fazon. Személyes próba Budapesten.",
+      "en": "Black quilted women’s biker leather jacket. Genuine lambskin. Quilted details and distinctive biker styling. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Fekete steppelt női motoros bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Black quilted women’s biker leather jacket | Kaftan Angelo Budapest"
     }
   },
   {
@@ -2908,12 +3250,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Sötétkék állógalléros női bőrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Navy stand-collar women’s leather jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Sötétkék állógalléros női bőrdzseki. Sötétkék állógalléros alternatíva a fekete dzsekikhez. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Navy stand-collar women’s leather jacket. Navy and a stand collar offer an alternative to black jackets. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Próbálja ki a gallért nyitva és zárva; nézze meg a sötétkék tónust természetes fényben.",
+      "en": "Try the collar open and closed; compare the navy shade in daylight."
     },
     "category": {
       "hu": {
@@ -2936,8 +3278,17 @@
       }
     },
     "description": {
-      "hu": "Sötétkék állógalléros női bőrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Navy stand-collar women’s leather jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Sötétkék állógalléros női bőrdzseki. Valódi báránybőr. Sötétkék állógalléros alternatíva a fekete dzsekikhez. Személyes próba Budapesten.",
+      "en": "Navy stand-collar women’s leather jacket. Genuine lambskin. Navy and a stand collar offer an alternative to black jackets. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Sötétkék állógalléros női bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Navy stand-collar women’s leather jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -2978,12 +3329,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Barna férfi kabát szőrmegallérral a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Brown men’s jacket with fur collar from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Barna férfi kabát szőrmegallérral. A szőrmegallér hangsúlyt ad a barna kabát nyakrészének. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Brown men’s jacket with fur collar. A fur collar adds emphasis to the neckline. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Próbálja fel sállal és anélkül, és kérdezzen a gallér és a kabát pontos anyagáról.",
+      "en": "Try it with and without a scarf and ask about collar and body materials."
     },
     "category": {
       "hu": {
@@ -3006,8 +3357,17 @@
       }
     },
     "description": {
-      "hu": "Barna férfi kabát szőrmegallérral elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Brown men’s jacket with fur collar with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Barna férfi kabát szőrmegallérral. A szőrmegallér hangsúlyt ad a barna kabát nyakrészének. Személyes próba Budapesten.",
+      "en": "Brown men’s jacket with fur collar. A fur collar adds emphasis to the neckline. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi szőrmegallér",
+      "en": "Genuine fur collar"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Barna férfi kabát szőrmegallérral | Budapest · Kaftan Angelo",
+      "en": "Brown men’s jacket with fur collar | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -3059,12 +3419,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "A prémium fekete steppelt férfi bőrdzseki a modern városi elegancia és a sportos funkcionalitás tökéletes találkozása a Kaftan Angelo budapesti kollekciójából. Válogatott, rendkívül puha és finom tapintású nappa báránybőrből készült, precíz rombuszmintás és vízszintes steppeléssel, amely nemcsak stílusos textúrát ad a kabátnak, hanem optimális szélvédelmet és enyhe hőtartást is biztosít. Magasított álló gallérja, robusztus fém elülső cipzárja és cipzáras oldalzsebei a hűvös budapesti őszi és tavaszi napokon is maximális kényelmet és védelmet nyújtanak. A belső selymes, lélegző bélés kényelmes viseletet tesz lehetővé inggel vagy vékony kötött pulóverrel rétegezve.",
-      "en": "The premium black quilted men’s leather jacket blends modern urban sophistication with functional everyday warmth from the Kaftan Angelo Budapest collection. Tailored from carefully selected, exceptionally supple nappa lambskin, it features precision diamond-quilted stitching that adds rich visual texture while delivering effective wind-blocking performance for transitional weather. Featuring a sleek stand collar, heavy-duty metal front zip, and zipped side hand pockets, it ensures lasting comfort and a sharp silhouette whether walking along the Danube or commuting in central Budapest. A silky, breathable interior lining allows smooth layering over button-down shirts or fine knitwear."
+      "hu": "Fekete steppelt férfi bőrdzseki. Állógallér, rombuszmintás steppelés és cipzáras zsebek. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Black quilted men’s leather jacket. Stand collar, diamond quilting and zipped pockets. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál a Kossuth Lajos utcai üzletünkben zárja be teljesen a főcipzárt, és ellenőrizze a gallér kényelmét a nyak körül. Karjait előrenyújtva és megemelve győződjön meg arról, hogy a lapockáknál nem feszül az anyag, és az ujjak csuklóvonalig érnek. Mivel a nappa báránybőr finom és lágy esésű, az alakot elegánsan követi, miközben szabad mozgást biztosít a mindennapokban. Az otthoni ápoláshoz javasoljuk a méhviaszos vagy lanolinos bőrápoló krémek használatát, és a széles, formázott vállfán való tárolást.",
-      "en": "During an in-store fitting at our Kossuth Lajos utca boutique, zip the jacket up completely to assess collar clearance and neck comfort. Reach forward and move your shoulders to verify there is ample ease across the upper back and that the sleeves comfortably reach the wrist break. Because fine nappa lambskin is inherently pliable and lightweight, it drapes smoothly without stiffness. For long-term care, we recommend storing the jacket on wide contoured wooden hangers and applying a neutral lanolin leather conditioner once or twice each season."
+      "hu": "Húzza fel a cipzárt, ellenőrizze a gallért, és nyújtsa előre a karját a váll mozgásteréhez.",
+      "en": "Fasten the zip, check collar comfort and reach forward to assess shoulder mobility."
     },
     "category": {
       "hu": {
@@ -3087,8 +3447,17 @@
       }
     },
     "description": {
-      "hu": "Prémium minőségű fekete steppelt férfi nappa báránybőr dzseki a Kaftan Angelo budapesti kollekciójából. Álló gallér, robusztus fém cipzárak, elegáns steppelés és légáteresztő bélés. Méret- és áregyeztetés, személyes próba: 1053 Budapest, Kossuth Lajos u. 18.",
-      "en": "Premium black quilted men’s lambskin leather jacket from Kaftan Angelo Budapest. Stand collar, heavy metal zips, fine quilting and breathable lining. Sizing enquiries and in-store fitting at Kossuth Lajos u. 18, Budapest."
+      "hu": "Fekete steppelt férfi bőrdzseki. Valódi báránybőr. Állógallér, rombuszmintás steppelés és cipzáras zsebek. Személyes próba Budapesten.",
+      "en": "Black quilted men’s leather jacket. Genuine lambskin. Stand collar, diamond quilting and zipped pockets. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Fekete steppelt férfi bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Black quilted men’s leather jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -3140,12 +3509,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Fekete férfi bőrdzseki szőrmegallérral a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Black men’s leather jacket with fur collar from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Fekete férfi bőrdzseki szőrmegallérral. Fekete bőr és szőrmegallér kontrasztos textúrával. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Black men’s leather jacket with fur collar. Black leather and a fur collar combine contrasting textures. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Ellenőrizze a gallért zárt dzsekinél, és kérdezzen a szőrme ápolásáról.",
+      "en": "Check collar comfort when fastened and ask about appropriate fur care."
     },
     "category": {
       "hu": {
@@ -3168,8 +3537,17 @@
       }
     },
     "description": {
-      "hu": "Fekete férfi bőrdzseki szőrmegallérral elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Black men’s leather jacket with fur collar with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Fekete férfi bőrdzseki szőrmegallérral. Fekete bőr és szőrmegallér kontrasztos textúrával. Személyes próba Budapesten.",
+      "en": "Black men’s leather jacket with fur collar. Black leather and a fur collar combine contrasting textures. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr, szőrmegallér",
+      "en": "Genuine lambskin leather, fur collar"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Fekete férfi bőrdzseki szőrmegallérral | Budapest · Kaftan Angelo",
+      "en": "Black men’s leather jacket with fur collar | Kaftan Angelo Budapest"
     }
   },
   {
@@ -3221,12 +3599,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Barna férfi kabát krém gallérral a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Tan men’s jacket with cream collar from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Barna férfi kabát krém gallérral. A krémszínű gallér világos kontrasztot ad a barna kabátnak. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Tan men’s jacket with cream collar. A cream collar contrasts with the warm tan tone. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Nézze meg a gallér illeszkedését sállal, és kérdezzen a pontos anyagösszetételről.",
+      "en": "Check collar fit with a scarf and ask about the exact material composition."
     },
     "category": {
       "hu": {
@@ -3249,8 +3627,17 @@
       }
     },
     "description": {
-      "hu": "Barna férfi kabát krém gallérral elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Tan men’s jacket with cream collar with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Barna férfi kabát krém gallérral. A krémszínű gallér világos kontrasztot ad a barna kabátnak. Személyes próba Budapesten.",
+      "en": "Tan men’s jacket with cream collar. A cream collar contrasts with the warm tan tone. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": null,
+      "en": null
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Barna férfi kabát krém gallérral | Budapest · Kaftan Angelo",
+      "en": "Tan men’s jacket with cream collar | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -3302,12 +3689,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Fekete férfi bőrdzseki steppelt vállal a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Black men’s leather jacket with quilted shoulders from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Fekete férfi bőrdzseki steppelt vállal. A steppelt vállrész a felsőtest vonalát hangsúlyozza. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Black men’s leather jacket with quilted shoulders. Quilted shoulders draw attention to the upper-body line. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Emelje előre és oldalra a karját, és ellenőrizze a vállrész kényelmét.",
+      "en": "Reach forward and sideways to check comfort around the quilted shoulders."
     },
     "category": {
       "hu": {
@@ -3330,8 +3717,17 @@
       }
     },
     "description": {
-      "hu": "Fekete férfi bőrdzseki steppelt vállal elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Black men’s leather jacket with quilted shoulders with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Fekete férfi bőrdzseki steppelt vállal. Valódi báránybőr. A steppelt vállrész a felsőtest vonalát hangsúlyozza. Személyes próba Budapesten.",
+      "en": "Black men’s leather jacket with quilted shoulders. Genuine lambskin. Quilted shoulders draw attention to the upper-body line. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Fekete férfi bőrdzseki steppelt vállal | Budapest · Kaftan Angelo",
+      "en": "Black Men’s Quilted-Shoulder Leather Jacket | Kaftan Angelo Budapest"
     }
   },
   {
@@ -3372,12 +3768,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Barna varrott férfi bőrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Brown stitched men’s leather jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Barna varrott férfi bőrdzseki. A varrásrészletek kiemelik a barna bőr felületét. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Brown stitched men’s leather jacket. Stitching details highlight the lines of brown leather. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Nézze meg a varrások helyzetét felvéve a váll és a könyök körül.",
+      "en": "Inspect how the seams sit when worn, especially around the shoulders and elbows."
     },
     "category": {
       "hu": {
@@ -3400,8 +3796,17 @@
       }
     },
     "description": {
-      "hu": "Barna varrott férfi bőrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Brown stitched men’s leather jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Barna varrott férfi bőrdzseki. Valódi báránybőr. A varrásrészletek kiemelik a barna bőr felületét. Személyes próba Budapesten.",
+      "en": "Brown stitched men’s leather jacket. Genuine lambskin. Stitching details highlight the lines of brown leather. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Barna varrott férfi bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Brown stitched men’s leather jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -3442,12 +3847,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Fekete varrott férfi bőrdzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Black stitched men’s leather jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Fekete varrott férfi bőrdzseki. Visszafogott varrásrészletek egyszínű fekete bőrön. Valódi báránybőrből készült modell. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Black stitched men’s leather jacket. Subtle stitching adds texture to black leather. Made from genuine lambskin leather. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Próbálja fel nyitva és zárva, figyelje meg a varrások vonalát.",
+      "en": "Try it open and closed and see how the stitched lines follow your shape."
     },
     "category": {
       "hu": {
@@ -3470,8 +3875,17 @@
       }
     },
     "description": {
-      "hu": "Fekete varrott férfi bőrdzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Black stitched men’s leather jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Fekete varrott férfi bőrdzseki. Valódi báránybőr. Visszafogott varrásrészletek egyszínű fekete bőrön. Személyes próba Budapesten.",
+      "en": "Black stitched men’s leather jacket. Genuine lambskin. Subtle stitching adds texture to black leather. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi báránybőr",
+      "en": "Genuine lambskin leather"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Fekete varrott férfi bőrdzseki | Budapest · Kaftan Angelo",
+      "en": "Black stitched men’s leather jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -3512,12 +3926,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Fehér női szőrmedzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "White women’s fur jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Fehér női szőrmedzseki. Világos szőrme a sötét téli ruhák kontrasztjaként. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "White women’s fur jacket. Light fur offers contrast against darker winter outfits. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Nézze meg a fehér árnyalatot természetes fényben, és kérdezzen az ápolásról.",
+      "en": "Inspect the white shade in daylight and ask about appropriate care."
     },
     "category": {
       "hu": {
@@ -3540,8 +3954,17 @@
       }
     },
     "description": {
-      "hu": "Fehér női szőrmedzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "White women’s fur jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Fehér női szőrmedzseki. Világos szőrme a sötét téli ruhák kontrasztjaként. Személyes próba Budapesten.",
+      "en": "White women’s fur jacket. Light fur offers contrast against darker winter outfits. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi szőrme",
+      "en": "Genuine fur"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Fehér női szőrmedzseki | Budapest · Kaftan Angelo",
+      "en": "White women’s fur jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -3582,12 +4005,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Ezüstszürke női szőrmedzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Silver grey women’s fur jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Ezüstszürke női szőrmedzseki. Ezüstszürke tónus hűvös színvilágú összeállításokhoz. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Silver grey women’s fur jacket. Silver grey complements cool-toned outfits. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Hasonlítsa össze az ezüstszürke színt fekete és világos ruhákkal.",
+      "en": "Compare the silver-grey shade against black and light clothing."
     },
     "category": {
       "hu": {
@@ -3610,8 +4033,17 @@
       }
     },
     "description": {
-      "hu": "Ezüstszürke női szőrmedzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Silver grey women’s fur jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Ezüstszürke női szőrmedzseki. Ezüstszürke tónus hűvös színvilágú összeállításokhoz. Személyes próba Budapesten.",
+      "en": "Silver grey women’s fur jacket. Silver grey complements cool-toned outfits. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi szőrme",
+      "en": "Genuine fur"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Ezüstszürke női szőrmedzseki | Budapest · Kaftan Angelo",
+      "en": "Silver grey women’s fur jacket | Budapest · Kaftan Angelo"
     }
   },
   {
@@ -3652,12 +4084,12 @@
     "variants": [],
     "catalogHidden": false,
     "intro": {
-      "hu": "Szürkésbarna női szőrmedzseki a Kaftan Angelo budapesti választékából. A fotókon az elülső és hátsó kialakítás, a fazon és a felület részletei láthatók. Nézze meg a képeket, majd kérdezzen a keresett méretről és az aktuális árról.",
-      "en": "Taupe women’s fur jacket from the Kaftan Angelo Budapest selection. The photographs show the front and back, the shape and surface details. Explore the photos and ask about your preferred size and the current price."
+      "hu": "Szürkésbarna női szőrmedzseki. Szürkésbarna árnyalat semleges és meleg színek mellé. Próbálja fel budapesti üzletünkben, és kérjen segítséget a megfelelő méret kiválasztásához.",
+      "en": "Taupe women’s fur jacket. Taupe complements both neutral and warm colours. Try the model in our Budapest store and ask for help choosing the right size."
     },
     "advice": {
-      "hu": "Személyes próbánál ellenőrizze a vállak illeszkedését, az ujjhosszt és a kényelmes mozgást. Az anyag összetételéről és ápolásáról kérdezzen üzletünkben.",
-      "en": "During an in-store fitting, check shoulder fit, sleeve length and comfortable movement. Ask our store about material composition and care."
+      "hu": "Nézze meg a tónust különböző fényben, és ellenőrizze a dzseki esését felvéve.",
+      "en": "Compare the tone in different lighting and check the jacket’s drape when worn."
     },
     "category": {
       "hu": {
@@ -3680,8 +4112,17 @@
       }
     },
     "description": {
-      "hu": "Szürkésbarna női szőrmedzseki elő- és hátulnézeti fotókkal. Ár- és méretérdeklődés, személyes próba a Kaftan Angelo üzletében, Kossuth Lajos u. 18., Budapest.",
-      "en": "Taupe women’s fur jacket with front and back photographs. Ask about price and sizes, and try it at Kaftan Angelo, Kossuth Lajos u. 18., Budapest."
+      "hu": "Szürkésbarna női szőrmedzseki. Szürkésbarna árnyalat semleges és meleg színek mellé. Személyes próba Budapesten.",
+      "en": "Taupe women’s fur jacket. Taupe complements both neutral and warm colours. Try it at Kaftan Angelo Budapest."
+    },
+    "material": {
+      "hu": "Valódi szőrme",
+      "en": "Genuine fur"
+    },
+    "modifiedDate": "2026-11-25",
+    "seoTitle": {
+      "hu": "Szürkésbarna női szőrmedzseki | Budapest · Kaftan Angelo",
+      "en": "Taupe women’s fur jacket | Budapest · Kaftan Angelo"
     }
   }
 ]

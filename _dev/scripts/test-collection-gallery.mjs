@@ -125,7 +125,9 @@ for(const lang of ['hu','en']) {
   const modelSelector=lang==='hu'?'.product-card a[href^="/modellek/"]':'.product-card a[href^="/en/models/"]';
   const destination=await page.$eval(modelSelector,link=>link.getAttribute('href'));
   await Promise.all([page.waitForNavigation({waitUntil:'domcontentloaded'}),page.locator(modelSelector).click()]);
-  assert.equal(new URL(page.url()).pathname,destination,'Real model card opens its model page');
+  const destinationUrl = new URL(destination, base);
+  const actualUrl = new URL(page.url());
+  assert.equal(actualUrl.pathname + actualUrl.search, destinationUrl.pathname + destinationUrl.search, 'Real model card opens its model page and selected colour');
   assert.ok(await page.$('h1'));
   assert.deepEqual(errors,[]);
   await context.close();
@@ -142,13 +144,14 @@ for(const lang of ['hu','en']) {
  if(await page.$eval('[data-consent-banner]',node=>!node.hidden))await page.click('[data-consent-reject]');
  const visible=()=>page.$$eval('.product-card',cards=>cards.filter(card=>!card.hidden).length);
  await page.type('[data-model-search]',lang==='hu'?'ketoldalas':'reversible');
- assert.equal(await visible(),1,'Accent-insensitive model search');
+ assert.equal(await visible(),5,'Accent-insensitive model search finds all five reversible colour cards');
  await page.$eval('[data-model-search]',el=>{el.value='';el.dispatchEvent(new Event('input',{bubbles:true}));});
- await page.select('[data-model-colour]','green');
+ await page.select('select[data-model-colour]','green');
  assert.ok(await visible()>0);
- assert.ok(await page.$eval('.product-card:not([hidden]) h3',el=>/Kétoldalas|Reversible/.test(el.textContent)),'Verified variant colours are searchable');
- await page.select('[data-model-colour]','');
- await page.select('[data-model-style]','reversible');assert.equal(await visible(),1);
+ assert.ok(await page.$eval('.product-card:not([hidden]) h3',el=>/kétoldalas|reversible/i.test(el.textContent)),'Verified variant colours are searchable');
+ assert.deepEqual(await page.$$eval('.product-card:not([hidden])[data-model-colour]',cards=>cards.map(c=>c.dataset.modelColour)),['green'],'Colour filter matches only the selected reversible colour card');
+ await page.select('select[data-model-colour]','');
+ await page.select('[data-model-style]','reversible');assert.equal(await visible(),5);
  await page.select('[data-model-style]','');
  await page.locator('.product-card:not([hidden]) [data-model-save]').click();
  assert.equal(await page.$eval('.product-card:not([hidden]) [data-model-save]',el=>el.getAttribute('aria-pressed')),'true');
@@ -161,7 +164,7 @@ for(const lang of ['hu','en']) {
   await page.screenshot({path:process.env.COLLECTION_SCREENSHOTS+'/'+lang+'-390-fitting-list.png'});
  }
  const href=await page.$eval('[data-fitting-inquiry]',el=>el.href);
- assert.ok(new URL(href).searchParams.get('text').includes('/noi-ketoldalas-vizallo-borkabat-budapest/'));
+ assert.ok(new URL(href).searchParams.get('text').includes('/noi-ketoldalas-vizallo-borkabat-budapest/?colour=red'));
  await page.locator('.product-card:not([hidden]) [data-model-save]').click();
  assert.equal(await visible(),0);
  assert.equal(await page.$eval('[data-fitting-inquiry]',el=>el.hidden),true);
