@@ -72,4 +72,38 @@ for(const lang of ['hu','en']) {
  }
 }
 console.log('PASS: real HU/EN collection filters, empty guidance, reset/focus, batches and model navigation at 320/390 px and desktop.');
+
+for(const lang of ['hu','en']) {
+ const context=await browser.createBrowserContext();
+ const page=await context.newPage();
+ await page.setViewport({width:390,height:844});
+ const hub=base+(lang==='hu'?'/kollekciok/':'/en/collections/');
+ await page.goto(hub,{waitUntil:'networkidle2'});
+ if(await page.$eval('[data-consent-banner]',node=>!node.hidden))await page.click('[data-consent-reject]');
+ const visible=()=>page.$eval('.product-card',cards=>cards.filter(card=>!card.hidden).length);
+ await page.type('[data-model-search]',lang==='hu'?'ketoldalas':'reversible');
+ assert.equal(await visible(),1,'Accent-insensitive model search');
+ await page.$eval('[data-model-search]',el=>{el.value='';el.dispatchEvent(new Event('input',{bubbles:true}));});
+ await page.select('[data-model-colour]','green');
+ assert.ok(await visible()>0);
+ assert.ok(await page.$eval('.product-card:not([hidden]) h3',el=>/Kétoldalas|Reversible/.test(el.textContent)),'Verified variant colours are searchable');
+ await page.select('[data-model-colour]','');
+ await page.select('[data-model-style]','reversible');assert.equal(await visible(),1);
+ await page.select('[data-model-style]','');
+ await page.click('.product-card:not([hidden]) [data-model-save]');
+ assert.equal(await page.$eval('.product-card:not([hidden]) [data-model-save]',el=>el.getAttribute('aria-pressed')),'true');
+ await page.reload({waitUntil:'networkidle2'});
+ assert.equal(await page.$eval('.product-card:not([hidden]) [data-model-save]',el=>el.getAttribute('aria-pressed')),'true');
+ await page.click('[data-fitting-toggle]');
+ assert.equal(await visible(),1);
+ const href=await page.$eval('[data-fitting-inquiry]',el=>el.href);
+ assert.ok(new URL(href).searchParams.get('text').includes('/noi-ketoldalas-vizallo-borkabat-budapest/'));
+ await page.click('.product-card:not([hidden]) [data-model-save]');
+ assert.equal(await visible(),0);
+ assert.equal(await page.$eval('[data-fitting-inquiry]',el=>el.hidden),true);
+ await page.click('[data-fitting-toggle]');
+ assert.equal(await visible(),12);
+ await context.close();
+}
+console.log('PASS: HU/EN collection search, verified colour/style facets, persistent fitting list and inquiry.');
 }finally{await browser.close();}
