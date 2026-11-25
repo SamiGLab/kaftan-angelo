@@ -15,6 +15,7 @@ class Parser(HTMLParser):
         self.alternates={}; self.schemas=[]; self.schema_text=None; self.meta=set()
         self.robots=set()
         self.duplicate_alternates=set()
+        self.refresh=None
     def handle_starttag(self, tag, attrs):
         a=dict(attrs)
         if tag=='title': self.title=True
@@ -25,6 +26,7 @@ class Parser(HTMLParser):
             if lang in self.alternates: self.duplicate_alternates.add(lang)
             self.alternates[lang]=a.get('href')
         if tag=='meta': self.meta.add(a.get('property',a.get('name','')))
+        if tag=='meta' and a.get('http-equiv','').lower()=='refresh': self.refresh=a.get('content')
         if tag=='meta' and a.get('name','').lower()=='robots':
             self.robots.update(value.strip().lower() for value in a.get('content','').split(','))
         if tag=='script' and a.get('type')=='application/ld+json': self.schema_text=''
@@ -61,6 +63,12 @@ def resolve_local(ref, page):
 
 def main():
     broken=[]; seo=[]; semantics=[]; routes={}
+    model_file=DEFAULT_ROOT/'src/data/models.json'
+    models=json.loads(model_file.read_text(encoding='utf-8')) if model_file.exists() else []
+    redirects={root+model['slug']+'/':root+model['slugs'][lang]+'/'
+               for model in models if 'slugs' in model
+               for lang,root in [('hu','/modellek/'),('en','/en/models/')]
+               if model['slug'] != model['slugs'][lang]}
     html_files=[p for p in ROOT.rglob('*.html') if not any(x in p.parts for x in ('_dev','node_modules','.astro','~partytown'))]
     for page in html_files:
         rel=page.relative_to(ROOT)
@@ -68,6 +76,15 @@ def main():
         try: p.feed(page.read_text(encoding='utf-8', errors='replace'))
         except json.JSONDecodeError: seo.append((rel,'invalid JSON-LD'))
         special = page.name.startswith('google') or page.name=='404.html' or 'admin' in page.parts
+        route='/' + page.parent.relative_to(ROOT).as_posix().strip('./')
+        if route != '/': route += '/'
+        if route in redirects:
+            target='https://kaftanangelo.com'+redirects[route]
+            if 'noindex' not in p.robots or p.canonical != target or p.refresh != '0;url='+target:
+                seo.append((rel,'invalid legacy model redirect'))
+            if not (ROOT/redirects[route].strip('/')/'index.html').exists():
+                seo.append((rel,'missing legacy redirect target'))
+            special=True
         if not special:
             route='/' + page.parent.relative_to(ROOT).as_posix().strip('./')
             if route != '/': route += '/'

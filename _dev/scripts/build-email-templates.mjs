@@ -17,12 +17,12 @@ const paragraph=t=>`<p style="margin:0 0 18px;font:16px/1.65 Arial,sans-serif;co
 const products=JSON.parse(await fs.readFile(path.join(root,'src/data/models.json'),'utf8'));
 const card=(slug,lang,type,desc)=>{
  const p=products.find(p=>p.slug===slug);
- const href=url((lang==='hu'?'/modellek/':'/en/models/')+slug+'/',type,lang);
+ const href=url((lang==='hu'?'/modellek/':'/en/models/')+p.slugs[lang]+'/',type,lang);
  return `<td class="stack" width="50%" valign="top" style="padding:10px;"><a href="${esc(href)}">${photo(slug,p.names[lang],260)}</a><h2 style="font:700 18px/1.4 Georgia,serif;color:#214b3b;margin:15px 0 8px;">${esc(p.names[lang])}</h2><p style="font:14px/1.6 Arial,sans-serif;color:#536156;margin:0 0 12px;">${desc}</p><a href="${esc(href)}" style="font:700 14px Arial,sans-serif;color:#214b3b;text-decoration:underline;">${lang==='hu'?'Modell megtekintése':'View this style'} →</a></td>`;
 };
 const editorial=(slug,lang,desc,index)=>{
  const p=products.find(p=>p.slug===slug);
- const href=url((lang==='hu'?'/modellek/':'/en/models/')+slug+'/','season',lang);
+ const href=url((lang==='hu'?'/modellek/':'/en/models/')+p.slugs[lang]+'/','season',lang);
  const image=`<td class="stack" width="46%" valign="middle" style="padding:18px 10px;"><a href="${esc(href)}">${photo(slug,p.names[lang],250)}</a></td>`;
  const text=`<td class="stack" width="54%" valign="middle" style="padding:24px 20px;"><p style="font:11px Arial,sans-serif;letter-spacing:2px;color:#8b713a;margin:0 0 12px;">0${index+1} / ${lang==='hu'?'IRHA':'SHEARLING'}</p><h2 style="font:400 24px/1.3 Georgia,serif;color:#214b3b;margin:0 0 14px;">${esc(p.names[lang])}</h2>${paragraph(desc)}<a href="${esc(href)}" style="font:700 14px Arial,sans-serif;color:#214b3b;text-decoration:underline;">${lang==='hu'?'Nézze meg közelebbről':'Take a closer look'} →</a></td>`;
  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" bgcolor="${index%2?'#f2efe6':'#fffdf8'}"><tr>${index%2?text+image:image+text}</tr></table>`;
