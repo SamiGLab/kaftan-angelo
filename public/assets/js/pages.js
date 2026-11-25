@@ -124,6 +124,58 @@ function syncPreviewSave() {
     : (hu ? '♡ Próbalistára' : '♡ Save to list');
   saveBtn.setAttribute('aria-label', (saved ? (hu ? 'Eltávolítás a próbalistáról: ' : 'Remove from fitting list: ') : (hu ? 'Mentés a próbalistára: ' : 'Save to fitting list: ')) + activePreviewName);
 }
+let catalogUiLoaded = false;
+function ensureCatalogUiCss() {
+  if (catalogUiLoaded || !document.head || document.querySelector('link[href="/assets/css/catalog-ui.css"]')) return;
+  catalogUiLoaded = true;
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = '/assets/css/catalog-ui.css';
+  document.head.append(link);
+}
+let galleryMapPromise = null;
+function loadGalleryMap() {
+  ensureCatalogUiCss();
+  if (!galleryMapPromise) {
+    galleryMapPromise = fetch('/assets/data/collection-gallery.json')
+      .then(res => (res.ok ? res.json() : {}))
+      .catch(() => ({}));
+  }
+  return galleryMapPromise;
+}
+function renderPreviewThumbs(thumbsEl, image, title, primarySrc, extraPhotos) {
+  thumbsEl.replaceChildren();
+  const photos = extraPhotos.length ? [primarySrc, ...extraPhotos] : [];
+  if (photos.length <= 1) {
+    thumbsEl.hidden = true;
+    return;
+  }
+  photos.forEach((src, photoIdx) => {
+    const label = photoIdx === 0
+      ? (hu ? 'Elölnézet' : 'Front view')
+      : (hu ? `Fotó ${photoIdx + 1}` : `Photo ${photoIdx + 1}`);
+    const thumbBtn = document.createElement('button');
+    thumbBtn.type = 'button';
+    thumbBtn.className = 'preview-thumb';
+    thumbBtn.setAttribute('aria-pressed', String(photoIdx === 0));
+    thumbBtn.setAttribute('aria-label', `${title} — ${label}`);
+    const thumbImg = document.createElement('img');
+    thumbImg.src = src;
+    thumbImg.alt = '';
+    thumbImg.width = 72;
+    thumbImg.height = 90;
+    thumbImg.loading = 'lazy';
+    thumbImg.decoding = 'async';
+    thumbBtn.append(thumbImg);
+    thumbBtn.addEventListener('click', () => {
+      image.src = src;
+      image.alt = `${title} — ${label}`;
+      thumbsEl.querySelectorAll('.preview-thumb').forEach(btn => btn.setAttribute('aria-pressed', String(btn === thumbBtn)));
+    });
+    thumbsEl.append(thumbBtn);
+  });
+  thumbsEl.hidden = false;
+}
 function showImage(index) {
   const visible = visibleImageButtons();
   selectedImage = (index + visible.length) % visible.length;
@@ -152,44 +204,23 @@ function showImage(index) {
       detailEl.hidden = true;
     }
   }
+  const modelKey = validModelKey(card.dataset.modelKey) ? card.dataset.modelKey : '';
+  activePreviewKey = modelKey;
+  activePreviewName = title;
+  syncPreviewSave();
   const thumbsEl = dialog.querySelector('[data-preview-thumbs]');
   if (thumbsEl) {
     thumbsEl.replaceChildren();
-    const extraPhotos = (trigger.dataset.productGallery || '').split('|').filter(Boolean);
-    const photos = extraPhotos.length ? [trigger.dataset.productImage, ...extraPhotos] : [];
-    if (photos.length > 1) {
-      photos.forEach((src, photoIdx) => {
-        const label = photoIdx === 0
-          ? (hu ? 'Elölnézet' : 'Front view')
-          : (hu ? `Fotó ${photoIdx + 1}` : `Photo ${photoIdx + 1}`);
-        const thumbBtn = document.createElement('button');
-        thumbBtn.type = 'button';
-        thumbBtn.className = 'preview-thumb';
-        thumbBtn.setAttribute('aria-pressed', String(photoIdx === 0));
-        thumbBtn.setAttribute('aria-label', `${title} — ${label}`);
-        const thumbImg = document.createElement('img');
-        thumbImg.src = src;
-        thumbImg.alt = '';
-        thumbImg.width = 72;
-        thumbImg.height = 90;
-        thumbImg.loading = 'lazy';
-        thumbImg.decoding = 'async';
-        thumbBtn.append(thumbImg);
-        thumbBtn.addEventListener('click', () => {
-          image.src = src;
-          image.alt = `${title} — ${label}`;
-          thumbsEl.querySelectorAll('.preview-thumb').forEach(btn => btn.setAttribute('aria-pressed', String(btn === thumbBtn)));
-        });
-        thumbsEl.append(thumbBtn);
+    thumbsEl.hidden = true;
+    if (modelKey) {
+      const requestedKey = modelKey;
+      loadGalleryMap().then(map => {
+        if (activePreviewKey !== requestedKey) return;
+        const extraPhotos = Array.isArray(map[requestedKey]) ? map[requestedKey] : [];
+        renderPreviewThumbs(thumbsEl, image, title, trigger.dataset.productImage, extraPhotos);
       });
-      thumbsEl.hidden = false;
-    } else {
-      thumbsEl.hidden = true;
     }
   }
-  activePreviewKey = validModelKey(card.dataset.modelKey) ? card.dataset.modelKey : '';
-  activePreviewName = title;
-  syncPreviewSave();
   if (!dialog.open) dialog.showModal();
 }
 imageButtons.forEach(button => button.addEventListener('click', () => showImage(visibleImageButtons().indexOf(button))));
@@ -212,18 +243,22 @@ dialog?.addEventListener('click', event => {
 if (matchMedia('(hover: hover)').matches) {
   const loadAltPhoto = event => {
     const button = event.currentTarget;
-    const src = (button.dataset.productGallery || '').split('|')[0];
-    if (!src || button.querySelector('.collection-alt-photo')) return;
-    const altImg = document.createElement('img');
-    altImg.className = 'collection-alt-photo';
-    altImg.src = src;
-    altImg.alt = '';
-    altImg.loading = 'lazy';
-    altImg.decoding = 'async';
-    altImg.setAttribute('aria-hidden', 'true');
-    button.append(altImg);
+    const key = button.closest('.product-card')?.dataset.modelKey;
+    if (!key || button.querySelector('.collection-alt-photo')) return;
+    loadGalleryMap().then(map => {
+      const src = Array.isArray(map[key]) ? map[key][0] : '';
+      if (!src || button.querySelector('.collection-alt-photo')) return;
+      const altImg = document.createElement('img');
+      altImg.className = 'collection-alt-photo';
+      altImg.src = src;
+      altImg.alt = '';
+      altImg.loading = 'lazy';
+      altImg.decoding = 'async';
+      altImg.setAttribute('aria-hidden', 'true');
+      button.append(altImg);
+    });
   };
-  document.querySelectorAll('.product-image-button[data-product-gallery]').forEach(button => {
+  document.querySelectorAll('[data-static-collection] .product-image-button').forEach(button => {
     button.addEventListener('pointerenter', loadAltPhoto, { once: true });
     button.addEventListener('focusin', loadAltPhoto, { once: true });
   });
@@ -303,12 +338,74 @@ function createDiscovery(grid, cards, onChange) {
   const notice = toolbar.querySelector('.collection-notice');
   const panel = toolbar.querySelector('.fitting-panel');
   const inquiry = toolbar.querySelector('[data-fitting-inquiry]');
-  const chipsBox = toolbar.querySelector('[data-active-filters]');
-  const tray = grid.parentElement.querySelector('[data-fitting-tray]');
-  const trayCount = tray?.querySelector('[data-fitting-tray-count]');
-  const trayNames = tray?.querySelector('[data-fitting-tray-names]');
-  const trayInquiry = tray?.querySelector('[data-fitting-tray-inquiry]');
-  const trayToggle = tray?.querySelector('[data-fitting-tray-toggle]');
+  let chipsBox = toolbar.querySelector('[data-active-filters]');
+  function ensureChipsBox() {
+    ensureCatalogUiCss();
+    if (chipsBox) return chipsBox;
+    chipsBox = document.createElement('div');
+    chipsBox.className = 'collection-active-filters';
+    chipsBox.dataset.activeFilters = '';
+    chipsBox.setAttribute('role', 'group');
+    chipsBox.setAttribute('aria-label', hu ? 'Aktív szűrők' : 'Active filters');
+    chipsBox.hidden = true;
+    panel.before(chipsBox);
+    return chipsBox;
+  }
+  let tray = grid.parentElement.querySelector('[data-fitting-tray]');
+  let trayCount = tray?.querySelector('[data-fitting-tray-count]');
+  let trayNames = tray?.querySelector('[data-fitting-tray-names]');
+  let trayInquiry = tray?.querySelector('[data-fitting-tray-inquiry]');
+  let trayToggle = tray?.querySelector('[data-fitting-tray-toggle]');
+  function ensureTray() {
+    ensureCatalogUiCss();
+    if (tray) return tray;
+    tray = document.createElement('aside');
+    tray.className = 'fitting-tray';
+    tray.dataset.fittingTray = '';
+    tray.setAttribute('aria-label', hu ? 'Próbalistám gyorselérés' : 'My fitting list quick bar');
+    tray.hidden = true;
+    const inner = document.createElement('div');
+    inner.className = 'fitting-tray-inner';
+    const info = document.createElement('div');
+    info.className = 'fitting-tray-info';
+    trayCount = document.createElement('strong');
+    trayCount.dataset.fittingTrayCount = '';
+    trayNames = document.createElement('span');
+    trayNames.dataset.fittingTrayNames = '';
+    info.append(trayCount, trayNames);
+    const actions = document.createElement('div');
+    actions.className = 'fitting-tray-actions';
+    if (isHub) {
+      trayToggle = document.createElement('button');
+      trayToggle.type = 'button';
+      trayToggle.className = 'btn btn-ghost fitting-tray-view';
+      trayToggle.dataset.fittingTrayToggle = '';
+      trayToggle.textContent = hu ? 'Lista megnyitása' : 'View list';
+      trayToggle.addEventListener('click', () => {
+        const next = !savedOnly;
+        setSavedMode(next);
+        if (next) panel.scrollIntoView({ block: 'start' });
+      });
+      actions.append(trayToggle);
+    } else {
+      const link = document.createElement('a');
+      link.className = 'btn btn-ghost fitting-tray-view';
+      link.href = `${fittingHub}#fitting-list`;
+      link.textContent = hu ? 'Lista megnyitása' : 'View list';
+      actions.append(link);
+    }
+    trayInquiry = document.createElement('a');
+    trayInquiry.className = 'btn btn-primary fitting-tray-wa';
+    trayInquiry.dataset.fittingTrayInquiry = '';
+    trayInquiry.dataset.interestSource = 'fitting_list';
+    trayInquiry.href = 'https://wa.me/36203593216';
+    trayInquiry.textContent = 'WhatsApp';
+    actions.append(trayInquiry);
+    inner.append(info, actions);
+    tray.append(inner);
+    grid.parentElement.append(tray);
+    return tray;
+  }
   function enableFacet(select, facets) {
     for (const [value, labelHu, labelEn, pattern] of facets) {
       if (records.some(record => pattern.test(record.searchable))) select.add(new Option(hu ? labelHu : labelEn, value));
@@ -337,37 +434,38 @@ function createDiscovery(grid, cards, onChange) {
       url.searchParams.set('text', message);
       inquiry.href = url.href;
     } else inquiry.removeAttribute('href');
-    if (tray) {
-      const totalSaved = fittingList.size;
-      tray.hidden = totalSaved === 0;
-      if (totalSaved > 0) {
-        if (trayCount) {
-          trayCount.textContent = hu ? `♥ Próbalistám (${totalSaved})` : `♥ Fitting list (${totalSaved})`;
-        }
-        if (trayNames) {
-          const previewNames = availableSaved.slice(0, 2).map(record => record.name);
-          const extra = totalSaved - previewNames.length;
-          trayNames.textContent = previewNames.length
-            ? previewNames.join(' · ') + (extra > 0 ? ` +${extra}` : '')
-            : (hu ? 'A kiválasztott modellek a próbalistán várják.' : 'Your selected models are saved on your list.');
-        }
-        if (trayInquiry) {
-          if (availableSaved.length) {
-            trayInquiry.href = inquiry.href;
-          } else {
-            const fallbackIntro = hu
-              ? 'Üdvözlöm! A próbalistámról szeretnék érdeklődni az aktuális elérhetőségről.'
-              : 'Hello! I would like to ask about current availability for my fitting list.';
-            const fallbackUrl = new URL('https://wa.me/36203593216');
-            fallbackUrl.searchParams.set('text', fallbackIntro);
-            trayInquiry.href = fallbackUrl.href;
-          }
-        }
-        if (trayToggle) {
-          trayToggle.textContent = savedOnly ? (hu ? 'Összes modell' : 'All models') : (hu ? 'Lista megnyitása' : 'View list');
-          trayToggle.setAttribute('aria-pressed', String(savedOnly));
+    const totalSaved = fittingList.size;
+    if (totalSaved > 0) {
+      ensureTray();
+      tray.hidden = false;
+      if (trayCount) {
+        trayCount.textContent = hu ? `♥ Próbalistám (${totalSaved})` : `♥ Fitting list (${totalSaved})`;
+      }
+      if (trayNames) {
+        const previewNames = availableSaved.slice(0, 2).map(record => record.name);
+        const extra = totalSaved - previewNames.length;
+        trayNames.textContent = previewNames.length
+          ? previewNames.join(' · ') + (extra > 0 ? ` +${extra}` : '')
+          : (hu ? 'A kiválasztott modellek a próbalistán várják.' : 'Your selected models are saved on your list.');
+      }
+      if (trayInquiry) {
+        if (availableSaved.length) {
+          trayInquiry.href = inquiry.href;
+        } else {
+          const fallbackIntro = hu
+            ? 'Üdvözlöm! A próbalistámról szeretnék érdeklődni az aktuális elérhetőségről.'
+            : 'Hello! I would like to ask about current availability for my fitting list.';
+          const fallbackUrl = new URL('https://wa.me/36203593216');
+          fallbackUrl.searchParams.set('text', fallbackIntro);
+          trayInquiry.href = fallbackUrl.href;
         }
       }
+      if (trayToggle) {
+        trayToggle.textContent = savedOnly ? (hu ? 'Összes modell' : 'All models') : (hu ? 'Lista megnyitása' : 'View list');
+        trayToggle.setAttribute('aria-pressed', String(savedOnly));
+      }
+    } else if (tray) {
+      tray.hidden = true;
     }
   }
   for (const record of records) {
@@ -391,14 +489,8 @@ function createDiscovery(grid, cards, onChange) {
   }
   if (isHub) {
     saved.addEventListener('click', () => setSavedMode(!savedOnly));
-    trayToggle?.addEventListener('click', () => {
-      const next = !savedOnly;
-      setSavedMode(next);
-      if (next) panel.scrollIntoView({ block: 'start' });
-    });
   }
   function renderChips(currentFilter, resetAll) {
-    if (!chipsBox) return;
     const chips = [];
     if (savedOnly) {
       chips.push({
@@ -443,11 +535,15 @@ function createDiscovery(grid, cards, onChange) {
         onRemove: () => { style.value = ''; onChange(); style.focus(); },
       });
     }
-    chipsBox.replaceChildren();
     if (!chips.length) {
-      chipsBox.hidden = true;
+      if (chipsBox) {
+        chipsBox.replaceChildren();
+        chipsBox.hidden = true;
+      }
       return;
     }
+    const box = ensureChipsBox();
+    box.replaceChildren();
     for (const chip of chips) {
       const btn = document.createElement('button');
       btn.type = 'button';
@@ -462,7 +558,7 @@ function createDiscovery(grid, cards, onChange) {
       close.textContent = '×';
       btn.append(text, close);
       btn.addEventListener('click', chip.onRemove);
-      chipsBox.append(btn);
+      box.append(btn);
     }
     const clearBtn = document.createElement('button');
     clearBtn.type = 'button';
@@ -470,8 +566,8 @@ function createDiscovery(grid, cards, onChange) {
     clearBtn.dataset.clearAllFilters = '';
     clearBtn.textContent = hu ? 'Szűrők törlése' : 'Clear all';
     clearBtn.addEventListener('click', resetAll);
-    chipsBox.append(clearBtn);
-    chipsBox.hidden = false;
+    box.append(clearBtn);
+    box.hidden = false;
   }
   search.addEventListener('input', onChange);
   colour.addEventListener('change', onChange);
