@@ -148,7 +148,7 @@ for(const lang of ['hu','en']) {
  await page.$eval('[data-model-search]',el=>{el.value='';el.dispatchEvent(new Event('input',{bubbles:true}));});
  await page.select('select[data-model-colour]','green');
  assert.ok(await visible()>0);
- assert.equal(await page.$eval('[data-active-filters]',el=>el.hidden),false,'Active filter chips appear when a facet is selected');
+ await page.waitForSelector('[data-active-filters]:not([hidden]) .filter-chip');
  assert.ok(await page.$$eval('[data-active-filters] .filter-chip',chips=>chips.length>=1),'At least one removable filter chip is rendered');
  assert.ok(await page.$eval('.product-card:not([hidden]) h3',el=>/kétoldalas|reversible/i.test(el.textContent)),'Verified variant colours are searchable');
  assert.deepEqual(await page.$$eval('.product-card:not([hidden])[data-model-colour]',cards=>cards.map(c=>c.dataset.modelColour)),['green'],'Colour filter matches only the selected reversible colour card');
@@ -156,16 +156,17 @@ for(const lang of ['hu','en']) {
  assert.equal(await page.$eval('[data-active-filters]',el=>el.hidden),true,'Clear all hides active filter chips');
  assert.equal(await page.$eval('select[data-model-colour]',el=>el.value),'','Clear all resets colour select');
  await page.select('[data-model-style]','reversible');assert.equal(await visible(),5);
+ await page.waitForSelector('[data-remove-filter="style"]');
  await page.locator('[data-remove-filter="style"]').click();
  assert.equal(await page.$eval('[data-active-filters]',el=>el.hidden),true,'Removing the only chip hides the active filter bar');
  assert.equal(await page.evaluate(()=>!document.querySelector('[data-fitting-tray]') || document.querySelector('[data-fitting-tray]').hidden),true,'Floating fitting tray stays hidden when list is empty');
  await page.locator('.product-card:not([hidden]) [data-model-save]').click();
  assert.equal(await page.$eval('.product-card:not([hidden]) [data-model-save]',el=>el.getAttribute('aria-pressed')),'true');
- assert.equal(await page.$eval('[data-fitting-tray]',el=>el.hidden),false,'Floating fitting tray appears when a model is saved');
+ await page.waitForSelector('[data-fitting-tray]:not([hidden])');
  assert.ok(await page.$eval('[data-fitting-tray-inquiry]',el=>el.href.includes('wa.me/36203593216')),'Floating fitting tray provides direct WhatsApp inquiry');
  await page.reload({waitUntil:'networkidle2'});
  assert.equal(await page.$eval('.product-card:not([hidden]) [data-model-save]',el=>el.getAttribute('aria-pressed')),'true');
- assert.equal(await page.$eval('[data-fitting-tray]',el=>el.hidden),false,'Floating fitting tray persists after reload');
+ await page.waitForSelector('[data-fitting-tray]:not([hidden])');
  // Verify upgraded Quick View lightbox (lazy gallery thumbs, model detail link, bidirectional fitting-list toggle)
  await page.locator('.product-card:not([hidden]) .product-image-button').click();
  assert.equal(await page.$eval('[data-product-dialog]',el=>el.open),true,'Quick View dialog opens');

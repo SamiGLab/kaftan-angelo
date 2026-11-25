@@ -11,7 +11,7 @@ function croppedCardSizes(sizes: string, card: string) {
   const height = Number(image.match(/\bheight="(\d+)"/)?.[1]);
   // object-fit:cover fills a 3:4 frame. Wider source photos need enough pixels
   // for the frame's height too; do not sacrifice Retina detail to save bytes.
-  const crop = width && height ? Math.max(1, width / height / (3 / 4)) : 1;
+  const crop = width && height ? Math.max(1, Number((width / height / (3 / 4)).toFixed(3))) : 1;
   if (crop === 1) return sizes;
   return sizes.split(', ').map(part => {
     const [, media = '', length] = part.match(/^(\(max-width: \d+px\) )?(.*)$/)!;
