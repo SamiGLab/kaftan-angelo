@@ -29,7 +29,14 @@ function collectionMarkup(html: string) {
   return html.replace(/(<div class="collection-filters"[^>]*>[\s\S]*?<\/div>)?<div class="product-grid">([\s\S]*?<\/article>)<\/div>/g, (_grid: string, categories: string | undefined, rawCards: string) => {
     const id = 'collection-grid-' + index++;
     const count = (rawCards.match(/<article class="product-card"/g) ?? []).length;
+    let cardIndex = 0;
     const cards = rawCards.replace(/<article class="product-card"[^>]*>[\s\S]*?<\/article>/g, (card: string) => {
+      const position = cardIndex++;
+      // The first row on the compact collection hub is already above the fold.
+      // Give only its leading image high priority; retain lazy loading below it.
+      if (isHub && position < 2) {
+        card = card.replace(/<img\b[^>]*>/, image => image.replace('loading="lazy"', position === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="eager"'));
+      }
       const slug = card.match(/href="\/(?:en\/models|modellek)\/([^/"]+)\/"/)?.[1];
       const model = slug ? catalog.get(slug) : undefined;
       if (!model) return card;
