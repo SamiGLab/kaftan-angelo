@@ -20,6 +20,11 @@ const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
 const defaultAnnouncement = announcements[announcementCycle[dayOfYear % announcementCycle.length] - 1] ?? announcements[0];
 const defaultText = hu ? defaultAnnouncement.hu : defaultAnnouncement.en;
 const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
+const localizedAnnouncements = announcements.map((a) => ({
+  id: a.id,
+  t: hu ? a.hu : a.en,
+  u: hu ? a.url_hu : a.url_en,
+}));
 ---
 <div class="announcement">
   <div class="announcement-inner">
@@ -49,16 +54,16 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
   <nav id="primary-navigation" class="links" data-menu aria-label={hu ? 'Fő navigáció' : 'Primary navigation'}>{items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}</nav>
 </div></header>
 
-<script is:inline define:vars={{ announcements, announcementCycle, lang }}>
+<script is:inline define:vars={{ localizedAnnouncements, announcementCycle }}>
 (() => {
   // Daily selection without cookies or browser storage.
   const parts = new Intl.DateTimeFormat('en-CA', {timeZone:'Europe/Budapest',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
   const values = Object.fromEntries(parts.map(p => [p.type,p.value]));
   const today = Date.UTC(Number(values.year),Number(values.month)-1,Number(values.day));
   const ordinal = Math.floor((today-Date.UTC(Number(values.year),0,0))/86400000);
-  const item = announcements.find(a => a.id === announcementCycle[ordinal % announcementCycle.length]) || announcements[0];
+  const item = localizedAnnouncements.find(a => a.id === announcementCycle[ordinal % announcementCycle.length]) || localizedAnnouncements[0];
   const text = document.querySelector('[data-announcement-text]');
   const link = document.querySelector('[data-announcement-link]');
-  if (text && link) {text.textContent=lang==='hu'?item.hu:item.en;link.href=lang==='hu'?item.url_hu:item.url_en;}
+  if (text && link) {text.textContent=item.t;link.href=item.u;}
 })();
 </script>

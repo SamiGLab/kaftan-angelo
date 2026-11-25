@@ -5,9 +5,15 @@ import Footer from './Footer.astro';
 import AnalyticsConsent from './AnalyticsConsent.astro';
 import WhatsAppButton from './WhatsAppButton.astro';
 import sharp from 'sharp';
+import { readFileSync } from 'node:fs';
+import { transform } from 'lightningcss';
 
-const headingFont = '/assets/fonts/fraunces-latin-wght-normal.woff2';
-const headingExtendedFont = '/assets/fonts/fraunces-hungarian-wght-normal.woff2';
+const inlinedPagesCss = transform({
+  filename: 'pages.css',
+  code: readFileSync('public/assets/css/pages.css'),
+  minify: true,
+}).code.toString();
+
 import { BASE, businessSchema, websiteSchema } from '../data/site';
 const { page } = Astro.props;
 const lang = page.lang ?? 'hu';
@@ -46,6 +52,9 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <meta charset="utf-8" />
   <script is:inline>document.documentElement.classList.add("js");</script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  {preloadHero && !page.collectionCompact && <link rel="preload" as="image" href={heroMobileImage ?? heroCandidates[0]?.[1] ?? heroImage} media="(max-width: 620px)" fetchpriority="high" />}
+  {preloadHero && <link rel="preload" as="image" href={heroImage} media="(min-width: 621px)" fetchpriority="high" />}
+  {isModelPage && modelAvifSrcset && <link rel="preload" as="image" type="image/avif" imagesrcset={modelAvifSrcset} imagesizes={modelAvifSizes || '(max-width: 760px) 92vw, 600px'} fetchpriority="high" />}
   <title>{page.title}</title>
   <meta name="application-name" content="Kaftan Angelo" />
   <meta name="apple-mobile-web-app-title" content="Kaftan Angelo" />
@@ -83,14 +92,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <link rel="help" type="text/plain" href="/llms.txt" title="LLM context" />
   <link rel="service-desc" type="application/ai-catalog+json" href="/.well-known/ai-catalog.json" title="AI Agent Resource Discovery" />
   <link rel="dns-prefetch" href="https://wa.me" />
-  <link rel="preconnect" href="https://wa.me" crossorigin />
-  <link rel="preload" as="font" type="font/woff2" href={headingFont} crossorigin="anonymous" />
-  {lang === 'hu' && <link rel="preload" as="font" type="font/woff2" href={headingExtendedFont} crossorigin="anonymous" />}
-  {preloadHero && !page.collectionCompact && <link rel="preload" as="image" href={heroMobileImage ?? heroCandidates[0]?.[1] ?? heroImage} media="(max-width: 620px)" fetchpriority="high" />}
-  {preloadHero && <link rel="preload" as="image" href={heroImage} media="(min-width: 621px)" fetchpriority="high" />}
-  {isModelPage && modelAvifSrcset && <link rel="preload" as="image" type="image/avif" imagesrcset={modelAvifSrcset} imagesizes={modelAvifSizes || '(max-width: 760px) 92vw, 600px'} fetchpriority="high" />}
-  <link rel="preload" as="style" href="/assets/css/pages.css" />
-  <link rel="stylesheet" href="/assets/css/pages.css" />
+  <style is:inline set:html={inlinedPagesCss}></style>
   <script type="application/ld+json" set:html={JSON.stringify(graph)}></script>
   <slot name="head" />
 </head>

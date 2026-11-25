@@ -3035,3 +3035,24 @@ html:not(.js) .collection-page [data-product-filters] {
   opacity: 1;
   cursor: default;
 }
+
+/* Defer off-screen rendering & below-the-fold background image fetches to protect LCP. */
+.category-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 360px;
+}
+.home-model-links,
+.trust-heritage,
+.split-section,
+.partner-teaser,
+.store-cta,
+.newsletter,
+.footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 420px;
+}
+@media (max-width: 620px) {
+  .category-card {
+    contain-intrinsic-size: auto 270px;
+  }
+}
