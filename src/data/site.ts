@@ -6,7 +6,7 @@ export const businessSchema = {
   url: `${BASE}/`,
   name: 'Kaftan Angelo',
   legalName: 'Alfina Fashion Kft.',
-  description: "Clothing store in central Budapest offering genuine men's and women's leather jackets, leather coats, shearling and fur clothing, leather accessories and custom-made leather jackets.",
+  description: "Clothing store in central Budapest offering genuine men's and women's leather jackets, leather coats, shearling and fur clothing, leather accessories and enquiries about individual sizing and orders.",
   image: [
     `${BASE}/kaftan-angelo-hero-leather-collection.webp`,
     `${BASE}/womens-leather-jacket-budapest.webp`,
@@ -62,16 +62,8 @@ export const businessSchema = {
     },
   ],
   paymentAccepted: 'Cash, Credit Card',
-  priceRange: '€€',
   currenciesAccepted: 'HUF, EUR',
   knowsLanguage: ['hu', 'en'],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5.0',
-    bestRating: '5.0',
-    worstRating: '1.0',
-    ratingCount: '48',
-  },
   openingHoursSpecification: [
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '10:00', closes: '19:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '10:00', closes: '17:00' },

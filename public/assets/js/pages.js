@@ -11,6 +11,7 @@ function updateModelInquiry() {
   const colour = selectedModelColour?.name || modelEnquiryFields?.querySelector('[data-enquiry-colour]')?.value.trim();
   if (size) parts.push(`${hu ? 'Méret' : 'Size'}: ${size}`);
   if (colour) parts.push(`${hu ? 'Szín' : 'Colour'}: ${colour}`);
+  if (selectedModelColour?.url) parts.push(selectedModelColour.url);
   if (selectedModelColour?.image) parts.push(selectedModelColour.image);
   url.searchParams.set('text', parts.join('\n'));
   modelInquiry.href = url.href;
@@ -20,21 +21,35 @@ modelEnquiryFields?.addEventListener('input', updateModelInquiry);
 const colourSelector = document.querySelector('[data-colour-selector]');
 if (colourSelector) {
   const panels = [...document.querySelectorAll('[data-colour-panel]')];
-  function selectColour(key) {
+  function selectColour(key, updateAddress = false) {
     const selected = panels.find(panel => panel.dataset.colourPanel === key);
     if (!selected) return;
     panels.forEach(panel => { panel.hidden = panel !== selected; });
     colourSelector.querySelectorAll('[data-colour]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.colour === key)));
     colourSelector.querySelector('[data-colour-status]').textContent = `${hu ? 'Kiválasztott szín:' : 'Selected colour:'} ${selected.dataset.colourName}`;
-    selectedModelColour = {name:selected.dataset.colourName,image:new URL(selected.querySelector('img').getAttribute('src'), 'https://kaftanangelo.com').href};
+    const variantUrl = new URL(location.pathname, 'https://kaftanangelo.com');
+    variantUrl.searchParams.set('colour', key);
+    selectedModelColour = {name:selected.dataset.colourName,image:new URL(selected.querySelector('img').getAttribute('src'), 'https://kaftanangelo.com').href,url:variantUrl.href};
+    if (updateAddress) {
+      const address = new URL(location.href);
+      address.searchParams.delete('color');
+      address.searchParams.set('colour', key);
+      history.replaceState(history.state, '', address);
+    }
+    document.querySelectorAll('.language-choice a.language-option').forEach(link => {
+      const counterpart = new URL(link.href);
+      counterpart.searchParams.set('colour', key);
+      link.href = counterpart.href;
+    });
     updateModelInquiry();
   }
   colourSelector.hidden = false;
-  const requestedColour = new URLSearchParams(location.search).get('colour');
+  const colourParams = new URLSearchParams(location.search);
+  const requestedColour = colourParams.get('colour') ?? colourParams.get('color');
   selectColour(panels.some(panel => panel.dataset.colourPanel === requestedColour) ? requestedColour : panels[0].dataset.colourPanel);
   colourSelector.addEventListener('click', event => {
     const button = event.target.closest('[data-colour]');
-    if (button) selectColour(button.dataset.colour);
+    if (button) selectColour(button.dataset.colour, true);
   });
 }
 document.querySelectorAll('.current-year').forEach(element => { element.textContent = String(new Date().getFullYear()); });

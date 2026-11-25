@@ -1,18 +1,18 @@
 ---
-title: "Bőrkabát ápolása: hogyan ápold helyesen?"
-description: "Bőrkabát tisztítása, szárítása és tárolása: kövesse a címkét, azonosítsa a felületet, és tudja meg, mikor érdemes szakemberhez fordulni."
+title: "Bőrkabát tisztítása és ápolása: mire figyeljen?"
+description: "Bőrkabát tisztítás és ápolás lépésről lépésre: címke, bőrtípus, szárítás, tárolás és mikor érdemes szakszerű tisztítást kérni."
 publishDate: "2026-10-06"
-modifiedDate: "2026-10-11"
+modifiedDate: "2026-11-22"
 counterpart: "/en/guides/leather-jacket-care/"
 topic: "Ápolás"
-readingMinutes: 2
+readingMinutes: 3
 heroImage: "/assets/images/womens-leather-jacket-budapest-800.avif"
 ---
 > **Rövid válasz:** Olvassa el a címkét, azonosítsa a felületet, kerülje a közvetlen hőt, és bizonytalan foltnál vagy kezelésnél kérdezzen szakembert.
 
 A valódi bőr természetes anyag, ezért nem úgy viselkedik, mint egy műszálas kabát. A legfontosabb szabály: **ne áztassa, ne tegye radiátorra, és ne használjon rajta ismeretlen erős tisztítószert.**
 
-## 1. Portalanítás és felületi tisztítás
+## Bőrkabát tisztítás: portalanítás és felületi tisztítás
 Kezdje a kezelési címkével és a felület azonosításával. Puha, száraz kendőt használjon, ha az előírás megengedi. Nedves kendőről vagy „bőrhöz” jelölt szerről ne feltételezze, hogy velúrra, nubukra és bevonatos felületre egyaránt alkalmas.
 
 ## 2. Ha a kabát megázik
@@ -26,7 +26,7 @@ Csak akkor használjon ápolót, ha azt az adott ruhadarab kezelési előírása
 
 **Kapcsolódó oldalak:** [Női bőrkabátok](/noi-borkabatok/) · [Férfi bőrkabátok](/ferfi-borkabatok/) · [Egyedi rendelés](/egyedi-rendeles/) · [Üzlet](/uzlet/)
 
-## Tisztítási tanácskérés előtt
+## Bőrkabát tisztító vagy házi ápolás?\nA felület egyszerű portalanítása nem ugyanaz, mint a folteltávolítás. Ha zsírfolt, festék, elszíneződés vagy sérülés látható, ne próbáljon ki egymás után több házi szert. A kezelési címkének és az adott bőrtípusnak megfelelő bőrruházati szakembert keressen. A Kaftan Angelo oldala vásárlási és ápolási tájékoztató, nem általános vegytisztítói szolgáltatáslista.\n\n## Tisztítási tanácskérés előtt
 Fotózza le a címkét és az érintett területet. Mondja el a folt okát és a már alkalmazott szereket. Kérdezze meg, kezelik-e az adott felületet és az eltérő betéteket. A Schott NYC szakmai bőrtisztítást és felújítást ajánl; egy általános házi recept nem helyettesíti a konkrét ruháról szóló tanácsot.
 
 ## Gyakori kérdések

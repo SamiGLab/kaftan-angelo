@@ -133,16 +133,384 @@
   },
   "siyah-kapitone-budapest": {
     "hu": [
-      "A steppelt varrások és a gallér illeszkedése: Próbánál húzza fel teljesen az elülső fém cipzárt, és ellenőrizze az álló gallér kényelmét a nyak körül; nem szabad szorítania vagy akadályoznia a mozgást.",
-      "Vállszélesség és rétegezés: Emelje előre mindkét karját és ellenőrizze a lapockák szabadságát. Ügyeljen arra, hogy kényelmesen elférjen alatta egy vastagabb ing vagy finomkötött pulóver.",
-      "Zsebek és vonalvezetés: Próbálja ki a cipzáras oldalzsebek és a belső biztonsági zseb elérését, hogy a kabát modern sziluettje zárt állapotban is rendezett maradjon.",
-      "Finom nappa báránybőr ápolása: Érdeklődjön üzletünkben a steppelt bőrfelülethez legmegfelelőbb természetes bőrápoló balzsamról, amellyel szezononként érdemes átsimítani a bőrt."
+      "Ellenőrizze az állógallér kényelmét teljesen felhúzott cipzárnál.",
+      "Próbálja fel inggel és vékony pulóverrel is.",
+      "Kérdezzen a báránybőr felületének megfelelő ápolásról."
     ],
     "en": [
-      "Quilted stitching and collar comfort: Fasten the front metal zipper completely and check the stand-up collar around your neck; it should sit comfortably without pinching or restricting movement.",
-      "Shoulder mobility and layering: Reach both arms forward and check upper back flexibility. Ensure there is sufficient room for a shirt or fine knitwear sweater underneath.",
-      "Pockets and silhouette: Test the zippered side pockets and internal chest pocket with your phone or wallet to ensure the tailored profile remains smooth when zipped.",
-      "Fine nappa lambskin care: Ask our boutique advisors about natural lanolin-based leather balms suited for quilted lambskin, to maintain grain elasticity and weather protection each season."
+      "Check stand-collar comfort with the front zip fully fastened.",
+      "Try the jacket over a shirt and a thin sweater.",
+      "Ask which care method is suitable for the lambskin finish."
+    ]
+  },
+  "noi-ketoldalas-vizallo-borkabat-budapest": {
+    "hu": [
+      "Mindkét oldalon kényelmesen hozzáfér a zsebekhez?",
+      "Milyen ápolást javasol az üzlet a két különböző oldalhoz?"
+    ],
+    "en": [
+      "Can you comfortably reach the pockets on either side?",
+      "What care does the store recommend for each side?"
+    ]
+  },
+  "abito-yesil-gri-desenli-budapest": {
+    "hu": [
+      "Melyik mintás modell illik jobban a ruhatár színeihez?",
+      "Felvéve is tetszik a minta elhelyezkedése?"
+    ],
+    "en": [
+      "Which patterned model best suits your wardrobe colours?",
+      "Do you like how the pattern sits when worn?"
+    ]
+  },
+  "zoericci-kirmizi-suet-budapest": {
+    "hu": [
+      "Hogyan változik a velúr árnyalata különböző fényben?",
+      "Milyen ápolási módszert javasol az üzlet?"
+    ],
+    "en": [
+      "How does the suede shade change in different lighting?",
+      "Which care method does the store recommend?"
+    ]
+  },
+  "campel-acik-mavi-budapest": {
+    "hu": [
+      "Az öv helyzete megfelel a természetes derékvonalának?",
+      "Kényelmes a dzseki az öv nélkül is?"
+    ],
+    "en": [
+      "Does the belt sit at your natural waist?",
+      "Is the jacket comfortable with the belt loosened?"
+    ]
+  },
+  "alfina-kirmizi-kurklu-budapest": {
+    "hu": [
+      "Hogyan illeszkedik a szőrmeszegély a fazonhoz?",
+      "Milyen ápolást igényel a kabát anyaga és a szegély?"
+    ],
+    "en": [
+      "How does the fur trim sit on the garment?",
+      "What care do the garment body and trim need?"
+    ]
+  },
+  "zoericci-bej-budapest": {
+    "hu": [
+      "Kényelmes a fazon nyitva és zárva is?",
+      "Hogyan illeszkedik a megszokott nadrágjához és felsőjéhez?"
+    ],
+    "en": [
+      "Is the silhouette comfortable both open and closed?",
+      "How does it pair with your usual trousers and top?"
+    ]
+  },
+  "zoericci-gri-blazer-budapest": {
+    "hu": [
+      "Hogyan áll a hajtóka a kabát zárt állapotában?",
+      "Szabadon tud mozogni ing vagy vékony pulóver fölött?"
+    ],
+    "en": [
+      "How do the lapels sit with the blazer closed?",
+      "Can you move comfortably over a shirt or thin sweater?"
+    ]
+  },
+  "campel-beyaz-budapest": {
+    "hu": [
+      "Az öv helyzete megfelel a természetes derékvonalának?",
+      "Kényelmes a dzseki az öv nélkül is?"
+    ],
+    "en": [
+      "Does the belt sit at your natural waist?",
+      "Is the jacket comfortable with the belt loosened?"
+    ]
+  },
+  "mina-bordo-desenli-budapest": {
+    "hu": [
+      "Melyik mintás modell illik jobban a ruhatár színeihez?",
+      "Felvéve is tetszik a minta elhelyezkedése?"
+    ],
+    "en": [
+      "Which patterned model best suits your wardrobe colours?",
+      "Do you like how the pattern sits when worn?"
+    ]
+  },
+  "zoericci-siyah-taba-yaka-budapest": {
+    "hu": [
+      "Milyen anyagból készült a kontrasztos gallér?",
+      "Melyik tisztítási mód illik a velúrhoz?"
+    ],
+    "en": [
+      "What is the contrasting collar made of?",
+      "Which cleaning method suits the suede finish?"
+    ]
+  },
+  "pippa-krem-kemerli-kurklu-budapest": {
+    "hu": [
+      "Kényelmes a gallér sállal is?",
+      "Milyen anyagú a kabát teste és gallérja?"
+    ],
+    "en": [
+      "Is the collar comfortable with a scarf?",
+      "What are the body and collar made from?"
+    ]
+  },
+  "kaftan-siyah-kapusonlu-budapest": {
+    "hu": [
+      "Kényelmes a kapucni a gallér körül?",
+      "Mennyi hely marad alatta a szokásos felsőjének?"
+    ],
+    "en": [
+      "Is the hood comfortable around the collar?",
+      "Is there room for the layers you normally wear?"
+    ]
+  },
+  "pippa-saks-mavi-kurklu-budapest": {
+    "hu": [
+      "Hogyan illeszkedik a szőrmeszegély a fazonhoz?",
+      "Milyen ápolást igényel a kabát anyaga és a szegély?"
+    ],
+    "en": [
+      "How does the fur trim sit on the garment?",
+      "What care do the garment body and trim need?"
+    ]
+  },
+  "krem-kurklu-panco-budapest": {
+    "hu": [
+      "Kényelmesen viselhető a tervezett felső fölött?",
+      "Milyen anyagból készült a poncsó és a szegély?"
+    ],
+    "en": [
+      "Does it sit comfortably over your intended layer?",
+      "What are the poncho body and trim made from?"
+    ]
+  },
+  "evs-bej-dik-yaka-budapest": {
+    "hu": [
+      "Nem nyomja a gallér a nyakat zárva?",
+      "Kényelmes a fazon egy vékony pulóverrel is?"
+    ],
+    "en": [
+      "Does the collar sit comfortably when fastened?",
+      "Is there room for a thin sweater?"
+    ]
+  },
+  "pippa-kahverengi-kurk-budapest": {
+    "hu": [
+      "Milyen a szőrme esése felvéve?",
+      "Milyen tárolási és tisztítási módot ajánl az üzlet?"
+    ],
+    "en": [
+      "How does the fur drape when worn?",
+      "What storage and cleaning method does the store recommend?"
+    ]
+  },
+  "kaftan-mercan-desenli-budapest": {
+    "hu": [
+      "Melyik mintás modell illik jobban a ruhatár színeihez?",
+      "Felvéve is tetszik a minta elhelyezkedése?"
+    ],
+    "en": [
+      "Which patterned model best suits your wardrobe colours?",
+      "Do you like how the pattern sits when worn?"
+    ]
+  },
+  "alfina-siyah-suet-cepli-budapest": {
+    "hu": [
+      "Kényelmes a mellkasi zsebek elérése?",
+      "Milyen ápolást igényel a velúr?"
+    ],
+    "en": [
+      "Are the chest pockets easy to reach?",
+      "What care does the suede finish need?"
+    ]
+  },
+  "campel-beyaz-blazer-budapest": {
+    "hu": [
+      "Hogyan áll a hajtóka a kabát zárt állapotában?",
+      "Szabadon tud mozogni ing vagy vékony pulóver fölött?"
+    ],
+    "en": [
+      "How do the lapels sit with the blazer closed?",
+      "Can you move comfortably over a shirt or thin sweater?"
+    ]
+  },
+  "zoericci-siyah-blazer-budapest": {
+    "hu": [
+      "Hogyan áll a hajtóka a kabát zárt állapotában?",
+      "Szabadon tud mozogni ing vagy vékony pulóver fölött?"
+    ],
+    "en": [
+      "How do the lapels sit with the blazer closed?",
+      "Can you move comfortably over a shirt or thin sweater?"
+    ]
+  },
+  "zoericci-taba-blazer-budapest": {
+    "hu": [
+      "Hogyan áll a hajtóka a kabát zárt állapotában?",
+      "Szabadon tud mozogni ing vagy vékony pulóver fölött?"
+    ],
+    "en": [
+      "How do the lapels sit with the blazer closed?",
+      "Can you move comfortably over a shirt or thin sweater?"
+    ]
+  },
+  "mina-bej-mavi-desenli-budapest": {
+    "hu": [
+      "Melyik mintás modell illik jobban a ruhatár színeihez?",
+      "Felvéve is tetszik a minta elhelyezkedése?"
+    ],
+    "en": [
+      "Which patterned model best suits your wardrobe colours?",
+      "Do you like how the pattern sits when worn?"
+    ]
+  },
+  "campel-bej-blazer-budapest": {
+    "hu": [
+      "Hogyan áll a hajtóka a kabát zárt állapotában?",
+      "Szabadon tud mozogni ing vagy vékony pulóver fölött?"
+    ],
+    "en": [
+      "How do the lapels sit with the blazer closed?",
+      "Can you move comfortably over a shirt or thin sweater?"
+    ]
+  },
+  "alfina-kirmizi-orgu-kapusonlu-budapest": {
+    "hu": [
+      "Elfér a kapucni alatt a tervezett téli réteg?",
+      "Hogyan ápolható külön a kötött rész?"
+    ],
+    "en": [
+      "Is there room for your intended layers around the hood?",
+      "How should the knitted section be cared for?"
+    ]
+  },
+  "alfina-krem-orgu-kapusonlu-budapest": {
+    "hu": [
+      "Elfér a kapucni alatt a tervezett téli réteg?",
+      "Hogyan ápolható külön a kötött rész?"
+    ],
+    "en": [
+      "Is there room for your intended layers around the hood?",
+      "How should the knitted section be cared for?"
+    ]
+  },
+  "alfina-sari-orgu-kapusonlu-budapest": {
+    "hu": [
+      "Elfér a kapucni alatt a tervezett téli réteg?",
+      "Hogyan ápolható külön a kötött rész?"
+    ],
+    "en": [
+      "Is there room for your intended layers around the hood?",
+      "How should the knitted section be cared for?"
+    ]
+  },
+  "alfina-siyah-kapitone-biker-budapest": {
+    "hu": [
+      "Egyenletesen fekszenek a steppelt részek felvéve?",
+      "A választott felsővel kényelmes a váll és a kar?"
+    ],
+    "en": [
+      "Do the quilted panels lie comfortably when worn?",
+      "Is there enough room at the shoulder and arm over your chosen layer?"
+    ]
+  },
+  "lacivert-dik-yaka-desenli-astar-budapest": {
+    "hu": [
+      "Nem nyomja a gallér a nyakat zárva?",
+      "Kényelmes a fazon egy vékony pulóverrel is?"
+    ],
+    "en": [
+      "Does the collar sit comfortably when fastened?",
+      "Is there room for a thin sweater?"
+    ]
+  },
+  "kahverengi-kurklu-budapest": {
+    "hu": [
+      "Milyen anyagból készült a gallér és a kabát teste?",
+      "Kényelmes a gallér a megszokott téli felsővel?"
+    ],
+    "en": [
+      "What are the collar and garment body made from?",
+      "Is the collar comfortable over your usual winter layers?"
+    ]
+  },
+  "siyah-kurk-yakali-budapest": {
+    "hu": [
+      "Milyen anyagból készült a gallér és a kabát teste?",
+      "Kényelmes a gallér a megszokott téli felsővel?"
+    ],
+    "en": [
+      "What are the collar and garment body made from?",
+      "Is the collar comfortable over your usual winter layers?"
+    ]
+  },
+  "taba-krem-yakali-budapest": {
+    "hu": [
+      "Milyen anyagból készült a gallér és a kabát teste?",
+      "Kényelmes a gallér a megszokott téli felsővel?"
+    ],
+    "en": [
+      "What are the collar and garment body made from?",
+      "Is the collar comfortable over your usual winter layers?"
+    ]
+  },
+  "siyah-omuz-kapitone-budapest": {
+    "hu": [
+      "A steppelt vállrész illeszkedik a vállszélességéhez?",
+      "Kényelmes a felsőrész ülve és előrenyújtott karral?"
+    ],
+    "en": [
+      "Do the quilted shoulders align with your shoulder width?",
+      "Is the upper section comfortable seated and reaching forward?"
+    ]
+  },
+  "kahverengi-dikisli-budapest": {
+    "hu": [
+      "A varrások vonala követi a testalkatát?",
+      "Melyik méretben marad szabad a kar mozgása?"
+    ],
+    "en": [
+      "Do the stitched lines suit your proportions?",
+      "Which size allows comfortable arm movement?"
+    ]
+  },
+  "siyah-dikisli-budapest": {
+    "hu": [
+      "A varrások vonala követi a testalkatát?",
+      "Melyik méretben marad szabad a kar mozgása?"
+    ],
+    "en": [
+      "Do the stitched lines suit your proportions?",
+      "Which size allows comfortable arm movement?"
+    ]
+  },
+  "beyaz-kurklu-budapest": {
+    "hu": [
+      "Milyen a szőrme esése felvéve?",
+      "Milyen tárolási és tisztítási módot ajánl az üzlet?"
+    ],
+    "en": [
+      "How does the fur drape when worn?",
+      "What storage and cleaning method does the store recommend?"
+    ]
+  },
+  "gumus-kurklu-budapest": {
+    "hu": [
+      "Milyen a szőrme esése felvéve?",
+      "Milyen tárolási és tisztítási módot ajánl az üzlet?"
+    ],
+    "en": [
+      "How does the fur drape when worn?",
+      "What storage and cleaning method does the store recommend?"
+    ]
+  },
+  "kahve-kurklu-budapest": {
+    "hu": [
+      "Milyen a szőrme esése felvéve?",
+      "Milyen tárolási és tisztítási módot ajánl az üzlet?"
+    ],
+    "en": [
+      "How does the fur drape when worn?",
+      "What storage and cleaning method does the store recommend?"
     ]
   }
 }

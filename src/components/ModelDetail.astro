@@ -13,13 +13,7 @@ const model = page.model;
 const name = model.names[lang];
 const collection = model.category[lang].url;
 const collectionLabel = model.category[lang].name;
-const isShearling = collection.includes('irha') || collection.includes('shearling');
-const isFur = collection.includes('szorme') || collection.includes('fur');
-const material = isShearling
-  ? (hu ? 'Valódi báránybőr, irha' : 'Genuine shearling, lambskin')
-  : isFur
-    ? (hu ? 'Valódi szőrme' : 'Genuine fur')
-    : (hu ? 'Valódi bőr' : 'Genuine leather');
+const material = model.material[lang] ?? (hu ? 'A pontos anyagösszetételről kérdezzen üzletünkben.' : 'Ask our store about the exact material composition.');
 
 const isWallet = model.slug === 'barna-bor-penztarca-budapest';
 const isBelt = model.slug === 'fekete-borov-budapest';
