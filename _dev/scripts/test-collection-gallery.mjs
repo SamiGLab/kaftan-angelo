@@ -158,7 +158,7 @@ for(const lang of ['hu','en']) {
  await page.select('[data-model-style]','reversible');assert.equal(await visible(),5);
  await page.locator('[data-remove-filter="style"]').click();
  assert.equal(await page.$eval('[data-active-filters]',el=>el.hidden),true,'Removing the only chip hides the active filter bar');
- assert.equal(await page.$eval('[data-fitting-tray]',el=>el.hidden),true,'Floating fitting tray stays hidden when list is empty');
+ assert.equal(await page.evaluate(()=>!document.querySelector('[data-fitting-tray]') || document.querySelector('[data-fitting-tray]').hidden),true,'Floating fitting tray stays hidden when list is empty');
  await page.locator('.product-card:not([hidden]) [data-model-save]').click();
  assert.equal(await page.$eval('.product-card:not([hidden]) [data-model-save]',el=>el.getAttribute('aria-pressed')),'true');
  assert.equal(await page.$eval('[data-fitting-tray]',el=>el.hidden),false,'Floating fitting tray appears when a model is saved');
@@ -166,12 +166,12 @@ for(const lang of ['hu','en']) {
  await page.reload({waitUntil:'networkidle2'});
  assert.equal(await page.$eval('.product-card:not([hidden]) [data-model-save]',el=>el.getAttribute('aria-pressed')),'true');
  assert.equal(await page.$eval('[data-fitting-tray]',el=>el.hidden),false,'Floating fitting tray persists after reload');
- // Verify upgraded Quick View lightbox (gallery thumbs, model detail link, bidirectional fitting-list toggle)
- assert.ok(await page.$$eval('.product-image-button[data-product-gallery]',els=>els.length>0),'Multi-photo cards expose lazy hover & gallery photo data');
+ // Verify upgraded Quick View lightbox (lazy gallery thumbs, model detail link, bidirectional fitting-list toggle)
  await page.locator('.product-card:not([hidden]) .product-image-button').click();
  assert.equal(await page.$eval('[data-product-dialog]',el=>el.open),true,'Quick View dialog opens');
  assert.equal(await page.$eval('[data-preview-detail]',el=>el.hidden),false,'Quick View shows direct model detail link');
- assert.equal(await page.$eval('[data-preview-thumbs]',el=>el.hidden),false,'Quick View shows gallery thumbnails for multi-photo models');
+ await page.waitForSelector('[data-preview-thumbs]:not([hidden]) .preview-thumb');
+ assert.ok(await page.$$eval('[data-preview-thumbs] .preview-thumb',els=>els.length>=2),'Quick View loads gallery thumbnails lazily for multi-photo models');
  assert.equal(await page.$eval('[data-preview-save]',el=>el.getAttribute('aria-pressed')),'true','Quick View reflects saved fitting-list state');
  await page.locator('[data-preview-save]').click();
  assert.equal(await page.$eval('[data-preview-save]',el=>el.getAttribute('aria-pressed')),'false','Quick View toggles fitting-list save off');
