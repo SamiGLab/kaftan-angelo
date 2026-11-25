@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+# Cloudflare internal endpoints are not public content.
+Disallow: /cdn-cgi/
 
 # AI Search & LLM Engines
 User-agent: GPTBot
