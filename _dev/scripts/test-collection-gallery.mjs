@@ -62,6 +62,26 @@ for(const lang of ['hu','en']) {
    await page.$eval('.collection-discovery',el=>el.scrollIntoView({block:'center',behavior:'instant'}));
    await page.screenshot({path:process.env.COLLECTION_SCREENSHOTS+'/'+lang+'-'+width+'-collection.png'});
   }
+  const editorial=await page.evaluate(()=>{
+   const strip=document.querySelector('.collection-filter-strip');
+   const search=document.querySelector('.collection-search');
+   const card=document.querySelector('[data-static-collection] .product-card');
+   const photo=card.querySelector('.collection-photo');
+   const rect=node=>node.getBoundingClientRect().toJSON();
+   return {strip:rect(strip),search:rect(search),photo:rect(photo),detail:rect(photo.querySelector('.collection-detail')),save:rect(photo.querySelector('[data-model-save]')),contact:rect(card.querySelector('a[href*="wa.me"]')),heading:rect(card.querySelector('h3')),overflow:document.documentElement.scrollWidth>innerWidth,filterCount:strip.querySelectorAll('[data-filter]').length,accessibleDetail:photo.querySelector('.collection-detail').getAttribute('aria-label')};
+  });
+  assert.equal(editorial.overflow,false,'Editorial catalogue must not overflow the viewport');
+  assert.ok(editorial.filterCount>=6,'Existing categories are inside the compact filter strip');
+  assert.ok(editorial.search.bottom<=editorial.strip.top+1,'Search precedes the filter strip');
+  assert.ok(editorial.strip.height<=68,'One filter row, including horizontal scroll');
+  for(const key of ['detail','save']) {
+   const rect=editorial[key];
+   assert.ok(rect.width>=44&&rect.height>=44,key+' overlay has a comfortable touch target');
+   assert.ok(rect.left>=editorial.photo.left&&rect.right<=editorial.photo.right&&rect.top>=editorial.photo.top&&rect.bottom<=editorial.photo.bottom,key+' sits inside product photo');
+  }
+  assert.ok(editorial.contact.height>=44&&editorial.contact.width>=44,'Direct contact remains accessible');
+  assert.ok(editorial.accessibleDetail?.length>10,'Icon link has a model-specific accessible name');
+  if(width===390)assert.ok(editorial.photo.top<430,'First product photo appears early on mobile');
   const categories=await page.$$eval('.product-card',cards=>cards.map(card=>(card.dataset.category||'').split(/\s+/)));
   const filters=await page.$$eval('[data-product-filters] [data-filter]',buttons=>buttons.map(button=>button.dataset.filter));
   assert.ok(categories.length>0,'Real collection contains photographed models');
