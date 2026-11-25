@@ -7,13 +7,28 @@ import LandmarksGrid from '../components/LandmarksGrid.astro';
 import TrustHeritage from '../components/TrustHeritage.astro';
 import { landmarkPages, landmarkMarker, locationFaq, heroWalkLabel, type LandmarkLanguage } from '../data/landmarks';
 import pages from '../data/pages.json';
+import models from '../data/models.json';
 import { modelPages } from '../data/model-pages';
 export function getStaticPaths() {
   return Object.entries({ ...pages, ...modelPages })
     .filter(([path]) => path !== '/' && !path.startsWith('/utmutatok/') && !path.startsWith('/en/guides/'))
     .map(([path, page]) => ({ params: { slug: path.replace(/^\//,'').replace(/\/$/,'') }, props: { page } }));
 }
-const { page: sourcePage } = Astro.props as { page: any };
+const { page: originalPage } = Astro.props as { page: any };
+const collectionRoutes = new Set(['/kollekciok/', '/noi-borkabatok/', '/ferfi-borkabatok/', '/irhakabatok/', '/szormekabatok/', '/en/collections/', '/en/womens-leather-jackets/', '/en/mens-leather-jackets/', '/en/shearling-jackets/', '/en/fur-coats/']);
+const escapeAttr = (value: string) => value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const collectionLang: 'hu' | 'en' = originalPage.lang === 'hu' ? 'hu' : 'en';
+const catalog = new Map(models.filter(model => !model.catalogHidden).map(model => [model.slug, model]));
+const sourcePage = collectionRoutes.has(originalPage.path) ? {
+  ...originalPage,
+  mainHtml: originalPage.mainHtml.replace(/<article class="product-card"[^>]*>[\s\S]*?<\/article>/g, (card: string) => {
+    const slug = card.match(/href="\/(?:en\/models|modellek)\/([^/"]+)\/"/)?.[1];
+    const model = slug ? catalog.get(slug) : undefined;
+    if (!model) return card;
+    const variants = model.variants.map(variant => variant.names[collectionLang]).join(' ');
+    return card.replace('<article class="product-card"', '<article class="product-card" data-model-key="' + escapeAttr(model.slug) + '" data-model-variants="' + escapeAttr(variants) + '"');
+  }),
+} : originalPage;
 const hasLandmarks = landmarkPages.includes(sourcePage.path);
 const fullLandmarks = ['/en/visit/', '/uzlet/'].includes(sourcePage.path);
 const lang = sourcePage.lang as LandmarkLanguage;
