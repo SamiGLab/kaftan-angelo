@@ -21,7 +21,16 @@ const heroMobileImage = page.mainHtml?.match(/--hero-mobile:\s*url\('([^']+)'\)/
   ?? (!isModelPage && page.ogImage?.endsWith('-800.avif')
     ? new URL(page.ogImage.replace(/-800\.avif$/, '-480.avif')).pathname
     : undefined);
-import { backgroundImage } from './responsive-images';
+import { backgroundImage, responsiveImages } from './responsive-images';
+// Preload the exact responsive candidate of the prioritized collection LCP image.
+// Derive from the same final picture markup as the visible catalogue; never guess a width.
+const collectionPicture = page.collectionCompact && page.mainHtml
+  ? responsiveImages(page.mainHtml).match(/<picture>[\s\S]*?<img\b[^>]*fetchpriority="high"[^>]*>[\s\S]*?<\/picture>/)?.[0]
+  : undefined;
+const collectionAvifSource = collectionPicture?.match(/<source\b[^>]*type="image\/avif"[^>]*>/)?.[0];
+const collectionAvifSrcset = collectionAvifSource?.match(/srcset="([^"]+)"/)?.[1];
+const collectionAvifSizes = collectionAvifSource?.match(/sizes="([^"]+)"/)?.[1];
+
 const sharpHero = backgroundImage(heroImage, page.mainHtml?.includes('class="home-hero"') ? 1600 : 1200);
 const heroCandidates = [...sharpHero.matchAll(/url\('([^']+)'\) (\d)x/g)];
 const modelAvifSource = isModelPage ? (page.mainHtml?.match(/<source\s+[^>]*type="image\/avif"[^>]*>/i) || page.mainHtml?.match(/<source\s+[^>]*srcset="[^"]+\.avif[^"]*"[^>]*>/i))?.[0] : null;
@@ -46,6 +55,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <meta charset="utf-8" />
   <script is:inline>document.documentElement.classList.add("js");</script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  {collectionAvifSrcset && collectionAvifSizes && <link rel="preload" as="image" type="image/avif" imagesrcset={collectionAvifSrcset} imagesizes={collectionAvifSizes} fetchpriority="high" />}
   <title>{page.title}</title>
   <meta name="application-name" content="Kaftan Angelo" />
   <meta name="apple-mobile-web-app-title" content="Kaftan Angelo" />
