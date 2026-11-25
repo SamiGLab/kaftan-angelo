@@ -2960,3 +2960,62 @@ html:has(.collection-grid-v2) { scroll-behavior: auto; }
     transition: none;
   }
 }
+
+
+/* Mobile catalogue: the products, not a promotional hero, lead the page. */
+@media (max-width: 620px) {
+  .collection-page > .announcement { display: none; }
+  .collection-page .page-hero {
+    --bg: #f7f2e9;
+    --cream: #302116;
+    --dim: #675546;
+    --bright: #77502b;
+    --line: #5c402329;
+    background: #f7f2e9;
+    color: var(--cream);
+    padding: 16px 0 8px;
+    border: 0;
+  }
+  .collection-page .page-hero .breadcrumbs,
+  .collection-page .page-hero > .wrap > .tag { display: none; }
+  .collection-page .page-hero h1 {
+    max-width: none;
+    font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+    line-height: 1.16;
+    margin: 0 0 8px;
+  }
+  .collection-page .page-hero p {
+    font-size: .83rem;
+    line-height: 1.45;
+    margin: 0 0 8px;
+  }
+  .collection-page .page-hero .actions { gap: 8px; margin: 8px 0; }
+  .collection-page .page-hero .actions .btn {
+    min-height: 44px;
+    padding: 6px 12px;
+    font-size: .8rem;
+  }
+  .collection-page .page-hero .btn-primary {
+    color: #fff9ee;
+    background: #684329;
+    border-color: #684329;
+  }
+  .collection-page .page-hero .btn-ghost { border-color: #77502b88; }
+  .collection-page .collection-models-section,
+  .collection-page section:has(> .wrap > .collection-grid-v2) {
+    padding-block: 8px 24px;
+  }
+  .collection-page .collection-filters { padding-block: 4px; margin-bottom: 8px; }
+  .collection-page .collection-discovery { gap: 8px; margin-bottom: 12px; }
+  .collection-page .collection-shortcuts { flex-wrap: nowrap; overflow-x: auto; }
+  .collection-page .collection-shortcuts > * { flex: 0 0 auto; padding-inline: 10px; font-size: .78rem; }
+  .collection-page .collection-search,
+  .collection-page .collection-select { min-height: 44px; }
+  .collection-page .collection-nav { flex-wrap: nowrap; overflow-x: auto; padding-block: 8px; }
+  .collection-page .collection-nav a { flex: 0 0 auto; }
+  .collection-page section:has(> .wrap > .collection-grid-v2) .section-head { margin-bottom: 12px; }
+  .collection-page section:has(> .wrap > .collection-grid-v2) .section-head h2 {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+  }
+}
