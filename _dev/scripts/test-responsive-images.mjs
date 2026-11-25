@@ -25,6 +25,17 @@ for (const route of ['/kollekciok/', '/en/collections/']) {
   const cards = [...html.matchAll(/<article class="product-card"[^>]*>[\s\S]*?<\/article>/g)];
   const images = cards.map(card => card[0].match(/<img\b[^>]*>/)?.[0] ?? '');
   assert.ok(images.length > 2, route + ' has more than one product row');
+  const preloads = [...html.matchAll(/<link\b[^>]*rel="preload"[^>]*>/g)].map(m => m[0]).filter(tag => tag.includes('as="image"'));
+  assert.equal(preloads.length, 1, route + ' preloads only the first catalogue image');
+  const source = cards[0][0].match(/<source\b[^>]*type="image\/avif"[^>]*>/)?.[0];
+  assert.ok(source, route + ' contains AVIF source');
+  for (const [preloadAttr, pictureAttr] of [['imagesrcset', 'srcset'], ['imagesizes', 'sizes']]) {
+    const readAttr = (tag, name) => tag.match(new RegExp('\\b' + name + '="([^"]+)"'))?.[1];
+    const expected = readAttr(source, pictureAttr);
+    assert.ok(expected, route + ' has responsive ' + pictureAttr);
+    assert.equal(readAttr(preloads[0], preloadAttr), expected, route + ' preload matches picture ' + pictureAttr);
+  }
+  assert.match(preloads[0], /\bfetchpriority="high"/, route + ' preloads the LCP candidate with high priority');
   assert.match(images[0], /\bloading="eager"/, route + ' loads LCP image eagerly');
   assert.match(images[0], /\bfetchpriority="high"/, route + ' prioritizes LCP image');
   assert.match(images[1], /\bloading="eager"/, route + ' loads second visible image eagerly');
