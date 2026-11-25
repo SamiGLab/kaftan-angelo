@@ -3172,3 +3172,32 @@ html:not(.js) .collection-page [data-product-filters] {
   .collection-page .page-hero h1 { font-size: clamp(1.35rem, 5vw, 1.65rem); }
   .collection-page .page-hero p { font-size: .79rem; }
 }
+
+
+/* The repeated card icons are painted from one shared CSS definition rather
+   than serializing the same SVG paths and attributes in every card. */
+[data-static-collection] .collection-contact::before,
+[data-static-collection] .collection-zoom-hint::before {
+  content: "";
+  display: inline-block;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  mask: var(--collection-icon) center / contain no-repeat;
+  -webkit-mask: var(--collection-icon) center / contain no-repeat;
+}
+[data-static-collection] .collection-contact {
+  --collection-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7.9 20A9 9 0 1 0 4 16.1L2 22Z'/%3E%3C/svg%3E");
+}
+[data-static-collection] .collection-zoom-hint {
+  --collection-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.3-4.3M11 8v6M8 11h6'/%3E%3C/svg%3E");
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+[data-static-collection] .collection-zoom-hint::before { width: 14px; height: 14px; }
+@media (forced-colors: active) {
+  [data-static-collection] .collection-contact::before,
+  [data-static-collection] .collection-zoom-hint::before { forced-color-adjust: none; background: LinkText; }
+}
