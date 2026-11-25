@@ -50,7 +50,13 @@ const compactCss = await stat('dist/assets/css/collection.css');
 assert.ok(compactCss.size < fullCss.size, 'Catalogue CSS is smaller than the full stylesheet');
 for (const route of ['/kollekciok/', '/en/collections/', '/noi-borkabatok/', '/en/womens-leather-jackets/']) {
   const html = await readFile('dist' + route + 'index.html', 'utf8');
-  assert.match(html, /rel="stylesheet" href="\/assets\/css\/collection\.css"/);
+  if (route === '/kollekciok/' || route === '/en/collections/') {
+    const inline = html.match(/<style id="catalogue-inline-css">([\s\S]*?)<\/style>/)?.[1];
+    assert.equal(inline, await readFile('dist/assets/css/collection.css', 'utf8'), route + ' inlines exactly the specialized stylesheet');
+    assert.ok(!html.includes('href="/assets/css/collection.css"'), route + ' avoids a duplicate CSS request');
+  } else {
+    assert.match(html, /rel="stylesheet" href="\/assets\/css\/collection\.css"/);
+  }
   assert.ok(!html.includes('href="/assets/css/pages.css"'));
   assert.ok(html.includes('collection-contact') && html.includes('collection-zoom-hint'));
 }
@@ -111,12 +117,16 @@ try {
         const contactIcon = await page.$eval('.collection-contact', el => getComputedStyle(el, '::before').maskImage);
         assert.notEqual(contactIcon, 'none', 'Shared contact icon is rendered');
         await page.evaluate(async () => {
-          const link = document.querySelector('link[rel="stylesheet"][href="/assets/css/collection.css"]');
+          const inline = document.querySelector('#catalogue-inline-css');
+          const link = document.querySelector('link[rel="stylesheet"][href="/assets/css/collection.css"]') || document.createElement('link');
           await new Promise((resolve, reject) => {
             link.addEventListener('load', resolve, {once:true});
             link.addEventListener('error', reject, {once:true});
+            link.rel = 'stylesheet';
             link.href = '/assets/css/pages.css';
+            if (!link.isConnected) document.head.append(link);
           });
+          inline?.remove();
           await document.fonts.ready;
         });
         assert.deepEqual(await sample(), compact, route + ' preserves catalogue layout with specialized CSS');

@@ -55,7 +55,18 @@ console.log('Catalogue CSS: ' + result.code.length + ' → ' + catalogue.code.le
 for (const route of routes) {
   const file = new URL('../../dist/' + route + '/index.html', import.meta.url);
   const html = await readFile(file, 'utf8');
-  const specialized = html.replaceAll('href="/assets/css/pages.css"', 'href="/assets/css/collection.css"');
+  let specialized = html.replaceAll('href="/assets/css/pages.css"', 'href="/assets/css/collection.css"');
   if (specialized === html) throw new Error('Missing stylesheet link on ' + route);
+  // Controlled trial: inline the identical specialized CSS on the two hubs
+  // only. Other category routes and the rest of the site keep cached CSS.
+  if (route === 'kollekciok' || route === 'en/collections') {
+    const css = catalogue.code.toString();
+    if (/<\/style/i.test(css)) throw new Error('Unsafe inline CSS closing tag');
+    const preload = '<link rel="preload" as="style" href="/assets/css/collection.css">';
+    const link = '<link rel="stylesheet" href="/assets/css/collection.css">';
+    if (!specialized.includes(preload) || !specialized.includes(link)) throw new Error('Expected catalogue CSS links on ' + route);
+    specialized = specialized.replace(preload, '').replace(link, () => '<style id="catalogue-inline-css">' + css + '</style>');
+    console.log('Inline catalogue trial ' + route + ': ' + css.length + ' CSS characters; HTML bytes ' + Buffer.byteLength(html) + ' → ' + Buffer.byteLength(specialized));
+  }
   await writeFile(file, specialized);
 }
