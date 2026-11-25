@@ -120,43 +120,212 @@ partnerForm?.querySelector('[data-partner-whatsapp]').addEventListener('click', 
   location.href = `https://wa.me/36203593216?text=${encodeURIComponent(subject + '\n\n' + body)}`;
 });
 
+
+const fittingStorageKey = 'kaftan_fitting_list_v1';
+const fittingHub = hu ? '/kollekciok/' : '/en/collections/';
+const fittingLimit = 12;
+const validModelKey = key => typeof key === 'string' && /^[a-z0-9-]{1,120}$/.test(key);
+function readFittingList() {
+  try {
+    const data = JSON.parse(localStorage.getItem(fittingStorageKey) || '[]');
+    return new Set(Array.isArray(data) ? data.filter(validModelKey).slice(0, fittingLimit) : []);
+  } catch { return new Set(); }
+}
+let fittingList = readFittingList();
+function normalizedModelText(value) {
+  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+const colourFacets = [
+  ['black','Fekete','Black',/fekete|\bblack\b/],
+  ['brown','Barna','Brown / tan',/barna|\bbrown\b|\btan\b|\btaupe\b/],
+  ['beige','Bézs / krém','Beige / cream',/bezs|krem|\bbeige\b|\bcream\b/],
+  ['white','Fehér','White',/feher|\bwhite\b/],
+  ['grey','Szürke','Grey',/szurke|\bgrey\b|\bgray\b/],
+  ['red','Piros / bordó','Red / burgundy',/piros|bordo|\bred\b|\bburgundy\b/],
+  ['blue','Kék','Blue',/kek|\bblue\b|\bnavy\b/],
+  ['green','Zöld','Green',/zold|\bgreen\b/],
+  ['yellow','Sárga','Yellow',/\bsarga\b|\byellow\b/],
+  ['orange','Narancs / korall','Orange / coral',/narancs|korall|\borange\b|\bcoral\b/],
+];
+const styleFacets = [
+  ['reversible','Kétoldalas','Reversible',/ketoldalas|\breversible\b/],
+  ['biker','Motoros','Biker',/motoros|\bbiker\b/],
+  ['blazer','Blézer','Blazer',/blezer|\bblazer\b/],
+  ['belted','Öves','Belted',/\boves\b|\bbelted\b/],
+  ['hooded','Kapucnis','Hooded',/kapucni|\bhood(?:ed)?\b/],
+  ['quilted','Steppelt','Quilted',/steppelt|\bquilted\b/],
+  ['patterned','Mintás','Patterned',/mintas|\bpatterned\b/],
+  ['poncho','Poncsó','Poncho',/poncso|\bponcho\b/],
+];
+function createDiscovery(grid, cards, onChange) {
+  const models = cards.filter(card => validModelKey(card.dataset.modelKey));
+  if (!models.length) return null;
+  const isHub = location.pathname === fittingHub;
+  const records = models.map(card => ({
+    card,
+    key: card.dataset.modelKey,
+    name: card.querySelector('h3').textContent.trim(),
+    link: card.querySelector('.product-detail-link'),
+    searchable: normalizedModelText([card.querySelector('h3').textContent, card.dataset.modelVariants || '', card.querySelector('img')?.alt || ''].join(' ')),
+  }));
+  // The production catalogue provides this markup before the first paint.
+  const toolbar = grid.previousElementSibling;
+  if (!toolbar?.matches('[data-static-discovery]')) return null;
+  const search = toolbar.querySelector('[data-model-search]');
+  const colour = toolbar.querySelector('[data-model-colour]');
+  const style = toolbar.querySelector('[data-model-style]');
+  const saved = toolbar.querySelector('[data-fitting-shortcut]');
+  const result = toolbar.querySelector('.collection-result');
+  const notice = toolbar.querySelector('.collection-notice');
+  const panel = toolbar.querySelector('.fitting-panel');
+  const inquiry = toolbar.querySelector('[data-fitting-inquiry]');
+  function enableFacet(select, facets) {
+    for (const [value, labelHu, labelEn, pattern] of facets) {
+      if (records.some(record => pattern.test(record.searchable))) select.add(new Option(hu ? labelHu : labelEn, value));
+    }
+    select.disabled = false;
+  }
+  enableFacet(colour, colourFacets);
+  enableFacet(style, styleFacets);
+  search.disabled = false;
+  if (isHub) saved.disabled = false;
+  let savedOnly = false;
+  function refreshSaved() {
+    const availableSaved = records.filter(record => fittingList.has(record.key));
+    saved.textContent = (hu ? 'Próbalista' : 'Fitting list') + ' (' + fittingList.size + ')';
+    for (const record of records) {
+      const active = fittingList.has(record.key);
+      record.button.setAttribute('aria-pressed', String(active));
+      record.button.setAttribute('aria-label', (active ? (hu ? 'Eltávolítás a próbalistáról: ' : 'Remove from fitting list: ') : (hu ? 'Mentés a próbalistára: ' : 'Save to fitting list: ')) + record.name);
+      record.button.textContent = active ? '♥' : '♡';
+    }
+    inquiry.hidden = !availableSaved.length;
+    if (availableSaved.length) {
+      const intro = hu ? 'Üdvözlöm! A következő modelleket szeretném felpróbálni. Érdeklődöm az aktuális elérhetőségről:' : 'Hello! I would like to try on the following models. Could you confirm current availability?';
+      const message = [intro, ...availableSaved.map(record => record.name + '\n' + new URL(record.link.getAttribute('href'), 'https://kaftanangelo.com').href)].join('\n\n');
+      const url = new URL('https://wa.me/36203593216');
+      url.searchParams.set('text', message);
+      inquiry.href = url.href;
+    } else inquiry.removeAttribute('href');
+  }
+  for (const record of records) {
+    const button = record.card.querySelector('[data-model-save]');
+    record.button = button;
+    button.disabled = false;
+    button.addEventListener('click', () => {
+      if (fittingList.has(record.key)) fittingList.delete(record.key);
+      else if (fittingList.size < fittingLimit) fittingList.add(record.key);
+      else {
+        notice.textContent = hu ? 'Legfeljebb 12 modell menthető.' : 'You can save up to 12 models.';
+        return;
+      }
+      try { localStorage.setItem(fittingStorageKey, JSON.stringify([...fittingList])); }
+      catch { notice.textContent = hu ? 'A lista nem menthető ezen az eszközön.' : 'The list cannot be stored on this device.'; }
+      window.dispatchEvent(new Event('kaftan-fitting-change'));
+      if (savedOnly && record.card.hidden) saved.focus();
+    });
+  }
+  function clearFields() { search.value = ''; colour.value = ''; style.value = ''; }
+  function setSavedMode(value) {
+    savedOnly = value;
+    saved.setAttribute('aria-pressed', String(value));
+    panel.hidden = !value;
+    clearFields();
+    const all = grid.parentElement.querySelector('[data-product-filters] [data-filter="all"]');
+    if (all) all.click();
+    else onChange();
+  }
+  if (isHub) saved.addEventListener('click', () => setSavedMode(!savedOnly));
+  search.addEventListener('input', onChange);
+  colour.addEventListener('change', onChange);
+  style.addEventListener('change', onChange);
+  window.addEventListener('kaftan-fitting-change', () => { refreshSaved(); if (savedOnly) onChange(); });
+  window.addEventListener('storage', event => {
+    if (event.key !== fittingStorageKey && event.key !== null) return;
+    fittingList = readFittingList();
+    refreshSaved();
+    if (savedOnly) onChange();
+  });
+  refreshSaved();
+  if (isHub && location.hash === '#fitting-list') {
+    // Wait until collectionViews and the existing filter event delegation are initialized.
+    queueMicrotask(() => { setSavedMode(true); saved.focus(); });
+  }
+  return {
+    matches(card) {
+      const record = records.find(item => item.card === card);
+      if (!record) return !savedOnly && !search.value.trim() && !colour.value && !style.value;
+      if (savedOnly && !fittingList.has(record.key)) return false;
+      const tokens = normalizedModelText(search.value).trim().split(/\s+/).filter(Boolean);
+      const colourPattern = colourFacets.find(facet => facet[0] === colour.value)?.[3];
+      const stylePattern = styleFacets.find(facet => facet[0] === style.value)?.[3];
+      return tokens.every(token => record.searchable.includes(token)) && (!colourPattern || colourPattern.test(record.searchable)) && (!stylePattern || stylePattern.test(record.searchable));
+    },
+    active: () => savedOnly || Boolean(search.value.trim() || colour.value || style.value),
+    clear() {
+      clearFields();
+      savedOnly = false;
+      panel.hidden = true;
+      if (isHub) saved.setAttribute('aria-pressed', 'false');
+    },
+    render(count) {
+      result.textContent = hu ? count + ' modell' : count + (count === 1 ? ' model' : ' models');
+      refreshSaved();
+    },
+  };
+}
+
 // Keep growing collections manageable; all cards remain available without JavaScript.
 const collectionViews = [...document.querySelectorAll('.product-grid')].map((grid, index) => {
   const cards = [...grid.querySelectorAll('.product-card')];
   const scope = grid.parentElement;
-  const controls = document.createElement('div');
-  controls.className = 'center-action collection-controls';
-  const status = document.createElement('p');
-  status.setAttribute('role', 'status');
-  const more = document.createElement('button');
-  more.type = 'button';
-  more.className = 'btn btn-ghost';
-  more.textContent = hu ? 'További modellek' : 'Show more models';
-  grid.id ||= `collection-grid-${index}`;
-  more.setAttribute('aria-controls', grid.id);
-  const empty = document.createElement('div');
-  empty.className = 'collection-empty';
-  empty.hidden = true;
-  const explanation = document.createElement('p');
-  explanation.textContent = hu
-    ? 'Ebben a kategóriában még nincs modellfotó. Az aktuális elérhetőségről érdeklődjön üzletünkben.'
-    : 'There are no model photos in this category yet. Ask our store about current availability.';
-  const reset = document.createElement('button');
-  reset.type = 'button';
-  reset.className = 'btn btn-ghost';
-  reset.setAttribute('data-collection-reset', '');
-  reset.setAttribute('aria-controls', grid.id);
-  reset.textContent = hu ? 'Összes modell' : 'Show all models';
-  const visit = document.createElement('a');
-  visit.className = 'btn btn-ghost';
-  visit.href = hu ? '/uzlet/' : '/en/visit/';
-  visit.textContent = hu ? 'Üzlet és elérhetőség' : 'Store and contact';
-  empty.append(explanation, reset, visit);
-  controls.append(status, more, empty);
-  grid.after(controls);
+  let controls = grid.nextElementSibling;
+  let status, more, empty, explanation, reset;
+  if (controls?.matches('[data-static-controls]')) {
+    status = controls.querySelector('[role="status"]');
+    more = controls.querySelector(':scope > button');
+    empty = controls.querySelector('.collection-empty');
+    explanation = empty.querySelector('p');
+    reset = empty.querySelector('[data-collection-reset]');
+    more.disabled = false;
+    reset.disabled = false;
+  } else {
+    // Legacy galleries and the synthetic regression fixture remain supported.
+    controls = document.createElement('div');
+    controls.className = 'center-action collection-controls';
+      status = document.createElement('p');
+    status.setAttribute('role', 'status');
+      more = document.createElement('button');
+    more.type = 'button';
+    more.className = 'btn btn-ghost';
+    more.textContent = hu ? 'További modellek' : 'Show more models';
+    grid.id ||= `collection-grid-${index}`;
+    more.setAttribute('aria-controls', grid.id);
+      empty = document.createElement('div');
+    empty.className = 'collection-empty';
+    empty.hidden = true;
+      explanation = document.createElement('p');
+    explanation.textContent = hu
+      ? 'Ebben a kategóriában még nincs modellfotó. Az aktuális elérhetőségről érdeklődjön üzletünkben.'
+      : 'There are no model photos in this category yet. Ask our store about current availability.';
+      reset = document.createElement('button');
+    reset.type = 'button';
+    reset.className = 'btn btn-ghost';
+    reset.setAttribute('data-collection-reset', '');
+    reset.setAttribute('aria-controls', grid.id);
+    reset.textContent = hu ? 'Összes modell' : 'Show all models';
+    const visit = document.createElement('a');
+    visit.className = 'btn btn-ghost';
+    visit.href = hu ? '/uzlet/' : '/en/visit/';
+    visit.textContent = hu ? 'Üzlet és elérhetőség' : 'Store and contact';
+    empty.append(explanation, reset, visit);
+    controls.append(status, more, empty);
+    grid.after(controls);
+  }
   let limit = 12;
   let filter = 'all';
-  const matches = () => cards.filter(card => filter === 'all' || (card.dataset.category || '').split(/\s+/).includes(filter));
+  const discovery = createDiscovery(grid, cards, () => { limit = 12; render(); });
+  const matches = () => cards.filter(card => (filter === 'all' || (card.dataset.category || '').split(/\s+/).includes(filter)) && (!discovery || discovery.matches(card)));
   function render() {
     const matching = matches();
     const shown = new Set(matching.slice(0, limit));
@@ -168,9 +337,16 @@ const collectionViews = [...document.querySelectorAll('.product-grid')].map((gri
     status.textContent = hu ? `${Math.min(limit, matching.length)} / ${matching.length} modell` : `${Math.min(limit, matching.length)} of ${matching.length} models`;
     more.hidden = limit >= matching.length;
     empty.hidden = matching.length > 0;
-    controls.hidden = cards.length > 0 && cards.length <= 12 && filter === 'all';
+    if (discovery) {
+      discovery.render(matching.length);
+      explanation.textContent = discovery.active()
+        ? (hu ? 'Nincs a keresésnek megfelelő modell. Próbáljon másik szűrőt, vagy nézze meg az összes modellt.' : 'No models match this selection. Try another filter or show all models.')
+        : (hu ? 'Ebben a kategóriában még nincs modellfotó. Az aktuális elérhetőségről érdeklődjön üzletünkben.' : 'There are no model photos in this category yet. Ask our store about current availability.');
+    }
+    controls.hidden = cards.length > 0 && cards.length <= 12 && filter === 'all' && !discovery?.active();
   }
   reset.addEventListener('click', () => {
+    discovery?.clear();
     const all = scope.querySelector('[data-product-filters] [data-filter="all"]');
     if (all) {
       all.click();

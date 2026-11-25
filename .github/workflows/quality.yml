@@ -145,6 +145,16 @@ jobs:
         run: node _dev/scripts/test-privacy-controls.mjs
       - name: Check large collection browsing
         run: node _dev/scripts/test-collection-gallery.mjs
+        env:
+          COLLECTION_SCREENSHOTS: collection-review
+      - name: Keep collection visual review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: collection-visual-review
+          path: collection-review/
+          retention-days: 7
+          if-no-files-found: warn
       - name: Check product photo and WhatsApp links
         run: node _dev/scripts/test-model-inquiries.mjs
       - name: Check reversible colour variants

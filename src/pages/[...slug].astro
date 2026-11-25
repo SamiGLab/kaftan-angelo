@@ -7,13 +7,61 @@ import LandmarksGrid from '../components/LandmarksGrid.astro';
 import TrustHeritage from '../components/TrustHeritage.astro';
 import { landmarkPages, landmarkMarker, locationFaq, heroWalkLabel, type LandmarkLanguage } from '../data/landmarks';
 import pages from '../data/pages.json';
+import models from '../data/models.json';
 import { modelPages } from '../data/model-pages';
 export function getStaticPaths() {
   return Object.entries({ ...pages, ...modelPages })
     .filter(([path]) => path !== '/' && !path.startsWith('/utmutatok/') && !path.startsWith('/en/guides/'))
     .map(([path, page]) => ({ params: { slug: path.replace(/^\//,'').replace(/\/$/,'') }, props: { page } }));
 }
-const { page: sourcePage } = Astro.props as { page: any };
+const { page: originalPage } = Astro.props as { page: any };
+const collectionRoutes = new Set(['/kollekciok/', '/noi-borkabatok/', '/ferfi-borkabatok/', '/irhakabatok/', '/szormekabatok/', '/en/collections/', '/en/womens-leather-jackets/', '/en/mens-leather-jackets/', '/en/shearling-jackets/', '/en/fur-coats/']);
+const escapeAttr = (value: string) => value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const collectionLang: 'hu' | 'en' = originalPage.lang === 'hu' ? 'hu' : 'en';
+const catalog = new Map(models.filter(model => !model.catalogHidden).map(model => [model.slug, model]));
+// The discovery layout is present in the first HTML response; deferred JS only binds behaviour.
+function collectionMarkup(html: string) {
+  const hu = collectionLang === 'hu';
+  const hub = hu ? '/kollekciok/' : '/en/collections/';
+  const visit = hu ? '/uzlet/' : '/en/visit/';
+  const isHub = originalPage.path === hub;
+  let index = 0;
+  return html.replace(/<div class="product-grid">([\s\S]*?<\/article>)<\/div>/g, (_grid: string, rawCards: string) => {
+    const id = 'collection-grid-' + index++;
+    const count = (rawCards.match(/<article class="product-card"/g) ?? []).length;
+    const cards = rawCards.replace(/<article class="product-card"[^>]*>[\s\S]*?<\/article>/g, (card: string) => {
+      const slug = card.match(/href="\/(?:en\/models|modellek)\/([^/"]+)\/"/)?.[1];
+      const model = slug ? catalog.get(slug) : undefined;
+      if (!model) return card;
+      const variants = model.variants.map(variant => variant.names[collectionLang]).join(' ');
+      const saveLabel = (hu ? 'Mentés a próbalistára: ' : 'Save to fitting list: ') + model.names[collectionLang];
+      return card.replace('<article class="product-card"', '<article class="product-card" data-model-key="' + escapeAttr(model.slug) + '" data-model-variants="' + escapeAttr(variants) + '"')
+        .replace(/<p>(Front and back photographs|Elöl- és hátulnézeti fotók)<\/p>/, '<p class="collection-repeated-description">$1</p>')
+        .replace('</article>', '<button type="button" class="collection-save" data-model-save aria-pressed="false" aria-label="' + escapeAttr(saveLabel) + '" disabled>♡</button></article>');
+    });
+    const savedText = hu ? 'Próbalista (0)' : 'Fitting list (0)';
+    const saved = isHub
+      ? '<button type="button" data-fitting-toggle data-fitting-shortcut aria-pressed="false" disabled>' + savedText + '</button>'
+      : '<a data-fitting-shortcut href="' + hub + '#fitting-list">' + savedText + '</a>';
+    const searchLabel = hu ? 'Modell, szín vagy fazon keresése' : 'Search models, colours or styles';
+    const colourLabel = hu ? 'Szín' : 'Colour';
+    const styleLabel = hu ? 'Fazon' : 'Style';
+    const result = hu ? count + ' modell' : count + (count === 1 ? ' model' : ' models');
+    const batchStatus = hu ? Math.min(12, count) + ' / ' + count + ' modell' : Math.min(12, count) + ' of ' + count + ' models';
+    const toolbar = '<div class="collection-discovery" data-static-discovery><nav class="collection-shortcuts" aria-label="' + (hu ? 'Kollekció műveletei' : 'Collection actions') + '"><a href="' + hub + '">' + (hu ? 'Kollekció' : 'Collection') + '</a>' + saved + '<a href="' + visit + '">' + (hu ? 'Üzlet' : 'Visit us') + '</a></nav>'
+      + '<div class="collection-search-row"><input type="search" class="collection-search" data-model-search data-clarity-mask="true" aria-label="' + searchLabel + '" placeholder="' + searchLabel + '" disabled></div>'
+      + '<div class="collection-facets"><select class="collection-select" data-model-colour data-clarity-mask="true" aria-label="' + colourLabel + '" disabled><option value="">' + colourLabel + '</option></select><select class="collection-select" data-model-style data-clarity-mask="true" aria-label="' + styleLabel + '" disabled><option value="">' + styleLabel + '</option></select></div>'
+      + '<div class="fitting-panel" id="fitting-list" hidden><h2>' + (hu ? 'Próbalistám' : 'My fitting list') + '</h2><p>' + (hu ? 'A lista ezen az eszközön marad. Kérdezzen a kiválasztott modellek elérhetőségéről; a lista nem foglalás.' : 'Your list stays on this device. Ask about the selected models before visiting; saving a model does not reserve it.') + '</p><a class="btn btn-primary" data-fitting-inquiry data-interest-source="fitting_list" href="https://wa.me/36203593216" hidden>' + (hu ? 'Érdeklődés a listáról WhatsAppon' : 'Ask about my list on WhatsApp') + '</a></div>'
+      + '<p class="collection-result" aria-live="polite" aria-atomic="true">' + result + '</p><p class="collection-notice" role="status"></p></div>';
+    const controls = '<div class="center-action collection-controls" data-static-controls' + (count > 0 && count <= 12 ? ' hidden' : '') + '><p role="status">' + batchStatus + '</p><button type="button" class="btn btn-ghost" aria-controls="' + id + '" disabled' + (count <= 12 ? ' hidden' : '') + '>' + (hu ? 'További modellek' : 'Show more models') + '</button><div class="collection-empty" hidden><p>' + (hu ? 'Ebben a kategóriában még nincs modellfotó. Az aktuális elérhetőségről érdeklődjön üzletünkben.' : 'There are no model photos in this category yet. Ask our store about current availability.') + '</p><button type="button" class="btn btn-ghost" data-collection-reset aria-controls="' + id + '" disabled>' + (hu ? 'Összes modell' : 'Show all models') + '</button><a class="btn btn-ghost" href="' + visit + '">' + (hu ? 'Üzlet és elérhetőség' : 'Store and contact') + '</a></div></div>';
+    return toolbar + '<div class="product-grid" data-static-collection id="' + id + '">' + cards + '</div>' + controls;
+  });
+}
+const sourcePage = collectionRoutes.has(originalPage.path) ? {
+  ...originalPage,
+  collectionCompact: true,
+  mainHtml: collectionMarkup(originalPage.mainHtml),
+} : originalPage;
 const hasLandmarks = landmarkPages.includes(sourcePage.path);
 const fullLandmarks = ['/en/visit/', '/uzlet/'].includes(sourcePage.path);
 const lang = sourcePage.lang as LandmarkLanguage;
