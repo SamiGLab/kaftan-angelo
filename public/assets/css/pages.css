@@ -2874,6 +2874,9 @@ code, pre, #partner-display-code, .portal-code {
 .fitting-panel .btn { min-height: 44px; white-space: normal; }
 .fitting-panel[hidden], .fitting-panel [hidden] { display: none !important; }
 .collection-grid-v2 .product-card {
+  /* Keep geometry stable when loading and focusing a new batch; images remain lazy. */
+  content-visibility: visible;
+  contain-intrinsic-size: none;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -2929,6 +2932,17 @@ code, pre, #partner-display-code, .portal-code {
 .collection-grid-v2 :focus-visible {
   outline: 2px solid #805322;
   outline-offset: 2px;
+}
+html:has(.collection-grid-v2) { scroll-behavior: auto; }
+.collection-filters[data-product-filters]:has(+ .collection-discovery) {
+  position: static;
+  backdrop-filter: none;
+  background: transparent;
+}
+.collection-grid-v2 .product-card :is(button, a),
+.collection-controls :is(button, a),
+.collection-discovery :is(button, a, input, select) {
+  scroll-margin-block: 100px;
 }
 @media (max-width: 768px) {
   .collection-filters[data-product-filters] {
