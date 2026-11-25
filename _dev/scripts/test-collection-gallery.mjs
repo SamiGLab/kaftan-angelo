@@ -38,7 +38,7 @@ for(const lang of ['hu','en']) {
   const filters=await page.$$eval('[data-product-filters] [data-filter]',buttons=>buttons.map(button=>button.dataset.filter));
   assert.ok(categories.length>0,'Real collection contains photographed models');
   for(const filter of filters) {
-   await page.click(`[data-product-filters] [data-filter="${filter}"]`);
+   await page.locator(`[data-product-filters] [data-filter="${filter}"]`).click();
    const count=filter==='all'?categories.length:categories.filter(values=>values.includes(filter)).length;
    assert.equal(await page.$$eval('.product-card',cards=>cards.filter(card=>!card.hidden).length),Math.min(12,count));
    assert.equal(await page.$eval(`[data-filter="${filter}"]`,button=>button.getAttribute('aria-pressed')),'true');
@@ -59,8 +59,14 @@ for(const lang of ['hu','en']) {
     assert.equal(await page.evaluate(()=>document.activeElement.dataset.filter),'all','Reset restores focus to visible filter');
    }
   }
-  await page.click('[data-filter="all"]');
-  while(!(await page.$eval('.collection-controls > button',button=>button.hidden)))await page.click('.collection-controls > button');
+  await page.locator('[data-filter="all"]').click();
+  for(let batch=0;batch<Math.ceil(categories.length/12);batch++){
+   if(await page.$eval('.collection-controls > button',button=>button.hidden))break;
+   const before=await page.$$eval('.product-card',cards=>cards.filter(card=>!card.hidden).length);
+   await page.locator('.collection-controls > button').click();
+   assert.equal(new URL(page.url()).pathname,lang==='hu'?'/kollekciok/':'/en/collections/','Load more must stay on collection');
+   assert.equal(await page.$$eval('.product-card',cards=>cards.filter(card=>!card.hidden).length),Math.min(before+12,categories.length),'Each batch must reveal more models');
+  }
   assert.equal(await page.$$eval('.product-card',cards=>cards.filter(card=>!card.hidden).length),categories.length);
   const modelSelector=lang==='hu'?'.product-card a[href^="/modellek/"]':'.product-card a[href^="/en/models/"]';
   const destination=await page.$eval(modelSelector,link=>link.getAttribute('href'));
@@ -80,7 +86,7 @@ for(const lang of ['hu','en']) {
  const hub=base+(lang==='hu'?'/kollekciok/':'/en/collections/');
  await page.goto(hub,{waitUntil:'networkidle2'});
  if(await page.$eval('[data-consent-banner]',node=>!node.hidden))await page.click('[data-consent-reject]');
- const visible=()=>page.$eval('.product-card',cards=>cards.filter(card=>!card.hidden).length);
+ const visible=()=>page.$$eval('.product-card',cards=>cards.filter(card=>!card.hidden).length);
  await page.type('[data-model-search]',lang==='hu'?'ketoldalas':'reversible');
  assert.equal(await visible(),1,'Accent-insensitive model search');
  await page.$eval('[data-model-search]',el=>{el.value='';el.dispatchEvent(new Event('input',{bubbles:true}));});
@@ -90,18 +96,18 @@ for(const lang of ['hu','en']) {
  await page.select('[data-model-colour]','');
  await page.select('[data-model-style]','reversible');assert.equal(await visible(),1);
  await page.select('[data-model-style]','');
- await page.click('.product-card:not([hidden]) [data-model-save]');
+ await page.locator('.product-card:not([hidden]) [data-model-save]').click();
  assert.equal(await page.$eval('.product-card:not([hidden]) [data-model-save]',el=>el.getAttribute('aria-pressed')),'true');
  await page.reload({waitUntil:'networkidle2'});
  assert.equal(await page.$eval('.product-card:not([hidden]) [data-model-save]',el=>el.getAttribute('aria-pressed')),'true');
- await page.click('[data-fitting-toggle]');
+ await page.locator('[data-fitting-toggle]').click();
  assert.equal(await visible(),1);
  const href=await page.$eval('[data-fitting-inquiry]',el=>el.href);
  assert.ok(new URL(href).searchParams.get('text').includes('/noi-ketoldalas-vizallo-borkabat-budapest/'));
- await page.click('.product-card:not([hidden]) [data-model-save]');
+ await page.locator('.product-card:not([hidden]) [data-model-save]').click();
  assert.equal(await visible(),0);
  assert.equal(await page.$eval('[data-fitting-inquiry]',el=>el.hidden),true);
- await page.click('[data-fitting-toggle]');
+ await page.locator('[data-fitting-toggle]').click();
  assert.equal(await visible(),12);
  await context.close();
 }
