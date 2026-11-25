@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {readFile} from 'node:fs/promises';
+import {readFile,mkdir} from 'node:fs/promises';
 import {launch} from 'puppeteer';
 const browser=await launch({headless:true,args:process.env.CI?['--no-sandbox','--disable-setuid-sandbox']:[]});
 try {
@@ -34,6 +34,11 @@ for(const lang of ['hu','en']) {
   await page.setViewport({width,height:800});
   await page.goto(base+(lang==='hu'?'/kollekciok/':'/en/collections/'),{waitUntil:'networkidle2'});
   if(await page.$eval('[data-consent-banner]',node=>!node.hidden))await page.click('[data-consent-reject]');
+  if(process.env.COLLECTION_SCREENSHOTS) {
+   await mkdir(process.env.COLLECTION_SCREENSHOTS,{recursive:true});
+   await page.$eval('.collection-discovery',el=>el.scrollIntoView({block:'center',behavior:'instant'}));
+   await page.screenshot({path:process.env.COLLECTION_SCREENSHOTS+'/'+lang+'-'+width+'-collection.png'});
+  }
   const categories=await page.$$eval('.product-card',cards=>cards.map(card=>(card.dataset.category||'').split(/\s+/)));
   const filters=await page.$$eval('[data-product-filters] [data-filter]',buttons=>buttons.map(button=>button.dataset.filter));
   assert.ok(categories.length>0,'Real collection contains photographed models');
@@ -102,6 +107,10 @@ for(const lang of ['hu','en']) {
  assert.equal(await page.$eval('.product-card:not([hidden]) [data-model-save]',el=>el.getAttribute('aria-pressed')),'true');
  await page.locator('[data-fitting-toggle]').click();
  assert.equal(await visible(),1);
+ if(process.env.COLLECTION_SCREENSHOTS) {
+  await page.$eval('.fitting-panel',el=>el.scrollIntoView({block:'center',behavior:'instant'}));
+  await page.screenshot({path:process.env.COLLECTION_SCREENSHOTS+'/'+lang+'-390-fitting-list.png'});
+ }
  const href=await page.$eval('[data-fitting-inquiry]',el=>el.href);
  assert.ok(new URL(href).searchParams.get('text').includes('/noi-ketoldalas-vizallo-borkabat-budapest/'));
  await page.locator('.product-card:not([hidden]) [data-model-save]').click();
