@@ -41,14 +41,16 @@ try {
   const prefix=lang==='hu'?'/modellek/':'/en/models/';
   for(const route of (lang==='hu'?['/noi-borkabatok/','/kollekciok/']:['/en/womens-leather-jackets/','/en/collections/'])) {
    await page.goto(base+route,{waitUntil:'domcontentloaded'});
-   const cards=await page.$$eval('[data-model-colour]', nodes=>nodes.map(node=>({
+   const cards=await page.$$eval('.product-card[data-model-colour]', nodes=>nodes.map(node=>({
     colour:node.dataset.modelColour,
-    image:node.querySelector('img').getAttribute('src'),
+    image:node.querySelector('[data-product-image]').dataset.productImage,
+    thumb:node.querySelector('img').getAttribute('src'),
     link:node.querySelector('.product-detail-link').getAttribute('href'),
     message:new URL(node.querySelector('a[href*="wa.me"]').href).searchParams.get('text')
    })));
    assert.deepEqual(cards.map(card=>card.colour),['red','cream','orange','green','black']);
    assert.equal(new Set(cards.map(card=>card.image)).size,5);
+   assert.equal(new Set(cards.map(card=>card.thumb)).size,5);
    for(const card of cards) {
     assert.equal(card.link,prefix+'noi-ketoldalas-vizallo-borkabat-budapest/?colour='+card.colour);
     assert.ok(card.message.includes('https://kaftanangelo.com'+card.link));

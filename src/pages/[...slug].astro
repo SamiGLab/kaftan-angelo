@@ -30,12 +30,19 @@ function collectionMarkup(html: string) {
     const id = 'collection-grid-' + index++;
     const count = (rawCards.match(/<article class="product-card"/g) ?? []).length;
     const cards = rawCards.replace(/<article class="product-card"[^>]*>[\s\S]*?<\/article>/g, (card: string) => {
-      const slug = card.match(/href="\/(?:en\/models|modellek)\/([^/"]+)\/"/)?.[1];
+      const match = card.match(/href="\/(?:en\/models|modellek)\/([^/"]+)\/(?:\?colour=([a-z0-9-]+))?"/);
+      const slug = match?.[1];
+      const colourKey = match?.[2];
       const model = slug ? catalog.get(slug) : undefined;
       if (!model) return card;
-      const variants = model.variants.map(variant => variant.names[collectionLang]).join(' ');
-      const saveLabel = (hu ? 'Mentés a próbalistára: ' : 'Save to fitting list: ') + model.names[collectionLang];
-      return card.replace('<article class="product-card"', '<article class="product-card" data-model-key="' + escapeAttr(model.slug) + '" data-model-variants="' + escapeAttr(variants) + '"')
+      const matchedVariant = colourKey ? model.variants.find(variant => variant.key === colourKey) : undefined;
+      const modelKey = matchedVariant ? `${model.slug}--${matchedVariant.key}` : model.slug;
+      const variants = matchedVariant
+        ? matchedVariant.names[collectionLang]
+        : model.variants.map(variant => variant.names[collectionLang]).join(' ');
+      const cardTitle = card.match(/<h3>([^<]+)<\/h3>/)?.[1] ?? model.names[collectionLang];
+      const saveLabel = (hu ? 'Mentés a próbalistára: ' : 'Save to fitting list: ') + cardTitle;
+      return card.replace('<article class="product-card"', '<article class="product-card" data-model-key="' + escapeAttr(modelKey) + '" data-model-variants="' + escapeAttr(variants) + '"')
         .replace(/<p>(Front and back photographs|Elöl- és hátulnézeti fotók)<\/p>/, '<p class="collection-repeated-description">$1</p>')
         .replace('</article>', '<button type="button" class="collection-save" data-model-save aria-pressed="false" aria-label="' + escapeAttr(saveLabel) + '" disabled>♡</button></article>');
     });
