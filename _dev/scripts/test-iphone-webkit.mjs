@@ -31,7 +31,7 @@ try {
       const state = await page.evaluate(() => {
         const viewport = document.documentElement.clientWidth;
         const rectangle = selector => {
-          const element = document.querySelector(selector);
+          const element = [...document.querySelectorAll(selector)].find(node => !node.closest('[hidden]'));
           if (!element) return null;
           const box = element.getBoundingClientRect();
           return { left: box.left, right: box.right, width: box.width, height: box.height };
