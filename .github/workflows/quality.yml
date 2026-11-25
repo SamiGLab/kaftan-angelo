@@ -123,6 +123,8 @@ jobs:
         run: node --test _dev/scripts/release-manifest.test.mjs
       - name: Install accessibility browser
         run: npx puppeteer browsers install chrome
+      - name: Install WebKit for iPhone Safari compatibility checks
+        run: npx playwright install --with-deps webkit
       - name: Build static site
         run: npm run build
       - name: Static link and SEO audit
@@ -167,6 +169,8 @@ jobs:
         run: node _dev/scripts/test-landmark-routes.mjs
       - name: Check responsive catalogue images and guide preloads
         run: node _dev/scripts/test-responsive-images.mjs
+      - name: Check iPhone-sized layouts with WebKit
+        run: npm run check:iphone
       - name: Check disabled-by-default HU/EN partner intake preview
         run: node _dev/scripts/test-partner-intake-form.mjs
       - name: Check partner sessions and material isolation
