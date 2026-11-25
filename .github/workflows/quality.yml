@@ -103,6 +103,8 @@ jobs:
         run: npm run check:lint
       - name: Test Lighthouse budget enforcement
         run: node --test _dev/scripts/lighthouse-budgets.test.mjs
+      - name: Test GSC-driven search intent and HU/EN SEO metadata
+        run: node _dev/scripts/test-search-intent-seo.mjs
       - name: Validate CMS content and uploaded images
         run: node _dev/scripts/validate-content.mjs
       - name: Test CMS authentication bridge
@@ -127,6 +129,10 @@ jobs:
         run: npm run build
       - name: Static link and SEO audit
         run: npm run audit:dist
+      - name: Check Cloudflare email protection links and robots crawling policy
+        run: node _dev/scripts/test-cloudflare-email-seo.mjs
+      - name: Check image SEO for product galleries, collections and guides
+        run: node _dev/scripts/test-image-seo.mjs
       - name: Check editorial products without published prices
         run: node _dev/scripts/test-editorial-products.mjs
       - name: Validate HTML
