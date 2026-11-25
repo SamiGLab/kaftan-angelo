@@ -142,7 +142,7 @@
     if(action==='whatsapp_click'){
       const declared=el.getAttribute('data-interest-source');
       interestEvent.interest_source=(
-        ['model_detail','product_preview','footer'].includes(declared)?declared:
+        ['model_detail','product_preview','footer','fitting_list'].includes(declared)?declared:
         el.closest('[data-product-dialog]')?'product_preview':
         el.closest('.product-card')?'collection_card':
         el.closest('.footer')?'footer':'general_link'
