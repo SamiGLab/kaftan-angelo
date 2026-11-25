@@ -48,7 +48,7 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
     checklist,
     related,
     productSchema: {
-      '@type': 'Product',
+      '@type': model.variants.length ? 'ProductGroup' : 'Product',
       '@id': `${BASE}${path}#product`,
       name,
       description,
@@ -59,6 +59,21 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
       },
       category: collectionLabel,
       ...(material ? { material } : {}),
+      ...(model.variants.length ? {
+        url: BASE + path,
+        productGroupID: model.slug,
+        variesBy: ['https://schema.org/color'],
+        hasVariant: model.variants.map(variant => ({
+          '@type': 'Product',
+          '@id': `${BASE}${path}#variant-${variant.key}`,
+          productID: `${model.slug}-${variant.key}`,
+          name: `${variant.names[lang]} ${name.toLocaleLowerCase(lang)}`,
+          color: variant.names[lang],
+          url: `${BASE}${path}?colour=${variant.key}`,
+          image: variant.gallery.map(photo => BASE + photo.image),
+          ...(material ? { material } : {}),
+        })),
+      } : {}),
     },
     pageSchema: {
       '@type': 'ItemPage',
