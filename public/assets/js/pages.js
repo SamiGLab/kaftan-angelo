@@ -157,12 +157,6 @@ const styleFacets = [
   ['patterned','Mintás','Patterned',/mintas|\bpatterned\b/],
   ['poncho','Poncsó','Poncho',/poncso|\bponcho\b/],
 ];
-function collectionElement(tag, text, className) {
-  const element = document.createElement(tag);
-  if (text) element.textContent = text;
-  if (className) element.className = className;
-  return element;
-}
 function createDiscovery(grid, cards, onChange) {
   const models = cards.filter(card => validModelKey(card.dataset.modelKey));
   if (!models.length) return null;
@@ -174,61 +168,27 @@ function createDiscovery(grid, cards, onChange) {
     link: card.querySelector('.product-detail-link'),
     searchable: normalizedModelText([card.querySelector('h3').textContent, card.dataset.modelVariants || '', card.querySelector('img')?.alt || ''].join(' ')),
   }));
-  const toolbar = collectionElement('div', '', 'collection-discovery');
-  const search = collectionElement('input', '', 'collection-search');
-  search.type = 'search';
-  search.placeholder = hu ? 'Modell, szín vagy fazon keresése' : 'Search models, colours or styles';
-  search.setAttribute('aria-label', search.placeholder);
-  search.setAttribute('data-model-search', '');
-  search.setAttribute('data-clarity-mask', 'true');
-  const searchWrap = collectionElement('div', '', 'collection-search-row');
-  searchWrap.append(search);
-  function facetSelect(facets, attribute, label) {
-    const select = collectionElement('select', '', 'collection-select');
-    select.setAttribute(attribute, '');
-    select.setAttribute('aria-label', label);
-    select.setAttribute('data-clarity-mask', 'true');
-    select.add(new Option(label, ''));
+  // The production catalogue provides this markup before the first paint.
+  const toolbar = grid.previousElementSibling;
+  if (!toolbar?.matches('[data-static-discovery]')) return null;
+  const search = toolbar.querySelector('[data-model-search]');
+  const colour = toolbar.querySelector('[data-model-colour]');
+  const style = toolbar.querySelector('[data-model-style]');
+  const saved = toolbar.querySelector('[data-fitting-shortcut]');
+  const result = toolbar.querySelector('.collection-result');
+  const notice = toolbar.querySelector('.collection-notice');
+  const panel = toolbar.querySelector('.fitting-panel');
+  const inquiry = toolbar.querySelector('[data-fitting-inquiry]');
+  function enableFacet(select, facets) {
     for (const [value, labelHu, labelEn, pattern] of facets) {
       if (records.some(record => pattern.test(record.searchable))) select.add(new Option(hu ? labelHu : labelEn, value));
     }
-    return select;
+    select.disabled = false;
   }
-  const colour = facetSelect(colourFacets, 'data-model-colour', hu ? 'Szín' : 'Colour');
-  const style = facetSelect(styleFacets, 'data-model-style', hu ? 'Fazon' : 'Style');
-  const facets = collectionElement('div', '', 'collection-facets');
-  facets.append(colour, style);
-  const nav = collectionElement('nav', '', 'collection-shortcuts');
-  nav.setAttribute('aria-label', hu ? 'Kollekció műveletei' : 'Collection actions');
-  const collection = collectionElement('a', hu ? 'Kollekció' : 'Collection');
-  collection.href = fittingHub;
-  const saved = collectionElement(isHub ? 'button' : 'a');
-  if (isHub) {
-    saved.type = 'button';
-    saved.setAttribute('data-fitting-toggle', '');
-    saved.setAttribute('aria-pressed', 'false');
-  } else saved.href = fittingHub + '#fitting-list';
-  const visit = collectionElement('a', hu ? 'Üzlet' : 'Visit us');
-  visit.href = hu ? '/uzlet/' : '/en/visit/';
-  nav.append(collection, saved, visit);
-  const result = collectionElement('p', '', 'collection-result');
-  result.setAttribute('aria-live', 'polite');
-  result.setAttribute('aria-atomic', 'true');
-  const notice = collectionElement('p', '', 'collection-notice');
-  notice.setAttribute('role', 'status');
-  const panel = collectionElement('div', '', 'fitting-panel');
-  panel.hidden = true;
-  panel.id = 'fitting-list';
-  const heading = collectionElement('h2', hu ? 'Próbalistám' : 'My fitting list');
-  const explanation = collectionElement('p', hu ? 'A lista ezen az eszközön marad. Kérdezzen a kiválasztott modellek elérhetőségéről; a lista nem foglalás.' : 'Your list stays on this device. Ask about the selected models before visiting; saving a model does not reserve it.');
-  const inquiry = collectionElement('a', hu ? 'Érdeklődés a listáról WhatsAppon' : 'Ask about my list on WhatsApp', 'btn btn-primary');
-  inquiry.setAttribute('data-fitting-inquiry', '');
-  inquiry.setAttribute('data-interest-source', 'fitting_list');
-  inquiry.hidden = true;
-  panel.append(heading, explanation, inquiry);
-  toolbar.append(nav, searchWrap, facets, panel, result, notice);
-  grid.before(toolbar);
-  grid.classList.add('collection-grid-v2');
+  enableFacet(colour, colourFacets);
+  enableFacet(style, styleFacets);
+  search.disabled = false;
+  if (isHub) saved.disabled = false;
   let savedOnly = false;
   function refreshSaved() {
     const availableSaved = records.filter(record => fittingList.has(record.key));
@@ -249,13 +209,9 @@ function createDiscovery(grid, cards, onChange) {
     } else inquiry.removeAttribute('href');
   }
   for (const record of records) {
-    const button = collectionElement('button', '', 'collection-save');
-    button.type = 'button';
-    button.setAttribute('data-model-save', '');
+    const button = record.card.querySelector('[data-model-save]');
     record.button = button;
-    record.card.append(button);
-    const description = record.card.querySelector('.product-card-body p');
-    if (description && /^(Front and back photographs|Elöl- és hátulnézeti fotók)$/.test(description.textContent.trim())) description.classList.add('collection-repeated-description');
+    button.disabled = false;
     button.addEventListener('click', () => {
       if (fittingList.has(record.key)) fittingList.delete(record.key);
       else if (fittingList.size < fittingLimit) fittingList.add(record.key);
@@ -323,36 +279,49 @@ function createDiscovery(grid, cards, onChange) {
 const collectionViews = [...document.querySelectorAll('.product-grid')].map((grid, index) => {
   const cards = [...grid.querySelectorAll('.product-card')];
   const scope = grid.parentElement;
-  const controls = document.createElement('div');
-  controls.className = 'center-action collection-controls';
-  const status = document.createElement('p');
-  status.setAttribute('role', 'status');
-  const more = document.createElement('button');
-  more.type = 'button';
-  more.className = 'btn btn-ghost';
-  more.textContent = hu ? 'További modellek' : 'Show more models';
-  grid.id ||= `collection-grid-${index}`;
-  more.setAttribute('aria-controls', grid.id);
-  const empty = document.createElement('div');
-  empty.className = 'collection-empty';
-  empty.hidden = true;
-  const explanation = document.createElement('p');
-  explanation.textContent = hu
-    ? 'Ebben a kategóriában még nincs modellfotó. Az aktuális elérhetőségről érdeklődjön üzletünkben.'
-    : 'There are no model photos in this category yet. Ask our store about current availability.';
-  const reset = document.createElement('button');
-  reset.type = 'button';
-  reset.className = 'btn btn-ghost';
-  reset.setAttribute('data-collection-reset', '');
-  reset.setAttribute('aria-controls', grid.id);
-  reset.textContent = hu ? 'Összes modell' : 'Show all models';
-  const visit = document.createElement('a');
-  visit.className = 'btn btn-ghost';
-  visit.href = hu ? '/uzlet/' : '/en/visit/';
-  visit.textContent = hu ? 'Üzlet és elérhetőség' : 'Store and contact';
-  empty.append(explanation, reset, visit);
-  controls.append(status, more, empty);
-  grid.after(controls);
+  let controls = grid.nextElementSibling;
+  let status, more, empty, explanation, reset;
+  if (controls?.matches('[data-static-controls]')) {
+    status = controls.querySelector('[role="status"]');
+    more = controls.querySelector(':scope > button');
+    empty = controls.querySelector('.collection-empty');
+    explanation = empty.querySelector('p');
+    reset = empty.querySelector('[data-collection-reset]');
+    more.disabled = false;
+    reset.disabled = false;
+  } else {
+    // Legacy galleries and the synthetic regression fixture remain supported.
+    controls = document.createElement('div');
+    controls.className = 'center-action collection-controls';
+      status = document.createElement('p');
+    status.setAttribute('role', 'status');
+      more = document.createElement('button');
+    more.type = 'button';
+    more.className = 'btn btn-ghost';
+    more.textContent = hu ? 'További modellek' : 'Show more models';
+    grid.id ||= `collection-grid-${index}`;
+    more.setAttribute('aria-controls', grid.id);
+      empty = document.createElement('div');
+    empty.className = 'collection-empty';
+    empty.hidden = true;
+      explanation = document.createElement('p');
+    explanation.textContent = hu
+      ? 'Ebben a kategóriában még nincs modellfotó. Az aktuális elérhetőségről érdeklődjön üzletünkben.'
+      : 'There are no model photos in this category yet. Ask our store about current availability.';
+      reset = document.createElement('button');
+    reset.type = 'button';
+    reset.className = 'btn btn-ghost';
+    reset.setAttribute('data-collection-reset', '');
+    reset.setAttribute('aria-controls', grid.id);
+    reset.textContent = hu ? 'Összes modell' : 'Show all models';
+    const visit = document.createElement('a');
+    visit.className = 'btn btn-ghost';
+    visit.href = hu ? '/uzlet/' : '/en/visit/';
+    visit.textContent = hu ? 'Üzlet és elérhetőség' : 'Store and contact';
+    empty.append(explanation, reset, visit);
+    controls.append(status, more, empty);
+    grid.after(controls);
+  }
   let limit = 12;
   let filter = 'all';
   const discovery = createDiscovery(grid, cards, () => { limit = 12; render(); });
