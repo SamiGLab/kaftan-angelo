@@ -18,7 +18,7 @@ const { page: originalPage } = Astro.props as { page: any };
 const collectionRoutes = new Set(['/kollekciok/', '/noi-borkabatok/', '/ferfi-borkabatok/', '/irhakabatok/', '/szormekabatok/', '/en/collections/', '/en/womens-leather-jackets/', '/en/mens-leather-jackets/', '/en/shearling-jackets/', '/en/fur-coats/']);
 const escapeAttr = (value: string) => value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const collectionLang: 'hu' | 'en' = originalPage.lang === 'hu' ? 'hu' : 'en';
-const catalog = new Map(models.filter(model => !model.catalogHidden).map(model => [model.slug, model]));
+const catalog = new Map(models.filter(model => !model.catalogHidden).flatMap(model => [[model.slugs[collectionLang], model], [model.slug, model]]));
 // The discovery layout is present in the first HTML response; deferred JS only binds behaviour.
 function collectionMarkup(html: string) {
   const hu = collectionLang === 'hu';

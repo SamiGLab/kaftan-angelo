@@ -8,7 +8,7 @@ try {
   const page=await browser.newPage();
   for(const lang of ['hu','en']) {
     for(const model of models) {
-      const path=`${lang==='hu'?'/modellek/':'/en/models/'}${model.slug}/`;
+      const path=`${lang==='hu'?'/modellek/':'/en/models/'}${model.slugs[lang]}/`;
       await page.goto(base+path,{waitUntil:'domcontentloaded'});
       assert.equal(await page.$eval('h1',el=>el.textContent),model.names[lang]);
       assert.equal(await page.$eval('meta[property="og:image"]',el=>el.content),'https://kaftanangelo.com'+model.image);

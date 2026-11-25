@@ -56,8 +56,8 @@ for (const slug of modelSlugs) {
   assert.ok(model?.image?.startsWith('/'), `Missing catalogued original photograph for ${slug}`);
   const image = model.image.slice(1);
   assert.ok(existsSync(new URL('../../public/' + image, import.meta.url)), `Missing original product photograph: ${image}`);
-  for (const [landing, prefix] of [['/borkabat-budapest/', '/modellek/'], ['/en/leather-jackets-budapest/', '/en/models/']]) {
-    assert.ok(pages[landing].mainHtml.includes(`href="${prefix}${slug}/"`), `Missing model route from ${landing}`);
+  for (const [landing, prefix, lang] of [['/borkabat-budapest/', '/modellek/', 'hu'], ['/en/leather-jackets-budapest/', '/en/models/', 'en']]) {
+    assert.ok(pages[landing].mainHtml.includes(`href="${prefix}${model.slugs[lang]}/"`), `Missing model route from ${landing}`);
     assert.ok(pages[landing].mainHtml.includes('src="/' + image + '"'), `Missing photographed example on ${landing}`);
   }
 }

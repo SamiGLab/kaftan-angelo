@@ -35,7 +35,7 @@ let checkedModels = 0;
 for (const model of models) {
   const photos = model.gallery?.length ? model.gallery : [{ image: model.image, pictures: model.pictures }];
   for (const [lang, prefix] of [['hu', '/modellek/'], ['en', '/en/models/']]) {
-    const route = prefix + model.slug + '/';
+    const route = prefix + model.slugs[lang] + '/';
     const imageUrls = verifyPage(route);
     const expected = photos.map(photo => BASE + photo.image);
     for (const image of expected) assert.ok(imageUrls.includes(image), route + ' missing original photo ' + image);

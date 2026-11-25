@@ -5,7 +5,7 @@ const models = JSON.parse(await readFile('src/data/models.json', 'utf8'));
 let checked = 0;
 for (const model of models) {
   for (const [lang, prefix] of [['hu', 'modellek'], ['en', 'en/models']]) {
-    const route = `/${prefix}/${model.slug}/`;
+    const route = `/${prefix}/${model.slugs[lang]}/`;
     const html = await readFile(`dist${route}index.html`, 'utf8');
     const match = html.match(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/);
     assert.ok(match, route + ' has structured data');

@@ -8,8 +8,10 @@ const escape = (text: string) => text.replace(/[&<>"']/g, char => ({'&':'&amp;',
 export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'].map(language => {
   const hu = language === 'hu';
   const lang = language as 'hu' | 'en';
-  const path = `${hu ? '/modellek/' : '/en/models/'}${model.slug}/`;
-  const counterpart = `${hu ? '/en/models/' : '/modellek/'}${model.slug}/`;
+  const slug = model.slugs[lang];
+  const counterpartSlug = model.slugs[hu ? 'en' : 'hu'];
+  const path = `${hu ? '/modellek/' : '/en/models/'}${slug}/`;
+  const counterpart = `${hu ? '/en/models/' : '/modellek/'}${counterpartSlug}/`;
   const name = model.names[lang];
   const collection = model.category[lang].url;
   const collectionLabel = model.category[lang].name;
@@ -35,7 +37,7 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
       ? (hu ? 'A termékoldalt küldje el WhatsAppon a keresett övhosszal és szélességgel.' : 'Send this product page on WhatsApp with your required belt length and width.')
       : (hu ? 'A termékoldalt küldje el WhatsAppon a keresett mérettel és színnel.' : 'Send this product page on WhatsApp with your preferred size and colour.');
   const detailsHtml = checklist.length ? `<h2>${hu ? 'Hasznos kérdések a kiválasztott darabról' : 'Questions about the specific piece'}</h2><ul class="model-checklist">${checklist.map(text => `<li>${escape(text)}</li>`).join('')}</ul>` : '';
-  const relatedHtml = related.length ? `<div class="model-related"><h2>${hu ? 'Hasonlítsa össze más modellekkel' : 'Compare with other models'}</h2><ul class="model-related-list">${related.map(other => `<li><a class="model-related-card" href="${hu ? '/modellek/' : '/en/models/'}${other.slug}/"><div class="model-related-photo">${other.pictures[lang]}</div><span class="model-related-name">${escape(other.names[lang])}</span></a></li>`).join('')}</ul></div>` : '';
+  const relatedHtml = related.length ? `<div class="model-related"><h2>${hu ? 'Hasonlítsa össze más modellekkel' : 'Compare with other models'}</h2><ul class="model-related-list">${related.map(other => `<li><a class="model-related-card" href="${hu ? '/modellek/' : '/en/models/'}${other.slugs[lang]}/"><div class="model-related-photo">${other.pictures[lang]}</div><span class="model-related-name">${escape(other.names[lang])}</span></a></li>`).join('')}</ul></div>` : '';
 
   // Use only existing gallery photos and their human-edited HU/EN alt descriptions.
   // ImageObject adds context without claiming prices, offers or stock.

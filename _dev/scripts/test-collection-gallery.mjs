@@ -187,7 +187,8 @@ for(const lang of ['hu','en']) {
   await page.screenshot({path:process.env.COLLECTION_SCREENSHOTS+'/'+lang+'-390-fitting-list.png'});
  }
  const href=await page.$eval('[data-fitting-inquiry]',el=>el.href);
- assert.ok(new URL(href).searchParams.get('text').includes('/noi-ketoldalas-vizallo-borkabat-budapest/?colour=red'));
+ const expectedRev = lang==='hu' ? '/noi-ketoldalas-vizallo-borkabat-budapest/?colour=red' : '/reversible-womens-leather-jacket-budapest/?colour=red';
+ assert.ok(new URL(href).searchParams.get('text').includes(expectedRev));
  await page.locator('.product-card:not([hidden]) [data-model-save]').click();
  assert.equal(await visible(),0);
  assert.equal(await page.$eval('[data-fitting-inquiry]',el=>el.hidden),true);

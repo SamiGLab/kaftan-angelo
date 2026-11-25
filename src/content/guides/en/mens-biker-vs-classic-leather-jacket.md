@@ -12,7 +12,7 @@ heroImage: "/assets/images/kaftan-angelo-hero-leather-collection-800.avif"
 
 ## Compare two jackets from our Budapest selection
 
-Start with the photos of a [men’s biker leather jacket](/en/models/ferfi-motoros-bordzseki-budapest/) and a [classic men’s leather jacket](/en/models/ferfi-klasszikus-bordzseki-budapest/). They offer two different looks to compare. Our online gallery is a selection, **not a real-time stock list**. Ask the store to confirm the current size, colour, material and availability of a particular piece.
+Start with the photos of a [men’s biker leather jacket](/en/models/mens-biker-leather-jacket-budapest/) and a [classic men’s leather jacket](/en/models/classic-mens-leather-jacket-budapest/). They offer two different looks to compare. Our online gallery is a selection, **not a real-time stock list**. Ask the store to confirm the current size, colour, material and availability of a particular piece.
 
 | What to compare | Biker-inspired style | Classic style |
 | --- | --- | --- |
