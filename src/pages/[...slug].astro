@@ -21,6 +21,7 @@ const collectionLang: 'hu' | 'en' = originalPage.lang === 'hu' ? 'hu' : 'en';
 const catalog = new Map(models.filter(model => !model.catalogHidden).map(model => [model.slug, model]));
 const sourcePage = collectionRoutes.has(originalPage.path) ? {
   ...originalPage,
+  collectionCompact: true,
   mainHtml: originalPage.mainHtml.replace(/<article class="product-card"[^>]*>[\s\S]*?<\/article>/g, (card: string) => {
     const slug = card.match(/href="\/(?:en\/models|modellek)\/([^/"]+)\/"/)?.[1];
     const model = slug ? catalog.get(slug) : undefined;
