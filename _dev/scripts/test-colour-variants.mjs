@@ -41,7 +41,7 @@ try {
   const prefix=lang==='hu'?'/modellek/':'/en/models/';
   for(const route of (lang==='hu'?['/noi-borkabatok/','/kollekciok/']:['/en/womens-leather-jackets/','/en/collections/'])) {
    await page.goto(base+route,{waitUntil:'domcontentloaded'});
-   const cards=await page.$eval('[data-model-colour]', nodes=>nodes.map(node=>({
+   const cards=await page.$$eval('[data-model-colour]', nodes=>nodes.map(node=>({
     colour:node.dataset.modelColour,
     image:node.querySelector('img').getAttribute('src'),
     link:node.querySelector('.product-detail-link').getAttribute('href'),
