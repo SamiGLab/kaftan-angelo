@@ -21,7 +21,7 @@ const defaultAnnouncement = announcements[announcementCycle[dayOfYear % announce
 const defaultText = hu ? defaultAnnouncement.hu : defaultAnnouncement.en;
 const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
 ---
-<div class="announcement">
+{!collections.includes(route) && <div class="announcement">
   <div class="announcement-inner">
     <div class="announcement-main">
       <span class="announcement-badge" aria-hidden="true">◆</span>
@@ -36,7 +36,7 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
       <a class="announcement-phone" href="tel:+3612667274"><Icon name="phone" />+36&nbsp;1&nbsp;266&nbsp;7274</a>
     </div>
   </div>
-</div>
+</div>}
 <header class="site-header"><div class="wrap nav">
   <a class="brand" href={home} aria-label={hu ? 'Kaftan Angelo — főoldal' : 'Kaftan Angelo — home'}>Kaftan <span>Angelo</span></a>
   <div class="nav-tools">
@@ -49,7 +49,7 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
   <nav id="primary-navigation" class="links" data-menu aria-label={hu ? 'Fő navigáció' : 'Primary navigation'}>{items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}</nav>
 </div></header>
 
-<script is:inline define:vars={{ announcements, announcementCycle, lang }}>
+{!collections.includes(route) && <script is:inline define:vars={{ announcements, announcementCycle, lang }}>
 (() => {
   // Daily selection without cookies or browser storage.
   const parts = new Intl.DateTimeFormat('en-CA', {timeZone:'Europe/Budapest',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
@@ -61,4 +61,4 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
   const link = document.querySelector('[data-announcement-link]');
   if (text && link) {text.textContent=lang==='hu'?item.hu:item.en;link.href=lang==='hu'?item.url_hu:item.url_en;}
 })();
-</script>
+</script>}
