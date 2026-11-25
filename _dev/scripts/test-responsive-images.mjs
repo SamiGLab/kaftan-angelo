@@ -18,6 +18,47 @@ for (const route of guides) {
   assert.ok(desktop?.includes('-800.avif'), route + ' desktop source is preserved');
 }
 
+// The compact collection's first image is the observed Lighthouse LCP element.
+// Assert priorities in generated HTML, before JavaScript is able to alter anything.
+for (const route of ['/kollekciok/', '/en/collections/']) {
+  const html = await readFile('dist' + route + 'index.html', 'utf8');
+  const cards = [...html.matchAll(/<article class="product-card"[^>]*>[\s\S]*?<\/article>/g)];
+  const images = cards.map(card => card[0].match(/<img\b[^>]*>/)?.[0] ?? '');
+  assert.ok(images.length > 2, route + ' has more than one product row');
+  const preloads = [...html.matchAll(/<link\b[^>]*rel="preload"[^>]*>/g)].map(m => m[0]).filter(tag => tag.includes('as="image"'));
+  assert.equal(preloads.length, 1, route + ' preloads only the first catalogue image');
+  const source = cards[0][0].match(/<source\b[^>]*type="image\/avif"[^>]*>/)?.[0];
+  assert.ok(source, route + ' contains AVIF source');
+  for (const [preloadAttr, pictureAttr] of [['imagesrcset', 'srcset'], ['imagesizes', 'sizes']]) {
+    const readAttr = (tag, name) => tag.match(new RegExp('\\b' + name + '="([^"]+)"'))?.[1];
+    const expected = readAttr(source, pictureAttr);
+    assert.ok(expected, route + ' has responsive ' + pictureAttr);
+    assert.equal(readAttr(preloads[0], preloadAttr), expected, route + ' preload matches picture ' + pictureAttr);
+  }
+  assert.match(preloads[0], /\bfetchpriority="high"/, route + ' preloads the LCP candidate with high priority');
+  assert.match(images[0], /\bloading="eager"/, route + ' loads LCP image eagerly');
+  assert.match(images[0], /\bfetchpriority="high"/, route + ' prioritizes LCP image');
+  assert.match(images[1], /\bloading="eager"/, route + ' loads second visible image eagerly');
+  assert.ok(images.slice(1).every(img => !/\bfetchpriority="high"/.test(img)), route + ' reserves high priority for the first image');
+  assert.ok(images.slice(2).every(img => /\bloading="lazy"/.test(img)), route + ' retains lazy loading below the first row');
+}
+
+// Production catalogue CSS must be smaller and remain render-blocking so
+// the first layout cannot flash unstyled. Non-catalogue pages keep full CSS.
+const fullCss = await stat('dist/assets/css/pages.css');
+const compactCss = await stat('dist/assets/css/collection.css');
+assert.ok(compactCss.size < fullCss.size, 'Catalogue CSS is smaller than the full stylesheet');
+for (const route of ['/kollekciok/', '/en/collections/', '/noi-borkabatok/', '/en/womens-leather-jackets/']) {
+  const html = await readFile('dist' + route + 'index.html', 'utf8');
+  assert.match(html, /rel="stylesheet" href="\/assets\/css\/collection\.css"/);
+  assert.ok(!html.includes('href="/assets/css/pages.css"'));
+  assert.ok(html.includes('collection-contact') && html.includes('collection-zoom-hint'));
+}
+for (const route of ['/', '/en/', '/utmutatok/', '/en/visit/']) {
+  const html = await readFile('dist' + route + 'index.html', 'utf8');
+  assert.match(html, /rel="stylesheet" href="\/assets\/css\/pages\.css"/);
+}
+
 // Exercise the existing two-card CSS layout as well as full catalogues.
 const catalogue = await readFile('dist/kollekciok/index.html', 'utf8');
 let seen = 0;
@@ -53,6 +94,33 @@ try {
         assert.ok(img.width > 0 && img.width < width, route + ' card fits');
       }
       if (width === 320 && dpr === 1) assert.equal(Number(images[0].src.match(/-(\d+)\.avif$/)?.[1]), 480, route + ' small screens select the small existing asset');
+      if (route !== '/two-card-fixture/' && (width === 390 || width === 1365)) {
+        const sample = () => page.evaluate(() => {
+          const selectors = ['.site-header', '.page-hero', '.collection-discovery', '.collection-search',
+            '.collection-filter-strip', '.collection-meta-row', '.collection-save',
+            '.collection-detail', '.product-card h3', '.collection-contact', '.footer'];
+          return selectors.map(selector => {
+            const node = document.querySelector(selector);
+            const style = getComputedStyle(node);
+            const b = node.getBoundingClientRect();
+            return [selector, b.width, b.height, style.display, style.color, style.backgroundColor,
+              style.fontSize, style.padding, style.borderRadius, style.position];
+          });
+        });
+        const compact = await sample();
+        const contactIcon = await page.$eval('.collection-contact', el => getComputedStyle(el, '::before').maskImage);
+        assert.notEqual(contactIcon, 'none', 'Shared contact icon is rendered');
+        await page.evaluate(async () => {
+          const link = document.querySelector('link[rel="stylesheet"][href="/assets/css/collection.css"]');
+          await new Promise((resolve, reject) => {
+            link.addEventListener('load', resolve, {once:true});
+            link.addEventListener('error', reject, {once:true});
+            link.href = '/assets/css/pages.css';
+          });
+          await document.fonts.ready;
+        });
+        assert.deepEqual(await sample(), compact, route + ' preserves catalogue layout with specialized CSS');
+      }
       await context.close();
     }
   }

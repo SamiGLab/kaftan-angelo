@@ -8,7 +8,7 @@ try {
     // Isolate consent per locale: analytics acceptance in HU must not persist to EN.
     const context = await browser.createBrowserContext();
     const page = await context.newPage();
-    const modelPath = `${lang === 'hu' ? '/modellek/' : '/en/models/'}noi-sarga-borkabat-budapest/`;
+    const modelPath = lang === 'hu' ? '/modellek/noi-sarga-borkabat-budapest/' : '/en/models/yellow-womens-leather-jacket-budapest/';
     const requests = [];
     page.on('request', request => requests.push(request.url()));
     await page.setViewport({width:390,height:844});

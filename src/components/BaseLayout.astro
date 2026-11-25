@@ -21,7 +21,17 @@ const heroMobileImage = page.mainHtml?.match(/--hero-mobile:\s*url\('([^']+)'\)/
   ?? (!isModelPage && page.ogImage?.endsWith('-800.avif')
     ? new URL(page.ogImage.replace(/-800\.avif$/, '-480.avif')).pathname
     : undefined);
-import { backgroundImage } from './responsive-images';
+import { backgroundImage, responsiveImages } from './responsive-images';
+// Preload the exact responsive candidate of the prioritized collection LCP image.
+// Derive from the same final picture markup as the visible catalogue; never guess a width.
+const collectionPicture = page.collectionCompact && page.mainHtml
+  ? Array.from(responsiveImages(page.mainHtml).matchAll(/<picture>[\s\S]*?<\/picture>/g), (match) => match[0])
+      .find((picture) => /<img\b[^>]*fetchpriority="high"/.test(picture))
+  : undefined;
+const collectionAvifSource = collectionPicture?.match(/<source\b[^>]*type="image\/avif"[^>]*>/)?.[0];
+const collectionAvifSrcset = collectionAvifSource?.match(/srcset="([^"]+)"/)?.[1];
+const collectionAvifSizes = collectionAvifSource?.match(/sizes="([^"]+)"/)?.[1];
+
 const sharpHero = backgroundImage(heroImage, page.mainHtml?.includes('class="home-hero"') ? 1600 : 1200);
 const heroCandidates = [...sharpHero.matchAll(/url\('([^']+)'\) (\d)x/g)];
 const modelAvifSource = isModelPage ? (page.mainHtml?.match(/<source\s+[^>]*type="image\/avif"[^>]*>/i) || page.mainHtml?.match(/<source\s+[^>]*srcset="[^"]+\.avif[^"]*"[^>]*>/i))?.[0] : null;
@@ -46,6 +56,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <meta charset="utf-8" />
   <script is:inline>document.documentElement.classList.add("js");</script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  {collectionAvifSrcset && collectionAvifSizes && <link rel="preload" as="image" type="image/avif" imagesrcset={collectionAvifSrcset} imagesizes={collectionAvifSizes} fetchpriority="high" />}
   <title>{page.title}</title>
   <meta name="application-name" content="Kaftan Angelo" />
   <meta name="apple-mobile-web-app-title" content="Kaftan Angelo" />
@@ -70,13 +81,14 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <meta property="og:image:width" content={String(socialImageInfo.width)} />
   <meta property="og:image:height" content={String(socialImageInfo.height)} />
   <meta property="og:image:type" content={`image/${socialImageInfo.format}`} />
-  <meta property="og:image:alt" content={page.title} />
+  <meta property="og:image:alt" content={page.ogImageAlt ?? page.title} />
   <meta property="og:locale" content={lang === 'hu' ? 'hu_HU' : 'en_GB'} />
   <meta property="og:locale:alternate" content={lang === 'hu' ? 'en_GB' : 'hu_HU'} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={page.title} />
   <meta name="twitter:description" content={page.description} />
   <meta name="twitter:image" content={socialImage} />
+  <meta name="twitter:image:alt" content={page.ogImageAlt ?? page.title} />
   <meta name="theme-color" content="#1b120c" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="manifest" href="/site.webmanifest" />
@@ -87,7 +99,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <link rel="preload" as="font" type="font/woff2" href={headingFont} crossorigin="anonymous" />
   {lang === 'hu' && <link rel="preload" as="font" type="font/woff2" href={headingExtendedFont} crossorigin="anonymous" />}
   {preloadHero && !page.collectionCompact && <link rel="preload" as="image" href={heroMobileImage ?? heroCandidates[0]?.[1] ?? heroImage} media="(max-width: 620px)" fetchpriority="high" />}
-  {preloadHero && <link rel="preload" as="image" href={heroImage} media="(min-width: 621px)" fetchpriority="high" />}
+  {preloadHero && !page.collectionCompact && <link rel="preload" as="image" href={heroImage} media="(min-width: 621px)" fetchpriority="high" />}
   {isModelPage && modelAvifSrcset && <link rel="preload" as="image" type="image/avif" imagesrcset={modelAvifSrcset} imagesizes={modelAvifSizes || '(max-width: 760px) 92vw, 600px'} fetchpriority="high" />}
   <link rel="preload" as="style" href="/assets/css/pages.css" />
   <link rel="stylesheet" href="/assets/css/pages.css" />
@@ -104,7 +116,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <WhatsAppButton lang={lang} pageTitle={page.title} canonicalUrl={page.canonical} />
   {page.mainHtml?.includes('data-product-image') && <dialog class="product-dialog" data-product-dialog aria-labelledby="product-preview-title">
     <div class="preview-header"><h2 id="product-preview-title" data-preview-title>{lang === 'hu' ? 'Modell' : 'Model'}</h2><button class="preview-close" type="button" data-preview-close aria-label={lang === 'hu' ? 'Bezárás' : 'Close'}><Icon name="x" /></button></div>
-    <div class="preview-body"><img data-preview-image src={heroImage} alt="" width="900" height="900" loading="lazy" /><div class="preview-details"><p>{lang === 'hu' ? 'Az aktuális méretekről és elérhetőségről érdeklődjön közvetlenül az üzletben. A kabátokat személyesen próbálhatja fel.' : 'Ask our store about available sizes and current availability. Visit us to try the jackets on in person.'}</p><a class="btn btn-primary" data-preview-inquiry data-interest-source="product_preview" href="https://wa.me/36203593216">{lang === 'hu' ? 'Érdeklődés WhatsAppon' : 'Ask on WhatsApp'}</a><div class="preview-controls"><button type="button" data-preview-prev aria-label={lang === 'hu' ? 'Előző modell' : 'Previous model'}><Icon name="previous" /></button><span data-preview-count></span><button type="button" data-preview-next aria-label={lang === 'hu' ? 'Következő modell' : 'Next model'}><Icon name="next" /></button></div></div></div>
+    <div class="preview-body"><div class="preview-media"><img data-preview-image src={heroImage} alt="" width="900" height="900" loading="lazy" /><div class="preview-thumbs" data-preview-thumbs hidden role="group" aria-label={lang === 'hu' ? 'Termékfotók' : 'Product photos'}></div></div><div class="preview-details"><p class="preview-material" data-preview-material hidden></p><p>{lang === 'hu' ? 'Az aktuális méretekről és elérhetőségről érdeklődjön közvetlenül az üzletben. A kabátokat személyesen próbálhatja fel.' : 'Ask our store about available sizes and current availability. Visit us to try the jackets on in person.'}</p><div class="preview-actions"><a class="btn btn-primary" data-preview-inquiry data-interest-source="product_preview" href="https://wa.me/36203593216">{lang === 'hu' ? 'Érdeklődés WhatsAppon' : 'Ask on WhatsApp'}</a><a class="btn btn-ghost" data-preview-detail href={lang === 'hu' ? '/kollekciok/' : '/en/collections/'} hidden>{lang === 'hu' ? 'Termék részletei →' : 'Model details →'}</a><button type="button" class="btn btn-ghost preview-save-btn" data-preview-save aria-pressed="false" hidden>♡ {lang === 'hu' ? 'Próbalistára' : 'Save to list'}</button></div><div class="preview-controls"><button type="button" data-preview-prev aria-label={lang === 'hu' ? 'Előző modell' : 'Previous model'}><Icon name="previous" /></button><span data-preview-count></span><button type="button" data-preview-next aria-label={lang === 'hu' ? 'Következő modell' : 'Next model'}><Icon name="next" /></button></div></div></div>
   </dialog>}
   <script is:inline defer src="/assets/js/pages.js"></script>
   {page.mainHtml?.includes('data-partner-form') && <script is:inline defer src="/assets/js/partner-intake-client.js"></script>}

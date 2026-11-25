@@ -11,6 +11,7 @@ function updateModelInquiry() {
   const colour = selectedModelColour?.name || modelEnquiryFields?.querySelector('[data-enquiry-colour]')?.value.trim();
   if (size) parts.push(`${hu ? 'Méret' : 'Size'}: ${size}`);
   if (colour) parts.push(`${hu ? 'Szín' : 'Colour'}: ${colour}`);
+  if (selectedModelColour?.url) parts.push(selectedModelColour.url);
   if (selectedModelColour?.image) parts.push(selectedModelColour.image);
   url.searchParams.set('text', parts.join('\n'));
   modelInquiry.href = url.href;
@@ -20,21 +21,35 @@ modelEnquiryFields?.addEventListener('input', updateModelInquiry);
 const colourSelector = document.querySelector('[data-colour-selector]');
 if (colourSelector) {
   const panels = [...document.querySelectorAll('[data-colour-panel]')];
-  function selectColour(key) {
+  function selectColour(key, updateAddress = false) {
     const selected = panels.find(panel => panel.dataset.colourPanel === key);
     if (!selected) return;
     panels.forEach(panel => { panel.hidden = panel !== selected; });
     colourSelector.querySelectorAll('[data-colour]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.colour === key)));
     colourSelector.querySelector('[data-colour-status]').textContent = `${hu ? 'Kiválasztott szín:' : 'Selected colour:'} ${selected.dataset.colourName}`;
-    selectedModelColour = {name:selected.dataset.colourName,image:new URL(selected.querySelector('img').getAttribute('src'), 'https://kaftanangelo.com').href};
+    const variantUrl = new URL(location.pathname, 'https://kaftanangelo.com');
+    variantUrl.searchParams.set('colour', key);
+    selectedModelColour = {name:selected.dataset.colourName,image:new URL(selected.querySelector('img').getAttribute('src'), 'https://kaftanangelo.com').href,url:variantUrl.href};
+    if (updateAddress) {
+      const address = new URL(location.href);
+      address.searchParams.delete('color');
+      address.searchParams.set('colour', key);
+      history.replaceState(history.state, '', address);
+    }
+    document.querySelectorAll('.language-choice a.language-option').forEach(link => {
+      const counterpart = new URL(link.href);
+      counterpart.searchParams.set('colour', key);
+      link.href = counterpart.href;
+    });
     updateModelInquiry();
   }
   colourSelector.hidden = false;
-  const requestedColour = new URLSearchParams(location.search).get('colour');
+  const colourParams = new URLSearchParams(location.search);
+  const requestedColour = colourParams.get('colour') ?? colourParams.get('color');
   selectColour(panels.some(panel => panel.dataset.colourPanel === requestedColour) ? requestedColour : panels[0].dataset.colourPanel);
   colourSelector.addEventListener('click', event => {
     const button = event.target.closest('[data-colour]');
-    if (button) selectColour(button.dataset.colour);
+    if (button) selectColour(button.dataset.colour, true);
   });
 }
 document.querySelectorAll('.current-year').forEach(element => { element.textContent = String(new Date().getFullYear()); });
@@ -62,29 +77,103 @@ document.addEventListener('focusin', event => {
   if (menuButton?.getAttribute('aria-expanded') === 'true' && !event.target.closest('.site-header')) closeMenu();
 });
 
+const fittingStorageKey = 'kaftan_fitting_list_v1';
+const fittingHub = hu ? '/kollekciok/' : '/en/collections/';
+const fittingLimit = 12;
+const validModelKey = key => typeof key === 'string' && /^[a-z0-9-]{1,120}$/.test(key);
+function readFittingList() {
+  try {
+    const data = JSON.parse(localStorage.getItem(fittingStorageKey) || '[]');
+    return new Set(Array.isArray(data) ? data.filter(validModelKey).slice(0, fittingLimit) : []);
+  } catch { return new Set(); }
+}
+let fittingList = readFittingList();
+function toggleFittingKey(key, noticeEl) {
+  if (!validModelKey(key)) return false;
+  if (fittingList.has(key)) fittingList.delete(key);
+  else if (fittingList.size < fittingLimit) fittingList.add(key);
+  else {
+    if (noticeEl) noticeEl.textContent = hu ? 'Legfeljebb 12 modell menthető.' : 'You can save up to 12 models.';
+    return false;
+  }
+  try { localStorage.setItem(fittingStorageKey, JSON.stringify([...fittingList])); }
+  catch { if (noticeEl) noticeEl.textContent = hu ? 'A lista nem menthető ezen az eszközön.' : 'The list cannot be stored on this device.'; }
+  window.dispatchEvent(new Event('kaftan-fitting-change'));
+  return true;
+}
+
 // Native dialogs trap focus, handle Escape, and restore focus to the trigger.
 const dialog = document.querySelector('[data-product-dialog]');
 const imageButtons = [...document.querySelectorAll('[data-product-image]')];
 const visibleImageButtons = () => imageButtons.filter(button => !button.closest('.product-card').hidden);
 let selectedImage = 0;
+let activePreviewKey = '';
+let activePreviewName = '';
+function syncPreviewSave() {
+  const saveBtn = dialog?.querySelector('[data-preview-save]');
+  if (!saveBtn) return;
+  if (!activePreviewKey) {
+    saveBtn.hidden = true;
+    return;
+  }
+  const saved = fittingList.has(activePreviewKey);
+  saveBtn.hidden = false;
+  saveBtn.setAttribute('aria-pressed', String(saved));
+  saveBtn.textContent = saved
+    ? (hu ? '♥ Próbalistán' : '♥ Saved to list')
+    : (hu ? '♡ Próbalistára' : '♡ Save to list');
+  saveBtn.setAttribute('aria-label', (saved ? (hu ? 'Eltávolítás a próbalistáról: ' : 'Remove from fitting list: ') : (hu ? 'Mentés a próbalistára: ' : 'Save to fitting list: ')) + activePreviewName);
+}
+let catalogUiPromise = null;
+function loadCatalogUi() {
+  if (!catalogUiPromise) catalogUiPromise = import('/assets/js/catalog-ui.mjs').catch(() => null);
+  return catalogUiPromise;
+}
 function showImage(index) {
   const visible = visibleImageButtons();
   selectedImage = (index + visible.length) % visible.length;
   const trigger = visible[selectedImage];
   const card = trigger.closest('.product-card');
-  const title = card.querySelector('h3').textContent;
+  const title = card.querySelector('h3').textContent.trim();
   const image = dialog.querySelector('[data-preview-image]');
   image.src = trigger.dataset.productImage;
   image.alt = title;
   dialog.querySelector('[data-preview-title]').textContent = title;
   dialog.querySelector('[data-preview-count]').textContent = `${selectedImage + 1} / ${visible.length}`;
   dialog.querySelector('[data-preview-inquiry]').href = card.querySelector('a[href*="wa.me"]').href;
+  const materialEl = dialog.querySelector('[data-preview-material]');
+  if (materialEl) {
+    const mat = card.querySelector('.collection-material-tag')?.textContent.trim() || '';
+    materialEl.textContent = mat;
+    materialEl.hidden = !mat;
+  }
+  const detailEl = dialog.querySelector('[data-preview-detail]');
+  if (detailEl) {
+    const detailHref = card.querySelector('.product-detail-link')?.getAttribute('href');
+    if (detailHref) {
+      detailEl.href = detailHref;
+      detailEl.hidden = false;
+    } else {
+      detailEl.hidden = true;
+    }
+  }
+  const modelKey = validModelKey(card.dataset.modelKey) ? card.dataset.modelKey : '';
+  activePreviewKey = modelKey;
+  activePreviewName = title;
+  syncPreviewSave();
+  if (modelKey && dialog.querySelector('[data-preview-thumbs]')) {
+    loadCatalogUi().then(mod => mod?.loadPreviewThumbs(dialog, modelKey, title, trigger.dataset.productImage, key => activePreviewKey === key));
+  }
   if (!dialog.open) dialog.showModal();
 }
 imageButtons.forEach(button => button.addEventListener('click', () => showImage(visibleImageButtons().indexOf(button))));
 dialog?.querySelector('[data-preview-close]').addEventListener('click', () => dialog.close());
 dialog?.querySelector('[data-preview-prev]').addEventListener('click', () => showImage(selectedImage - 1));
 dialog?.querySelector('[data-preview-next]').addEventListener('click', () => showImage(selectedImage + 1));
+dialog?.querySelector('[data-preview-save]')?.addEventListener('click', () => {
+  if (activePreviewKey) toggleFittingKey(activePreviewKey);
+});
+window.addEventListener('kaftan-fitting-change', syncPreviewSave);
 dialog?.addEventListener('keydown', event => {
   if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); showImage(selectedImage + (event.key === 'ArrowRight' ? 1 : -1)); }
 });
@@ -93,6 +182,17 @@ dialog?.addEventListener('click', event => {
   const bounds = dialog.getBoundingClientRect();
   if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
 });
+
+if (matchMedia('(hover: hover)').matches) {
+  const onHover = event => {
+    const button = event.currentTarget;
+    loadCatalogUi().then(mod => mod?.attachHoverAltPhoto(button));
+  };
+  document.querySelectorAll('[data-static-collection] .product-image-button').forEach(button => {
+    button.addEventListener('pointerenter', onHover, { once: true });
+    button.addEventListener('focusin', onHover, { once: true });
+  });
+}
 
 const partnerForm = document.querySelector('[data-partner-form]');
 function partnershipMessage() {
@@ -121,17 +221,6 @@ partnerForm?.querySelector('[data-partner-whatsapp]').addEventListener('click', 
 });
 
 
-const fittingStorageKey = 'kaftan_fitting_list_v1';
-const fittingHub = hu ? '/kollekciok/' : '/en/collections/';
-const fittingLimit = 12;
-const validModelKey = key => typeof key === 'string' && /^[a-z0-9-]{1,120}$/.test(key);
-function readFittingList() {
-  try {
-    const data = JSON.parse(localStorage.getItem(fittingStorageKey) || '[]');
-    return new Set(Array.isArray(data) ? data.filter(validModelKey).slice(0, fittingLimit) : []);
-  } catch { return new Set(); }
-}
-let fittingList = readFittingList();
 function normalizedModelText(value) {
   return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
@@ -192,7 +281,7 @@ function createDiscovery(grid, cards, onChange) {
   let savedOnly = false;
   function refreshSaved() {
     const availableSaved = records.filter(record => fittingList.has(record.key));
-    saved.textContent = (hu ? 'Próbalista' : 'Fitting list') + ' (' + fittingList.size + ')';
+    saved.textContent = (hu ? '♡ Próbalista' : '♡ Fitting list') + ' (' + fittingList.size + ')';
     for (const record of records) {
       const active = fittingList.has(record.key);
       record.button.setAttribute('aria-pressed', String(active));
@@ -207,21 +296,16 @@ function createDiscovery(grid, cards, onChange) {
       url.searchParams.set('text', message);
       inquiry.href = url.href;
     } else inquiry.removeAttribute('href');
+    if (fittingList.size > 0 || grid.parentElement.querySelector('[data-fitting-tray]')) {
+      loadCatalogUi().then(mod => mod?.syncFittingTray({ grid, panel, inquiry, isHub, totalSaved: fittingList.size, availableSaved, savedOnly, setSavedMode }));
+    }
   }
   for (const record of records) {
     const button = record.card.querySelector('[data-model-save]');
     record.button = button;
     button.disabled = false;
     button.addEventListener('click', () => {
-      if (fittingList.has(record.key)) fittingList.delete(record.key);
-      else if (fittingList.size < fittingLimit) fittingList.add(record.key);
-      else {
-        notice.textContent = hu ? 'Legfeljebb 12 modell menthető.' : 'You can save up to 12 models.';
-        return;
-      }
-      try { localStorage.setItem(fittingStorageKey, JSON.stringify([...fittingList])); }
-      catch { notice.textContent = hu ? 'A lista nem menthető ezen az eszközön.' : 'The list cannot be stored on this device.'; }
-      window.dispatchEvent(new Event('kaftan-fitting-change'));
+      if (!toggleFittingKey(record.key, notice)) return;
       if (savedOnly && record.card.hidden) saved.focus();
     });
   }
@@ -235,7 +319,58 @@ function createDiscovery(grid, cards, onChange) {
     if (all) all.click();
     else onChange();
   }
-  if (isHub) saved.addEventListener('click', () => setSavedMode(!savedOnly));
+  if (isHub) {
+    saved.addEventListener('click', () => setSavedMode(!savedOnly));
+  }
+  function renderChips(currentFilter, resetAll) {
+    const chips = [];
+    if (savedOnly) {
+      chips.push({
+        key: 'saved',
+        label: hu ? '♥ Próbalistám' : '♥ My fitting list',
+        onRemove: () => setSavedMode(false),
+      });
+    }
+    if (currentFilter && currentFilter !== 'all') {
+      const activeBtn = grid.parentElement.querySelector(`[data-product-filters] [data-filter="${currentFilter}"]`);
+      const label = activeBtn ? activeBtn.textContent.trim() : currentFilter;
+      chips.push({
+        key: 'category',
+        label,
+        onRemove: () => {
+          const all = grid.parentElement.querySelector('[data-product-filters] [data-filter="all"]');
+          if (all) all.click();
+        },
+      });
+    }
+    const query = search.value.trim();
+    if (query) {
+      chips.push({
+        key: 'search',
+        label: `“${query}”`,
+        onRemove: () => { search.value = ''; onChange(); search.focus(); },
+      });
+    }
+    if (colour.value) {
+      const label = colour.options[colour.selectedIndex]?.textContent || colour.value;
+      chips.push({
+        key: 'colour',
+        label,
+        onRemove: () => { colour.value = ''; onChange(); colour.focus(); },
+      });
+    }
+    if (style.value) {
+      const label = style.options[style.selectedIndex]?.textContent || style.value;
+      chips.push({
+        key: 'style',
+        label,
+        onRemove: () => { style.value = ''; onChange(); style.focus(); },
+      });
+    }
+    if (chips.length || toolbar.querySelector('[data-active-filters]')) {
+      loadCatalogUi().then(mod => mod?.renderFilterChips(toolbar, panel, chips, resetAll));
+    }
+  }
   search.addEventListener('input', onChange);
   colour.addEventListener('change', onChange);
   style.addEventListener('change', onChange);
@@ -244,6 +379,7 @@ function createDiscovery(grid, cards, onChange) {
     if (event.key !== fittingStorageKey && event.key !== null) return;
     fittingList = readFittingList();
     refreshSaved();
+    syncPreviewSave();
     if (savedOnly) onChange();
   });
   refreshSaved();
@@ -268,9 +404,10 @@ function createDiscovery(grid, cards, onChange) {
       panel.hidden = true;
       if (isHub) saved.setAttribute('aria-pressed', 'false');
     },
-    render(count) {
+    render(count, currentFilter, resetAll) {
       result.textContent = hu ? count + ' modell' : count + (count === 1 ? ' model' : ' models');
       refreshSaved();
+      renderChips(currentFilter, resetAll);
     },
   };
 }
@@ -326,6 +463,19 @@ const collectionViews = [...document.querySelectorAll('.product-grid')].map((gri
   let filter = 'all';
   const discovery = createDiscovery(grid, cards, () => { limit = 12; render(); });
   const matches = () => cards.filter(card => (filter === 'all' || (card.dataset.category || '').split(/\s+/).includes(filter)) && (!discovery || discovery.matches(card)));
+  function resetAll() {
+    discovery?.clear();
+    const all = scope.querySelector('[data-product-filters] [data-filter="all"]');
+    if (all) {
+      all.click();
+      all.focus();
+    } else {
+      filter = 'all';
+      limit = 12;
+      render();
+      grid.querySelector('button, a')?.focus();
+    }
+  }
   function render() {
     const matching = matches();
     const shown = new Set(matching.slice(0, limit));
@@ -338,26 +488,14 @@ const collectionViews = [...document.querySelectorAll('.product-grid')].map((gri
     more.hidden = limit >= matching.length;
     empty.hidden = matching.length > 0;
     if (discovery) {
-      discovery.render(matching.length);
+      discovery.render(matching.length, filter, resetAll);
       explanation.textContent = discovery.active()
         ? (hu ? 'Nincs a keresésnek megfelelő modell. Próbáljon másik szűrőt, vagy nézze meg az összes modellt.' : 'No models match this selection. Try another filter or show all models.')
         : (hu ? 'Ebben a kategóriában még nincs modellfotó. Az aktuális elérhetőségről érdeklődjön üzletünkben.' : 'There are no model photos in this category yet. Ask our store about current availability.');
     }
     controls.hidden = cards.length > 0 && cards.length <= 12 && filter === 'all' && !discovery?.active();
   }
-  reset.addEventListener('click', () => {
-    discovery?.clear();
-    const all = scope.querySelector('[data-product-filters] [data-filter="all"]');
-    if (all) {
-      all.click();
-      all.focus();
-    } else {
-      filter = 'all';
-      limit = 12;
-      render();
-      grid.querySelector('button, a')?.focus();
-    }
-  });
+  reset.addEventListener('click', resetAll);
   more.addEventListener('click', () => {
     const firstNew = matches()[limit];
     limit += 12;
@@ -371,7 +509,7 @@ const collectionViews = [...document.querySelectorAll('.product-grid')].map((gri
 document.addEventListener('click', event => {
   const button = event.target.closest('.filter-btn[data-filter]');
   if (!button) return;
-  const scope = button.closest('[data-product-filters]')?.parentElement || document;
+  const scope = button.closest('[data-static-discovery]')?.parentElement || button.closest('[data-product-filters]')?.parentElement || document;
   scope.querySelectorAll('.filter-btn').forEach(item => { item.classList.remove('active'); item.setAttribute('aria-pressed', 'false'); });
   button.classList.add('active');
   button.setAttribute('aria-pressed', 'true');

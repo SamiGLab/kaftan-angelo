@@ -1,5 +1,5 @@
 ---
-import { withIcons } from '../components/icon';
+import { icon, withIcons } from '../components/icon';
 import { responsiveImages } from '../components/responsive-images';
 import BaseLayout from '../components/BaseLayout.astro';
 import ModelDetail from '../components/ModelDetail.astro';
@@ -18,7 +18,7 @@ const { page: originalPage } = Astro.props as { page: any };
 const collectionRoutes = new Set(['/kollekciok/', '/noi-borkabatok/', '/ferfi-borkabatok/', '/irhakabatok/', '/szormekabatok/', '/en/collections/', '/en/womens-leather-jackets/', '/en/mens-leather-jackets/', '/en/shearling-jackets/', '/en/fur-coats/']);
 const escapeAttr = (value: string) => value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const collectionLang: 'hu' | 'en' = originalPage.lang === 'hu' ? 'hu' : 'en';
-const catalog = new Map(models.filter(model => !model.catalogHidden).map(model => [model.slug, model]));
+const catalog = new Map(models.filter(model => !model.catalogHidden).flatMap(model => [[model.slugs[collectionLang], model], [model.slug, model]]));
 // The discovery layout is present in the first HTML response; deferred JS only binds behaviour.
 function collectionMarkup(html: string) {
   const hu = collectionLang === 'hu';
@@ -26,20 +26,43 @@ function collectionMarkup(html: string) {
   const visit = hu ? '/uzlet/' : '/en/visit/';
   const isHub = originalPage.path === hub;
   let index = 0;
-  return html.replace(/<div class="product-grid">([\s\S]*?<\/article>)<\/div>/g, (_grid: string, rawCards: string) => {
+  return html.replace(/(<div class="collection-filters"[^>]*>[\s\S]*?<\/div>)?<div class="product-grid">([\s\S]*?<\/article>)<\/div>/g, (_grid: string, categories: string | undefined, rawCards: string) => {
     const id = 'collection-grid-' + index++;
     const count = (rawCards.match(/<article class="product-card"/g) ?? []).length;
+    let cardIndex = 0;
     const cards = rawCards.replace(/<article class="product-card"[^>]*>[\s\S]*?<\/article>/g, (card: string) => {
-      const slug = card.match(/href="\/(?:en\/models|modellek)\/([^/"]+)\/"/)?.[1];
+      const position = cardIndex++;
+      // The first row on the compact collection hub is already above the fold.
+      // Give only its leading image high priority; retain lazy loading below it.
+      if (isHub && position < 2) {
+        card = card.replace(/<img\b[^>]*>/, image => image.replace('loading="lazy"', position === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="eager"'));
+      }
+      const match = card.match(/href="\/(?:en\/models|modellek)\/([^/"]+)\/(?:\?colour=([a-z0-9-]+))?"/);
+      const slug = match?.[1];
+      const colourKey = match?.[2];
       const model = slug ? catalog.get(slug) : undefined;
       if (!model) return card;
-      const variants = model.variants.map(variant => variant.names[collectionLang]).join(' ');
-      const saveLabel = (hu ? 'Mentés a próbalistára: ' : 'Save to fitting list: ') + model.names[collectionLang];
-      return card.replace('<article class="product-card"', '<article class="product-card" data-model-key="' + escapeAttr(model.slug) + '" data-model-variants="' + escapeAttr(variants) + '"')
-        .replace(/<p>(Front and back photographs|Elöl- és hátulnézeti fotók)<\/p>/, '<p class="collection-repeated-description">$1</p>')
-        .replace('</article>', '<button type="button" class="collection-save" data-model-save aria-pressed="false" aria-label="' + escapeAttr(saveLabel) + '" disabled>♡</button></article>');
+      const matchedVariant = colourKey ? model.variants.find(variant => variant.key === colourKey) : undefined;
+      const modelKey = matchedVariant ? `${model.slug}--${matchedVariant.key}` : model.slug;
+      const variants = matchedVariant
+        ? matchedVariant.names[collectionLang]
+        : model.variants.map(variant => variant.names[collectionLang]).join(' ');
+      const materialLabel = model.material?.[collectionLang] ?? '';
+      const cardTitle = card.match(/<h3>([^<]+)<\/h3>/)?.[1] ?? model.names[collectionLang];
+      const saveLabel = (hu ? 'Mentés a próbalistára: ' : 'Save to fitting list: ') + cardTitle;
+      const detail = card.match(/<a class="text-link product-detail-link" href="([^"]+)">[\s\S]*?<\/a>/);
+      if (!detail) throw new Error('Missing catalogue detail link: ' + model.slug);
+      const detailLabel = (hu ? 'Modell részletei: ' : 'Model details: ') + cardTitle;
+      const overlay = '<a class="text-link product-detail-link collection-detail" href="' + detail[1] + '" aria-label="' + escapeAttr(detailLabel) + '"><span aria-hidden="true">+</span></a>'
+        + '<button type="button" class="collection-save" data-model-save aria-pressed="false" aria-label="' + escapeAttr(saveLabel) + '" disabled>♡</button>';
+      return card.replace(detail[0], '')
+        .replace(/(<button[^>]*class="product-image-button"[\s\S]*?<\/button>)/, (_photo, button: string) => '<div class="collection-photo">' + button + overlay + '</div>')
+        .replace(/(<a class="text-link" href="https:\/\/wa\.me[^"]*">)([^<]+)<\/a>/, (_link, opening: string, label: string) => opening.replace('class="text-link"', 'class="text-link collection-contact"') + '<span class="sr-only">' + label + ': ' + escapeAttr(cardTitle) + '</span></a>')
+        .replace('<span class="image-hint">', '<span class="image-hint collection-zoom-hint">')
+        .replace('<article class="product-card"', '<article class="product-card" data-model-key="' + escapeAttr(modelKey) + '" data-model-variants="' + escapeAttr(variants) + '"')
+        .replace(/<p>(Front and back photographs|Elöl- és hátulnézeti fotók)<\/p>/, materialLabel ? '<p class="collection-material-tag">' + escapeAttr(materialLabel) + '</p>' : '<p class="collection-repeated-description">$1</p>');
     });
-    const savedText = hu ? 'Próbalista (0)' : 'Fitting list (0)';
+    const savedText = hu ? '♡ Próbalista (0)' : '♡ Fitting list (0)';
     const saved = isHub
       ? '<button type="button" data-fitting-toggle data-fitting-shortcut aria-pressed="false" disabled>' + savedText + '</button>'
       : '<a data-fitting-shortcut href="' + hub + '#fitting-list">' + savedText + '</a>';
@@ -48,11 +71,12 @@ function collectionMarkup(html: string) {
     const styleLabel = hu ? 'Fazon' : 'Style';
     const result = hu ? count + ' modell' : count + (count === 1 ? ' model' : ' models');
     const batchStatus = hu ? Math.min(12, count) + ' / ' + count + ' modell' : Math.min(12, count) + ' of ' + count + ' models';
-    const toolbar = '<div class="collection-discovery" data-static-discovery><nav class="collection-shortcuts" aria-label="' + (hu ? 'Kollekció műveletei' : 'Collection actions') + '"><a href="' + hub + '">' + (hu ? 'Kollekció' : 'Collection') + '</a>' + saved + '<a href="' + visit + '">' + (hu ? 'Üzlet' : 'Visit us') + '</a></nav>'
-      + '<div class="collection-search-row"><input type="search" class="collection-search" data-model-search data-clarity-mask="true" aria-label="' + searchLabel + '" placeholder="' + searchLabel + '" disabled></div>'
-      + '<div class="collection-facets"><select class="collection-select" data-model-colour data-clarity-mask="true" aria-label="' + colourLabel + '" disabled><option value="">' + colourLabel + '</option></select><select class="collection-select" data-model-style data-clarity-mask="true" aria-label="' + styleLabel + '" disabled><option value="">' + styleLabel + '</option></select></div>'
+    const toolbar = '<div class="collection-discovery" data-static-discovery>'
+      + '<div class="collection-search-row">' + icon('search') + '<input type="search" class="collection-search" data-model-search data-clarity-mask="true" aria-label="' + searchLabel + '" placeholder="' + (hu ? 'Modellek keresése' : 'Search models') + '" disabled></div>'
+      + '<div class="collection-filter-strip"><div class="collection-facets"><select class="collection-select" data-model-colour data-clarity-mask="true" aria-label="' + colourLabel + '" disabled><option value="">' + colourLabel + '</option></select><select class="collection-select" data-model-style data-clarity-mask="true" aria-label="' + styleLabel + '" disabled><option value="">' + styleLabel + '</option></select></div>' + (categories ?? '') + '</div>'
+      + '<div class="collection-meta-row"><p class="collection-result" aria-live="polite" aria-atomic="true">' + result + '</p><nav class="collection-shortcuts" aria-label="' + (hu ? 'Kollekció műveletei' : 'Collection actions') + '">' + saved + '<a href="' + visit + '">' + (hu ? 'Üzlet' : 'Visit us') + '</a></nav></div>'
       + '<div class="fitting-panel" id="fitting-list" hidden><h2>' + (hu ? 'Próbalistám' : 'My fitting list') + '</h2><p>' + (hu ? 'A lista ezen az eszközön marad. Kérdezzen a kiválasztott modellek elérhetőségéről; a lista nem foglalás.' : 'Your list stays on this device. Ask about the selected models before visiting; saving a model does not reserve it.') + '</p><a class="btn btn-primary" data-fitting-inquiry data-interest-source="fitting_list" href="https://wa.me/36203593216" hidden>' + (hu ? 'Érdeklődés a listáról WhatsAppon' : 'Ask about my list on WhatsApp') + '</a></div>'
-      + '<p class="collection-result" aria-live="polite" aria-atomic="true">' + result + '</p><p class="collection-notice" role="status"></p></div>';
+      + '<p class="collection-notice" role="status"></p></div>';
     const controls = '<div class="center-action collection-controls" data-static-controls' + (count > 0 && count <= 12 ? ' hidden' : '') + '><p role="status">' + batchStatus + '</p><button type="button" class="btn btn-ghost" aria-controls="' + id + '" disabled' + (count <= 12 ? ' hidden' : '') + '>' + (hu ? 'További modellek' : 'Show more models') + '</button><div class="collection-empty" hidden><p>' + (hu ? 'Ebben a kategóriában még nincs modellfotó. Az aktuális elérhetőségről érdeklődjön üzletünkben.' : 'There are no model photos in this category yet. Ask our store about current availability.') + '</p><button type="button" class="btn btn-ghost" data-collection-reset aria-controls="' + id + '" disabled>' + (hu ? 'Összes modell' : 'Show all models') + '</button><a class="btn btn-ghost" href="' + visit + '">' + (hu ? 'Üzlet és elérhetőség' : 'Store and contact') + '</a></div></div>';
     return toolbar + '<div class="product-grid" data-static-collection id="' + id + '">' + cards + '</div>' + controls;
   });

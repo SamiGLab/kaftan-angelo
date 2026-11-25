@@ -8,7 +8,7 @@ try {
   const page=await browser.newPage();
   for(const lang of ['hu','en']) {
     for(const model of models) {
-      const path=`${lang==='hu'?'/modellek/':'/en/models/'}${model.slug}/`;
+      const path=`${lang==='hu'?'/modellek/':'/en/models/'}${model.slugs[lang]}/`;
       await page.goto(base+path,{waitUntil:'domcontentloaded'});
       assert.equal(await page.$eval('h1',el=>el.textContent),model.names[lang]);
       assert.equal(await page.$eval('meta[property="og:image"]',el=>el.content),'https://kaftanangelo.com'+model.image);
@@ -37,7 +37,7 @@ try {
     }
     await page.goto(base+(lang==='hu'?'/kollekciok/':'/en/collections/'),{waitUntil:'networkidle2'});
     const links=await page.$$eval('.product-card',cards=>cards.map(card=>({detail:card.querySelector('.product-detail-link').href,message:new URL(card.querySelector('a[href*="wa.me"]').href).searchParams.get('text')})));
-    assert.equal(links.length,models.filter(model=>!model.catalogHidden).length);
+    assert.equal(links.length,models.filter(model=>!model.catalogHidden).reduce((total,model)=>total+Math.max(1,model.variants.length),0));
     links.forEach(link=>assert.ok(link.message.includes(link.detail.replace(base,'https://kaftanangelo.com'))));
   }
   console.log(`PASS: all ${models.length*2} HU/EN model pages use the correct image and product-specific WhatsApp link; all active collection cards match.`);
