@@ -47,6 +47,13 @@ function collectionMarkup(html: string) {
       const variants = matchedVariant
         ? matchedVariant.names[collectionLang]
         : model.variants.map(variant => variant.names[collectionLang]).join(' ');
+      const galleryPhotos = matchedVariant
+        ? matchedVariant.gallery
+        : (model.gallery.length ? model.gallery : [{ image: model.image, labels: { hu: 'Elölnézet', en: 'Front view' } }]);
+      const extraGallery = galleryPhotos.length > 1
+        ? galleryPhotos.slice(1).map(photo => photo.image).join('|')
+        : '';
+      const materialLabel = model.material?.[collectionLang] ?? '';
       const cardTitle = card.match(/<h3>([^<]+)<\/h3>/)?.[1] ?? model.names[collectionLang];
       const saveLabel = (hu ? 'Mentés a próbalistára: ' : 'Save to fitting list: ') + cardTitle;
       const detail = card.match(/<a class="text-link product-detail-link" href="([^"]+)">[\s\S]*?<\/a>/);
@@ -54,12 +61,14 @@ function collectionMarkup(html: string) {
       const detailLabel = (hu ? 'Modell részletei: ' : 'Model details: ') + cardTitle;
       const overlay = '<a class="text-link product-detail-link collection-detail" href="' + detail[1] + '" aria-label="' + escapeAttr(detailLabel) + '"><span aria-hidden="true">+</span></a>'
         + '<button type="button" class="collection-save" data-model-save aria-pressed="false" aria-label="' + escapeAttr(saveLabel) + '" disabled>♡</button>';
+      const extraButtonAttrs = extraGallery ? ' data-product-gallery="' + escapeAttr(extraGallery) + '"' : '';
+      const extraCardAttrs = ' data-model-key="' + escapeAttr(modelKey) + '" data-model-variants="' + escapeAttr(variants) + '"';
       return card.replace(detail[0], '')
-        .replace(/(<button[^>]*class="product-image-button"[\s\S]*?<\/button>)/, (_photo, button: string) => '<div class="collection-photo">' + button + overlay + '</div>')
+        .replace(/(<button[^>]*class="product-image-button"[\s\S]*?<\/button>)/, (_photo, button: string) => '<div class="collection-photo">' + (extraButtonAttrs ? button.replace('<button ', '<button' + extraButtonAttrs + ' ') : button) + overlay + '</div>')
         .replace(/(<a class="text-link" href="https:\/\/wa\.me[^"]*">)([^<]+)<\/a>/, (_link, opening: string, label: string) => opening.replace('class="text-link"', 'class="text-link collection-contact"') + '<span class="sr-only">' + label + ': ' + escapeAttr(cardTitle) + '</span></a>')
         .replace('<span class="image-hint">', '<span class="image-hint collection-zoom-hint">')
-        .replace('<article class="product-card"', '<article class="product-card" data-model-key="' + escapeAttr(modelKey) + '" data-model-variants="' + escapeAttr(variants) + '"')
-        .replace(/<p>(Front and back photographs|Elöl- és hátulnézeti fotók)<\/p>/, '<p class="collection-repeated-description">$1</p>');
+        .replace('<article class="product-card"', '<article class="product-card"' + extraCardAttrs)
+        .replace(/<p>(Front and back photographs|Elöl- és hátulnézeti fotók)<\/p>/, materialLabel ? '<p class="collection-material-tag">' + escapeAttr(materialLabel) + '</p>' : '<p class="collection-repeated-description">$1</p>');
     });
     const savedText = hu ? '♡ Próbalista (0)' : '♡ Fitting list (0)';
     const saved = isHub
@@ -74,10 +83,15 @@ function collectionMarkup(html: string) {
       + '<div class="collection-search-row">' + icon('search') + '<input type="search" class="collection-search" data-model-search data-clarity-mask="true" aria-label="' + searchLabel + '" placeholder="' + (hu ? 'Modellek keresése' : 'Search models') + '" disabled></div>'
       + '<div class="collection-filter-strip"><div class="collection-facets"><select class="collection-select" data-model-colour data-clarity-mask="true" aria-label="' + colourLabel + '" disabled><option value="">' + colourLabel + '</option></select><select class="collection-select" data-model-style data-clarity-mask="true" aria-label="' + styleLabel + '" disabled><option value="">' + styleLabel + '</option></select></div>' + (categories ?? '') + '</div>'
       + '<div class="collection-meta-row"><p class="collection-result" aria-live="polite" aria-atomic="true">' + result + '</p><nav class="collection-shortcuts" aria-label="' + (hu ? 'Kollekció műveletei' : 'Collection actions') + '">' + saved + '<a href="' + visit + '">' + (hu ? 'Üzlet' : 'Visit us') + '</a></nav></div>'
+      + '<div class="collection-active-filters" data-active-filters hidden role="group" aria-label="' + (hu ? 'Aktív szűrők' : 'Active filters') + '"></div>'
       + '<div class="fitting-panel" id="fitting-list" hidden><h2>' + (hu ? 'Próbalistám' : 'My fitting list') + '</h2><p>' + (hu ? 'A lista ezen az eszközön marad. Kérdezzen a kiválasztott modellek elérhetőségéről; a lista nem foglalás.' : 'Your list stays on this device. Ask about the selected models before visiting; saving a model does not reserve it.') + '</p><a class="btn btn-primary" data-fitting-inquiry data-interest-source="fitting_list" href="https://wa.me/36203593216" hidden>' + (hu ? 'Érdeklődés a listáról WhatsAppon' : 'Ask about my list on WhatsApp') + '</a></div>'
       + '<p class="collection-notice" role="status"></p></div>';
     const controls = '<div class="center-action collection-controls" data-static-controls' + (count > 0 && count <= 12 ? ' hidden' : '') + '><p role="status">' + batchStatus + '</p><button type="button" class="btn btn-ghost" aria-controls="' + id + '" disabled' + (count <= 12 ? ' hidden' : '') + '>' + (hu ? 'További modellek' : 'Show more models') + '</button><div class="collection-empty" hidden><p>' + (hu ? 'Ebben a kategóriában még nincs modellfotó. Az aktuális elérhetőségről érdeklődjön üzletünkben.' : 'There are no model photos in this category yet. Ask our store about current availability.') + '</p><button type="button" class="btn btn-ghost" data-collection-reset aria-controls="' + id + '" disabled>' + (hu ? 'Összes modell' : 'Show all models') + '</button><a class="btn btn-ghost" href="' + visit + '">' + (hu ? 'Üzlet és elérhetőség' : 'Store and contact') + '</a></div></div>';
-    return toolbar + '<div class="product-grid" data-static-collection id="' + id + '">' + cards + '</div>' + controls;
+    const trayAction = isHub
+      ? '<button type="button" class="btn btn-ghost fitting-tray-view" data-fitting-tray-toggle>' + (hu ? 'Lista megnyitása' : 'View list') + '</button>'
+      : '<a class="btn btn-ghost fitting-tray-view" href="' + hub + '#fitting-list">' + (hu ? 'Lista megnyitása' : 'View list') + '</a>';
+    const tray = '<aside class="fitting-tray" data-fitting-tray hidden aria-label="' + (hu ? 'Próbalistám gyorselérés' : 'My fitting list quick bar') + '"><div class="fitting-tray-inner"><div class="fitting-tray-info"><strong data-fitting-tray-count></strong><span data-fitting-tray-names></span></div><div class="fitting-tray-actions">' + trayAction + '<a class="btn btn-primary fitting-tray-wa" data-fitting-tray-inquiry data-interest-source="fitting_list" href="https://wa.me/36203593216">' + (hu ? 'WhatsApp' : 'WhatsApp') + '</a></div></div></aside>';
+    return toolbar + '<div class="product-grid" data-static-collection id="' + id + '">' + cards + '</div>' + controls + tray;
   });
 }
 const sourcePage = collectionRoutes.has(originalPage.path) ? {
