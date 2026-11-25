@@ -18,6 +18,20 @@ for (const route of guides) {
   assert.ok(desktop?.includes('-800.avif'), route + ' desktop source is preserved');
 }
 
+// The compact collection's first image is the observed Lighthouse LCP element.
+// Assert priorities in generated HTML, before JavaScript is able to alter anything.
+for (const route of ['/kollekciok/', '/en/collections/']) {
+  const html = await readFile('dist' + route + 'index.html', 'utf8');
+  const cards = [...html.matchAll(/<article class="product-card"[^>]*>[\s\S]*?<\/article>/g)];
+  const images = cards.map(card => card[0].match(/<img\b[^>]*>/)?.[0] ?? '');
+  assert.ok(images.length > 2, route + ' has more than one product row');
+  assert.match(images[0], /\bloading="eager"/, route + ' loads LCP image eagerly');
+  assert.match(images[0], /\bfetchpriority="high"/, route + ' prioritizes LCP image');
+  assert.match(images[1], /\bloading="eager"/, route + ' loads second visible image eagerly');
+  assert.ok(images.slice(1).every(img => !/\bfetchpriority="high"/.test(img)), route + ' reserves high priority for the first image');
+  assert.ok(images.slice(2).every(img => /\bloading="lazy"/.test(img)), route + ' retains lazy loading below the first row');
+}
+
 // Exercise the existing two-card CSS layout as well as full catalogues.
 const catalogue = await readFile('dist/kollekciok/index.html', 'utf8');
 let seen = 0;
