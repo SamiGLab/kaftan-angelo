@@ -192,7 +192,7 @@ function createDiscovery(grid, cards, onChange) {
   let savedOnly = false;
   function refreshSaved() {
     const availableSaved = records.filter(record => fittingList.has(record.key));
-    saved.textContent = (hu ? 'Próbalista' : 'Fitting list') + ' (' + fittingList.size + ')';
+    saved.textContent = (hu ? '♡ Próbalista' : '♡ Fitting list') + ' (' + fittingList.size + ')';
     for (const record of records) {
       const active = fittingList.has(record.key);
       record.button.setAttribute('aria-pressed', String(active));
@@ -371,7 +371,7 @@ const collectionViews = [...document.querySelectorAll('.product-grid')].map((gri
 document.addEventListener('click', event => {
   const button = event.target.closest('.filter-btn[data-filter]');
   if (!button) return;
-  const scope = button.closest('[data-product-filters]')?.parentElement || document;
+  const scope = button.closest('[data-static-discovery]')?.parentElement || button.closest('[data-product-filters]')?.parentElement || document;
   scope.querySelectorAll('.filter-btn').forEach(item => { item.classList.remove('active'); item.setAttribute('aria-pressed', 'false'); });
   button.classList.add('active');
   button.setAttribute('aria-pressed', 'true');
