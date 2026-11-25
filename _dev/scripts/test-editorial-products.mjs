@@ -14,7 +14,11 @@ for (const model of models) {
     assert.ok(product, route + ' preserves basic product information');
     assert.equal(product.name, model.names[lang]);
     assert.ok(product.image.length > 0);
-    assert.ok(product.material);
+    assert.equal(product.material, model.material[lang] ?? undefined, route + ' uses model-specific material only');
+    assert.equal(product.description, model.description[lang]);
+    assert.ok(model.seoTitle[lang].length <= 68, route + ' editorial title length');
+    assert.ok(model.description[lang].length <= 160, route + ' editorial description length');
+    assert.ok(model.intro[lang].trim() && model.advice[lang].trim(), route + ' model-specific copy');
     for (const field of ['offers', 'price', 'priceSpecification', 'priceCurrency', 'aggregateRating', 'review']) {
       assert.equal(Object.hasOwn(product, field), false, route + ' has no fabricated commercial enhancement: ' + field);
     }
