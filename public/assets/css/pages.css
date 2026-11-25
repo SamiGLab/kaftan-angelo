@@ -3144,3 +3144,31 @@ html:not(.js) .collection-page [data-product-filters] {
   .collection-page .collection-shortcuts > :is(a, button) { font-size: .73rem; padding-inline: 3px; }
   .collection-page .collection-shortcuts .ui-icon { display: none; }
 }
+
+
+/* Catalogue heading, not a promotional banner. Keep real H1 and availability copy. */
+.collection-page > .announcement { display: none; }
+.collection-page .page-hero {
+  --bg: #1b120c;
+  --cream: #efe4d2;
+  --dim: #c9bba5;
+  --bright: #dcb27c;
+  background: #1b120c;
+  color: var(--cream);
+  padding: 18px 0;
+  border: 0;
+}
+.collection-page .page-hero .breadcrumbs,
+.collection-page .page-hero > .wrap > .tag { display: none; }
+.collection-page .page-hero h1 {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  max-width: none;
+  margin: 0 0 6px;
+  line-height: 1.15;
+}
+.collection-page .page-hero p { font-size: .85rem; margin: 0 0 4px; }
+@media (max-width: 620px) {
+  .collection-page .page-hero { padding: 10px 0 14px; }
+  .collection-page .page-hero h1 { font-size: clamp(1.35rem, 5vw, 1.65rem); }
+  .collection-page .page-hero p { font-size: .79rem; }
+}
