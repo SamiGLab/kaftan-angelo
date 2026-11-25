@@ -99,7 +99,9 @@ for(const lang of ['hu','en']) {
   const modelSelector=lang==='hu'?'.product-card a[href^="/modellek/"]':'.product-card a[href^="/en/models/"]';
   const destination=await page.$eval(modelSelector,link=>link.getAttribute('href'));
   await Promise.all([page.waitForNavigation({waitUntil:'domcontentloaded'}),page.locator(modelSelector).click()]);
-  assert.equal(new URL(page.url()).pathname,destination,'Real model card opens its model page');
+  const destinationUrl = new URL(destination, base);
+  const actualUrl = new URL(page.url());
+  assert.equal(actualUrl.pathname + actualUrl.search, destinationUrl.pathname + destinationUrl.search, 'Real model card opens its model page and selected colour');
   assert.ok(await page.$('h1'));
   assert.deepEqual(errors,[]);
   await context.close();
