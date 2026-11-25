@@ -1,4 +1,63 @@
----
-const pageTitle='404 | Kaftan Angelo';
----
-<!doctype html><html lang="hu"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{pageTitle}</title><meta name="robots" content="noindex,follow"><meta name="theme-color" content="#1b120c"><link rel="stylesheet" href="/assets/css/pages.css"></head><body><div class="announcement">Kossuth Lajos u. 18 · Budapest</div><main class="not-found"><div class="wrap"><span class="tag mono">404</span><h1>Ez az oldal nem található.</h1><p>A keresett oldal elköltözhetett vagy már nem érhető el.</p><div class="actions"><a class="btn btn-primary" href="/">Főoldal</a><a class="btn btn-ghost" href="/kollekciok/">Kollekciók</a><a class="btn btn-ghost" href="/uzlet/">Üzlet</a></div></div></main></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Page not found / Az oldal nem található | Kaftan Angelo</title>
+    <meta name="robots" content="noindex,follow" />
+    <meta name="theme-color" content="#1b120c" />
+    <link rel="stylesheet" href="/assets/css/pages.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content / Ugrás a tartalomhoz</a>
+    <header class="error-header wrap">
+      <a class="error-brand" href="/en/" aria-label="Kaftan Angelo home">KAFTAN ANGELO</a>
+      <span>Budapest · Kossuth Lajos u. 18</span>
+    </header>
+    <main id="main" class="not-found">
+      <div class="wrap error-content">
+        <span class="tag mono">404</span>
+        <h1>Page not found.<span lang="hu">Az oldal nem található.</span></h1>
+        <div class="error-options">
+          <section aria-labelledby="english-heading">
+            <h2 id="english-heading">Find your next favourite.</h2>
+            <p>The link may be out of date or the address may be incorrect. Explore our collections or find our Budapest store.</p>
+            <nav class="actions" aria-label="English recovery links">
+              <a class="btn btn-primary" href="/en/collections/">Explore collections</a>
+              <a class="btn btn-ghost" href="/en/visit/">Visit our store</a>
+              <a class="text-link" href="/en/">Home →</a>
+            </nav>
+          </section>
+          <section lang="hu" aria-labelledby="hungarian-heading">
+            <h2 id="hungarian-heading">Találja meg új kedvencét.</h2>
+            <p>A hivatkozás elavult lehet, vagy a megadott cím hibás. Fedezze fel kollekcióinkat, vagy látogasson el budapesti üzletünkbe.</p>
+            <nav class="actions" aria-label="Magyar visszatérési lehetőségek">
+              <a class="btn btn-primary" href="/kollekciok/">Kollekciók</a>
+              <a class="btn btn-ghost" href="/uzlet/">Üzlet és elérhetőség</a>
+              <a class="text-link" href="/">Főoldal →</a>
+            </nav>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+<style>
+  .error-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-block: 1.5rem; border-bottom: 1px solid var(--line); }
+  .error-brand { color: var(--bright); letter-spacing: .14em; font-weight: 600; }
+  .error-header span { color: var(--dim); font-size: .85rem; }
+  .error-content { padding-block: 3rem; }
+  .not-found h1 { max-width: 16ch; line-height: 1.1; }
+  h1 span { display: block; margin-top: .6rem; font-size: .45em; color: var(--dim); }
+  .error-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem; margin-top: 2.5rem; }
+  .error-options section { padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  h2 { font-size: 1.5rem; margin-bottom: .5rem; }
+  .actions { align-items: center; }
+  .text-link { text-decoration: underline; text-underline-offset: .2em; }
+  a:focus-visible { outline: 2px solid var(--bright); outline-offset: 5px; }
+  @media (max-width: 760px) {
+    .error-header { align-items: flex-start; flex-direction: column; gap: .25rem; }
+    .error-options { grid-template-columns: 1fr; gap: 2rem; }
+    .error-content { padding-block: 2rem; }
+  }
+</style>

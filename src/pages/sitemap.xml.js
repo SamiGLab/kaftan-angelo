@@ -21,6 +21,14 @@ function modelImages(url) {
 
 function slug(path){ return path.split('/').pop().replace('.md',''); }
 
+function languageLinks(url, counterpart, urls) {
+  if (!counterpart || !urls.has(counterpart)) throw new Error(`Missing sitemap language counterpart for ${url}`);
+  const hu = url.startsWith('/en/') ? counterpart : url;
+  const en = url.startsWith('/en/') ? url : counterpart;
+  return [['hu', hu], ['en', en], ['x-default', hu]]
+    .map(([lang, path]) => `<xhtml:link rel="alternate" hreflang="${lang}" href="${xmlEscape(BASE + path)}"/>`).join('');
+}
+
 function getPriority(u) {
   if (u === '/' || u === '/en/') return '1.0';
   if (u.includes('kollekciok') || u.includes('collections') || u.includes('borkabat') || u.includes('leather-jackets') || u.includes('irha') || u.includes('shearling') || u.includes('szorme') || u.includes('fur') || u.includes('egyedi') || u.includes('custom-orders')) return '0.9';
@@ -34,18 +42,25 @@ function getChangefreq(u) {
 }
 
 export function GET() {
-  const excluded = new Set(['/partner-portal/', '/en/partner-portal/']);
+  const excluded = new Set(['/404.html', '/404/', '/partner-portal/', '/en/partner-portal/']);
   const urls = new Set(Object.keys(pages).filter(url => !excluded.has(url)));
   urls.add('/utmutatok/');
   urls.add('/en/guides/');
   Object.keys(huGuides).forEach(p=>urls.add(`/utmutatok/${slug(p)}/`));
   Object.keys(enGuides).forEach(p=>urls.add(`/en/guides/${slug(p)}/`));
   const modified = new Map(Object.entries(pages).filter(([, page]) => page.modifiedDate).map(([url, page]) => [url, page.modifiedDate]));
+  const counterparts = new Map(Object.entries(pages).map(([url, page]) => [url, page.counterpart]));
+  counterparts.set('/utmutatok/', '/en/guides/');
+  counterparts.set('/en/guides/', '/utmutatok/');
   for (const [modules, root] of [[huGuides, '/utmutatok/'], [enGuides, '/en/guides/']]) {
-    for (const [path, mod] of Object.entries(modules)) modified.set(`${root}${slug(path)}/`, mod.frontmatter.modifiedDate ?? mod.frontmatter.publishDate);
+    for (const [path, mod] of Object.entries(modules)) {
+      const url = `${root}${slug(path)}/`;
+      modified.set(url, mod.frontmatter.modifiedDate ?? mod.frontmatter.publishDate);
+      counterparts.set(url, mod.frontmatter.counterpart);
+    }
     const dates = Object.values(modules).map(mod => mod.frontmatter.modifiedDate ?? mod.frontmatter.publishDate).filter(Boolean).sort();
     if (dates.length) modified.set(root, dates.at(-1));
   }
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${[...urls].sort().map(u=>`  <url><loc>${BASE}${u}</loc>${modified.has(u) ? `<lastmod>${modified.get(u)}</lastmod>` : ''}<changefreq>${getChangefreq(u)}</changefreq><priority>${getPriority(u)}</priority>${modelImages(u)}</url>`).join('\n')}\n</urlset>`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${[...urls].sort().map(u=>`  <url><loc>${BASE}${u}</loc>${languageLinks(u, counterparts.get(u), urls)}${modified.has(u) ? `<lastmod>${modified.get(u)}</lastmod>` : ''}<changefreq>${getChangefreq(u)}</changefreq><priority>${getPriority(u)}</priority>${modelImages(u)}</url>`).join('\n')}\n</urlset>`;
   return new Response(xml,{headers:{'Content-Type':'application/xml; charset=utf-8'}});
 }
