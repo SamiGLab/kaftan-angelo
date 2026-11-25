@@ -144,4 +144,60 @@ for(const lang of ['hu','en']) {
  await context.close();
 }
 console.log('PASS: HU/EN collection search, verified colour/style facets, persistent fitting list and inquiry.');
+
+// Delay the real deferred script to simulate a slow mobile connection. The
+// complete catalogue toolbar must already be painted, without moving cards
+// when the script arrives. Also check that no-JS visitors retain all models.
+for(const lang of ['hu','en']) {
+ const hub=base+(lang==='hu'?'/kollekciok/':'/en/collections/');
+ const context=await browser.createBrowserContext();
+ const page=await context.newPage();
+ await page.setViewport({width:390,height:844});
+ await page.setRequestInterception(true);
+ let heldRequest;
+ let signalHeld;
+ const scriptHeld=new Promise(resolve=>{signalHeld=resolve;});
+ page.on('request',request=>{
+  if(new URL(request.url()).pathname==='/assets/js/pages.js'){
+   heldRequest=request;
+   signalHeld();
+  }else request.continue();
+ });
+ const navigation=page.goto(hub,{waitUntil:'domcontentloaded'});
+ try{
+  await scriptHeld;
+  await page.waitForSelector('[data-static-collection] .product-card');
+  await page.evaluate(()=>document.fonts.ready);
+  const geometry=()=>page.$eval('[data-static-collection]',grid=>{
+   const card=grid.querySelector('.product-card');
+   const box=card.getBoundingClientRect();
+   const toolbar=grid.previousElementSibling;
+   return {top:box.top,width:box.width,height:box.height,toolbarHeight:toolbar.getBoundingClientRect().height,disabled:toolbar.querySelector('[data-model-search]').disabled};
+  });
+  const before=await geometry();
+  assert.ok(before.disabled && before.toolbarHeight>0,'Static discovery visible before JavaScript binds');
+  assert.equal(await page.$$eval('[data-static-collection] .product-card',cards=>cards.filter(card=>getComputedStyle(card).display!=='none').length),12);
+  await heldRequest.continue();
+  heldRequest=null;
+  await navigation;
+  await page.waitForFunction(()=>!document.querySelector('[data-model-search]').disabled);
+  await page.evaluate(()=>document.fonts.ready);
+  const after=await geometry();
+  for(const key of ['top','width','height','toolbarHeight'])assert.ok(Math.abs(before[key]-after[key])<=1,lang+' discovery hydration must not change '+key+': '+before[key]+' -> '+after[key]);
+ }finally{
+  if(heldRequest)await heldRequest.continue();
+  await navigation.catch(()=>{});
+  await context.close();
+ }
+ const noJs=await browser.createBrowserContext();
+ const plain=await noJs.newPage();
+ await plain.setJavaScriptEnabled(false);
+ await plain.goto(hub,{waitUntil:'load'});
+ const state=await plain.$$eval('[data-static-collection] .product-card',cards=>({all:cards.length,visible:cards.filter(card=>getComputedStyle(card).display!=='none').length}));
+ assert.ok(state.all>12 && state.visible===state.all,'All model links remain visible without JavaScript');
+ assert.equal(await plain.$eval('[data-static-discovery]',el=>getComputedStyle(el).display),'none');
+ await noJs.close();
+}
+console.log('PASS: HU/EN delayed script keeps the first card and toolbar stationary; no-JS catalogue retains all models.');
+
 }finally{await browser.close();}
