@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   intake-db:
@@ -123,6 +124,8 @@ jobs:
         run: node --test _dev/scripts/release-manifest.test.mjs
       - name: Install accessibility browser
         run: npx puppeteer browsers install chrome
+      - name: Install WebKit for iPhone Safari compatibility checks
+        run: npx playwright install --with-deps webkit
       - name: Build static site
         run: npm run build
       - name: Static link and SEO audit
@@ -167,6 +170,8 @@ jobs:
         run: node _dev/scripts/test-landmark-routes.mjs
       - name: Check responsive catalogue images and guide preloads
         run: node _dev/scripts/test-responsive-images.mjs
+      - name: Check iPhone-sized layouts with WebKit
+        run: npm run check:iphone
       - name: Check disabled-by-default HU/EN partner intake preview
         run: node _dev/scripts/test-partner-intake-form.mjs
       - name: Check partner sessions and material isolation
@@ -206,10 +211,22 @@ jobs:
           if-no-files-found: error
           retention-days: 1
       - name: Download the recovery rehearsal snapshot
-        uses: actions/download-artifact@v4
-        with:
-          name: recovery-rehearsal
-          path: ${{ runner.temp }}/recovery-download
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # GitHub may briefly report a freshly uploaded artifact as missing.
+          # Retry the round-trip integrity gate instead of skipping it.
+          for attempt in {1..8}; do
+            rm -rf "$RUNNER_TEMP/recovery-download"
+            if gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name recovery-rehearsal --dir "$RUNNER_TEMP/recovery-download"; then
+              break
+            fi
+            if [ "$attempt" -eq 8 ]; then
+              echo 'Recovery snapshot remained unavailable after 8 attempts' >&2
+              exit 1
+            fi
+            sleep 10
+          done
       - name: Verify the actual GitHub artifact round trip
         run: |
           node _dev/scripts/release-manifest.mjs verify "$RUNNER_TEMP/recovery-download" "$GITHUB_SHA"
