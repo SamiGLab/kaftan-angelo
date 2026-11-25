@@ -163,7 +163,7 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
             <ul class="model-related-list">
               {related.map((other: any) => (
                 <li>
-                  <a class="model-related-card" href={`${hu ? '/modellek/' : '/en/models/'}${other.slug}/`}>
+                  <a class="model-related-card" href={`${hu ? '/modellek/' : '/en/models/'}${other.slugs[lang]}/`}>
                     <div class="model-related-photo">
                       <Fragment set:html={renderPicture(other.pictures[lang])} />
                     </div>

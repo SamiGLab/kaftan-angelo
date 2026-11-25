@@ -6,7 +6,7 @@ const globalGroup = robots.split(/User-agent:\s*GPTBot/i)[0];
 assert.match(globalGroup, /User-agent:\s*\*/);
 assert.match(globalGroup, /Disallow:\s*\/cdn-cgi\//, 'Google should not crawl Cloudflare-generated internal paths');
 
-for (const route of ['/', '/en/', '/modellek/siyah-kapitone-budapest/', '/en/models/siyah-kapitone-budapest/']) {
+for (const route of ['/', '/en/', '/modellek/fekete-steppelt-ferfi-bordzseki-budapest/', '/en/models/black-quilted-mens-leather-jacket-budapest/']) {
   const html = readFileSync('dist' + route + 'index.html', 'utf8');
   const match = html.match(/<!--email_off-->([\s\S]*?)<!--\/email_off-->/);
   assert.ok(match, route + ' must keep Cloudflare email exclusion comments in built HTML');
