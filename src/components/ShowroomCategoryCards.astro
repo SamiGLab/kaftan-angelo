@@ -1,0 +1,76 @@
+---
+import models from '../data/models.json';
+
+interface Props {
+  lang: 'hu' | 'en';
+}
+
+const { lang } = Astro.props;
+const hu = lang === 'hu';
+const visibleModels = models.filter((m) => !m.catalogHidden);
+const pick = (huUrl: string, offset = 0) => {
+  const list = visibleModels.filter((m) => m.category.hu.url === huUrl);
+  return list[offset] ?? list[0] ?? visibleModels[0];
+};
+
+const toAvif = (img: string) => '/assets/images/' + img.replace(/^\//, '').replace(/\.webp$/, '-480.avif');
+const toWebp = (img: string) => '/assets/images/' + img.replace(/^\//, '').replace(/\.webp$/, '-480.webp');
+
+const cards = [
+  {
+    tone: 'tone-slate',
+    title: hu ? 'Női bőrkabátok' : 'Women’s Leather',
+    sub: hu ? 'Blézerek, motoros és kétoldalas fazonok.' : 'Blazers, biker cuts and reversible styles.',
+    cta: hu ? 'Női kínálat' : 'Explore Women’s',
+    href: hu ? '/noi-borkabatok/' : '/en/womens-leather-jackets/',
+    img: pick('/noi-borkabatok/', 1).image,
+  },
+  {
+    tone: 'tone-sand',
+    title: hu ? 'Férfi bőrkabátok' : 'Men’s Leather',
+    sub: hu ? 'Klasszikus és steppelt valódi bőr dzsekik.' : 'Classic and quilted genuine leather jackets.',
+    cta: hu ? 'Férfi kínálat' : 'Explore Men’s',
+    href: hu ? '/ferfi-borkabatok/' : '/en/mens-leather-jackets/',
+    img: pick('/ferfi-borkabatok/', 1).image,
+  },
+  {
+    tone: 'tone-stone',
+    title: hu ? 'Irhakabátok' : 'Shearling Coats',
+    sub: hu ? 'Meleg, természetes irha a hideg hónapokra.' : 'Warm natural shearling for winter days.',
+    cta: hu ? 'Irhakabátok' : 'Explore Shearling',
+    href: hu ? '/irhakabatok/' : '/en/shearling-jackets/',
+    img: pick('/irhakabatok/', 0).image,
+  },
+  {
+    tone: 'tone-blush',
+    title: hu ? 'Szőrmekabátok' : 'Fur Outerwear',
+    sub: hu ? 'Elegáns szőrmedzsekik és mellények.' : 'Refined fur jackets and vests in-store.',
+    cta: hu ? 'Szőrmekabátok' : 'Explore Fur',
+    href: hu ? '/szormekabatok/' : '/en/fur-coats/',
+    img: pick('/szormekabatok/', 0).image,
+  },
+];
+---
+
+<section class="tinted-categories-band" aria-label={hu ? 'Kategóriák áttekintése' : 'Category highlights'}>
+  <div class="wrap">
+    <div class="tinted-cat-grid">
+      {cards.map((c) => (
+        <article class={`tinted-cat-card ${c.tone}`}>
+          <div class="tinted-cat-head">
+            <h3>{c.title}</h3>
+            <p>{c.sub}</p>
+            <a href={c.href}>{c.cta}</a>
+          </div>
+          <a class="tinted-cat-media" href={c.href} tabindex="-1" aria-hidden="true">
+            <picture>
+              <source srcset={toAvif(c.img)} type="image/avif" />
+              <source srcset={toWebp(c.img)} type="image/webp" />
+              <img src={c.img} alt="" width="300" height="300" loading="lazy" decoding="async" />
+            </picture>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

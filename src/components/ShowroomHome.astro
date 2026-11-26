@@ -4,7 +4,9 @@ import { responsiveImages } from './responsive-images';
 import BaseLayout from './BaseLayout.astro';
 import HomeDiscoveryStrip from './HomeDiscoveryStrip.astro';
 import HomeEditorialBanners from './HomeEditorialBanners.astro';
+import ShowroomLookbookBanner from './ShowroomLookbookBanner.astro';
 import HomeTabbedShowcase from './HomeTabbedShowcase.astro';
+import ShowroomCategoryCards from './ShowroomCategoryCards.astro';
 import TrustHeritage from './TrustHeritage.astro';
 
 interface Props {
@@ -33,7 +35,9 @@ const lowerHtml = parts.length === 2 ? splitMarker + parts[1] : '';
 
       <HomeDiscoveryStrip lang={lang} part="services" />
       <HomeEditorialBanners lang={lang} />
+      <ShowroomLookbookBanner lang={lang} />
       <HomeTabbedShowcase lang={lang} />
+      <ShowroomCategoryCards lang={lang} />
       <TrustHeritage lang={lang} />
       <Fragment set:html={withIcons(responsiveImages(lowerHtml))} />
     </>

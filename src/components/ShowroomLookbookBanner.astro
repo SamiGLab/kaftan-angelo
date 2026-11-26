@@ -1,0 +1,52 @@
+---
+import models from '../data/models.json';
+
+interface Props {
+  lang: 'hu' | 'en';
+}
+
+const { lang } = Astro.props;
+const hu = lang === 'hu';
+const visibleModels = models.filter((m) => !m.catalogHidden);
+const womenModel = visibleModels.find((m) => m.category.hu.url === '/noi-borkabatok/') ?? visibleModels[0];
+const menModel = visibleModels.find((m) => m.category.hu.url === '/ferfi-borkabatok/') ?? visibleModels[0];
+
+const toAvif = (img: string) => '/assets/images/' + img.replace(/^\//, '').replace(/\.webp$/, '-800.avif');
+const toWebp = (img: string) => '/assets/images/' + img.replace(/^\//, '').replace(/\.webp$/, '-800.webp');
+---
+
+<section class="lookbook-band" aria-label={hu ? 'Budapesti stílusválogatás' : 'Budapest style edit'}>
+  <div class="wrap">
+    <div class="lookbook-banner">
+      <div class="lookbook-photo">
+        <picture>
+          <source srcset={toAvif(womenModel.image)} type="image/avif" />
+          <source srcset={toWebp(womenModel.image)} type="image/webp" />
+          <img src={womenModel.image} alt={womenModel.names[lang]} width="420" height="420" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+
+      <div class="lookbook-copy">
+        <span class="lookbook-kicker">{hu ? 'KAFTAN ANGELO · BUDAPEST' : 'KAFTAN ANGELO · BUDAPEST'}</span>
+        <h2>{hu ? 'Új szezon, időtlen fazonok' : 'New Season, Timeless Cuts'}</h2>
+        <p>
+          {hu
+            ? 'Próbálja fel női és férfi bőrkabátjainkat személyesen a Kossuth Lajos u. 18. alatti bemutatóteremben.'
+            : 'Try our women’s and men’s genuine leather outerwear in person at Kossuth Lajos u. 18.'}
+        </p>
+        <div class="lookbook-links">
+          <a href={hu ? '/noi-borkabatok/' : '/en/womens-leather-jackets/'}>{hu ? 'Női modellek' : 'Women’s Leather'}</a>
+          <a href={hu ? '/ferfi-borkabatok/' : '/en/mens-leather-jackets/'}>{hu ? 'Férfi modellek' : 'Men’s Leather'}</a>
+        </div>
+      </div>
+
+      <div class="lookbook-photo">
+        <picture>
+          <source srcset={toAvif(menModel.image)} type="image/avif" />
+          <source srcset={toWebp(menModel.image)} type="image/webp" />
+          <img src={menModel.image} alt={menModel.names[lang]} width="420" height="420" loading="lazy" decoding="async" />
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>
