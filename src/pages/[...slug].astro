@@ -1,5 +1,5 @@
 ---
-import { icon, withIcons } from '../components/icon';
+import { withIcons } from '../components/icon';
 import { responsiveImages } from '../components/responsive-images';
 import BaseLayout from '../components/BaseLayout.astro';
 import HomeDiscoveryStrip from '../components/HomeDiscoveryStrip.astro';
@@ -68,7 +68,6 @@ function collectionMarkup(html: string) {
     const saved = isHub
       ? '<button type="button" data-fitting-toggle data-fitting-shortcut aria-pressed="false" disabled>' + savedText + '</button>'
       : '<a data-fitting-shortcut href="' + hub + '#fitting-list">' + savedText + '</a>';
-    const searchLabel = hu ? 'Modell, szín vagy fazon keresése' : 'Search models, colours or styles';
     const colourLabel = hu ? 'Szín' : 'Colour';
     const styleLabel = hu ? 'Fazon' : 'Style';
     const result = hu ? count + ' modell' : count + (count === 1 ? ' model' : ' models');
@@ -80,7 +79,7 @@ function collectionMarkup(html: string) {
       + '<button type="button" class="view-switch-btn" data-view-option="grid-4" aria-label="' + (hu ? '4 oszlop' : '4 columns') + '" aria-pressed="false">▪▪▪▪</button>'
       + '<button type="button" class="view-switch-btn" data-view-option="list" aria-label="' + (hu ? 'Lista nézet' : 'List view') + '" aria-pressed="false">☰</button></div>';
     const toolbar = '<div class="collection-discovery" data-static-discovery>'
-      + '<div class="collection-search-row">' + icon('search') + '<input type="search" class="collection-search" data-model-search data-clarity-mask="true" aria-label="' + searchLabel + '" placeholder="' + (hu ? 'Modellek keresése' : 'Search models') + '" disabled></div>'
+      + '<input type="hidden" data-model-search value="">'
       + '<div class="collection-filter-strip"><div class="collection-facets"><select class="collection-select" data-model-colour data-clarity-mask="true" aria-label="' + colourLabel + '" disabled><option value="">' + colourLabel + '</option></select><select class="collection-select" data-model-style data-clarity-mask="true" aria-label="' + styleLabel + '" disabled><option value="">' + styleLabel + '</option></select></div>' + (categories ?? '') + '</div>'
       + '<div class="collection-meta-row">' + drawerBtn + '<p class="collection-result" aria-live="polite" aria-atomic="true">' + result + '</p>' + viewSwitcher + '<nav class="collection-shortcuts" aria-label="' + (hu ? 'Kollekció műveletei' : 'Collection actions') + '">' + saved + '<a href="' + visit + '">' + (hu ? 'Üzlet' : 'Visit us') + '</a></nav></div>'
       + '<div class="fitting-panel" id="fitting-list" hidden><h2>' + (hu ? 'Próbalistám' : 'My fitting list') + '</h2><p>' + (hu ? 'A lista ezen az eszközön marad. Kérdezzen a kiválasztott modellek elérhetőségéről; a lista nem foglalás.' : 'Your list stays on this device. Ask about the selected models before visiting; saving a model does not reserve it.') + '</p><a class="btn btn-primary" data-fitting-inquiry data-interest-source="fitting_list" href="https://wa.me/36203593216" hidden>' + (hu ? 'Érdeklődés a listáról WhatsAppon' : 'Ask about my list on WhatsApp') + '</a></div>'
