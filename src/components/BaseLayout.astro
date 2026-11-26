@@ -3,6 +3,7 @@ import Icon from './Icon.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import AnalyticsConsent from './AnalyticsConsent.astro';
+import GlobalSearchModal from './GlobalSearchModal.astro';
 import MobileNavBar from './MobileNavBar.astro';
 import WhatsAppButton from './WhatsAppButton.astro';
 import sharp from 'sharp';
@@ -115,6 +116,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   {!page.canonical.includes('/partner-portal/') && <AnalyticsConsent lang={lang} />}
   {page.mainHtml?.includes('data-map-panel') && <script is:inline defer src="/assets/js/privacy-settings.js"></script>}
   <WhatsAppButton lang={lang} pageTitle={page.title} canonicalUrl={page.canonical} />
+  {!isPartnerPortal && !page.collectionCompact && <GlobalSearchModal lang={lang} />}
   {!isPartnerPortal && <MobileNavBar lang={lang} />}
   {page.mainHtml?.includes('data-product-image') && <dialog class="product-dialog" data-product-dialog aria-labelledby="product-preview-title">
     <div class="preview-header"><h2 id="product-preview-title" data-preview-title>{lang === 'hu' ? 'Modell' : 'Model'}</h2><button class="preview-close" type="button" data-preview-close aria-label={lang === 'hu' ? 'Bezárás' : 'Close'}><Icon name="x" /></button></div>

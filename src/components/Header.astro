@@ -40,6 +40,11 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
 <header class="site-header"><div class="wrap nav">
   <a class="brand" href={home} aria-label={hu ? 'Kaftan Angelo — főoldal' : 'Kaftan Angelo — home'}>Kaftan <span>Angelo</span></a>
   <div class="nav-tools">
+    {!collections.includes(route) && (
+      <button type="button" class="header-search-trigger" data-global-search-open aria-label={hu ? 'Modellek keresése' : 'Search models'}>
+        <Icon name="search" />
+      </button>
+    )}
     <nav class="language-choice" aria-label={hu ? 'Nyelvválasztás' : 'Language selection'}>
       {hu ? <span class="language-option" lang="hu" aria-current="true"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></span> : <a class="language-option" href={counterpart} lang="hu" hreflang="hu" rel="alternate" aria-label="Az oldal magyarul"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></a>}
       {hu ? <a class="language-option" href={counterpart} lang="en" hreflang="en" rel="alternate" aria-label="View this page in English"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></a> : <span class="language-option" lang="en" aria-current="true"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></span>}
