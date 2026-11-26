@@ -185,16 +185,35 @@ const toWebp = (image: string, size: number) =>
 
   @media (max-width: 820px) {
     .home-editorial-banners {
-      padding: 1.75rem 0;
+      padding: 1.25rem 0;
+    }
+    .home-editorial-banners :global(.wrap) {
+      padding: 0 12px;
     }
     .editorial-bento {
       grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .bento-stack {
+      grid-template-rows: auto;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
     }
     .bento-wide {
-      min-height: 320px;
+      min-height: 270px;
     }
     .bento-small {
-      min-height: 210px;
+      min-height: 195px;
+    }
+    .bento-small .bento-overlay {
+      padding: 1.25rem 0.85rem 0.9rem;
+    }
+    .bento-small h3 {
+      font-size: 1rem;
+    }
+    .bento-small .bento-link {
+      font-size: 0.78rem;
+      min-height: 30px;
     }
   }
 </style>

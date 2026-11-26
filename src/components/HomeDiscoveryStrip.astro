@@ -224,33 +224,62 @@ const services = hu
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-      gap: 0.75rem;
-      padding-bottom: 0.25rem;
+      scrollbar-width: none;
+      gap: 0.7rem;
+      padding: 0 2px 0.15rem;
+    }
+    .story-strip::-webkit-scrollbar {
+      display: none;
     }
     .story-strip > li {
-      flex: 0 0 84px;
+      flex: 0 0 74px;
       scroll-snap-align: start;
     }
     .story-thumb {
-      width: 68px;
-      height: 68px;
+      width: 58px;
+      height: 58px;
+    }
+    .story-label {
+      font-size: 0.72rem;
+      line-height: 1.2;
     }
     .service-strip {
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
     }
   }
 
   @media (max-width: 620px) {
     .home-cat-strip {
-      padding: 1rem 0 0.75rem;
+      padding: 0.7rem 0 0.65rem;
+    }
+    .home-cat-strip :global(.wrap),
+    .home-service-band :global(.wrap) {
+      padding: 0 12px;
     }
     .home-service-band {
-      padding: 1rem 0;
+      padding: 0.85rem 0;
     }
     .service-strip {
-      grid-template-columns: 1fr;
-      gap: 0.75rem;
-      padding: 0.9rem 1rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem 0.65rem;
+      padding: 0.85rem 0.8rem;
+    }
+    .service-item {
+      gap: 0.55rem;
+      align-items: flex-start;
+    }
+    .service-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+    }
+    .service-copy strong {
+      font-size: 0.78rem;
+    }
+    .service-copy span {
+      font-size: 0.7rem;
+      line-height: 1.3;
     }
   }
 </style>

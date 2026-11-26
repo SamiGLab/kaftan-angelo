@@ -71,24 +71,53 @@ const lowerHtml = parts.length === 2 ? splitMarker + parts[1] : '';
   }
 
   @media (max-width: 768px) {
+    .home-v4-top {
+      padding-bottom: 0.5rem;
+    }
     .home-v4-cats {
-      order: 2;
+      order: 1;
     }
     .home-v4-hero-frame {
-      order: 1;
-      padding: 0;
+      order: 2;
+      padding: 0 12px;
       width: 100%;
       margin: 0;
     }
     .home-v4-hero-frame :global(.home-hero) {
-      border-radius: 0;
-      border-left: 0;
-      border-right: 0;
-      border-top: 0;
+      border-radius: 14px;
+      border: 1px solid #dcb27c38;
       min-height: 0;
     }
     .home-v4-hero-frame :global(.home-hero-inner) {
-      padding: 28px 20px 26px;
+      padding: 20px 18px 18px;
+    }
+    .home-v4-hero-frame :global(.home-hero h1) {
+      font-size: clamp(1.7rem, 7.2vw, 2.25rem);
+      margin: 8px 0 10px;
+      line-height: 1.08;
+    }
+    .home-v4-hero-frame :global(.home-hero p) {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .home-v4-hero-frame :global(.home-hero .actions) {
+      margin-top: 14px;
+      gap: 8px;
+    }
+    .home-v4-hero-frame :global(.home-hero .actions .btn) {
+      min-height: 44px;
+      padding: 10px 16px;
+      font-size: 0.78rem;
+      width: 100%;
+    }
+    .home-v4-hero-frame :global(.home-hero .proofs) {
+      margin-top: 12px;
+      gap: 6px;
+    }
+    .home-v4-hero-frame :global(.home-hero .pill) {
+      padding: 5px 9px;
+      font-size: 0.72rem;
     }
   }
 </style>
