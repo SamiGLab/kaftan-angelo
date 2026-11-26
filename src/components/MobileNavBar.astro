@@ -13,7 +13,7 @@ const homeHref = hu ? '/' : '/en/';
 const catalogHref = hu ? '/kollekciok/' : '/en/collections/';
 const fittingHref = `${catalogHref}#fitting-list`;
 const visitHref = hu ? '/uzlet/' : '/en/visit/';
-const whatsappHref = 'https://wa.me/36203593216';
+const customHref = hu ? '/egyedi-rendeles/' : '/en/custom-orders/';
 
 const isHome = route === homeHref;
 const isCatalog =
@@ -21,6 +21,7 @@ const isCatalog =
   ['/noi-borkabatok/', '/ferfi-borkabatok/', '/irhakabatok/', '/szormekabatok/',
    '/en/womens-leather-jackets/', '/en/mens-leather-jackets/', '/en/shearling-jackets/', '/en/fur-coats/'].includes(route);
 const isVisit = route === visitHref;
+const isCustom = route === customHref;
 ---
 
 <nav class="mobile-bottom-nav" aria-label={hu ? 'Mobil gyorsmenü' : 'Mobile quick navigation'}>
@@ -43,9 +44,9 @@ const isVisit = route === visitHref;
     <Icon name="location" />
     <span>{hu ? 'Üzlet' : 'Visit'}</span>
   </a>
-  <a href={whatsappHref} class="mobile-nav-item" data-interest-source="mobile_bottom_nav">
-    <Icon name="message" />
-    <span>WhatsApp</span>
+  <a href={customHref} class={`mobile-nav-item${isCustom ? ' is-current' : ''}`} aria-current={isCustom ? 'page' : undefined}>
+    <Icon name="scissors" />
+    <span>{hu ? 'Egyedi' : 'Custom'}</span>
   </a>
 </nav>
 
@@ -84,9 +85,9 @@ const isVisit = route === visitHref;
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
       align-items: center;
-      background: #1b120c;
-      border-top: 1px solid #dcb27c40;
-      box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.35);
+      background: #ffffff;
+      border-top: 1px solid #dfd7cc;
+      box-shadow: 0 -4px 16px rgba(27, 18, 12, 0.08);
       padding: 0.35rem 0.25rem calc(0.35rem + env(safe-area-inset-bottom, 0px));
     }
     .mobile-nav-item {
@@ -96,7 +97,7 @@ const isVisit = route === visitHref;
       justify-content: center;
       gap: 0.15rem;
       min-height: 48px;
-      color: #efe4d2;
+      color: #4f4237;
       text-decoration: none;
       font-size: 0.72rem;
       font-weight: 500;
@@ -104,7 +105,8 @@ const isVisit = route === visitHref;
     }
     .mobile-nav-item.is-current,
     .mobile-nav-item:hover {
-      color: var(--bright, #dcb27c);
+      color: #8a5c28;
+      font-weight: 600;
     }
     .mobile-nav-item :global(.ui-icon) {
       width: 19px;
