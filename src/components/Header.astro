@@ -132,7 +132,7 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
   };
   syncBadge();
   window.addEventListener('storage', syncBadge);
-  window.addEventListener('kaftan:fitting-list-changed', syncBadge);
+  window.addEventListener('kaftan-fitting-change', syncBadge);
 })();
 </script>
 
