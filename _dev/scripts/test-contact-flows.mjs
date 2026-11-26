@@ -80,16 +80,16 @@ try {
     for(const event of sourceEvents){
       assert.deepEqual(Object.keys(event).sort(),['event','interest_action','interest_source','page_path','page_language'].sort(),'No customer data in WhatsApp event');
     }
-    // The collection card and its image preview are separate, consented sources.
+    // The collection card WhatsApp link is a consented source, and clicking the photo opens the model page directly.
     const collectionPath=lang==='hu'?'/kollekciok/':'/en/collections/';
     await page.goto(base+collectionPath,{waitUntil:'networkidle2'});
     await page.$eval('.product-card a[href^="https://wa.me/"]',el=>{el.addEventListener('click',event=>event.preventDefault(),{once:true});el.click();});
-    await page.$eval('[data-product-image]',el=>el.click());
-    await page.$eval('[data-preview-inquiry]',el=>{el.addEventListener('click',event=>event.preventDefault(),{once:true});el.click();});
     sourceEvents=await page.evaluate(()=>window.dataLayer.filter(e=>e.event==='kaftan_interest'&&e.interest_action==='whatsapp_click'));
     assert.equal(sourceEvents.filter(e=>e.interest_source==='collection_card').length,1,'Collection card attribution');
-    assert.equal(sourceEvents.filter(e=>e.interest_source==='product_preview').length,1,'Preview CTA attribution');
     assert.ok(sourceEvents.every(e=>e.page_path===collectionPath));
+    const expectedHref=await page.$eval('.product-card a.product-image-button',el=>el.getAttribute('href'));
+    await Promise.all([page.waitForNavigation({waitUntil:'domcontentloaded'}),page.click('.product-card a.product-image-button')]);
+    assert.equal(new URL(page.url()).pathname,expectedHref,'Clicking product photo navigates directly to model page');
     await context.close();
   }
 
