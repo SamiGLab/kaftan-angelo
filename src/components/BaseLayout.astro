@@ -21,12 +21,19 @@ const heroMobileImage = page.mainHtml?.match(/--hero-mobile:\s*url\('([^']+)'\)/
   ?? (!isModelPage && page.ogImage?.endsWith('-800.avif')
     ? new URL(page.ogImage.replace(/-800\.avif$/, '-480.avif')).pathname
     : undefined);
-import { backgroundImage } from './responsive-images';
+import { backgroundImage, responsiveImages } from './responsive-images';
 const sharpHero = backgroundImage(heroImage, page.mainHtml?.includes('class="home-hero"') ? 1600 : 1200);
 const heroCandidates = [...sharpHero.matchAll(/url\('([^']+)'\) (\d)x/g)];
 const modelAvifSource = isModelPage ? (page.mainHtml?.match(/<source\s+[^>]*type="image\/avif"[^>]*>/i) || page.mainHtml?.match(/<source\s+[^>]*srcset="[^"]+\.avif[^"]*"[^>]*>/i))?.[0] : null;
 const modelAvifSrcset = modelAvifSource ? modelAvifSource.match(/srcset="([^"]+)"/)?.[1] : null;
 const modelAvifSizes = modelAvifSource ? modelAvifSource.match(/sizes="([^"]+)"/)?.[1] : null;
+// Start the visible catalogue photo before parsing the remaining product cards.
+// Reuse the rendered source and sizes so preloading selects the same AVIF asset.
+const collectionAvifSource = page.collectionCompact
+  ? responsiveImages(page.mainHtml).match(/<source\s+[^>]*type="image\/avif"[^>]*>/i)?.[0]
+  : null;
+const collectionAvifSrcset = collectionAvifSource?.match(/srcset="([^"]+)"/)?.[1];
+const collectionAvifSizes = collectionAvifSource?.match(/sizes="([^"]+)"/)?.[1];
 const socialImage = page.ogImage.replace(/\/assets\/images\/(.+)-(480|800|1200)\.avif$/, '/$1.webp');
 const socialImageInfo = await sharp(`public${new URL(socialImage).pathname}`).metadata();
 const huUrl = lang === 'hu' ? page.canonical : BASE + page.counterpart;
@@ -46,6 +53,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   <meta charset="utf-8" />
   <script is:inline>document.documentElement.classList.add("js");</script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  {collectionAvifSrcset && <link rel="preload" as="image" type="image/avif" imagesrcset={collectionAvifSrcset} imagesizes={collectionAvifSizes} fetchpriority="high" />}
   <title>{page.title}</title>
   <meta name="application-name" content="Kaftan Angelo" />
   <meta name="apple-mobile-web-app-title" content="Kaftan Angelo" />
