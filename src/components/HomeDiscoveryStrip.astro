@@ -1,0 +1,121 @@
+---
+import Icon from './Icon.astro';
+import models from '../data/models.json';
+
+interface Props {
+  lang: 'hu' | 'en';
+  part?: 'categories' | 'services' | 'both';
+}
+
+const { lang, part = 'both' } = Astro.props;
+const hu = lang === 'hu';
+
+const visibleModels = models.filter((m) => !m.catalogHidden);
+
+const toThumbAvif = (image: string) =>
+  '/assets/images/' + image.replace(/^\//, '').replace(/\.webp$/, '-480.avif');
+const toThumbWebp = (image: string) =>
+  '/assets/images/' + image.replace(/^\//, '').replace(/\.webp$/, '-480.webp');
+
+const firstByCat = (huUrl: string) =>
+  visibleModels.find((m) => m.category.hu.url === huUrl) ?? visibleModels[0];
+
+const womenSample = firstByCat('/noi-borkabatok/');
+const menSample = firstByCat('/ferfi-borkabatok/');
+const shearlingSample = firstByCat('/irhakabatok/');
+const furSample = firstByCat('/szormekabatok/');
+const secondWomenSample =
+  visibleModels.filter((m) => m.category.hu.url === '/noi-borkabatok/')[1] ?? womenSample;
+const thirdWomenSample =
+  visibleModels.filter((m) => m.category.hu.url === '/noi-borkabatok/')[2] ?? womenSample;
+
+const stories = [
+  {
+    href: hu ? '/noi-borkabatok/' : '/en/womens-leather-jackets/',
+    label: hu ? 'Női bőrkabátok' : 'Women’s leather',
+    img: womenSample.image,
+  },
+  {
+    href: hu ? '/ferfi-borkabatok/' : '/en/mens-leather-jackets/',
+    label: hu ? 'Férfi bőrkabátok' : 'Men’s leather',
+    img: menSample.image,
+  },
+  {
+    href: hu ? '/irhakabatok/' : '/en/shearling-jackets/',
+    label: hu ? 'Irhakabátok' : 'Shearling coats',
+    img: shearlingSample.image,
+  },
+  {
+    href: hu ? '/szormekabatok/' : '/en/fur-coats/',
+    label: hu ? 'Szőrmekabátok' : 'Fur coats',
+    img: furSample.image,
+  },
+  {
+    href: hu ? '/egyedi-rendeles/' : '/en/custom-orders/',
+    label: hu ? 'Egyedi rendelés' : 'Custom orders',
+    img: secondWomenSample.image,
+  },
+  {
+    href: hu ? '/kollekciok/' : '/en/collections/',
+    label: hu ? `Összes modell (${visibleModels.length})` : `All models (${visibleModels.length})`,
+    img: thirdWomenSample.image,
+  },
+];
+
+const services = hu
+  ? [
+      { icon: 'store' as const, title: 'Belvárosi üzlet', sub: 'Kossuth Lajos u. 18 · 2004 óta' },
+      { icon: 'clock' as const, title: 'Személyes próba', sub: 'Időpontfoglalás nélkül is' },
+      { icon: 'scissors' as const, title: 'Méretre igazítás', sub: 'Ujjhossz és derék igazítása' },
+      { icon: 'shield' as const, title: 'Valódi bőr és irha', sub: 'Ellenőrzött, természetes anyagok' },
+    ]
+  : [
+      { icon: 'store' as const, title: 'Central Budapest store', sub: 'Kossuth Lajos u. 18 · Since 2004' },
+      { icon: 'clock' as const, title: 'Personal fitting', sub: 'Walk-ins welcome, no booking needed' },
+      { icon: 'scissors' as const, title: 'Tailored sizing', sub: 'Sleeve & waist adjustments in-store' },
+      { icon: 'shield' as const, title: 'Genuine leather & fur', sub: 'Verified natural materials' },
+    ];
+---
+
+{(part === 'categories' || part === 'both') && (
+  <section class="home-cat-strip" aria-label={hu ? 'Gyors kategóriaválasztó' : 'Quick category browse'}>
+    <div class="wrap">
+      <ul class="story-strip">
+        {stories.map((item) => (
+          <li>
+            <a href={item.href} class="story-card">
+              <span class="story-thumb">
+                <picture>
+                  <source srcset={toThumbAvif(item.img)} type="image/avif" />
+                  <source srcset={toThumbWebp(item.img)} type="image/webp" />
+                  <img src={item.img} alt={item.label} width="84" height="84" loading="lazy" decoding="async" />
+                </picture>
+              </span>
+              <span class="story-label">{item.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+{(part === 'services' || part === 'both') && (
+  <section class="home-service-band" aria-label={hu ? 'Üzleti előnyök' : 'Boutique services'}>
+    <div class="wrap">
+      <ul class="service-strip">
+        {services.map((s) => (
+          <li class="service-item">
+            <span class="service-icon" aria-hidden="true"><Icon name={s.icon} /></span>
+            <span class="service-copy">
+              <strong>{s.title}</strong>
+              <span>{s.sub}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+

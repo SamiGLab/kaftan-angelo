@@ -1,0 +1,159 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  lang?: 'hu' | 'en';
+}
+
+const { lang = 'hu' } = Astro.props;
+const hu = lang === 'hu';
+const route = Astro.url.pathname;
+
+const homeHref = hu ? '/' : '/en/';
+const catalogHref = hu ? '/kollekciok/' : '/en/collections/';
+const fittingHref = `${catalogHref}#fitting-list`;
+const visitHref = hu ? '/uzlet/' : '/en/visit/';
+const whatsappHref = 'https://wa.me/36203593216';
+
+const isHome = route === homeHref;
+const isCatalog =
+  route === catalogHref ||
+  ['/noi-borkabatok/', '/ferfi-borkabatok/', '/irhakabatok/', '/szormekabatok/',
+   '/en/womens-leather-jackets/', '/en/mens-leather-jackets/', '/en/shearling-jackets/', '/en/fur-coats/'].includes(route);
+const isVisit = route === visitHref;
+---
+
+<nav class="mobile-bottom-nav" aria-label={hu ? 'Mobil gyorsmenü' : 'Mobile quick navigation'}>
+  <a href={homeHref} class={`mobile-nav-item${isHome ? ' is-current' : ''}`} aria-current={isHome ? 'page' : undefined}>
+    <Icon name="store" />
+    <span>{hu ? 'Főoldal' : 'Home'}</span>
+  </a>
+  <a href={catalogHref} class={`mobile-nav-item${isCatalog ? ' is-current' : ''}`} aria-current={isCatalog ? 'page' : undefined}>
+    <Icon name="search" />
+    <span>{hu ? 'Kollekció' : 'Catalog'}</span>
+  </a>
+  <a href={fittingHref} class="mobile-nav-item" data-mobile-fitting-link>
+    <span class="mobile-nav-icon-wrap">
+      <span class="mobile-nav-heart" aria-hidden="true">♡</span>
+      <span class="mobile-nav-badge" data-mobile-fitting-count hidden>0</span>
+    </span>
+    <span>{hu ? 'Próbalista' : 'Fitting'}</span>
+  </a>
+  <a href={visitHref} class={`mobile-nav-item${isVisit ? ' is-current' : ''}`} aria-current={isVisit ? 'page' : undefined}>
+    <Icon name="location" />
+    <span>{hu ? 'Üzlet' : 'Visit'}</span>
+  </a>
+  <a href={whatsappHref} class="mobile-nav-item" data-interest-source="mobile_bottom_nav">
+    <Icon name="message" />
+    <span>WhatsApp</span>
+  </a>
+</nav>
+
+<script is:inline>
+(() => {
+  const badge = document.querySelector('[data-mobile-fitting-count]');
+  if (!badge) return;
+  const sync = () => {
+    try {
+      const list = JSON.parse(localStorage.getItem('kaftan_fitting_list_v1') || '[]');
+      const count = Array.isArray(list) ? list.length : 0;
+      badge.textContent = String(count);
+      badge.hidden = count === 0;
+    } catch {
+      badge.hidden = true;
+    }
+  };
+  window.addEventListener('kaftan-fitting-change', sync);
+  window.addEventListener('storage', sync);
+  sync();
+})();
+</script>
+
+<style>
+  .mobile-bottom-nav {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-bottom-nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 88;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      align-items: center;
+      background: #1b120c;
+      border-top: 1px solid #dcb27c40;
+      box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.35);
+      padding: 0.35rem 0.25rem calc(0.35rem + env(safe-area-inset-bottom, 0px));
+    }
+    .mobile-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.15rem;
+      min-height: 48px;
+      color: #efe4d2;
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 500;
+      line-height: 1.15;
+    }
+    .mobile-nav-item.is-current,
+    .mobile-nav-item:hover {
+      color: var(--bright, #dcb27c);
+    }
+    .mobile-nav-item :global(.ui-icon) {
+      width: 19px;
+      height: 19px;
+    }
+    .mobile-nav-icon-wrap {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 19px;
+    }
+    .mobile-nav-heart {
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+    .mobile-nav-badge {
+      position: absolute;
+      top: -5px;
+      right: -11px;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 4px;
+      border-radius: 999px;
+      background: var(--bright, #dcb27c);
+      color: var(--bg, #1b120c);
+      font-size: 0.65rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mobile-nav-badge[hidden] {
+      display: none;
+    }
+
+    :global(html) {
+      scroll-padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+    }
+    :global(footer.footer) {
+      padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+    }
+    :global(.whatsapp-quick-chat) {
+      bottom: calc(5.2rem + env(safe-area-inset-bottom, 0px) + var(--chat-keyboard-offset, 0px)) !important;
+    }
+    :global(.whatsapp-quick-chat #whatsapp-chat-card) {
+      position: fixed;
+      bottom: calc(5.2rem + env(safe-area-inset-bottom, 0px) + var(--chat-keyboard-offset, 0px));
+      max-height: calc(var(--chat-visible-height, 100dvh) - 5.2rem - env(safe-area-inset-bottom, 0px) - 24px);
+    }
+  }
+</style>

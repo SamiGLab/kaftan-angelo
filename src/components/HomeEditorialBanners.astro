@@ -1,0 +1,88 @@
+---
+import models from '../data/models.json';
+
+interface Props {
+  lang: 'hu' | 'en';
+}
+
+const { lang } = Astro.props;
+const hu = lang === 'hu';
+const visibleModels = models.filter((m) => !m.catalogHidden);
+
+const firstByCat = (huUrl: string) =>
+  visibleModels.find((m) => m.category.hu.url === huUrl) ?? visibleModels[0];
+
+const womenSample = firstByCat('/noi-borkabatok/');
+const menSample = firstByCat('/ferfi-borkabatok/');
+const shearlingSample = firstByCat('/irhakabatok/');
+
+const toAvif = (image: string, size: number) =>
+  '/assets/images/' + image.replace(/^\//, '').replace(/\.webp$/, `-${size}.avif`);
+const toWebp = (image: string, size: number) =>
+  '/assets/images/' + image.replace(/^\//, '').replace(/\.webp$/, `-${size}.webp`);
+---
+
+<section class="home-editorial-banners" aria-label={hu ? 'Válogatott kollekciók' : 'Selected collections'}>
+  <div class="wrap">
+    <div class="editorial-bento">
+      <article class="bento-card bento-wide">
+        <picture class="bento-media">
+          <source srcset={`${toAvif(womenSample.image, 480)} 480w, ${toAvif(womenSample.image, 800)} 800w`} sizes="(max-width: 768px) 92vw, 620px" type="image/avif" />
+          <source srcset={`${toWebp(womenSample.image, 480)} 480w, ${toWebp(womenSample.image, 800)} 800w`} sizes="(max-width: 768px) 92vw, 620px" type="image/webp" />
+          <img src={womenSample.image} alt={hu ? 'Női bőrkabát kollekció' : 'Women’s leather jackets collection'} width="620" height="440" loading="lazy" decoding="async" />
+        </picture>
+        <div class="bento-overlay">
+          <span class="tag mono">{hu ? 'Kiemelt kollekció' : 'Featured collection'}</span>
+          <h2>{hu ? 'Női bőrkabátok' : 'Women’s Leather Jackets'}</h2>
+          <p>
+            {hu
+              ? 'Klasszikus blézerek, karcsúsított dzsekik és kétoldalas fazonok valódi bárány- és velúrbőrből.'
+              : 'Classic blazers, tailored jackets and reversible silhouettes in genuine lambskin and suede.'}
+          </p>
+          <a class="bento-link" href={hu ? '/noi-borkabatok/' : '/en/womens-leather-jackets/'}>
+            {hu ? 'Kollekció megtekintése →' : 'Explore collection →'}
+          </a>
+        </div>
+      </article>
+
+      <div class="bento-stack">
+        <article class="bento-card bento-small">
+          <picture class="bento-media">
+            <source srcset={`${toAvif(menSample.image, 480)} 480w, ${toAvif(menSample.image, 800)} 800w`} sizes="(max-width: 768px) 92vw, 440px" type="image/avif" />
+            <source srcset={`${toWebp(menSample.image, 480)} 480w, ${toWebp(menSample.image, 800)} 800w`} sizes="(max-width: 768px) 92vw, 440px" type="image/webp" />
+            <img src={menSample.image} alt={hu ? 'Férfi bőrkabát kollekció' : 'Men’s leather jackets collection'} width="440" height="210" loading="lazy" decoding="async" />
+          </picture>
+          <div class="bento-overlay">
+            <span class="tag mono">{hu ? 'Férfi válogatás' : 'Men’s selection'}</span>
+            <h3>{hu ? 'Férfi bőrkabátok' : 'Men’s Leather Jackets'}</h3>
+            <a class="bento-link" href={hu ? '/ferfi-borkabatok/' : '/en/mens-leather-jackets/'}>
+              {hu ? 'Modellek →' : 'View models →'}
+            </a>
+          </div>
+        </article>
+
+        <article class="bento-card bento-small">
+          <picture class="bento-media">
+            <source srcset={`${toAvif(shearlingSample.image, 480)} 480w, ${toAvif(shearlingSample.image, 800)} 800w`} sizes="(max-width: 768px) 92vw, 440px" type="image/avif" />
+            <source srcset={`${toWebp(shearlingSample.image, 480)} 480w, ${toWebp(shearlingSample.image, 800)} 800w`} sizes="(max-width: 768px) 92vw, 440px" type="image/webp" />
+            <img src={shearlingSample.image} alt={hu ? 'Irha- és szőrmekabátok' : 'Shearling and fur coats'} width="440" height="210" loading="lazy" decoding="async" />
+          </picture>
+          <div class="bento-overlay">
+            <span class="tag mono">{hu ? 'Téli kollekció' : 'Winter outerwear'}</span>
+            <h3>{hu ? 'Irha- és szőrmekabátok' : 'Shearling & Fur Coats'}</h3>
+            <div class="bento-links-row">
+              <a class="bento-link" href={hu ? '/irhakabatok/' : '/en/shearling-jackets/'}>
+                {hu ? 'Irhakabátok →' : 'Shearling →'}
+              </a>
+              <a class="bento-link" href={hu ? '/szormekabatok/' : '/en/fur-coats/'}>
+                {hu ? 'Szőrmekabátok →' : 'Fur coats →'}
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+

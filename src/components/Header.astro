@@ -7,10 +7,27 @@ const { lang = 'hu', counterpart = lang === 'hu' ? '/en/' : '/' } = Astro.props;
 const hu = lang === 'hu';
 const home = hu ? '/' : '/en/';
 const visit = hu ? '/uzlet/' : '/en/visit/';
+const fittingHref = hu ? '/kollekciok/#fitting-list' : '/en/collections/#fitting-list';
 const route = Astro.url.pathname;
-const collections = hu ? ['/kollekciok/','/noi-borkabatok/','/ferfi-borkabatok/','/irhakabatok/','/szormekabatok/'] : ['/en/collections/','/en/womens-leather-jackets/','/en/mens-leather-jackets/','/en/shearling-jackets/','/en/fur-coats/'];
-const items = [...nav[lang as 'hu'|'en'], [hu ? 'GYIK' : 'FAQ', hu ? '/gyik/' : '/en/faq/']];
-const active = (href:string) => route === href || (href === collections[0] && collections.includes(route)) || (href !== home && route.startsWith(href));
+const collections = hu
+  ? ['/kollekciok/', '/noi-borkabatok/', '/ferfi-borkabatok/', '/irhakabatok/', '/szormekabatok/']
+  : ['/en/collections/', '/en/womens-leather-jackets/', '/en/mens-leather-jackets/', '/en/shearling-jackets/', '/en/fur-coats/'];
+const deptItems: [string, string][] = hu
+  ? [
+      ['Női bőrkabátok', '/noi-borkabatok/'],
+      ['Férfi bőrkabátok', '/ferfi-borkabatok/'],
+      ['Irha', '/irhakabatok/'],
+      ['Szőrme', '/szormekabatok/'],
+    ]
+  : [
+      ['Women’s leather', '/en/womens-leather-jackets/'],
+      ['Men’s leather', '/en/mens-leather-jackets/'],
+      ['Shearling', '/en/shearling-jackets/'],
+      ['Fur', '/en/fur-coats/'],
+    ];
+const items = [...nav[lang as 'hu' | 'en'], [hu ? 'GYIK' : 'FAQ', hu ? '/gyik/' : '/en/faq/']];
+const active = (href: string) =>
+  route === href || (href === collections[0] && collections.includes(route)) || (href !== home && route.startsWith(href));
 
 // Server-side deterministic default announcement for zero CLS and SEO
 const now = new Date();
@@ -37,17 +54,59 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
     </div>
   </div>
 </div>
-<header class="site-header"><div class="wrap nav">
-  <a class="brand" href={home} aria-label={hu ? 'Kaftan Angelo — főoldal' : 'Kaftan Angelo — home'}>Kaftan <span>Angelo</span></a>
-  <div class="nav-tools">
-    <nav class="language-choice" aria-label={hu ? 'Nyelvválasztás' : 'Language selection'}>
-      {hu ? <span class="language-option" lang="hu" aria-current="true"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></span> : <a class="language-option" href={counterpart} lang="hu" hreflang="hu" rel="alternate" aria-label="Az oldal magyarul"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></a>}
-      {hu ? <a class="language-option" href={counterpart} lang="en" hreflang="en" rel="alternate" aria-label="View this page in English"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></a> : <span class="language-option" lang="en" aria-current="true"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></span>}
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href={home} aria-label={hu ? 'Kaftan Angelo — főoldal' : 'Kaftan Angelo — home'}>Kaftan <span>Angelo</span></a>
+
+    <button
+      type="button"
+      class="header-search-bar"
+      data-global-search-open
+      aria-label={hu ? 'Modell, szín vagy fazon keresése…' : 'Search models, colour or style…'}
+    >
+      <Icon name="search" />
+      <span class="header-search-placeholder">
+        {hu ? 'Modell, szín vagy fazon keresése…' : 'Search models, colour or style…'}
+      </span>
+      <kbd class="header-search-kbd" aria-hidden="true">Ctrl+K</kbd>
+    </button>
+
+    <div class="nav-tools">
+      <a
+        class="header-tool-btn header-fitting-btn"
+        href={fittingHref}
+        aria-label={hu ? 'Próbalistám' : 'My fitting list'}
+        title={hu ? 'Próbalistám' : 'My fitting list'}
+      >
+        <span class="header-tool-heart" aria-hidden="true">♡</span>
+        <span class="header-tool-badge" data-header-fitting-count hidden>0</span>
+      </a>
+      <a
+        class="header-tool-btn header-wa-btn"
+        href="https://wa.me/36203593216"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={hu ? 'WhatsApp üzenet' : 'WhatsApp message'}
+        title="WhatsApp"
+      >
+        <Icon name="message" />
+      </a>
+      <nav class="language-choice" aria-label={hu ? 'Nyelvválasztás' : 'Language selection'}>
+        {hu ? <span class="language-option" lang="hu" aria-current="true"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></span> : <a class="language-option" href={counterpart} lang="hu" hreflang="hu" rel="alternate" aria-label="HU — Az oldal magyarul"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></a>}
+        {hu ? <a class="language-option" href={counterpart} lang="en" hreflang="en" rel="alternate" aria-label="EN — View this page in English"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></a> : <span class="language-option" lang="en" aria-current="true"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></span>}
+      </nav>
+      <button class="menu-toggle" type="button" aria-label={hu ? 'Menü' : 'Menu'} aria-expanded="false" aria-controls="primary-navigation"><Icon name="menu" class="menu-open-icon" /><Icon name="x" class="menu-close-icon" /><span>{hu ? 'Menü' : 'Menu'}</span></button>
+    </div>
+
+    <nav id="primary-navigation" class="links" data-menu aria-label={hu ? 'Fő navigáció' : 'Primary navigation'}>
+      {deptItems.map(([label, href]) => (
+        <a class="nav-dept-link" href={href} aria-current={route === href ? 'page' : undefined}>{label}</a>
+      ))}
+      <span class="nav-dept-sep" aria-hidden="true"></span>
+      {items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}
     </nav>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><Icon name="menu" class="menu-open-icon" /><Icon name="x" class="menu-close-icon" /><span>{hu ? 'Menü' : 'Menu'}</span></button>
   </div>
-  <nav id="primary-navigation" class="links" data-menu aria-label={hu ? 'Fő navigáció' : 'Primary navigation'}>{items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}</nav>
-</div></header>
+</header>
 
 <script is:inline define:vars={{ announcements, announcementCycle, lang }}>
 (() => {
@@ -60,5 +119,21 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
   const text = document.querySelector('[data-announcement-text]');
   const link = document.querySelector('[data-announcement-link]');
   if (text && link) {text.textContent=lang==='hu'?item.hu:item.en;link.href=lang==='hu'?item.url_hu:item.url_en;}
+
+  const badge = document.querySelector('[data-header-fitting-count]');
+  const syncBadge = () => {
+    if (!badge) return;
+    try {
+      const saved = JSON.parse(localStorage.getItem('kaftan_fitting_list_v1') || '[]');
+      const count = Array.isArray(saved) ? saved.length : 0;
+      badge.textContent = String(count);
+      badge.hidden = count === 0;
+    } catch {}
+  };
+  syncBadge();
+  window.addEventListener('storage', syncBadge);
+  window.addEventListener('kaftan-fitting-change', syncBadge);
 })();
 </script>
+
+

@@ -1,22 +1,6 @@
 ---
-import { withIcons } from '../components/icon';
-import { responsiveImages } from '../components/responsive-images';
-import BaseLayout from '../components/BaseLayout.astro';
-import TrustHeritage from '../components/TrustHeritage.astro';
+import ShowroomHome from '../components/ShowroomHome.astro';
 import pages from '../data/pages.json';
 const page = pages['/'];
-// Insert between complete sections: splitting inside a heading nests the cards in .split-grid.
-const splitMarker = '<section class="split-section">';
-const parts = page.mainHtml.split(splitMarker);
 ---
-<BaseLayout page={page}>
-  {parts.length === 2 ? (
-    <>
-      <Fragment set:html={withIcons(responsiveImages(parts[0]))} />
-      <TrustHeritage lang="hu" />
-      <Fragment set:html={withIcons(responsiveImages(splitMarker + parts[1]))} />
-    </>
-  ) : (
-    <Fragment set:html={withIcons(responsiveImages(page.mainHtml))} />
-  )}
-</BaseLayout>
+<ShowroomHome page={page} lang="hu" />

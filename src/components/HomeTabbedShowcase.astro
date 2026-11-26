@@ -1,0 +1,182 @@
+---
+import models from '../data/models.json';
+
+interface Props {
+  lang: 'hu' | 'en';
+}
+
+const { lang } = Astro.props;
+const hu = lang === 'hu';
+
+const visible = models.filter((m) => !m.catalogHidden);
+const women = visible.filter((m) => m.category.hu.url === '/noi-borkabatok/');
+const men = visible.filter((m) => m.category.hu.url === '/ferfi-borkabatok/');
+const shearlingAndFur = visible.filter(
+  (m) => m.category.hu.url === '/irhakabatok/' || m.category.hu.url === '/szormekabatok/'
+);
+
+const featured = [
+  women[0],
+  men[0],
+  shearlingAndFur[0],
+  women[1],
+].filter(Boolean);
+
+const tabs = [
+  { id: 'featured', label: hu ? 'Kiemelt modellek' : 'Featured', items: featured },
+  { id: 'women', label: hu ? 'Női bőrkabátok' : 'Women’s leather', items: women.slice(0, 4) },
+  { id: 'men', label: hu ? 'Férfi bőrkabátok' : 'Men’s leather', items: men.slice(0, 4) },
+  { id: 'winter', label: hu ? 'Irha & szőrme' : 'Shearling & fur', items: shearlingAndFur.slice(0, 4) },
+];
+
+const toAvif = (img: string) => '/assets/images/' + img.replace(/^\//, '').replace(/\.webp$/, '-480.avif');
+const toWebp = (img: string) => '/assets/images/' + img.replace(/^\//, '').replace(/\.webp$/, '-480.webp');
+const modelUrl = (m: (typeof visible)[number]) =>
+  hu ? `/modellek/${m.slugs.hu}/` : `/en/models/${m.slugs.en}/`;
+---
+
+<section class="home-showcase" aria-labelledby="home-showcase-heading" data-home-showcase>
+  <div class="wrap">
+    <div class="showcase-head">
+      <div>
+        <span class="tag mono">{hu ? 'Válogatás a bemutatóteremből' : 'Showroom selection'}</span>
+        <h2 id="home-showcase-heading">{hu ? 'Kiemelt kollekciók' : 'Featured pieces'}</h2>
+      </div>
+      <div class="showcase-tabs" role="tablist" aria-label={hu ? 'Kollekció fülek' : 'Collection tabs'}>
+        {tabs.map((tab, idx) => (
+          <button
+            type="button"
+            role="tab"
+            id={`showcase-tab-${tab.id}`}
+            aria-controls={`showcase-panel-${tab.id}`}
+            aria-selected={idx === 0 ? 'true' : 'false'}
+            class={`showcase-tab${idx === 0 ? ' is-active' : ''}`}
+            data-showcase-tab={tab.id}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    {tabs.map((tab, idx) => (
+      <div
+        id={`showcase-panel-${tab.id}`}
+        role="tabpanel"
+        aria-labelledby={`showcase-tab-${tab.id}`}
+        class="showcase-panel"
+        data-showcase-panel={tab.id}
+        hidden={idx !== 0}
+      >
+        <div class="showcase-grid">
+          {tab.items.map((m) => (
+            <article class="showcase-card">
+              <div class="showcase-media">
+                <a href={modelUrl(m)} class="showcase-photo-link">
+                  <picture>
+                    <source srcset={toAvif(m.image)} type="image/avif" />
+                    <source srcset={toWebp(m.image)} type="image/webp" />
+                    <img
+                      src={m.image}
+                      alt={m.names[lang]}
+                      width="480"
+                      height="600"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                </a>
+                <button
+                  type="button"
+                  class="showcase-save"
+                  data-showcase-save={m.slug}
+                  aria-pressed="false"
+                  aria-label={(hu ? 'Mentés a próbalistára: ' : 'Save to fitting list: ') + m.names[lang]}
+                >
+                  ♡
+                </button>
+              </div>
+              <div class="showcase-body">
+                <span class="showcase-cat">{m.category[lang].name}</span>
+                <h3>
+                  <a href={modelUrl(m)}>{m.names[lang]}</a>
+                </h3>
+                {(m as { material?: Record<string, string> }).material?.[lang] && (
+                  <p class="showcase-mat">{(m as { material?: Record<string, string> }).material?.[lang]}</p>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    ))}
+
+    <div class="showcase-cta">
+      <a class="btn btn-ghost" href={hu ? '/kollekciok/' : '/en/collections/'}>
+        {hu ? `Összes modell megtekintése (${visible.length})` : `Browse all ${visible.length} models`} →
+      </a>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+(() => {
+  const root = document.querySelector('[data-home-showcase]');
+  if (!root) return;
+
+  const tabs = Array.from(root.querySelectorAll('[data-showcase-tab]'));
+  const panels = Array.from(root.querySelectorAll('[data-showcase-panel]'));
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-showcase-tab');
+      tabs.forEach((t) => {
+        const active = t === tab;
+        t.classList.toggle('is-active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      panels.forEach((p) => {
+        p.hidden = p.getAttribute('data-showcase-panel') !== target;
+      });
+    });
+  });
+
+  const FITTING_LIST_ID = 'kaftan_fitting_list_v1';
+  const LIMIT = 12;
+  const readList = () => {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(FITTING_LIST_ID) || '[]');
+      return new Set(Array.isArray(parsed) ? parsed.slice(0, LIMIT) : []);
+    } catch {
+      return new Set();
+    }
+  };
+  const syncButtons = () => {
+    const list = readList();
+    root.querySelectorAll('[data-showcase-save]').forEach((btn) => {
+      const key = btn.getAttribute('data-showcase-save');
+      const saved = key ? list.has(key) : false;
+      btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
+      btn.textContent = saved ? '♥' : '♡';
+    });
+  };
+  root.querySelectorAll('[data-showcase-save]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-showcase-save');
+      if (!key) return;
+      const list = readList();
+      if (list.has(key)) list.delete(key);
+      else if (list.size < LIMIT) list.add(key);
+      try {
+        localStorage.setItem(FITTING_LIST_ID, JSON.stringify([...list]));
+      } catch {}
+      window.dispatchEvent(new Event('kaftan-fitting-change'));
+      syncButtons();
+    });
+  });
+  window.addEventListener('kaftan-fitting-change', syncButtons);
+  syncButtons();
+})();
+</script>
+
+

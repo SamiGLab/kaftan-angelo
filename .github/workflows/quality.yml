@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   intake-db:
@@ -163,6 +164,8 @@ jobs:
         run: node _dev/scripts/test-colour-variants.mjs
       - name: Check mobile contact and newsletter retry flows
         run: node _dev/scripts/test-contact-flows.mjs
+      - name: Check shared showroom layout and public branding
+        run: node _dev/scripts/test-showroom-layout.mjs
       - name: Check HU/EN store-visit conversion CTAs on mobile
         run: node _dev/scripts/test-store-visit-ctas.mjs
       - name: Check HU/EN landmark walking routes and FAQ consistency
@@ -208,10 +211,21 @@ jobs:
           if-no-files-found: error
           retention-days: 1
       - name: Download the recovery rehearsal snapshot
-        uses: actions/download-artifact@v4
-        with:
-          name: recovery-rehearsal
-          path: ${{ runner.temp }}/recovery-download
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Fresh uploads can briefly be absent from the artifact listing.
+          # Retry the download; the following commit/hash verification stays mandatory.
+          for attempt in {1..8}; do
+            if gh run download "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --name recovery-rehearsal --dir "$RUNNER_TEMP/recovery-download"; then
+              break
+            fi
+            if [ "$attempt" -eq 8 ]; then
+              echo 'Recovery rehearsal remained unavailable after 8 attempts' >&2
+              exit 1
+            fi
+            sleep 10
+          done
       - name: Verify the actual GitHub artifact round trip
         run: |
           node _dev/scripts/release-manifest.mjs verify "$RUNNER_TEMP/recovery-download" "$GITHUB_SHA"
