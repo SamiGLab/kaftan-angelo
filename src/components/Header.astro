@@ -1,12 +1,10 @@
 ---
 import Icon from './Icon.astro';
 import { nav } from '../data/site';
-import { announcements, announcementCycle } from '../data/announcements';
 
 const { lang = 'hu', counterpart = lang === 'hu' ? '/en/' : '/' } = Astro.props;
 const hu = lang === 'hu';
 const home = hu ? '/' : '/en/';
-const visit = hu ? '/uzlet/' : '/en/visit/';
 const fittingHref = hu ? '/kollekciok/#fitting-list' : '/en/collections/#fitting-list';
 const route = Astro.url.pathname;
 const collections = hu
@@ -29,31 +27,7 @@ const items = [...nav[lang as 'hu' | 'en'], [hu ? 'GYIK' : 'FAQ', hu ? '/gyik/' 
 const active = (href: string) =>
   route === href || (href === collections[0] && collections.includes(route)) || (href !== home && route.startsWith(href));
 
-// Server-side deterministic default announcement for zero CLS and SEO
-const now = new Date();
-const startOfYear = new Date(now.getFullYear(), 0, 0);
-const diff = now.getTime() - startOfYear.getTime();
-const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
-const defaultAnnouncement = announcements[announcementCycle[dayOfYear % announcementCycle.length] - 1] ?? announcements[0];
-const defaultText = hu ? defaultAnnouncement.hu : defaultAnnouncement.en;
-const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
 ---
-<div class="announcement">
-  <div class="announcement-inner">
-    <div class="announcement-main">
-      <span class="announcement-badge" aria-hidden="true">◆</span>
-      <a class="announcement-link" href={defaultUrl} data-announcement-link>
-        <span class="announcement-text" data-announcement-text>{defaultText}</span>
-        <span class="announcement-arrow" aria-hidden="true">&nbsp;↗</span>
-      </a>
-    </div>
-    <div class="announcement-store">
-      <a href={visit}><Icon name="location" />Kossuth Lajos u. 18 <span aria-hidden="true">↗</span></a>
-      <span aria-hidden="true">·</span>
-      <a class="announcement-phone" href="tel:+3612667274"><Icon name="phone" />+36&nbsp;1&nbsp;266&nbsp;7274</a>
-    </div>
-  </div>
-</div>
 <header class="site-header">
   <div class="wrap nav">
     <a class="brand" href={home} aria-label={hu ? 'Kaftan Angelo — főoldal' : 'Kaftan Angelo — home'}>Kaftan <span>Angelo</span></a>
@@ -108,18 +82,8 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
   </div>
 </header>
 
-<script is:inline define:vars={{ announcements, announcementCycle, lang }}>
+<script is:inline>
 (() => {
-  // Daily selection without cookies or browser storage.
-  const parts = new Intl.DateTimeFormat('en-CA', {timeZone:'Europe/Budapest',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
-  const values = Object.fromEntries(parts.map(p => [p.type,p.value]));
-  const today = Date.UTC(Number(values.year),Number(values.month)-1,Number(values.day));
-  const ordinal = Math.floor((today-Date.UTC(Number(values.year),0,0))/86400000);
-  const item = announcements.find(a => a.id === announcementCycle[ordinal % announcementCycle.length]) || announcements[0];
-  const text = document.querySelector('[data-announcement-text]');
-  const link = document.querySelector('[data-announcement-link]');
-  if (text && link) {text.textContent=lang==='hu'?item.hu:item.en;link.href=lang==='hu'?item.url_hu:item.url_en;}
-
   const badge = document.querySelector('[data-header-fitting-count]');
   const syncBadge = () => {
     if (!badge) return;
