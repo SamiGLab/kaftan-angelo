@@ -383,6 +383,15 @@ function createDiscovery(grid, cards, onChange) {
     if (savedOnly) onChange();
   });
   refreshSaved();
+  const bootPhase2 = (event) => {
+    const target = event?.target instanceof Element ? event.target : null;
+    loadCatalogUi().then(mod => mod?.initCatalogPhase2({ toolbar, grid, triggerTarget: target }));
+  };
+  toolbar.addEventListener('click', (e) => {
+    if (e.target.closest('[data-view-option], [data-filter-drawer-btn]')) bootPhase2(e);
+  }, { once: true });
+  grid.addEventListener('pointerenter', () => bootPhase2(null), { once: true, capture: true });
+  window.addEventListener('scroll', () => bootPhase2(null), { once: true, passive: true });
   if (isHub && location.hash === '#fitting-list') {
     // Wait until collectionViews and the existing filter event delegation are initialized.
     queueMicrotask(() => { setSavedMode(true); saved.focus(); });
