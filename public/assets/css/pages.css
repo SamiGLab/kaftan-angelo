@@ -16,7 +16,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -2933,12 +2933,13 @@ code, pre, #partner-display-code, .portal-code {
   outline: 2px solid #805322;
   outline-offset: 2px;
 }
-html:has([data-static-collection]) { scroll-behavior: auto; }
 .collection-filters[data-product-filters]:has(+ .collection-discovery) {
   position: static;
   backdrop-filter: none;
   background: transparent;
 }
+.home-hero .actions a,
+.home-visit-direct a,
 [data-static-collection] .product-card :is(button, a),
 .collection-controls :is(button, a),
 .collection-discovery :is(button, a, input, select) {
