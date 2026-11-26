@@ -3,7 +3,7 @@ const files = readdirSync('public/assets/images');
 // Match .wrap padding, .product-grid columns/gaps and each card's 1px border.
 // The two-card layout is capped at 860px and keeps two columns on desktop.
 const smallCardSizes = '(max-width: 360px) calc((100vw - 44px) / 2), (max-width: 620px) calc((100vw - 48px) / 2), (max-width: 768px) calc((100vw - 72px) / 2), ';
-const gridCardSizes = smallCardSizes + '(max-width: 1100px) calc((100vw - 94px) / 3), (max-width: 1120px) calc((100vw - 124px) / 4), 249px';
+const gridCardSizes = smallCardSizes + '(max-width: 1100px) calc((100vw - 94px) / 3), (max-width: 1220px) calc((100vw - 124px) / 4), 274px';
 const twoCardSizes = smallCardSizes + '(max-width: 916px) calc((100vw - 76px) / 2), (max-width: 1100px) 420px, 418px';
 function croppedCardSizes(sizes: string, card: string) {
   const image = card.match(/<img\b[^>]*>/)?.[0] ?? '';
