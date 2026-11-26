@@ -1,0 +1,45 @@
+---
+import { withIcons } from './icon';
+import { responsiveImages } from './responsive-images';
+import BaseLayout from './BaseLayout.astro';
+import HomeDiscoveryStrip from './HomeDiscoveryStrip.astro';
+import HomeEditorialBanners from './HomeEditorialBanners.astro';
+import HomeTabbedShowcase from './HomeTabbedShowcase.astro';
+import TrustHeritage from './TrustHeritage.astro';
+
+interface Props {
+  page: any;
+  lang: 'hu' | 'en';
+}
+
+const { page, lang } = Astro.props;
+const splitMarker = '<section class="split-section">';
+const parts = page.mainHtml.split(splitMarker);
+const heroEndIndex = parts[0]?.indexOf('</section>') ?? -1;
+const heroHtml = heroEndIndex !== -1 ? parts[0].slice(0, heroEndIndex + '</section>'.length) : '';
+const lowerHtml = parts.length === 2 ? splitMarker + parts[1] : '';
+---
+<BaseLayout page={page}>
+  {parts.length === 2 && heroHtml ? (
+    <>
+      <div class="showroom-home">
+        <div class="showroom-categories">
+          <HomeDiscoveryStrip lang={lang} part="categories" />
+        </div>
+        <div class="showroom-hero">
+          <Fragment set:html={withIcons(responsiveImages(heroHtml))} />
+        </div>
+      </div>
+
+      <HomeDiscoveryStrip lang={lang} part="services" />
+      <HomeEditorialBanners lang={lang} />
+      <HomeTabbedShowcase lang={lang} />
+      <TrustHeritage lang={lang} />
+      <Fragment set:html={withIcons(responsiveImages(lowerHtml))} />
+    </>
+  ) : (
+    <Fragment set:html={withIcons(responsiveImages(page.mainHtml))} />
+  )}
+</BaseLayout>
+
+
