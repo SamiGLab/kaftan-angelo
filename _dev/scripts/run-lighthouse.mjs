@@ -1,4 +1,4 @@
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import lighthouse from 'lighthouse';
@@ -14,7 +14,11 @@ for (const url of collect.url) if (new URL(url).origin !== 'http://127.0.0.1:417
 
 const output = '.lighthouseci';
 await mkdir(output, { recursive: true });
-const server = spawn(process.platform === 'win32' ? 'python' : 'python3', ['-u', '-m', 'http.server', '4174', '--bind', '127.0.0.1', '--directory', 'dist'], { stdio:['ignore','pipe','pipe'], windowsHide:true });
+const python = process.platform !== 'win32' ? 'python3'
+  : spawnSync('py', ['--version'], {stdio:'ignore', windowsHide:true}).status === 0 ? 'py' : 'python';
+const serverTests = spawnSync(python, ['_dev/scripts/test_static_server.py'], {stdio:'inherit', windowsHide:true});
+if (serverTests.error || serverTests.status !== 0) throw Error('Static server compression regression tests failed');
+const server = spawn(python, ['-u', '_dev/scripts/serve_static.py', '4174', '--bind', '127.0.0.1', '--directory', 'dist'], { stdio:['ignore','pipe','pipe'], windowsHide:true });
 server.stderr.resume();
 let chrome;
 const summary = [];
@@ -26,6 +30,9 @@ try {
     server.once('error', error => { clearTimeout(timer); reject(error); });
     server.once('exit', () => { clearTimeout(timer); reject(Error('Lighthouse server exited')); });
   });
+  const response = await fetch(collect.url[0], {headers: {'Accept-Encoding': 'gzip'}});
+  if (!response.ok || response.headers.get('content-encoding') !== 'gzip') throw Error('Lighthouse server must use production text compression');
+  await response.arrayBuffer();
   chrome = await launchLighthouseBrowser({executablePath:()=>puppeteer.executablePath(), launch:chromeLauncher.launch, ci:Boolean(process.env.CI)});
   for (const [index,url] of collect.url.entries()) {
     for (let run = 1; run <= collect.numberOfRuns; run++) {
