@@ -1,6 +1,7 @@
 import { readFile, writeFile, readdir } from 'node:fs/promises';
 import { transform } from 'lightningcss';
 import { pruneScopedStyles } from './prune-scoped-styles.mjs';
+import { versionStaticAssets } from './version-static-assets.mjs';
 
 const stylesheet = new URL('../../dist/assets/css/pages.css', import.meta.url);
 const source = await readFile(stylesheet);
@@ -37,3 +38,5 @@ async function optimizeRoutes(directory) {
 }
 await optimizeRoutes(new URL('../../dist/', import.meta.url));
 console.log(`Unused component styles removed: ${savedBytes} bytes across static routes.`);
+const assetVersion = await versionStaticAssets(new URL('../../dist/', import.meta.url));
+console.log(`Static stylesheet and script version: ${assetVersion}`);

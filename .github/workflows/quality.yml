@@ -121,7 +121,7 @@ jobs:
       - name: Test partner intake transactional notification transport
         run: node --test services/partner-intake/brevo.test.mjs
       - name: Test release recovery integrity
-        run: node --test _dev/scripts/release-manifest.test.mjs
+        run: node --test _dev/scripts/release-manifest.test.mjs _dev/scripts/version-static-assets.test.mjs
       - name: Install accessibility browser
         run: npx puppeteer browsers install chrome
       - name: Build static site
