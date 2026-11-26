@@ -62,7 +62,7 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
       type="button"
       class="header-search-bar"
       data-global-search-open
-      aria-label={hu ? 'Modellek keresése' : 'Search models'}
+      aria-label={hu ? 'Modell, szín vagy fazon keresése…' : 'Search models, colour or style…'}
     >
       <Icon name="search" />
       <span class="header-search-placeholder">
@@ -92,10 +92,10 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
         <Icon name="message" />
       </a>
       <nav class="language-choice" aria-label={hu ? 'Nyelvválasztás' : 'Language selection'}>
-        {hu ? <span class="language-option" lang="hu" aria-current="true"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></span> : <a class="language-option" href={counterpart} lang="hu" hreflang="hu" rel="alternate" aria-label="Az oldal magyarul"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></a>}
-        {hu ? <a class="language-option" href={counterpart} lang="en" hreflang="en" rel="alternate" aria-label="View this page in English"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></a> : <span class="language-option" lang="en" aria-current="true"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></span>}
+        {hu ? <span class="language-option" lang="hu" aria-current="true"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></span> : <a class="language-option" href={counterpart} lang="hu" hreflang="hu" rel="alternate" aria-label="HU — Az oldal magyarul"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></a>}
+        {hu ? <a class="language-option" href={counterpart} lang="en" hreflang="en" rel="alternate" aria-label="EN — View this page in English"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></a> : <span class="language-option" lang="en" aria-current="true"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></span>}
       </nav>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><Icon name="menu" class="menu-open-icon" /><Icon name="x" class="menu-close-icon" /><span>{hu ? 'Menü' : 'Menu'}</span></button>
+      <button class="menu-toggle" type="button" aria-label={hu ? 'Menü' : 'Menu'} aria-expanded="false" aria-controls="primary-navigation"><Icon name="menu" class="menu-open-icon" /><Icon name="x" class="menu-close-icon" /><span>{hu ? 'Menü' : 'Menu'}</span></button>
     </div>
 
     <nav id="primary-navigation" class="links" data-menu aria-label={hu ? 'Fő navigáció' : 'Primary navigation'}>
