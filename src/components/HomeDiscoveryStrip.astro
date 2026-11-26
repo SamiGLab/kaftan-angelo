@@ -1,0 +1,510 @@
+---
+import Icon from './Icon.astro';
+import models from '../data/models.json';
+
+interface Props {
+  lang: 'hu' | 'en';
+}
+
+const { lang } = Astro.props;
+const hu = lang === 'hu';
+
+const visibleModels = models.filter((m) => !m.catalogHidden);
+
+const toThumbAvif = (image: string) =>
+  '/assets/images/' + image.replace(/^\//, '').replace(/\.webp$/, '-480.avif');
+const toThumbWebp = (image: string) =>
+  '/assets/images/' + image.replace(/^\//, '').replace(/\.webp$/, '-480.webp');
+
+const firstByCat = (huUrl: string) =>
+  visibleModels.find((m) => m.category.hu.url === huUrl) ?? visibleModels[0];
+
+const womenSample = firstByCat('/noi-borkabatok/');
+const menSample = firstByCat('/ferfi-borkabatok/');
+const shearlingSample = firstByCat('/irhakabatok/');
+const furSample = firstByCat('/szormekabatok/');
+const secondWomenSample =
+  visibleModels.filter((m) => m.category.hu.url === '/noi-borkabatok/')[1] ?? womenSample;
+const thirdWomenSample =
+  visibleModels.filter((m) => m.category.hu.url === '/noi-borkabatok/')[2] ?? womenSample;
+
+const stories = [
+  {
+    href: hu ? '/noi-borkabatok/' : '/en/womens-leather-jackets/',
+    label: hu ? 'Női bőrkabátok' : 'Women’s leather',
+    img: womenSample.image,
+  },
+  {
+    href: hu ? '/ferfi-borkabatok/' : '/en/mens-leather-jackets/',
+    label: hu ? 'Férfi bőrkabátok' : 'Men’s leather',
+    img: menSample.image,
+  },
+  {
+    href: hu ? '/irhakabatok/' : '/en/shearling-jackets/',
+    label: hu ? 'Irhakabátok' : 'Shearling coats',
+    img: shearlingSample.image,
+  },
+  {
+    href: hu ? '/szormekabatok/' : '/en/fur-coats/',
+    label: hu ? 'Szőrmekabátok' : 'Fur coats',
+    img: furSample.image,
+  },
+  {
+    href: hu ? '/egyedi-rendeles/' : '/en/custom-orders/',
+    label: hu ? 'Egyedi rendelés' : 'Custom orders',
+    img: secondWomenSample.image,
+  },
+  {
+    href: hu ? '/kollekciok/' : '/en/collections/',
+    label: hu ? `Összes modell (${visibleModels.length})` : `All models (${visibleModels.length})`,
+    img: thirdWomenSample.image,
+  },
+];
+
+const trendingTerms = hu
+  ? ['báránybőr', 'fekete', 'irha', 'szőrme', 'férfi', 'barna']
+  : ['lambskin', 'black', 'shearling', 'fur', 'men', 'brown'];
+
+const searchDataUrl = `/assets/data/home-search-${lang}.json`;
+
+const services = hu
+  ? [
+      { icon: 'store' as const, title: 'Belvárosi üzlet', sub: 'Kossuth Lajos u. 18 · 2004 óta' },
+      { icon: 'clock' as const, title: 'Személyes próba', sub: 'Időpontfoglalás nélkül is' },
+      { icon: 'scissors' as const, title: 'Méretre igazítás', sub: 'Ujjhossz és derék igazítása' },
+      { icon: 'shield' as const, title: 'Valódi bőr és irha', sub: 'Ellenőrzött, természetes anyagok' },
+    ]
+  : [
+      { icon: 'store' as const, title: 'Central Budapest store', sub: 'Kossuth Lajos u. 18 · Since 2004' },
+      { icon: 'clock' as const, title: 'Personal fitting', sub: 'Walk-ins welcome, no booking needed' },
+      { icon: 'scissors' as const, title: 'Tailored sizing', sub: 'Sleeve & waist adjustments in-store' },
+      { icon: 'shield' as const, title: 'Genuine leather & fur', sub: 'Verified natural materials' },
+    ];
+---
+
+<section class="home-discovery" aria-label={hu ? 'Gyors kategória- és modellkeresés' : 'Quick category and model discovery'}>
+  <div class="wrap">
+    <ul class="story-strip">
+      {stories.map((item) => (
+        <li>
+          <a href={item.href} class="story-card">
+            <span class="story-thumb">
+              <picture>
+                <source srcset={toThumbAvif(item.img)} type="image/avif" />
+                <source srcset={toThumbWebp(item.img)} type="image/webp" />
+                <img src={item.img} alt={item.label} width="96" height="96" loading="lazy" decoding="async" />
+              </picture>
+            </span>
+            <span class="story-label">{item.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="home-search-box" data-home-search>
+      <div class="home-search-input-wrap">
+        <Icon name="search" class="home-search-icon" />
+        <input
+          type="search"
+          class="home-search-input"
+          data-home-search-input
+          autocomplete="off"
+          placeholder={hu ? 'Keresés modellek, színek vagy fazonok között…' : 'Search models, colours or styles…'}
+          aria-label={hu ? 'Modellek keresése' : 'Search models'}
+        />
+        <a href={hu ? '/kollekciok/' : '/en/collections/'} class="home-search-browse">
+          {hu ? 'Katalógus' : 'Catalog'}
+        </a>
+      </div>
+
+      <div class="home-search-trending" role="group" aria-label={hu ? 'Népszerű keresések' : 'Popular searches'}>
+        <span class="trending-label">{hu ? 'Gyors keresés:' : 'Popular:'}</span>
+        {trendingTerms.map((term) => (
+          <button type="button" class="trending-chip" data-home-search-chip={term}>
+            {term}
+          </button>
+        ))}
+      </div>
+
+      <div class="home-search-results" data-home-search-results hidden aria-live="polite"></div>
+    </div>
+
+    <ul class="service-strip" aria-label={hu ? 'Üzleti előnyök' : 'Boutique services'}>
+      {services.map((s) => (
+        <li class="service-item">
+          <span class="service-icon" aria-hidden="true"><Icon name={s.icon} /></span>
+          <span class="service-copy">
+            <strong>{s.title}</strong>
+            <span>{s.sub}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<script is:inline define:vars={{ searchDataUrl, lang }}>
+(() => {
+  const root = document.querySelector('[data-home-search]');
+  if (!root) return;
+  const input = root.querySelector('[data-home-search-input]');
+  const resultsEl = root.querySelector('[data-home-search-results]');
+  if (!input || !resultsEl) return;
+
+  const hu = lang === 'hu';
+  const catalogUrl = hu ? '/kollekciok/' : '/en/collections/';
+  let indexPromise = null;
+
+  const loadIndex = () => {
+    if (!indexPromise) {
+      indexPromise = fetch(searchDataUrl).then((r) => (r.ok ? r.json() : [])).catch(() => []);
+    }
+    return indexPromise;
+  };
+
+  const escapeHtml = (str) =>
+    String(str).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  const render = async (rawQuery) => {
+    const q = rawQuery.trim().toLowerCase();
+    if (!q) {
+      resultsEl.hidden = true;
+      resultsEl.innerHTML = '';
+      return;
+    }
+    const searchIndex = await loadIndex();
+    const tokens = q.split(/\s+/).filter(Boolean);
+    const matches = searchIndex.filter((item) => tokens.every((t) => item.h.includes(t)));
+    if (!matches.length) {
+      resultsEl.innerHTML = `<p class="search-empty">${
+        hu
+          ? 'Nincs találat erre a keresésre. Próbáljon másik színt vagy böngésszen a teljes katalógusban.'
+          : 'No matching models found. Try another colour or browse the full catalog.'
+      } <a href="${catalogUrl}">${hu ? 'Összes modell →' : 'All models →'}</a></p>`;
+      resultsEl.hidden = false;
+      return;
+    }
+    const top = matches.slice(0, 6);
+    const itemsHtml = top
+      .map(
+        (m) => `<a class="search-result-item" href="${escapeHtml(m.u)}">
+          <img src="${escapeHtml(m.i)}" alt="" width="48" height="48" loading="lazy" decoding="async" />
+          <span class="search-result-meta">
+            <strong>${escapeHtml(m.n)}</strong>
+            <span>${escapeHtml(m.c)}${m.m ? ' · ' + escapeHtml(m.m) : ''}</span>
+          </span>
+        </a>`
+      )
+      .join('');
+    const footerHtml =
+      matches.length > 6
+        ? `<div class="search-result-footer"><a href="${catalogUrl}">${
+            hu ? `További ${matches.length - 6} találat a katalógusban →` : `View ${matches.length - 6} more in catalog →`
+          }</a></div>`
+        : '';
+    resultsEl.innerHTML = `<div class="search-result-list">${itemsHtml}</div>${footerHtml}`;
+    resultsEl.hidden = false;
+  };
+
+  input.addEventListener('focus', () => { loadIndex(); }, { once: true });
+  input.addEventListener('input', () => { render(input.value); });
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      input.value = '';
+      render('');
+    }
+  });
+
+  root.querySelectorAll('[data-home-search-chip]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const term = btn.getAttribute('data-home-search-chip') || '';
+      input.value = term;
+      input.focus();
+      render(term);
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!root.contains(e.target)) {
+      resultsEl.hidden = true;
+    }
+  });
+})();
+</script>
+
+<style>
+  .home-discovery {
+    padding: 2rem 0 1.5rem;
+    border-bottom: 1px solid var(--line, #efe4d229);
+  }
+  .story-strip {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .story-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    text-align: center;
+    color: var(--cream, #efe4d2);
+    text-decoration: none;
+  }
+  .story-thumb {
+    width: 92px;
+    height: 92px;
+    border-radius: 999px;
+    overflow: hidden;
+    border: 2px solid #dcb27c55;
+    background: var(--product-surface, #e8e5df);
+    display: block;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .story-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .story-card:hover .story-thumb,
+  .story-card:focus-visible .story-thumb {
+    transform: translateY(-3px);
+    border-color: var(--bright, #dcb27c);
+  }
+  .story-label {
+    font-size: 0.86rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .home-search-box {
+    position: relative;
+    max-width: 780px;
+    margin: 0 auto 1.5rem;
+  }
+  .home-search-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg2, #241a12);
+    border: 1px solid #dcb27c4d;
+    border-radius: 999px;
+    padding: 0.35rem 0.45rem 0.35rem 1rem;
+  }
+  .home-search-input-wrap:focus-within {
+    border-color: var(--bright, #dcb27c);
+    box-shadow: 0 0 0 3px #dcb27c26;
+  }
+  .home-search-box :global(.home-search-icon) {
+    color: var(--bright, #dcb27c);
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+  }
+  .home-search-input {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: 0;
+    color: var(--cream, #efe4d2);
+    font-size: 0.95rem;
+    padding: 0.45rem 0.25rem;
+    outline: none;
+  }
+  .home-search-input::placeholder {
+    color: var(--dim, #c9bba5);
+  }
+  .home-search-browse {
+    flex-shrink: 0;
+    background: var(--bright, #dcb27c);
+    color: var(--bg, #1b120c);
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 0.5rem 1.05rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  .home-search-browse:hover {
+    opacity: 0.9;
+  }
+
+  .home-search-trending {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    margin-top: 0.7rem;
+  }
+  .trending-label {
+    font-size: 0.8rem;
+    color: var(--dim, #c9bba5);
+  }
+  .trending-chip {
+    background: #dcb27c14;
+    border: 1px solid #dcb27c3d;
+    color: var(--cream, #efe4d2);
+    border-radius: 999px;
+    padding: 0.22rem 0.7rem;
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .trending-chip:hover {
+    border-color: var(--bright, #dcb27c);
+    background: #dcb27c26;
+  }
+
+  .home-search-results {
+    margin-top: 0.75rem;
+    background: var(--bg2, #241a12);
+    border: 1px solid #dcb27c4d;
+    border-radius: 12px;
+    padding: 0.75rem;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  }
+  .home-search-results :global(.search-result-list) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+  .home-search-results :global(.search-result-item) {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.45rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--cream, #efe4d2);
+    background: #ffffff05;
+    border: 1px solid transparent;
+  }
+  .home-search-results :global(.search-result-item:hover) {
+    border-color: #dcb27c66;
+    background: #dcb27c12;
+  }
+  .home-search-results :global(.search-result-item img) {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    object-fit: cover;
+    object-position: center top;
+    background: var(--product-surface, #e8e5df);
+    flex-shrink: 0;
+  }
+  .home-search-results :global(.search-result-meta) {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 0.1rem;
+  }
+  .home-search-results :global(.search-result-meta strong) {
+    font-size: 0.88rem;
+    line-height: 1.25;
+  }
+  .home-search-results :global(.search-result-meta span) {
+    font-size: 0.76rem;
+    color: var(--dim, #c9bba5);
+  }
+  .home-search-results :global(.search-result-footer),
+  .home-search-results :global(.search-empty) {
+    margin: 0.65rem 0 0;
+    font-size: 0.84rem;
+    color: var(--dim, #c9bba5);
+    text-align: center;
+  }
+  .home-search-results :global(.search-result-footer a),
+  .home-search-results :global(.search-empty a) {
+    color: var(--bright, #dcb27c);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .service-strip {
+    list-style: none;
+    margin: 0;
+    padding: 1.25rem 0 0.25rem;
+    border-top: 1px solid var(--line, #efe4d229);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .service-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+  }
+  .service-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #dcb27c14;
+    border: 1px solid #dcb27c3d;
+    color: var(--bright, #dcb27c);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .service-copy {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .service-copy strong {
+    font-size: 0.9rem;
+    color: var(--cream, #efe4d2);
+    line-height: 1.25;
+  }
+  .service-copy span {
+    font-size: 0.78rem;
+    color: var(--dim, #c9bba5);
+    line-height: 1.35;
+  }
+
+  @media (max-width: 980px) {
+    .story-strip {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 0.85rem;
+      padding-bottom: 0.35rem;
+    }
+    .story-strip > li {
+      flex: 0 0 92px;
+      scroll-snap-align: start;
+    }
+    .story-thumb {
+      width: 78px;
+      height: 78px;
+    }
+    .service-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 620px) {
+    .home-discovery {
+      padding: 1.5rem 0 1.25rem;
+    }
+    .home-search-results :global(.search-result-list) {
+      grid-template-columns: 1fr;
+    }
+    .home-search-browse {
+      padding: 0.45rem 0.8rem;
+      font-size: 0.8rem;
+    }
+    .service-strip {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+    }
+  }
+</style>

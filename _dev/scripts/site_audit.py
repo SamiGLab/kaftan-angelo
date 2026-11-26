@@ -65,9 +65,11 @@ def main():
     for page in html_files:
         rel=page.relative_to(ROOT)
         p=Parser()
-        try: p.feed(page.read_text(encoding='utf-8', errors='replace'))
+        raw_text = page.read_text(encoding='utf-8', errors='replace')
+        try: p.feed(raw_text)
         except json.JSONDecodeError: seo.append((rel,'invalid JSON-LD'))
-        special = page.name.startswith('google') or page.name=='404.html' or 'admin' in page.parts
+        is_legacy_redirect = 'noindex' in p.robots and bool(p.canonical) and 'location.replace(' in raw_text
+        special = page.name.startswith('google') or page.name=='404.html' or 'admin' in page.parts or is_legacy_redirect
         if not special:
             route='/' + page.parent.relative_to(ROOT).as_posix().strip('./')
             if route != '/': route += '/'

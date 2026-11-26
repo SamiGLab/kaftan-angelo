@@ -3,6 +3,7 @@ import Icon from './Icon.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import AnalyticsConsent from './AnalyticsConsent.astro';
+import MobileNavBar from './MobileNavBar.astro';
 import WhatsAppButton from './WhatsAppButton.astro';
 import sharp from 'sharp';
 
@@ -114,6 +115,7 @@ const graph = { '@context':'https://schema.org', '@graph':[businessSchema, websi
   {!page.canonical.includes('/partner-portal/') && <AnalyticsConsent lang={lang} />}
   {page.mainHtml?.includes('data-map-panel') && <script is:inline defer src="/assets/js/privacy-settings.js"></script>}
   <WhatsAppButton lang={lang} pageTitle={page.title} canonicalUrl={page.canonical} />
+  {!isPartnerPortal && <MobileNavBar lang={lang} />}
   {page.mainHtml?.includes('data-product-image') && <dialog class="product-dialog" data-product-dialog aria-labelledby="product-preview-title">
     <div class="preview-header"><h2 id="product-preview-title" data-preview-title>{lang === 'hu' ? 'Modell' : 'Model'}</h2><button class="preview-close" type="button" data-preview-close aria-label={lang === 'hu' ? 'Bezárás' : 'Close'}><Icon name="x" /></button></div>
     <div class="preview-body"><div class="preview-media"><img data-preview-image src={heroImage} alt="" width="900" height="900" loading="lazy" /><div class="preview-thumbs" data-preview-thumbs hidden role="group" aria-label={lang === 'hu' ? 'Termékfotók' : 'Product photos'}></div></div><div class="preview-details"><p class="preview-material" data-preview-material hidden></p><p>{lang === 'hu' ? 'Az aktuális méretekről és elérhetőségről érdeklődjön közvetlenül az üzletben. A kabátokat személyesen próbálhatja fel.' : 'Ask our store about available sizes and current availability. Visit us to try the jackets on in person.'}</p><div class="preview-actions"><a class="btn btn-primary" data-preview-inquiry data-interest-source="product_preview" href="https://wa.me/36203593216">{lang === 'hu' ? 'Érdeklődés WhatsAppon' : 'Ask on WhatsApp'}</a><a class="btn btn-ghost" data-preview-detail href={lang === 'hu' ? '/kollekciok/' : '/en/collections/'} hidden>{lang === 'hu' ? 'Termék részletei →' : 'Model details →'}</a><button type="button" class="btn btn-ghost preview-save-btn" data-preview-save aria-pressed="false" hidden>♡ {lang === 'hu' ? 'Próbalistára' : 'Save to list'}</button></div><div class="preview-controls"><button type="button" data-preview-prev aria-label={lang === 'hu' ? 'Előző modell' : 'Previous model'}><Icon name="previous" /></button><span data-preview-count></span><button type="button" data-preview-next aria-label={lang === 'hu' ? 'Következő modell' : 'Next model'}><Icon name="next" /></button></div></div></div>

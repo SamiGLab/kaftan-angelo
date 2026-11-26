@@ -2,6 +2,8 @@
 import { icon, withIcons } from '../components/icon';
 import { responsiveImages } from '../components/responsive-images';
 import BaseLayout from '../components/BaseLayout.astro';
+import HomeDiscoveryStrip from '../components/HomeDiscoveryStrip.astro';
+import HomeTabbedShowcase from '../components/HomeTabbedShowcase.astro';
 import ModelDetail from '../components/ModelDetail.astro';
 import LandmarksGrid from '../components/LandmarksGrid.astro';
 import TrustHeritage from '../components/TrustHeritage.astro';
@@ -108,6 +110,9 @@ const englishHome = page.path === '/en/';
 const homeMarker = '<section class="split-section">';
 const homeParts = englishHome ? page.mainHtml.split(homeMarker) : [];
 if (englishHome && homeParts.length !== 2) throw new Error('Expected one English homepage trust placement marker');
+const enHeroEndIndex = englishHome ? homeParts[0].indexOf('</section>') : -1;
+const enHeroHtml = enHeroEndIndex !== -1 ? homeParts[0].slice(0, enHeroEndIndex + '</section>'.length) : '';
+const enAfterHeroHtml = enHeroEndIndex !== -1 ? homeParts[0].slice(enHeroEndIndex + '</section>'.length) : homeParts[0] ?? '';
 ---
 <BaseLayout page={page}>
   {page.isModel ? (
@@ -119,7 +124,10 @@ if (englishHome && homeParts.length !== 2) throw new Error('Expected one English
     <Fragment set:html={withIcons(responsiveImages(sections[1]))} />
   ) : englishHome ? (
     <>
-      <Fragment set:html={withIcons(responsiveImages(homeParts[0]))} />
+      {enHeroHtml && <Fragment set:html={withIcons(responsiveImages(enHeroHtml))} />}
+      <HomeDiscoveryStrip lang="en" />
+      <Fragment set:html={withIcons(responsiveImages(enAfterHeroHtml))} />
+      <HomeTabbedShowcase lang="en" />
       <TrustHeritage lang="en" />
       <Fragment set:html={withIcons(responsiveImages(homeMarker + homeParts[1]))} />
     </>
