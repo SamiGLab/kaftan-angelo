@@ -3035,3 +3035,17 @@ html:not(.js) .collection-page [data-product-filters] {
   opacity: 1;
   cursor: default;
 }
+
+
+/* Showroom Catalogue Phase 2 initial paint rules (interactive UI loads lazily in catalog-ui.css) */
+.collection-meta-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; }
+.drawer-filter-trigger { display: none; }
+.catalog-view-switcher { display: inline-flex; align-items: center; gap: 4px; background: rgba(48,33,22,.08); padding: 3px; border-radius: 8px; }
+.view-switch-btn { min-width: 34px; min-height: 34px; padding: 0 7px; border: 1px solid transparent; border-radius: 6px; background: transparent; color: #302116; font-size: .72rem; letter-spacing: .04em; cursor: pointer; }
+.view-switch-btn[aria-pressed="true"] { background: #1b120c; color: #dcb27c; border-color: #1b120c; }
+@media (max-width: 980px) {
+  .drawer-filter-trigger { display: inline-flex; align-items: center; gap: 5px; min-height: 38px; padding: 6px 12px; border: 1px solid #302116; border-radius: 999px; background: #1b120c; color: #efe4d2; font: 600 .8rem inherit; cursor: pointer; }
+  [data-static-discovery] .collection-filter-strip { display: none; }
+  .view-switch-btn[data-view-option="grid-3"],
+  .view-switch-btn[data-view-option="grid-4"] { display: none; }
+}

@@ -251,6 +251,20 @@ function createDiscovery(grid, cards, onChange) {
     // Wait until collectionViews and the existing filter event delegation are initialized.
     queueMicrotask(() => { setSavedMode(true); saved.focus(); });
   }
+  let catalogUiPromise = null;
+  const loadCatalogUi = () => {
+    if (!catalogUiPromise) catalogUiPromise = import('/assets/js/catalog-ui.mjs').catch(() => null);
+    return catalogUiPromise;
+  };
+  const bootPhase2 = (event) => {
+    const target = event?.target instanceof Element ? event.target : null;
+    loadCatalogUi().then(mod => mod?.initCatalogPhase2({ toolbar, grid, triggerTarget: target }));
+  };
+  toolbar.addEventListener('click', (e) => {
+    if (e.target.closest('[data-view-option], [data-filter-drawer-btn]')) bootPhase2(e);
+  }, { once: true });
+  grid.addEventListener('pointerenter', () => bootPhase2(null), { once: true, capture: true });
+  window.addEventListener('scroll', () => bootPhase2(null), { once: true, passive: true });
   return {
     matches(card) {
       const record = records.find(item => item.card === card);

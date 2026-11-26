@@ -1,0 +1,168 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  lang?: 'hu' | 'en';
+}
+
+const { lang = 'hu' } = Astro.props;
+const hu = lang === 'hu';
+const searchDataUrl = `/assets/data/home-search-${lang}.json`;
+const catalogUrl = hu ? '/kollekciok/' : '/en/collections/';
+const trending = hu
+  ? ['báránybőr', 'fekete', 'irha', 'szőrme', 'férfi', 'barna']
+  : ['lambskin', 'black', 'shearling', 'fur', 'men', 'brown'];
+---
+
+<dialog class="global-search-dialog" data-global-search-dialog aria-labelledby="global-search-title">
+  <div class="gs-head">
+    <h2 id="global-search-title">{hu ? 'Modellek keresése' : 'Search models'}</h2>
+    <button type="button" class="gs-close" data-global-search-close aria-label={hu ? 'Keresés bezárása' : 'Close search'}>×</button>
+  </div>
+  <div class="gs-body">
+    <div class="gs-input-wrap">
+      <Icon name="search" class="gs-icon" />
+      <input
+        type="search"
+        class="gs-input"
+        data-global-search-input
+        autocomplete="off"
+        placeholder={hu ? 'Modell, szín vagy anyag (pl. fekete, báránybőr)…' : 'Model, colour or material (e.g. black, lambskin)…'}
+        aria-label={hu ? 'Modellek keresése' : 'Search models'}
+      />
+    </div>
+    <div class="gs-trending" role="group" aria-label={hu ? 'Népszerű keresések' : 'Popular searches'}>
+      <span class="gs-trending-label">{hu ? 'Népszerű:' : 'Popular:'}</span>
+      {trending.map((term) => (
+        <button type="button" class="gs-chip" data-gs-chip={term}>{term}</button>
+      ))}
+    </div>
+    <div class="gs-results" data-global-search-results aria-live="polite"></div>
+    <div class="gs-foot">
+      <a href={catalogUrl}>{hu ? 'Teljes kollekció megtekintése →' : 'Browse full collection →'}</a>
+    </div>
+  </div>
+</dialog>
+
+<script is:inline define:vars={{ searchDataUrl, catalogUrl, lang }}>
+(() => {
+  const dialog = document.querySelector('[data-global-search-dialog]');
+  if (!dialog) return;
+  const input = dialog.querySelector('[data-global-search-input]');
+  const resultsEl = dialog.querySelector('[data-global-search-results]');
+  const closeBtn = dialog.querySelector('[data-global-search-close]');
+  if (!input || !resultsEl) return;
+
+  const hu = lang === 'hu';
+  let indexPromise = null;
+
+  const loadIndex = () => {
+    if (!indexPromise) {
+      indexPromise = fetch(searchDataUrl).then((r) => (r.ok ? r.json() : [])).catch(() => []);
+    }
+    return indexPromise;
+  };
+
+  const esc = (s) =>
+    String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  const render = async (raw) => {
+    const q = raw.trim().toLowerCase();
+    if (!q) {
+      resultsEl.innerHTML = '';
+      return;
+    }
+    const items = await loadIndex();
+    const tokens = q.split(/\s+/).filter(Boolean);
+    const matches = items.filter((item) => tokens.every((t) => item.h.includes(t)));
+    if (!matches.length) {
+      resultsEl.innerHTML = `<p class="gs-empty">${
+        hu ? 'Nincs találat erre a keresésre.' : 'No matching models found.'
+      } <a href="${catalogUrl}">${hu ? 'Összes modell →' : 'All models →'}</a></p>`;
+      return;
+    }
+    resultsEl.innerHTML = matches
+      .slice(0, 8)
+      .map(
+        (m) => `<a class="gs-item" href="${esc(m.u)}">
+          <img src="${esc(m.i)}" alt="" width="48" height="48" loading="lazy" decoding="async" />
+          <span class="gs-item-meta">
+            <strong>${esc(m.n)}</strong>
+            <span>${esc(m.c)}${m.m ? ' · ' + esc(m.m) : ''}</span>
+          </span>
+        </a>`
+      )
+      .join('');
+  };
+
+  const ensureCss = () => {
+    if (!document.querySelector('link[href="/assets/css/global-search.css"]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = '/assets/css/global-search.css';
+      document.head.append(link);
+    }
+  };
+
+  const openModal = () => {
+    ensureCss();
+    loadIndex();
+    if (!dialog.open) dialog.showModal();
+    input.focus();
+  };
+
+  document.addEventListener('click', (e) => {
+    const trigger = e.target instanceof Element ? e.target.closest('[data-global-search-open]') : null;
+    if (trigger) {
+      e.preventDefault();
+      openModal();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      openModal();
+    }
+  });
+
+  closeBtn?.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+  input.addEventListener('input', () => { render(input.value); });
+
+  dialog.querySelectorAll('[data-gs-chip]').forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const term = chip.getAttribute('data-gs-chip') || '';
+      input.value = term;
+      input.focus();
+      render(term);
+    });
+  });
+})();
+</script>
+
+<style>
+  :global(.header-search-trigger) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    border: 1px solid #dcb27c4d;
+    background: transparent;
+    color: var(--cream, #efe4d2);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  :global(.header-search-trigger:hover) {
+    border-color: var(--bright, #dcb27c);
+    color: var(--bright, #dcb27c);
+  }
+  :global(.header-search-trigger .ui-icon) {
+    width: 17px;
+    height: 17px;
+  }
+</style>

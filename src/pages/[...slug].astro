@@ -2,6 +2,8 @@
 import { withIcons } from '../components/icon';
 import { responsiveImages } from '../components/responsive-images';
 import BaseLayout from '../components/BaseLayout.astro';
+import HomeDiscoveryStrip from '../components/HomeDiscoveryStrip.astro';
+import HomeTabbedShowcase from '../components/HomeTabbedShowcase.astro';
 import ModelDetail from '../components/ModelDetail.astro';
 import LandmarksGrid from '../components/LandmarksGrid.astro';
 import TrustHeritage from '../components/TrustHeritage.astro';
@@ -48,16 +50,22 @@ function collectionMarkup(html: string) {
     const saved = isHub
       ? '<button type="button" data-fitting-toggle data-fitting-shortcut aria-pressed="false" disabled>' + savedText + '</button>'
       : '<a data-fitting-shortcut href="' + hub + '#fitting-list">' + savedText + '</a>';
-    const searchLabel = hu ? 'Modell, szín vagy fazon keresése' : 'Search models, colours or styles';
     const colourLabel = hu ? 'Szín' : 'Colour';
     const styleLabel = hu ? 'Fazon' : 'Style';
     const result = hu ? count + ' modell' : count + (count === 1 ? ' model' : ' models');
     const batchStatus = hu ? Math.min(12, count) + ' / ' + count + ' modell' : Math.min(12, count) + ' of ' + count + ' models';
-    const toolbar = '<div class="collection-discovery" data-static-discovery><nav class="collection-shortcuts" aria-label="' + (hu ? 'Kollekció műveletei' : 'Collection actions') + '"><a href="' + hub + '">' + (hu ? 'Kollekció' : 'Collection') + '</a>' + saved + '<a href="' + visit + '">' + (hu ? 'Üzlet' : 'Visit us') + '</a></nav>'
-      + '<div class="collection-search-row"><input type="search" class="collection-search" data-model-search data-clarity-mask="true" aria-label="' + searchLabel + '" placeholder="' + searchLabel + '" disabled></div>'
-      + '<div class="collection-facets"><select class="collection-select" data-model-colour data-clarity-mask="true" aria-label="' + colourLabel + '" disabled><option value="">' + colourLabel + '</option></select><select class="collection-select" data-model-style data-clarity-mask="true" aria-label="' + styleLabel + '" disabled><option value="">' + styleLabel + '</option></select></div>'
+    const drawerBtn = '<button type="button" class="drawer-filter-trigger" data-filter-drawer-btn aria-expanded="false">' + (hu ? 'Szűrők' : 'Filters') + ' <span data-drawer-filter-count hidden></span></button>';
+    const viewSwitcher = '<div class="catalog-view-switcher" data-view-switcher role="group" aria-label="' + (hu ? 'Nézet választása' : 'Choose layout view') + '">'
+      + '<button type="button" class="view-switch-btn" data-view-option="grid-2" aria-label="' + (hu ? '2 oszlop' : '2 columns') + '" aria-pressed="false">▪▪</button>'
+      + '<button type="button" class="view-switch-btn" data-view-option="grid-3" aria-label="' + (hu ? '3 oszlop' : '3 columns') + '" aria-pressed="true">▪▪▪</button>'
+      + '<button type="button" class="view-switch-btn" data-view-option="grid-4" aria-label="' + (hu ? '4 oszlop' : '4 columns') + '" aria-pressed="false">▪▪▪▪</button>'
+      + '<button type="button" class="view-switch-btn" data-view-option="list" aria-label="' + (hu ? 'Lista nézet' : 'List view') + '" aria-pressed="false">☰</button></div>';
+    const toolbar = '<div class="collection-discovery" data-static-discovery>'
+      + '<input type="hidden" data-model-search value="">'
+      + '<div class="collection-filter-strip"><div class="collection-facets"><select class="collection-select" data-model-colour data-clarity-mask="true" aria-label="' + colourLabel + '" disabled><option value="">' + colourLabel + '</option></select><select class="collection-select" data-model-style data-clarity-mask="true" aria-label="' + styleLabel + '" disabled><option value="">' + styleLabel + '</option></select></div></div>'
+      + '<div class="collection-meta-row">' + drawerBtn + '<p class="collection-result" aria-live="polite" aria-atomic="true">' + result + '</p>' + viewSwitcher + '<nav class="collection-shortcuts" aria-label="' + (hu ? 'Kollekció műveletei' : 'Collection actions') + '"><a href="' + hub + '">' + (hu ? 'Kollekció' : 'Collection') + '</a>' + saved + '<a href="' + visit + '">' + (hu ? 'Üzlet' : 'Visit us') + '</a></nav></div>'
       + '<div class="fitting-panel" id="fitting-list" hidden><h2>' + (hu ? 'Próbalistám' : 'My fitting list') + '</h2><p>' + (hu ? 'A lista ezen az eszközön marad. Kérdezzen a kiválasztott modellek elérhetőségéről; a lista nem foglalás.' : 'Your list stays on this device. Ask about the selected models before visiting; saving a model does not reserve it.') + '</p><a class="btn btn-primary" data-fitting-inquiry data-interest-source="fitting_list" href="https://wa.me/36203593216" hidden>' + (hu ? 'Érdeklődés a listáról WhatsAppon' : 'Ask about my list on WhatsApp') + '</a></div>'
-      + '<p class="collection-result" aria-live="polite" aria-atomic="true">' + result + '</p><p class="collection-notice" role="status"></p></div>';
+      + '<p class="collection-notice" role="status"></p></div>';
     const controls = '<div class="center-action collection-controls" data-static-controls' + (count > 0 && count <= 12 ? ' hidden' : '') + '><p role="status">' + batchStatus + '</p><button type="button" class="btn btn-ghost" aria-controls="' + id + '" disabled' + (count <= 12 ? ' hidden' : '') + '>' + (hu ? 'További modellek' : 'Show more models') + '</button><div class="collection-empty" hidden><p>' + (hu ? 'Ebben a kategóriában még nincs modellfotó. Az aktuális elérhetőségről érdeklődjön üzletünkben.' : 'There are no model photos in this category yet. Ask our store about current availability.') + '</p><button type="button" class="btn btn-ghost" data-collection-reset aria-controls="' + id + '" disabled>' + (hu ? 'Összes modell' : 'Show all models') + '</button><a class="btn btn-ghost" href="' + visit + '">' + (hu ? 'Üzlet és elérhetőség' : 'Store and contact') + '</a></div></div>';
     return toolbar + '<div class="product-grid" data-static-collection id="' + id + '">' + cards + '</div>' + controls;
   });
@@ -89,6 +97,9 @@ const englishHome = page.path === '/en/';
 const homeMarker = '<section class="split-section">';
 const homeParts = englishHome ? page.mainHtml.split(homeMarker) : [];
 if (englishHome && homeParts.length !== 2) throw new Error('Expected one English homepage trust placement marker');
+const enHeroEndIndex = englishHome ? homeParts[0].indexOf('</section>') : -1;
+const enHeroHtml = enHeroEndIndex !== -1 ? homeParts[0].slice(0, enHeroEndIndex + '</section>'.length) : '';
+const enAfterHeroHtml = enHeroEndIndex !== -1 ? homeParts[0].slice(enHeroEndIndex + '</section>'.length) : homeParts[0] ?? '';
 ---
 <BaseLayout page={page}>
   {page.isModel ? (
@@ -100,7 +111,10 @@ if (englishHome && homeParts.length !== 2) throw new Error('Expected one English
     <Fragment set:html={withIcons(responsiveImages(sections[1]))} />
   ) : englishHome ? (
     <>
-      <Fragment set:html={withIcons(responsiveImages(homeParts[0]))} />
+      {enHeroHtml && <Fragment set:html={withIcons(responsiveImages(enHeroHtml))} />}
+      <HomeDiscoveryStrip lang="en" />
+      <Fragment set:html={withIcons(responsiveImages(enAfterHeroHtml))} />
+      <HomeTabbedShowcase lang="en" />
       <TrustHeritage lang="en" />
       <Fragment set:html={withIcons(responsiveImages(homeMarker + homeParts[1]))} />
     </>

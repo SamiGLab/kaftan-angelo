@@ -16,6 +16,24 @@ const collection = material === 'shearling' ? (hu ? '/irhakabatok/' : '/en/shear
 const collectionLabel = material === 'shearling' ? (hu ? 'Irhakollekció megtekintése' : 'Explore shearling') : material === 'fur' ? (hu ? 'Szőrmekollekció megtekintése' : 'Explore fur') : (hu ? 'Kollekciók megtekintése' : 'Explore the collections');
 const enquiry = hu ? `Üdvözlöm! A(z) „${f.title}” útmutatót olvastam. Szeretnék érdeklődni egy modell elérhetőségéről és a budapesti próbáról. ${canonical}` : `Hello! I read your guide “${f.title}”. I would like to ask about a model's availability and trying it on at your Budapest store. ${canonical}`;
 const whatsapp = `https://wa.me/36203593216?text=${encodeURIComponent(enquiry)}`;
+
+const allModules = hu
+  ? import.meta.glob<GuideModule>('../content/guides/hu/*.md', { eager: true })
+  : import.meta.glob<GuideModule>('../content/guides/en/*.md', { eager: true });
+const guideList = Object.entries(allModules)
+  .map(([path, m]) => ({
+    slug: path.split('/').pop()!.replace('.md', ''),
+    title: m.frontmatter.title,
+    topic: m.frontmatter.topic,
+    heroImage: m.frontmatter.heroImage,
+    readingMinutes: m.frontmatter.readingMinutes,
+  }))
+  .sort((a, b) => a.slug.localeCompare(b.slug));
+const currentIndex = guideList.findIndex((g) => g.slug === slug);
+const prevGuide = currentIndex > 0 ? guideList[currentIndex - 1] : null;
+const nextGuide = currentIndex >= 0 && currentIndex < guideList.length - 1 ? guideList[currentIndex + 1] : null;
+const relatedGuides = guideList.filter((g) => g.slug !== slug).slice(0, 3);
+
 const page = {
   lang, title: `${f.title} | Kaftan Angelo`, description: f.description, canonical,
   counterpart: f.counterpart, ogImage: `https://kaftanangelo.com${f.heroImage}`,
@@ -27,6 +45,10 @@ const page = {
   <Fragment slot="head"><meta property="article:published_time" content={published} /><meta property="article:modified_time" content={modified} /></Fragment>
   <section class="page-hero" style={`--hero:url('${f.heroImage}');--hero-mobile:url('${f.heroImage.replace('-800.avif','-480.avif')}')`}><div class="wrap"><div class="breadcrumbs"><a href={hu ? '/' : '/en/'}>{hu ? 'Főoldal' : 'Home'}</a> / <a href={root}>{hu ? 'Útmutatók' : 'Guides'}</a> / {f.title}</div><span class="tag mono">{f.topic} · Kaftan Angelo</span><h1>{f.title}</h1><p>{f.description}</p></div></section>
   <section><article class="wrap content article-content" data-pagefind-filter="type:guide">
+    <div class="guide-editorial-bar" data-pagefind-ignore>
+      <a class="guide-back-shop" href={collection}>← {collectionLabel}</a>
+      <a class="guide-all-link" href={root}>{hu ? 'Összes útmutató' : 'All guides'}</a>
+    </div>
     <p class="guide-meta"><a href={hu ? '/rolunk/' : '/en/about/'}>Kaftan Angelo</a> · {hu ? 'Frissítve' : 'Updated'} <time datetime={f.modifiedDate ?? f.publishDate}>{f.modifiedDate ?? f.publishDate}</time> · {f.readingMinutes} {hu ? 'perc olvasás' : 'min read'}</p>
     <nav class="guide-toc" aria-label={hu ? 'A cikk tartalma' : 'On this page'} data-pagefind-ignore><h2>{hu ? 'Ebben az útmutatóban' : 'On this page'}</h2><ul>{headings.map(h => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ul></nav>
     <Content />
@@ -36,6 +58,88 @@ const page = {
       <p><a href={collection}>{collectionLabel}</a> · <a href={whatsapp}>{hu ? 'Érdeklődés WhatsAppon' : 'Ask on WhatsApp'}</a></p>
     </aside>
     <MessageShare title={f.title} url={canonical} lang={lang} />
+
+    {(prevGuide || nextGuide) && (
+      <nav class="guide-prev-next" aria-label={hu ? 'Előző és következő útmutató' : 'Previous and next guide'} data-pagefind-ignore>
+        {prevGuide ? (
+          <a class="guide-pn-card" href={`${root}${prevGuide.slug}/`}>
+            <span class="guide-pn-dir">← {hu ? 'Előző útmutató' : 'Previous guide'}</span>
+            <strong>{prevGuide.title}</strong>
+          </a>
+        ) : <span />}
+        {nextGuide ? (
+          <a class="guide-pn-card guide-pn-next" href={`${root}${nextGuide.slug}/`}>
+            <span class="guide-pn-dir">{hu ? 'Következő útmutató' : 'Next guide'} →</span>
+            <strong>{nextGuide.title}</strong>
+          </a>
+        ) : <span />}
+      </nav>
+    )}
+
+    {relatedGuides.length > 0 && (
+      <section class="guide-related" aria-labelledby="guide-related-heading" data-pagefind-ignore>
+        <h2 id="guide-related-heading">{hu ? 'További ajánlott útmutatók' : 'You might also like'}</h2>
+        <div class="guide-related-grid">
+          {relatedGuides.map((g) => (
+            <article class="guide-related-card">
+              <a href={`${root}${g.slug}/`}>
+                <img src={g.heroImage.replace('-800.avif', '-480.avif')} alt={g.title} width="360" height="202" loading="lazy" decoding="async" />
+                <div class="guide-related-body">
+                  <span class="guide-related-topic">{g.topic}</span>
+                  <h3>{g.title}</h3>
+                  <span class="guide-related-time">{g.readingMinutes} {hu ? 'perc olvasás' : 'min read'}</span>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
   </article></section>
   <section class="store-cta"><div class="wrap"><div><h2>{hu ? 'Próbálja fel a kollekciót Budapesten' : 'Try the collection in Budapest'}</h2><p>Kossuth Lajos u. 18, Budapest 1053</p><p>{hu ? 'Bőr, irha, szőrme és kiegészítők · Budapesten 2004 óta' : 'Leather, shearling, fur & accessories · In Budapest since 2004'}</p></div><a class="btn btn-primary" href={hu ? '/uzlet/' : '/en/visit/'}>{hu ? 'Útvonal és nyitvatartás' : 'Directions & opening hours'}</a></div></section>
 </BaseLayout>
+
+<style>
+  .guide-editorial-bar {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;
+    padding-bottom: 0.85rem; margin-bottom: 1rem; border-bottom: 1px solid var(--line, #efe4d229);
+    font-size: 0.88rem;
+  }
+  .guide-back-shop { color: var(--bright, #dcb27c); font-weight: 600; text-decoration: none; }
+  .guide-back-shop:hover, .guide-all-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .guide-all-link { color: var(--dim, #c9bba5); text-decoration: none; }
+
+  .guide-prev-next {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem;
+    margin: 2rem 0; padding-top: 1.5rem; border-top: 1px solid var(--line, #efe4d229);
+  }
+  .guide-pn-card {
+    display: flex; flex-direction: column; gap: 0.3rem; padding: 1rem;
+    background: var(--bg2, #241a12); border: 1px solid #dcb27c2e; border-radius: 10px;
+    text-decoration: none; transition: border-color 0.2s ease;
+  }
+  .guide-pn-card:hover { border-color: var(--bright, #dcb27c); }
+  .guide-pn-next { text-align: right; }
+  .guide-pn-dir { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--bright, #dcb27c); }
+  .guide-pn-card strong { color: var(--cream, #efe4d2); font-size: 0.95rem; line-height: 1.35; }
+
+  .guide-related { margin-top: 2.25rem; padding-top: 1.75rem; border-top: 1px solid var(--line, #efe4d229); }
+  .guide-related h2 { margin-bottom: 1.15rem; font-size: 1.45rem; }
+  .guide-related-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  .guide-related-card {
+    background: var(--bg2, #241a12); border: 1px solid #dcb27c26; border-radius: 10px; overflow: hidden;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .guide-related-card:hover { border-color: var(--bright, #dcb27c); transform: translateY(-2px); }
+  .guide-related-card a { display: block; text-decoration: none; color: inherit; }
+  .guide-related-card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
+  .guide-related-body { padding: 0.85rem; display: flex; flex-direction: column; gap: 0.3rem; }
+  .guide-related-topic { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--bright, #dcb27c); }
+  .guide-related-body h3 { margin: 0; font-size: 0.95rem; line-height: 1.35; color: var(--cream, #efe4d2); }
+  .guide-related-time { font-size: 0.78rem; color: var(--dim, #c9bba5); }
+
+  @media (max-width: 768px) {
+    .guide-prev-next, .guide-related-grid { grid-template-columns: 1fr; }
+    .guide-pn-next { text-align: left; }
+  }
+</style>
