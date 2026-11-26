@@ -3,8 +3,8 @@
 // mobile/tablet off-canvas filter drawer, and side-by-side model comparison.
 const hu = document.documentElement.lang === 'hu';
 const fittingHub = hu ? '/kollekciok/' : '/en/collections/';
-const viewStorageKey = 'kaftan_catalog_view_v1';
-const compareStorageKey = 'kaftan_compare_v1';
+const viewPrefName = 'kaftan_catalog_view_v1';
+const comparePrefName = 'kaftan_compare_v1';
 const compareLimit = 3;
 let galleryMapPromise = null;
 
@@ -295,7 +295,7 @@ export function renderFilterChips(toolbar, panel, chips, resetAll) {
 // Phase 2: View Switcher (2/3/4/list), Mobile Off-Canvas Filter Drawer, and Side-by-Side Compare
 function readCompareList() {
   try {
-    const data = JSON.parse(sessionStorage.getItem(compareStorageKey) || '[]');
+    const data = JSON.parse(sessionStorage.getItem(comparePrefName) || '[]');
     return Array.isArray(data) ? data.slice(0, compareLimit) : [];
   } catch {
     return [];
@@ -304,7 +304,7 @@ function readCompareList() {
 
 function writeCompareList(list) {
   try {
-    sessionStorage.setItem(compareStorageKey, JSON.stringify(list.slice(0, compareLimit)));
+    sessionStorage.setItem(comparePrefName, JSON.stringify(list.slice(0, compareLimit)));
   } catch { /* ignore storage errors */ }
 }
 
@@ -321,7 +321,7 @@ function setupViewSwitcher(toolbar, grid, triggerTarget) {
       b.setAttribute('aria-pressed', String(b.dataset.viewOption === viewId));
     });
     try {
-      localStorage.setItem(viewStorageKey, viewId);
+      localStorage.setItem(viewPrefName, viewId);
     } catch { /* ignore */ }
   };
 

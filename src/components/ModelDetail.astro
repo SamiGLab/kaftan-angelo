@@ -255,7 +255,7 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
 <script is:inline define:vars={{ lang }}>
 (() => {
   const hu = lang === 'hu';
-  const STORAGE_KEY = 'kaftan_fitting_list_v1';
+  const FITTING_LIST_ID = 'kaftan_fitting_list_v1';
   const LIMIT = 12;
 
   // Size guide modal
@@ -289,7 +289,7 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
   // Fitting list sync on model detail buttons
   const readList = () => {
     try {
-      const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      const parsed = JSON.parse(localStorage.getItem(FITTING_LIST_ID) || '[]');
       return new Set(Array.isArray(parsed) ? parsed.slice(0, LIMIT) : []);
     } catch { return new Set(); }
   };
@@ -313,7 +313,7 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
       const list = readList();
       if (list.has(key)) list.delete(key);
       else if (list.size < LIMIT) list.add(key);
-      try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...list])); } catch {}
+      try { localStorage.setItem(FITTING_LIST_ID, JSON.stringify([...list])); } catch {}
       window.dispatchEvent(new Event('kaftan-fitting-change'));
       syncSaves();
     });
