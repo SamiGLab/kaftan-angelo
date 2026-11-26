@@ -2,8 +2,6 @@
 import { withIcons } from '../components/icon';
 import { responsiveImages } from '../components/responsive-images';
 import BaseLayout from '../components/BaseLayout.astro';
-import HomeDiscoveryStrip from '../components/HomeDiscoveryStrip.astro';
-import HomeTabbedShowcase from '../components/HomeTabbedShowcase.astro';
 import ModelDetail from '../components/ModelDetail.astro';
 import LandmarksGrid from '../components/LandmarksGrid.astro';
 import TrustHeritage from '../components/TrustHeritage.astro';
@@ -13,7 +11,7 @@ import models from '../data/models.json';
 import { modelPages } from '../data/model-pages';
 export function getStaticPaths() {
   return Object.entries({ ...pages, ...modelPages })
-    .filter(([path]) => path !== '/' && !path.startsWith('/utmutatok/') && !path.startsWith('/en/guides/'))
+    .filter(([path]) => path !== '/' && path !== '/en/' && !path.startsWith('/utmutatok/') && !path.startsWith('/en/guides/'))
     .map(([path, page]) => ({ params: { slug: path.replace(/^\//,'').replace(/\/$/,'') }, props: { page } }));
 }
 const { page: originalPage } = Astro.props as { page: any };
@@ -91,15 +89,6 @@ const page = hasLandmarks && !fullLandmarks ? {
 } : sourcePage;
 const sections = hasLandmarks ? page.mainHtml.replace('<!-- store-landmark-pill -->', heroWalkLabel(lang)).split(landmarkMarker) : [];
 if (hasLandmarks && sections.length !== 2) throw new Error(`Expected one landmark placement marker: ${page.path}`);
-// The English homepage shares the TrustHeritage cards with the Hungarian homepage.
-// Split only at a complete section boundary, never inside the neighbouring split-grid.
-const englishHome = page.path === '/en/';
-const homeMarker = '<section class="split-section">';
-const homeParts = englishHome ? page.mainHtml.split(homeMarker) : [];
-if (englishHome && homeParts.length !== 2) throw new Error('Expected one English homepage trust placement marker');
-const enHeroEndIndex = englishHome ? homeParts[0].indexOf('</section>') : -1;
-const enHeroHtml = enHeroEndIndex !== -1 ? homeParts[0].slice(0, enHeroEndIndex + '</section>'.length) : '';
-const enAfterHeroHtml = enHeroEndIndex !== -1 ? homeParts[0].slice(enHeroEndIndex + '</section>'.length) : homeParts[0] ?? '';
 ---
 <BaseLayout page={page}>
   {page.isModel ? (
@@ -109,15 +98,6 @@ const enAfterHeroHtml = enHeroEndIndex !== -1 ? homeParts[0].slice(enHeroEndInde
     <TrustHeritage lang={lang} />
     <LandmarksGrid lang={lang} full={fullLandmarks} />
     <Fragment set:html={withIcons(responsiveImages(sections[1]))} />
-  ) : englishHome ? (
-    <>
-      {enHeroHtml && <Fragment set:html={withIcons(responsiveImages(enHeroHtml))} />}
-      <HomeDiscoveryStrip lang="en" />
-      <Fragment set:html={withIcons(responsiveImages(enAfterHeroHtml))} />
-      <HomeTabbedShowcase lang="en" />
-      <TrustHeritage lang="en" />
-      <Fragment set:html={withIcons(responsiveImages(homeMarker + homeParts[1]))} />
-    </>
   ) : (
     <Fragment set:html={withIcons(responsiveImages(page.mainHtml))} />
   )}

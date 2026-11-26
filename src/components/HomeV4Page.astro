@@ -1,0 +1,94 @@
+---
+import { withIcons } from './icon';
+import { responsiveImages } from './responsive-images';
+import BaseLayout from './BaseLayout.astro';
+import HomeDiscoveryStrip from './HomeDiscoveryStrip.astro';
+import HomeEditorialBanners from './HomeEditorialBanners.astro';
+import HomeTabbedShowcase from './HomeTabbedShowcase.astro';
+import TrustHeritage from './TrustHeritage.astro';
+
+interface Props {
+  page: any;
+  lang: 'hu' | 'en';
+}
+
+const { page, lang } = Astro.props;
+const splitMarker = '<section class="split-section">';
+const parts = page.mainHtml.split(splitMarker);
+const heroEndIndex = parts[0]?.indexOf('</section>') ?? -1;
+const heroHtml = heroEndIndex !== -1 ? parts[0].slice(0, heroEndIndex + '</section>'.length) : '';
+const lowerHtml = parts.length === 2 ? splitMarker + parts[1] : '';
+---
+<BaseLayout page={page}>
+  {parts.length === 2 && heroHtml ? (
+    <>
+      <div class="home-v4-top">
+        <div class="home-v4-cats">
+          <HomeDiscoveryStrip lang={lang} part="categories" />
+        </div>
+        <div class="home-v4-hero-frame">
+          <Fragment set:html={withIcons(responsiveImages(heroHtml))} />
+        </div>
+      </div>
+
+      <HomeDiscoveryStrip lang={lang} part="services" />
+      <HomeEditorialBanners lang={lang} />
+      <HomeTabbedShowcase lang={lang} />
+      <TrustHeritage lang={lang} />
+      <Fragment set:html={withIcons(responsiveImages(lowerHtml))} />
+    </>
+  ) : (
+    <Fragment set:html={withIcons(responsiveImages(page.mainHtml))} />
+  )}
+</BaseLayout>
+
+<style>
+  .home-v4-top {
+    display: flex;
+    flex-direction: column;
+    background: #1b120c;
+    color: #efe4d2;
+    padding-bottom: 0.75rem;
+  }
+  .home-v4-cats {
+    order: 1;
+    background: #1b120c;
+  }
+  .home-v4-hero-frame {
+    order: 2;
+    padding: 0 28px;
+    width: min(1120px, 100%);
+    margin: 0 auto 0.25rem;
+  }
+  .home-v4-hero-frame :global(.home-hero) {
+    border-radius: 16px;
+    border: 1px solid #dcb27c38;
+    overflow: hidden;
+    min-height: 430px;
+  }
+  .home-v4-hero-frame :global(.home-hero-inner) {
+    padding: 52px 44px;
+  }
+
+  @media (max-width: 768px) {
+    .home-v4-cats {
+      order: 2;
+    }
+    .home-v4-hero-frame {
+      order: 1;
+      padding: 0;
+      width: 100%;
+      margin: 0;
+    }
+    .home-v4-hero-frame :global(.home-hero) {
+      border-radius: 0;
+      border-left: 0;
+      border-right: 0;
+      border-top: 0;
+      min-height: 0;
+    }
+    .home-v4-hero-frame :global(.home-hero-inner) {
+      padding: 28px 20px 26px;
+    }
+  }
+</style>

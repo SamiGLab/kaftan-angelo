@@ -4,9 +4,10 @@ import models from '../data/models.json';
 
 interface Props {
   lang: 'hu' | 'en';
+  part?: 'categories' | 'services' | 'both';
 }
 
-const { lang } = Astro.props;
+const { lang, part = 'both' } = Astro.props;
 const hu = lang === 'hu';
 
 const visibleModels = models.filter((m) => !m.catalogHidden);
@@ -76,64 +77,73 @@ const services = hu
     ];
 ---
 
-<section class="home-discovery" aria-label={hu ? 'Gyors kategória- és szolgáltatás áttekintés' : 'Quick category and service overview'}>
-  <div class="wrap">
-    <ul class="story-strip">
-      {stories.map((item) => (
-        <li>
-          <a href={item.href} class="story-card">
-            <span class="story-thumb">
-              <picture>
-                <source srcset={toThumbAvif(item.img)} type="image/avif" />
-                <source srcset={toThumbWebp(item.img)} type="image/webp" />
-                <img src={item.img} alt={item.label} width="96" height="96" loading="lazy" decoding="async" />
-              </picture>
-            </span>
-            <span class="story-label">{item.label}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
+{(part === 'categories' || part === 'both') && (
+  <section class="home-cat-strip" aria-label={hu ? 'Gyors kategóriaválasztó' : 'Quick category browse'}>
+    <div class="wrap">
+      <ul class="story-strip">
+        {stories.map((item) => (
+          <li>
+            <a href={item.href} class="story-card">
+              <span class="story-thumb">
+                <picture>
+                  <source srcset={toThumbAvif(item.img)} type="image/avif" />
+                  <source srcset={toThumbWebp(item.img)} type="image/webp" />
+                  <img src={item.img} alt={item.label} width="84" height="84" loading="lazy" decoding="async" />
+                </picture>
+              </span>
+              <span class="story-label">{item.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
 
-    <ul class="service-strip" aria-label={hu ? 'Üzleti előnyök' : 'Boutique services'}>
-      {services.map((s) => (
-        <li class="service-item">
-          <span class="service-icon" aria-hidden="true"><Icon name={s.icon} /></span>
-          <span class="service-copy">
-            <strong>{s.title}</strong>
-            <span>{s.sub}</span>
-          </span>
-        </li>
-      ))}
-    </ul>
-  </div>
-</section>
+{(part === 'services' || part === 'both') && (
+  <section class="home-service-band" aria-label={hu ? 'Üzleti előnyök' : 'Boutique services'}>
+    <div class="wrap">
+      <ul class="service-strip">
+        {services.map((s) => (
+          <li class="service-item">
+            <span class="service-icon" aria-hidden="true"><Icon name={s.icon} /></span>
+            <span class="service-copy">
+              <strong>{s.title}</strong>
+              <span>{s.sub}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
 
 <style>
-  .home-discovery {
-    padding: 2rem 0 1.5rem;
-    border-bottom: 1px solid var(--line, #efe4d229);
+  .home-cat-strip {
+    padding: 1.25rem 0 1rem;
+    border-bottom: 0;
+    background: #1b120c;
   }
   .story-strip {
     list-style: none;
-    margin: 0 0 1.5rem;
+    margin: 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 1rem;
+    gap: 0.9rem;
   }
   .story-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
     text-align: center;
-    color: var(--cream, #efe4d2);
+    color: #efe4d2;
     text-decoration: none;
   }
   .story-thumb {
-    width: 92px;
-    height: 92px;
+    width: 78px;
+    height: 78px;
     border-radius: 999px;
     overflow: hidden;
     border: 2px solid #dcb27c55;
@@ -153,16 +163,23 @@ const services = hu
     border-color: var(--bright, #dcb27c);
   }
   .story-label {
-    font-size: 0.86rem;
+    font-size: 0.82rem;
     font-weight: 500;
-    line-height: 1.3;
+    line-height: 1.25;
   }
 
+  .home-service-band {
+    padding: 1.35rem 0;
+    border-bottom: 1px solid var(--line, #efe4d229);
+    background: #1b120c;
+  }
   .service-strip {
     list-style: none;
     margin: 0;
-    padding: 1.25rem 0 0.25rem;
-    border-top: 1px solid var(--line, #efe4d229);
+    padding: 1rem 1.25rem;
+    border: 1px solid #dcb27c2e;
+    border-radius: 14px;
+    background: #241a12;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
@@ -177,9 +194,9 @@ const services = hu
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: #dcb27c14;
-    border: 1px solid #dcb27c3d;
-    color: var(--bright, #dcb27c);
+    background: #dcb27c18;
+    border: 1px solid #dcb27c44;
+    color: #dcb27c;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -191,13 +208,13 @@ const services = hu
     min-width: 0;
   }
   .service-copy strong {
-    font-size: 0.9rem;
-    color: var(--cream, #efe4d2);
+    font-size: 0.88rem;
+    color: #efe4d2;
     line-height: 1.25;
   }
   .service-copy span {
     font-size: 0.78rem;
-    color: var(--dim, #c9bba5);
+    color: #d4c6b2;
     line-height: 1.35;
   }
 
@@ -207,16 +224,16 @@ const services = hu
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-      gap: 0.85rem;
-      padding-bottom: 0.35rem;
+      gap: 0.75rem;
+      padding-bottom: 0.25rem;
     }
     .story-strip > li {
-      flex: 0 0 92px;
+      flex: 0 0 84px;
       scroll-snap-align: start;
     }
     .story-thumb {
-      width: 78px;
-      height: 78px;
+      width: 68px;
+      height: 68px;
     }
     .service-strip {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -224,12 +241,16 @@ const services = hu
   }
 
   @media (max-width: 620px) {
-    .home-discovery {
-      padding: 1.5rem 0 1.25rem;
+    .home-cat-strip {
+      padding: 1rem 0 0.75rem;
+    }
+    .home-service-band {
+      padding: 1rem 0;
     }
     .service-strip {
       grid-template-columns: 1fr;
-      gap: 0.8rem;
+      gap: 0.75rem;
+      padding: 0.9rem 1rem;
     }
   }
 </style>

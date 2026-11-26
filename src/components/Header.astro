@@ -7,10 +7,27 @@ const { lang = 'hu', counterpart = lang === 'hu' ? '/en/' : '/' } = Astro.props;
 const hu = lang === 'hu';
 const home = hu ? '/' : '/en/';
 const visit = hu ? '/uzlet/' : '/en/visit/';
+const fittingHref = hu ? '/kollekciok/#fitting-list' : '/en/collections/#fitting-list';
 const route = Astro.url.pathname;
-const collections = hu ? ['/kollekciok/','/noi-borkabatok/','/ferfi-borkabatok/','/irhakabatok/','/szormekabatok/'] : ['/en/collections/','/en/womens-leather-jackets/','/en/mens-leather-jackets/','/en/shearling-jackets/','/en/fur-coats/'];
-const items = [...nav[lang as 'hu'|'en'], [hu ? 'GYIK' : 'FAQ', hu ? '/gyik/' : '/en/faq/']];
-const active = (href:string) => route === href || (href === collections[0] && collections.includes(route)) || (href !== home && route.startsWith(href));
+const collections = hu
+  ? ['/kollekciok/', '/noi-borkabatok/', '/ferfi-borkabatok/', '/irhakabatok/', '/szormekabatok/']
+  : ['/en/collections/', '/en/womens-leather-jackets/', '/en/mens-leather-jackets/', '/en/shearling-jackets/', '/en/fur-coats/'];
+const deptItems: [string, string][] = hu
+  ? [
+      ['Női bőrkabátok', '/noi-borkabatok/'],
+      ['Férfi bőrkabátok', '/ferfi-borkabatok/'],
+      ['Irha', '/irhakabatok/'],
+      ['Szőrme', '/szormekabatok/'],
+    ]
+  : [
+      ['Women’s leather', '/en/womens-leather-jackets/'],
+      ['Men’s leather', '/en/mens-leather-jackets/'],
+      ['Shearling', '/en/shearling-jackets/'],
+      ['Fur', '/en/fur-coats/'],
+    ];
+const items = [...nav[lang as 'hu' | 'en'], [hu ? 'GYIK' : 'FAQ', hu ? '/gyik/' : '/en/faq/']];
+const active = (href: string) =>
+  route === href || (href === collections[0] && collections.includes(route)) || (href !== home && route.startsWith(href));
 
 // Server-side deterministic default announcement for zero CLS and SEO
 const now = new Date();
@@ -37,20 +54,59 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
     </div>
   </div>
 </div>
-<header class="site-header"><div class="wrap nav">
-  <a class="brand" href={home} aria-label={hu ? 'Kaftan Angelo — főoldal' : 'Kaftan Angelo — home'}>Kaftan <span>Angelo</span></a>
-  <div class="nav-tools">
-    <button type="button" class="header-search-trigger" data-global-search-open aria-label={hu ? 'Modellek keresése' : 'Search models'}>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href={home} aria-label={hu ? 'Kaftan Angelo — főoldal' : 'Kaftan Angelo — home'}>Kaftan <span>Angelo</span></a>
+
+    <button
+      type="button"
+      class="header-search-bar"
+      data-global-search-open
+      aria-label={hu ? 'Modellek keresése' : 'Search models'}
+    >
       <Icon name="search" />
+      <span class="header-search-placeholder">
+        {hu ? 'Modell, szín vagy fazon keresése…' : 'Search models, colour or style…'}
+      </span>
+      <kbd class="header-search-kbd" aria-hidden="true">Ctrl+K</kbd>
     </button>
-    <nav class="language-choice" aria-label={hu ? 'Nyelvválasztás' : 'Language selection'}>
-      {hu ? <span class="language-option" lang="hu" aria-current="true"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></span> : <a class="language-option" href={counterpart} lang="hu" hreflang="hu" rel="alternate" aria-label="Az oldal magyarul"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></a>}
-      {hu ? <a class="language-option" href={counterpart} lang="en" hreflang="en" rel="alternate" aria-label="View this page in English"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></a> : <span class="language-option" lang="en" aria-current="true"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></span>}
+
+    <div class="nav-tools">
+      <a
+        class="header-tool-btn header-fitting-btn"
+        href={fittingHref}
+        aria-label={hu ? 'Próbalistám' : 'My fitting list'}
+        title={hu ? 'Próbalistám' : 'My fitting list'}
+      >
+        <span class="header-tool-heart" aria-hidden="true">♡</span>
+        <span class="header-tool-badge" data-header-fitting-count hidden>0</span>
+      </a>
+      <a
+        class="header-tool-btn header-wa-btn"
+        href="https://wa.me/36203593216"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={hu ? 'WhatsApp üzenet' : 'WhatsApp message'}
+        title="WhatsApp"
+      >
+        <Icon name="message" />
+      </a>
+      <nav class="language-choice" aria-label={hu ? 'Nyelvválasztás' : 'Language selection'}>
+        {hu ? <span class="language-option" lang="hu" aria-current="true"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></span> : <a class="language-option" href={counterpart} lang="hu" hreflang="hu" rel="alternate" aria-label="Az oldal magyarul"><span class="language-full">Magyar</span><span class="language-short" aria-hidden="true">HU</span></a>}
+        {hu ? <a class="language-option" href={counterpart} lang="en" hreflang="en" rel="alternate" aria-label="View this page in English"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></a> : <span class="language-option" lang="en" aria-current="true"><span class="language-full">English</span><span class="language-short" aria-hidden="true">EN</span></span>}
+      </nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><Icon name="menu" class="menu-open-icon" /><Icon name="x" class="menu-close-icon" /><span>{hu ? 'Menü' : 'Menu'}</span></button>
+    </div>
+
+    <nav id="primary-navigation" class="links" data-menu aria-label={hu ? 'Fő navigáció' : 'Primary navigation'}>
+      {deptItems.map(([label, href]) => (
+        <a class="nav-dept-link" href={href} aria-current={route === href ? 'page' : undefined}>{label}</a>
+      ))}
+      <span class="nav-dept-sep" aria-hidden="true"></span>
+      {items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}
     </nav>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><Icon name="menu" class="menu-open-icon" /><Icon name="x" class="menu-close-icon" /><span>{hu ? 'Menü' : 'Menu'}</span></button>
   </div>
-  <nav id="primary-navigation" class="links" data-menu aria-label={hu ? 'Fő navigáció' : 'Primary navigation'}>{items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}</nav>
-</div></header>
+</header>
 
 <script is:inline define:vars={{ announcements, announcementCycle, lang }}>
 (() => {
@@ -63,5 +119,176 @@ const defaultUrl = hu ? defaultAnnouncement.url_hu : defaultAnnouncement.url_en;
   const text = document.querySelector('[data-announcement-text]');
   const link = document.querySelector('[data-announcement-link]');
   if (text && link) {text.textContent=lang==='hu'?item.hu:item.en;link.href=lang==='hu'?item.url_hu:item.url_en;}
+
+  const badge = document.querySelector('[data-header-fitting-count]');
+  const syncBadge = () => {
+    if (!badge) return;
+    try {
+      const saved = JSON.parse(localStorage.getItem('kaftan_fitting_list_v1') || '[]');
+      const count = Array.isArray(saved) ? saved.length : 0;
+      badge.textContent = String(count);
+      badge.hidden = count === 0;
+    } catch {}
+  };
+  syncBadge();
+  window.addEventListener('storage', syncBadge);
+  window.addEventListener('kaftan:fitting-list-changed', syncBadge);
 })();
 </script>
+
+<style>
+  .header-search-bar {
+    flex: 1 1 320px;
+    max-width: 500px;
+    min-height: 44px;
+    margin: 0 auto;
+    padding: 0 14px;
+    border-radius: 999px;
+    border: 1px solid #dcb27c44;
+    background: #241a12;
+    color: var(--dim, #c9bba5);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font: inherit;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+  .header-search-bar:hover,
+  .header-search-bar:focus-visible {
+    border-color: var(--bright, #dcb27c);
+    background: #2c2016;
+    color: var(--cream, #efe4d2);
+    outline: none;
+  }
+  .header-search-bar :global(.ui-icon) {
+    width: 17px;
+    height: 17px;
+    color: var(--bright, #dcb27c);
+    flex-shrink: 0;
+  }
+  .header-search-placeholder {
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .header-search-kbd {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.72rem;
+    padding: 2px 7px;
+    border-radius: 5px;
+    border: 1px solid #efe4d22e;
+    color: var(--dim, #c9bba5);
+    background: #1b120c;
+    flex-shrink: 0;
+  }
+
+  .header-tool-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 1px solid #dcb27c44;
+    background: #241a12;
+    color: var(--cream, #efe4d2);
+    flex-shrink: 0;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .header-tool-btn:hover,
+  .header-tool-btn:focus-visible {
+    border-color: var(--bright, #dcb27c);
+    color: var(--bright, #dcb27c);
+  }
+  .header-tool-btn :global(.ui-icon) {
+    width: 18px;
+    height: 18px;
+  }
+  .header-tool-heart {
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+  .header-tool-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: var(--bright, #dcb27c);
+    color: var(--bg, #1b120c);
+    font-size: 0.68rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-tool-badge[hidden] {
+    display: none;
+  }
+
+  .nav-dept-sep {
+    width: 1px;
+    height: 14px;
+    background: #efe4d22e;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 1101px) {
+    :global(.site-header .nav) {
+      flex-wrap: wrap;
+      row-gap: 0;
+      column-gap: 20px;
+      padding-top: 12px;
+      padding-bottom: 0;
+      min-height: 0;
+    }
+    :global(.site-header .nav-tools) {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      order: 0;
+    }
+    :global(.site-header .links) {
+      flex: 0 0 100%;
+      width: 100%;
+      margin-left: 0;
+      margin-top: 12px;
+      padding: 10px 0 11px;
+      border-top: 1px solid #efe4d21a;
+      gap: 16px;
+      justify-content: flex-start;
+    }
+    :global(.site-header .links a) {
+      font-size: 0.78rem;
+      letter-spacing: 0.07em;
+    }
+    .nav-dept-link {
+      color: var(--cream, #efe4d2);
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .header-search-bar {
+      flex: 0 0 38px;
+      width: 38px;
+      min-height: 38px;
+      height: 38px;
+      padding: 0;
+      margin: 0 8px 0 auto;
+      justify-content: center;
+    }
+    .header-search-placeholder,
+    .header-search-kbd,
+    .header-tool-btn,
+    .nav-dept-sep {
+      display: none;
+    }
+  }
+</style>

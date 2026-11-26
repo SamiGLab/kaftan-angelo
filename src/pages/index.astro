@@ -1,30 +1,6 @@
 ---
-import { withIcons } from '../components/icon';
-import { responsiveImages } from '../components/responsive-images';
-import BaseLayout from '../components/BaseLayout.astro';
-import HomeDiscoveryStrip from '../components/HomeDiscoveryStrip.astro';
-import HomeTabbedShowcase from '../components/HomeTabbedShowcase.astro';
-import TrustHeritage from '../components/TrustHeritage.astro';
+import HomeV4Page from '../components/HomeV4Page.astro';
 import pages from '../data/pages.json';
 const page = pages['/'];
-// Insert between complete sections: splitting inside a heading nests the cards in .split-grid.
-const splitMarker = '<section class="split-section">';
-const parts = page.mainHtml.split(splitMarker);
-const heroEndIndex = parts[0]?.indexOf('</section>') ?? -1;
-const heroHtml = heroEndIndex !== -1 ? parts[0].slice(0, heroEndIndex + '</section>'.length) : '';
-const afterHeroHtml = heroEndIndex !== -1 ? parts[0].slice(heroEndIndex + '</section>'.length) : parts[0];
 ---
-<BaseLayout page={page}>
-  {parts.length === 2 ? (
-    <>
-      {heroHtml && <Fragment set:html={withIcons(responsiveImages(heroHtml))} />}
-      <HomeDiscoveryStrip lang="hu" />
-      <Fragment set:html={withIcons(responsiveImages(afterHeroHtml))} />
-      <HomeTabbedShowcase lang="hu" />
-      <TrustHeritage lang="hu" />
-      <Fragment set:html={withIcons(responsiveImages(splitMarker + parts[1]))} />
-    </>
-  ) : (
-    <Fragment set:html={withIcons(responsiveImages(page.mainHtml))} />
-  )}
-</BaseLayout>
+<HomeV4Page page={page} lang="hu" />
