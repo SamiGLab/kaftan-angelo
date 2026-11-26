@@ -18,7 +18,7 @@ const { page: originalPage } = Astro.props as { page: any };
 const collectionRoutes = new Set(['/kollekciok/', '/noi-borkabatok/', '/ferfi-borkabatok/', '/irhakabatok/', '/szormekabatok/', '/en/collections/', '/en/womens-leather-jackets/', '/en/mens-leather-jackets/', '/en/shearling-jackets/', '/en/fur-coats/']);
 const escapeAttr = (value: string) => value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const collectionLang: 'hu' | 'en' = originalPage.lang === 'hu' ? 'hu' : 'en';
-const catalog = new Map(models.filter(model => !model.catalogHidden).map(model => [model.slug, model]));
+const catalog = new Map(models.filter(model => !model.catalogHidden).map(model => [model.slugs[collectionLang], model]));
 // The discovery layout is present in the first HTML response; deferred JS only binds behaviour.
 function collectionMarkup(html: string) {
   const hu = collectionLang === 'hu';
@@ -29,15 +29,20 @@ function collectionMarkup(html: string) {
   return html.replace(/<div class="product-grid">([\s\S]*?<\/article>)<\/div>/g, (_grid: string, rawCards: string) => {
     const id = 'collection-grid-' + index++;
     const count = (rawCards.match(/<article class="product-card"/g) ?? []).length;
+    let cardIndex = 0;
     const cards = rawCards.replace(/<article class="product-card"[^>]*>[\s\S]*?<\/article>/g, (card: string) => {
+      const position = cardIndex++;
       const slug = card.match(/href="\/(?:en\/models|modellek)\/([^/"]+)\/"/)?.[1];
       const model = slug ? catalog.get(slug) : undefined;
       if (!model) return card;
       const variants = model.variants.map(variant => variant.names[collectionLang]).join(' ');
       const saveLabel = (hu ? 'Mentés a próbalistára: ' : 'Save to fitting list: ') + model.names[collectionLang];
-      return card.replace('<article class="product-card"', '<article class="product-card" data-model-key="' + escapeAttr(model.slug) + '" data-model-variants="' + escapeAttr(variants) + '"')
+      let updated = card.replace('<article class="product-card"', '<article class="product-card" data-model-key="' + escapeAttr(model.slug) + '" data-model-variants="' + escapeAttr(variants) + '"')
         .replace(/<p>(Front and back photographs|Elöl- és hátulnézeti fotók)<\/p>/, '<p class="collection-repeated-description">$1</p>')
         .replace('</article>', '<button type="button" class="collection-save" data-model-save aria-pressed="false" aria-label="' + escapeAttr(saveLabel) + '" disabled>♡</button></article>');
+      // The first mobile row is visible immediately; later cards stay lazy.
+      if (position < 2) updated = updated.replace('loading="lazy"', position === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="eager"');
+      return updated;
     });
     const savedText = hu ? 'Próbalista (0)' : 'Fitting list (0)';
     const saved = isHub

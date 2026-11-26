@@ -135,7 +135,8 @@ for(const lang of ['hu','en']) {
   await page.screenshot({path:process.env.COLLECTION_SCREENSHOTS+'/'+lang+'-390-fitting-list.png'});
  }
  const href=await page.$eval('[data-fitting-inquiry]',el=>el.href);
- assert.ok(new URL(href).searchParams.get('text').includes('/noi-ketoldalas-vizallo-borkabat-budapest/'));
+ const savedModelPath=lang==='hu'?'/modellek/noi-ketoldalas-vizallo-borkabat-budapest/':'/en/models/reversible-womens-leather-jacket-budapest/';
+ assert.ok(new URL(href).searchParams.get('text').includes('https://kaftanangelo.com'+savedModelPath));
  await page.locator('.product-card:not([hidden]) [data-model-save]').click();
  assert.equal(await visible(),0);
  assert.equal(await page.$eval('[data-fitting-inquiry]',el=>el.hidden),true);

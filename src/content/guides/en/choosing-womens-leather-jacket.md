@@ -34,6 +34,6 @@ Check the collar, belt and zip line open and closed. Bring your usual bag to che
 
 **Can every cut be altered?** Discuss the individual garment and proposed adjustment with the store; the website does not promise alterations for every model.
 
-Featured boutique pieces: [Yellow women’s leather jacket](/en/models/noi-sarga-borkabat-budapest/) · [Studded women’s leather jacket](/en/models/noi-szegecses-bordzseki-budapest/)
+Featured boutique pieces: [Yellow women’s leather jacket](/en/models/yellow-womens-leather-jacket-budapest/) · [Studded women’s leather jacket](/en/models/studded-womens-leather-jacket-budapest/)
 
 [Fit guide](/en/guides/leather-jacket-fit-guide/) · [Recognising real leather](/en/guides/how-to-tell-real-leather/) · [Try it on in Budapest](/en/visit/)

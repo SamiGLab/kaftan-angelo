@@ -127,8 +127,10 @@ jobs:
         run: npm run build
       - name: Static link and SEO audit
         run: npm run audit:dist
+      - name: Sitemap language clusters and internal links
+        run: python3 _dev/scripts/test-sitemap-navigation.py dist
       - name: Check editorial products without published prices
-        run: node _dev/scripts/test-editorial-products.mjs
+        run: node _dev/scripts/test-editorial-products.mjs && node _dev/scripts/test-localized-model-urls.mjs
       - name: Validate HTML
         run: npm run check:html
       - name: Check local links with Lychee

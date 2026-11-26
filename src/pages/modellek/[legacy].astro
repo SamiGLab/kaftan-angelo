@@ -1,0 +1,39 @@
+---
+import models from '../../data/models.json';
+import { BASE } from '../../data/site';
+
+export function getStaticPaths() {
+  return models
+    .filter(model => model.slug !== model.slugs.hu)
+    .map(model => ({
+      params: { legacy: model.slug },
+      props: {
+        target: `/modellek/${model.slugs.hu}/`,
+        name: model.names.hu,
+      },
+    }));
+}
+
+const { target, name } = Astro.props as { target: string; name: string };
+const canonical = `${BASE}${target}`;
+---
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{name}</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href={canonical} />
+  <meta http-equiv="refresh" content={`0;url=${canonical}`} />
+  <script is:inline define:vars={{ target }}>
+    location.replace(target + location.search + location.hash);
+  </script>
+</head>
+<body>
+  <main>
+    <h1>{name}</h1>
+    <p>Ez az oldal új magyar nyelvű címre költözött: <a href={target}>{canonical}</a>.</p>
+  </main>
+</body>
+</html>
