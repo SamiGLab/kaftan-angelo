@@ -2,7 +2,7 @@
 title: "Női bőrkabát választása: fazon és próba"
 description: "Rövid vagy hosszabb, formakövető vagy lazább női bőrkabát? Hasonlítsa össze a fazont, rétegeket és mozgást a budapesti próbán."
 publishDate: "2026-10-09"
-modifiedDate: "2026-10-09"
+modifiedDate: "2026-11-26"
 counterpart: "/en/guides/choosing-womens-leather-jacket/"
 topic: "Választás"
 readingMinutes: 3
@@ -37,3 +37,5 @@ Nézze meg nyitva és zárva a gallért, az övet és a cipzár vonalát. Hozza 
 Kiemelt budapesti modellek: [Sárga női bőrkabát](/modellek/noi-sarga-borkabat-budapest/) · [Szegecses női bőrdzseki](/modellek/noi-szegecses-bordzseki-budapest/)
 
 [Méretválasztás](/utmutatok/borkabat-meret-utmutato/) · [Valódi bőr felismerése](/utmutatok/valodi-bor-felismerese/) · [Budapesti személyes próba](/uzlet/)
+
+Kétféle megjelenést keres? Nézze meg a [kétoldalas női bőrkabát próbaútmutatóját](/utmutatok/ketoldalas-noi-borkabat/).

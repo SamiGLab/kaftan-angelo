@@ -2,7 +2,7 @@
 title: "Choosing a Women’s Leather Jacket: Cut, Style and Fit"
 description: "Compare short and longer women’s leather jackets, fitted and relaxed cuts, layers and movement during an in-store fitting in Budapest."
 publishDate: "2026-10-09"
-modifiedDate: "2026-10-09"
+modifiedDate: "2026-11-26"
 counterpart: "/utmutatok/noi-borkabat-valasztas/"
 topic: "Choosing"
 readingMinutes: 3
@@ -37,3 +37,5 @@ Check the collar, belt and zip line open and closed. Bring your usual bag to che
 Featured boutique pieces: [Yellow women’s leather jacket](/en/models/yellow-womens-leather-jacket-budapest/) · [Studded women’s leather jacket](/en/models/studded-womens-leather-jacket-budapest/)
 
 [Fit guide](/en/guides/leather-jacket-fit-guide/) · [Recognising real leather](/en/guides/how-to-tell-real-leather/) · [Try it on in Budapest](/en/visit/)
+
+Looking for two different looks? See our [reversible women’s jacket guide](/en/guides/reversible-womens-leather-jacket/).
