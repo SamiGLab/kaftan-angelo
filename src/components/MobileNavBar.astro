@@ -150,5 +150,10 @@ const isVisit = route === visitHref;
     :global(.whatsapp-quick-chat) {
       bottom: calc(5.2rem + env(safe-area-inset-bottom, 0px) + var(--chat-keyboard-offset, 0px)) !important;
     }
+    :global(.whatsapp-quick-chat #whatsapp-chat-card) {
+      position: fixed;
+      bottom: calc(5.2rem + env(safe-area-inset-bottom, 0px) + var(--chat-keyboard-offset, 0px));
+      max-height: calc(var(--chat-visible-height, 100dvh) - 5.2rem - env(safe-area-inset-bottom, 0px) - 24px);
+    }
   }
 </style>
