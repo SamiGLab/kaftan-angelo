@@ -2,7 +2,7 @@
 title: "Budapest Leather Shopping Guide"
 description: "Plan a leather jacket fitting in Budapest: compare styles, ask about sizes and availability, and find Kaftan Angelo on Kossuth Lajos utca."
 publishDate: "2026-10-07"
-modifiedDate: "2026-10-25"
+modifiedDate: "2026-11-26"
 counterpart: "/utmutatok/budapesti-borkabat-vasarlasi-kalauz/"
 topic: "Budapest"
 readingMinutes: 3
@@ -53,3 +53,5 @@ For a particular size, colour or cut, discuss [custom order options](/en/custom-
 **Where can I ask about the price?** Product prices are not published here. Ask privately on WhatsApp or during your visit.
 
 Angelo began working with leather in Istanbul in 1973; the Budapest store opened in 2004. Read [our story](/en/about/), explore [leather jackets in Budapest](/en/leather-jackets-budapest/) or check [directions and opening hours](/en/visit/).
+
+Comparing several pieces? Our [leather jacket price and value guide](/en/guides/leather-jacket-value-and-price/) helps you prepare your price enquiry.

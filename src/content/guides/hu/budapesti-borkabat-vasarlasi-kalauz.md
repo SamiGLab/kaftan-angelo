@@ -2,7 +2,7 @@
 title: "Budapesti bőrkabát vásárlási kalauz"
 description: "Tervezze meg a budapesti kabátpróbát: fazonok, méret- és készletegyeztetés, valamint a Kaftan Angelo megközelítése a Kossuth Lajos utcában."
 publishDate: "2026-10-07"
-modifiedDate: "2026-10-25"
+modifiedDate: "2026-11-26"
 counterpart: "/en/guides/budapest-leather-shopping-guide/"
 topic: "Budapest"
 readingMinutes: 3
@@ -53,3 +53,5 @@ Különleges méret, szín vagy fazon esetén az [egyedi rendelés lehetőségei
 **Hol érdeklődhetek az árról?** Termékárakat itt nem közlünk. Kérjen tájékoztatást közvetlenül WhatsAppon vagy az üzletben.
 
 Angelo 1973-ban Isztambulban kezdett bőrrel foglalkozni; a budapesti üzlet 2004-ben nyílt meg. Ismerje meg [történetünket](/rolunk/), nézze meg a [budapesti bőrkabát-kínálatot](/borkabat-budapest/), és ellenőrizze a [megközelítést, nyitvatartást](/uzlet/).
+
+Ha több darab között mérlegel, a [bőrkabát ár és érték útmutató](/utmutatok/borkabat-ar-ertek/) segít az árkérdés előkészítésében.
