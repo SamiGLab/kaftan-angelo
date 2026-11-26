@@ -100,6 +100,14 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
             )}
           </>
         )}
+        {model.video?.src && (
+          <div class="model-video-card" data-model-video={model.video.src}>
+            <button type="button" class="model-video-trigger" data-video-play aria-label={hu ? `Videó lejátszása: ${name}` : `Play video: ${name}`}>
+              <img src={model.video.poster ?? model.image} alt="" width="480" height="600" loading="lazy" decoding="async" />
+              <span class="model-video-badge">▶ {hu ? 'Videó megtekintése' : 'Watch video'}{model.video.duration ? ` (${model.video.duration})` : ''}</span>
+            </button>
+          </div>
+        )}
       </div>
       <div class="model-info">
         <span class="tag mono">Kaftan Angelo · Budapest</span>
@@ -122,10 +130,20 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
             </label>
           )}
         </div>
-        <div class="actions">
+        {!isWallet && !isBelt && (
+          <div class="size-guide-row">
+            <button type="button" class="size-guide-trigger" data-size-guide-open>
+              <Icon name="ruler" /><span>{hu ? 'Méret- és próbaútmutató' : 'Size & fitting guide'}</span>
+            </button>
+          </div>
+        )}
+        <div class="actions" data-model-primary-actions>
           <a class="btn btn-primary" data-model-inquiry data-interest-source="model_detail" href={`https://wa.me/36203593216?text=${encodeURIComponent(message)}`}>
             <Icon name="message" />{hu ? 'Ár és méret érdeklődés' : 'Ask about price & size'}
           </a>
+          <button type="button" class="btn btn-ghost model-save-btn" data-detail-save={model.slug} aria-pressed="false">
+            ♡ {hu ? 'Próbalistára' : 'Save to list'}
+          </button>
           <a class="btn btn-ghost" href={hu ? '/uzlet/' : '/en/visit/'}>
             <Icon name="location" />{hu ? (isWallet || isBelt ? 'Nézze meg üzletünkben' : 'Próbálja fel üzletünkben') : 'Visit our store'}
           </a>
@@ -177,4 +195,212 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
       </div>
     </div>
   </div>
+
+  {!isWallet && !isBelt && (
+    <dialog class="size-guide-dialog" data-size-guide-dialog aria-labelledby="size-guide-title">
+      <div class="sg-head">
+        <h2 id="size-guide-title">{hu ? 'Méret- és próbaútmutató' : 'Size & fitting guide'}</h2>
+        <button type="button" class="sg-close" data-size-guide-close aria-label={hu ? 'Bezárás' : 'Close'}>×</button>
+      </div>
+      <div class="sg-body">
+        <p>{hu ? 'A valódi bőr és irha kabátok szabása modellenként eltérhet. Az alábbi tájékoztató táblázat segít a kiinduló méret meghatározásában; a pontos illeszkedést személyes próbával és igény szerinti méretre igazítással biztosítjuk.' : 'Genuine leather and shearling cuts vary by model. Use this reference chart as a starting point; we confirm the exact fit during an in-store fitting and offer tailored sleeve and waist adjustments.'}</p>
+        <div class="sg-table-wrap">
+          <table class="sg-table">
+            <thead>
+              <tr>
+                <th>{hu ? 'Méret' : 'Size'}</th>
+                <th>EU</th>
+                <th>{hu ? 'Mellbőség (cm)' : 'Chest (cm)'}</th>
+                <th>{hu ? 'Derék (cm)' : 'Waist (cm)'}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>XS</td><td>34 / 44</td><td>82–86</td><td>66–70</td></tr>
+              <tr><td>S</td><td>36 / 46</td><td>87–92</td><td>71–76</td></tr>
+              <tr><td>M</td><td>38 / 48</td><td>93–98</td><td>77–82</td></tr>
+              <tr><td>L</td><td>40 / 50</td><td>99–104</td><td>83–88</td></tr>
+              <tr><td>XL</td><td>42 / 52</td><td>105–110</td><td>89–95</td></tr>
+              <tr><td>2XL</td><td>44 / 54</td><td>111–118</td><td>96–103</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sg-note">
+          {hu ? 'Kossuth Lajos u. 18, Budapest · ' : 'Kossuth Lajos u. 18, Budapest · '}
+          <a href={hu ? '/utmutatok/borkabat-meret-utmutato/' : '/en/guides/leather-jacket-fit-guide/'}>
+            {hu ? 'Részletes méret- és fazonútmutató →' : 'Full leather jacket fit guide →'}
+          </a>
+        </p>
+      </div>
+    </dialog>
+  )}
+
+  <aside class="model-sticky-bar" data-model-sticky-bar hidden aria-label={hu ? 'Gyors érdeklődés' : 'Quick inquiry'}>
+    <div class="model-sticky-inner">
+      <div class="model-sticky-meta">
+        <strong>{name}</strong>
+        <span>{material}</span>
+      </div>
+      <div class="model-sticky-actions">
+        <button type="button" class="btn btn-ghost model-save-btn" data-detail-save={model.slug} aria-pressed="false">
+          ♡ {hu ? 'Lista' : 'Save'}
+        </button>
+        <a class="btn btn-primary" data-interest-source="model_sticky_bar" href={`https://wa.me/36203593216?text=${encodeURIComponent(message)}`}>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </aside>
 </section>
+
+<script is:inline define:vars={{ lang }}>
+(() => {
+  const hu = lang === 'hu';
+  const STORAGE_KEY = 'kaftan_fitting_list_v1';
+  const LIMIT = 12;
+
+  // Size guide modal
+  const sgOpen = document.querySelector('[data-size-guide-open]');
+  const sgDialog = document.querySelector('[data-size-guide-dialog]');
+  const sgClose = document.querySelector('[data-size-guide-close]');
+  if (sgOpen && sgDialog) {
+    sgOpen.addEventListener('click', () => { if (!sgDialog.open) sgDialog.showModal(); });
+    sgClose?.addEventListener('click', () => sgDialog.close());
+    sgDialog.addEventListener('click', (e) => { if (e.target === sgDialog) sgDialog.close(); });
+  }
+
+  // Lazy video loader (zero LCP impact)
+  document.querySelectorAll('[data-model-video]').forEach((wrap) => {
+    const btn = wrap.querySelector('[data-video-play]');
+    btn?.addEventListener('click', () => {
+      const src = wrap.getAttribute('data-model-video');
+      if (!src) return;
+      const video = document.createElement('video');
+      video.src = src;
+      video.controls = true;
+      video.autoplay = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.loop = true;
+      video.className = 'model-video-player';
+      wrap.replaceChildren(video);
+    });
+  });
+
+  // Fitting list sync on model detail buttons
+  const readList = () => {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      return new Set(Array.isArray(parsed) ? parsed.slice(0, LIMIT) : []);
+    } catch { return new Set(); }
+  };
+  const saveButtons = Array.from(document.querySelectorAll('[data-detail-save]'));
+  const syncSaves = () => {
+    const list = readList();
+    saveButtons.forEach((btn) => {
+      const key = btn.getAttribute('data-detail-save');
+      const saved = key ? list.has(key) : false;
+      btn.setAttribute('aria-pressed', saved ? 'true' : 'false');
+      const isCompact = btn.closest('[data-model-sticky-bar]') !== null;
+      btn.textContent = saved
+        ? (isCompact ? (hu ? '♥ Mentve' : '♥ Saved') : (hu ? '♥ Próbalistán' : '♥ On fitting list'))
+        : (isCompact ? (hu ? '♡ Lista' : '♡ Save') : (hu ? '♡ Próbalistára' : '♡ Save to list'));
+    });
+  };
+  saveButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-detail-save');
+      if (!key) return;
+      const list = readList();
+      if (list.has(key)) list.delete(key);
+      else if (list.size < LIMIT) list.add(key);
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify([...list])); } catch {}
+      window.dispatchEvent(new Event('kaftan-fitting-change'));
+      syncSaves();
+    });
+  });
+  window.addEventListener('kaftan-fitting-change', syncSaves);
+  syncSaves();
+
+  // Sticky bottom action bar when primary actions scroll out of view
+  const actionsEl = document.querySelector('[data-model-primary-actions]');
+  const stickyBar = document.querySelector('[data-model-sticky-bar]');
+  if (actionsEl && stickyBar && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      stickyBar.hidden = entry.isIntersecting || entry.boundingClientRect.top > 0;
+    }, { threshold: 0 });
+    io.observe(actionsEl);
+  }
+})();
+</script>
+
+<style>
+  .size-guide-row { margin: 0.25rem 0 0.9rem; }
+  .size-guide-trigger {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    background: transparent; border: 0; padding: 0.25rem 0;
+    color: var(--bright, #dcb27c); font-size: 0.88rem; font-weight: 600;
+    font-family: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
+  }
+  .size-guide-trigger :global(.ui-icon) { width: 16px; height: 16px; }
+  .model-save-btn[aria-pressed="true"] {
+    border-color: var(--bright, #dcb27c);
+    color: var(--bright, #dcb27c);
+    background: rgba(220, 178, 124, 0.14);
+  }
+  .model-video-card { margin-top: 1rem; border-radius: 10px; overflow: hidden; border: 1px solid #dcb27c3d; }
+  .model-video-trigger { position: relative; display: block; width: 100%; padding: 0; border: 0; background: #1b120c; cursor: pointer; }
+  .model-video-trigger img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; opacity: 0.85; }
+  .model-video-badge {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    background: rgba(27, 18, 12, 0.9); color: #dcb27c; border: 1px solid #dcb27c;
+    border-radius: 999px; padding: 0.65rem 1.25rem; font-weight: 600; font-size: 0.9rem; white-space: nowrap;
+  }
+  .model-video-card :global(.model-video-player) { width: 100%; display: block; background: #000; }
+
+  .size-guide-dialog {
+    width: min(620px, calc(100% - 24px)); padding: 0;
+    border: 1px solid #dcb27c66; border-radius: 14px;
+    background: #1b120c; color: #efe4d2;
+  }
+  .size-guide-dialog::backdrop { background: rgba(0, 0, 0, 0.7); }
+  .sg-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.25rem; border-bottom: 1px solid #dcb27c33;
+  }
+  .sg-head h2 { margin: 0; font-size: 1.2rem; color: #dcb27c; }
+  .sg-close {
+    width: 38px; height: 38px; border-radius: 999px; border: 1px solid #dcb27c55;
+    background: transparent; color: #efe4d2; font-size: 1.3rem; line-height: 1; cursor: pointer;
+  }
+  .sg-body { padding: 1.15rem 1.25rem 1.35rem; font-size: 0.92rem; }
+  .sg-table-wrap { overflow-x: auto; margin: 1rem 0; }
+  .sg-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .sg-table th, .sg-table td { padding: 0.55rem 0.7rem; border-bottom: 1px solid #efe4d224; text-align: left; }
+  .sg-table th { color: #dcb27c; font-weight: 600; }
+  .sg-note { margin: 0.75rem 0 0; font-size: 0.84rem; color: #c9bba5; }
+  .sg-note a { color: #dcb27c; text-decoration: underline; text-underline-offset: 3px; }
+
+  .model-sticky-bar {
+    position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 44;
+    width: min(680px, calc(100% - 176px));
+    background: #1b120c; border: 1px solid #dcb27c66; border-radius: 14px;
+    padding: 0.65rem 1rem; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  }
+  .model-sticky-bar[hidden] { display: none !important; }
+  .model-sticky-inner { display: flex; align-items: center; justify-content: space-between; gap: 0.85rem; }
+  .model-sticky-meta { display: flex; flex-direction: column; min-width: 0; }
+  .model-sticky-meta strong { color: #efe4d2; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .model-sticky-meta span { color: #c9bba5; font-size: 0.76rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .model-sticky-actions { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+  .model-sticky-actions .btn { min-height: 40px; padding: 0.45rem 0.9rem; font-size: 0.82rem; }
+
+  @media (max-width: 768px) {
+    .model-sticky-bar {
+      left: 12px; right: 12px; width: auto; transform: none;
+      bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+      padding: 0.55rem 0.75rem;
+    }
+    .model-sticky-meta span { display: none; }
+  }
+</style>
