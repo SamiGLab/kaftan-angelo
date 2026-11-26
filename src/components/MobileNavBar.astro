@@ -141,6 +141,9 @@ const isVisit = route === visitHref;
       display: none;
     }
 
+    :global(html) {
+      scroll-padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+    }
     :global(footer.footer) {
       padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
     }

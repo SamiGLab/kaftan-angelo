@@ -20,7 +20,10 @@ export function GET({ params }: { params: { lang: 'hu' | 'en' } }) {
       m: mat,
       u: hu ? `/modellek/${m.slugs.hu}/` : `/en/models/${m.slugs.en}/`,
       i: toThumbWebp(m.image),
-      h: `${m.names[lang]} ${m.category[lang].name} ${mat} ${variantNames}`.toLowerCase(),
+      h: `${m.names[lang]} ${m.category[lang].name} ${mat} ${variantNames}`
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase(),
     };
   });
 

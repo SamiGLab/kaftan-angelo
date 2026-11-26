@@ -67,7 +67,7 @@ const trending = hu
     String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
   const render = async (raw) => {
-    const q = raw.trim().toLowerCase();
+    const q = raw.trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
     if (!q) {
       resultsEl.innerHTML = '';
       return;

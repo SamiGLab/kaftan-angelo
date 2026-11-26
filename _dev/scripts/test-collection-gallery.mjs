@@ -115,9 +115,12 @@ for(const lang of ['hu','en']) {
  await page.goto(hub,{waitUntil:'networkidle2'});
  if(await page.$eval('[data-consent-banner]',node=>!node.hidden))await page.click('[data-consent-reject]');
  const visible=()=>page.$$eval('.product-card',cards=>cards.filter(card=>!card.hidden).length);
- await page.type('[data-model-search]',lang==='hu'?'ketoldalas':'reversible');
- assert.equal(await visible(),1,'Accent-insensitive model search');
- await page.$eval('[data-model-search]',el=>{el.value='';el.dispatchEvent(new Event('input',{bubbles:true}));});
+ await page.click('[data-global-search-open]');
+ await page.waitForSelector('[data-global-search-dialog][open] [data-global-search-input]');
+ await page.type('[data-global-search-input]',lang==='hu'?'ketoldalas':'reversible');
+ await page.waitForFunction(()=>document.querySelectorAll('[data-global-search-results] .gs-item').length>0);
+ assert.ok(await page.$eval('[data-global-search-results]',el=>/Kétoldalas|Reversible/.test(el.textContent)),'Accent-insensitive model search');
+ await page.click('[data-global-search-close]');
  await page.select('[data-model-colour]','green');
  assert.ok(await visible()>0);
  assert.ok(await page.$eval('.product-card:not([hidden]) h3',el=>/Kétoldalas|Reversible/.test(el.textContent)),'Verified variant colours are searchable');
@@ -173,7 +176,7 @@ for(const lang of ['hu','en']) {
    const card=grid.querySelector('.product-card');
    const box=card.getBoundingClientRect();
    const toolbar=grid.previousElementSibling;
-   return {top:box.top,width:box.width,height:box.height,toolbarHeight:toolbar.getBoundingClientRect().height,disabled:toolbar.querySelector('[data-model-search]').disabled};
+   return {top:box.top,width:box.width,height:box.height,toolbarHeight:toolbar.getBoundingClientRect().height,disabled:toolbar.querySelector('[data-model-colour]').disabled};
   });
   const before=await geometry();
   assert.ok(before.disabled && before.toolbarHeight>0,'Static discovery visible before JavaScript binds');
@@ -181,7 +184,7 @@ for(const lang of ['hu','en']) {
   await heldRequest.continue();
   heldRequest=null;
   await navigation;
-  await page.waitForFunction(()=>!document.querySelector('[data-model-search]').disabled);
+  await page.waitForFunction(()=>!document.querySelector('[data-model-colour]').disabled);
   await page.evaluate(()=>document.fonts.ready);
   const after=await geometry();
   for(const key of ['top','width','height','toolbarHeight'])assert.ok(Math.abs(before[key]-after[key])<=1,lang+' discovery hydration must not change '+key+': '+before[key]+' -> '+after[key]);
