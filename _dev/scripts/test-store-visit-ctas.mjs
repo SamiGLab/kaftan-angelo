@@ -90,5 +90,48 @@ try {
     assert.deepEqual(errors,[],item.lang+' pages have no browser script errors');
     await ctx.close();
   }
+  // New seasonal articles: their conversion block opens ordinary contact links.
+  for (const [lang,slugs] of [
+    ['hu',['borkabat-telen','elegans-noi-borkabat','szormekabat-stilus-telen','budapesti-karacsonyi-vasar-oltozkodes']],
+    ['en',['leather-jacket-in-winter','elegant-womens-leather-jacket-outfits','fur-coat-outfits-winter','what-to-wear-budapest-christmas-markets']]
+  ]) {
+    const ctx=await browser.createBrowserContext();
+    const page=await ctx.newPage();
+    await page.setViewport({width:390,height:844});
+    await page.setRequestInterception(true);
+    page.on('request',req=>/googletagmanager|google-analytics|clarity\\.ms/.test(req.url())?req.respond({status:200,contentType:'application/javascript',body:''}):req.continue());
+    for (const slug of slugs) {
+      const path=(lang==='hu'?'/utmutatok/':'/en/guides/')+slug+'/';
+      const response=await page.goto(base+path,{waitUntil:'domcontentloaded'});
+      assert.equal(response.status(),200,path);
+      assert.equal(await page.$$eval('h1',nodes=>nodes.length),1,path+' single H1');
+      const selector='.guide-visit-actions a';
+      const links=await page.$$eval(selector,nodes=>nodes.map(a=>a.getAttribute('href')));
+      assert.equal(links.length,3,path+' three contact options');
+      assert.equal(links[0],map,path+' directions first');
+      assert.match(links[1],/^https:\\/\\/wa\\.me\\/36203593216\\?text=/);
+      assert.equal(links[2],phone);
+      if(await page.$eval('[data-consent-banner]',node=>!node.hidden)) await page.click('[data-consent-reject]');
+      const before=await page.evaluate(()=>window.dataLayer.filter(e=>e.event==='kaftan_interest').length);
+      await page.$$eval(selector,els=>els.forEach(el=>{el.addEventListener('click',event=>event.preventDefault());el.click();}));
+      if(!await page.evaluate(()=>window.kaftanAnalytics.choice.analytics)) assert.equal(await page.evaluate(()=>window.dataLayer.filter(e=>e.event==='kaftan_interest').length),before);
+      await page.evaluate(()=>{if(!window.kaftanAnalytics.choice.analytics){document.querySelector('[data-consent-open]').click();document.querySelector('[data-consent-customize]').click();document.querySelector('[data-consent-analytics]').click();document.querySelector('[data-consent-save]').click();}});
+      await page.waitForFunction(()=>window.kaftanAnalytics.choice.analytics);
+      for(const [i,action] of ['directions_click','whatsapp_click','phone_click'].entries()){
+        const count=await page.evaluate(a=>window.dataLayer.filter(e=>e.event==='kaftan_interest'&&e.interest_action===a).length,action);
+        await page.$$eval(selector,(els,index)=>els[index].click(),i);
+        const events=await page.evaluate(a=>window.dataLayer.filter(e=>e.event==='kaftan_interest'&&e.interest_action===a),action);
+        assert.equal(events.length,count+1,path+' one '+action);
+        assert.equal(events.at(-1).page_path,path);
+        assert.equal(events.at(-1).page_language,lang);
+      }
+      for(const width of [320,390,1365]){
+        await page.setViewport({width,height:844});
+        const rects=await page.$$eval(selector,els=>els.map(el=>el.getBoundingClientRect().toJSON()));
+        for(const rect of rects){assert.ok(rect.height>=44,path+' tap target');assert.ok(rect.left>=-1&&rect.right<=width+1,path+' no overflow');}
+      }
+    }
+    await ctx.close();
+  }
   console.log('PASS HU/EN store visit conversions: real CTA clicks and keyboard navigation, maps/phone, visit hours, safe map load, 320/390 mobile and desktop targets.');
 } finally {await browser.close();}
