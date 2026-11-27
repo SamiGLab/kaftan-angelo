@@ -11,10 +11,20 @@ export function GET({ params }: { params: { lang: 'hu' | 'en' } }) {
   const toThumbWebp = (image: string) =>
     '/assets/images/' + image.replace(/^\//, '').replace(/\.webp$/, '-480.webp');
 
+  const getDeptKey = (url: string) => {
+    if (url.includes('noi-borkabatok') || url.includes('womens-leather')) return 'women';
+    if (url.includes('ferfi-borkabatok') || url.includes('mens-leather')) return 'men';
+    if (url.includes('irhakabatok') || url.includes('shearling')) return 'shearling';
+    if (url.includes('szormekabatok') || url.includes('fur-coats')) return 'fur';
+    return 'other';
+  };
+
   const data = visibleModels.map((m) => {
     const variantNames = (m.variants ?? []).map((v) => v.names[lang]).join(' ');
     const mat = (m as { material?: Record<string, string> }).material?.[lang] ?? '';
     return {
+      s: m.slug,
+      k: getDeptKey(m.category[lang].url),
       n: m.names[lang],
       c: m.category[lang].name,
       m: mat,

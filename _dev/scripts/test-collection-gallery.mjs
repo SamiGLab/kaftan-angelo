@@ -123,11 +123,12 @@ for(const lang of ['hu','en']) {
  assert.match(await page.$eval(match+' h3',node=>node.textContent),lang==='hu'?/Fehér női bőrblézer/:/White women’s leather blazer/);
  await page.locator(match+' [data-model-save]').click();
  await page.locator('[data-mobile-fitting-link]').click();
- await page.waitForFunction(()=>document.querySelector('[data-fitting-toggle]').getAttribute('aria-pressed')==='true');
- assert.equal(await visible(),1);
- assert.equal(await page.$eval(match+' [data-model-save]',node=>node.getAttribute('aria-pressed')),'true');
- await page.$eval(match+' [data-model-save]',button=>button.scrollIntoView({block:'center'}));
- await page.locator(match+' [data-model-save]').click();
+ const drawerItem = '[data-fitting-drawer][open] .fd-item';
+ await page.waitForSelector(drawerItem);
+ assert.match(await page.$eval(drawerItem,node=>node.textContent),lang==='hu'?/Fehér női bőrblézer/:/White women’s leather blazer/);
+ await page.locator(drawerItem+' [data-fd-remove]').click();
+ await page.locator('[data-fd-close]').click();
+ assert.equal(await page.$eval(match+' [data-model-save]',node=>node.getAttribute('aria-pressed')),'false');
  await page.goto(hub,{waitUntil:'networkidle2'});
  await page.click('[data-global-search-open]');
  await page.waitForSelector('[data-global-search-dialog][open] [data-global-search-input]');

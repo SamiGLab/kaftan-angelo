@@ -82,6 +82,7 @@ function closeMenu(restoreFocus = false) {
   if (restoreFocus) menuButton?.focus();
 }
 function openMenu() {
+  window.dispatchEvent(new CustomEvent('kaftan-close-overlays', { detail: { except: 'menu' } }));
   menuButton?.setAttribute('aria-expanded', 'true');
   menu?.setAttribute('data-open', '');
   if (menu) { menu.scrollTop = 0; menu.scrollLeft = 0; }
@@ -89,6 +90,9 @@ function openMenu() {
   document.documentElement.classList.add('menu-open');
   requestAnimationFrame(() => (menuClose || menu?.querySelector('a, button, summary'))?.focus());
 }
+window.addEventListener('kaftan-close-overlays', event => {
+  if (event.detail?.except !== 'menu' && isMenuOpen()) closeMenu(false);
+});
 menuButton?.addEventListener('click', () => {
   if (isMenuOpen()) closeMenu(true);
   else openMenu();
@@ -315,7 +319,7 @@ function createDiscovery(grid, cards, onChange) {
   search.addEventListener('input', onChange);
   colour.addEventListener('change', onChange);
   style.addEventListener('change', onChange);
-  window.addEventListener('kaftan-fitting-change', () => { refreshSaved(); if (savedOnly) onChange(); });
+  window.addEventListener('kaftan-fitting-change', () => { fittingList = readFittingList(); refreshSaved(); if (savedOnly) onChange(); });
   window.addEventListener('storage', event => {
     if (event.key !== fittingStorageKey && event.key !== null) return;
     fittingList = readFittingList();
@@ -330,9 +334,6 @@ function createDiscovery(grid, cards, onChange) {
     };
     if (location.hash === '#fitting-list') queueMicrotask(openSavedList);
     window.addEventListener('hashchange', () => {
-      if (location.hash === '#fitting-list') openSavedList();
-    });
-    document.querySelector('[data-mobile-fitting-link]')?.addEventListener('click', () => {
       if (location.hash === '#fitting-list') openSavedList();
     });
   }
