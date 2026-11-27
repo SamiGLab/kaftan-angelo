@@ -13,3 +13,7 @@ Private Search Console or Analytics observations belong in local review notes, n
 Validation includes the existing source, content, build, HTML, local-link, privacy, mobile, WCAG and Lighthouse gates. `test-editorial-products.mjs` checks every generated HU/EN model page for factual Product/ItemPage information and the absence of commercial price/Offer enhancements.
 
 Real store photos, review requests and Business Profile service attributes require actual business evidence. Do not fabricate photos, reviews, services, published prices or a search-ranking guarantee.
+
+## Storefront copy and local-business review markup
+
+Write HU and EN as natural customer-facing prose, preserving facts and URLs. Remove inflated quality claims, repeated marketing phrases, unnecessary dramatic contrasts and unsupported guarantees. Treat the storefront title change as a limited search-snippet experiment; keep category titles and canonicals stable and compare finalized query/page/device data after indexing. Cross-link relevant buying guides from the collections. The existing fitting list should be reused rather than duplicated. Keep the genuine Google review link, but do not hardcode a changing review count or import third-party aggregate ratings into the store’s own LocalBusiness schema. Follow Google’s review snippet guidelines: https://developers.google.com/search/docs/appearance/structured-data/review-snippet .

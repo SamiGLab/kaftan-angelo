@@ -15,37 +15,37 @@ const en = lang === 'en';
     <div class="trust-badge-row">
       <span class="trust-badge">
         <Icon name="award" />
-        <span>{en ? 'In Budapest Since 2004 · 20+ Years Heritage' : '2004 óta Budapest szívében · 20+ év szakértelem'}</span>
+        <span>{en ? 'In Budapest since 2004' : 'Budapesten 2004 óta'}</span>
       </span>
       <span class="trust-badge">
         <Icon name="shield" />
-        <span>{en ? '100% Genuine Leather & Shearling' : '100% valódi bőr és irha minőség'}</span>
+        <span>{en ? 'Genuine leather & shearling' : 'Valódi bőr és irha'}</span>
       </span>
       <span class="trust-badge">
         <Icon name="star" class="star-gold" />
-        <span>{en ? '5.0★ Rating on Google' : '5.0★ értékelés a Google-on'}</span>
+        <span>{en ? 'Google customer reviews' : 'Vásárlói vélemények a Google-on'}</span>
       </span>
     </div>
 
     <div class="trust-header">
-      <span class="tag mono">{en ? 'Heritage & Satisfaction' : 'Hagyomány és Bizalom'}</span>
-      <h2 id="trust-heading">{en ? '20 years of trusted leather expertise in Budapest' : '20 év tapasztalat és szakértelem Budapest szívében'}</h2>
-      <p>{en ? 'Welcoming international visitors, expats and Budapest residents since 2004 with personalized fitting and premium genuine outerwear.' : 'A Kaftan Angelo 2004 óta áll a hazai és külföldi vásárlók szolgálatában a Kossuth Lajos utcai bemutatóteremben, prémium minőségű bőrkabátokkal és méretre igazítással.'}</p>
+      <span class="tag mono">{en ? 'Our store' : 'Üzletünk'}</span>
+      <h2 id="trust-heading">{en ? 'Try on your favourites in our Budapest store' : 'Próbálja fel kedvenceit budapesti üzletünkben'}</h2>
+      <p>{en ? 'We’ve welcomed local and international shoppers to Kossuth Lajos utca since 2004. Come in to compare styles and find a comfortable fit.' : '2004 óta várjuk a hazai és külföldi vásárlókat Kossuth Lajos utcai üzletünkben. Próbáljon fel több fazont, hogy megtalálja a kényelmesen illeszkedő kabátot.'}</p>
     </div>
 
     <ul class="trust-grid">
       <li class="trust-card">
         <a class="rating-row" data-google-profile href={businessSchema.hasMap} target="_blank" rel="noopener noreferrer">
           <Icon name="star" />
-          <span>{en ? '5.0★ Google Business Profile' : '5.0★ Google Cégprofil'} <span aria-hidden="true">↗</span></span>
+          <span>{en ? 'Read reviews on Google' : 'Vélemények a Google-on'} <span aria-hidden="true">↗</span></span>
         </a>
-        <h3><Icon name="badge" /> <span>{en ? '5.0 Google satisfaction' : '5.0 Google értékelések'}</span></h3>
-        <p>{en ? 'Verified 5.0 rating on Google Maps: genuine quality, welcoming showroom hospitality and expert fitting in Budapest.' : 'Kiváló 5.0 értékelés a Google Térképen: prémium minőség, barátságos kiszolgálás és szakértő méretre igazítás Budapesten.'}</p>
+        <h3><Icon name="badge" /> <span>{en ? 'Customer experiences' : 'Vásárlóink tapasztalatai'}</span></h3>
+        <p>{en ? 'Read what customers have said about their visits, the jackets they tried on and the service in our store.' : 'Olvassa el vásárlóink véleményét a kabátokról és az üzletünkben szerzett tapasztalataikról.'}</p>
       </li>
 
       <li class="trust-card">
         <h3><Icon name="scissors" /> <span>{en ? 'Expert personal sizing' : 'Személyre szabott méretre igazítás'}</span></h3>
-        <p>{en ? 'Every jacket can be fitted and adjusted to your exact measurements. Experience personal fitting directly in our private dressing rooms.' : 'A kiválasztott fazont kényelmes próbafülkénkben felpróbálhatja, és igény esetén méretre igazítjuk vagy egyedi méretben elkészítjük.'}</p>
+        <p>{en ? 'Try on your chosen jacket and ask us which adjustments are possible for that model.' : 'Próbálja fel a kiválasztott kabátot, és érdeklődjön az adott modell méretre igazítási lehetőségeiről.'}</p>
         <ul class="trust-perks">
           <li><Icon name="check" /> {en ? 'Sleeve and waist adjustments' : 'Ujjhossz és derékbőség igazítása'}</li>
           <li><Icon name="check" /> {en ? 'Custom sizing orders available' : 'Egyedi rendelési és méret opciók'}</li>
@@ -53,8 +53,8 @@ const en = lang === 'en';
       </li>
 
       <li class="trust-card">
-        <h3><Icon name="store" /> <span>{en ? 'Central Belváros showroom' : 'Belvárosi állandó bemutatóterem'}</span></h3>
-        <p>{en ? 'Permanent showroom on Kossuth Lajos utca for two decades. Enjoy reliable aftercare, advice and transparent service without rush.' : 'Két évtizede stabil pont az V. kerületben. Nyugodt próbalehetőség és megbízható garancia a vásárlás után is.'}</p>
+        <h3><Icon name="store" /> <span>{en ? 'Central Budapest store' : 'Belvárosi üzlet'}</span></h3>
+        <p>{en ? 'Find us between Astoria and Ferenciek tere. Take your time trying on jackets and ask us about care or repairs.' : 'Az Astoria és a Ferenciek tere között talál bennünket. Nyugodtan próbáljon fel több kabátot, és kérdezzen az ápolásról vagy a javításról.'}</p>
         <ul class="trust-perks">
           <li><Icon name="check" /> {en ? 'Walk-ins welcome without booking' : 'Időpontfoglalás nélkül is látogatható'}</li>
           <li><Icon name="check" /> {en ? 'Card & cash payments accepted' : 'Bankkártyás és készpénzes fizetés'}</li>
