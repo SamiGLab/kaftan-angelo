@@ -72,12 +72,55 @@ const active = (href: string) =>
       <button class="menu-toggle" type="button" aria-label={hu ? 'Menü' : 'Menu'} aria-expanded="false" aria-controls="primary-navigation"><Icon name="menu" class="menu-open-icon" /><Icon name="x" class="menu-close-icon" /><span>{hu ? 'Menü' : 'Menu'}</span></button>
     </div>
 
+    <div class="mobile-menu-backdrop" data-menu-backdrop hidden></div>
     <nav id="primary-navigation" class="links" data-menu aria-label={hu ? 'Fő navigáció' : 'Primary navigation'}>
-      {deptItems.map(([label, href]) => (
-        <a class="nav-dept-link" href={href} aria-current={route === href ? 'page' : undefined}>{label}</a>
-      ))}
-      <span class="nav-dept-sep" aria-hidden="true"></span>
-      {items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}
+      <div class="mobile-drawer-head">
+        <a class="brand" href={home}>Kaftan <span>Angelo</span></a>
+        <button type="button" class="mobile-drawer-close" data-menu-close aria-label={hu ? 'Menü bezárása' : 'Close menu'}>
+          <Icon name="x" />
+        </button>
+      </div>
+
+      <div class="mobile-drawer-search-wrap">
+        <button type="button" class="mobile-drawer-search" data-global-search-open data-drawer-search-btn>
+          <Icon name="search" />
+          <span>{hu ? 'Modell, szín vagy fazon keresése…' : 'Search models, colour or style…'}</span>
+        </button>
+      </div>
+
+      <div class="desktop-nav-group">
+        {deptItems.map(([label, href]) => (
+          <a class="nav-dept-link" href={href} aria-current={route === href ? 'page' : undefined}>{label}</a>
+        ))}
+        <span class="nav-dept-sep" aria-hidden="true"></span>
+        {items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}
+      </div>
+
+      <div class="mobile-drawer-body">
+        <details class="mobile-drawer-accordion" open={collections.includes(route)}>
+          <summary>{hu ? 'Kollekciók' : 'Collections'}</summary>
+          <div class="mobile-drawer-sub">
+            <a href={collections[0]} aria-current={route === collections[0] ? 'page' : undefined}>{hu ? 'Összes kollekció' : 'All collections'}</a>
+            {deptItems.map(([label, href]) => (
+              <a href={href} aria-current={route === href ? 'page' : undefined}>{label}</a>
+            ))}
+          </div>
+        </details>
+        {items.filter(([, href]) => href !== collections[0]).map(([label, href]) => (
+          <a class="mobile-drawer-link" href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>
+        ))}
+      </div>
+
+      <div class="mobile-drawer-footer">
+        <div class="mobile-drawer-lang" role="group" aria-label={hu ? 'Nyelvválasztás' : 'Language selection'}>
+          {hu ? <span class="mobile-lang-pill is-active" lang="hu" aria-current="true">Magyar (HU)</span> : <a class="mobile-lang-pill" href={counterpart} lang="hu" hreflang="hu" rel="alternate">Magyar (HU)</a>}
+          {hu ? <a class="mobile-lang-pill" href={counterpart} lang="en" hreflang="en" rel="alternate">English (EN)</a> : <span class="mobile-lang-pill is-active" lang="en" aria-current="true">English (EN)</span>}
+        </div>
+        <a class="mobile-drawer-store" href={hu ? '/uzlet/' : '/en/visit/'}>
+          <Icon name="location" />
+          <span>Kossuth Lajos u. 18 · Budapest</span>
+        </a>
+      </div>
     </nav>
   </div>
 </header>
