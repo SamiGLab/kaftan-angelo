@@ -1,5 +1,6 @@
 const hu = document.documentElement.lang === 'hu';
 const modelInquiry = document.querySelector('[data-model-inquiry]');
+const modelStickyInquiry = document.querySelector('[data-interest-source="model_sticky_bar"]');
 const modelInquiryBase = modelInquiry?.getAttribute('href');
 const modelEnquiryFields = document.querySelector('[data-model-enquiry-fields]');
 let selectedModelColour = null;
@@ -9,13 +10,23 @@ function updateModelInquiry() {
   const parts = [url.searchParams.get('text')];
   const size = modelEnquiryFields?.querySelector('[data-enquiry-size]')?.value.trim();
   const colour = selectedModelColour?.name || modelEnquiryFields?.querySelector('[data-enquiry-colour]')?.value.trim();
+  const wantGroup = Boolean(modelEnquiryFields?.querySelector('[data-enquiry-team-group]')?.checked);
   if (size) parts.push(`${hu ? 'Méret' : 'Size'}: ${size}`);
   if (colour) parts.push(`${hu ? 'Szín' : 'Colour'}: ${colour}`);
   if (selectedModelColour?.image) parts.push(selectedModelColour.image);
+  if (wantGroup) {
+    parts.push(
+      hu
+        ? 'Kérés: szeretnék külön privát WhatsApp-csoportot az üzlet csapatával az egyeztetéshez.'
+        : 'Request: please open a separate private WhatsApp group with your store team for my consultation.'
+    );
+  }
   url.searchParams.set('text', parts.join('\n'));
   modelInquiry.href = url.href;
+  if (modelStickyInquiry) modelStickyInquiry.href = url.href;
 }
 modelEnquiryFields?.addEventListener('input', updateModelInquiry);
+modelEnquiryFields?.addEventListener('change', updateModelInquiry);
 
 const colourSelector = document.querySelector('[data-colour-selector]');
 if (colourSelector) {

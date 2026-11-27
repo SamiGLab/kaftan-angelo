@@ -38,6 +38,13 @@ const visitUrl = hu ? '/uzlet/' : '/en/visit/';
     </div>
 
     <div class="fd-foot" data-fd-foot hidden>
+      <label class="fd-group-opt">
+        <input type="checkbox" data-fd-team-group />
+        <span>
+          <strong>{hu ? 'Privát WhatsApp-csoport kérése a listához' : 'Request a private WhatsApp group for this list'}</strong>
+          <small>{hu ? 'A fő üzleti számunkkal indul az 1-1 chat; kérésre csapatunk manuálisan nyitja meg az Ön privát csoportját.' : 'Starts a 1-on-1 chat with our main store WhatsApp; on request, our team manually creates your private group.'}</small>
+        </span>
+      </label>
       <a
         class="btn btn-primary fd-wa-btn"
         data-fd-whatsapp
@@ -71,6 +78,7 @@ const visitUrl = hu ? '/uzlet/' : '/en/visit/';
   const waLink = dialog.querySelector('[data-fd-whatsapp]');
   const closeBtn = dialog.querySelector('[data-fd-close]');
   const clearBtn = dialog.querySelector('[data-fd-clear]');
+  const groupCheck = dialog.querySelector('[data-fd-team-group]');
   if (!bodyEl || !footEl || !countEl || !waLink) return;
 
   const hu = lang === 'hu';
@@ -159,7 +167,12 @@ const visitUrl = hu ? '/uzlet/' : '/en/visit/';
     const intro = hu
       ? 'Üdvözlöm! A Kaftan Angelo próbalistámról az alábbi modellek ára és mérete felől érdeklődnék:'
       : 'Hello! I would like to ask about prices, sizes and availability for these models from my Kaftan Angelo fitting list:';
-    waLink.href = `https://wa.me/36203593216?text=${encodeURIComponent(`${intro}\n${lines.join('\n')}`)}`;
+    const groupLine = groupCheck?.checked
+      ? (hu
+          ? '\n\nKérés: szeretnék külön privát WhatsApp-csoportot az üzlet csapatával az egyeztetéshez.'
+          : '\n\nRequest: please open a separate private WhatsApp group with your store team for my consultation.')
+      : '';
+    waLink.href = `https://wa.me/36203593216?text=${encodeURIComponent(`${intro}\n${lines.join('\n')}${groupLine}`)}`;
     footEl.hidden = false;
   };
 
@@ -202,6 +215,7 @@ const visitUrl = hu ? '/uzlet/' : '/en/visit/';
     writeSlugs([]);
     render();
   });
+  groupCheck?.addEventListener('change', () => render());
 
   closeBtn?.addEventListener('click', () => closeDrawer(true));
   dialog.addEventListener('click', (e) => {
@@ -421,6 +435,14 @@ const visitUrl = hu ? '/uzlet/' : '/en/visit/';
     gap: 10px;
   }
   .fd-foot[hidden] { display: none !important; }
+  .fd-group-opt {
+    display: flex; align-items: flex-start; gap: 9px; padding: 9px 10px;
+    border: 1px solid #e2e6ec; border-radius: 8px; background: #ffffff; cursor: pointer;
+  }
+  .fd-group-opt input { flex: 0 0 18px; width: 18px; height: 18px; margin: 2px 0 0; accent-color: #1d2128; }
+  .fd-group-opt span { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .fd-group-opt strong { font-size: 0.8rem; font-weight: 600; color: #1d2128; line-height: 1.3; }
+  .fd-group-opt small { font-size: 0.72rem; color: #5d636e; line-height: 1.38; }
   .fd-wa-btn {
     width: 100%;
     min-height: 46px;
