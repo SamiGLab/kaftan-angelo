@@ -41,25 +41,47 @@ document.querySelectorAll('.current-year').forEach(element => { element.textCont
 
 const menuButton = document.querySelector('.menu-toggle');
 const menu = document.querySelector('[data-menu]');
-function closeMenu() {
+const menuBackdrop = document.querySelector('[data-menu-backdrop]');
+const menuClose = menu?.querySelector('[data-menu-close]');
+const isMenuOpen = () => menuButton?.getAttribute('aria-expanded') === 'true';
+function closeMenu(restoreFocus = false) {
   menuButton?.setAttribute('aria-expanded', 'false');
   menu?.removeAttribute('data-open');
+  if (menuBackdrop) menuBackdrop.hidden = true;
+  document.documentElement.classList.remove('menu-open');
+  if (restoreFocus) menuButton?.focus();
+}
+function openMenu() {
+  menuButton?.setAttribute('aria-expanded', 'true');
+  menu?.setAttribute('data-open', '');
+  if (menuBackdrop) menuBackdrop.hidden = false;
+  document.documentElement.classList.add('menu-open');
+  requestAnimationFrame(() => (menuClose || menu?.querySelector('a, button, summary'))?.focus());
 }
 menuButton?.addEventListener('click', () => {
-  const open = menuButton.getAttribute('aria-expanded') !== 'true';
-  menuButton.setAttribute('aria-expanded', String(open));
-  menu.toggleAttribute('data-open', open);
+  if (isMenuOpen()) closeMenu(true);
+  else openMenu();
 });
+menuClose?.addEventListener('click', () => closeMenu(true));
+menuBackdrop?.addEventListener('click', () => closeMenu(true));
 document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') { closeMenu(); menuButton.focus(); }
+  if (!isMenuOpen()) return;
+  if (event.key === 'Escape') { closeMenu(true); return; }
+  if (event.key === 'Tab' && menu) {
+    const focusables = [...menu.querySelectorAll('a[href], button:not([disabled]), summary')].filter(el => el.offsetParent !== null);
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  }
 });
-matchMedia('(min-width: 1101px)').addEventListener('change', closeMenu);
-menu?.addEventListener('click', event => { if (event.target.closest('a')) closeMenu(); });
+matchMedia('(min-width: 1101px)').addEventListener('change', () => closeMenu(false));
+menu?.addEventListener('click', event => {
+  if (event.target.closest('a') || event.target.closest('[data-drawer-search-btn]')) closeMenu(false);
+});
 document.addEventListener('click', event => {
-  if (menuButton?.getAttribute('aria-expanded') === 'true' && !event.target.closest('.site-header')) closeMenu();
-});
-document.addEventListener('focusin', event => {
-  if (menuButton?.getAttribute('aria-expanded') === 'true' && !event.target.closest('.site-header')) closeMenu();
+  if (isMenuOpen() && !event.target.closest('.site-header')) closeMenu(false);
 });
 
 // Native dialogs trap focus, handle Escape, and restore focus to the trigger.
