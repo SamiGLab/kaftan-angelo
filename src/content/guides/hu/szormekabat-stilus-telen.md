@@ -6,8 +6,8 @@ modifiedDate: "2026-11-27"
 counterpart: "/en/guides/fur-coat-outfits-winter/"
 topic: "Stílus"
 readingMinutes: 3
-heroImage: "/assets/images/womens-fur-coat-budapest-800.avif"
-heroAlt: "Női szőrmekabát a Kaftan Angelo kollekciójából"
+heroImage: "/assets/images/womens-fur-coat-winter-style-800.avif"
+heroAlt: "Barna szőrmekabát fekete kötött felsővel és bőrkesztyűvel"
 editorialImages: ["/assets/images/brown-womens-fur-jacket-budapest-front-800.avif","/assets/images/cream-belted-womens-coat-fur-collar-budapest-front-800.avif","/assets/images/noi-feher-szormemelleny-budapest-800.avif"]
 ---
 > **Rövid válasz:** A hangsúlyos felületű télikabát mellé gyakran elég egy egyszínű kötött felső, egyszerű nadrág és csizma. A kabát hossza, súlya és a tervezett alkalom alapján érdemes választani.

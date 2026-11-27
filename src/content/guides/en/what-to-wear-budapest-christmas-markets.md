@@ -6,8 +6,8 @@ modifiedDate: "2026-11-27"
 counterpart: "/utmutatok/budapesti-karacsonyi-vasar-oltozkodes/"
 topic: "Budapest"
 readingMinutes: 3
-heroImage: "/assets/images/kaftan-angelo-hero-leather-collection-800.avif"
-heroAlt: "Leather outerwear collection from Kaftan Angelo in Budapest"
+heroImage: "/assets/images/christmas-market-winter-outfit-800.avif"
+heroAlt: "Dark fur coat, light trousers and gloves in a festive market outfit"
 editorialImages: ["/assets/images/brown-mens-jacket-fur-collar-budapest-front-800.avif","/assets/images/silver-grey-womens-fur-jacket-budapest-front-800.avif"]
 ---
 > **Quick answer:** Pack a warm coat, a removable mid-layer, scarf, gloves and comfortable shoes with good grip. Standing at a Christmas market feels different from walking briskly through Budapest.

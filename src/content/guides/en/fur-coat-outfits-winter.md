@@ -6,8 +6,8 @@ modifiedDate: "2026-11-27"
 counterpart: "/utmutatok/szormekabat-stilus-telen/"
 topic: "Style"
 readingMinutes: 3
-heroImage: "/assets/images/womens-fur-coat-budapest-800.avif"
-heroAlt: "Women's fur coat from the Kaftan Angelo collection"
+heroImage: "/assets/images/womens-fur-coat-winter-style-800.avif"
+heroAlt: "Brown fur coat styled with a black knit and leather gloves"
 editorialImages: ["/assets/images/brown-womens-fur-jacket-budapest-front-800.avif","/assets/images/cream-belted-womens-coat-fur-collar-budapest-front-800.avif","/assets/images/noi-feher-szormemelleny-budapest-800.avif"]
 ---
 > **Quick answer:** A textured winter coat often needs little more than a plain knit, simple trousers and boots. Choose the length, weight and styling details according to the occasions you have in mind.

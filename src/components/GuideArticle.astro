@@ -38,6 +38,7 @@ const relatedGuides = guideList.filter((g) => g.slug !== slug).slice(0, 3);
 const page = {
   lang, title: `${f.title} | Kaftan Angelo`, description: f.description, canonical,
   counterpart: f.counterpart, ogImage: `https://kaftanangelo.com${f.heroImage}`,
+  ogImageAlt: f.heroAlt,
   breadcrumbs: [{ name: hu ? 'Főoldal' : 'Home', url: hu ? '/' : '/en/' }, { name: hu ? 'Útmutatók' : 'Guides', url: root }, { name: f.title, url: `${root}${slug}/` }],
   pageSchema: { '@type': 'Article', '@id': `${canonical}#article`, headline: f.title, description: f.description, datePublished: published, dateModified: modified, inLanguage: lang, articleSection: f.topic, mainEntityOfPage: canonical, image: f.editorialImages?.length ? [f.heroImage, ...f.editorialImages].map(src => `https://kaftanangelo.com${src}`) : `https://kaftanangelo.com${f.heroImage}`, author: { '@type': 'Organization', name: 'Kaftan Angelo', url: 'https://kaftanangelo.com' + (hu ? '/rolunk/' : '/en/about/') }, publisher: { '@id': 'https://kaftanangelo.com/#store' } }
 };
