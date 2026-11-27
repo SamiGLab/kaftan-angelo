@@ -41,9 +41,13 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
 ---
 <section>
   <div class="wrap">
-    <div class="breadcrumbs">
-      <a href={collection}>← {collectionLabel}</a>
-    </div>
+    <nav class="breadcrumbs model-breadcrumbs" aria-label={hu ? 'Morzsamenü' : 'Breadcrumb'}>
+      <a href={hu ? '/' : '/en/'}>{hu ? 'Főoldal' : 'Home'}</a>
+      <span aria-hidden="true">/</span>
+      <a href={collection}>{collectionLabel}</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{name}</span>
+    </nav>
     <div class="model-detail">
       <div class="model-photo">
         {model.variants && model.variants.length > 0 ? (
@@ -115,38 +119,40 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
         <p class="model-material" data-model-material="true">
           <strong>{hu ? 'Anyag és kategória: ' : 'Material &amp; category: '}</strong>{material} · {collectionLabel}
         </p>
-        <p class="model-enquiry-summary">
-          {hu ? 'Érdeklődjön a kiválasztott darab áráról, méretéről és elérhetőségéről. Az üzlet személyesen erősíti meg a részleteket.' : 'Ask about the price, size and availability of this piece. Our store will confirm the details directly.'}
-        </p>
-        <div class="model-enquiry-fields" data-model-enquiry-fields>
-          <label>
-            <span>{hu ? (isBelt ? 'Övhossz (opcionális)' : isWallet ? 'Kívánt méret (opcionális)' : 'Keresett méret (opcionális)') : (isBelt ? 'Belt length (optional)' : 'Preferred size (optional)')}</span>
-            <input type="text" data-enquiry-size maxlength="40" autocomplete="off" placeholder={hu ? 'Pl. M, L vagy cm' : 'e.g. M, L or cm'} />
-          </label>
-          {(!model.variants || model.variants.length === 0) && (
+        <div class="model-enquiry-box">
+          <p class="model-enquiry-summary">
+            {hu ? 'Érdeklődjön a kiválasztott darab áráról, méretéről és elérhetőségéről. Az üzlet személyesen erősíti meg a részleteket.' : 'Ask about the price, size and availability of this piece. Our store will confirm the details directly.'}
+          </p>
+          <div class="model-enquiry-fields" data-model-enquiry-fields>
             <label>
-              <span>{hu ? 'Keresett szín (opcionális)' : 'Preferred colour (optional)'}</span>
-              <input type="text" data-enquiry-colour maxlength="40" autocomplete="off" placeholder={hu ? 'Pl. fekete' : 'e.g. black'} />
+              <span>{hu ? (isBelt ? 'Övhossz (opcionális)' : isWallet ? 'Kívánt méret (opcionális)' : 'Keresett méret (opcionális)') : (isBelt ? 'Belt length (optional)' : 'Preferred size (optional)')}</span>
+              <input type="text" data-enquiry-size maxlength="40" autocomplete="off" placeholder={hu ? 'Pl. M, L vagy cm' : 'e.g. M, L or cm'} />
             </label>
-          )}
-        </div>
-        {!isWallet && !isBelt && (
-          <div class="size-guide-row">
-            <button type="button" class="size-guide-trigger" data-size-guide-open>
-              <Icon name="ruler" /><span>{hu ? 'Méret- és próbaútmutató' : 'Size & fitting guide'}</span>
-            </button>
+            {(!model.variants || model.variants.length === 0) && (
+              <label>
+                <span>{hu ? 'Keresett szín (opcionális)' : 'Preferred colour (optional)'}</span>
+                <input type="text" data-enquiry-colour maxlength="40" autocomplete="off" placeholder={hu ? 'Pl. fekete' : 'e.g. black'} />
+              </label>
+            )}
           </div>
-        )}
-        <div class="actions" data-model-primary-actions>
-          <a class="btn btn-primary" data-model-inquiry data-interest-source="model_detail" href={`https://wa.me/36203593216?text=${encodeURIComponent(message)}`}>
-            <Icon name="message" />{hu ? 'Ár és méret érdeklődés' : 'Ask about price & size'}
-          </a>
-          <button type="button" class="btn btn-ghost model-save-btn" data-detail-save={model.slug} aria-pressed="false">
-            ♡ {hu ? 'Próbalistára' : 'Save to list'}
-          </button>
-          <a class="btn btn-ghost" href={hu ? '/uzlet/' : '/en/visit/'}>
-            <Icon name="location" />{hu ? (isWallet || isBelt ? 'Nézze meg üzletünkben' : 'Próbálja fel üzletünkben') : 'Visit our store'}
-          </a>
+          {!isWallet && !isBelt && (
+            <div class="size-guide-row">
+              <button type="button" class="size-guide-trigger" data-size-guide-open>
+                <Icon name="ruler" /><span>{hu ? 'Méret- és próbaútmutató' : 'Size & fitting guide'}</span>
+              </button>
+            </div>
+          )}
+          <div class="actions" data-model-primary-actions>
+            <a class="btn btn-primary" data-model-inquiry data-interest-source="model_detail" href={`https://wa.me/36203593216?text=${encodeURIComponent(message)}`}>
+              <Icon name="message" />{hu ? 'Ár és méret érdeklődés' : 'Ask about price & size'}
+            </a>
+            <button type="button" class="btn btn-ghost model-save-btn" data-detail-save={model.slug} aria-pressed="false">
+              ♡ {hu ? 'Próbalistára' : 'Save to list'}
+            </button>
+            <a class="btn btn-ghost" href={hu ? '/uzlet/' : '/en/visit/'}>
+              <Icon name="location" />{hu ? (isWallet || isBelt ? 'Nézze meg üzletünkben' : 'Próbálja fel üzletünkben') : 'Visit our store'}
+            </a>
+          </div>
         </div>
         <p>{model.intro[lang]}</p>
         <h2>{hu ? 'Mire figyeljen választáskor?' : 'What to check when choosing'}</h2>
@@ -335,72 +341,89 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
 </script>
 
 <style>
-  .size-guide-row { margin: 0.25rem 0 0.9rem; }
+  .model-breadcrumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: .84rem; color: #5d636e; margin-bottom: 18px; }
+  .model-breadcrumbs a { color: #5d636e; text-decoration: none; }
+  .model-breadcrumbs a:hover { color: #1d2128; text-decoration: underline; }
+  .model-breadcrumbs [aria-current="page"] { color: #1d2128; font-weight: 500; }
+
+  .model-enquiry-box {
+    margin: 18px 0 24px;
+    padding: 20px;
+    background: #f6f7f9;
+    border: 1px solid #e6eaf0;
+    border-radius: 10px;
+  }
+  .model-enquiry-box .model-enquiry-summary { margin: 0; font-size: .92rem; color: #4a5059; }
+  .model-enquiry-box .actions { margin: 14px 0 0; }
+
+  .size-guide-row { margin: 0.75rem 0 0.25rem; }
   .size-guide-trigger {
     display: inline-flex; align-items: center; gap: 0.45rem;
     background: transparent; border: 0; padding: 0.25rem 0;
-    color: var(--bright, #dcb27c); font-size: 0.88rem; font-weight: 600;
+    color: #9c522b; font-size: 0.88rem; font-weight: 600;
     font-family: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
   }
+  .size-guide-trigger:hover { color: #1d2128; }
   .size-guide-trigger :global(.ui-icon) { width: 16px; height: 16px; }
   .model-save-btn[aria-pressed="true"] {
-    border-color: var(--bright, #dcb27c);
-    color: var(--bright, #dcb27c);
-    background: rgba(220, 178, 124, 0.14);
+    border-color: #9c522b;
+    color: #9c522b;
+    background: #ffffff;
   }
-  .model-video-card { margin-top: 1rem; border-radius: 10px; overflow: hidden; border: 1px solid #dcb27c3d; }
-  .model-video-trigger { position: relative; display: block; width: 100%; padding: 0; border: 0; background: #1b120c; cursor: pointer; }
-  .model-video-trigger img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; opacity: 0.85; }
+  .model-video-card { margin-top: 1rem; border-radius: 10px; overflow: hidden; border: 1px solid #e6eaf0; }
+  .model-video-trigger { position: relative; display: block; width: 100%; padding: 0; border: 0; background: #1d2128; cursor: pointer; }
+  .model-video-trigger img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; opacity: 0.88; }
   .model-video-badge {
     position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    background: rgba(27, 18, 12, 0.9); color: #dcb27c; border: 1px solid #dcb27c;
+    background: rgba(29, 33, 40, 0.92); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 999px; padding: 0.65rem 1.25rem; font-weight: 600; font-size: 0.9rem; white-space: nowrap;
   }
   .model-video-card :global(.model-video-player) { width: 100%; display: block; background: #000; }
 
   .size-guide-dialog {
     width: min(620px, calc(100% - 24px)); padding: 0;
-    border: 1px solid #dfd7cc; border-radius: 14px;
-    background: #ffffff; color: #1b120c;
-    box-shadow: 0 20px 50px rgba(27, 18, 12, 0.22);
+    border: 1px solid #e6eaf0; border-radius: 14px;
+    background: #ffffff; color: #1d2128;
+    box-shadow: 0 20px 50px rgba(29, 33, 40, 0.22);
   }
-  .size-guide-dialog::backdrop { background: rgba(27, 18, 12, 0.56); }
+  .size-guide-dialog::backdrop { background: rgba(29, 33, 40, 0.54); }
   .sg-head {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1rem 1.25rem; border-bottom: 1px solid #ece6dc;
+    padding: 1rem 1.25rem; border-bottom: 1px solid #e6eaf0;
   }
-  .sg-head h2 { margin: 0; font-size: 1.15rem; color: #1b120c; }
+  .sg-head h2 { margin: 0; font-size: 1.15rem; color: #1d2128; }
   .sg-close {
-    width: 38px; height: 38px; border-radius: 999px; border: 1px solid #dfd7cc;
-    background: #f8f5f0; color: #1b120c; font-size: 1.3rem; line-height: 1; cursor: pointer;
+    width: 38px; height: 38px; border-radius: 999px; border: 1px solid #e6eaf0;
+    background: #f6f7f9; color: #1d2128; font-size: 1.3rem; line-height: 1; cursor: pointer;
   }
-  .sg-body { padding: 1.15rem 1.25rem 1.35rem; font-size: 0.92rem; color: #1b120c; }
+  .sg-body { padding: 1.15rem 1.25rem 1.35rem; font-size: 0.92rem; color: #1d2128; }
   .sg-table-wrap { overflow-x: auto; margin: 1rem 0; }
   .sg-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-  .sg-table th, .sg-table td { padding: 0.55rem 0.7rem; border-bottom: 1px solid #ece6dc; text-align: left; }
-  .sg-table th { color: #8a5c28; font-weight: 600; }
-  .sg-note { margin: 0.75rem 0 0; font-size: 0.84rem; color: #5c4e43; }
-  .sg-note a { color: #8a5c28; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+  .sg-table th, .sg-table td { padding: 0.55rem 0.7rem; border-bottom: 1px solid #e6eaf0; text-align: left; }
+  .sg-table th { color: #9c522b; font-weight: 600; }
+  .sg-note { margin: 0.75rem 0 0; font-size: 0.84rem; color: #5d636e; }
+  .sg-note a { color: #9c522b; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 
   .model-sticky-bar {
     position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 44;
-    width: min(680px, calc(100% - 176px));
-    background: #ffffff; border: 1px solid #dfd7cc; border-radius: 14px;
-    padding: 0.65rem 1rem; box-shadow: 0 12px 32px rgba(27, 18, 12, 0.16);
+    width: min(640px, calc(100% - 220px));
+    background: #ffffff; border: 1px solid #e6eaf0; border-radius: 14px;
+    padding: 0.65rem 1rem; box-shadow: 0 12px 32px rgba(29, 33, 40, 0.14);
   }
   .model-sticky-bar[hidden] { display: none !important; }
   .model-sticky-inner { display: flex; align-items: center; justify-content: space-between; gap: 0.85rem; }
   .model-sticky-meta { display: flex; flex-direction: column; min-width: 0; }
-  .model-sticky-meta strong { color: #1b120c; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .model-sticky-meta span { color: #5c4e43; font-size: 0.76rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .model-sticky-meta strong { color: #1d2128; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .model-sticky-meta span { color: #5d636e; font-size: 0.76rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .model-sticky-actions { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
   .model-sticky-actions .btn { min-height: 40px; padding: 0.45rem 0.9rem; font-size: 0.82rem; }
-  .model-sticky-actions .btn-primary { background: #1b120c; border-color: #1b120c; color: #f8f5f0; }
-  .model-sticky-actions .btn-ghost { background: transparent; border-color: #8a5c28; color: #1b120c; }
+  .model-sticky-actions .btn-primary { background: #1d2128; border-color: #1d2128; color: #ffffff; }
+  .model-sticky-actions .btn-ghost { background: #ffffff; border-color: #d5dce4; color: #1d2128; }
 
   @media (max-width: 768px) {
+    .model-enquiry-box { padding: 16px; }
     .model-sticky-bar {
-      left: 12px; right: 12px; width: auto; transform: none;
+      left: 12px; right: 78px; width: auto; transform: none;
       bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
       padding: 0.55rem 0.75rem;
     }
