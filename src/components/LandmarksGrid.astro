@@ -34,11 +34,13 @@ const faq = locationFaq(lang);
 </section>
 <style>
   .landmarks-grid { list-style: none; padding: 0; margin: 2rem 0 1rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-  .landmark-card { border: 1px solid var(--line, #d8c9b5); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; min-width: 0; }
-  .landmark-card h3 { margin: 0 0 .5rem; }
-  .landmark-distance { display: block; margin-bottom: .75rem; }
-  .landmark-card p { margin: 0 0 1rem; }
-  .landmark-card a { margin-top: auto; display: flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+  .landmark-card { background: #ffffff; border: 1px solid #e6eaf0; border-radius: 10px; padding: 1.25rem; display: flex; flex-direction: column; min-width: 0; transition: border-color .2s ease, box-shadow .2s ease; }
+  .landmark-card:hover { border-color: #cfd6df; box-shadow: 0 8px 22px rgba(29, 33, 40, .06); }
+  .landmark-card h3 { margin: 0 0 .45rem; color: #1d2128; font-size: 1.08rem; }
+  .landmark-distance { display: block; margin-bottom: .65rem; color: #9c522b; font-size: .88rem; }
+  .landmark-card p { margin: 0 0 1rem; color: #5d636e; font-size: .9rem; }
+  .landmark-card a { margin-top: auto; display: flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; color: #9c522b; font-weight: 600; font-size: .88rem; }
+  .landmark-card a:hover { color: #1d2128; }
   .landmark-card a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
   .landmark-arrival { margin-top: 2rem; }
   @media (max-width: 980px) { .landmarks-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

@@ -72,10 +72,13 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
                   <a class="pdp-zoom-pill" href={v.gallery[0].image} data-pdp-zoom-link aria-label={hu ? 'Teljes méretű fotó megnyitása' : 'Open full-size photo'}>
                     <Icon name="zoom" /><span>{hu ? 'Nagyítás' : 'Zoom'}</span>
                   </a>
+                  {v.gallery.length > 1 && (
+                    <span class="pdp-photo-counter" data-pdp-counter aria-live="polite">1 / {v.gallery.length}</span>
+                  )}
                 </div>
                 <div class="model-gallery pdp-thumb-strip" role="group" aria-label={hu ? 'További fotók' : 'More photos'}>
-                  {v.gallery.slice(1).map((photo: any) => (
-                    <figure class="pdp-thumb-item" data-pdp-thumb={photo.image}>
+                  {v.gallery.slice(1).map((photo: any, tIdx: number) => (
+                    <figure class="pdp-thumb-item" data-pdp-thumb={photo.image} data-pdp-index={tIdx + 2}>
                       <Fragment set:html={renderPicture(photo.pictures[lang])} />
                       <figcaption>
                         <a href={photo.image} class="pdp-thumb-link">
@@ -95,11 +98,14 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
               <a class="pdp-zoom-pill" href={model.image} data-pdp-zoom-link aria-label={hu ? 'Teljes méretű fotó megnyitása' : 'Open full-size photo'}>
                 <Icon name="zoom" /><span>{hu ? 'Teljes méretű fotó' : 'Full-size photo'}</span>
               </a>
+              {model.gallery && model.gallery.length > 1 && (
+                <span class="pdp-photo-counter" data-pdp-counter aria-live="polite">1 / {model.gallery.length}</span>
+              )}
             </div>
             {model.gallery && model.gallery.length > 1 && (
               <div class="model-gallery pdp-thumb-strip" role="group" aria-label={hu ? 'Termékfotók' : 'Product photos'}>
-                {model.gallery.slice(1).map((photo: any) => (
-                  <figure class="pdp-thumb-item" data-pdp-thumb={photo.image}>
+                {model.gallery.slice(1).map((photo: any, tIdx: number) => (
+                  <figure class="pdp-thumb-item" data-pdp-thumb={photo.image} data-pdp-index={tIdx + 2}>
                     <Fragment set:html={renderPicture(photo.pictures[lang])} />
                     <figcaption>
                       <a href={photo.image} class="pdp-thumb-link">
@@ -315,12 +321,15 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
   const FITTING_LIST_ID = 'kaftan_fitting_list_v1';
   const LIMIT = 12;
 
-  // Interactive thumbnail click swaps photo in main stage
+  // Interactive thumbnail click swaps photo in main stage & updates photo counter
   document.querySelectorAll('[data-pdp-gallery]').forEach((gallery) => {
     const stage = gallery.querySelector('[data-pdp-stage]');
     const zoomLink = gallery.querySelector('[data-pdp-zoom-link]');
+    const counter = gallery.querySelector('[data-pdp-counter]');
     const thumbs = Array.from(gallery.querySelectorAll('[data-pdp-thumb]'));
     if (!stage || !thumbs.length) return;
+    let stageNum = 1;
+    const total = thumbs.length + 1;
     thumbs.forEach((thumb) => {
       const pic = thumb.querySelector('picture');
       if (!pic) return;
@@ -331,11 +340,14 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
         const stageImg = stagePic.querySelector('img');
         const thumbImg = pic.querySelector('img');
         if (!stageImg || !thumbImg) return;
-        // Swap picture innerHTML between stage and clicked thumbnail so all 4 imgs stay valid
         const stageHtml = stagePic.innerHTML;
         const thumbHtml = pic.innerHTML;
         stagePic.innerHTML = thumbHtml;
         pic.innerHTML = stageHtml;
+        const thumbNum = Number(thumb.getAttribute('data-pdp-index')) || 2;
+        thumb.setAttribute('data-pdp-index', String(stageNum));
+        stageNum = thumbNum;
+        if (counter) counter.textContent = `${stageNum} / ${total}`;
         const newMainSrc = stagePic.querySelector('img')?.getAttribute('src');
         if (zoomLink && newMainSrc) zoomLink.setAttribute('href', newMainSrc);
         thumbs.forEach((t) => t.classList.remove('is-swapped'));
@@ -463,6 +475,13 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
   }
   .pdp-zoom-pill:hover { background: #1d2128; color: #ffffff; border-color: #1d2128; }
   .pdp-zoom-pill :global(.ui-icon) { width: 15px; height: 15px; margin: 0; }
+  .pdp-photo-counter {
+    position: absolute; right: 12px; bottom: 12px; z-index: 2;
+    padding: 5px 11px; border-radius: 999px;
+    background: rgba(29, 33, 40, .78); color: #ffffff;
+    font-size: .75rem; font-weight: 600; letter-spacing: .04em;
+    pointer-events: none;
+  }
 
   .pdp-thumb-strip {
     display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
@@ -595,10 +614,25 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
   .model-sticky-actions .btn-ghost { background: #ffffff; border-color: #d5dce4; color: #1d2128; }
 
   @media (max-width: 768px) {
+    .pdp-section { padding-top: 12px; }
+    .model-breadcrumbs { margin-bottom: 14px; padding-bottom: 10px; font-size: .78rem; }
+    .pdp-main-stage { border-radius: 10px; }
+    .model-info {
+      margin-top: -10px; position: relative; z-index: 2;
+      background: #ffffff; border-radius: 18px 18px 0 0;
+      padding-top: 18px; box-shadow: 0 -8px 22px rgba(29, 33, 40, .06);
+    }
     .pdp-cta-row { grid-template-columns: 1fr; gap: 10px; }
     .pdp-thumb-item { width: 72px; }
-    .pdp-tab-bar { justify-content: flex-start; gap: 16px; padding: 0 14px; }
-    .pdp-tab-panel { padding: 20px 16px; }
+    .pdp-tab-bar { flex-direction: column; align-items: stretch; gap: 0; padding: 0; }
+    .pdp-tab {
+      text-align: left; padding: 14px 16px; border-bottom: 1px solid #ecf0f4;
+      margin-bottom: 0; display: flex; align-items: center; justify-content: space-between;
+    }
+    .pdp-tab::after { content: "+"; font-size: 1.1rem; color: #5d636e; }
+    .pdp-tab.is-active { background: #f6f7f9; border-bottom-color: #1d2128; }
+    .pdp-tab.is-active::after { content: "−"; color: #1d2128; }
+    .pdp-tab-panel { padding: 18px 16px; }
     .model-sticky-bar {
       left: 12px; right: 78px; width: auto; transform: none;
       bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
