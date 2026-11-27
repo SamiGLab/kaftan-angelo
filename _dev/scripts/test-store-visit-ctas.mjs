@@ -99,7 +99,7 @@ try {
     const page=await ctx.newPage();
     await page.setViewport({width:390,height:844});
     await page.setRequestInterception(true);
-    page.on('request',req=>/googletagmanager|google-analytics|clarity\\.ms/.test(req.url())?req.respond({status:200,contentType:'application/javascript',body:''}):req.continue());
+    page.on('request',req=>['googletagmanager','google-analytics','clarity.ms'].some(host=>req.url().includes(host))?req.respond({status:200,contentType:'application/javascript',body:''}):req.continue());
     for (const slug of slugs) {
       const path=(lang==='hu'?'/utmutatok/':'/en/guides/')+slug+'/';
       const response=await page.goto(base+path,{waitUntil:'domcontentloaded'});
@@ -109,7 +109,7 @@ try {
       const links=await page.$$eval(selector,nodes=>nodes.map(a=>a.getAttribute('href')));
       assert.equal(links.length,3,path+' three contact options');
       assert.equal(links[0],map,path+' directions first');
-      assert.match(links[1],/^https:\\/\\/wa\\.me\\/36203593216\\?text=/);
+      assert.ok(links[1].startsWith('https://wa.me/36203593216?text='),path+' model enquiry link');
       assert.equal(links[2],phone);
       if(await page.$eval('[data-consent-banner]',node=>!node.hidden)) await page.click('[data-consent-reject]');
       const before=await page.evaluate(()=>window.dataLayer.filter(e=>e.event==='kaftan_interest').length);
