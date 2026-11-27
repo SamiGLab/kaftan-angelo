@@ -289,6 +289,28 @@ function createDiscovery(grid, cards, onChange) {
     else onChange();
   }
   if (isHub) saved.addEventListener('click', () => setSavedMode(!savedOnly));
+  const finder = isHub && document.querySelector('[data-style-finder]');
+  if (finder) {
+    const tone = finder.elements.namedItem('tone');
+    const look = finder.elements.namedItem('look');
+    for (const option of [...colour.options].slice(1)) tone.add(option.cloneNode(true));
+    finder.querySelector('button').disabled = false;
+    finder.addEventListener('submit', event => {
+      event.preventDefault();
+      setSavedMode(false);
+      colour.value = tone.value;
+      style.value = look.value;
+      onChange();
+      result.tabIndex = -1;
+      result.focus();
+      result.scrollIntoView({ block: 'center' });
+    });
+    const openFinder = () => {
+      if (location.hash === '#style-finder') finder.closest('details').open = true;
+    };
+    openFinder();
+    window.addEventListener('hashchange', openFinder);
+  }
   search.addEventListener('input', onChange);
   colour.addEventListener('change', onChange);
   style.addEventListener('change', onChange);
@@ -315,7 +337,7 @@ function createDiscovery(grid, cards, onChange) {
   };
   toolbar.addEventListener('click', (e) => {
     if (e.target.closest('[data-view-option], [data-filter-drawer-btn]')) bootPhase2(e);
-  }, { once: true });
+  });
   grid.addEventListener('pointerenter', () => bootPhase2(null), { once: true, capture: true });
   window.addEventListener('scroll', () => bootPhase2(null), { once: true, passive: true });
   return {

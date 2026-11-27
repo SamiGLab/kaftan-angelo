@@ -39,14 +39,12 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
   const detailsHtml = checklist.length ? `<h2>${hu ? 'Hasznos kérdések a kiválasztott darabról' : 'Questions about the specific piece'}</h2><ul class="model-checklist">${checklist.map(text => `<li>${escape(text)}</li>`).join('')}</ul>` : '';
   const relatedHtml = related.length ? `<div class="model-related"><h2>${hu ? 'Hasonlítsa össze más modellekkel' : 'Compare with other models'}</h2><ul class="model-related-list">${related.map(other => `<li><a class="model-related-card" href="${hu ? '/modellek/' : '/en/models/'}${other.slugs[lang]}/"><div class="model-related-photo">${other.pictures[lang]}</div><span class="model-related-name">${escape(other.names[lang])}</span></a></li>`).join('')}</ul></div>` : '';
 
-  const geoTitle = `${name} | Budapest · Kaftan Angelo`;
-  const brandTitle = `${name} | Kaftan Angelo`;
-  const title = geoTitle.length <= 68 ? geoTitle : (brandTitle.length <= 68 ? brandTitle : name);
+  const title = `${name} | Kaftan Angelo`;
 
   return [path, {
     path, lang, title, description,
     canonical: BASE + path, counterpart, ogImage: BASE + model.image,
-    modifiedDate: '2026-10-24',
+    modifiedDate: '2026-11-27',
     isModel: true,
     model,
     checklist,
@@ -68,6 +66,8 @@ export const modelPages = Object.fromEntries(models.flatMap(model => ['hu', 'en'
       '@type': 'ItemPage',
       name,
       description,
+      inLanguage: lang,
+      mainEntity: { '@id': `${BASE}${path}#product` },
       url: BASE + path,
       primaryImageOfPage: { '@type': 'ImageObject', contentUrl: BASE + model.image },
       image: model.gallery.length ? model.gallery.map(photo => BASE + photo.image) : [BASE + model.image],

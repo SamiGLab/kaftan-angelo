@@ -1,0 +1,32 @@
+---
+interface Props { hu: boolean }
+const { hu } = Astro.props;
+---
+<details class="style-finder" id="style-finder">
+  <summary>{hu ? 'Stíluskereső' : 'Style Finder'}</summary>
+  <form data-style-finder>
+    <label>{hu ? 'Milyen fazont keres?' : 'Which look do you prefer?'}
+      <select name="look">
+        <option value="">{hu ? 'Minden fazon' : 'Any look'}</option>
+        <option value="blazer">{hu ? 'Elegáns blézer' : 'A tailored blazer'}</option>
+        <option value="biker">{hu ? 'Motoros fazon' : 'A biker silhouette'}</option>
+        <option value="hooded">{hu ? 'Kapucnis hétköznapi dzseki' : 'An everyday hooded jacket'}</option>
+        <option value="belted">{hu ? 'Övvel hangsúlyozott derék' : 'A defined waist with a belt'}</option>
+        <option value="patterned">{hu ? 'Feltűnő minta' : 'A statement pattern'}</option>
+      </select>
+    </label>
+    <label>{hu ? 'Melyik színt próbálná fel?' : 'Which colour would you try?'}
+      <select name="tone"><option value="">{hu ? 'Bármelyik szín' : 'Any colour'}</option></select>
+    </label>
+    <button type="submit" class="btn btn-primary" disabled>{hu ? 'Hozzám illő modellek' : 'Find my styles'}</button>
+    <p>{hu ? 'A találatoknál a szívre koppintva mentheti el a felpróbálni kívánt darabokat.' : 'Tap the heart on a matching model to save it for your fitting.'}</p>
+  </form>
+</details>
+<style>
+  details { margin: 1rem 0; border-block: 1px solid #d5dce4; padding: .5rem 0; }
+  summary { cursor: pointer; font-weight: 650; padding: .75rem; }
+  form { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; padding: .75rem; }
+  label { display: grid; gap: .4rem; flex: 1 1 15rem; min-width: 0; }
+  select { min-height: 44px; width: 100%; font: inherit; background: white; color: #21252b; }
+  p { flex-basis: 100%; margin: 0; }
+</style>
