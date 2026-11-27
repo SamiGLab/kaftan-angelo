@@ -1,0 +1,56 @@
+---
+import type { GuideModule } from '../data/guide-types';
+
+interface Props {
+  lang: 'hu' | 'en';
+}
+
+const { lang } = Astro.props;
+const hu = lang === 'hu';
+const root = hu ? '/utmutatok/' : '/en/guides/';
+const modules = hu
+  ? import.meta.glob<GuideModule>('../content/guides/hu/*.md', { eager: true })
+  : import.meta.glob<GuideModule>('../content/guides/en/*.md', { eager: true });
+
+const guides = Object.entries(modules)
+  .map(([path, mod]) => ({
+    slug: path.split('/').pop()!.replace('.md', ''),
+    ...mod.frontmatter,
+  }))
+  .sort((a, b) => b.publishDate.localeCompare(a.publishDate))
+  .slice(0, 3);
+---
+<section class="home-guides-band" aria-labelledby="home-guides-heading">
+  <div class="wrap">
+    <div class="home-guides-head">
+      <div>
+        <span class="tag mono">{hu ? 'Vásárlási tanácsadás' : 'Showroom journal'}</span>
+        <h2 id="home-guides-heading">{hu ? 'Útmutatók bőr, irha és szőrme választáshoz' : 'Guides for choosing leather, shearling & fur'}</h2>
+      </div>
+      <a class="home-guides-all" href={root}>{hu ? 'Összes útmutató' : 'All guides'} →</a>
+    </div>
+    <div class="home-guides-grid">
+      {guides.map((g) => (
+        <article class="home-guide-card">
+          <a href={`${root}${g.slug}/`}>
+            <div class="home-guide-media">
+              <img
+                src={g.heroImage.replace('-800.avif', '-480.avif')}
+                alt={g.heroAlt ?? g.title}
+                width="480"
+                height="270"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="home-guide-body">
+              <span class="home-guide-topic">{g.topic} · {g.readingMinutes} {hu ? 'perc' : 'min'}</span>
+              <h3>{g.title}</h3>
+              <p>{g.description}</p>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

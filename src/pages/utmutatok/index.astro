@@ -121,14 +121,27 @@ const page = {
         </div>
         <p>Böngésszen teljes cikktárunkban téma és olvasási idő szerint.</p>
       </div>
-      <div class="guide-list">
+      <div class="guide-topic-bar" data-guide-topic-bar role="group" aria-label="Témakör szűrés">
+        <button type="button" class="guide-topic-pill is-active" data-guide-topic="all" aria-pressed="true">Összes ({guides.length})</button>
+        {[...new Set(guides.map(g => g.topic))].map(topic => (
+          <button type="button" class="guide-topic-pill" data-guide-topic={topic} aria-pressed="false">{topic}</button>
+        ))}
+      </div>
+      <div class="guide-list guide-magazine-grid" data-guide-grid>
         {guides.map(g => (
-          <article class="guide-card">
-            <span class="tag mono">{g.topic}</span>
-            <h2><a href={`/utmutatok/${g.slug}/`}>{g.title}</a></h2>
-            <p>{g.description}</p>
-            <p class="guide-meta">{g.readingMinutes} perc olvasás</p>
-            <a href={`/utmutatok/${g.slug}/`}>Olvasás →</a>
+          <article class="guide-card guide-magazine-card" data-guide-card-topic={g.topic}>
+            <a class="guide-card-cover" href={`/utmutatok/${g.slug}/`} tabindex="-1" aria-hidden="true">
+              <img src={g.heroImage.replace('-800.avif', '-480.avif')} alt="" width="480" height="270" loading="lazy" decoding="async" />
+            </a>
+            <div class="guide-card-content">
+              <span class="tag mono">{g.topic}</span>
+              <h2><a href={`/utmutatok/${g.slug}/`}>{g.title}</a></h2>
+              <p>{g.description}</p>
+              <div class="guide-card-foot">
+                <span class="guide-meta">{g.readingMinutes} perc olvasás</span>
+                <a href={`/utmutatok/${g.slug}/`}>Olvasás →</a>
+              </div>
+            </div>
           </article>
         ))}
       </div>
