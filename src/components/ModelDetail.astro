@@ -257,7 +257,44 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
         </ul>
       </div>
     )}
+
+    <section class="pdp-recent-full" data-recently-viewed hidden aria-labelledby="pdp-recent-heading">
+      <h2 id="pdp-recent-heading">{hu ? 'Legutóbb megtekintett modellek' : 'Recently viewed models'}</h2>
+      <ul class="pdp-recent-list" data-recently-viewed-list></ul>
+    </section>
   </div>
+
+  <dialog
+    class="pdp-lightbox-dialog"
+    data-pdp-lightbox
+    aria-label={hu ? 'Teljes képernyős termékgaléria' : 'Fullscreen product gallery'}
+  >
+    <div class="lb-shell">
+      <div class="lb-head">
+        <div class="lb-meta">
+          <span class="lb-counter" data-lb-counter>1 / 1</span>
+          <span class="lb-caption" data-lb-caption>{name}</span>
+        </div>
+        <div class="lb-controls">
+          <button type="button" class="lb-btn" data-lb-zoom aria-pressed="false" aria-label={hu ? 'Nagyítás váltása' : 'Toggle zoom'}>
+            <Icon name="zoom" />
+            <span data-lb-zoom-label>2×</span>
+          </button>
+          <button type="button" class="lb-btn lb-close" data-lb-close aria-label={hu ? 'Galéria bezárása' : 'Close gallery'}>
+            <Icon name="x" />
+          </button>
+        </div>
+      </div>
+      <div class="lb-stage-wrap">
+        <button type="button" class="lb-nav lb-prev" data-lb-prev aria-label={hu ? 'Előző fotó' : 'Previous photo'}>‹</button>
+        <div class="lb-stage" data-lb-stage>
+          <img class="lb-img" data-lb-img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt={name} decoding="async" />
+        </div>
+        <button type="button" class="lb-nav lb-next" data-lb-next aria-label={hu ? 'Következő fotó' : 'Next photo'}>›</button>
+      </div>
+      <div class="lb-thumbs" data-lb-thumbs role="group" aria-label={hu ? 'Galéria nézőképek' : 'Gallery thumbnails'}></div>
+    </div>
+  </dialog>
 
   {!isWallet && !isBelt && (
     <dialog class="size-guide-dialog" data-size-guide-dialog aria-labelledby="size-guide-title">
@@ -299,39 +336,210 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
 
   <aside class="model-sticky-bar" data-model-sticky-bar hidden aria-label={hu ? 'Gyors érdeklődés' : 'Quick inquiry'}>
     <div class="model-sticky-inner">
-      <div class="model-sticky-meta">
-        <strong>{name}</strong>
-        <span>{material}</span>
+      <div class="model-sticky-left">
+        <img
+          class="model-sticky-thumb"
+          src={`/assets/images/${model.image.replace(/^\//, '').replace(/\.webp$/, '-480.webp')}`}
+          alt=""
+          width="44"
+          height="54"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="model-sticky-meta">
+          <strong>{name}</strong>
+          <span>{material}</span>
+        </div>
       </div>
       <div class="model-sticky-actions">
         <button type="button" class="btn btn-ghost model-save-btn" data-detail-save={model.slug} aria-pressed="false">
           ♡ {hu ? 'Lista' : 'Save'}
         </button>
+        <a class="btn btn-ghost model-sticky-visit" href={hu ? '/uzlet/' : '/en/visit/'}>
+          {hu ? 'Üzlet' : 'Visit'}
+        </a>
         <a class="btn btn-primary" data-interest-source="model_sticky_bar" href={`https://wa.me/36203593216?text=${encodeURIComponent(message)}`}>
-          WhatsApp
+          {hu ? 'WhatsApp érdeklődés' : 'Ask on WhatsApp'}
         </a>
       </div>
     </div>
   </aside>
 </section>
 
-<script is:inline define:vars={{ lang }}>
+<script is:inline define:vars={{ lang, modelSlug: model.slug, modelName: name }}>
 (() => {
   const hu = lang === 'hu';
   const FITTING_LIST_ID = 'kaftan_fitting_list_v1';
+  const RECENT_LIST_ID = 'kaftan_recent_models_v1';
   const LIMIT = 12;
 
-  // Interactive thumbnail click swaps photo in main stage & updates photo counter
+  // Fullscreen accessible gallery lightbox (zoom + prev/next + keyboard + swipe)
+  const lbDialog = document.querySelector('[data-pdp-lightbox]');
+  const lbImg = lbDialog?.querySelector('[data-lb-img]');
+  const lbStage = lbDialog?.querySelector('[data-lb-stage]');
+  const lbCounter = lbDialog?.querySelector('[data-lb-counter]');
+  const lbCaption = lbDialog?.querySelector('[data-lb-caption]');
+  const lbThumbs = lbDialog?.querySelector('[data-lb-thumbs]');
+  const lbPrev = lbDialog?.querySelector('[data-lb-prev]');
+  const lbNext = lbDialog?.querySelector('[data-lb-next]');
+  const lbZoom = lbDialog?.querySelector('[data-lb-zoom]');
+  const lbZoomLabel = lbDialog?.querySelector('[data-lb-zoom-label]');
+  const lbClose = lbDialog?.querySelector('[data-lb-close]');
+
+  let lbItems = [];
+  let lbIdx = 0;
+  let lbZoomed = false;
+  let lbTrigger = null;
+
+  const setZoom = (zoomed) => {
+    lbZoomed = zoomed;
+    lbStage?.classList.toggle('is-zoomed', zoomed);
+    lbZoom?.setAttribute('aria-pressed', zoomed ? 'true' : 'false');
+    if (lbZoomLabel) lbZoomLabel.textContent = zoomed ? '1×' : '2×';
+    if (!zoomed && lbStage) { lbStage.scrollTop = 0; lbStage.scrollLeft = 0; }
+  };
+
+  const renderLightbox = () => {
+    if (!lbItems.length || !lbImg) return;
+    const cur = lbItems[lbIdx];
+    lbImg.src = cur.src;
+    lbImg.alt = cur.label || modelName;
+    if (lbCounter) lbCounter.textContent = `${lbIdx + 1} / ${lbItems.length}`;
+    if (lbCaption) lbCaption.textContent = cur.label || modelName;
+    setZoom(false);
+    const multi = lbItems.length > 1;
+    if (lbPrev) lbPrev.hidden = !multi;
+    if (lbNext) lbNext.hidden = !multi;
+    if (lbThumbs) {
+      lbThumbs.hidden = !multi;
+      lbThumbs.innerHTML = multi
+        ? lbItems
+            .map(
+              (item, idx) => `<button type="button" class="lb-thumb${idx === lbIdx ? ' is-active' : ''}" data-lb-jump="${idx}" aria-label="${hu ? `Fotó ${idx + 1}` : `Photo ${idx + 1}`}">
+                <img src="${item.thumb || item.src}" alt="" width="56" height="70" loading="lazy" />
+              </button>`
+            )
+            .join('')
+        : '';
+    }
+  };
+
+  const collectGalleryItems = (gallery) => {
+    const items = [];
+    const stageImg = gallery.querySelector('[data-pdp-stage] img');
+    const zoomHref = gallery.querySelector('[data-pdp-zoom-link]')?.getAttribute('href');
+    if (stageImg) {
+      items.push({
+        src: zoomHref || stageImg.currentSrc || stageImg.getAttribute('src') || '',
+        thumb: stageImg.getAttribute('src') || '',
+        label: stageImg.getAttribute('alt') || modelName,
+      });
+    }
+    gallery.querySelectorAll('[data-pdp-thumb]').forEach((thumb) => {
+      const link = thumb.querySelector('.pdp-thumb-link');
+      const img = thumb.querySelector('img');
+      const src = link?.getAttribute('href') || thumb.getAttribute('data-pdp-thumb') || img?.getAttribute('src') || '';
+      if (src) {
+        items.push({
+          src,
+          thumb: img?.getAttribute('src') || src,
+          label: link?.textContent?.trim() || img?.getAttribute('alt') || modelName,
+        });
+      }
+    });
+    return items;
+  };
+
+  const openLightbox = (gallery, startIdx = 0, trigger = null) => {
+    if (!lbDialog) return;
+    lbItems = collectGalleryItems(gallery);
+    if (!lbItems.length) return;
+    lbIdx = Math.max(0, Math.min(startIdx, lbItems.length - 1));
+    lbTrigger = trigger instanceof HTMLElement ? trigger : document.activeElement;
+    window.dispatchEvent(new CustomEvent('kaftan-close-overlays', { detail: { except: 'lightbox' } }));
+    renderLightbox();
+    if (!lbDialog.open) lbDialog.showModal();
+    requestAnimationFrame(() => lbClose?.focus());
+  };
+
+  const closeLightbox = (restoreFocus = true) => {
+    setZoom(false);
+    if (lbDialog?.open) lbDialog.close();
+    if (restoreFocus && lbTrigger instanceof HTMLElement) lbTrigger.focus();
+  };
+
+  const stepLightbox = (delta) => {
+    if (lbItems.length < 2) return;
+    lbIdx = (lbIdx + delta + lbItems.length) % lbItems.length;
+    renderLightbox();
+  };
+
+  lbPrev?.addEventListener('click', () => stepLightbox(-1));
+  lbNext?.addEventListener('click', () => stepLightbox(1));
+  lbZoom?.addEventListener('click', () => setZoom(!lbZoomed));
+  lbImg?.addEventListener('click', () => setZoom(!lbZoomed));
+  lbClose?.addEventListener('click', () => closeLightbox(true));
+  lbThumbs?.addEventListener('click', (e) => {
+    const btn = e.target instanceof Element ? e.target.closest('[data-lb-jump]') : null;
+    if (!btn) return;
+    lbIdx = Number(btn.getAttribute('data-lb-jump')) || 0;
+    renderLightbox();
+  });
+  lbDialog?.addEventListener('click', (e) => {
+    if (e.target === lbDialog) closeLightbox(true);
+  });
+  lbDialog?.addEventListener('cancel', () => {
+    setZoom(false);
+    if (lbTrigger instanceof HTMLElement) requestAnimationFrame(() => lbTrigger.focus());
+  });
+  lbDialog?.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); stepLightbox(-1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); stepLightbox(1); }
+    else if (e.key === '+' || e.key === '=') { e.preventDefault(); setZoom(true); }
+    else if (e.key === '-') { e.preventDefault(); setZoom(false); }
+  });
+  let touchStartX = 0;
+  lbStage?.addEventListener('touchstart', (e) => {
+    if (!lbZoomed && e.touches.length === 1) touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  lbStage?.addEventListener('touchend', (e) => {
+    if (lbZoomed || !touchStartX) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    touchStartX = 0;
+    if (Math.abs(dx) > 48) stepLightbox(dx < 0 ? 1 : -1);
+  }, { passive: true });
+  window.addEventListener('kaftan-close-overlays', (e) => {
+    if (e.detail?.except !== 'lightbox' && lbDialog?.open) closeLightbox(false);
+  });
+
+  // Interactive thumbnail click swaps photo in main stage & opens lightbox on zoom/stage click
   document.querySelectorAll('[data-pdp-gallery]').forEach((gallery) => {
     const stage = gallery.querySelector('[data-pdp-stage]');
     const zoomLink = gallery.querySelector('[data-pdp-zoom-link]');
     const counter = gallery.querySelector('[data-pdp-counter]');
     const thumbs = Array.from(gallery.querySelectorAll('[data-pdp-thumb]'));
-    if (!stage || !thumbs.length) return;
+    if (!stage) return;
+
+    zoomLink?.addEventListener('click', (e) => {
+      e.preventDefault();
+      openLightbox(gallery, 0, zoomLink);
+    });
+    const stagePicInit = stage.querySelector('picture');
+    if (stagePicInit) {
+      stagePicInit.style.cursor = 'zoom-in';
+      stagePicInit.addEventListener('click', () => openLightbox(gallery, 0, zoomLink || stage));
+    }
+
+    if (!thumbs.length) return;
     let stageNum = 1;
     const total = thumbs.length + 1;
-    thumbs.forEach((thumb) => {
+    thumbs.forEach((thumb, tIdx) => {
       const pic = thumb.querySelector('picture');
+      const link = thumb.querySelector('.pdp-thumb-link');
+      link?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLightbox(gallery, tIdx + 1, link);
+      });
       if (!pic) return;
       pic.style.cursor = 'pointer';
       pic.addEventListener('click', () => {
@@ -355,6 +563,42 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
       });
     });
   });
+
+  // Recently viewed models (localStorage only, zero cookies)
+  (() => {
+    try {
+      const prev = JSON.parse(localStorage.getItem(RECENT_LIST_ID) || '[]');
+      const list = Array.isArray(prev) ? prev.filter((s) => typeof s === 'string' && s !== modelSlug) : [];
+      const updated = [modelSlug, ...list].slice(0, 6);
+      localStorage.setItem(RECENT_LIST_ID, JSON.stringify(updated));
+      const others = list.slice(0, 4);
+      const wrap = document.querySelector('[data-recently-viewed]');
+      const ul = document.querySelector('[data-recently-viewed-list]');
+      if (!others.length || !wrap || !ul) return;
+      const esc = (s) =>
+        String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      fetch(`/assets/data/home-search-${lang}.json`)
+        .then((r) => (r.ok ? r.json() : []))
+        .then((catalog) => {
+          const bySlug = new Map(catalog.map((item) => [item.s, item]));
+          const cards = others.map((slug) => bySlug.get(slug)).filter(Boolean);
+          if (!cards.length) return;
+          ul.innerHTML = cards
+            .map(
+              (m) => `<li>
+                <a class="pdp-recent-card" href="${esc(m.u)}">
+                  <div class="pdp-recent-photo"><img src="${esc(m.i)}" alt="${esc(m.n)}" width="240" height="300" loading="lazy" decoding="async" /></div>
+                  <span class="pdp-recent-cat">${esc(m.c)}</span>
+                  <span class="pdp-recent-name">${esc(m.n)}</span>
+                </a>
+              </li>`
+            )
+            .join('');
+          wrap.hidden = false;
+        })
+        .catch(() => {});
+    } catch {}
+  })();
 
   // Below-the-fold horizontal tabs
   const tabRoot = document.querySelector('[data-pdp-tabs]');
@@ -599,19 +843,105 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
 
   .model-sticky-bar {
     position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 44;
-    width: min(640px, calc(100% - 220px));
+    width: min(820px, calc(100% - 220px));
     background: #ffffff; border: 1px solid #e6eaf0; border-radius: 14px;
-    padding: 0.65rem 1rem; box-shadow: 0 12px 32px rgba(29, 33, 40, 0.14);
+    padding: 0.6rem 0.95rem; box-shadow: 0 12px 32px rgba(29, 33, 40, 0.14);
   }
   .model-sticky-bar[hidden] { display: none !important; }
-  .model-sticky-inner { display: flex; align-items: center; justify-content: space-between; gap: 0.85rem; }
-  .model-sticky-meta { display: flex; flex-direction: column; min-width: 0; }
+  .model-sticky-inner { display: flex; align-items: center; justify-content: space-between; gap: 0.95rem; }
+  .model-sticky-left { display: flex; align-items: center; gap: 0.75rem; min-width: 0; }
+  .model-sticky-thumb { width: 44px; height: 54px; border-radius: 6px; object-fit: cover; object-position: center top; background: #f4f3f0; flex: 0 0 auto; }
+  .model-sticky-meta { display: flex; flex-direction: column; min-width: 0; gap: 2px; }
   .model-sticky-meta strong { color: #1d2128; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .model-sticky-meta span { color: #5d636e; font-size: 0.76rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .model-sticky-actions { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
-  .model-sticky-actions .btn { min-height: 40px; padding: 0.45rem 0.9rem; font-size: 0.82rem; }
+  .model-sticky-actions .btn { min-height: 40px; padding: 0.45rem 0.9rem; font-size: 0.82rem; white-space: nowrap; }
   .model-sticky-actions .btn-primary { background: #1d2128; border-color: #1d2128; color: #ffffff; }
   .model-sticky-actions .btn-ghost { background: #ffffff; border-color: #d5dce4; color: #1d2128; }
+
+  /* Recently viewed models strip */
+  .pdp-recent-full { margin-top: 40px; padding-top: 28px; border-top: 1px solid #ecf0f4; }
+  .pdp-recent-full[hidden] { display: none !important; }
+  .pdp-recent-full h2 { font-size: 1.25rem; color: #1d2128; margin: 0 0 18px; }
+  .pdp-recent-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+  .pdp-recent-list :global(li) { min-width: 0; }
+  .pdp-recent-list :global(.pdp-recent-card) {
+    display: flex; flex-direction: column; padding: 0 12px 10px;
+    border-right: 1px solid #ecf0f4; text-decoration: none; color: inherit;
+  }
+  .pdp-recent-list :global(li:last-child .pdp-recent-card) { border-right: 0; }
+  .pdp-recent-list :global(.pdp-recent-photo) { aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden; background: #f4f3f0; }
+  .pdp-recent-list :global(.pdp-recent-photo img) { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform 0.25s ease; }
+  .pdp-recent-list :global(.pdp-recent-card:hover .pdp-recent-photo img) { transform: scale(1.03); }
+  .pdp-recent-list :global(.pdp-recent-cat) { display: block; padding-top: 9px; font-size: 0.74rem; color: #5d636e; }
+  .pdp-recent-list :global(.pdp-recent-name) { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; padding-top: 3px; font-size: 0.88rem; font-weight: 500; line-height: 1.35; color: #1d2128; }
+  .pdp-recent-list :global(.pdp-recent-card:hover .pdp-recent-name) { color: #9c522b; }
+
+  /* Fullscreen accessible gallery lightbox */
+  .pdp-lightbox-dialog {
+    width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh;
+    margin: 0; padding: 0; border: 0; background: rgba(16, 19, 24, 0.96); color: #ffffff;
+    overflow: hidden;
+  }
+  .pdp-lightbox-dialog::backdrop { background: rgba(16, 19, 24, 0.86); }
+  .pdp-lightbox-dialog[open] { display: flex; }
+  .lb-shell { display: flex; flex-direction: column; width: 100%; height: 100%; min-width: 0; }
+  .lb-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 12px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.12); flex: 0 0 auto;
+  }
+  .lb-meta { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .lb-counter { font-size: 0.82rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.14); flex: 0 0 auto; }
+  .lb-caption { font-size: 0.88rem; color: #d8dfe8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lb-controls { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+  .lb-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    min-width: 44px; min-height: 44px; padding: 0 12px; border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.24); background: rgba(255, 255, 255, 0.1);
+    color: #ffffff; font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: inherit;
+  }
+  .lb-btn:hover, .lb-btn[aria-pressed="true"] { background: #ffffff; color: #1d2128; border-color: #ffffff; }
+  .lb-close { padding: 0; width: 44px; }
+  .lb-btn :global(.ui-icon) { width: 18px; height: 18px; margin: 0; }
+
+  .lb-stage-wrap { position: relative; flex: 1 1 auto; display: flex; align-items: center; justify-content: center; min-height: 0; padding: 12px 56px; }
+  .lb-stage {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .lb-stage.is-zoomed { overflow: auto; align-items: flex-start; justify-content: flex-start; cursor: zoom-out; }
+  .lb-img {
+    max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px;
+    cursor: zoom-in; transition: transform 0.2s ease; user-select: none;
+  }
+  .lb-stage.is-zoomed .lb-img {
+    max-width: none; max-height: none; width: min(1400px, 185vw); height: auto;
+    margin: auto; cursor: zoom-out;
+  }
+  .lb-nav {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+    width: 46px; height: 46px; border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.26); background: rgba(16, 19, 24, 0.72);
+    color: #ffffff; font-size: 1.7rem; line-height: 1; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .lb-nav:hover { background: #ffffff; color: #1d2128; }
+  .lb-nav[hidden] { display: none !important; }
+  .lb-prev { left: 14px; }
+  .lb-next { right: 14px; }
+
+  .lb-thumbs {
+    flex: 0 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 10px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid rgba(255, 255, 255, 0.12); overflow-x: auto;
+  }
+  .lb-thumbs[hidden] { display: none !important; }
+  .lb-thumbs :global(.lb-thumb) {
+    padding: 0; border: 2px solid transparent; border-radius: 6px; overflow: hidden;
+    background: #1d2128; cursor: pointer; opacity: 0.65; flex: 0 0 auto;
+  }
+  .lb-thumbs :global(.lb-thumb.is-active), .lb-thumbs :global(.lb-thumb:hover) { border-color: #ffffff; opacity: 1; }
+  .lb-thumbs :global(.lb-thumb img) { width: 48px; height: 60px; object-fit: cover; object-position: center top; display: block; }
 
   @media (max-width: 768px) {
     .pdp-section { padding-top: 12px; }
@@ -633,11 +963,15 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
     .pdp-tab.is-active { background: #f6f7f9; border-bottom-color: #1d2128; }
     .pdp-tab.is-active::after { content: "−"; color: #1d2128; }
     .pdp-tab-panel { padding: 18px 16px; }
+    .pdp-recent-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 0; }
+    .pdp-recent-list :global(li:nth-child(2n) .pdp-recent-card) { border-right: 0; }
     .model-sticky-bar {
       left: 12px; right: 78px; width: auto; transform: none;
       bottom: calc(4.75rem + env(safe-area-inset-bottom, 0px));
-      padding: 0.55rem 0.75rem;
+      padding: 0.5rem 0.7rem;
     }
-    .model-sticky-meta span { display: none; }
+    .model-sticky-thumb, .model-sticky-visit, .model-sticky-meta span { display: none; }
+    .lb-stage-wrap { padding: 8px 12px; }
+    .lb-nav { width: 40px; height: 40px; font-size: 1.4rem; }
   }
 </style>
