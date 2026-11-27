@@ -84,6 +84,7 @@ function closeMenu(restoreFocus = false) {
 function openMenu() {
   menuButton?.setAttribute('aria-expanded', 'true');
   menu?.setAttribute('data-open', '');
+  if (menu) { menu.scrollTop = 0; menu.scrollLeft = 0; }
   if (menuBackdrop) menuBackdrop.hidden = false;
   document.documentElement.classList.add('menu-open');
   requestAnimationFrame(() => (menuClose || menu?.querySelector('a, button, summary'))?.focus());
