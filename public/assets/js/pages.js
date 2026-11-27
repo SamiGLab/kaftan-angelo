@@ -301,6 +301,7 @@ function createDiscovery(grid, cards, onChange) {
       colour.value = tone.value;
       style.value = look.value;
       onChange();
+      finder.closest('details').open = false;
       result.tabIndex = -1;
       result.focus();
       result.scrollIntoView({ block: 'center' });
@@ -322,9 +323,18 @@ function createDiscovery(grid, cards, onChange) {
     if (savedOnly) onChange();
   });
   refreshSaved();
-  if (isHub && location.hash === '#fitting-list') {
-    // Wait until collectionViews and the existing filter event delegation are initialized.
-    queueMicrotask(() => { setSavedMode(true); saved.focus(); });
+  if (isHub) {
+    const openSavedList = () => {
+      setSavedMode(true);
+      saved.focus();
+    };
+    if (location.hash === '#fitting-list') queueMicrotask(openSavedList);
+    window.addEventListener('hashchange', () => {
+      if (location.hash === '#fitting-list') openSavedList();
+    });
+    document.querySelector('[data-mobile-fitting-link]')?.addEventListener('click', () => {
+      if (location.hash === '#fitting-list') openSavedList();
+    });
   }
   let catalogUiPromise = null;
   const loadCatalogUi = () => {

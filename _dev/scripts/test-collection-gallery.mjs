@@ -122,11 +122,13 @@ for(const lang of ['hu','en']) {
  const match = '.product-card:not([hidden])';
  assert.match(await page.$eval(match+' h3',node=>node.textContent),lang==='hu'?/Fehér női bőrblézer/:/White women’s leather blazer/);
  await page.locator(match+' [data-model-save]').click();
- await page.locator('[data-fitting-toggle]').click();
+ await page.locator('[data-mobile-fitting-link]').click();
+ await page.waitForFunction(()=>document.querySelector('[data-fitting-toggle]').getAttribute('aria-pressed')==='true');
  assert.equal(await visible(),1);
  assert.equal(await page.$eval(match+' [data-model-save]',node=>node.getAttribute('aria-pressed')),'true');
+ await page.$eval(match+' [data-model-save]',button=>button.scrollIntoView({block:'center'}));
  await page.locator(match+' [data-model-save]').click();
- await page.locator('[data-fitting-toggle]').click();
+ await page.goto(hub,{waitUntil:'networkidle2'});
  await page.click('[data-global-search-open]');
  await page.waitForSelector('[data-global-search-dialog][open] [data-global-search-input]');
  await page.type('[data-global-search-input]',lang==='hu'?'ketoldalas':'reversible');
