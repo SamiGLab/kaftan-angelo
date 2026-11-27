@@ -291,6 +291,7 @@ function createDiscovery(grid, cards, onChange) {
     const all = grid.parentElement.querySelector('[data-product-filters] [data-filter="all"]');
     if (all) all.click();
     else onChange();
+    if (value) panel.scrollIntoView({ block: 'center' });
   }
   if (isHub) saved.addEventListener('click', () => setSavedMode(!savedOnly));
   const finder = isHub && document.querySelector('[data-style-finder]');
