@@ -288,7 +288,7 @@ function renderPicture(pictureHtml: string, fullWidth = false, eager = false) {
       <div class="lb-stage-wrap">
         <button type="button" class="lb-nav lb-prev" data-lb-prev aria-label={hu ? 'Előző fotó' : 'Previous photo'}>‹</button>
         <div class="lb-stage" data-lb-stage>
-          <img class="lb-img" data-lb-img src={model.image} alt={name} />
+          <img class="lb-img" data-lb-img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt={name} decoding="async" />
         </div>
         <button type="button" class="lb-nav lb-next" data-lb-next aria-label={hu ? 'Következő fotó' : 'Next photo'}>›</button>
       </div>
