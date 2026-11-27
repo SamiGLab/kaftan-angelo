@@ -11,9 +11,9 @@ const canonical = `https://kaftanangelo.com${root}${slug}/`;
 const headings = mod.getHeadings().filter(h => h.depth === 2);
 const published = `${f.publishDate}T12:00:00+02:00`;
 const modified = `${f.modifiedDate ?? f.publishDate}T12:00:00+02:00`;
-const material = /shearling-coat|irhakabat/.test(slug) ? 'shearling' : /fur-coat|szormekabat/.test(slug) ? 'fur' : 'all';
-const collection = material === 'shearling' ? (hu ? '/irhakabatok/' : '/en/shearling-jackets/') : material === 'fur' ? (hu ? '/szormekabatok/' : '/en/fur-coats/') : (hu ? '/kollekciok/' : '/en/collections/');
-const collectionLabel = material === 'shearling' ? (hu ? 'Irhakollekció megtekintése' : 'Explore shearling') : material === 'fur' ? (hu ? 'Szőrmekollekció megtekintése' : 'Explore fur') : (hu ? 'Kollekciók megtekintése' : 'Explore the collections');
+const material = /shearling-coat|irhakabat|borkabat-telen|leather-jacket-in-winter/.test(slug) ? 'shearling' : /fur-coat|szormekabat/.test(slug) ? 'fur' : /elegans-noi-borkabat|elegant-womens-leather-jacket/.test(slug) ? 'women' : 'all';
+const collection = material === 'shearling' ? (hu ? '/irhakabatok/' : '/en/shearling-jackets/') : material === 'fur' ? (hu ? '/szormekabatok/' : '/en/fur-coats/') : material === 'women' ? (hu ? '/noi-borkabatok/' : '/en/womens-leather-jackets/') : (hu ? '/kollekciok/' : '/en/collections/');
+const collectionLabel = material === 'shearling' ? (hu ? 'Irhakollekció megtekintése' : 'Explore shearling') : material === 'fur' ? (hu ? 'Szőrmekollekció megtekintése' : 'Explore fur') : material === 'women' ? (hu ? 'Női bőrkabátok' : 'Women’s leather jackets') : (hu ? 'Kollekciók megtekintése' : 'Explore the collections');
 const enquiry = hu ? `Üdvözlöm! A(z) „${f.title}” útmutatót olvastam. Szeretnék érdeklődni egy modell elérhetőségéről és a budapesti próbáról. ${canonical}` : `Hello! I read your guide “${f.title}”. I would like to ask about a model's availability and trying it on at your Budapest store. ${canonical}`;
 const whatsapp = `https://wa.me/36203593216?text=${encodeURIComponent(enquiry)}`;
 
@@ -26,6 +26,7 @@ const guideList = Object.entries(allModules)
     title: m.frontmatter.title,
     topic: m.frontmatter.topic,
     heroImage: m.frontmatter.heroImage,
+    heroAlt: m.frontmatter.heroAlt,
     readingMinutes: m.frontmatter.readingMinutes,
   }))
   .sort((a, b) => a.slug.localeCompare(b.slug));
@@ -37,8 +38,9 @@ const relatedGuides = guideList.filter((g) => g.slug !== slug).slice(0, 3);
 const page = {
   lang, title: `${f.title} | Kaftan Angelo`, description: f.description, canonical,
   counterpart: f.counterpart, ogImage: `https://kaftanangelo.com${f.heroImage}`,
+  ogImageAlt: f.heroAlt,
   breadcrumbs: [{ name: hu ? 'Főoldal' : 'Home', url: hu ? '/' : '/en/' }, { name: hu ? 'Útmutatók' : 'Guides', url: root }, { name: f.title, url: `${root}${slug}/` }],
-  pageSchema: { '@type': 'Article', '@id': `${canonical}#article`, headline: f.title, description: f.description, datePublished: published, dateModified: modified, inLanguage: lang, articleSection: f.topic, mainEntityOfPage: canonical, image: `https://kaftanangelo.com${f.heroImage}`, author: { '@type': 'Organization', name: 'Kaftan Angelo', url: 'https://kaftanangelo.com' + (hu ? '/rolunk/' : '/en/about/') }, publisher: { '@id': 'https://kaftanangelo.com/#store' } }
+  pageSchema: { '@type': 'Article', '@id': `${canonical}#article`, headline: f.title, description: f.description, datePublished: published, dateModified: modified, inLanguage: lang, articleSection: f.topic, mainEntityOfPage: canonical, image: f.editorialImages?.length ? [f.heroImage, ...f.editorialImages].map(src => `https://kaftanangelo.com${src}`) : `https://kaftanangelo.com${f.heroImage}`, author: { '@type': 'Organization', name: 'Kaftan Angelo', url: 'https://kaftanangelo.com' + (hu ? '/rolunk/' : '/en/about/') }, publisher: { '@id': 'https://kaftanangelo.com/#store' } }
 };
 ---
 <BaseLayout page={page}>
@@ -54,8 +56,13 @@ const page = {
     <Content />
     <aside class="guide-toc" aria-label={hu ? 'Következő lépés' : 'Your next step'} data-pagefind-ignore>
       <h2>{hu ? 'A választástól a személyes próbáig' : 'From choosing to trying it on'}</h2>
-      <p>{hu ? 'Nézze meg a modelleket, majd küldje el WhatsAppon a kiválasztott darab képét és a keresett méretet. Látogatás előtt érdeklődjön az elérhetőségről; az illeszkedést személyes próbával ellenőrizheti.' : 'Explore the models, then send the photo of the piece you like and your preferred size on WhatsApp. Ask about availability before visiting; an in-store fitting helps you check the fit.'}</p>
-      <p><a href={collection}>{collectionLabel}</a> · <a href={whatsapp}>{hu ? 'Érdeklődés WhatsAppon' : 'Ask on WhatsApp'}</a></p>
+      <p>{hu ? 'Próbálja fel a kiválasztott fazonokat a Kossuth Lajos u. 18. alatti üzletünkben, az Astoria és a Ferenciek tere között. Időpont nélkül is betérhet. Ha egy konkrét modellt keres, előzetesen WhatsAppon vagy telefonon is érdeklődhet.' : 'Try your preferred styles at our store on Kossuth Lajos u. 18, between Astoria and Ferenciek tere. Walk in without an appointment. If you are looking for a specific model, ask on WhatsApp or by phone before visiting.'}</p>
+      <div class="actions guide-visit-actions">
+        <a class="btn btn-primary" href="https://maps.app.goo.gl/keuQRmecRpFn5Vjr5">{hu ? 'Útvonaltervezés az üzlethez' : 'Get directions to our store'}</a>
+        <a class="btn btn-ghost" href={whatsapp}>{hu ? 'Érdeklődés WhatsAppon' : 'Ask on WhatsApp'}</a>
+        <a class="btn btn-ghost" href="tel:+3612667274">{hu ? 'Üzlet\u00a0felhívása' : 'Call\u00a0the\u00a0store'}</a>
+      </div>
+      <p><a href={hu ? '/uzlet/' : '/en/visit/'}>{hu ? 'Nyitvatartás és üzletinformáció' : 'Opening hours and store information'}</a> · <a href={collection}>{collectionLabel}</a></p>
     </aside>
     <MessageShare title={f.title} url={canonical} lang={lang} />
 
@@ -83,7 +90,7 @@ const page = {
           {relatedGuides.map((g) => (
             <article class="guide-related-card">
               <a href={`${root}${g.slug}/`}>
-                <img src={g.heroImage.replace('-800.avif', '-480.avif')} alt={g.title} width="360" height="202" loading="lazy" decoding="async" />
+                <img src={g.heroImage.replace('-800.avif', '-480.avif')} alt={g.heroAlt ?? g.title} width="360" height="202" loading="lazy" decoding="async" />
                 <div class="guide-related-body">
                   <span class="guide-related-topic">{g.topic}</span>
                   <h3>{g.title}</h3>
@@ -100,6 +107,13 @@ const page = {
 </BaseLayout>
 
 <style>
+  :global(.article-content .guide-product-photo) { width: min(100%, 400px); margin: 1.4rem auto 1.8rem; }
+  :global(.article-content .guide-product-photo picture) { display: block; }
+  :global(.article-content .guide-product-photo img) { display: block; width: 100%; height: auto; border-radius: 8px; }
+  :global(.article-content .guide-product-photo figcaption) { font-size: .88rem; line-height: 1.5; margin-top: .5rem; }
+  .guide-visit-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1rem 0; }
+  .guide-visit-actions a { min-height: 44px; }
+  @media (max-width: 480px) { .guide-visit-actions { flex-direction: column; align-items: stretch; } .guide-visit-actions a { justify-content: center; } }
   .guide-editorial-bar {
     display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;
     padding-bottom: 0.85rem; margin-bottom: 1rem; border-bottom: 1px solid var(--line, #efe4d229);

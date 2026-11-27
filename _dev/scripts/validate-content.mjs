@@ -52,6 +52,10 @@ export async function validateContent(root) {
       if(!match[2].trim())issues.push(`${context}: body is empty`);
       if(/<(?:script|iframe|object|embed)\b|<[^>]+\son[a-z]+\s*=|(?:href|src)\s*=\s*["']\s*(?:javascript|vbscript|data):|\]\(\s*(?:javascript|vbscript|data):/i.test(match[2]))issues.push(`${context}: active scripts/embeds are not allowed in guide content`);
       await localImage(data.heroImage,context);
+      if (data.editorialImages !== undefined) {
+        if (!Array.isArray(data.editorialImages) || !data.editorialImages.length || typeof data.heroAlt !== 'string' || !data.heroAlt.trim()) issues.push(`${context}: editorial images need a non-empty image list and hero alt`);
+        else for (const url of data.editorialImages) await localImage(url,context);
+      }
     }
   }
   for(const [url,{data,context}] of guides) {
