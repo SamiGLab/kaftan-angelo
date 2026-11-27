@@ -18,6 +18,25 @@ for (const route of guides) {
   assert.ok(desktop?.includes('-800.avif'), route + ' desktop source is preserved');
 }
 
+// Seasonal editorial product images: local responsive sources, real dimensions, and alt text.
+const seasonalRoutes = ["/utmutatok/borkabat-telen/","/en/guides/leather-jacket-in-winter/","/utmutatok/elegans-noi-borkabat/","/en/guides/elegant-womens-leather-jacket-outfits/","/utmutatok/szormekabat-stilus-telen/","/en/guides/fur-coat-outfits-winter/","/utmutatok/budapesti-karacsonyi-vasar-oltozkodes/","/en/guides/what-to-wear-budapest-christmas-markets/"];
+for (const route of seasonalRoutes) {
+  const html = await readFile(`dist${route}index.html`, 'utf8');
+  const figures = [...html.matchAll(/<figure[^>]*class="guide-product-photo"[^>]*>[\s\S]*?<\/figure>/g)].map(m => m[0]);
+  assert.ok(figures.length >= 2, route + ' includes model photos');
+  for (const figure of figures) {
+    assert.ok(figure.includes('type="image/avif"'));
+    assert.ok(figure.includes('loading="lazy"'));
+    assert.ok(figure.includes('decoding="async"'));
+    assert.match(figure, /alt="[^"]+"/);
+    assert.match(figure, /width="[1-9]\d+"/);
+    assert.match(figure, /height="[1-9]\d+"/);
+    for (const match of figure.matchAll(/\/assets\/images\/[^"\s,]+\.(?:avif|webp)/g)) assert.ok((await stat('dist' + match[0])).size > 0);
+    const primary = figure.match(/src="(\/assets\/images\/[^"]+)-800\.webp"/)?.[1];
+    assert.ok(primary && sitemap.includes(primary + '-800.avif'), route + ' photo in image sitemap');
+  }
+}
+
 // Exercise the existing two-card CSS layout as well as full catalogues.
 const catalogue = await readFile('dist/kollekciok/index.html', 'utf8');
 let seen = 0;

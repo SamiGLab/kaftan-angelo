@@ -48,6 +48,7 @@ export function GET() {
   urls.add('/en/guides/');
   Object.keys(huGuides).forEach(p=>urls.add(`/utmutatok/${slug(p)}/`));
   Object.keys(enGuides).forEach(p=>urls.add(`/en/guides/${slug(p)}/`));
+  const guideImages = new Map();
   const modified = new Map(Object.entries(pages).filter(([, page]) => page.modifiedDate).map(([url, page]) => [url, page.modifiedDate]));
   const counterparts = new Map(Object.entries(pages).map(([url, page]) => [url, page.counterpart]));
   counterparts.set('/utmutatok/', '/en/guides/');
@@ -57,10 +58,11 @@ export function GET() {
       const url = `${root}${slug(path)}/`;
       modified.set(url, mod.frontmatter.modifiedDate ?? mod.frontmatter.publishDate);
       counterparts.set(url, mod.frontmatter.counterpart);
+      if (mod.frontmatter.editorialImages?.length) guideImages.set(url, [mod.frontmatter.heroImage, ...mod.frontmatter.editorialImages]);
     }
     const dates = Object.values(modules).map(mod => mod.frontmatter.modifiedDate ?? mod.frontmatter.publishDate).filter(Boolean).sort();
     if (dates.length) modified.set(root, dates.at(-1));
   }
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${[...urls].sort().map(u=>`  <url><loc>${BASE}${u}</loc>${languageLinks(u, counterparts.get(u), urls)}${modified.has(u) ? `<lastmod>${modified.get(u)}</lastmod>` : ''}<changefreq>${getChangefreq(u)}</changefreq><priority>${getPriority(u)}</priority>${modelImages(u)}</url>`).join('\n')}\n</urlset>`;
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${[...urls].sort().map(u=>`  <url><loc>${BASE}${u}</loc>${languageLinks(u, counterparts.get(u), urls)}${modified.has(u) ? `<lastmod>${modified.get(u)}</lastmod>` : ''}<changefreq>${getChangefreq(u)}</changefreq><priority>${getPriority(u)}</priority>${guideImages.has(u) ? [...new Set(guideImages.get(u))].map(src => `<image:image><image:loc>${xmlEscape(BASE + src)}</image:loc></image:image>`).join('') : modelImages(u)}</url>`).join('\n')}\n</urlset>`;
   return new Response(xml,{headers:{'Content-Type':'application/xml; charset=utf-8'}});
 }
