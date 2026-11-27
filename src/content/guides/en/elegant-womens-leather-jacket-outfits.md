@@ -6,8 +6,8 @@ modifiedDate: "2026-11-27"
 counterpart: "/utmutatok/elegans-noi-borkabat/"
 topic: "Style"
 readingMinutes: 3
-heroImage: "/assets/images/elegant-womens-leather-jacket-outfit-800.avif"
-heroAlt: "Black belted leather blazer with a black turtleneck and tailored trousers"
+heroImage: "/assets/images/kaftan-angelo-womens-leather-jackets-budapest-800.avif"
+heroAlt: "Women's leather jackets from the Kaftan Angelo collection"
 editorialImages: ["/assets/images/black-womens-leather-blazer-budapest-front-800.avif","/assets/images/white-belted-womens-leather-jacket-budapest-front-800.avif","/assets/images/black-quilted-womens-biker-leather-jacket-budapest-front-800.avif","/assets/images/red-womens-suede-jacket-budapest-front-800.avif","/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.avif"]
 ---
 > **Quick answer:** An elegant leather jacket becomes more versatile when it works with the clothes you already own. Tailored trousers, a knit or a midi dress can take the same jacket from one occasion to another.

@@ -6,8 +6,8 @@ modifiedDate: "2026-11-27"
 counterpart: "/en/guides/leather-jacket-in-winter/"
 topic: "Választás"
 readingMinutes: 3
-heroImage: "/assets/images/winter-leather-shearling-coat-style-800.avif"
-heroAlt: "Barna, öves irhakabátot viselő nő téli öltözékben"
+heroImage: "/assets/images/womens-shearling-jacket-budapest-800.avif"
+heroAlt: "Női irhakabát a Kaftan Angelo kollekciójából"
 editorialImages: ["/assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.avif","/assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.avif","/assets/images/black-quilted-mens-leather-jacket-budapest-front-800.avif"]
 ---
 > **Rövid válasz:** Télen is hordhat bőrkabátot, ha a bélés, a hossz és az alatta viselt rétegek megfelelnek az időjárásnak. Hosszabb szabadtéri programhoz érdemes bélelt bőrkabátot és irhakabátot is összehasonlítani.

@@ -6,8 +6,8 @@ modifiedDate: "2026-11-27"
 counterpart: "/utmutatok/borkabat-telen/"
 topic: "Choosing"
 readingMinutes: 3
-heroImage: "/assets/images/winter-leather-shearling-coat-style-800.avif"
-heroAlt: "Woman wearing a belted brown shearling coat in a winter outfit"
+heroImage: "/assets/images/womens-shearling-jacket-budapest-800.avif"
+heroAlt: "Women's shearling jacket from the Kaftan Angelo collection"
 editorialImages: ["/assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.avif","/assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.avif","/assets/images/black-quilted-mens-leather-jacket-budapest-front-800.avif"]
 ---
 > **Quick answer:** A leather jacket can work in winter when its lining, length and your clothing layers suit the weather. For longer outdoor outings, compare a lined leather coat with a shearling coat.

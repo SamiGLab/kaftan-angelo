@@ -6,8 +6,8 @@ modifiedDate: "2026-11-27"
 counterpart: "/en/guides/elegant-womens-leather-jacket-outfits/"
 topic: "Stílus"
 readingMinutes: 3
-heroImage: "/assets/images/elegant-womens-leather-jacket-outfit-800.avif"
-heroAlt: "Fekete, öves bőrblézer fekete garbóval és szövetnadrággal"
+heroImage: "/assets/images/kaftan-angelo-womens-leather-jackets-budapest-800.avif"
+heroAlt: "Női bőrkabátok a Kaftan Angelo kollekciójából"
 editorialImages: ["/assets/images/black-womens-leather-blazer-budapest-front-800.avif","/assets/images/white-belted-womens-leather-jacket-budapest-front-800.avif","/assets/images/black-quilted-womens-biker-leather-jacket-budapest-front-800.avif","/assets/images/red-womens-suede-jacket-budapest-front-800.avif","/assets/images/noi-piros-ketoldalas-borkabat-budapest-plain-front-800.avif"]
 ---
 > **Rövid válasz:** Az elegáns női bőrkabát akkor igazán sokoldalú, ha a meglévő ruhatárával is jól működik. Egy szövetnadrág, kötött felső vagy midi ruha segítségével ugyanaz a darab több alkalomra is viselhető.
