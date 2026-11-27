@@ -372,7 +372,38 @@ const collectionViews = [...document.querySelectorAll('.product-grid')].map((gri
       grid.querySelector('button, a')?.focus();
     }
   });
+  let lastClickAt = 0;
+  let scrollTimer = 0;
+  let userScrolling = false;
+  function maybeAutoLoad() {
+    if (more.hidden || controls.hidden || Date.now() - lastClickAt < 250) return;
+    if (window.scrollY < 40) return;
+    const rect = controls.getBoundingClientRect();
+    if (rect.top <= window.innerHeight + 360) {
+      limit += 12;
+      render();
+    }
+  }
+  const onUserGesture = () => {
+    userScrolling = true;
+    requestAnimationFrame(maybeAutoLoad);
+  };
+  window.addEventListener('wheel', onUserGesture, { passive: true });
+  window.addEventListener('touchmove', onUserGesture, { passive: true });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'PageDown' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'End') onUserGesture();
+  }, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (userScrolling) {
+      requestAnimationFrame(maybeAutoLoad);
+      return;
+    }
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(maybeAutoLoad, 180);
+  }, { passive: true });
   more.addEventListener('click', () => {
+    lastClickAt = Date.now();
+    clearTimeout(scrollTimer);
     const firstNew = matches()[limit];
     limit += 12;
     render();
