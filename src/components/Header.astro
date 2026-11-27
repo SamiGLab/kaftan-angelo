@@ -93,7 +93,32 @@ const active = (href: string) =>
           <a class="nav-dept-link" href={href} aria-current={route === href ? 'page' : undefined}>{label}</a>
         ))}
         <span class="nav-dept-sep" aria-hidden="true"></span>
-        {items.map(([label, href]) => <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>)}
+        {items.map(([label, href]) => (
+          href === collections[0] ? (
+            <div class="nav-mega-wrap">
+              <a class="nav-mega-trigger" href={href} aria-current={active(href) ? 'page' : undefined}>
+                {label} <span class="nav-mega-caret" aria-hidden="true">▾</span>
+              </a>
+              <div class="nav-mega-panel">
+                <div class="nav-mega-col">
+                  <span class="nav-mega-kicker">{hu ? 'Kategóriák' : 'Categories'}</span>
+                  <a href={collections[0]}>{hu ? 'Összes modell' : 'All models'}</a>
+                  {deptItems.map(([dLabel, dHref]) => (
+                    <a href={dHref}>{dLabel}</a>
+                  ))}
+                </div>
+                <div class="nav-mega-col">
+                  <span class="nav-mega-kicker">{hu ? 'Szolgáltatások' : 'Showroom'}</span>
+                  <a href={hu ? '/egyedi-rendeles/' : '/en/custom-orders/'}>{hu ? 'Egyedi rendelés & méretre igazítás' : 'Custom orders & tailoring'}</a>
+                  <a href={hu ? '/uzlet/' : '/en/visit/'}>{hu ? 'Budapesti üzlet · Kossuth Lajos u. 18' : 'Budapest store · Kossuth Lajos u. 18'}</a>
+                  <a href={hu ? '/utmutatok/' : '/en/guides/'}>{hu ? 'Bőrkabát választási útmutatók' : 'Leather & shearling guides'}</a>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a href={href} aria-current={active(href) ? 'page' : undefined}>{label}</a>
+          )
+        ))}
       </div>
 
       <div class="mobile-drawer-body">

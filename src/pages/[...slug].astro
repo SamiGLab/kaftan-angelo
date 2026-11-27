@@ -39,7 +39,7 @@ function collectionMarkup(html: string) {
       const variants = model.variants.map(variant => variant.names[collectionLang]).join(' ');
       const saveLabel = (hu ? 'Mentés a próbalistára: ' : 'Save to fitting list: ') + model.names[collectionLang];
       let updated = card.replace('<article class="product-card"', '<article class="product-card" data-model-key="' + escapeAttr(model.slug) + '" data-model-variants="' + escapeAttr(variants) + '"')
-        .replace(/<button class="product-image-button"[^>]*>([\s\S]*?)(?:<span class="image-hint">[\s\S]*?<\/span>)?<\/button>/, '<a class="product-image-button" href="' + escapeAttr(detailUrl) + '" aria-label="' + escapeAttr(model.names[collectionLang]) + '">$1</a>')
+        .replace(/<button class="product-image-button"[^>]*>([\s\S]*?)(?:<span class="image-hint">[\s\S]*?<\/span>)?<\/button>/, '<div class="collection-photo"><a class="product-image-button" href="' + escapeAttr(detailUrl) + '" aria-label="' + escapeAttr(model.names[collectionLang]) + '">$1</a></div>')
         .replace(/<h3>([^<]+)<\/h3>/, '<span class="product-card-cat">' + escapeAttr(model.category[collectionLang].name) + '</span><h3><a href="' + escapeAttr(detailUrl) + '">$1</a></h3>')
         .replace(/<p>(Front and back photographs|Elöl- és hátulnézeti fotók)<\/p>/, '<p class="collection-repeated-description">$1</p>')
         .replace('</article>', '<button type="button" class="collection-save" data-model-save aria-pressed="false" aria-label="' + escapeAttr(saveLabel) + '" disabled>♡</button></article>');
