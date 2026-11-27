@@ -1,5 +1,5 @@
 ---
-title: "Can You Wear a Leather Jacket in Winter? Leather vs Shearling"
+title: "Leather Jacket in Winter: Leather vs Shearling"
 description: "Is a leather jacket warm enough for winter? Compare lining, coverage and layers for commuting or walking, then try the styles in Budapest."
 publishDate: "2026-11-27"
 modifiedDate: "2026-11-27"

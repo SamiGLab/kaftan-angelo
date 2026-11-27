@@ -1,5 +1,5 @@
 ---
-title: "Mit vegyen fel a budapesti karácsonyi vásárokra 2026-ban?"
+title: "Budapesti karácsonyi vásár: mit vegyen fel 2026-ban?"
 description: "Öltözködési és csomagolási tippek a Vörösmarty téri és bazilikai karácsonyi vásárhoz: meleg kabát, rétegek, cipő és belvárosi próba."
 publishDate: "2026-11-27"
 modifiedDate: "2026-11-27"

@@ -1,5 +1,5 @@
 ---
-title: "Elegant Women's Leather Jackets: 5 Outfit Ideas for Work and Evenings"
+title: "Elegant Women's Leather Jackets: 5 Outfit Ideas"
 description: "Five wearable outfits with a women's leather jacket, from tailored trousers to midi dresses, coloured suede and reversible styles. Try them in Budapest."
 publishDate: "2026-11-27"
 modifiedDate: "2026-11-27"
