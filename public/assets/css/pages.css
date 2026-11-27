@@ -2574,7 +2574,7 @@ main .btn-ghost:hover{background:#eef1f5;color:#1d2128}
 .newsletter-form button{background:#1d2128;color:#ffffff}
 .newsletter-form button:hover{background:#2d3440}
 .callout,.related-links{background:#f6f7f9;border:1px solid #e6eaf0;border-left:3px solid #9c522b;border-radius:8px;color:#1d2128}
-.callout a,.related-links a{color:#9c522b;font-weight:600}
+.callout a:not(.btn),.related-links a:not(.btn){color:#9c522b;font-weight:600}
 @media(max-width:1100px){
   html.js .site-header .links{background:#ffffff;border:1px solid #e6eaf0;border-top:0;box-shadow:0 16px 36px rgba(29,33,40,.12);color:#1d2128}
   html.js .site-header .links a{color:#1d2128}
