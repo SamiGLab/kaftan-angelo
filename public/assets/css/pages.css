@@ -2580,6 +2580,7 @@ main .btn-ghost:hover{background:#eef1f5;color:#1d2128}
 .desktop-nav-group{display:contents}
 .mobile-drawer-head,.mobile-drawer-search-wrap,.mobile-drawer-body,.mobile-drawer-footer,.mobile-menu-backdrop{display:none}
 html.menu-open,html.menu-open body{overflow:hidden}
+html.menu-open .site-header{z-index:150}
 @media(max-width:1100px){
   .desktop-nav-group{display:none}
   .mobile-menu-backdrop{display:block;position:fixed;inset:0;z-index:119;background:rgba(29,33,40,.48);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
