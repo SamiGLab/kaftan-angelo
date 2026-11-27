@@ -12,6 +12,21 @@ const catalogUrl = hu ? '/kollekciok/' : '/en/collections/';
 const trending = hu
   ? ['báránybőr', 'fekete', 'irha', 'szőrme', 'férfi', 'barna']
   : ['lambskin', 'black', 'shearling', 'fur', 'men', 'brown'];
+const categories: [string, string][] = hu
+  ? [
+      ['all', 'Összes'],
+      ['women', 'Női bőrkabát'],
+      ['men', 'Férfi bőrkabát'],
+      ['shearling', 'Irha'],
+      ['fur', 'Szőrme'],
+    ]
+  : [
+      ['all', 'All'],
+      ['women', 'Women’s leather'],
+      ['men', 'Men’s leather'],
+      ['shearling', 'Shearling'],
+      ['fur', 'Fur'],
+    ];
 ---
 
 <dialog class="global-search-dialog" data-global-search-dialog aria-labelledby="global-search-title">
@@ -27,9 +42,25 @@ const trending = hu
         class="gs-input"
         data-global-search-input
         autocomplete="off"
+        role="combobox"
+        aria-expanded="true"
+        aria-controls="gs-results-list"
+        aria-autocomplete="list"
         placeholder={hu ? 'Modell, szín vagy anyag (pl. fekete, báránybőr)…' : 'Model, colour or material (e.g. black, lambskin)…'}
         aria-label={hu ? 'Modellek keresése' : 'Search models'}
       />
+    </div>
+    <div class="gs-cats" role="group" aria-label={hu ? 'Kategória szűrő' : 'Category filter'}>
+      {categories.map(([key, label], idx) => (
+        <button
+          type="button"
+          class={`gs-cat-pill${idx === 0 ? ' is-active' : ''}`}
+          data-gs-cat={key}
+          aria-pressed={idx === 0 ? 'true' : 'false'}
+        >
+          {label}
+        </button>
+      ))}
     </div>
     <div class="gs-trending" role="group" aria-label={hu ? 'Népszerű keresések' : 'Popular searches'}>
       <span class="gs-trending-label">{hu ? 'Népszerű:' : 'Popular:'}</span>
@@ -37,8 +68,12 @@ const trending = hu
         <button type="button" class="gs-chip" data-gs-chip={term}>{term}</button>
       ))}
     </div>
-    <div class="gs-results" data-global-search-results aria-live="polite"></div>
+    <p class="gs-section-label" data-gs-section-label>
+      {hu ? 'Kiemelt modellek' : 'Featured models'}
+    </p>
+    <div id="gs-results-list" class="gs-results" data-global-search-results role="listbox" aria-live="polite"></div>
     <div class="gs-foot">
+      <span class="gs-kbd-hint" aria-hidden="true">{hu ? '↑↓ választás · Enter megnyitás · Esc bezárás' : '↑↓ navigate · Enter open · Esc close'}</span>
       <a href={catalogUrl}>{hu ? 'Teljes kollekció megtekintése →' : 'Browse full collection →'}</a>
     </div>
   </div>
@@ -50,11 +85,16 @@ const trending = hu
   if (!dialog) return;
   const input = dialog.querySelector('[data-global-search-input]');
   const resultsEl = dialog.querySelector('[data-global-search-results]');
+  const labelEl = dialog.querySelector('[data-gs-section-label]');
   const closeBtn = dialog.querySelector('[data-global-search-close]');
+  const catButtons = Array.from(dialog.querySelectorAll('[data-gs-cat]'));
   if (!input || !resultsEl) return;
 
   const hu = lang === 'hu';
   let indexPromise = null;
+  let activeCat = 'all';
+  let activeIdx = -1;
+  let lastTrigger = null;
 
   const loadIndex = () => {
     if (!indexPromise) {
@@ -66,26 +106,63 @@ const trending = hu
   const esc = (s) =>
     String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-  const render = async (raw) => {
-    const q = raw.trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-    if (!q) {
-      resultsEl.innerHTML = '';
+  const updateActiveItem = (nextIdx) => {
+    const items = Array.from(resultsEl.querySelectorAll('.gs-item'));
+    if (!items.length) {
+      activeIdx = -1;
+      input.removeAttribute('aria-activedescendant');
       return;
     }
+    activeIdx = ((nextIdx % items.length) + items.length) % items.length;
+    items.forEach((el, idx) => {
+      const selected = idx === activeIdx;
+      el.classList.toggle('is-active', selected);
+      el.setAttribute('aria-selected', selected ? 'true' : 'false');
+    });
+    const activeEl = items[activeIdx];
+    if (activeEl) {
+      input.setAttribute('aria-activedescendant', activeEl.id);
+      activeEl.scrollIntoView({ block: 'nearest' });
+    }
+  };
+
+  const render = async (raw) => {
+    const q = raw.trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
     const items = await loadIndex();
-    const tokens = q.split(/\s+/).filter(Boolean);
-    const matches = items.filter((item) => tokens.every((t) => item.h.includes(t)));
+    const scoped = activeCat === 'all' ? items : items.filter((item) => item.k === activeCat);
+    activeIdx = -1;
+    input.removeAttribute('aria-activedescendant');
+
+    let matches;
+    if (!q) {
+      matches = scoped.slice(0, 6);
+      if (labelEl) {
+        labelEl.textContent = hu
+          ? `Kiemelt modellek (${scoped.length})`
+          : `Featured models (${scoped.length})`;
+      }
+    } else {
+      const tokens = q.split(/\s+/).filter(Boolean);
+      matches = scoped.filter((item) => tokens.every((t) => item.h.includes(t)));
+      if (labelEl) {
+        labelEl.textContent = hu
+          ? `Találatok (${matches.length})`
+          : `Results (${matches.length})`;
+      }
+    }
+
     if (!matches.length) {
       resultsEl.innerHTML = `<p class="gs-empty">${
         hu ? 'Nincs találat erre a keresésre.' : 'No matching models found.'
       } <a href="${catalogUrl}">${hu ? 'Összes modell →' : 'All models →'}</a></p>`;
       return;
     }
+
     resultsEl.innerHTML = matches
       .slice(0, 8)
       .map(
-        (m) => `<a class="gs-item" href="${esc(m.u)}">
-          <img src="${esc(m.i)}" alt="" width="48" height="48" loading="lazy" decoding="async" />
+        (m, idx) => `<a class="gs-item" id="gs-opt-${idx}" role="option" aria-selected="false" href="${esc(m.u)}">
+          <img src="${esc(m.i)}" alt="" width="48" height="60" loading="lazy" decoding="async" />
           <span class="gs-item-meta">
             <strong>${esc(m.n)}</strong>
             <span>${esc(m.c)}${m.m ? ' · ' + esc(m.m) : ''}</span>
@@ -104,41 +181,89 @@ const trending = hu
     }
   };
 
-  const openModal = () => {
+  const openModal = (trigger) => {
+    lastTrigger = trigger instanceof HTMLElement ? trigger : document.activeElement;
+    window.dispatchEvent(new CustomEvent('kaftan-close-overlays', { detail: { except: 'search' } }));
     ensureCss();
     loadIndex();
     if (!dialog.open) dialog.showModal();
-    input.focus();
+    render(input.value);
+    requestAnimationFrame(() => input.focus());
+  };
+
+  const closeModal = (restoreFocus = true) => {
+    if (dialog.open) dialog.close();
+    if (restoreFocus && lastTrigger instanceof HTMLElement) {
+      lastTrigger.focus();
+    }
   };
 
   document.addEventListener('click', (e) => {
     const trigger = e.target instanceof Element ? e.target.closest('[data-global-search-open]') : null;
     if (trigger) {
       e.preventDefault();
-      openModal();
+      openModal(trigger);
     }
   });
 
   document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
-      openModal();
+      if (dialog.open) closeModal(true);
+      else openModal(document.activeElement);
     }
   });
 
-  closeBtn?.addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', (e) => {
-    if (e.target === dialog) dialog.close();
+  input.addEventListener('input', () => render(input.value));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      updateActiveItem(activeIdx + 1);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      updateActiveItem(activeIdx <= 0 ? resultsEl.querySelectorAll('.gs-item').length - 1 : activeIdx - 1);
+    } else if (e.key === 'Enter' && activeIdx >= 0) {
+      const items = resultsEl.querySelectorAll('.gs-item');
+      const target = items[activeIdx];
+      if (target instanceof HTMLAnchorElement) {
+        e.preventDefault();
+        window.location.href = target.href;
+      }
+    }
   });
-  input.addEventListener('input', () => { render(input.value); });
+
+  catButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeCat = btn.getAttribute('data-gs-cat') || 'all';
+      catButtons.forEach((b) => {
+        const active = b === btn;
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      render(input.value);
+      input.focus();
+    });
+  });
 
   dialog.querySelectorAll('[data-gs-chip]').forEach((chip) => {
     chip.addEventListener('click', () => {
-      const term = chip.getAttribute('data-gs-chip') || '';
-      input.value = term;
+      input.value = chip.getAttribute('data-gs-chip') || '';
+      render(input.value);
       input.focus();
-      render(term);
     });
+  });
+
+  closeBtn?.addEventListener('click', () => closeModal(true));
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) closeModal(true);
+  });
+  dialog.addEventListener('cancel', () => {
+    if (lastTrigger instanceof HTMLElement) {
+      requestAnimationFrame(() => lastTrigger.focus());
+    }
+  });
+  window.addEventListener('kaftan-close-overlays', (e) => {
+    if (e.detail?.except !== 'search' && dialog.open) closeModal(false);
   });
 })();
 </script>

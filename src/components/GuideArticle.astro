@@ -46,28 +46,48 @@ const page = {
 <BaseLayout page={page}>
   <Fragment slot="head"><meta property="article:published_time" content={published} /><meta property="article:modified_time" content={modified} /></Fragment>
   <section class="page-hero" style={`--hero:url('${f.heroImage}');--hero-mobile:url('${f.heroImage.replace('-800.avif','-480.avif')}')`}><div class="wrap"><div class="breadcrumbs"><a href={hu ? '/' : '/en/'}>{hu ? 'Főoldal' : 'Home'}</a> / <a href={root}>{hu ? 'Útmutatók' : 'Guides'}</a> / {f.title}</div><span class="tag mono">{f.topic} · Kaftan Angelo</span><h1>{f.title}</h1><p>{f.description}</p></div></section>
-  <section><article class="wrap content article-content" data-pagefind-filter="type:guide">
-    <div class="guide-editorial-bar" data-pagefind-ignore>
-      <a class="guide-back-shop" href={collection}>← {collectionLabel}</a>
-      <a class="guide-all-link" href={root}>{hu ? 'Összes útmutató' : 'All guides'}</a>
-    </div>
-    <p class="guide-meta"><a href={hu ? '/rolunk/' : '/en/about/'}>Kaftan Angelo</a> · {hu ? 'Frissítve' : 'Updated'} <time datetime={f.modifiedDate ?? f.publishDate}>{f.modifiedDate ?? f.publishDate}</time> · {f.readingMinutes} {hu ? 'perc olvasás' : 'min read'}</p>
-    <nav class="guide-toc" aria-label={hu ? 'A cikk tartalma' : 'On this page'} data-pagefind-ignore><h2>{hu ? 'Ebben az útmutatóban' : 'On this page'}</h2><ul>{headings.map(h => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ul></nav>
-    <Content />
-    <aside class="guide-toc" aria-label={hu ? 'Következő lépés' : 'Your next step'} data-pagefind-ignore>
-      <h2>{hu ? 'A választástól a személyes próbáig' : 'From choosing to trying it on'}</h2>
-      <p>{hu ? 'Próbálja fel a kiválasztott fazonokat a Kossuth Lajos u. 18. alatti üzletünkben, az Astoria és a Ferenciek tere között. Időpont nélkül is betérhet. Ha egy konkrét modellt keres, előzetesen WhatsAppon vagy telefonon is érdeklődhet.' : 'Try your preferred styles at our store on Kossuth Lajos u. 18, between Astoria and Ferenciek tere. Walk in without an appointment. If you are looking for a specific model, ask on WhatsApp or by phone before visiting.'}</p>
-      <div class="actions guide-visit-actions">
-        <a class="btn btn-primary" href="https://maps.app.goo.gl/keuQRmecRpFn5Vjr5">{hu ? 'Útvonaltervezés az üzlethez' : 'Get directions to our store'}</a>
-        <a class="btn btn-ghost" href={whatsapp}>{hu ? 'Érdeklődés WhatsAppon' : 'Ask on WhatsApp'}</a>
-        <a class="btn btn-ghost" href="tel:+3612667274">{hu ? 'Üzlet\u00a0felhívása' : 'Call\u00a0the\u00a0store'}</a>
+  <section><article class="wrap content article-content guide-layout" data-pagefind-filter="type:guide">
+    <div class="guide-main-col">
+      <div class="guide-editorial-bar" data-pagefind-ignore>
+        <a class="guide-back-shop" href={collection}>← {collectionLabel}</a>
+        <a class="guide-all-link" href={root}>{hu ? 'Összes útmutató' : 'All guides'}</a>
       </div>
-      <p><a href={hu ? '/uzlet/' : '/en/visit/'}>{hu ? 'Nyitvatartás és üzletinformáció' : 'Opening hours and store information'}</a> · <a href={collection}>{collectionLabel}</a></p>
+      <p class="guide-meta"><a href={hu ? '/rolunk/' : '/en/about/'}>Kaftan Angelo</a> · {hu ? 'Frissítve' : 'Updated'} <time datetime={f.modifiedDate ?? f.publishDate}>{f.modifiedDate ?? f.publishDate}</time> · {f.readingMinutes} {hu ? 'perc olvasás' : 'min read'}</p>
+      <nav class="guide-toc guide-toc-mobile" aria-label={hu ? 'A cikk tartalma' : 'On this page'} data-pagefind-ignore><h2>{hu ? 'Ebben az útmutatóban' : 'On this page'}</h2><ul>{headings.map(h => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ul></nav>
+      <Content />
+      <aside class="guide-toc" aria-label={hu ? 'Következő lépés' : 'Your next step'} data-pagefind-ignore>
+        <h2>{hu ? 'A választástól a személyes próbáig' : 'From choosing to trying it on'}</h2>
+        <p>{hu ? 'Próbálja fel a kiválasztott fazonokat a Kossuth Lajos u. 18. alatti üzletünkben, az Astoria és a Ferenciek tere között. Időpont nélkül is betérhet. Ha egy konkrét modellt keres, előzetesen WhatsAppon vagy telefonon is érdeklődhet.' : 'Try your preferred styles at our store on Kossuth Lajos u. 18, between Astoria and Ferenciek tere. Walk in without an appointment. If you are looking for a specific model, ask on WhatsApp or by phone before visiting.'}</p>
+        <div class="actions guide-visit-actions">
+          <a class="btn btn-primary" href="https://maps.app.goo.gl/keuQRmecRpFn5Vjr5">{hu ? 'Útvonaltervezés az üzlethez' : 'Get directions to our store'}</a>
+          <a class="btn btn-ghost" href={whatsapp}>{hu ? 'Érdeklődés WhatsAppon' : 'Ask on WhatsApp'}</a>
+          <a class="btn btn-ghost" href="tel:+3612667274">{hu ? 'Üzlet\u00a0felhívása' : 'Call\u00a0the\u00a0store'}</a>
+        </div>
+        <p><a href={hu ? '/uzlet/' : '/en/visit/'}>{hu ? 'Nyitvatartás és üzletinformáció' : 'Opening hours and store information'}</a> · <a href={collection}>{collectionLabel}</a></p>
+      </aside>
+      <MessageShare title={f.title} url={canonical} lang={lang} />
+    </div>
+
+    <aside class="guide-sidebar" aria-label={hu ? 'Útmutató oldalsáv' : 'Guide sidebar'} data-pagefind-ignore>
+      <nav class="guide-sticky-toc" data-guide-sticky-toc aria-label={hu ? 'Tartalomjegyzék' : 'Table of contents'}>
+        <h2>{hu ? 'Ebben az útmutatóban' : 'On this page'}</h2>
+        <ul>
+          {headings.map((h, idx) => (
+            <li><a href={`#${h.slug}`} class={idx === 0 ? 'is-active' : undefined} data-toc-link={h.slug}>{h.text}</a></li>
+          ))}
+        </ul>
+      </nav>
+      <div class="guide-sidebar-box">
+        <span class="guide-sidebar-kicker">{hu ? 'Kapcsolódó kollekció' : 'Related collection'}</span>
+        <h3>{collectionLabel}</h3>
+        <p>{hu ? 'Próbálja fel élőben budapesti üzletünkben (Kossuth Lajos u. 18), vagy kérdezzen WhatsAppon.' : 'Try styles in person at our Budapest store (Kossuth Lajos u. 18) or ask on WhatsApp.'}</p>
+        <a class="btn btn-primary guide-sidebar-btn" href={collection}>{collectionLabel}</a>
+        <a class="btn btn-ghost guide-sidebar-btn" href={whatsapp}>{hu ? 'Kérdés WhatsAppon' : 'Ask on WhatsApp'}</a>
+      </div>
     </aside>
-    <MessageShare title={f.title} url={canonical} lang={lang} />
 
     {(prevGuide || nextGuide) && (
-      <nav class="guide-prev-next" aria-label={hu ? 'Előző és következő útmutató' : 'Previous and next guide'} data-pagefind-ignore>
+      <nav class="guide-prev-next guide-full-span" aria-label={hu ? 'Előző és következő útmutató' : 'Previous and next guide'} data-pagefind-ignore>
         {prevGuide ? (
           <a class="guide-pn-card" href={`${root}${prevGuide.slug}/`}>
             <span class="guide-pn-dir">← {hu ? 'Előző útmutató' : 'Previous guide'}</span>
@@ -84,7 +104,7 @@ const page = {
     )}
 
     {relatedGuides.length > 0 && (
-      <section class="guide-related" aria-labelledby="guide-related-heading" data-pagefind-ignore>
+      <section class="guide-related guide-full-span" aria-labelledby="guide-related-heading" data-pagefind-ignore>
         <h2 id="guide-related-heading">{hu ? 'További ajánlott útmutatók' : 'You might also like'}</h2>
         <div class="guide-related-grid">
           {relatedGuides.map((g) => (
@@ -103,6 +123,28 @@ const page = {
       </section>
     )}
   </article></section>
+  <script is:inline>
+  (() => {
+    const toc = document.querySelector('[data-guide-sticky-toc]');
+    if (!toc || !('IntersectionObserver' in window)) return;
+    const links = Array.from(toc.querySelectorAll('[data-toc-link]'));
+    const sections = links
+      .map((a) => ({ link: a, el: document.getElementById(a.getAttribute('data-toc-link') || '') }))
+      .filter((x) => x.el);
+    if (!sections.length) return;
+    const setActive = (id) => {
+      links.forEach((a) => a.classList.toggle('is-active', a.getAttribute('data-toc-link') === id));
+    };
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]?.target?.id) setActive(visible[0].target.id);
+      },
+      { rootMargin: '-96px 0px -65% 0px', threshold: 0 }
+    );
+    sections.forEach((s) => io.observe(s.el));
+  })();
+  </script>
   <section class="store-cta"><div class="wrap"><div><h2>{hu ? 'Próbálja fel a kollekciót Budapesten' : 'Try the collection in Budapest'}</h2><p>Kossuth Lajos u. 18, Budapest 1053</p><p>{hu ? 'Bőr, irha, szőrme és kiegészítők · Budapesten 2004 óta' : 'Leather, shearling, fur & accessories · In Budapest since 2004'}</p></div><a class="btn btn-primary" href={hu ? '/uzlet/' : '/en/visit/'}>{hu ? 'Útvonal és nyitvatartás' : 'Directions & opening hours'}</a></div></section>
 </BaseLayout>
 
@@ -152,6 +194,39 @@ const page = {
   .guide-related-body h3 { margin: 0; font-size: 0.95rem; line-height: 1.35; color: #1d2128; }
   .guide-related-time { font-size: 0.78rem; color: #5d636e; }
 
+  .guide-layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 2.5rem 3rem; align-items: start; max-width: 1120px; }
+  .guide-main-col { min-width: 0; }
+  .guide-full-span { grid-column: 1 / -1; }
+  .guide-toc-mobile { display: none; }
+  .guide-sidebar { position: sticky; top: 136px; display: flex; flex-direction: column; gap: 1.25rem; }
+  .guide-sticky-toc {
+    padding: 1.15rem 1.2rem; background: #f6f7f9; border: 1px solid #e6eaf0; border-radius: 10px;
+  }
+  .guide-sticky-toc h2 { margin: 0 0 0.75rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; color: #5d636e; font-weight: 600; }
+  .guide-sticky-toc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.2rem; }
+  .guide-sticky-toc a {
+    display: block; padding: 0.35rem 0 0.35rem 0.75rem; border-left: 2px solid transparent;
+    font-size: 0.84rem; line-height: 1.35; color: #4a5059; text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .guide-sticky-toc a:hover { color: #1d2128; border-left-color: #cfd6df; }
+  .guide-sticky-toc a.is-active { color: #9c522b; font-weight: 600; border-left-color: #9c522b; }
+
+  .guide-sidebar-box {
+    padding: 1.2rem; background: #ffffff; border: 1px solid #e6eaf0; border-top: 2px solid #9c522b;
+    border-radius: 10px; display: flex; flex-direction: column; gap: 0.55rem;
+  }
+  .guide-sidebar-kicker { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #9c522b; font-weight: 600; }
+  .guide-sidebar-box h3 { margin: 0; font-size: 1rem; line-height: 1.3; color: #1d2128; }
+  .guide-sidebar-box p { margin: 0 0 0.35rem; font-size: 0.83rem; line-height: 1.5; color: #5d636e; }
+  .guide-sidebar-btn { width: 100%; justify-content: center; min-height: 42px; font-size: 0.84rem; }
+
+  @media (max-width: 1023px) {
+    .guide-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+    .guide-toc-mobile { display: block; }
+    .guide-sidebar { position: static; }
+    .guide-sticky-toc { display: none; }
+  }
   @media (max-width: 768px) {
     .guide-prev-next, .guide-related-grid { grid-template-columns: 1fr; }
     .guide-pn-next { text-align: left; }

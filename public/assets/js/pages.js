@@ -82,6 +82,7 @@ function closeMenu(restoreFocus = false) {
   if (restoreFocus) menuButton?.focus();
 }
 function openMenu() {
+  window.dispatchEvent(new CustomEvent('kaftan-close-overlays', { detail: { except: 'menu' } }));
   menuButton?.setAttribute('aria-expanded', 'true');
   menu?.setAttribute('data-open', '');
   if (menu) { menu.scrollTop = 0; menu.scrollLeft = 0; }
@@ -89,6 +90,9 @@ function openMenu() {
   document.documentElement.classList.add('menu-open');
   requestAnimationFrame(() => (menuClose || menu?.querySelector('a, button, summary'))?.focus());
 }
+window.addEventListener('kaftan-close-overlays', event => {
+  if (event.detail?.except !== 'menu' && isMenuOpen()) closeMenu(false);
+});
 menuButton?.addEventListener('click', () => {
   if (isMenuOpen()) closeMenu(true);
   else openMenu();
