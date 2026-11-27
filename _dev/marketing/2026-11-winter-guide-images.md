@@ -6,5 +6,5 @@ External photograph candidate (not downloaded or published): Elekes Andor, Merry
 
 The existing product photos are examples of the photographed catalogue, not stock confirmation. Review actual rendered crops and complete CI before release.
 
-## Release fallback
-The four approved editorial covers are not present in the repository. Publish with the existing catalogue heroes and matching localized descriptions; do not reference missing assets. The preceding commit retains the intended cover paths for a later asset-only update. No change to release gates is required.
+## Cover asset delivery
+All four approved editorial WebP cover originals are committed in public/ with matching local checksums. The eight guide pages reference the corresponding optimized AVIF hero and localized alternative text. The existing image build produces the responsive variants; release gates remain unchanged.

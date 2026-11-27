@@ -6,8 +6,8 @@ modifiedDate: "2026-11-27"
 counterpart: "/en/guides/what-to-wear-budapest-christmas-markets/"
 topic: "Budapest"
 readingMinutes: 3
-heroImage: "/assets/images/kaftan-angelo-hero-leather-collection-800.avif"
-heroAlt: "Bőrkabát-kollekció a Kaftan Angelo budapesti üzletéből"
+heroImage: "/assets/images/christmas-market-winter-outfit-800.avif"
+heroAlt: "Sötét szőrmekabát, világos nadrág és kesztyű ünnepi vásári öltözékben"
 editorialImages: ["/assets/images/brown-mens-jacket-fur-collar-budapest-front-800.avif","/assets/images/silver-grey-womens-fur-jacket-budapest-front-800.avif"]
 ---
 > **Rövid válasz:** A budapesti karácsonyi vásárhoz válasszon meleg kabátot, levehető középső réteget, sálat, kesztyűt és jól tapadó, kényelmes cipőt. A szabadtéri álldogálás más érzés, mint a tempós séta.
