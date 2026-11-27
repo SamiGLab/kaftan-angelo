@@ -3,7 +3,7 @@ import Icon from './Icon.astro';
 import Newsletter from './Newsletter.astro';
 const { lang = 'hu', trackingAllowed=true } = Astro.props;
 const hu = lang === 'hu';
-const links = hu ? [['Kollekciók','/kollekciok/'],['Stíluskereső','/kollekciok/#style-finder'],['Egyedi rendelés','/egyedi-rendeles/'],['Rólunk','/rolunk/'],['Üzlet','/uzlet/'],['GYIK','/gyik/'],['Partnerprogram','/partnerprogram/'],['Útmutatók','/utmutatok/']] : [['Collections','/en/collections/'],['Style Finder','/en/collections/#style-finder'],['Custom orders','/en/custom-orders/'],['About us','/en/about/'],['Visit us','/en/visit/'],['FAQ','/en/faq/'],['Partners','/en/partners/'],['Guides','/en/guides/']];
+const links = hu ? [['Kollekciók','/kollekciok/'],['Egyedi rendelés','/egyedi-rendeles/'],['Rólunk','/rolunk/'],['Üzlet','/uzlet/'],['GYIK','/gyik/'],['Partnerprogram','/partnerprogram/'],['Útmutatók','/utmutatok/']] : [['Collections','/en/collections/'],['Custom orders','/en/custom-orders/'],['About us','/en/about/'],['Visit us','/en/visit/'],['FAQ','/en/faq/'],['Partners','/en/partners/'],['Guides','/en/guides/']];
 ---
 {trackingAllowed && <Newsletter lang={lang} />}
 <footer class="footer"><div class="wrap footer-grid">

@@ -114,10 +114,9 @@ for(const lang of ['hu','en']) {
  await page.goto(hub,{waitUntil:'networkidle2'});
  if(await page.$eval('[data-consent-banner]',node=>!node.hidden))await page.click('[data-consent-reject]');
  const visible=()=>page.$$eval('.product-card',cards=>cards.filter(card=>!card.hidden).length);
- await page.locator('#style-finder summary').click();
- await page.select('[data-style-finder] [name="look"]','blazer');
- await page.select('[data-style-finder] [name="tone"]','white');
- await page.locator('[data-style-finder] button').click();
+ assert.equal(await page.$('#style-finder, [data-style-finder], a[href*="#style-finder"]'),null);
+ await page.select('[data-model-style]','blazer');
+ await page.select('[data-model-colour]','white');
  assert.equal(await visible(),1);
  const match = '.product-card:not([hidden])';
  assert.match(await page.$eval(match+' h3',node=>node.textContent),lang==='hu'?/Fehér női bőrblézer/:/White women’s leather blazer/);
