@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
+Disallow: /cdn-cgi/l/email-protection
 
 # AI Search & LLM Engines
 User-agent: GPTBot

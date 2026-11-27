@@ -2285,7 +2285,8 @@ code, pre, #partner-display-code, .portal-code {
   }
   .collection-page .collection-filters { padding-block: 4px; margin-bottom: 8px; }
   .collection-page .collection-discovery { gap: 8px; margin-bottom: 12px; }
-  .collection-page .collection-shortcuts { flex-wrap: nowrap; overflow-x: auto; }
+  .collection-page .collection-meta-row { min-width: 0; }
+  .collection-page .collection-shortcuts { max-width: 100%; min-width: 0; flex-wrap: wrap; }
   .collection-page .collection-shortcuts > * { flex: 0 0 auto; padding-inline: 10px; font-size: .78rem; }
   .collection-page .collection-search,
   .collection-page .collection-select { min-height: 44px; }

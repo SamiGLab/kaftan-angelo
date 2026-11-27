@@ -33,7 +33,11 @@ const guideList = Object.entries(allModules)
 const currentIndex = guideList.findIndex((g) => g.slug === slug);
 const prevGuide = currentIndex > 0 ? guideList[currentIndex - 1] : null;
 const nextGuide = currentIndex >= 0 && currentIndex < guideList.length - 1 ? guideList[currentIndex + 1] : null;
-const relatedGuides = guideList.filter((g) => g.slug !== slug).slice(0, 3);
+const relatedGuides = guideList.filter((g) => g.slug !== slug)
+  .sort((a, b) => Number(b.topic === f.topic) - Number(a.topic === f.topic)
+    || Math.abs(guideList.indexOf(a) - currentIndex) - Math.abs(guideList.indexOf(b) - currentIndex)
+    || a.slug.localeCompare(b.slug))
+  .slice(0, 3);
 
 const page = {
   lang, title: `${f.title} | Kaftan Angelo`, description: f.description, canonical,

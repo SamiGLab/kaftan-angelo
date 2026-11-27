@@ -291,12 +291,36 @@ function createDiscovery(grid, cards, onChange) {
     const all = grid.parentElement.querySelector('[data-product-filters] [data-filter="all"]');
     if (all) all.click();
     else onChange();
+    if (value) panel.scrollIntoView({ block: 'center' });
   }
   if (isHub) saved.addEventListener('click', () => setSavedMode(!savedOnly));
+  const finder = isHub && document.querySelector('[data-style-finder]');
+  if (finder) {
+    const tone = finder.elements.namedItem('tone');
+    const look = finder.elements.namedItem('look');
+    for (const option of [...colour.options].slice(1)) tone.add(option.cloneNode(true));
+    finder.querySelector('button').disabled = false;
+    finder.addEventListener('submit', event => {
+      event.preventDefault();
+      setSavedMode(false);
+      colour.value = tone.value;
+      style.value = look.value;
+      onChange();
+      finder.closest('details').open = false;
+      result.tabIndex = -1;
+      result.focus();
+      result.scrollIntoView({ block: 'center' });
+    });
+    const openFinder = () => {
+      if (location.hash === '#style-finder') finder.closest('details').open = true;
+    };
+    openFinder();
+    window.addEventListener('hashchange', openFinder);
+  }
   search.addEventListener('input', onChange);
   colour.addEventListener('change', onChange);
   style.addEventListener('change', onChange);
-  window.addEventListener('kaftan-fitting-change', () => { refreshSaved(); if (savedOnly) onChange(); });
+  window.addEventListener('kaftan-fitting-change', () => { fittingList = readFittingList(); refreshSaved(); if (savedOnly) onChange(); });
   window.addEventListener('storage', event => {
     if (event.key !== fittingStorageKey && event.key !== null) return;
     fittingList = readFittingList();
@@ -304,9 +328,15 @@ function createDiscovery(grid, cards, onChange) {
     if (savedOnly) onChange();
   });
   refreshSaved();
-  if (isHub && location.hash === '#fitting-list') {
-    // Wait until collectionViews and the existing filter event delegation are initialized.
-    queueMicrotask(() => { setSavedMode(true); saved.focus(); });
+  if (isHub) {
+    const openSavedList = () => {
+      setSavedMode(true);
+      saved.focus();
+    };
+    if (location.hash === '#fitting-list') queueMicrotask(openSavedList);
+    window.addEventListener('hashchange', () => {
+      if (location.hash === '#fitting-list') openSavedList();
+    });
   }
   let catalogUiPromise = null;
   const loadCatalogUi = () => {
@@ -319,7 +349,7 @@ function createDiscovery(grid, cards, onChange) {
   };
   toolbar.addEventListener('click', (e) => {
     if (e.target.closest('[data-view-option], [data-filter-drawer-btn]')) bootPhase2(e);
-  }, { once: true });
+  });
   grid.addEventListener('pointerenter', () => bootPhase2(null), { once: true, capture: true });
   window.addEventListener('scroll', () => bootPhase2(null), { once: true, passive: true });
   return {
