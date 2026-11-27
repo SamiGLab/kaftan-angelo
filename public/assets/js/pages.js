@@ -39,6 +39,36 @@ if (colourSelector) {
 }
 document.querySelectorAll('.current-year').forEach(element => { element.textContent = String(new Date().getFullYear()); });
 
+// Guide topic filter pills on /utmutatok/ and /en/guides/
+const guideTopicBar = document.querySelector('[data-guide-topic-bar]');
+const guideGrid = document.querySelector('[data-guide-grid]');
+if (guideTopicBar && guideGrid) {
+  const pills = [...guideTopicBar.querySelectorAll('[data-guide-topic]')];
+  const cards = [...guideGrid.querySelectorAll('[data-guide-card-topic]')];
+  guideTopicBar.addEventListener('click', (event) => {
+    const btn = event.target.closest('[data-guide-topic]');
+    if (!btn) return;
+    const topic = btn.dataset.guideTopic;
+    pills.forEach(p => {
+      const active = p === btn;
+      p.classList.toggle('is-active', active);
+      p.setAttribute('aria-pressed', String(active));
+    });
+    cards.forEach(card => {
+      card.hidden = topic !== 'all' && card.dataset.guideCardTopic !== topic;
+    });
+  });
+}
+
+// Subtle Back-to-Top button on long pages
+const backToTop = document.querySelector('[data-back-to-top]');
+if (backToTop) {
+  const syncTop = () => { backToTop.hidden = window.scrollY < 640; };
+  window.addEventListener('scroll', syncTop, { passive: true });
+  syncTop();
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
+}
+
 const menuButton = document.querySelector('.menu-toggle');
 const menu = document.querySelector('[data-menu]');
 const menuBackdrop = document.querySelector('[data-menu-backdrop]');
