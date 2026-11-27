@@ -7,6 +7,8 @@ counterpart: "/en/guides/what-to-wear-budapest-christmas-markets/"
 topic: "Budapest"
 readingMinutes: 3
 heroImage: "/assets/images/kaftan-angelo-hero-leather-collection-800.avif"
+heroAlt: "Bőrkabát-kollekció a Kaftan Angelo budapesti üzletéből"
+editorialImages: ["/assets/images/brown-mens-jacket-fur-collar-budapest-front-800.avif","/assets/images/silver-grey-womens-fur-jacket-budapest-front-800.avif"]
 ---
 > **Rövid válasz:** A budapesti karácsonyi vásárhoz válasszon meleg kabátot, levehető középső réteget, sálat, kesztyűt és jól tapadó, kényelmes cipőt. A szabadtéri álldogálás más érzés, mint a tempós séta.
 
@@ -22,11 +24,15 @@ A fagypont közeli hőmérséklet reggel és este lehetséges, de az időjárás
 - **Esti látogatás a Bazilikánál:** melegebb középső réteg, zárható gallér, sál, sapka és kesztyű. Hosszabb kabátot is érdemes mérlegelni.
 - **Városnézés, majd vacsora:** sötét nadrág, egyszerű kötött felső, az időjárásnak megfelelő bélelt bőr- vagy irhakabát.
 
+<figure class="guide-product-photo"><a href="/modellek/barna-ferfi-kabat-szormegallerral-budapest/"><picture><source type="image/avif" srcset="/assets/images/brown-mens-jacket-fur-collar-budapest-front-480.avif 480w, /assets/images/brown-mens-jacket-fur-collar-budapest-front-800.avif 800w, /assets/images/brown-mens-jacket-fur-collar-budapest-front-1200.avif 1200w" sizes="(max-width: 480px) calc(100vw - 48px), 400px"><img src="/assets/images/brown-mens-jacket-fur-collar-budapest-front-800.webp" srcset="/assets/images/brown-mens-jacket-fur-collar-budapest-front-480.webp 480w, /assets/images/brown-mens-jacket-fur-collar-budapest-front-800.webp 800w, /assets/images/brown-mens-jacket-fur-collar-budapest-front-1200.webp 1200w" sizes="(max-width: 480px) calc(100vw - 48px), 400px" alt="Barna férfi kabát szőrmegallérral – elölnézet" width="1254" height="1254" loading="lazy" decoding="async"></picture></a><figcaption>Barna férfi kabát szőrmegallérral · <a href="/modellek/barna-ferfi-kabat-szormegallerral-budapest/">Modell részletei</a></figcaption></figure>
+
 ## Elég meleg egy bőrkabát?
 
 Egy vékony bőrdzseki inkább rövid, enyhébb utakra való. Bélelt kabát vagy irha kényelmesebb lehet hosszabb téli programnál; az adott modell kialakítása, a rétegek és az időjárás együtt számít. Sem a bőr, sem az irha nem automatikusan vízálló.
 
 Ha már van megfelelő télikabátja, használja azt. Nem szükséges csak a vásár miatt újat venni.
+
+<figure class="guide-product-photo"><a href="/modellek/ezustszurke-noi-szormedzseki-budapest/"><picture><source type="image/avif" srcset="/assets/images/silver-grey-womens-fur-jacket-budapest-front-480.avif 480w, /assets/images/silver-grey-womens-fur-jacket-budapest-front-800.avif 800w, /assets/images/silver-grey-womens-fur-jacket-budapest-front-1200.avif 1200w" sizes="(max-width: 480px) calc(100vw - 48px), 400px"><img src="/assets/images/silver-grey-womens-fur-jacket-budapest-front-800.webp" srcset="/assets/images/silver-grey-womens-fur-jacket-budapest-front-480.webp 480w, /assets/images/silver-grey-womens-fur-jacket-budapest-front-800.webp 800w, /assets/images/silver-grey-womens-fur-jacket-budapest-front-1200.webp 1200w" sizes="(max-width: 480px) calc(100vw - 48px), 400px" alt="Ezüstszürke női szőrmedzseki – elölnézet" width="1254" height="1254" loading="lazy" decoding="async"></picture></a><figcaption>Ezüstszürke női szőrmedzseki · <a href="/modellek/ezustszurke-noi-szormedzseki-budapest/">Modell részletei</a></figcaption></figure>
 
 ## Csomagolási lista egy hosszú hétvégére
 

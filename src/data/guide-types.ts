@@ -9,6 +9,8 @@ export interface GuideFrontmatter {
   topic: string;
   readingMinutes: number;
   heroImage: string;
+  heroAlt?: string;
+  editorialImages?: string[];
 }
 
 export type GuideModule = MarkdownInstance<GuideFrontmatter>;

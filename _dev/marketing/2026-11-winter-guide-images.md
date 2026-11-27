@@ -1,0 +1,7 @@
+# Winter guide photography
+
+The eight seasonal guides reuse existing model photography, matched to actual model slugs and recorded dimensions from src/data/models.json. No generated lifestyle pictures or claims that a photograph depicts an entire outfit are used. The existing optimizer creates AVIF and WebP sizes from the same original; both languages share assets. Product images have localized descriptive alt text, linked captions, intrinsic dimensions, lazy loading and responsive candidates. The existing preloaded hero remains unchanged; seasonal image arrays are emitted in Article structured data and the sitemap.
+
+External photograph candidate (not downloaded or published): Elekes Andor, Merry Christmas from Budapest! (26), Vörösmarty Square Christmas market, 14 December 2024, CC BY 4.0, https://commons.wikimedia.org/wiki/File:Merry_Christmas_from_Budapest!_(26).jpg. License https://creativecommons.org/licenses/by/4.0/. Download access was not available at the time of editing. If added later, host the optimized image locally, credit the photographer and license, disclose resizing/cropping, and identify the photo as from 2024, not the current season. Do not hotlink third-party images or treat a licensed street photo as a product endorsement.
+
+The existing product photos are examples of the photographed catalogue, not stock confirmation. Review actual rendered crops and complete CI before release.

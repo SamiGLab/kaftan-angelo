@@ -7,6 +7,8 @@ counterpart: "/utmutatok/borkabat-telen/"
 topic: "Choosing"
 readingMinutes: 3
 heroImage: "/assets/images/womens-shearling-jacket-budapest-800.avif"
+heroAlt: "Women's shearling jacket from the Kaftan Angelo collection"
+editorialImages: ["/assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.avif","/assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.avif","/assets/images/black-quilted-mens-leather-jacket-budapest-front-800.avif"]
 ---
 > **Quick answer:** A leather jacket can work in winter when its lining, length and your clothing layers suit the weather. For longer outdoor outings, compare a lined leather coat with a shearling coat.
 
@@ -18,6 +20,8 @@ The leather exterior alone tells you little about warmth. Look at the lining, fr
 
 If you plan to wear a thick sweater, check that there is room across the shoulders and upper arms. Fasten the jacket during the fitting: you will not always wear it open in winter.
 
+<figure class="guide-product-photo"><a href="/en/models/black-quilted-mens-leather-jacket-budapest/"><picture><source type="image/avif" srcset="/assets/images/black-quilted-mens-leather-jacket-budapest-front-480.avif 480w, /assets/images/black-quilted-mens-leather-jacket-budapest-front-800.avif 800w, /assets/images/black-quilted-mens-leather-jacket-budapest-front-1200.avif 1200w" sizes="(max-width: 480px) calc(100vw - 48px), 400px"><img src="/assets/images/black-quilted-mens-leather-jacket-budapest-front-800.webp" srcset="/assets/images/black-quilted-mens-leather-jacket-budapest-front-480.webp 480w, /assets/images/black-quilted-mens-leather-jacket-budapest-front-800.webp 800w, /assets/images/black-quilted-mens-leather-jacket-budapest-front-1200.webp 1200w" sizes="(max-width: 480px) calc(100vw - 48px), 400px" alt="Black quilted men’s leather jacket – front view" width="1254" height="1254" loading="lazy" decoding="async"></picture></a><figcaption>Black quilted men’s leather jacket · <a href="/en/models/black-quilted-mens-leather-jacket-budapest/">Model details</a></figcaption></figure>
+
 ## Three winter situations, three options
 
 - **Driving and short trips:** a lined leather jacket that feels comfortable while seated and reaching forward.
@@ -26,9 +30,13 @@ If you plan to wear a thick sweater, check that there is room across the shoulde
 
 The wool side of genuine shearling can provide insulation. The warmth of an individual coat depends on its construction, fit, coverage and conditions. Leather and shearling are not automatically waterproof; check the garment's own care instructions before exposure to rain or snow.
 
+<figure class="guide-product-photo"><a href="/en/models/dark-brown-mens-shearling-jacket-budapest/"><picture><source type="image/avif" srcset="/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.avif 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.avif 800w" sizes="(max-width: 480px) calc(100vw - 48px), 400px"><img src="/assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.webp" srcset="/assets/images/ferfi-sotetbarna-irhadzseki-budapest-480.webp 480w, /assets/images/ferfi-sotetbarna-irhadzseki-budapest-800.webp 800w" sizes="(max-width: 480px) calc(100vw - 48px), 400px" alt="Dark brown men’s shearling jacket – front view" width="900" height="900" loading="lazy" decoding="async"></picture></a><figcaption>Dark brown men’s shearling jacket · <a href="/en/models/dark-brown-mens-shearling-jacket-budapest/">Model details</a></figcaption></figure>
+
 ## Styles worth comparing
 
 If you like brown tones and a contrasting collar, look at the [dark brown men's shearling jacket](/en/models/dark-brown-mens-shearling-jacket-budapest/) and the [light brown men's shearling coat](/en/models/light-brown-mens-shearling-coat-budapest/). Explore the [women's leather jackets](/en/womens-leather-jackets/) and [shearling collection](/en/shearling-jackets/) for different cuts. Photographs are not a live inventory.
+
+<figure class="guide-product-photo"><a href="/en/models/light-brown-mens-shearling-coat-budapest/"><picture><source type="image/avif" srcset="/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.avif 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.avif 800w" sizes="(max-width: 480px) calc(100vw - 48px), 400px"><img src="/assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.webp" srcset="/assets/images/ferfi-vilagosbarna-irhakabat-budapest-480.webp 480w, /assets/images/ferfi-vilagosbarna-irhakabat-budapest-800.webp 800w" sizes="(max-width: 480px) calc(100vw - 48px), 400px" alt="Light brown men’s shearling coat – front view" width="900" height="900" loading="lazy" decoding="async"></picture></a><figcaption>Light brown men’s shearling coat · <a href="/en/models/light-brown-mens-shearling-coat-budapest/">Model details</a></figcaption></figure>
 
 ## A two-minute fitting with your winter sweater
 

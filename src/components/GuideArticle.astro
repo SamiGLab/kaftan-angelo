@@ -26,6 +26,7 @@ const guideList = Object.entries(allModules)
     title: m.frontmatter.title,
     topic: m.frontmatter.topic,
     heroImage: m.frontmatter.heroImage,
+    heroAlt: m.frontmatter.heroAlt,
     readingMinutes: m.frontmatter.readingMinutes,
   }))
   .sort((a, b) => a.slug.localeCompare(b.slug));
@@ -38,7 +39,7 @@ const page = {
   lang, title: `${f.title} | Kaftan Angelo`, description: f.description, canonical,
   counterpart: f.counterpart, ogImage: `https://kaftanangelo.com${f.heroImage}`,
   breadcrumbs: [{ name: hu ? 'Főoldal' : 'Home', url: hu ? '/' : '/en/' }, { name: hu ? 'Útmutatók' : 'Guides', url: root }, { name: f.title, url: `${root}${slug}/` }],
-  pageSchema: { '@type': 'Article', '@id': `${canonical}#article`, headline: f.title, description: f.description, datePublished: published, dateModified: modified, inLanguage: lang, articleSection: f.topic, mainEntityOfPage: canonical, image: `https://kaftanangelo.com${f.heroImage}`, author: { '@type': 'Organization', name: 'Kaftan Angelo', url: 'https://kaftanangelo.com' + (hu ? '/rolunk/' : '/en/about/') }, publisher: { '@id': 'https://kaftanangelo.com/#store' } }
+  pageSchema: { '@type': 'Article', '@id': `${canonical}#article`, headline: f.title, description: f.description, datePublished: published, dateModified: modified, inLanguage: lang, articleSection: f.topic, mainEntityOfPage: canonical, image: f.editorialImages?.length ? [f.heroImage, ...f.editorialImages].map(src => `https://kaftanangelo.com${src}`) : `https://kaftanangelo.com${f.heroImage}`, author: { '@type': 'Organization', name: 'Kaftan Angelo', url: 'https://kaftanangelo.com' + (hu ? '/rolunk/' : '/en/about/') }, publisher: { '@id': 'https://kaftanangelo.com/#store' } }
 };
 ---
 <BaseLayout page={page}>
@@ -88,7 +89,7 @@ const page = {
           {relatedGuides.map((g) => (
             <article class="guide-related-card">
               <a href={`${root}${g.slug}/`}>
-                <img src={g.heroImage.replace('-800.avif', '-480.avif')} alt={g.title} width="360" height="202" loading="lazy" decoding="async" />
+                <img src={g.heroImage.replace('-800.avif', '-480.avif')} alt={g.heroAlt ?? g.title} width="360" height="202" loading="lazy" decoding="async" />
                 <div class="guide-related-body">
                   <span class="guide-related-topic">{g.topic}</span>
                   <h3>{g.title}</h3>
@@ -105,6 +106,10 @@ const page = {
 </BaseLayout>
 
 <style>
+  :global(.article-content .guide-product-photo) { width: min(100%, 400px); margin: 1.4rem auto 1.8rem; }
+  :global(.article-content .guide-product-photo picture) { display: block; }
+  :global(.article-content .guide-product-photo img) { display: block; width: 100%; height: auto; border-radius: 8px; }
+  :global(.article-content .guide-product-photo figcaption) { font-size: .88rem; line-height: 1.5; margin-top: .5rem; }
   .guide-visit-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1rem 0; }
   .guide-visit-actions a { min-height: 44px; }
   @media (max-width: 480px) { .guide-visit-actions { flex-direction: column; align-items: stretch; } .guide-visit-actions a { justify-content: center; } }
