@@ -9,6 +9,7 @@ import HomeTabbedShowcase from './HomeTabbedShowcase.astro';
 import ShowroomCategoryCards from './ShowroomCategoryCards.astro';
 import TrustHeritage from './TrustHeritage.astro';
 import HomeGuidesStrip from './HomeGuidesStrip.astro';
+import ShowroomGalleryStrip from './ShowroomGalleryStrip.astro';
 
 interface Props {
   page: any;
@@ -40,6 +41,7 @@ const lowerHtml = parts.length === 2 ? splitMarker + parts[1] : '';
       <HomeTabbedShowcase lang={lang} />
       <ShowroomCategoryCards lang={lang} />
       <HomeGuidesStrip lang={lang} />
+      <ShowroomGalleryStrip lang={lang} />
       <TrustHeritage lang={lang} />
       <Fragment set:html={withIcons(responsiveImages(lowerHtml))} />
     </>

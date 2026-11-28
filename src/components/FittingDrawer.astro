@@ -53,12 +53,25 @@ const visitUrl = hu ? '/uzlet/' : '/en/visit/';
           <Icon name="location" />
           <span>{hu ? 'Üzlet & útvonal' : 'Store & directions'}</span>
         </a>
+        <button type="button" class="fd-compare-btn" data-fd-compare hidden>
+          {hu ? 'Összehasonlítás' : 'Compare'}
+        </button>
         <button type="button" class="fd-clear-btn" data-fd-clear>
           {hu ? 'Lista ürítése' : 'Clear list'}
         </button>
       </div>
     </div>
   </div>
+</dialog>
+
+<dialog class="fd-compare-dialog" data-fd-compare-dialog aria-labelledby="fd-compare-title">
+  <div class="fdc-head">
+    <h2 id="fd-compare-title">{hu ? 'Mentett modellek összehasonlítása' : 'Compare saved models'}</h2>
+    <button type="button" class="fd-close" data-fdc-close aria-label={hu ? 'Összehasonlítás bezárása' : 'Close comparison'}>
+      <Icon name="x" />
+    </button>
+  </div>
+  <div class="fdc-body" data-fdc-body></div>
 </dialog>
 
 <script is:inline define:vars={{ searchDataUrl, catalogUrl, lang }}>
@@ -71,7 +84,13 @@ const visitUrl = hu ? '/uzlet/' : '/en/visit/';
   const waLink = dialog.querySelector('[data-fd-whatsapp]');
   const closeBtn = dialog.querySelector('[data-fd-close]');
   const clearBtn = dialog.querySelector('[data-fd-clear]');
+  const compareBtn = dialog.querySelector('[data-fd-compare]');
+  const compareDialog = document.querySelector('[data-fd-compare-dialog]');
+  const compareBody = compareDialog?.querySelector('[data-fdc-body]');
+  const compareClose = compareDialog?.querySelector('[data-fdc-close]');
   if (!bodyEl || !footEl || !countEl || !waLink) return;
+
+  let lastMatched = [];
 
   const hu = lang === 'hu';
   const STORAGE_KEY = 'kaftan_fitting_list_v1';
@@ -160,6 +179,13 @@ const visitUrl = hu ? '/uzlet/' : '/en/visit/';
       ? 'Üdvözlöm! A Kaftan Angelo próbalistámról az alábbi modellek ára és mérete felől érdeklődnék:'
       : 'Hello! I would like to ask about prices, sizes and availability for these models from my Kaftan Angelo fitting list:';
     waLink.href = `https://wa.me/36203593216?text=${encodeURIComponent(`${intro}\n${lines.join('\n')}`)}`;
+    lastMatched = matched;
+    if (compareBtn) {
+      compareBtn.hidden = matched.length < 2;
+      compareBtn.textContent = hu
+        ? `Összehasonlítás (${Math.min(matched.length, 3)})`
+        : `Compare (${Math.min(matched.length, 3)})`;
+    }
     footEl.hidden = false;
   };
 
@@ -202,6 +228,33 @@ const visitUrl = hu ? '/uzlet/' : '/en/visit/';
     writeSlugs([]);
     render();
   });
+
+  compareBtn?.addEventListener('click', () => {
+    if (!compareDialog || !compareBody || lastMatched.length < 2) return;
+    const picked = lastMatched.slice(0, 3);
+    compareBody.innerHTML = `<div class="fdc-grid">${picked
+      .map((m) => {
+        const waMsg = hu
+          ? `Üdvözlöm! A(z) „${m.n}” modell áráról és méreteiről érdeklődnék: https://kaftanangelo.com${m.u}`
+          : `Hello! I would like to ask about the price and sizes for “${m.n}”: https://kaftanangelo.com${m.u}`;
+        return `<article class="fdc-col">
+          <a class="fdc-photo" href="${esc(m.u)}"><img src="${esc(m.i)}" alt="${esc(m.n)}" width="240" height="300" loading="lazy" decoding="async" /></a>
+          <span class="fdc-cat">${esc(m.c)}</span>
+          <h3><a href="${esc(m.u)}">${esc(m.n)}</a></h3>
+          <p class="fdc-mat">${esc(m.m || (hu ? 'Valódi bőr / prémium kidolgozás — pontos részletek az üzletben.' : 'Genuine leather / boutique finish — full details in store.'))}</p>
+          <div class="fdc-actions">
+            <a class="btn btn-ghost" href="${esc(m.u)}">${hu ? 'Részletek' : 'Details'}</a>
+            <a class="btn btn-primary" href="https://wa.me/36203593216?text=${encodeURIComponent(waMsg)}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          </div>
+        </article>`;
+      })
+      .join('')}</div>`;
+    if (dialog.open) dialog.close();
+    if (!compareDialog.open) compareDialog.showModal();
+    requestAnimationFrame(() => compareClose?.focus());
+  });
+  compareClose?.addEventListener('click', () => { if (compareDialog?.open) compareDialog.close(); });
+  compareDialog?.addEventListener('click', (e) => { if (e.target === compareDialog) compareDialog.close(); });
 
   closeBtn?.addEventListener('click', () => closeDrawer(true));
   dialog.addEventListener('click', (e) => {
@@ -448,6 +501,20 @@ const visitUrl = hu ? '/uzlet/' : '/en/visit/';
   }
   .fd-visit-link:hover { color: #9c522b; text-decoration: underline; }
   .fd-visit-link :global(.ui-icon) { width: 15px; height: 15px; color: #9c522b; margin: 0; }
+  .fd-compare-btn {
+    background: #ffffff;
+    border: 1px solid #d5dce4;
+    border-radius: 999px;
+    padding: 4px 12px;
+    min-height: 34px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #1d2128;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .fd-compare-btn:hover { border-color: #1d2128; background: #eef1f5; }
+  .fd-compare-btn[hidden] { display: none !important; }
   .fd-clear-btn {
     background: transparent;
     border: 0;
@@ -461,4 +528,36 @@ const visitUrl = hu ? '/uzlet/' : '/en/visit/';
     font-family: inherit;
   }
   .fd-clear-btn:hover { color: #1d2128; }
+
+  .fd-compare-dialog {
+    width: min(920px, calc(100% - 24px));
+    max-height: 88dvh;
+    padding: 0;
+    border: 1px solid #e6eaf0;
+    border-radius: 14px;
+    background: #ffffff;
+    color: #1d2128;
+    box-shadow: 0 22px 54px rgba(29, 33, 40, 0.24);
+    overflow: hidden;
+  }
+  .fd-compare-dialog::backdrop { background: rgba(29, 33, 40, 0.56); backdrop-filter: blur(2px); }
+  .fdc-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-bottom: 1px solid #ecf0f4; }
+  .fdc-head h2 { margin: 0; font-size: 1.1rem; color: #1d2128; }
+  .fdc-body { padding: 18px; overflow-y: auto; max-height: calc(88dvh - 74px); }
+  .fdc-body :global(.fdc-grid) { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .fdc-body :global(.fdc-col) {
+    display: flex; flex-direction: column; gap: 8px; padding: 12px;
+    background: #f6f7f9; border: 1px solid #e6eaf0; border-radius: 10px; min-width: 0;
+  }
+  .fdc-body :global(.fdc-photo) { display: block; aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden; background: #f4f3f0; }
+  .fdc-body :global(.fdc-photo img) { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .fdc-body :global(.fdc-cat) { font-size: 0.74rem; font-weight: 600; color: #9c522b; text-transform: uppercase; letter-spacing: 0.05em; }
+  .fdc-body :global(.fdc-col h3) { margin: 0; font-size: 0.96rem; line-height: 1.3; color: #1d2128; }
+  .fdc-body :global(.fdc-col h3 a) { color: inherit; text-decoration: none; }
+  .fdc-body :global(.fdc-col h3 a:hover) { color: #9c522b; }
+  .fdc-body :global(.fdc-mat) { margin: 0; font-size: 0.8rem; line-height: 1.45; color: #5d636e; }
+  .fdc-body :global(.fdc-actions) { display: flex; gap: 8px; margin-top: auto; padding-top: 6px; }
+  .fdc-body :global(.fdc-actions .btn) { flex: 1; min-height: 40px; padding: 6px 10px; font-size: 0.8rem; justify-content: center; }
+  .fdc-body :global(.fdc-actions .btn-primary) { background: #1d2128; border-color: #1d2128; color: #ffffff; }
+  .fdc-body :global(.fdc-actions .btn-ghost) { background: #ffffff; border-color: #d5dce4; color: #1d2128; }
 </style>

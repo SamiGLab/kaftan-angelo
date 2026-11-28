@@ -1,0 +1,104 @@
+---
+interface Props {
+  lang: 'hu' | 'en';
+}
+
+const { lang } = Astro.props;
+const hu = lang === 'hu';
+
+const tiles = [
+  {
+    src: '/assets/images/black-quilted-womens-biker-leather-jacket-budapest-front-480.webp',
+    avif: '/assets/images/black-quilted-womens-biker-leather-jacket-budapest-front-480.avif',
+    href: hu ? '/noi-borkabatok/' : '/en/womens-leather-jackets/',
+    label: hu ? 'Női motoros bőrdzseki' : 'Women’s biker leather',
+  },
+  {
+    src: '/assets/images/brown-mens-jacket-fur-collar-budapest-front-480.webp',
+    avif: '/assets/images/brown-mens-jacket-fur-collar-budapest-front-480.avif',
+    href: hu ? '/irhakabatok/' : '/en/shearling-jackets/',
+    label: hu ? 'Férfi irhakabát' : 'Men’s shearling coat',
+  },
+  {
+    src: '/assets/images/tan-womens-leather-blazer-budapest-front-480.webp',
+    avif: '/assets/images/tan-womens-leather-blazer-budapest-front-480.avif',
+    href: hu ? '/noi-borkabatok/' : '/en/womens-leather-jackets/',
+    label: hu ? 'Konyakbarna bőrblézer' : 'Tan leather blazer',
+  },
+  {
+    src: '/assets/images/white-womens-fur-jacket-budapest-front-480.webp',
+    avif: '/assets/images/white-womens-fur-jacket-budapest-front-480.avif',
+    href: hu ? '/szormekabatok/' : '/en/fur-coats/',
+    label: hu ? 'Téli szőrmedzseki' : 'Winter fur jacket',
+  },
+  {
+    src: '/assets/images/black-mens-leather-jacket-quilted-shoulders-budapest-front-480.webp',
+    avif: '/assets/images/black-mens-leather-jacket-quilted-shoulders-budapest-front-480.avif',
+    href: hu ? '/ferfi-borkabatok/' : '/en/mens-leather-jackets/',
+    label: hu ? 'Férfi bőrdzseki' : 'Men’s leather jacket',
+  },
+  {
+    src: '/assets/images/navy-stand-collar-womens-leather-jacket-budapest-front-480.webp',
+    avif: '/assets/images/navy-stand-collar-womens-leather-jacket-budapest-front-480.avif',
+    href: hu ? '/uzlet/' : '/en/visit/',
+    label: hu ? 'Kossuth Lajos u. 18' : 'Kossuth Lajos u. 18',
+  },
+];
+---
+
+<section class="lookbook-strip-band" aria-labelledby="lookbook-strip-heading">
+  <div class="wrap">
+    <div class="lookbook-strip-head">
+      <div>
+        <span class="lookbook-strip-kicker">{hu ? 'BUDAPEST · KOSSUTH LAJOS U. 18' : 'BUDAPEST · KOSSUTH LAJOS U. 18'}</span>
+        <h2 id="lookbook-strip-heading">{hu ? 'Válogatás üzletünkből' : 'Inside our Budapest collection'}</h2>
+      </div>
+      <a class="lookbook-strip-all" href={hu ? '/uzlet/' : '/en/visit/'}>
+        {hu ? 'Üzlet és nyitvatartás →' : 'Visit our store →'}
+      </a>
+    </div>
+    <div class="lookbook-strip-grid">
+      {tiles.map((t) => (
+        <a class="lookbook-tile" href={t.href}>
+          <picture>
+            <source srcset={t.avif} type="image/avif" />
+            <img src={t.src} alt={t.label} width="240" height="300" loading="lazy" decoding="async" />
+          </picture>
+          <span class="lookbook-tile-cap">{t.label}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .lookbook-strip-band { padding: 42px 0; background: #ffffff; border-top: 1px solid #e6eaf0; }
+  .lookbook-strip-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+  .lookbook-strip-kicker { display: block; font-size: 11px; font-weight: 600; letter-spacing: .1em; color: #9c522b; margin-bottom: 4px; }
+  .lookbook-strip-head h2 { margin: 0; font-size: clamp(22px, 2.4vw, 28px); color: #1d2128; }
+  .lookbook-strip-all { font-size: 13.5px; font-weight: 600; color: #1d2128; text-decoration: underline; text-underline-offset: 4px; }
+  .lookbook-strip-all:hover { color: #9c522b; }
+
+  .lookbook-strip-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+  .lookbook-tile {
+    position: relative; display: block; border-radius: 8px; overflow: hidden;
+    background: #f4f3f0; aspect-ratio: 4 / 5; text-decoration: none;
+  }
+  .lookbook-tile picture, .lookbook-tile img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .3s ease; }
+  .lookbook-tile:hover img { transform: scale(1.04); }
+  .lookbook-tile-cap {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 24px 10px 9px;
+    background: linear-gradient(180deg, rgba(29, 33, 40, 0) 0%, rgba(29, 33, 40, .78) 100%);
+    color: #ffffff; font-size: 12px; font-weight: 500; line-height: 1.25;
+  }
+
+  @media (max-width: 1024px) {
+    .lookbook-strip-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 640px) {
+    .lookbook-strip-band { padding: 32px 0; }
+    .lookbook-strip-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; gap: 10px; padding-bottom: 4px; }
+    .lookbook-strip-grid::-webkit-scrollbar { display: none; }
+    .lookbook-tile { flex: 0 0 44%; scroll-snap-align: start; }
+  }
+</style>

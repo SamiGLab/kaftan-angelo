@@ -347,6 +347,9 @@ function createDiscovery(grid, cards, onChange) {
     const target = event?.target instanceof Element ? event.target : null;
     loadCatalogUi().then(mod => mod?.initCatalogPhase2({ toolbar, grid, triggerTarget: target }));
   };
+  search.addEventListener('input', () => bootPhase2(null), { once: true });
+  colour.addEventListener('change', () => bootPhase2(null), { once: true });
+  style.addEventListener('change', () => bootPhase2(null), { once: true });
   toolbar.addEventListener('click', (e) => {
     if (e.target.closest('[data-view-option], [data-filter-drawer-btn]')) bootPhase2(e);
   });
