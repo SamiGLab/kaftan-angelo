@@ -2705,7 +2705,8 @@ main .collection-page .page-hero .btn-ghost:hover,.collection-page .page-hero .b
 [data-static-collection] .product-card{border:0;border-right:1px solid #ecf0f4;border-radius:0;padding:0 14px 16px;background:#ffffff;box-shadow:none;transition:none}
 [data-static-collection] .product-card:hover{border-color:#ecf0f4;box-shadow:none}
 [data-static-collection] .product-card:nth-child(4n){border-right:0}
-[data-static-collection] .product-image-button{background:#f4f3f0;border-radius:6px;overflow:hidden}
+[data-static-collection] .product-image-button{background:#e8e5df;border-radius:6px;overflow:hidden}
+[data-static-collection] .product-image-button img,.product-card picture img,.showcase-card img,.qv-media img,.model-gallery img{object-fit:contain;object-position:center;background:#e8e5df}
 [data-static-collection] .collection-save{top:10px;right:22px;background:rgba(255,255,255,.94);color:#1d2128;border:1px solid #e6eaf0;width:38px;height:38px;font-size:20px}
 [data-static-collection] .collection-save:hover{border-color:#1d2128}
 [data-static-collection] .collection-save[aria-pressed="true"]{color:#9c522b;border-color:#9c522b}
