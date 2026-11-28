@@ -1,6 +1,6 @@
 # Store-focused product and shopping content
 
-Product prices, starting prices and product price ranges are not published. Product pages retain factual Product and ItemPage data, photographs and product-specific private enquiry links. Offer, fabricated availability, product ratings and placeholder prices are not used to obtain a search enhancement. This deliberately does not claim eligibility for price-rich product snippets.
+Product prices, starting prices and product price ranges are not published. Product pages emit factual `ItemPage` structured data, photographs and product-specific private enquiry links, and intentionally omit `@type: "Product"` (along with Offer, fabricated availability, product ratings and placeholder prices) so Search Console does not flag incomplete Product snippets.
 
 The bilingual shopping, material comparison and second-hand inspection guides describe checks a visitor can make, rather than guaranteed temperatures, repair costs, stock, reservation or material certification. The Budapest shop opened in 2004; 1973 refers to Angelo's work with leather in Istanbul. Route details link to the visit pages, where checked estimates are maintained from shared data.
 
